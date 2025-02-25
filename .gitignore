@@ -3,3 +3,5 @@ backup_code
 __pycache__/
 *.pyc
 *.pyo
+.DS_Store
+.VSCodeCounter
