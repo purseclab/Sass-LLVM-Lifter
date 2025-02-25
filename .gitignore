@@ -1,0 +1,5 @@
+backup_code
+*/__pycache__
+__pycache__/
+*.pyc
+*.pyo
