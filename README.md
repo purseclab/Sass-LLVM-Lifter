@@ -20,12 +20,28 @@ python main.py
 
 TBD
 
+## How to do Type Analysis?
+
+#### By Opcode and modifiers
+e.g. `IMAD.WIDE R2, R4, R5, c[0x0][0x160] ;`
+=> R2, R4, R5 and c[0x0][0x160] here are Integers; R4 and R5 are 32-bit; R3||R2 are treated as 64 bit together; c[0x0][0x160] is also treated as 64 bit;
+
+e.g. `FMNMX R7, RZ, R2, !PT ;`, R7, R2, RZ here are Float pointers.
+
+e.g. `ULDC.64 UR4, c[0x0][0x160]`, apperently 64bit operators, but UR4 is actually UR5||UR4? 
+refer:  https://forums.developer.nvidia.com/t/maxwell-sm-50-instruction-ldg-e/39123
+
+
+e.g., `IMAD.MOV.U32 R12, RZ, RZ, RZ ;`, 
+
+## Supported Instructions
+
 ## Challenge
 
 + SASS is not officially documented, which means we can only infer the meaning of each instruction by gathering online information and comparing source code with binary data.
 
 ## TODO List
-
+- [ ] Find a method to run the program and check the correctness.
 - [ ] Better Type Analysis.
 - [ ] Support more instructions
    - [ ] LDL & STL, local variables.

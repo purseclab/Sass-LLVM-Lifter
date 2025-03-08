@@ -122,6 +122,11 @@ def sass_to_json(sass_file, json_file):
 
     functions = parse_sass(sass_content)
 
+    # filter out empty labels
+    for func in functions:
+        blocks = functions[func]["Basicblocks"]
+        functions[func]["Basicblocks"] = [block for block in blocks if block["instructions"]]
+
     with open(json_file, 'w') as f:
         json.dump(functions, f, indent=4)
 

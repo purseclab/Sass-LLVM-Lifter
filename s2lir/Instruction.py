@@ -23,7 +23,7 @@ class Instruction:
             ope.parse()
         
         if self.opcode == "BRA":
-            assert len(self.operands) == 1
+            assert len(self.operands) <= 2
             self.branch_target = self.operands[0].branch_label
 
         # self.dump()

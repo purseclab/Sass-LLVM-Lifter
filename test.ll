@@ -49,7 +49,6 @@ Entry_.text._Z4reluPfS_i:
   br i1 %".27", label %"Entry_.text._Z4reluPfS_i.if", label %"Entry_.text._Z4reluPfS_i.endif"
 .L_x_14:
   br label %".L_x_14"
-.L_x_24:
 Internal_Exit:
   ret void
 Entry_.text._Z4reluPfS_i.if:
@@ -87,4 +86,3 @@ Entry_.text._Z4reluPfS_i.endif:
   store i32 %".47", i32* %"for_STG"
   br label %"Internal_Exit"
 }
-

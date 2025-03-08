@@ -9,12 +9,12 @@ def json_to_ir(filename = 'output.josn'):
         functions = json.load(f)
         # print(functions)
 
-    function_ir = []
+    functions_ir = []
     for function in functions:
         func = Function.Function(functions[function])
-        function_ir.append(func)
+        functions_ir.append(func)
 
-    return function_ir
+    return functions_ir
 
     #  with open(json_file, 'w') as f:
         # json.dump(functions, f, indent=4)
