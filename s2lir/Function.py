@@ -55,39 +55,6 @@ class Function:
         return Regs
 
 
-
-    def typeAnalysis(self):
-        # TODO: Now we parse the type in each instruction. In the next step, we can parse it accross instructions
-
-        
-        for BB in self.blocks:
-            for inst in BB.instructions:
-                # Set Predicate TypeDesc
-                for Op in inst.operands:
-                    if Op.isPReg:
-                        Op.setTypeDesc("Bool")
-                # DirectSolve
-                # if len(inst.operands) > 0:
-                #     inst.DirectlySolveType()
-        
-        # Direct solve
-    
-    def transform(self):
-        # PASS 1:  Type Analysis
-        self.typeAnalysis()
-
-        # PASS 2: Collect all Regs
-        # TODO: what if a Reg is used multiple times? First R2, then [R2], JP Wan 2025-02-24
-        # self.getRegs()
-        # for k, v in self.Regs.items():
-        #     dprint(f"{k}: {v.OriginalContent}")
-
-        # PASS 3: Collect all Args
-        # self.getArgs()
-        print("Args: ",self.Args)
-        print("ArgIdxes: ", self.ArgIdxes)
-
-
     # Build the map between basic block and its IR version
     def BuildBBToIRMap(self, IRFunc):
         IsEntry = True
@@ -170,5 +137,3 @@ class Function:
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock)
 
             IsEntry = False
-
-        

@@ -1,5 +1,7 @@
 # Lift Nvidia SASS to LLVM IR
 
+(Working in Process)
+
 ## Usage
 
 ```sh
@@ -16,9 +18,9 @@ nvdisasm --print-code test.2.sm_75.cubin > test_code.sass
 python main.py
 ```
 
-## Code Structure
+## Internal Procedure
 
-TBD
+sass code(test.sass) =====(parser/sass2json.py)=====> test.json =====(parser/json2ir.py)======> s2lir ======(Passes, e.g. type analysis)=====> analyzed s2lir ========(lifter)=======> test.llvm
 
 ## How to do Type Analysis?
 
@@ -35,6 +37,18 @@ refer:  https://forums.developer.nvidia.com/t/maxwell-sm-50-instruction-ldg-e/39
 e.g., `IMAD.MOV.U32 R12, RZ, RZ, RZ ;`, 
 
 ## Supported Instructions
+
++ EXIT
++ NOP
++ BRA
++ S2R
++ MOV
++ LDG
++ STG
++ IMAD
++ ISETP
++ FMNMX
++ 
 
 ## Challenge
 
@@ -69,5 +83,3 @@ e.g., `IMAD.MOV.U32 R12, RZ, RZ, RZ ;`,
 + https://llvmlite.readthedocs.io/en/latest/user-guide/ir/ir-builder.html#id6
 + https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
 + [Decoding Cuda Binary](https://people.cs.rutgers.edu/zz124/assets/pdf/cgo19.pdf)
-
-

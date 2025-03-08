@@ -187,7 +187,6 @@ class Instruction:
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
 
-
         if self.opcode == "EXIT":
             # Cmp = IRBuilder.icmp_signed(lifter.GetCmpOp(self.opcodes[1]), Val1, Val2, "cmp")
             if not IRBuilder.block.is_terminated:

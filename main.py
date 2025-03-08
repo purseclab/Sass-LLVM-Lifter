@@ -4,6 +4,8 @@ import parser.json2ir as j2ir
 from s2lir import Function
 from utils import *
 from llvmlite import ir as llvmir
+from passes import TypeAnalysis
+
 
 class LLVMModule:
     # def __init__(self, name, parser):
@@ -24,9 +26,10 @@ class LLVMModule:
         for func in self.functions:
             func.parse()
     
-    def transform(self):
+    def analysisAndTransform(self):
         for func in self.functions:
-            func.transform()
+            TypeAnalysis.TypeAnalysis(func)
+
 
     def lift(self):
         # Generate module level information
@@ -53,7 +56,7 @@ if __name__=="__main__":
     myModule = LLVMModule("PerSecModule", functions)
     myModule.parse()
 
-    myModule.transform()
+    myModule.analysisAndTransform()
 
     llvm_module = myModule.lift()
     print(llvm_module)
