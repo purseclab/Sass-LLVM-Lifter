@@ -25,7 +25,7 @@ class Function:
         self.labels2block = {BB.label: BB for BB in self.blocks}
 
         ################################################################
-        self.ArgMap = {}
+        self.ArgMap = {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
         self.BlockMap = {}
         self.ArgIdxes = []
         self.Args = []
@@ -80,8 +80,13 @@ class Function:
         for Arg in self.Args:
             ArgTypes.append(Arg.getIRType())
 
+
         FuncTy = llvmir.FunctionType(llvmir.VoidType(), ArgTypes)
         IRFunc = llvmir.Function(llvm_module, FuncTy, self.name)
+
+        # Set name for each argument
+        for i in range(len(ArgTypes)):
+            IRFunc.args[i].name="Arg_" + str(i)
 
         # Construct the map based on IR basic block
         self.BuildBBToIRMap(IRFunc)
@@ -92,9 +97,9 @@ class Function:
         # The register name to IR register map, that is created at the entry block code generation
         IRRegs = {}
 
+        # Add exit instruction
         ExitBlock = IRFunc.append_basic_block("Internal_Exit")
         ExitIRBuilder = llvmir.IRBuilder(ExitBlock)
-        # Add exit instruction
         ExitIRBuilder.ret_void()
 
         for BB in self.blocks:
@@ -105,20 +110,13 @@ class Function:
 
             if IsEntry:
                 ArgID = 0
-                # Alloc the variable for arguments and update argument map
-                # TODO: Can we remove the store later? 
                 for Arg in self.Args:
-                    ArgName = "Arg" + str(ArgID)
-                    IRArg = Builder.alloca(ArgTypes[ArgID], 8, ArgName)
-
-                    # Register the IR argument
-                    IRArgs[self.ArgIdxes[ArgID]] = IRArg
-                    
-                    # Store the argument values
-                    Builder.store(IRFunc.args[ArgID], IRArg)
+                    # Store the Argument into ArgIdxes
+                    IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID]
 
                     # Increment argument ID
                     ArgID = ArgID + 1
+
                 # Collect registers' name with type information
                 Regs = self.getRegs() # => self.Regs
                 dprint(Regs)

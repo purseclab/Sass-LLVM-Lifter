@@ -126,7 +126,6 @@ class Operand:
         
         elif self.isArg:
             IRVal = IRArgs[self.offset_in_const_mem]
-            IRVal = IRBuilder.load(IRVal)
             if self.arg_abs:
                 raise NotImplementedError
             if self.arg_neg:

@@ -236,9 +236,8 @@ class Instruction:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 # Find IR from IRArgs
                 IRValOp = IRArgs[ValOp.offset_in_const_mem]
-                tmp = IRBuilder.load(IRValOp)
 
-                IRBuilder.store(tmp, IRResOp)
+                IRBuilder.store(IRValOp, IRResOp)
                 # IRBuilder.store(IRArgs[ValOp.offset_in_const_mem], IRResOp)
             else:
                 raise InvalidSyntaxException
