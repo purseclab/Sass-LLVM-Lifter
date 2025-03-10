@@ -31,17 +31,12 @@ Entry_.text._Z4reluPfS_i:
   %"cmp" = icmp sge i32 %".14", %"Arg_4"
   %".16" = and i1 %"cmp", %".15"
   store i1 %".16", i1* %"P0_Bool"
-.text._Z4reluPfS_i_split_0x0050:
   %".18" = load i1, i1* %"P0_Bool"
   %".19" = icmp ne i1 %".18", 1
-  br i1 %".19", label %".text._Z4reluPfS_i_split_0x0050.if", label %".text._Z4reluPfS_i_split_0x0050.endif"
-.L_x_14:
-  br label %".L_x_14"
-Internal_Exit:
-  ret void
-.text._Z4reluPfS_i_split_0x0050.if:
-  br label %"Internal_Exit"
-.text._Z4reluPfS_i_split_0x0050.endif:
+  br i1 %".19", label %".text._Z4reluPfS_i_conditionalExe_0x0050", label %".text._Z4reluPfS_i_split_0x0060"
+.text._Z4reluPfS_i_conditionalExe_0x0050:
+  br label %"ExitFunction"
+.text._Z4reluPfS_i_split_0x0060:
   store i32 4, i32* %"R5_NOTYPE"
   %".23" = load i32, i32* %"R4_NOTYPE"
   %".24" = load i32, i32* %"R5_NOTYPE"
@@ -70,6 +65,10 @@ Internal_Exit:
   %".39" = add i32 %".38", 0
   %"for_STG" = inttoptr i32 %".39" to i32*
   store i32 %".37", i32* %"for_STG"
-  br label %"Internal_Exit"
+  br label %"ExitFunction"
+.L_x_14:
+  br label %".L_x_14"
+ExitFunction:
+  ret void
 }
 

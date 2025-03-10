@@ -36,14 +36,26 @@ class Function:
             block.parse()
             block.addr = block.instructions[0].addr
 
-        # Break Basic Blocks if it contains unconditional branch, e.g., @P0 BRA `(.L_x_15); or unconditional execution, e.g.,  @!P3 BRA `(.L_x_18) ;
+        dprint([x.label for x in self.blocks])
+        dprint([len(x.instructions) for x in self.blocks])
+        dprint("+"*100)
+        '''
+        Break Basic Blocks if it contains unconditional branch, e.g., @P0 BRA `(.L_x_15); or unconditional execution, e.g.,  @!P3 BRA `(.L_x_18);
+        '''
         blocks = self.blocks
         split_blocks = []
         for BB in blocks:
             conditional_ins_index = []
-            # find internal branches, except the first one and last one
-            for inst_i in range(1, len(BB.instructions)-1):
+            # find internal branches, except the last one
+            for inst_i in range(len(BB.instructions)-1):
                 inst = BB.instructions[inst_i]
+
+                if inst.isBranch() and not inst.isConditionExe(): 
+                    # Unconditional Branch; Just Remove all the instructions after this one (Now we assume that no BRX or indirect branch is supported)
+                    BB.instructions = BB.instructions[:inst_i+1]
+                    # print("==="*100)
+                    break
+            
                 if inst.isBranch() or inst.isConditionExe():
                     conditional_ins_index.append(inst_i)
 
@@ -51,12 +63,14 @@ class Function:
             # Split instructions into sublists
             start = 0
             sublists = []
+            
             for index in conditional_ins_index:
-                sublists.append(BB.instructions[start:index])
-                start = index
+                sublists.append(BB.instructions[start:index+1])
+                start = index+1
             if start < len(BB.instructions):
                 sublists.append(BB.instructions[start:])
 
+            # Create new basic blocks
             BB.instructions = sublists[0]
             split_blocks.append(BB)
             for sublist in sublists[1:]:
@@ -65,7 +79,13 @@ class Function:
                 new_BB.addr = new_BB.instructions[0].addr
                 new_BB.label = new_BB.label + "_split_" + str(new_BB.addr)
                 split_blocks.append(new_BB)
+                self.labels2block[new_BB.label] = new_BB
+            dprint([[ y.addr for y in x] for x in sublists])
+            
         self.blocks = split_blocks
+        dprint([x.label for x in self.blocks])
+        dprint([len(x.instructions) for x in self.blocks])
+        dprint("+"*100)
 
 
     # Get the arguments for current function
@@ -137,7 +157,7 @@ class Function:
         
 
         # Add exit instruction
-        ExitBlock = IRFunc.append_basic_block("Internal_Exit")
+        ExitBlock = IRFunc.append_basic_block("ExitFunction")
         ExitIRBuilder = llvmir.IRBuilder(ExitBlock)
         ExitIRBuilder.ret_void()
 

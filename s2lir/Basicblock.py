@@ -30,27 +30,57 @@ class BasicBlock:
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, IRFunc, ExitBlock):
 
         for i in range(len(self.instructions)):
-            # TODO: Lift Branch Later
+            # After creating CFG, all the branches or conditional branches will only be the final one
             Inst = self.instructions[i]
+            if i == len(self.instructions) -1 and ( Inst.isBranch() or Inst.isConditionExe()):
+                if Inst.isBranch() and not Inst.isConditionExe():
+                    # Unconditional Branch
+                    targetBB = self.func.labels2block[Inst.branch_target]
+                    dprint(Inst.addr)
+                    dprint(targetBB.label)
+                    IRBuilder.branch(BlockMap[targetBB])
+                elif Inst.isConditionExe():
 
-            if Inst.isConditionExe():
-                P = Inst.operands[-1]
+                    P = Inst.operands[-1]
+                    PredReg = IRRegs[P.getIRRegName()]
+                    # Fetch the content from PredReg
+                    PredReg = IRBuilder.inttoptr(PredReg, llvmir.PointerType(llvmir.IntType(1)))
+                    PredReg = IRBuilder.load(PredReg)
 
-                PredReg = IRRegs[P.getIRRegName()]
-                # Fetch the content from PredReg
-                PredReg = IRBuilder.inttoptr(PredReg, llvmir.PointerType(llvmir.IntType(1)))
-                PredReg = IRBuilder.load(PredReg)
+                    if P.preg_not:
+                        # In IR, compare the value in PredReg with 0
+                        PredRegVal = IRBuilder.icmp_signed("!=", PredReg, llvmir.Constant(llvmir.IntType(1), 1))
+                    else:
+                        PredRegVal = IRBuilder.icmp_signed("==", PredReg, llvmir.Constant(llvmir.IntType(1), 1))
 
-                if P.preg_not:
-                    # In IR, compare the value in PredReg with 0
-                    PredRegVal = IRBuilder.icmp_signed("!=", PredReg, llvmir.Constant(llvmir.IntType(1), 1))
-                else: # TODO: WJP: Check correctness
-                    PredRegVal = IRBuilder.icmp_signed("==", PredReg, llvmir.Constant(llvmir.IntType(1), 1))
+                    # Conditional Branch
+                    if Inst.isBranch():
+                        targetBB = self.func.labels2block[Inst.branch_target]
 
-                # if PredRegVal then Add Inst, else skip this instruction
-                with IRBuilder.if_then(PredRegVal):
-                    Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
+                        # If self BB is the last one, jump to ExitBlock, else jump to NextBB
+                        if self == self.func.blocks[-1]:
+                            IRBuilder.cbranch(PredRegVal, BlockMap[targetBB], ExitBlock)
+                        else:
+                            nextBB = self.func.blocks[self.func.blocks.index(self)+1]
+                            IRBuilder.cbranch(PredRegVal, BlockMap[targetBB], BlockMap[nextBB])
+                    else:  # Conditional Execution
+                        ConditionalBB = self.func.blocks[self.func.blocks.index(self)+1]
+
+                        # If the conditional BB is the last one, then jump to ExitBlock, else jump to the next BB
+                        if ConditionalBB == self.func.blocks[-1]:
+                            IRBuilder.cbranch(PredRegVal, BlockMap[ConditionalBB], ExitBlock)
+                        else:
+                            nextBB = self.func.blocks[self.func.blocks.index(ConditionalBB)+1]
+                            IRBuilder.cbranch(PredRegVal, BlockMap[ConditionalBB], BlockMap[nextBB])
+
+                        # # if PredRegVal then Add Inst, else skip this instruction
+                        # with IRBuilder.if_then(PredRegVal):
+                        #     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
 
             else:
-                Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
-
+                if  len(self.instructions) > 1  and  i < len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExe()):
+                    dprint([ x.addr for x in self.instructions])
+                    dprint(self.label)
+                    assert False, "Branch should be the last instruction in the block"
+                else:
+                    Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)

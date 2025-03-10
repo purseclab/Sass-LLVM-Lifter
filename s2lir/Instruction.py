@@ -121,14 +121,15 @@ class Instruction:
         if self.opcode == "NOP":
             return
 
-        if self.opcode == "BRA":
-            # Branch to the target
-            dprint(BlockMap.keys())
-            dprint(self.BB.func.labels2block)
-            target_BB = self.BB.func.labels2block[self.branch_target]
-            dprint(target_BB)
-            IRBuilder.branch(BlockMap[target_BB])
-            return 
+        # Already Handled in the BB
+        # if self.opcode == "BRA":
+        #     # Branch to the target
+        #     dprint(BlockMap.keys())
+        #     dprint(self.BB.func.labels2block)
+        #     target_BB = self.BB.func.labels2block[self.branch_target]
+        #     dprint(target_BB)
+        #     IRBuilder.branch(BlockMap[target_BB])
+        #     return 
 
         if self.opcode == "S2R":
             ResOp = self.operands[0]

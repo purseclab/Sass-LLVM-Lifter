@@ -1,5 +1,6 @@
 from s2lir.Instruction import Instruction
 from s2lir.Basicblock import BasicBlock
+import copy
 
 class CFG:
     def __init__(self, func):
@@ -8,67 +9,102 @@ class CFG:
 
     def __apply(self):
         '''
-        Step 1: Connect ajacent BBs or Branches.
+        Connect ajacent BBs or Branches.
             Here we only parse the final instruction of a Basic Block, it has three possibilities:
                 (1) Unconditional Branch, e.g., BRA `(.L_x_10)`
                 (2) Conditional Branch, e.g., @P2 BRA `(.L_x_10)`
                 (3) Conditional Execution, e.g., @P1 FMNMX R11, R11, R4, !PT
                 (4) Normal instructions, e.g. MOV R2, 0x4
-            Here, we only handle (1), (2) and (4), we put the handling of case (3) in later steps.
         '''
-        return
+        # Handle (1), (2) and (4)
         BBs = self.func.blocks
         for BB_i in range(len(BBs)):
             BB = BBs[BB_i]
-            for inst in BB.instructions:
-                # Find the successors
-                if inst.isBranch(): # Currently only BRA
-                    targetBB = self.func.labels2block[inst.branch_target]
-                    BB.succs.append(targetBB)
-                    targetBB.preds.append(BB)
-                else:
-                    # Find the next BB
-                    nextBB = self.func.blocks[BB_i+1]
+            assert len(BB.instructions) > 0
+            final_inst = BB.instructions[-1]
+
+            # Case (1)
+            if final_inst.isBranch() and not final_inst.isConditionExe():
+                # Unconditional Branch
+                targetBB = self.func.labels2block[final_inst.branch_target]
+                BB.succs.append(targetBB)
+                targetBB.preds.append(BB)
+            
+            # Case (2)
+            if final_inst.isBranch() and final_inst.isConditionExe():
+                # Conditional Branch
+                targetBB = self.func.labels2block[final_inst.branch_target]
+                BB.succs.append(targetBB)
+                targetBB.preds.append(BB)
+
+                if BB_i < len(BBs)-1:
+                    nextBB = BBs[BB_i+1]
                     BB.succs.append(nextBB)
                     nextBB.preds.append(BB)
-                # Find the predecessors
-                # for
+
+            # case (4)
+            if not final_inst.isBranch() and not final_inst.isConditionExe():
+                # Normal instructions
+                if BB_i < len(BBs)-1:
+                    nextBB = BBs[BB_i+1]
+                    BB.succs.append(nextBB)
+                    nextBB.preds.append(BB)
+
         print("="*100)
-        return
 
-        # Break every conditional execution
-        BBs = self.func.blocks
-        for BB in BBs:
-            # Find the conditional execution
-            for inst in BB.instructions: # TODO: change it to while loop
-                # TODO: if it is the final instuction in the BB;
-                if inst.isConditionExe():
-                    conditionalBB_name = str(inst.addr)+"conditionalBB"
-                    nextBB_name = str(inst.addr)+"nextBB"
+        '''
+        Handle Case (3).  We create a conditional BB, which looks like this:
+            Original BB: [inst1, inst2, inst3, @inst4]
+            Conditional BB: [@inst4, BRA ``(nextBB)]
+            Next BB: [inst5, inst6, inst7]
+        '''
+        new_BBs = []
+        for BB_i in range(len(BBs)):
+            BB = BBs[BB_i]
+            assert len(BB.instructions) > 0
+            final_inst = BB.instructions[-1]
 
-                    # Create conditional BB
-                    conditionalBB = BasicBlock({"label": conditionalBB_name, "instructions": []}, self.func)
+            new_BBs.append(BB)
 
-                    Branch_to_next_BB = Instruction({"addr": inst.addr, "content": [["BRA"], ["`(%s)"%nextBB_name], "0x0"]}, conditionalBB)
-                    Branch_to_next_BB.parse()
+            if not final_inst.isBranch() and final_inst.isConditionExe():
+                # Create conditional BB
+                conditionalBB_name = BB.label + "_conditionalExe_"+str(final_inst.addr)
+                conditionalBB = BasicBlock({"label": conditionalBB_name, "instructions": []}, self.func)
+                conditionalBB.addr = final_inst.addr
 
-                    conditionalBB.instructions.append(inst)
-                    conditionalBB.instructions.append(Branch_to_next_BB)
+                # Create new inst, without conditional_exe
+                inst = copy.deepcopy(final_inst)
+                inst.condition_exe = ""
+                inst.operands = inst.operands[:-1]
 
-                    # Create Next BB
-                    inst_index = BB.instructions.index(inst)
-                    nextBB = BasicBlock({"label":  nextBB_name, "instructions": []}, self.func)
-                    nextBB.instructions = BB.instructions[inst_index+1:]
+                conditionalBB.instructions.append(inst)
 
-                    BB_index = self.func.blocks.index(BB)
-                    # Insert conditional BB & next BB
-                    self.func.blocks.insert(BB_index+1, conditionalBB)
-                    self.func.blocks.insert(BB_index+2, nextBB)
 
-                    # Keep the instructions before the condition_exe ( also keep the condition_exe; but when lift it, only lift the conditonal part)
-                    BB.instructions = BB.instructions[:inst_index+1]
-                    # Should also add an conditional branch => when lift, just jump to the conditionalBB and the nextBB? ====> can put the target into BB.instructions.
+                BB.succs.append(conditionalBB)
+                conditionalBB.preds.append(BB)
 
-                    # TODO: next round; 
+                BB.func.labels2block[conditionalBB.label] = conditionalBB
+
+
+                # If it has the following BB (and final_inst is not Exit Instruction), then connect the conditional BB and BB
+                if BB_i < len(BBs)-1 and not final_inst.isExit():
+                    nextBB = BBs[BB_i+1]
+
+                    conditionalBB_to_next_BB = Instruction({"addr": final_inst.addr, "content": [["BRA"], ["`(%s)"%nextBB.label], ""]}, conditionalBB)
+                    conditionalBB_to_next_BB.parse()
+
+                    conditionalBB.instructions.append(conditionalBB_to_next_BB)
+
+                    conditionalBB.succs.append(nextBB)
+                    nextBB.preds.append(conditionalBB)
+                
+                # if final_inst.isExit():
+                #     conditionalBB.instructions = conditionalBB.instructions[:1]
+
+                new_BBs.append(conditionalBB)
+
+        # keep the New Basic Block List
+        self.func.blocks = new_BBs
+
 
 
