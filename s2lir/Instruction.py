@@ -555,36 +555,58 @@ class Instruction:
         if self.opcode == "IADD3" or self.opcode == "UIADD3" :
             ResOp = self.operands[0]
 
-            # TODO: handle .X
-            # if self.modifiers[-1] == ".X":
-            #     raise NotImplementedError
-
-            # Currrently, just drop the Carry;
-            if self.operands[1].isReg:
+            if len(self.modifiers) > 0 and self.modifiers[0] == "X":         
                 ValOp1 = self.operands[1]
                 ValOp2 = self.operands[2]
                 ValOp3 = self.operands[3]
-            elif self.operands[1].isPReg:
-                ValOp1 = self.operands[2]
-                ValOp2 = self.operands[3]
-                ValOp3 = self.operands[4]
+
+                Preg = self.operands[4]
+
+                IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRPreg = Preg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                # cast IRPreg to 32 bit
+                IRPreg = IRBuilder.zext(IRPreg, llvmir.IntType(32))
+
+                sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
+                sum = IRBuilder.add(sum, IRValOp3, "add")
+                sum = IRBuilder.add(sum, IRPreg, "add")
+
+                assert ResOp.isReg
+                IRResOp = IRRegs[ResOp.getIRRegName()]
+                IRBuilder.store(sum, IRResOp)
+
+            else:
+                # Currrently, just drop the Carry;
+                if self.operands[1].isReg:
+                    ValOp1 = self.operands[1]
+                    ValOp2 = self.operands[2]
+                    ValOp3 = self.operands[3]
+                elif self.operands[1].isPReg:
+                    ValOp1 = self.operands[2]
+                    ValOp2 = self.operands[3]
+                    ValOp3 = self.operands[4]
 
 
-            IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
-            IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-            IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
+                IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
-            assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+                assert ResOp.isReg
+                IRResOp = IRRegs[ResOp.getIRRegName()]
 
-            tmp = IRBuilder.add(IRValOp1, IRValOp2, "add")
-            tmp = IRBuilder.add(tmp, IRValOp3, "add")
-            IRBuilder.store(tmp, IRResOp)
+                sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
+                sum = IRBuilder.add(sum, IRValOp3, "add")
+                IRBuilder.store(sum, IRResOp)
 
-            # if self.operands[1].isPReg:
-            #     Preg = self.operands[1]
-            #     IRPreg = IRRegs[Preg.getIRRegName()]
-
+                if self.operands[1].isPReg:
+                    # TODO: Make sure Using comparation is correct; 
+                    carry = IRBuilder.icmp_unsigned('<', sum, IRValOp1, name="carry")
+                    Preg = self.operands[1]
+                    IRPreg = IRRegs[Preg.getIRRegName()]
+                    IRBuilder.store(carry, IRPreg)
+            
             return
         
         print("Instruction: ", self.opcode)
