@@ -31,16 +31,17 @@ Entry_.text._Z4reluPfS_i:
   %"cmp" = icmp sge i32 %".14", %"Arg_4"
   %".16" = and i1 %"cmp", %".15"
   store i1 %".16", i1* %"P0_Bool"
+.text._Z4reluPfS_i_split_0x0050:
   %".18" = load i1, i1* %"P0_Bool"
   %".19" = icmp ne i1 %".18", 1
-  br i1 %".19", label %"Entry_.text._Z4reluPfS_i.if", label %"Entry_.text._Z4reluPfS_i.endif"
+  br i1 %".19", label %".text._Z4reluPfS_i_split_0x0050.if", label %".text._Z4reluPfS_i_split_0x0050.endif"
 .L_x_14:
   br label %".L_x_14"
 Internal_Exit:
   ret void
-Entry_.text._Z4reluPfS_i.if:
+.text._Z4reluPfS_i_split_0x0050.if:
   br label %"Internal_Exit"
-Entry_.text._Z4reluPfS_i.endif:
+.text._Z4reluPfS_i_split_0x0050.endif:
   store i32 4, i32* %"R5_NOTYPE"
   %".23" = load i32, i32* %"R4_NOTYPE"
   %".24" = load i32, i32* %"R5_NOTYPE"

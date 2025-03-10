@@ -1,6 +1,7 @@
 from s2lir.Basicblock import BasicBlock
 from utils import *
 from llvmlite import ir as llvmir
+import copy
 
 class Function:
     def __init__(self, function_dict):
@@ -16,7 +17,6 @@ class Function:
         # self.name = name
         self.blocks = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
 
-
         # All the Arguments
         self.Args = []
 
@@ -31,11 +31,42 @@ class Function:
         self.Args = []
     
     def parse(self):
-        # Break Basic Blocks if it contains unconditional branch, e.g., @P0 BRA `(.L_x_15); or unconditional execution, e.g.,  @!P3 BRA `(.L_x_18) ;
-
         # Parse all the BasicBlocks
         for block in self.blocks:
             block.parse()
+            block.addr = block.instructions[0].addr
+
+        # Break Basic Blocks if it contains unconditional branch, e.g., @P0 BRA `(.L_x_15); or unconditional execution, e.g.,  @!P3 BRA `(.L_x_18) ;
+        blocks = self.blocks
+        split_blocks = []
+        for BB in blocks:
+            conditional_ins_index = []
+            # find internal branches, except the first one and last one
+            for inst_i in range(1, len(BB.instructions)-1):
+                inst = BB.instructions[inst_i]
+                if inst.isBranch() or inst.isConditionExe():
+                    conditional_ins_index.append(inst_i)
+
+            
+            # Split instructions into sublists
+            start = 0
+            sublists = []
+            for index in conditional_ins_index:
+                sublists.append(BB.instructions[start:index])
+                start = index
+            if start < len(BB.instructions):
+                sublists.append(BB.instructions[start:])
+
+            BB.instructions = sublists[0]
+            split_blocks.append(BB)
+            for sublist in sublists[1:]:
+                new_BB = copy.deepcopy(BB)
+                new_BB.instructions = sublist
+                new_BB.addr = new_BB.instructions[0].addr
+                new_BB.label = new_BB.label + "_split_" + str(new_BB.addr)
+                split_blocks.append(new_BB)
+        self.blocks = split_blocks
+
 
     # Get the arguments for current function
     def getArgs(self):
