@@ -46,8 +46,9 @@ class LLVMModule:
 
 
 if __name__=="__main__":
-    # input_file = 'test_code.sass'
-    input_file = "test_relu.sass"
+    input_file = 'test_code.sass'
+    # input_file = "test_relu.sass"
+    # input_file = "test_maxpool.sass"
     output_file = "test.ll"
 
     s2j.sass_to_json(input_file, 'output.json') 

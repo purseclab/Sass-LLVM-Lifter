@@ -135,6 +135,8 @@ class Operand:
         elif self.isPReg:
             if self.reg == "PT":
                 return llvmir.Constant(llvmir.IntType(1), 1)
+            if self.reg == "UPT":
+                return llvmir.Constant(llvmir.IntType(1), 1)
             IRVal = IRRegs[self.getIRRegName()]
             IRVal = IRBuilder.load(IRVal)
 

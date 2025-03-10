@@ -28,11 +28,19 @@ class BasicBlock:
 
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, IRFunc, ExitBlock):
+        dprint("^"*100)
+        dprint(self.addr)
+        dprint(self.label)
+        dprint("BB Len",len(self.instructions))
+        dprint([ x.addr for x in self.instructions])
+        dprint([ x.opcode for x in self.instructions])
+        dprint([ x.isConditionExe() for x in self.instructions])
+        dprint("^"*100)
 
         for i in range(len(self.instructions)):
             # After creating CFG, all the branches or conditional branches will only be the final one
             Inst = self.instructions[i]
-            if i == len(self.instructions) -1 and ( Inst.isBranch() or Inst.isConditionExe()):
+            if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExe()):
                 if Inst.isBranch() and not Inst.isConditionExe():
                     # Unconditional Branch
                     targetBB = self.func.labels2block[Inst.branch_target]
@@ -78,9 +86,10 @@ class BasicBlock:
                         #     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
 
             else:
-                if  len(self.instructions) > 1  and  i < len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExe()):
+                if len(self.instructions) > 1  and  i < len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExe()):
                     dprint([ x.addr for x in self.instructions])
                     dprint(self.label)
+                    dprint("%"*100)
                     assert False, "Branch should be the last instruction in the block"
                 else:
                     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)

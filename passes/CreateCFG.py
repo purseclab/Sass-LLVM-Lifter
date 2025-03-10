@@ -1,6 +1,7 @@
 from s2lir.Instruction import Instruction
 from s2lir.Basicblock import BasicBlock
 import copy
+from utils import *
 
 class CFG:
     def __init__(self, func):
@@ -72,27 +73,26 @@ class CFG:
                 conditionalBB = BasicBlock({"label": conditionalBB_name, "instructions": []}, self.func)
                 conditionalBB.addr = final_inst.addr
 
-                # Create new inst, without conditional_exe
-                inst = copy.deepcopy(final_inst)
+                # Create new inst without conditional_exe
+                dprint(final_inst.addr, final_inst.content_dict)
+                dprint("&"*100)
+                inst = Instruction(final_inst.content_dict, conditionalBB)
                 inst.condition_exe = ""
                 inst.operands = inst.operands[:-1]
+                
+                assert inst.isConditionExe()==False
 
                 conditionalBB.instructions.append(inst)
 
-
                 BB.succs.append(conditionalBB)
                 conditionalBB.preds.append(BB)
-
-                BB.func.labels2block[conditionalBB.label] = conditionalBB
-
+                
 
                 # If it has the following BB (and final_inst is not Exit Instruction), then connect the conditional BB and BB
                 if BB_i < len(BBs)-1 and not final_inst.isExit():
                     nextBB = BBs[BB_i+1]
 
                     conditionalBB_to_next_BB = Instruction({"addr": final_inst.addr, "content": [["BRA"], ["`(%s)"%nextBB.label], ""]}, conditionalBB)
-                    conditionalBB_to_next_BB.parse()
-
                     conditionalBB.instructions.append(conditionalBB_to_next_BB)
 
                     conditionalBB.succs.append(nextBB)
@@ -101,10 +101,11 @@ class CFG:
                 # if final_inst.isExit():
                 #     conditionalBB.instructions = conditionalBB.instructions[:1]
 
+                BB.func.labels2block[conditionalBB.label] = conditionalBB
+                conditionalBB.parse()
                 new_BBs.append(conditionalBB)
+            
+            
 
         # keep the New Basic Block List
         self.func.blocks = new_BBs
-
-
-

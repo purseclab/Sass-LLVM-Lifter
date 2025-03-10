@@ -63,10 +63,14 @@ class Function:
             # Split instructions into sublists
             start = 0
             sublists = []
+            # dprint(conditional_ins_index)
+            # dprint("Length of instructions: ", len(BB.instructions))
+            # dprint("*"*100)
             
             for index in conditional_ins_index:
                 sublists.append(BB.instructions[start:index+1])
                 start = index+1
+            
             if start < len(BB.instructions):
                 sublists.append(BB.instructions[start:])
 
@@ -74,18 +78,25 @@ class Function:
             BB.instructions = sublists[0]
             split_blocks.append(BB)
             for sublist in sublists[1:]:
-                new_BB = copy.deepcopy(BB)
+                # new_BB = copy.deepcopy(BB)
+                new_BB = BasicBlock({"label": BB.label, "instructions": []}, self)
                 new_BB.instructions = sublist
-                new_BB.addr = new_BB.instructions[0].addr
-                new_BB.label = new_BB.label + "_split_" + str(new_BB.addr)
+                new_BB.addr = sublist[0].addr
+                new_BB.label = new_BB.label + "_split_" + str(sublist[0].addr)
                 split_blocks.append(new_BB)
                 self.labels2block[new_BB.label] = new_BB
+                # dprint(len(sublist))
+                # dprint(new_BB.label)
+                # dprint(new_BB.addr)
+                # dprint("----")
             dprint([[ y.addr for y in x] for x in sublists])
             
         self.blocks = split_blocks
         dprint([x.label for x in self.blocks])
         dprint([len(x.instructions) for x in self.blocks])
         dprint("+"*100)
+        dprint("Parse Done")
+
 
 
     # Get the arguments for current function
