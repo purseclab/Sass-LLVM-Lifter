@@ -4,7 +4,7 @@ import parser.json2ir as j2ir
 from s2lir import Function
 from utils import *
 from llvmlite import ir as llvmir
-from passes import TypeAnalysis
+from passes import TypeAnalysis, CreateCFG
 
 
 class LLVMModule:
@@ -29,6 +29,7 @@ class LLVMModule:
     def analysisAndTransform(self):
         for func in self.functions:
             TypeAnalysis.TypeAnalysis(func)
+            CreateCFG.CFG(func)
 
 
     def lift(self):
@@ -55,13 +56,9 @@ if __name__=="__main__":
 
     myModule = LLVMModule("PerSecModule", functions)
     myModule.parse()
-
     myModule.analysisAndTransform()
 
     llvm_module = myModule.lift()
     print(llvm_module)
     with open(output_file, 'w') as f:
         print(llvm_module, file=f)
-
-
-

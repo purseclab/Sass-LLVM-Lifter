@@ -11,6 +11,8 @@ class BasicBlock:
         self.preds = []
         # Successors
         self.succs = []
+        # Addr
+        self.addr = 0
 
         # To parent function
         self.func = func
@@ -18,9 +20,6 @@ class BasicBlock:
     def parse(self):
         for inst in self.instructions:
             inst.parse()
-        
-        # Find the successors
-
 
     # Collect registers with type
     def GetRegs(self, Regs):
@@ -29,7 +28,6 @@ class BasicBlock:
 
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, IRFunc, ExitBlock):
-
 
         for i in range(len(self.instructions)):
             # TODO: Lift Branch Later
@@ -45,11 +43,11 @@ class BasicBlock:
 
                 if P.preg_not:
                     # In IR, compare the value in PredReg with 0
-                    PredRegVal = IRBuilder.icmp_signed("==", PredReg, llvmir.Constant(llvmir.IntType(1), 0))
-                else:
                     PredRegVal = IRBuilder.icmp_signed("!=", PredReg, llvmir.Constant(llvmir.IntType(1), 1))
+                else: # TODO: WJP: Check correctness
+                    PredRegVal = IRBuilder.icmp_signed("==", PredReg, llvmir.Constant(llvmir.IntType(1), 1))
 
-                # if PredRegVal execute Inst, else skip
+                # if PredRegVal then Add Inst, else skip this instruction
                 with IRBuilder.if_then(PredRegVal):
                     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
 

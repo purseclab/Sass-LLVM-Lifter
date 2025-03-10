@@ -15,6 +15,7 @@ Entry_.text._Z4reluPfS_i:
   %"R5_NOTYPE" = alloca i32, i32 8
   %"R2_NOTYPE" = alloca i32, i32 8
   %"R7_NOTYPE" = alloca i32, i32 8
+  %"RZ_NOTYPE" = alloca i32, i32 8
   store i32 %"Arg_1", i32* %"R1_NOTYPE"
   %"ThreadIdx" = call i32 @"thread_idx"()
   store i32 %"ThreadIdx", i32* %"R4_NOTYPE"
@@ -31,7 +32,7 @@ Entry_.text._Z4reluPfS_i:
   %".16" = and i1 %"cmp", %".15"
   store i1 %".16", i1* %"P0_Bool"
   %".18" = load i1, i1* %"P0_Bool"
-  %".19" = icmp eq i1 %".18", 0
+  %".19" = icmp ne i1 %".18", 1
   br i1 %".19", label %"Entry_.text._Z4reluPfS_i.if", label %"Entry_.text._Z4reluPfS_i.endif"
 .L_x_14:
   br label %".L_x_14"

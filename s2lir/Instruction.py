@@ -84,98 +84,22 @@ class Instruction:
                 return True
 
         return False
-
-    # Directly resolve the type description, this is mainly working for binary operation
-    def DirectlySolveType(self):
-        TypeDesc = None
-
-        #### Batch 1
-        if self.opcode in ["FFMA", "FADD"]:
-            TypeDesc = "Float32"
-        
-        elif self.opcode in ["IMAD", "SHL",  "SHR", "S2R"] :
-            TypeDesc = "Int32"
-
-
-        if TypeDesc != None:
-            for operand in self.operands:
-                operand.setTypeDesc(TypeDesc)
-            return
-        
-        #### Batch 2
-        if self.opcode == "FMNMX":
-            TypeDesc = "Float32"
-
-
-        if TypeDesc != None:
-            for i in range(3):
-                operand = self.operands[i]
-                operand.setTypeDesc(TypeDesc)
-            self.operands[3].setTypeDesc("Bool")
-            return
-
-        #### Batch 3
-        if self.opcode == "ISETP":
-            TypeDesc = "Float32"
-
-        if TypeDesc != None:
-            self.operands[0].setTypeDesc("Bool")
-            self.operands[1].setTypeDesc("Bool")
-            self.operands[2].setTypeDesc("Int32")
-            self.operands[3].setTypeDesc("Int32")
-            self.operands[4].setTypeDesc("Bool")
-
-            return
-
-        return
-        # elif self.opcode == "MOV": # TODO: are you sure? 
-        #     TypeDesc = "INT"
-        # elif self.opcode == "LDG": # TODO: are you sure?
-        #     TypeDesc = "INT"
-        
-        # for operand in self.operands:
-        #     operand.setTypeDesc(TypeDesc)
-        # return
-
-        return True
-
-    def PartialSolveType(self):
-        if self.opcode == "LDG":
-            TypeDesc = self.operands[0].getTypeDesc()
-            if TypeDesc != None:
-                self.operands[1].setTypeDesc(TypeDesc + "_PTR")
-            else:
-                TypeDesc = self.operands[1].getTypeDesc()
-                if TypeDesc != None:
-                    self.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
-                else:
-                    raise InvalidTypeException
-
-        elif self.opcode == "STG":
-            TypeDesc = self.operands[1].getTypeDesc()
-            if TypeDesc != None:
-                self.operands[0].setTypeDesc(TypeDesc + "_PTR")
-            else:
-                TypeDesc = self.operands[0].getTypeDesc()
-                if TypeDesc != None:
-                    self.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
-                else:
-                    raise InvalidTypeException
-        elif self.opcode == 'IADD':
-            TypeDesc = self.operands[0].getTypeDesc()
-            if TypeDesc != None:
-                self.operands[1].setTypeDesc("Int32") # The integer offset
-                self.operands[2].setTypeDesc(TypeDesc)
-        else:
-            return False
-
-        return True
     
     def isConditionExe(self):
         if self.condition_exe:
             return True
         else:
             return False
+        
+    def isBranch(self):
+        if self.opcode == "BRA":
+            return True
+        return False
+    
+    def isExit(self):
+        if self.opcode == "EXIT":
+            return True
+        return False
 
     def dump(self):
         print("Instruction: ", self.addr, self.opcode, self.modifiers, self.condition_exe)
@@ -196,7 +120,6 @@ class Instruction:
 
         if self.opcode == "NOP":
             return
-
 
         if self.opcode == "BRA":
             # Branch to the target
@@ -360,5 +283,3 @@ class Instruction:
             IRBuilder.store(tmp, IRResOp)
 
             return
-            
-    

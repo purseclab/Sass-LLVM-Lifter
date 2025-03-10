@@ -31,6 +31,8 @@ class Function:
         self.Args = []
     
     def parse(self):
+        # Break Basic Blocks if it contains unconditional branch, e.g., @P0 BRA `(.L_x_15); or unconditional execution, e.g.,  @!P3 BRA `(.L_x_18) ;
+
         # Parse all the BasicBlocks
         for block in self.blocks:
             block.parse()
@@ -70,16 +72,17 @@ class Function:
             self.BlockMap[BB] = IRBlock
             
             IsEntry = False
-    
+
 
     def lift(self, llvm_module):
+
         # Collect all Args
         self.getArgs()
+        IRArgs = {}
         ArgTypes = []
         # Get the types of the Arguments
         for Arg in self.Args:
             ArgTypes.append(Arg.getIRType())
-
 
         FuncTy = llvmir.FunctionType(llvmir.VoidType(), ArgTypes)
         IRFunc = llvmir.Function(llvm_module, FuncTy, self.name)
@@ -88,39 +91,44 @@ class Function:
         for i in range(len(ArgTypes)):
             IRFunc.args[i].name="Arg_" + str(i)
 
+        
+        ArgID = 0
+        for Arg in self.Args:
+            # Store the Argument into ArgIdxes
+            IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID]
+
+            # Increment argument ID
+            ArgID = ArgID + 1
+
         # Construct the map based on IR basic block
         self.BuildBBToIRMap(IRFunc)
-
-        IsEntry = True
-        # The argument offset to IR argument map, that is created at the entry block code generation
-        IRArgs = {}
         # The register name to IR register map, that is created at the entry block code generation
-        IRRegs = {}
+        
 
         # Add exit instruction
         ExitBlock = IRFunc.append_basic_block("Internal_Exit")
         ExitIRBuilder = llvmir.IRBuilder(ExitBlock)
         ExitIRBuilder.ret_void()
 
+        # Collect registers' name with type information
+        IRRegs = {}
+        Regs = self.getRegs() # => self.Regs
+        dprint(Regs)
+
+        # EntryBlock = self.BlockMap[self.blocks[0]]
+        # EntryBuilder = llvmir.IRBuilder(EntryBlock)
+
+        IsEntry = True
         for BB in self.blocks:
             # Get basic block
             IRBlock = self.BlockMap[BB]
-            # Create IR builder
+
+            # if IRBlock == EntryBlock:
+            #     Builder = EntryBuilder
+            # else:
             Builder = llvmir.IRBuilder(IRBlock)
 
             if IsEntry:
-                ArgID = 0
-                for Arg in self.Args:
-                    # Store the Argument into ArgIdxes
-                    IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID]
-
-                    # Increment argument ID
-                    ArgID = ArgID + 1
-
-                # Collect registers' name with type information
-                Regs = self.getRegs() # => self.Regs
-                dprint(Regs)
-
                 # Alloc the variable for registers
                 for Reg in Regs:
                     Operand = Regs[Reg]
@@ -129,7 +137,6 @@ class Function:
                     IRReg = Builder.alloca(Operand.getIRType(), 8, RegName)
                     # Register the IR registers
                     IRRegs[RegName] = IRReg
-
 
 
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock)
