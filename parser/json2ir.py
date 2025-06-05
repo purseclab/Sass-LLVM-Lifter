@@ -3,7 +3,7 @@
 import json
 from s2lir import Function
 
-def json_to_ir(filename = 'output.josn'):
+def json_to_ir(filename = 'output.json'):
     
     with open(filename, "r") as f:
         functions = json.load(f)
@@ -22,4 +22,4 @@ def json_to_ir(filename = 'output.josn'):
 
 if __name__=="__main__":
     # Read and load file from json
-    functions = json_to_ir('output.josn')
+    functions = json_to_ir('output.json')
