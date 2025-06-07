@@ -5,6 +5,7 @@ from s2lir import Function
 from utils import *
 from llvmlite import ir as llvmir
 from passes import TypeAnalysis, CreateCFG
+import json
 
 
 class LLVMModule:
@@ -46,13 +47,15 @@ class LLVMModule:
 
 
 if __name__=="__main__":
-    input_file = 'test_code.sass'
-    # input_file = "test_relu.sass"
-    # input_file = "test_maxpool.sass"
-    output_file = "test.ll"
+    with open('../launch/lifter_config.json', 'r') as file:
+        data = json.load(file)
+    
+    input_file = "../output/1_sass/" + data['input_file']
+    output_file = "../output/3_llvm_ir/" + data['output_file']
 
-    s2j.sass_to_json(input_file, 'output.json') 
-    functions = j2ir.json_to_ir('output.json')
+    intermediate_json_file = "../output/2_json/" + "output.json"
+    s2j.sass_to_json(input_file, intermediate_json_file)
+    functions = j2ir.json_to_ir(intermediate_json_file)
     dprint(functions)
 
     myModule = LLVMModule("PerSecModule", functions)
