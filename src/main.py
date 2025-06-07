@@ -6,6 +6,7 @@ from utils import *
 from llvmlite import ir as llvmir
 from passes import TypeAnalysis, CreateCFG
 import json
+from colorprint import *
 
 
 class LLVMModule:
@@ -52,8 +53,12 @@ if __name__=="__main__":
     
     input_file = "../output/1_sass/" + data['input_file']
     output_file = "../output/3_llvm_ir/" + data['output_file']
+    
+    if not input_file.endswith(".sass"):
+        error(f"Input file must end with \".sass\". Currently listed input file: {input_file}")
 
-    intermediate_json_file = "../output/2_json/" + "output.json"
+    intermediate_json_file = "../output/2_json/" + input_file.split("/")[-1].replace(".sass", "") + ".json"
+    
     s2j.sass_to_json(input_file, intermediate_json_file)
     functions = j2ir.json_to_ir(intermediate_json_file)
     dprint(functions)
