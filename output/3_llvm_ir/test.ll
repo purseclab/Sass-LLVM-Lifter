@@ -2,9 +2,9 @@
 target triple = "unknown-unknown-unknown"
 target datalayout = ""
 
-declare i32 @"thread_idx"() 
+declare i32 @"thread_idx"()
 
-define void @"_Z8fc_layerPfS_S_S_ii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7") 
+define void @"_Z8fc_layerPfS_S_S_ii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7")
 {
 Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"R1_NOTYPE" = alloca i32, i32 8
@@ -876,7 +876,7 @@ ExitFunction:
   ret void
 }
 
-define void @"_Z10max_pool2dPfS_iii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7") 
+define void @"_Z10max_pool2dPfS_iii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7")
 {
 Entry_.text._Z10max_pool2dPfS_iii:
   %"R1_NOTYPE" = alloca i32, i32 8
@@ -916,7 +916,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   store i32 %"add", i32* %"R1_NOTYPE"
   %".12" = icmp sge i32 %"Arg_6", 0
   %".13" = sub i32 0, %"Arg_6"
-  %"iabs" = select i1 %".12", i32 %"Arg_6", i32 %".13"
+  %"iabs" = select  i1 %".12", i32 %"Arg_6", i32 %".13"
   store i32 %"iabs", i32* %"R7_NOTYPE"
   store i32 %"Arg_5", i32* %"UR4_NOTYPE"
   %"ThreadIdx" = call i32 @"thread_idx"()
@@ -958,7 +958,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   store i32 %"add.5", i32* %"R5_NOTYPE"
   %".42" = icmp sge i32 %"Arg_5", 0
   %".43" = sub i32 0, %"Arg_5"
-  %"iabs.1" = select i1 %".42", i32 %"Arg_5", i32 %".43"
+  %"iabs.1" = select  i1 %".42", i32 %"Arg_5", i32 %".43"
   store i32 %"iabs.1", i32* %"R4_NOTYPE"
   %".45" = load i32, i32* %"R3_NOTYPE"
   %".46" = load i32, i32* %"R5_NOTYPE"
@@ -1232,34 +1232,34 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".223" = load i32, i32* %"R2_NOTYPE"
   %".224" = load i32, i32* %"R11_NOTYPE"
   %".225" = fcmp olt i32 %".223", %".224"
-  %"fmnmx_min" = select i1 %".225", i32 %".223", i32 %".224"
+  %"fmnmx_min" = select  i1 %".225", i32 %".223", i32 %".224"
   %".226" = fcmp ogt i32 %".223", %".224"
-  %"fmnmx_max" = select i1 %".226", i32 %".223", i32 %".224"
-  %"fmnmx_final" = select i1 1, i32 %"fmnmx_min", i32 %"fmnmx_max"
+  %"fmnmx_max" = select  i1 %".226", i32 %".223", i32 %".224"
+  %"fmnmx_final" = select  i1 1, i32 %"fmnmx_min", i32 %"fmnmx_max"
   store i32 %"fmnmx_final", i32* %"R11_NOTYPE"
   %".228" = load i32, i32* %"R11_NOTYPE"
   %".229" = load i32, i32* %"R4_NOTYPE"
   %".230" = fcmp olt i32 %".228", %".229"
-  %"fmnmx_min.1" = select i1 %".230", i32 %".228", i32 %".229"
+  %"fmnmx_min.1" = select  i1 %".230", i32 %".228", i32 %".229"
   %".231" = fcmp ogt i32 %".228", %".229"
-  %"fmnmx_max.1" = select i1 %".231", i32 %".228", i32 %".229"
-  %"fmnmx_final.1" = select i1 1, i32 %"fmnmx_min.1", i32 %"fmnmx_max.1"
+  %"fmnmx_max.1" = select  i1 %".231", i32 %".228", i32 %".229"
+  %"fmnmx_final.1" = select  i1 1, i32 %"fmnmx_min.1", i32 %"fmnmx_max.1"
   store i32 %"fmnmx_final.1", i32* %"R11_NOTYPE"
   %".233" = load i32, i32* %"R11_NOTYPE"
   %".234" = load i32, i32* %"R6_NOTYPE"
   %".235" = fcmp olt i32 %".233", %".234"
-  %"fmnmx_min.2" = select i1 %".235", i32 %".233", i32 %".234"
+  %"fmnmx_min.2" = select  i1 %".235", i32 %".233", i32 %".234"
   %".236" = fcmp ogt i32 %".233", %".234"
-  %"fmnmx_max.2" = select i1 %".236", i32 %".233", i32 %".234"
-  %"fmnmx_final.2" = select i1 1, i32 %"fmnmx_min.2", i32 %"fmnmx_max.2"
+  %"fmnmx_max.2" = select  i1 %".236", i32 %".233", i32 %".234"
+  %"fmnmx_final.2" = select  i1 1, i32 %"fmnmx_min.2", i32 %"fmnmx_max.2"
   store i32 %"fmnmx_final.2", i32* %"R11_NOTYPE"
   %".238" = load i32, i32* %"R11_NOTYPE"
   %".239" = load i32, i32* %"R8_NOTYPE"
   %".240" = fcmp olt i32 %".238", %".239"
-  %"fmnmx_min.3" = select i1 %".240", i32 %".238", i32 %".239"
+  %"fmnmx_min.3" = select  i1 %".240", i32 %".238", i32 %".239"
   %".241" = fcmp ogt i32 %".238", %".239"
-  %"fmnmx_max.3" = select i1 %".241", i32 %".238", i32 %".239"
-  %"fmnmx_final.3" = select i1 1, i32 %"fmnmx_min.3", i32 %"fmnmx_max.3"
+  %"fmnmx_max.3" = select  i1 %".241", i32 %".238", i32 %".239"
+  %"fmnmx_final.3" = select  i1 1, i32 %"fmnmx_min.3", i32 %"fmnmx_max.3"
   store i32 %"fmnmx_final.3", i32* %"R11_NOTYPE"
   %".243" = load i1, i1* %"P1_Bool"
   %".244" = icmp ne i1 %".243", 1
@@ -1303,10 +1303,10 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".270" = load i32, i32* %"R11_NOTYPE"
   %".271" = load i32, i32* %"R2_NOTYPE"
   %".272" = fcmp olt i32 %".270", %".271"
-  %"fmnmx_min.4" = select i1 %".272", i32 %".270", i32 %".271"
+  %"fmnmx_min.4" = select  i1 %".272", i32 %".270", i32 %".271"
   %".273" = fcmp ogt i32 %".270", %".271"
-  %"fmnmx_max.4" = select i1 %".273", i32 %".270", i32 %".271"
-  %"fmnmx_final.4" = select i1 1, i32 %"fmnmx_min.4", i32 %"fmnmx_max.4"
+  %"fmnmx_max.4" = select  i1 %".273", i32 %".270", i32 %".271"
+  %"fmnmx_final.4" = select  i1 1, i32 %"fmnmx_min.4", i32 %"fmnmx_max.4"
   store i32 %"fmnmx_final.4", i32* %"R11_NOTYPE"
   %".275" = load i1, i1* %"P1_Bool"
   %".276" = icmp eq i1 %".275", 1
@@ -1382,10 +1382,10 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".322" = load i32, i32* %"R11_NOTYPE"
   %".323" = load i32, i32* %"R2_NOTYPE"
   %".324" = fcmp olt i32 %".322", %".323"
-  %"fmnmx_min.5" = select i1 %".324", i32 %".322", i32 %".323"
+  %"fmnmx_min.5" = select  i1 %".324", i32 %".322", i32 %".323"
   %".325" = fcmp ogt i32 %".322", %".323"
-  %"fmnmx_max.5" = select i1 %".325", i32 %".322", i32 %".323"
-  %"fmnmx_final.5" = select i1 1, i32 %"fmnmx_min.5", i32 %"fmnmx_max.5"
+  %"fmnmx_max.5" = select  i1 %".325", i32 %".322", i32 %".323"
+  %"fmnmx_final.5" = select  i1 1, i32 %"fmnmx_min.5", i32 %"fmnmx_max.5"
   store i32 %"fmnmx_final.5", i32* %"R11_NOTYPE"
   %".327" = load i1, i1* %"P1_Bool"
   %".328" = icmp ne i1 %".327", 1
@@ -1394,10 +1394,10 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".330" = load i32, i32* %"R11_NOTYPE"
   %".331" = load i32, i32* %"R4_NOTYPE"
   %".332" = fcmp olt i32 %".330", %".331"
-  %"fmnmx_min.6" = select i1 %".332", i32 %".330", i32 %".331"
+  %"fmnmx_min.6" = select  i1 %".332", i32 %".330", i32 %".331"
   %".333" = fcmp ogt i32 %".330", %".331"
-  %"fmnmx_max.6" = select i1 %".333", i32 %".330", i32 %".331"
-  %"fmnmx_final.6" = select i1 1, i32 %"fmnmx_min.6", i32 %"fmnmx_max.6"
+  %"fmnmx_max.6" = select  i1 %".333", i32 %".330", i32 %".331"
+  %"fmnmx_final.6" = select  i1 1, i32 %"fmnmx_min.6", i32 %"fmnmx_max.6"
   store i32 %"fmnmx_final.6", i32* %"R11_NOTYPE"
   br label %".L_x_11"
 .L_x_11:
@@ -1446,7 +1446,7 @@ ExitFunction:
   ret void
 }
 
-define void @"_Z4reluPfS_i"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4") 
+define void @"_Z4reluPfS_i"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4")
 {
 Entry_.text._Z4reluPfS_i:
   %"R1_NOTYPE" = alloca i32, i32 8
@@ -1497,10 +1497,10 @@ Entry_.text._Z4reluPfS_i:
   store i32 %"add.2", i32* %"R4_NOTYPE"
   %".33" = load i32, i32* %"R2_NOTYPE"
   %".34" = fcmp olt i32 0, %".33"
-  %"fmnmx_min" = select i1 %".34", i32 0, i32 %".33"
+  %"fmnmx_min" = select  i1 %".34", i32 0, i32 %".33"
   %".35" = fcmp ogt i32 0, %".33"
-  %"fmnmx_max" = select i1 %".35", i32 0, i32 %".33"
-  %"fmnmx_final" = select i1 1, i32 %"fmnmx_min", i32 %"fmnmx_max"
+  %"fmnmx_max" = select  i1 %".35", i32 0, i32 %".33"
+  %"fmnmx_final" = select  i1 1, i32 %"fmnmx_min", i32 %"fmnmx_max"
   store i32 %"fmnmx_final", i32* %"R7_NOTYPE"
   %".37" = load i32, i32* %"R7_NOTYPE"
   %".38" = load i32, i32* %"R4_NOTYPE"
@@ -1514,7 +1514,7 @@ ExitFunction:
   ret void
 }
 
-define void @"_Z6conv2dPfS_S_iiii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7", i32 %"Arg_8", i32 %"Arg_9") 
+define void @"_Z6conv2dPfS_S_iiii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7", i32 %"Arg_8", i32 %"Arg_9")
 {
 Entry_.text._Z6conv2dPfS_S_iiii:
   %"R1_NOTYPE" = alloca i32, i32 8
