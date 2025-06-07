@@ -48,11 +48,11 @@ class LLVMModule:
 
 
 if __name__=="__main__":
-    with open('../launch/lifter_config.json', 'r') as file:
+    with open('../launch/config.json', 'r') as file:
         data = json.load(file)
     
-    input_file = "../output/1_sass/" + data['input_file']
-    output_file = "../output/3_llvm_ir/" + data['output_file']
+    input_file = "../output/1_sass/" + data['lifter']['input_file']
+    output_file = "../output/3_llvm_ir/" + data['lifter']['output_file']
     
     if not input_file.endswith(".sass"):
         error(f"Input file must end with \".sass\". Currently listed input file: {input_file}")
