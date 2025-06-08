@@ -22,8 +22,7 @@ COPY requirements.txt .
 # no-cache-dir option is used to avoid caching the downloaded packages, which can save space in the image
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy files, recursive
-COPY . .
+# No longer need to copy the source code because we're mounting with -v
 
 # note: RUN is for building the image, CMD is for running the container, there can only be one CMD instruction in a Dockerfile
 

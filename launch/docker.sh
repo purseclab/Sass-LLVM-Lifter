@@ -6,5 +6,5 @@ cd ..
 docker rm -f my-sass-lifter || true
 
 docker build -t sass-lifter:latest -f Dockerfile .
-docker run -d -p 8000:8000 --name my-sass-lifter sass-lifter:latest
+docker run -d -v "$(pwd):/app" -p 8000:8000 --name my-sass-lifter sass-lifter:latest
 docker logs -f my-sass-lifter
