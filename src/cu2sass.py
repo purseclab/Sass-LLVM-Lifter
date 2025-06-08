@@ -23,9 +23,13 @@ def compile_cuda(cuda_file, output_executable):
 
 def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     """Extract cubin files using cuobjdump"""
+    
+    original_dir = os.getcwd()
+    os.chdir(cubin_pwd)
     run_command([
         "cuobjdump", "-xelf", "all", executable
     ])
+    os.chdir(original_dir)
 
     # Find the generated .cubin file
     
@@ -68,7 +72,7 @@ def main():
         compile_cuda(cuda_file, output_executable_path)
 
         # Step 2: Extract .cubin files
-        cubin_files = extract_cubin(output_executable_path, "../output/0_exec_and_cubin/", output_cubin_prefix, output_cubin_name)
+        cubin_files = extract_cubin(output_executable, "../output/0_exec_and_cubin/", output_cubin_prefix, output_cubin_name)
         print("Found cubin file:", cubin_files)
 
         # Step 3: Disassemble each .cubin file (choose first one by default)
