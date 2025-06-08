@@ -16,10 +16,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set working directory, files will be copied here inside the docker container
 WORKDIR /app
 
+# This copy step is crucial, without it pip install will not be cached and will run every time you build the image
+COPY requirements.txt .
+
+# no-cache-dir option is used to avoid caching the downloaded packages, which can save space in the image
+RUN pip install --no-cache-dir -r requirements.txt
+
 # Copy files, recursive
 COPY . .
-
-RUN pip install -r requirements.txt
 
 # note: RUN is for building the image, CMD is for running the container, there can only be one CMD instruction in a Dockerfile
 
