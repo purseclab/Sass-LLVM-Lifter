@@ -1,0 +1,17 @@
+# Ignore version control
+.git
+.gitignore
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter notebooks
+*.ipynb
+
+# Documentation & misc
+*.md
+*.DS_Store
+
+# Visual Studio Code
+.vscode/
