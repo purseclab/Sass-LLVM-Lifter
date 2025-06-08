@@ -68,6 +68,6 @@ if __name__=="__main__":
     myModule.analysisAndTransform()
 
     llvm_module = myModule.lift()
-    print(llvm_module)
+    # print(llvm_module)
     with open(output_file, 'w') as f:
         print(llvm_module, file=f)
