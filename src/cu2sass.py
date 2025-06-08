@@ -5,6 +5,11 @@ import json
 
 from colorprint import *
 
+from pathlib import Path
+
+
+current_dir = Path(__file__).parent
+
 def run_command(cmd):
     """Run shell command and check for errors."""
     print(f"Running: {' '.join(cmd)}")
@@ -18,7 +23,7 @@ def run_command(cmd):
 def compile_cuda(cuda_file, output_executable):
     """Compile CUDA file to executable using nvcc"""
     run_command([
-        "nvcc", "-arch=sm_75", "-o", output_executable, cuda_file
+        "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
     ])
 
 def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
@@ -27,7 +32,7 @@ def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     original_dir = os.getcwd()
     os.chdir(cubin_pwd)
     run_command([
-        "cuobjdump", "-xelf", "all", executable
+        "cuobjdump", "-xelf", "all", str(executable)
     ])
     os.chdir(original_dir)
 
@@ -37,7 +42,8 @@ def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     if len(cubin_files) != 2:
         warning(f"Number of cubin files with prefix \"{cubin_prefix}\" is {len(cubin_files)} (!= 2)")
     
-    cubin_path = os.path.join(cubin_pwd, cubin_name)
+    cubin_path = os.path.join(cubin_pwd, cubin_name) # path.join can also join Path objects
+    
     if not os.path.exists(cubin_path):
         raise FileNotFoundError("No .cubin file was generated.")
     return cubin_path
@@ -45,34 +51,47 @@ def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
 def disassemble_cubin(cubin_file, output_sass_file):
     """Disassemble cubin file to SASS using nvdisasm"""
     output = run_command([
-        "nvdisasm", "--print-code", cubin_file
+        "nvdisasm", "--print-code", str(cubin_file)
     ])
     with open(output_sass_file, "w") as f:
         f.write(output)
 
 def main():
-    with open('../launch/config.json', 'r') as file:
+    config_path = current_dir / ".." / "launch" / "config.json"
+    
+    with open(config_path.resolve(), 'r') as file:
         data = json.load(file)
     
-    cuda_file = "../input/" + data['cu2sass']['cuda_file']
+    cuda_file = (current_dir / "../input/" / data['cu2sass']['cuda_file']).resolve()
     
-    if not cuda_file.endswith(".cu"):
+    if cuda_file.suffix != ".cu":
         error(f"Please provide a cuda file ending with \".cu\". Current file: {cuda_file}")
         exit(1)
 
-    output_executable = cuda_file.split("/")[-1].replace(".cu", "")
+    if not os.path.exists(cuda_file):
+        error(f"Input file ({cuda_file}) does not exist.")
+        exit(1)
     
-    output_sass = os.path.join("../output/1_sass", data['lifter']['input_file'])
+    # output_executable = cuda_file.split("/")[-1].replace(".cu", "")
+    
+    output_executable = cuda_file.name.replace(".cu", "") # type str, but .resolve() are still Path objects
+    
+    output_dir = current_dir / "../output"
+    
+    output_sass = (output_dir / "1_sass" / data['lifter']['input_file']).resolve()
+    
     output_cubin_prefix = output_executable
     output_cubin_name = data['cu2sass']['select_cubin']
     
     try:
         # Step 1: Compile CUDA code
-        output_executable_path = "../output/0_exec_and_cubin/" + output_executable
+        exec_and_cubin_path = (output_dir / "0_exec_and_cubin").resolve()
+        output_executable_path = (exec_and_cubin_path / output_executable).resolve()
+        
         compile_cuda(cuda_file, output_executable_path)
 
         # Step 2: Extract .cubin files
-        cubin_files = extract_cubin(output_executable, "../output/0_exec_and_cubin/", output_cubin_prefix, output_cubin_name)
+        cubin_files = extract_cubin(output_executable, exec_and_cubin_path, output_cubin_prefix, output_cubin_name)
         print("Found cubin file:", cubin_files)
 
         # Step 3: Disassemble each .cubin file (choose first one by default)
@@ -82,6 +101,7 @@ def main():
 
     except Exception as e:
         print("Error:", str(e))
+        exit(1)
 
 if __name__ == "__main__":
     main()
