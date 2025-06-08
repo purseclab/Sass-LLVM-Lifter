@@ -62,7 +62,7 @@ def main():
 
     output_executable = cuda_file.split("/")[-1].replace(".cu", "")
     
-    output_sass = os.path.join("../output/1_sass", output_executable + ".sass")
+    output_sass = os.path.join("../output/1_sass", data['lifter']['input_file'])
     output_cubin_prefix = output_executable
     output_cubin_name = data['cu2sass']['select_cubin']
     
