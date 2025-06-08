@@ -7,7 +7,11 @@ from llvmlite import ir as llvmir
 from passes import TypeAnalysis, CreateCFG
 import json
 from colorprint import *
+import os
+from pathlib import Path
 
+
+current_dir = Path(__file__).parent
 
 class LLVMModule:
     # def __init__(self, name, parser):
@@ -47,17 +51,32 @@ class LLVMModule:
         return llvm_module
 
 
+
+
 if __name__=="__main__":
-    with open('../launch/config.json', 'r') as file:
+    config_path = current_dir / ".." / "launch" / "config.json"
+    
+    with open(config_path.resolve(), 'r') as file:
         data = json.load(file)
     
-    input_file = "../output/1_sass/" + data['lifter']['input_file']
-    output_file = "../output/3_llvm_ir/" + data['lifter']['output_file']
+    output_dir = current_dir / ".." / "output"
     
-    if not input_file.endswith(".sass"):
+    input_file = (output_dir / "1_sass" / data['lifter']['input_file']).resolve()
+    
+    output_file = (output_dir / "3_llvm_ir" / data['lifter']['output_file']).resolve()
+    
+    
+    if input_file.suffix != ".sass":
         error(f"Input file must end with \".sass\". Currently listed input file: {input_file}")
+        exit(1)
 
-    intermediate_json_file = "../output/2_json/" + input_file.split("/")[-1].replace(".sass", "") + ".json"
+    # intermediate_json_file = "../output/2_json/" + input_file.split("/")[-1].replace(".sass", "") + ".json"
+    
+    intermediate_json_file = (output_dir / "2_json" / input_file.name.replace(".sass", ".json")).resolve()
+    
+    if not os.path.exists(input_file):
+        error(f"Input file ({input_file}) does not exist.")
+        exit(1)
     
     s2j.sass_to_json(input_file, intermediate_json_file)
     functions = j2ir.json_to_ir(intermediate_json_file)
