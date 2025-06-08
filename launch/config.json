@@ -2,5 +2,9 @@
     "lifter": {
         "input_file": "test_code.sass",
         "output_file": "test.ll"
+    },
+    "cu2sass": {
+        "cuda_file": "test.cu",
+        "select_cubin": "test.2.sm_75.cubin"
     }
 }
