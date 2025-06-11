@@ -240,10 +240,15 @@ class Operand:
 
         assert "Unknown Operand: " + content
 
-
+    def dump_text(self):
+        return "Operand OriginalContent:  " + self.OriginalContent + "\n"
+    
     def dump(self):
         # Dump Original Connent
-        print("Operand OrinalContent: ", self.OriginalContent)
+        print(self.dump_text())
+        
+    def __str__(self):
+        return f"{self.OriginalContent}"
     
     
     # Register argument with offset
