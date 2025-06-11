@@ -120,7 +120,13 @@ class Instruction:
         
     def __str__(self):
         operands = [str(ope) for ope in self.operands]
-        return f"{self.opcode} {self.modifiers if self.modifiers else ''} {self.condition_expr} {' '.join(operands)}"
+        
+        if len(self.modifiers) > 0:
+            # modifiers list not empty
+            new_opcode = '.'.join(([self.opcode] + self.modifiers))
+        else:
+            new_opcode = self.opcode
+        return f"{new_opcode} {self.condition_expr} {', '.join(operands)}"
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
         # generate_ir_comment(IRBuilder, self.dump_text())
