@@ -40,7 +40,7 @@ class Function:
         dprint([len(x.instructions) for x in self.blocks])
         dprint("+"*100)
         '''
-        Break Basic Blocks if it contains unconditional branch, e.g., @P0 BRA `(.L_x_15); or unconditional execution, e.g.,  @!P3 BRA `(.L_x_18);
+        Break Basic Blocks if it contains conditional branch, e.g., @P0 BRA `(.L_x_15); or negated conditional branch, e.g.,  @!P3 BRA `(.L_x_18);
         '''
         blocks = self.blocks
         split_blocks = []

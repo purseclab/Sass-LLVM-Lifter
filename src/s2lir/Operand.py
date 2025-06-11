@@ -150,16 +150,16 @@ class Operand:
         raise NotImplementedError
 
     def parse(self):
-        content = self.OriginalContent
+        content = self.OriginalContent # an element from ["Basicblocks"]["instructions"][.]["content"][1], e.g. an element from ["Basicblocks"]["instructions"][.]["content"][1][0] == "R1" for test_code.json
         # dprint("Operand Content", content)
 
         # Don't handle .reuse optimization
         content =  content.replace(".reuse", "")
 
-        # Brach Label:  @!P1 BRA `(.L_x_12) ;
+        # Branch Label:  @!P1 BRA `(.L_x_12) ;
         if content.startswith("`"):
             self.isLabel = True
-            self.branch_label = content[2:-1]
+            self.branch_label = content[2:-1] # .L_x_12
             return
 
 
