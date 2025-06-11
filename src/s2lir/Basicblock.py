@@ -34,20 +34,20 @@ class BasicBlock:
         dprint("BB Len",len(self.instructions))
         dprint([ x.addr for x in self.instructions])
         dprint([ x.opcode for x in self.instructions])
-        dprint([ x.isConditionExe() for x in self.instructions])
+        dprint([ x.isConditionExpr() for x in self.instructions])
         dprint("^"*100)
 
         for i in range(len(self.instructions)):
             # After creating CFG, all the branches or conditional branches will only be the final one
             Inst = self.instructions[i]
-            if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExe()):
-                if Inst.isBranch() and not Inst.isConditionExe():
+            if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):
+                if Inst.isBranch() and not Inst.isConditionExpr():
                     # Unconditional Branch
                     targetBB = self.func.labels2block[Inst.branch_target]
                     dprint(Inst.addr)
                     dprint(targetBB.label)
                     IRBuilder.branch(BlockMap[targetBB])
-                elif Inst.isConditionExe():
+                elif Inst.isConditionExpr():
 
                     P = Inst.operands[-1]
                     PredReg = IRRegs[P.getIRRegName()]
@@ -86,7 +86,7 @@ class BasicBlock:
                         #     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
 
             else:
-                if len(self.instructions) > 1  and  i < len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExe()):
+                if len(self.instructions) > 1  and  i < len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):
                     dprint([ x.addr for x in self.instructions])
                     dprint(self.label)
                     dprint("%"*100)

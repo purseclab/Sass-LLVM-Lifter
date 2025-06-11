@@ -25,14 +25,14 @@ class CFG:
             final_inst = BB.instructions[-1]
 
             # Case (1)
-            if final_inst.isBranch() and not final_inst.isConditionExe():
+            if final_inst.isBranch() and not final_inst.isConditionExpr():
                 # Unconditional Branch
                 targetBB = self.func.labels2block[final_inst.branch_target]
                 BB.succs.append(targetBB)
                 targetBB.preds.append(BB)
             
             # Case (2)
-            if final_inst.isBranch() and final_inst.isConditionExe():
+            if final_inst.isBranch() and final_inst.isConditionExpr():
                 # Conditional Branch
                 targetBB = self.func.labels2block[final_inst.branch_target]
                 BB.succs.append(targetBB)
@@ -44,7 +44,7 @@ class CFG:
                     nextBB.preds.append(BB)
 
             # case (4)
-            if not final_inst.isBranch() and not final_inst.isConditionExe():
+            if not final_inst.isBranch() and not final_inst.isConditionExpr():
                 # Normal instructions
                 if BB_i < len(BBs)-1:
                     nextBB = BBs[BB_i+1]
@@ -67,7 +67,7 @@ class CFG:
 
             new_BBs.append(BB)
 
-            if not final_inst.isBranch() and final_inst.isConditionExe():
+            if not final_inst.isBranch() and final_inst.isConditionExpr():
                 # Create conditional BB
                 conditionalBB_name = BB.label + "_conditionalExe_"+str(final_inst.addr)
                 conditionalBB = BasicBlock({"label": conditionalBB_name, "instructions": []}, self.func)
@@ -80,7 +80,7 @@ class CFG:
                 inst.condition_exe = ""
                 inst.operands = inst.operands[:-1]
                 
-                assert inst.isConditionExe()==False
+                assert inst.isConditionExpr()==False
 
                 conditionalBB.instructions.append(inst)
 

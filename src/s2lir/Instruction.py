@@ -86,7 +86,7 @@ class Instruction:
 
         return False
     
-    def isConditionExe(self):
+    def isConditionExpr(self):
         if self.condition_exe:
             return True
         else:
