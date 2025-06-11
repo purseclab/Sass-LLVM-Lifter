@@ -1,2 +1,2 @@
 colorama==0.4.6
-llvmlite==0.43.0
+llvmlite==0.44.0
