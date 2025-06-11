@@ -7,12 +7,12 @@ class Instruction:
         self.opcode = inst_dict["content"][0][0]
         self.modifiers = inst_dict["content"][0][1:]
         self.operands = [Operand(Ope, self) for Ope in inst_dict["content"][1]]
-        self.condition_exe = inst_dict["content"][2]
+        self.condition_expr = inst_dict["content"][2]
         self.content_dict = inst_dict
         
         # Put Predicate part into Operand to parse it
-        if self.condition_exe:
-            self.operands.append(Operand(self.condition_exe[1:], self))
+        if self.condition_expr:
+            self.operands.append(Operand(self.condition_expr[1:], self))
 
         # Initialized via parsing
         self.branch_target = None
@@ -87,7 +87,7 @@ class Instruction:
         return False
     
     def isConditionExpr(self):
-        if self.condition_exe:
+        if self.condition_expr:
             return True
         else:
             return False
@@ -103,7 +103,7 @@ class Instruction:
         return False
 
     def dump(self):
-        print("Instruction: ", self.addr, self.opcode, self.modifiers, self.condition_exe)
+        print("Instruction: ", self.addr, self.opcode, self.modifiers, self.condition_expr)
         for ope in self.operands:
             ope.dump()
         if self.branch_target:

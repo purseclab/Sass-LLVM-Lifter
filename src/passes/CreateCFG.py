@@ -69,7 +69,7 @@ class CFG:
 
             if not final_inst.isBranch() and final_inst.isConditionExpr():
                 # Create conditional BB
-                conditionalBB_name = BB.label + "_conditionalExe_"+str(final_inst.addr)
+                conditionalBB_name = BB.label + "_conditionalExpr_"+str(final_inst.addr)
                 conditionalBB = BasicBlock({"label": conditionalBB_name, "instructions": []}, self.func)
                 conditionalBB.addr = final_inst.addr
 
@@ -77,7 +77,7 @@ class CFG:
                 dprint(final_inst.addr, final_inst.content_dict)
                 dprint("&"*100)
                 inst = Instruction(final_inst.content_dict, conditionalBB)
-                inst.condition_exe = ""
+                inst.condition_expr = ""
                 inst.operands = inst.operands[:-1]
                 
                 assert inst.isConditionExpr()==False
