@@ -1,6 +1,7 @@
 from s2lir import *
 from utils import *
 from llvmlite import ir as llvmir
+import re
 
 # Append R0 to R255
 SM_75_Reg_Set =  [f"R{i}" for i in range(256)]
@@ -227,14 +228,17 @@ class Operand:
             self.reg_abs = True
             return
 
-        # Common Registers -R2
-        if content[0] == "-":
-            dprint(content[1:])
+        # Common Registers -R2, -UR2
+        pattern = r"^-(U*R\w+)$"
+        match = re.match(pattern, content)
+        if match:
+            result = match.group(1)
+            dprint(result)
             # print(SM_75_UReg_Set)
             # print(SM_75_Reg_Set)
-            assert content[1:] in SM_75_Reg_Set or content[1:] in SM_75_UReg_Set
+            assert result in SM_75_Reg_Set or result in SM_75_UReg_Set
             self.isReg = True
-            self.reg = content[1:]
+            self.reg = result
             self.reg_neg = True
             return
 
