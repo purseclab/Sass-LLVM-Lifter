@@ -128,7 +128,8 @@ class Instruction:
             new_opcode = self.opcode
         
         if self.condition_expr:
-            return f"{self.condition_expr} {new_opcode} {', '.join(operands)}"
+            assert operands[-1] in self.condition_expr
+            return f"{self.condition_expr} {new_opcode} {', '.join(operands[:-1])}" # the last operand always seems to be the self.condition_expr
         else:
             return f"{new_opcode} {', '.join(operands)}"
 

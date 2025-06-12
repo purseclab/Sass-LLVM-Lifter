@@ -77,7 +77,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"cmp" = icmp sge i32 %".22", %"Arg_7"
   %".24" = and i1 %"cmp", %".23"
   store i1 %".24", i1* %"P0_Bool"
-  ; @P0 EXIT P0
+  ; @P0 EXIT
   %".27" = load i1, i1* %"P0_Bool"
   %".28" = icmp ne i1 %".27", 1
   br i1 %".28", label %".text._Z8fc_layerPfS_S_S_ii_conditionalExpr_0x0050", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0060"
@@ -97,7 +97,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"cmp.1" = icmp sge i32 %".37", 1
   %".39" = and i1 %"cmp.1", %".38"
   store i1 %".39", i1* %"P0_Bool"
-  ; @!P0 BRA `(.L_x_0), !P0
+  ; @!P0 BRA `(.L_x_0)
   %".42" = load i1, i1* %"P0_Bool"
   %".43" = icmp eq i1 %".42", 1
   br i1 %".43", label %".L_x_0", label %".text._Z8fc_layerPfS_S_S_ii_split_0x00a0"
@@ -123,7 +123,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R5, RZ
   %".61" = load i32, i32* %"RZ_NOTYPE"
   store i32 %".61", i32* %"R5_NOTYPE"
-  ; @!P0 BRA `(.L_x_1), !P0
+  ; @!P0 BRA `(.L_x_1)
   %".64" = load i1, i1* %"P0_Bool"
   %".65" = icmp eq i1 %".64", 1
   br i1 %".65", label %".L_x_1", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0100"
@@ -163,7 +163,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R5, RZ
   %".91" = load i32, i32* %"RZ_NOTYPE"
   store i32 %".91", i32* %"R5_NOTYPE"
-  ; @!P0 BRA `(.L_x_2), !P0
+  ; @!P0 BRA `(.L_x_2)
   %".94" = load i1, i1* %"P0_Bool"
   %".95" = icmp eq i1 %".94", 1
   br i1 %".95", label %".L_x_2", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0190"
@@ -177,7 +177,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
   %".103" = and i1 1, 1
   %".104" = or i1 %".103", 1
-  ; @!P1 BRA `(.L_x_3), !P1
+  ; @!P1 BRA `(.L_x_3)
   %".106" = load i1, i1* %"P1_Bool"
   %".107" = icmp eq i1 %".106", 1
   br i1 %".107", label %".L_x_3", label %".text._Z8fc_layerPfS_S_S_ii_split_0x01c0"
@@ -535,7 +535,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fmul.15" = fmul i32 %".377", %".378"
   %"fadd.15" = fadd i32 %"fmul.15", %".379"
   store i32 %"fadd.15", i32* %"R7_NOTYPE"
-  ; @P1 BRA `(.L_x_4), P1
+  ; @P1 BRA `(.L_x_4)
   %".382" = load i1, i1* %"P1_Bool"
   %".383" = icmp ne i1 %".382", 1
   br i1 %".383", label %".L_x_4", label %".L_x_3"
@@ -546,7 +546,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"cmp.6" = icmp sgt i32 %".386", 4
   %".388" = and i1 %"cmp.6", %".387"
   store i1 %".388", i1* %"P1_Bool"
-  ; @!P1 BRA `(.L_x_5), !P1
+  ; @!P1 BRA `(.L_x_5)
   %".391" = load i1, i1* %"P1_Bool"
   %".392" = icmp eq i1 %".391", 1
   br i1 %".392", label %".L_x_5", label %".L_x_3_split_0x0570"
@@ -756,7 +756,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"cmp.7" = icmp ne i32 %".545", 0
   %".547" = or i1 %"cmp.7", %".546"
   store i1 %".547", i1* %"P0_Bool"
-  ; @!P0 BRA `(.L_x_1), !P0
+  ; @!P0 BRA `(.L_x_1)
   %".550" = load i1, i1* %"P0_Bool"
   %".551" = icmp eq i1 %".550", 1
   br i1 %".551", label %".L_x_1", label %".L_x_2"
@@ -893,7 +893,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fmul.27" = fmul i32 %".646", %".647"
   %"fadd.27" = fadd i32 %"fmul.27", %".648"
   store i32 %"fadd.27", i32* %"R7_NOTYPE"
-  ; @P0 BRA `(.L_x_2), P0
+  ; @P0 BRA `(.L_x_2)
   %".651" = load i1, i1* %"P0_Bool"
   %".652" = icmp ne i1 %".651", 1
   br i1 %".652", label %".L_x_2", label %".L_x_1"
@@ -904,7 +904,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"cmp.9" = icmp ne i32 %".655", 0
   %".657" = and i1 %"cmp.9", %".656"
   store i1 %".657", i1* %"P0_Bool"
-  ; @!P0 BRA `(.L_x_0), !P0
+  ; @!P0 BRA `(.L_x_0)
   %".660" = load i1, i1* %"P0_Bool"
   %".661" = icmp eq i1 %".660", 1
   br i1 %".661", label %".L_x_0", label %".L_x_1_split_0x0900"
@@ -1000,7 +1000,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fmul.28" = fmul i32 %".722", %".723"
   %"fadd.28" = fadd i32 %"fmul.28", %".724"
   store i32 %"fadd.28", i32* %"R7_NOTYPE"
-  ; @P0 BRA `(.L_x_6), P0
+  ; @P0 BRA `(.L_x_6)
   %".727" = load i1, i1* %"P0_Bool"
   %".728" = icmp ne i1 %".727", 1
   br i1 %".728", label %".L_x_6", label %".L_x_0"
@@ -1183,7 +1183,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"cmp.1" = icmp sgt i32 %".83", %".84"
   %".86" = and i1 %"cmp.1", %".85"
   store i1 %".86", i1* %"P2_Bool"
-  ; @!P2 IADD3 R0, R0, -R7.reuse, RZ, !P2
+  ; @!P2 IADD3 R0, R0, -R7.reuse, RZ
   %".89" = load i1, i1* %"P2_Bool"
   %".90" = icmp eq i1 %".89", 1
   br i1 %".90", label %".text._Z10max_pool2dPfS_iii_conditionalExpr_0x0160", label %".text._Z10max_pool2dPfS_iii_split_0x0170"
@@ -1198,7 +1198,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; BRA `(.text._Z10max_pool2dPfS_iii_split_0x0170)
   br label %".text._Z10max_pool2dPfS_iii_split_0x0170"
 .text._Z10max_pool2dPfS_iii_split_0x0170:
-  ; @!P2 IADD3 R3, R3, 0x1, RZ, !P2
+  ; @!P2 IADD3 R3, R3, 0x1, RZ
   %".100" = load i1, i1* %"P2_Bool"
   %".101" = icmp eq i1 %".100", 1
   br i1 %".101", label %".text._Z10max_pool2dPfS_iii_split_0x0170_conditionalExpr_0x0170", label %".text._Z10max_pool2dPfS_iii_split_0x0180"
@@ -1232,7 +1232,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"cmp.3" = icmp ne i32 0, %"Arg_6"
   %".122" = and i1 %"cmp.3", %".121"
   store i1 %".122", i1* %"P2_Bool"
-  ; @P0 IADD3 R3, R3, 0x1, RZ, P0
+  ; @P0 IADD3 R3, R3, 0x1, RZ
   %".125" = load i1, i1* %"P0_Bool"
   %".126" = icmp ne i1 %".125", 1
   br i1 %".126", label %".text._Z10max_pool2dPfS_iii_split_0x0180_conditionalExpr_0x01c0", label %".text._Z10max_pool2dPfS_iii_split_0x01d0"
@@ -1250,7 +1250,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mul.9" = mul i32 0, 0
   %"add.17" = add i32 %"mul.9", %".134"
   store i32 %"add.17", i32* %"R21_NOTYPE"
-  ; @!P1 IMAD.MOV R21, RZ, RZ, -R21, !P1
+  ; @!P1 IMAD.MOV R21, RZ, RZ, -R21
   %".137" = load i1, i1* %"P1_Bool"
   %".138" = icmp eq i1 %".137", 1
   br i1 %".138", label %".text._Z10max_pool2dPfS_iii_split_0x01d0_conditionalExpr_0x01e0", label %".text._Z10max_pool2dPfS_iii_split_0x01f0"
@@ -1264,7 +1264,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; BRA `(.text._Z10max_pool2dPfS_iii_split_0x01f0)
   br label %".text._Z10max_pool2dPfS_iii_split_0x01f0"
 .text._Z10max_pool2dPfS_iii_split_0x01f0:
-  ; @!P2 LOP3.LUT R21, RZ, c[0x0][0x174], RZ, 0x33, !PT, !P2
+  ; @!P2 LOP3.LUT R21, RZ, c[0x0][0x174], RZ, 0x33, !PT
   %".147" = load i1, i1* %"P2_Bool"
   %".148" = icmp eq i1 %".147", 1
   br i1 %".148", label %".text._Z10max_pool2dPfS_iii_split_0x01f0_conditionalExpr_0x01f0", label %".text._Z10max_pool2dPfS_iii_split_0x0200"
@@ -1301,7 +1301,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"cmp.6" = icmp sge i32 %".172", %"Arg_7"
   %".174" = or i1 %"cmp.6", %".173"
   store i1 %".174", i1* %"P0_Bool"
-  ; @P0 EXIT P0
+  ; @P0 EXIT
   %".177" = load i1, i1* %"P0_Bool"
   %".178" = icmp ne i1 %".177", 1
   br i1 %".178", label %".text._Z10max_pool2dPfS_iii_split_0x0200_conditionalExpr_0x0240", label %".text._Z10max_pool2dPfS_iii_split_0x0250"
@@ -1321,7 +1321,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"cmp.7" = icmp sge i32 %".187", 1
   %".189" = and i1 %"cmp.7", %".188"
   store i1 %".189", i1* %"P0_Bool"
-  ; @!P0 BRA `(.L_x_8), !P0
+  ; @!P0 BRA `(.L_x_8)
   %".192" = load i1, i1* %"P0_Bool"
   %".193" = icmp eq i1 %".192", 1
   br i1 %".193", label %".L_x_8", label %".text._Z10max_pool2dPfS_iii_split_0x0290"
@@ -1387,7 +1387,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"cmp.9" = icmp ne i32 %".233", 0
   %".235" = and i1 %"cmp.9", %".234"
   store i1 %".235", i1* %"P2_Bool"
-  ; @!P0 BRA `(.L_x_9), !P0
+  ; @!P0 BRA `(.L_x_9)
   %".238" = load i1, i1* %"P0_Bool"
   %".239" = icmp eq i1 %".238", 1
   br i1 %".239", label %".L_x_9", label %".L_x_12_split_0x0360"
@@ -1515,7 +1515,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"fmnmx_max.3" = select  i1 %".326", i32 %".323", i32 %".324"
   %"fmnmx_final.3" = select  i1 1, i32 %"fmnmx_min.3", i32 %"fmnmx_max.3"
   store i32 %"fmnmx_final.3", i32* %"R11_NOTYPE"
-  ; @P1 BRA `(.L_x_10), P1
+  ; @P1 BRA `(.L_x_10)
   %".329" = load i1, i1* %"P1_Bool"
   %".330" = icmp ne i1 %".329", 1
   br i1 %".330", label %".L_x_10", label %".L_x_9"
@@ -1526,7 +1526,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mul.26" = mul i32 %".333", 1
   %"add.42" = add i32 %"mul.26", %".334"
   store i32 %"add.42", i32* %"R4_NOTYPE"
-  ; @!P2 BRA `(.L_x_11), !P2
+  ; @!P2 BRA `(.L_x_11)
   %".337" = load i1, i1* %"P2_Bool"
   %".338" = icmp eq i1 %".337", 1
   br i1 %".338", label %".L_x_11", label %".L_x_9_split_0x04d0"
@@ -1572,7 +1572,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"fmnmx_max.4" = select  i1 %".368", i32 %".365", i32 %".366"
   %"fmnmx_final.4" = select  i1 1, i32 %"fmnmx_min.4", i32 %"fmnmx_max.4"
   store i32 %"fmnmx_final.4", i32* %"R11_NOTYPE"
-  ; @!P1 BRA `(.L_x_11), !P1
+  ; @!P1 BRA `(.L_x_11)
   %".371" = load i1, i1* %"P1_Bool"
   %".372" = icmp eq i1 %".371", 1
   br i1 %".372", label %".L_x_11", label %".L_x_9_split_0x0550"
@@ -1594,7 +1594,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mul.29" = mul i32 %".383", %"Arg_5"
   %"add.49" = add i32 %"mul.29", %".384"
   store i32 %"add.49", i32* %"R2_NOTYPE"
-  ; @P1 IADD3 R3, R5, 0x2, RZ, P1
+  ; @P1 IADD3 R3, R5, 0x2, RZ
   %".387" = load i1, i1* %"P1_Bool"
   %".388" = icmp ne i1 %".387", 1
   br i1 %".388", label %".L_x_9_split_0x0550_conditionalExpr_0x0580", label %".L_x_9_split_0x0590"
@@ -1607,7 +1607,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; BRA `(.L_x_9_split_0x0590)
   br label %".L_x_9_split_0x0590"
 .L_x_9_split_0x0590:
-  ; @P1 IMAD R4, R3, c[0x0][0x170], R4, P1
+  ; @P1 IMAD R4, R3, c[0x0][0x170], R4
   %".396" = load i1, i1* %"P1_Bool"
   %".397" = icmp ne i1 %".396", 1
   br i1 %".397", label %".L_x_9_split_0x0590_conditionalExpr_0x0590", label %".L_x_9_split_0x05a0"
@@ -1627,7 +1627,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mul.31" = mul i32 %".406", %".407"
   %"add.53" = add i32 %"mul.31", %"Arg_3"
   store i32 %"add.53", i32* %"R2_NOTYPE"
-  ; @P1 IMAD.WIDE R4, R4, R7, c[0x0][0x160], P1
+  ; @P1 IMAD.WIDE R4, R4, R7, c[0x0][0x160]
   %".410" = load i1, i1* %"P1_Bool"
   %".411" = icmp ne i1 %".410", 1
   br i1 %".411", label %".L_x_9_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_9_split_0x05c0"
@@ -1647,7 +1647,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"for_LDG.5" = inttoptr i32 %".421" to i32*
   %".422" = load i32, i32* %"for_LDG.5"
   store i32 %".422", i32* %"R2_NOTYPE"
-  ; @P1 LDG.E.SYS R4, [R4], P1
+  ; @P1 LDG.E.SYS R4, [R4]
   %".425" = load i1, i1* %"P1_Bool"
   %".426" = icmp ne i1 %".425", 1
   br i1 %".426", label %".L_x_9_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_9_split_0x05e0"
@@ -1670,7 +1670,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"fmnmx_max.5" = select  i1 %".439", i32 %".436", i32 %".437"
   %"fmnmx_final.5" = select  i1 1, i32 %"fmnmx_min.5", i32 %"fmnmx_max.5"
   store i32 %"fmnmx_final.5", i32* %"R11_NOTYPE"
-  ; @P1 FMNMX R11, R11, R4, !PT, P1
+  ; @P1 FMNMX R11, R11, R4, !PT
   %".442" = load i1, i1* %"P1_Bool"
   %".443" = icmp ne i1 %".442", 1
   br i1 %".443", label %".L_x_9_split_0x05e0_conditionalExpr_0x05f0", label %".L_x_11"
@@ -1698,7 +1698,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"cmp.13" = icmp sge i32 %".457", %"Arg_6"
   %".459" = and i1 %"cmp.13", %".458"
   store i1 %".459", i1* %"P1_Bool"
-  ; @!P1 BRA `(.L_x_12), !P1
+  ; @!P1 BRA `(.L_x_12)
   %".462" = load i1, i1* %"P1_Bool"
   %".463" = icmp eq i1 %".462", 1
   br i1 %".463", label %".L_x_12", label %".L_x_8"
@@ -1774,7 +1774,7 @@ Entry_.text._Z4reluPfS_i:
   %"cmp" = icmp sge i32 %".19", %"Arg_4"
   %".21" = and i1 %"cmp", %".20"
   store i1 %".21", i1* %"P0_Bool"
-  ; @P0 EXIT P0
+  ; @P0 EXIT
   %".24" = load i1, i1* %"P0_Bool"
   %".25" = icmp ne i1 %".24", 1
   br i1 %".25", label %".text._Z4reluPfS_i_conditionalExpr_0x0050", label %".text._Z4reluPfS_i_split_0x0060"
@@ -1924,7 +1924,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"cmp.2" = icmp sge i32 %".53", %"Arg_9"
   %".55" = or i1 %"cmp.2", %".54"
   store i1 %".55", i1* %"P0_Bool"
-  ; @P0 EXIT P0
+  ; @P0 EXIT
   %".58" = load i1, i1* %"P0_Bool"
   %".59" = icmp ne i1 %".58", 1
   br i1 %".59", label %".text._Z6conv2dPfS_S_iiii_conditionalExpr_0x00d0", label %".text._Z6conv2dPfS_S_iiii_split_0x00e0"
@@ -1950,7 +1950,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"cmp.4" = icmp sgt i32 %".73", %"Arg_8"
   %".75" = or i1 %"cmp.4", %".74"
   store i1 %".75", i1* %"P0_Bool"
-  ; @P0 BRA `(.L_x_15), P0
+  ; @P0 BRA `(.L_x_15)
   %".78" = load i1, i1* %"P0_Bool"
   %".79" = icmp ne i1 %".78", 1
   br i1 %".79", label %".L_x_15", label %".text._Z6conv2dPfS_S_iiii_split_0x0130"
@@ -2044,7 +2044,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"mul.9" = mul i32 %".143", %"Arg_7"
   %"add.17" = add i32 %"mul.9", 0
   store i32 %"add.17", i32* %"R29_NOTYPE"
-  ; @!P0 BRA `(.L_x_16), !P0
+  ; @!P0 BRA `(.L_x_16)
   %".146" = load i1, i1* %"P0_Bool"
   %".147" = icmp eq i1 %".146", 1
   br i1 %".147", label %".L_x_16", label %".L_x_19_split_0x0260"
@@ -2216,7 +2216,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fmul.3" = fmul i32 %".268", %".269"
   %"fadd.3" = fadd i32 %"fmul.3", %".270"
   store i32 %"fadd.3", i32* %"R12_NOTYPE"
-  ; @P2 BRA `(.L_x_17), P2
+  ; @P2 BRA `(.L_x_17)
   %".273" = load i1, i1* %"P2_Bool"
   %".274" = icmp ne i1 %".273", 1
   br i1 %".274", label %".L_x_17", label %".L_x_16"
@@ -2227,7 +2227,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"mul.17" = mul i32 %".277", 1
   %"add.35" = add i32 %"mul.17", %".278"
   store i32 %"add.35", i32* %"R14_NOTYPE"
-  ; @!P3 BRA `(.L_x_18), !P3
+  ; @!P3 BRA `(.L_x_18)
   %".281" = load i1, i1* %"P3_Bool"
   %".282" = icmp eq i1 %".281", 1
   br i1 %".282", label %".L_x_18", label %".L_x_16_split_0x0460"
@@ -2289,7 +2289,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fmul.4" = fmul i32 %".322", %".323"
   %"fadd.4" = fadd i32 %"fmul.4", %".324"
   store i32 %"fadd.4", i32* %"R12_NOTYPE"
-  ; @!P2 BRA `(.L_x_18), !P2
+  ; @!P2 BRA `(.L_x_18)
   %".327" = load i1, i1* %"P2_Bool"
   %".328" = icmp eq i1 %".327", 1
   br i1 %".328", label %".L_x_18", label %".L_x_16_split_0x0510"
@@ -2317,7 +2317,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"mul.21" = mul i32 %".344", %"Arg_6"
   %"add.45" = add i32 %"mul.21", %".345"
   store i32 %"add.45", i32* %"R6_NOTYPE"
-  ; @P2 IADD3 R7, R15, 0x2, RZ, P2
+  ; @P2 IADD3 R7, R15, 0x2, RZ
   %".348" = load i1, i1* %"P2_Bool"
   %".349" = icmp ne i1 %".348", 1
   br i1 %".349", label %".L_x_16_split_0x0510_conditionalExpr_0x0550", label %".L_x_16_split_0x0560"
@@ -2330,7 +2330,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; BRA `(.L_x_16_split_0x0560)
   br label %".L_x_16_split_0x0560"
 .L_x_16_split_0x0560:
-  ; @P2 IMAD R14, R7, c[0x0][0x178], R14, P2
+  ; @P2 IMAD R14, R7, c[0x0][0x178], R14
   %".357" = load i1, i1* %"P2_Bool"
   %".358" = icmp ne i1 %".357", 1
   br i1 %".358", label %".L_x_16_split_0x0560_conditionalExpr_0x0560", label %".L_x_16_split_0x0570"
@@ -2350,7 +2350,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"mul.23" = mul i32 %".367", %".368"
   %"add.49" = add i32 %"mul.23", %"Arg_3"
   store i32 %"add.49", i32* %"R6_NOTYPE"
-  ; @P2 IMAD.WIDE R14, R14, R19, c[0x0][0x160], P2
+  ; @P2 IMAD.WIDE R14, R14, R19, c[0x0][0x160]
   %".371" = load i1, i1* %"P2_Bool"
   %".372" = icmp ne i1 %".371", 1
   br i1 %".372", label %".L_x_16_split_0x0570_conditionalExpr_0x0580", label %".L_x_16_split_0x0590"
@@ -2364,7 +2364,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; BRA `(.L_x_16_split_0x0590)
   br label %".L_x_16_split_0x0590"
 .L_x_16_split_0x0590:
-  ; @P2 LDG.E.SYS R19, [R16+0x8], P2
+  ; @P2 LDG.E.SYS R19, [R16+0x8]
   %".381" = load i1, i1* %"P2_Bool"
   %".382" = icmp ne i1 %".381", 1
   br i1 %".382", label %".L_x_16_split_0x0590_conditionalExpr_0x0590", label %".L_x_16_split_0x05a0"
@@ -2384,7 +2384,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"for_LDG.12" = inttoptr i32 %".393" to i32*
   %".394" = load i32, i32* %"for_LDG.12"
   store i32 %".394", i32* %"R6_NOTYPE"
-  ; @P2 LDG.E.SYS R14, [R14], P2
+  ; @P2 LDG.E.SYS R14, [R14]
   %".397" = load i1, i1* %"P2_Bool"
   %".398" = icmp ne i1 %".397", 1
   br i1 %".398", label %".L_x_16_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_16_split_0x05c0"
@@ -2405,7 +2405,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fmul.5" = fmul i32 %".408", %".409"
   %"fadd.5" = fadd i32 %"fmul.5", %".410"
   store i32 %"fadd.5", i32* %"R12_NOTYPE"
-  ; @P2 FFMA R12, R19, R14, R12, P2
+  ; @P2 FFMA R12, R19, R14, R12
   %".413" = load i1, i1* %"P2_Bool"
   %".414" = icmp ne i1 %".413", 1
   br i1 %".414", label %".L_x_16_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_18"
@@ -2431,12 +2431,12 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"cmp.11" = icmp sge i32 %".427", %"Arg_7"
   %".429" = and i1 %"cmp.11", %".428"
   store i1 %".429", i1* %"P2_Bool"
-  ; @!P2 BRA `(.L_x_19), !P2
+  ; @!P2 BRA `(.L_x_19)
   %".432" = load i1, i1* %"P2_Bool"
   %".433" = icmp eq i1 %".432", 1
   br i1 %".433", label %".L_x_19", label %".L_x_18_split_0x0610"
 .L_x_18_split_0x0610:
-  ; @!P1 BRA `(.L_x_20), !P1
+  ; @!P1 BRA `(.L_x_20)
   %".436" = load i1, i1* %"P1_Bool"
   %".437" = icmp eq i1 %".436", 1
   br i1 %".437", label %".L_x_20", label %".L_x_15"
