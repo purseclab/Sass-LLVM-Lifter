@@ -34,6 +34,7 @@ class BasicBlock:
         dprint("BB Len",len(self.instructions))
         dprint([ x.addr for x in self.instructions])
         dprint([ x.opcode for x in self.instructions])
+        dprint([ [str(op) for op in x.operands] for x in self.instructions])
         dprint([ x.isConditionExpr() for x in self.instructions])
         dprint("^"*100)
 
@@ -51,7 +52,7 @@ class BasicBlock:
                 elif Inst.isConditionExpr():
 
                     P = Inst.operands[-1]
-                    PredReg = IRRegs[P.getIRRegName()]
+                    PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
                     # Fetch the content from PredReg
                     PredReg = IRBuilder.inttoptr(PredReg, llvmir.PointerType(llvmir.IntType(1)))
                     PredReg = IRBuilder.load(PredReg)
