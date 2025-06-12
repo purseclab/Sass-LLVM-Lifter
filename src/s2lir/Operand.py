@@ -229,7 +229,7 @@ class Operand:
             return
 
         # Common Registers -R2, -UR2
-        pattern = r"^-(U*R\w+)$"
+        pattern = r"^-(U*R(\d+|Z))$" # sidenote: match.group(2) will get the inner bracket
         match = re.match(pattern, content)
         if match:
             result = match.group(1)
