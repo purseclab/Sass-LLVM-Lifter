@@ -130,7 +130,7 @@ class Instruction:
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
         # generate_ir_comment(IRBuilder, self.dump_text())
-        IRBuilder.comment(str(self))
+        
         if self.opcode == "EXIT":
             if not IRBuilder.block.is_terminated:
                 IRBuilder.branch(ExitBlock)

@@ -40,6 +40,7 @@ class BasicBlock:
         for i in range(len(self.instructions)):
             # After creating CFG, all the branches or conditional branches will only be the final one
             Inst = self.instructions[i]
+            IRBuilder.comment(str(Inst))
             if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):
                 if Inst.isBranch() and not Inst.isConditionExpr():
                     # Unconditional Branch
