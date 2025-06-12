@@ -126,7 +126,7 @@ class Instruction:
             new_opcode = '.'.join(([self.opcode] + self.modifiers))
         else:
             new_opcode = self.opcode
-        return f"{new_opcode} {self.condition_expr} {', '.join(operands)}"
+        return f"{new_opcode} {self.condition_expr + ' ' if self.condition_expr else ''}{', '.join(operands)}"
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
         # generate_ir_comment(IRBuilder, self.dump_text())

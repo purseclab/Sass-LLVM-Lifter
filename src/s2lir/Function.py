@@ -27,7 +27,7 @@ class Function:
 
         ################################################################
         self.ArgMap = {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
-        self.BlockMap = {}
+        self.BlockMap = {} # key: LLVMModule's BB, value: llvmlite's BB
         self.ArgIdxes = []
         self.Args = []
     
@@ -122,6 +122,7 @@ class Function:
 
     # Build the map between basic block and its IR version
     def BuildBBToIRMap(self, IRFunc):
+        # IRFunc is LLVM Function
         IsEntry = True
         for BB in self.blocks:
             if IsEntry:
