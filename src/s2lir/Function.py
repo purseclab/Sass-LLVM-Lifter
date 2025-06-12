@@ -22,11 +22,12 @@ class Function:
 
         # All the Labels
         # self.labels = [BB.label for BB in self.blocks]
+        # BB.label such as .L_x_3; creates a mapping to the block itself
         self.labels2block = {BB.label: BB for BB in self.blocks}
 
         ################################################################
         self.ArgMap = {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
-        self.BlockMap = {}
+        self.BlockMap = {} # key: LLVMModule's BB, value: llvmlite's BB
         self.ArgIdxes = []
         self.Args = []
     
@@ -50,13 +51,13 @@ class Function:
             for inst_i in range(len(BB.instructions)-1):
                 inst = BB.instructions[inst_i]
 
-                if inst.isBranch() and not inst.isConditionExe(): 
+                if inst.isBranch() and not inst.isConditionExpr(): 
                     # Unconditional Branch; Just Remove all the instructions after this one (Now we assume that no BRX or indirect branch is supported)
                     BB.instructions = BB.instructions[:inst_i+1]
                     # print("==="*100)
                     break
             
-                if inst.isBranch() or inst.isConditionExe():
+                if inst.isBranch() or inst.isConditionExpr():
                     conditional_ins_index.append(inst_i)
 
             
@@ -121,6 +122,7 @@ class Function:
 
     # Build the map between basic block and its IR version
     def BuildBBToIRMap(self, IRFunc):
+        # IRFunc is LLVM Function
         IsEntry = True
         for BB in self.blocks:
             if IsEntry:

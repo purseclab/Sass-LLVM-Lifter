@@ -7,12 +7,12 @@ class Instruction:
         self.opcode = inst_dict["content"][0][0]
         self.modifiers = inst_dict["content"][0][1:]
         self.operands = [Operand(Ope, self) for Ope in inst_dict["content"][1]]
-        self.condition_exe = inst_dict["content"][2]
+        self.condition_expr = inst_dict["content"][2]
         self.content_dict = inst_dict
         
         # Put Predicate part into Operand to parse it
-        if self.condition_exe:
-            self.operands.append(Operand(self.condition_exe[1:], self))
+        if self.condition_expr:
+            self.operands.append(Operand(self.condition_expr[1:], self))
 
         # Initialized via parsing
         self.branch_target = None
@@ -86,10 +86,12 @@ class Instruction:
 
         return False
     
-    def isConditionExe(self):
-        if self.condition_exe:
+    def isConditionExpr(self):
+        if self.condition_expr:
+            # e.g. self.condition_expr = '@P0', related to inst_dict['content'][2]
             return True
         else:
+            # e.g. self.condition_expr = ''
             return False
         
     def isBranch(self):
@@ -102,16 +104,38 @@ class Instruction:
             return True
         return False
 
-    def dump(self):
-        print("Instruction: ", self.addr, self.opcode, self.modifiers, self.condition_exe)
+    def dump_text(self):
+        text = f"Instruction: {self.addr} {self.opcode} {self.modifiers} {self.condition_expr}\n"
+        
         for ope in self.operands:
-            ope.dump()
+            text += ope.dump_text()
         if self.branch_target:
-            print("Branch Target: ", self.branch_target)
-        print("")
+            text += f"Branch Target:  {self.branch_target}"
+        text += "\n"
+        
+        return text
+        
+    def dump(self):
+        print(self.dump_text())
+        
+    def __str__(self):
+        operands = [str(ope) for ope in self.operands]
+        
+        if len(self.modifiers) > 0:
+            # modifiers list not empty
+            new_opcode = '.'.join(([self.opcode] + self.modifiers))
+        else:
+            new_opcode = self.opcode
+        
+        if self.condition_expr:
+            assert operands[-1] in self.condition_expr
+            return f"{self.condition_expr} {new_opcode} {', '.join(operands[:-1])}" # the last operand always seems to be the self.condition_expr
+        else:
+            return f"{new_opcode} {', '.join(operands)}"
 
     def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
-
+        # generate_ir_comment(IRBuilder, self.dump_text())
+        
         if self.opcode == "EXIT":
             if not IRBuilder.block.is_terminated:
                 IRBuilder.branch(ExitBlock)
