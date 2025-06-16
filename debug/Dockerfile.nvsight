@@ -13,18 +13,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     openssh-server \
-    ubuntu-desktop \
-    tightvncserver \
     && apt-get clean
 
-
-# needed for full desktop experience
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gnome-panel \ 
-    gnome-settings-daemon \ 
-    metacity \ 
-    nautilus \ 
-    gnome-terminal \
+RUN apt-get update && apt-get install -y --no-install-recommends \ 
+    tigervnc-standalone-server \
+    tigervnc-common \
+    tigervnc-tools \
+    openbox \
     && apt-get clean
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
