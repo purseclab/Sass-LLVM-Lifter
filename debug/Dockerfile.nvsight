@@ -1,0 +1,62 @@
+FROM nvidia/cuda:12.5.0-devel-ubuntu22.04
+
+# Avoid prompts during package installation (such as from ubuntu-desktop)
+ENV DEBIAN_FRONTEND=noninteractive
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 \
+    python3-pip \
+    build-essential \
+    tree \
+    && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openssh-server \
+    ubuntu-desktop \
+    tightvncserver \
+    && apt-get clean
+
+
+WORKDIR /app
+
+COPY ../requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+# Create SSH directory
+RUN mkdir /var/run/sshd
+
+# Add a new user 'dockeruser'
+RUN useradd -m -s /bin/bash dockeruser
+
+# Disable password login for SSH entirely (substitute PasswordAuthentication from yes to no)
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
+    echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config
+
+# Uncomment PubkeyAuthentication to enable public key authentication
+RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+
+# optional: Disable root login
+RUN echo "PermitRootLogin no" >> /etc/ssh/sshd_config
+
+# Expose SSH port and VNC port
+EXPOSE 22 5901
+
+RUN mkdir -p /home/dockeruser/.ssh && \
+    chmod 700 /home/dockeruser/.ssh
+
+# Copy the public key to the authorized_keys file
+# Note that "COPY id_rsa.pub /home/dockeruser/.ssh/authorized_keys" will NOT work because we ran with docker build ..
+COPY ../debug/id_rsa.pub /home/dockeruser/.ssh/authorized_keys
+
+RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
+    chown -R dockeruser:dockeruser /home/dockeruser/.ssh
+
+
+# Start SSH service
+# -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.
+
+# CMD ["/bin/bash", "-c", "cat /etc/ssh/sshd_config"]
+CMD ["/usr/sbin/sshd", "-D", "-e"]
