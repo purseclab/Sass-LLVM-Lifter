@@ -17,6 +17,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tightvncserver \
     && apt-get clean
 
+
+# needed for full desktop experience
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnome-panel \ 
+    gnome-settings-daemon \ 
+    metacity \ 
+    nautilus \ 
+    gnome-terminal \
+    && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    expect \
+    && apt-get clean
 # use "apt-cache show tightvncserver" to see the version
 
 WORKDIR /app
@@ -60,4 +73,6 @@ RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
 # -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.
 
 # CMD ["/bin/bash", "-c", "cat /etc/ssh/sshd_config"]
-CMD ["/usr/sbin/sshd", "-D", "-e"]
+# CMD ["/usr/sbin/sshd", "-D", "-e"]
+
+CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D"]

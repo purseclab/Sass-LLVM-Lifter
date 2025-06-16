@@ -6,8 +6,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd $SCRIPT_DIR
 
-DOCKER_CONTAINER_NAME="my-sass-lifter"
-DOCKER_IMAGE_NAME="sass-lifter:latest"
+DOCKER_CONTAINER_NAME="my-nvsight-gui"
+DOCKER_IMAGE_NAME="nvsight-gui:latest"
 DOCKERFILE_PATH="Dockerfile.nvsight"
 
 SSH_CONFIG=~/.ssh/config
@@ -66,6 +66,7 @@ docker build -t $DOCKER_IMAGE_NAME -f $DOCKERFILE_PATH .. # set to parent direct
 docker run -d -v "$SCRIPT_DIR/../:/app" \
     -p 2222:22 \
     --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME
+# runs as root if --user not specified, but due to Dockerfile setup we do have the dockeruser that can be ssh-ed into
 
 sleep 1 # wait for the container to start
 
@@ -85,3 +86,4 @@ TUNNEL_PID=$!
 echo "${TUNNEL_PID}" > $SCRIPT_DIR/.vnc-tunnel.pid
 echo "SSH tunnel started with PID: ${TUNNEL_PID}"
 
+cat ./host-vnc-setup.sh | ssh $HOST_ENTRY bash
