@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tightvncserver \
     && apt-get clean
 
+# use "apt-cache show tightvncserver" to see the version
 
 WORKDIR /app
 
@@ -41,8 +42,8 @@ RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd
 # optional: Disable root login
 RUN echo "PermitRootLogin no" >> /etc/ssh/sshd_config
 
-# Expose SSH port and VNC port
-EXPOSE 22 5901
+# Expose SSH port
+EXPOSE 22
 
 RUN mkdir -p /home/dockeruser/.ssh && \
     chmod 700 /home/dockeruser/.ssh
