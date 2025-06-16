@@ -28,4 +28,20 @@ expect eof
 EOF
 
 # now vncserver won't prompt for a password
+
+# mkdir -p $VNC_DIR
+# touch $VNC_DIR/xstartup
+
+# # Write the xstartup content
+# cat > "$XSTARTUP" << 'EOF'
+# #!/bin/sh
+# xrdb $HOME/.Xresources
+# vncconfig -iconic &
+# dbus-launch --exit-with-session gnome-session &
+# EOF
+
+# chmod +x "$XSTARTUP"
+
+# echo "✅ xstartup file created at $XSTARTUP"
+
 vncserver :1 -localhost no -geometry 1280x800 -depth 24 -SecurityTypes VncAuth

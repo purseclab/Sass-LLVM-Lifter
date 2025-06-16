@@ -27,6 +27,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean
 # use "apt-cache show tightvncserver" to see the version
 
+# RUN apt-get install -y --no-install-recommends \
+#     ubuntu-gnome-desktop \
+#     nano \
+#     && apt-get clean
+
+RUN apt-get install -y --no-install-recommends \
+    xterm \
+    thunar \
+    && apt-get clean
+
 WORKDIR /app
 
 COPY ../requirements.txt .
