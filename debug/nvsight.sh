@@ -63,8 +63,9 @@ fi
 docker rm -f $DOCKER_CONTAINER_NAME || true
 
 docker build -t $DOCKER_IMAGE_NAME -f $DOCKERFILE_PATH .. # set to parent directory so that build context includes all necessary files
+# -p 2222:22 maps the container’s port 22 (SSH) to port 2222 on all network interfaces (0.0.0.0) of the host machine, so if there's no firewall rules protecting port 2222, it'll be publicaly accessible. instead, we use 127.0.0.1:2222:22 to bind it only to localhost, so that it is not accessible from outside the host machine.
 docker run -d -v "$SCRIPT_DIR/../:/app" \
-    -p 2222:22 \
+    -p 127.0.0.1:2222:22 \
     --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME
 # runs as root if --user not specified, but due to Dockerfile setup we do have the dockeruser that can be ssh-ed into
 
