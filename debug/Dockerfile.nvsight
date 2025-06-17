@@ -95,6 +95,16 @@ RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
     chown -R dockeruser:dockeruser /home/dockeruser/.ssh
 
 
+# Install VSCode extensions
+# Switch to dockeruser, VSCode wouldn't allow it to be installed by root
+USER dockeruser
+COPY ../debug/install_vscode_extension.sh .
+COPY ../debug/vscode_extensions.txt .
+RUN ./install_vscode_extension.sh
+
+# Switch back to root for the rest of the Dockerfile
+USER root
+
 # Start SSH service
 # -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.
 
