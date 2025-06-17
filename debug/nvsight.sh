@@ -81,7 +81,7 @@ case "$OS" in
                 else
                     echo "🔄 Installing NVIDIA Container Toolkit..."
                     # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
-                    
+
                     # Add repo
                     curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
                     && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
@@ -89,7 +89,7 @@ case "$OS" in
                         sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
 
                     # Update and install
-                    sudo apt-get update
+                    sudo apt-get update || true
                     export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.17.8-1
                     sudo apt-get install -y \
                         nvidia-container-toolkit=${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
