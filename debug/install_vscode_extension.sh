@@ -8,7 +8,7 @@ if [ ! -f $VSCODE_EXTENSIONS_FILE ]; then
     exit 1
 fi
 
-while read -r extension; do
+while read -r extension || [ -n "$extension" ]; do
     # Skip empty lines or comments (line starts with #)
     [[ -z "$extension" || "$extension" =~ ^# ]] && continue
     echo "Installing $extension..."
@@ -16,6 +16,6 @@ while read -r extension; do
         echo "Failed to install $extension"
         exit 1
     }
-done < $VSCODE_EXTENSIONS_FILE
+done < "$VSCODE_EXTENSIONS_FILE"
 
 echo "All extensions installed successfully"
