@@ -59,6 +59,73 @@ if [ -n "${PID}" ]; then
   ./stop-vnc-tunnel.sh
 fi
 
+
+# Install nvidia-container-toolkit if on Ubuntu so that the container can access the GPU
+
+# Detect OS
+OS="$(uname -s)"
+
+case "$OS" in
+    Linux*)
+        echo "✅ Running on Linux"
+
+        # Check for Debian/Ubuntu using os-release if it exists
+        if [ -f /etc/os-release ]; then
+            . /etc/os-release
+            if [[ "$ID" == "debian" || "$ID" == "ubuntu" || "$ID_LIKE" == *"debian"* ]]; then
+                echo "🎯 Debian-based OS detected: $NAME"
+
+                # Check if nvidia-ctk is available
+                if command -v nvidia-ctk &> /dev/null; then
+                    echo "✅ NVIDIA Container Toolkit already installed."
+                else
+                    echo "🔄 Installing NVIDIA Container Toolkit..."
+                    # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+                    
+                    # Add repo
+                    curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+                    && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+                        sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+                        sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+                    # Update and install
+                    sudo apt-get update
+                    export NVIDIA_CONTAINER_TOOLKIT_VERSION=1.17.8-1
+                    sudo apt-get install -y \
+                        nvidia-container-toolkit=${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
+                        nvidia-container-toolkit-base=${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
+                        libnvidia-container-tools=${NVIDIA_CONTAINER_TOOLKIT_VERSION} \
+                        libnvidia-container1=${NVIDIA_CONTAINER_TOOLKIT_VERSION}
+
+                    sudo nvidia-ctk runtime configure --runtime=docker
+                    # restart Docker
+                    sudo systemctl restart docker
+
+                    echo "✅ NVIDIA Container Toolkit installed and Docker restarted."
+                fi
+            else
+                echo "❌ This script is for Debian-based systems only. Detected OS: $NAME"
+                exit 1
+            fi
+        else
+            echo "❌ /etc/os-release not found. This script requires a standard Linux environment."
+        fi
+        ;;
+    Darwin*)
+        echo "🍎 Running on macOS"
+        echo "⚠️  NVIDIA Container Toolkit installation skipped (not supported on macOS)"
+        ;;
+    CYGWIN*|MINGW32*|MINGW64*)
+        echo "💻 Running on Windows (via MSYS/Cygwin)"
+        echo "⚠️  NVIDIA Container Toolkit installation skipped (Windows not supported via this method)"
+        ;;
+    *)
+        echo "❓ Unknown OS: $OS"
+        echo "⚠️  Unsupported platform. Exiting."
+        exit 1
+esac
+
+
 # Remove existing container if exists (optional)
 docker rm -f $DOCKER_CONTAINER_NAME || true
 
@@ -66,6 +133,7 @@ docker build -t $DOCKER_IMAGE_NAME -f $DOCKERFILE_PATH --build-context root=../ 
 # -p 2222:22 maps the container’s port 22 (SSH) to port 2222 on all network interfaces (0.0.0.0) of the host machine, so if there's no firewall rules protecting port 2222, it'll be publicaly accessible. instead, we use 127.0.0.1:2222:22 to bind it only to localhost, so that it is not accessible from outside the host machine.
 docker run -d -v "$SCRIPT_DIR/../:/app" \
     -p 127.0.0.1:2222:22 \
+    --gpus all \
     --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME
 # runs as root if --user not specified, but due to Dockerfile setup we do have the dockeruser that can be ssh-ed into
 
