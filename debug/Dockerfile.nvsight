@@ -60,7 +60,8 @@ RUN apt-get install -y --no-install-recommends code
 
 WORKDIR /app
 
-COPY ../requirements.txt .
+# COPY ../requirements.txt .
+COPY --from=root requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -89,7 +90,9 @@ RUN mkdir -p /home/dockeruser/.ssh && \
 
 # Copy the public key to the authorized_keys file
 # Note that "COPY id_rsa.pub /home/dockeruser/.ssh/authorized_keys" will NOT work because we ran with docker build ..
-COPY ../debug/id_rsa.pub /home/dockeruser/.ssh/authorized_keys
+# COPY ../debug/id_rsa.pub /home/dockeruser/.ssh/authorized_keys
+COPY --from=root debug/id_rsa.pub /home/dockeruser/.ssh/authorized_keys
+# --from=root, where root is defined by the --build-context flag when running docker build
 
 RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
     chown -R dockeruser:dockeruser /home/dockeruser/.ssh
@@ -98,8 +101,10 @@ RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
 # Install VSCode extensions
 # Switch to dockeruser, VSCode wouldn't allow it to be installed by root
 USER dockeruser
-COPY ../debug/install_vscode_extension.sh .
-COPY ../debug/vscode_extensions.txt .
+# COPY ../debug/install_vscode_extension.sh .
+COPY install_vscode_extension.sh .
+# COPY ../debug/vscode_extensions.txt .
+COPY vscode_extensions.txt .
 RUN ./install_vscode_extension.sh
 
 # Switch back to root for the rest of the Dockerfile

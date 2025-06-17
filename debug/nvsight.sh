@@ -62,7 +62,7 @@ fi
 # Remove existing container if exists (optional)
 docker rm -f $DOCKER_CONTAINER_NAME || true
 
-docker build -t $DOCKER_IMAGE_NAME -f $DOCKERFILE_PATH .. # set to parent directory so that build context includes all necessary files
+docker build -t $DOCKER_IMAGE_NAME -f $DOCKERFILE_PATH --build-context root=../ .
 # -p 2222:22 maps the container’s port 22 (SSH) to port 2222 on all network interfaces (0.0.0.0) of the host machine, so if there's no firewall rules protecting port 2222, it'll be publicaly accessible. instead, we use 127.0.0.1:2222:22 to bind it only to localhost, so that it is not accessible from outside the host machine.
 docker run -d -v "$SCRIPT_DIR/../:/app" \
     -p 127.0.0.1:2222:22 \
