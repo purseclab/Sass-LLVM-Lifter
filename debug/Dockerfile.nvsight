@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tigervnc-standalone-server \
     tigervnc-common \
     tigervnc-tools \
-    openbox \
     && apt-get clean
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -32,9 +31,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #     nano \
 #     && apt-get clean
 
-RUN apt-get install -y --no-install-recommends \
-    xterm \
-    pcmanfm \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    xfce4 \
+    xfce4-goodies \
+    dbus-x11 \
+    && apt-get clean
+# dbus-x11 is needed for xfce4-session to start
+
+# gnome-icon-theme needed for icons to show up in the desktop, controllable in Appearance app
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnome-icon-theme \
     && apt-get clean
 
 WORKDIR /app

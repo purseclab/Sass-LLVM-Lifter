@@ -29,19 +29,23 @@ EOF
 
 # now vncserver won't prompt for a password
 
-# mkdir -p $VNC_DIR
-# touch $VNC_DIR/xstartup
+mkdir -p $VNC_DIR
+touch $VNC_DIR/xstartup
 
-# # Write the xstartup content
-# cat > "$XSTARTUP" << 'EOF'
-# #!/bin/sh
-# xrdb $HOME/.Xresources
-# vncconfig -iconic &
-# dbus-launch --exit-with-session gnome-session &
-# EOF
+# Write the xstartup content
+cat > "$XSTARTUP" << 'EOF'
+#!/bin/sh
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+startxfce4
+EOF
 
-# chmod +x "$XSTARTUP"
+chmod +x "$XSTARTUP"
 
-# echo "✅ xstartup file created at $XSTARTUP"
+echo "✅ xstartup file created at $XSTARTUP"
+
 
 vncserver :1 -localhost no -geometry 1920x1080 -depth 24 -SecurityTypes VncAuth
+
+# # set the default icon theme to gnome-icon-theme (cannot use RUN in dockerfile since this is editted at runtime)
+# xfconf-query -c xsettings -p /Net/IconThemeName -s "gnome"
