@@ -61,7 +61,8 @@ fi
 
 
 # Install nvidia-container-toolkit if on Ubuntu so that the container can access the GPU
-
+# necessary, otherwise when you do docker run with --gpus all, it will fail with:
+# "docker: Error response from daemon: could not select device driver "" with capabilities: [[gpu]]".
 # Detect OS
 OS="$(uname -s)"
 
