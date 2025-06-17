@@ -145,6 +145,15 @@ DOCKER_RUN_CMD=(
 
 if [ "$USE_GPU" = true ]; then
     DOCKER_RUN_CMD+=(--gpus all)
+    
+    # i think that VSCode start to silently fail to launch after installing nvidia-container-toolkit. When running code --verbose, we get this error: Failed to move to new namespace: PID namespaces supported, Network namespace supported, but failed: errno = Operation not permitted [270:0617/181843.894638:FATAL:zygote_host_impl_linux.cc(211)] Check failed: . : Invalid argument (22)
+    # code --no-sandbox ends up working, so we investigate docker's security settings with `docker info --format '{{.SecurityOptions}}'`
+    # output: [name=apparmor name=seccomp,profile=builtin name=cgroupns]
+    # it shows that seccomp is enabled, so we tried disabling it with the following command and it worked.
+    # DOCKER_RUN_CMD+=(--security-opt seccomp=unconfined)
+    # therefore we try to relax the seccomp profile for the container. custom-seccomp.json was sourced with curl -o custom-seccomp.json https://raw.githubusercontent.com/moby/moby/master/profiles/seccomp/default.json
+    # this sadly doesnt work, so we'll just use --no-sandbox when running vscode for now.
+    # DOCKER_RUN_CMD+=(--security-opt seccomp="${SCRIPT_DIR}/custom-seccomp.json")
 fi
 
 DOCKER_RUN_CMD+=("${DOCKER_IMAGE_NAME}")
