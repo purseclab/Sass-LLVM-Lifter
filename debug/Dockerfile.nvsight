@@ -105,6 +105,9 @@ RUN ./install_vscode_extension.sh
 # Switch back to root for the rest of the Dockerfile
 USER root
 
+# if you run as root, the cuda bin is already in the PATH, but not for newly created dockeruser
+RUN echo 'export PATH=/usr/local/cuda/bin:$PATH' >> /home/dockeruser/.bashrc
+
 # Start SSH service
 # -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.
 
