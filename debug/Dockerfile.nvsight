@@ -113,6 +113,10 @@ USER root
 # if you run as root, the cuda bin is already in the PATH, but not for newly created dockeruser
 RUN echo 'export PATH=/usr/local/cuda/bin:$PATH' >> /home/dockeruser/.bashrc
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nvidia-utils-550 \
+    && apt-get clean
+
 # Start SSH service
 # -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.
 
