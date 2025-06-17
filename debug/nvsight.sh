@@ -65,6 +65,8 @@ fi
 # Detect OS
 OS="$(uname -s)"
 
+
+USE_GPU=false
 case "$OS" in
     Linux*)
         echo "✅ Running on Linux"
@@ -78,6 +80,7 @@ case "$OS" in
                 # Check if nvidia-ctk is available
                 if command -v nvidia-ctk &> /dev/null; then
                     echo "✅ NVIDIA Container Toolkit already installed."
+                    USE_GPU=true
                 else
                     echo "🔄 Installing NVIDIA Container Toolkit..."
                     # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
@@ -102,6 +105,7 @@ case "$OS" in
                     sudo systemctl restart docker
 
                     echo "✅ NVIDIA Container Toolkit installed and Docker restarted."
+                    USE_GPU=true
                 fi
             else
                 echo "❌ This script is for Debian-based systems only. Detected OS: $NAME"
@@ -131,10 +135,22 @@ docker rm -f $DOCKER_CONTAINER_NAME || true
 
 docker build -t $DOCKER_IMAGE_NAME -f $DOCKERFILE_PATH --build-context root=../ .
 # -p 2222:22 maps the container’s port 22 (SSH) to port 2222 on all network interfaces (0.0.0.0) of the host machine, so if there's no firewall rules protecting port 2222, it'll be publicaly accessible. instead, we use 127.0.0.1:2222:22 to bind it only to localhost, so that it is not accessible from outside the host machine.
-docker run -d -v "$SCRIPT_DIR/../:/app" \
-    -p 127.0.0.1:2222:22 \
-    --gpus all \
-    --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME
+DOCKER_RUN_CMD=(
+    docker run -d
+    -v "${SCRIPT_DIR}/../:/app"
+    -p "127.0.0.1:2222:22"
+    --name "$DOCKER_CONTAINER_NAME"
+)
+
+if [ "$USE_GPU" = true ]; then
+    DOCKER_RUN_CMD+=(--gpus all)
+fi
+
+DOCKER_RUN_CMD+=("${DOCKER_IMAGE_NAME}")
+
+echo "${DOCKER_RUN_CMD[@]}"
+"${DOCKER_RUN_CMD[@]}"
+
 # runs as root if --user not specified, but due to Dockerfile setup we do have the dockeruser that can be ssh-ed into
 
 sleep 1 # wait for the container to start
