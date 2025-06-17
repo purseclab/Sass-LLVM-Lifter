@@ -44,4 +44,4 @@ EOF
 
 # echo "✅ xstartup file created at $XSTARTUP"
 
-vncserver :1 -localhost no -geometry 1280x800 -depth 24 -SecurityTypes VncAuth
+vncserver :1 -localhost no -geometry 1920x1080 -depth 24 -SecurityTypes VncAuth
