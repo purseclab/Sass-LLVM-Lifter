@@ -1,3 +1,4 @@
 donjayamanne.python-extension-pack
 ms-vscode.makefile-tools
 nvidia.nsight-vscode-edition
+ms-vscode.cpptools-extension-pack
