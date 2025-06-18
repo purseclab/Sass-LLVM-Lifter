@@ -154,6 +154,8 @@ if [ "$USE_GPU" = true ]; then
     # therefore we try to relax the seccomp profile for the container. custom-seccomp.json was sourced with curl -o custom-seccomp.json https://raw.githubusercontent.com/moby/moby/master/profiles/seccomp/default.json
     # this sadly doesnt work, so we'll just use --no-sandbox when running vscode for now.
     # DOCKER_RUN_CMD+=(--security-opt seccomp="${SCRIPT_DIR}/custom-seccomp.json")
+    # granting SYS_ADMIN would also solve the issue but it's like granting root-lite access. it keeps container filesystem/network/namespace isolation intact, but it grants processes inside the container almost-root-like control over the kernel within the container — and in some cases affects the host (e.g. it might be able to remount to root or with additional priv). but its better than --security-opt seccomp=unconfined or --userns=host
+    DOCKER_RUN_CMD+=(--cap-add=SYS_ADMIN)
 fi
 
 DOCKER_RUN_CMD+=("${DOCKER_IMAGE_NAME}")
