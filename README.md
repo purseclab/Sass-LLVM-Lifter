@@ -4,19 +4,26 @@
 
 ## Usage
 
-```sh
-nvcc -arch=sm_75 -o test test.cu
-cuobjdump -sass test > test.sass
-
-# extract to .cubin (The file we want here is  test.2.sm_75.cubin)
-cuobjdump -xelf all test
-
-# Dissasembly the code
-nvdisasm --print-code test.2.sm_75.cubin > test_code.sass
-
-# Lift test_relu.sass to test.ll
-python main.py
+Edit `launch/config.json` to configure the path to `.cu` file, names of intermediate files, and the output file name. For example, rename all `gru` into the new name you want:
+```json
+{
+    "lifter": {
+        "input_file": "gru.sass",
+        "output_file": "gru.ll"
+    },
+    "cu2sass": {
+        "cuda_file": "gru.cu",
+        "select_cubin": "gru.2.sm_75.cubin"
+    }
+}
 ```
+
+```sh
+cd launch
+./docker.sh
+```
+
+Sidenote: `/debug/nvsight.sh` allows you to launch a container with desktop environment, which can be accessed via VNC at port 5901. Run `/debug/nvsight.sh` on the host computer, then on your local computer perform port forwarding with `ssh -L 5901:localhost:5901 user@host -N`, and then use a VNC client to connect to `localhost:5901`. The password is `secure`. See `/debug/README.md` for more details.
 
 ## Internal Procedure
 
