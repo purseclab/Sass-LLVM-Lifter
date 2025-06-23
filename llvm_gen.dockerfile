@@ -34,6 +34,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     && apt-get clean
 
+# assumes clang 20.1.7
 RUN ./llvm.sh 20
 
 CMD ["sh", "-c", "cd launch && ./clang_ll_gen.sh"]

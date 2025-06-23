@@ -633,6 +633,12 @@ class Instruction:
             
             return
         
+        if self.opcode in ("BMOV", "BSYNC", "BSSY"):
+            # these instructions managed the warp divergence when the cuda program is executing. In detail, bssy will start the divergence and mark when all the threads in a warp will merge. BSYNC is the merging point. BMOV will clear the registers, i.e., b0, b1, to track the thread execution.
+            
+            # print(f"Skipping opcode {self.opcode}")
+            return
+        
         print("Instruction: ", self.opcode)
         raise NotImplementedError
 
