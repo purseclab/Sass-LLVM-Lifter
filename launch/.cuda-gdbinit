@@ -1,0 +1,4 @@
+# Since Vscode's cuda-gdb launch.json don't allow use to send setupcommands nor do sourcefilemap, add the lines below to ~/.cuda-gdbinit
+# this is because we're compiling the exec at in a docker container and running the exec at the host. the -g option embeds absolute path of the src file into the exec, and the debugger would fail to find it. in vscode, you'd notice that it just blew past the breakpoints and in the debug console it'd say "No source file named /home/louis/louis/lifter-project/Sass-LLVM-Lifter/input/test.cu"
+
+set substitute-path /app /home/louis/louis/lifter-project/Sass-LLVM-Lifter/

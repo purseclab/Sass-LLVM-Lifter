@@ -1,0 +1,126 @@
+FROM nvidia/cuda:12.5.0-devel-ubuntu22.04
+
+# Avoid prompts during package installation (such as from ubuntu-desktop)
+ENV DEBIAN_FRONTEND=noninteractive
+
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3.11 \
+    python3-pip \
+    build-essential \
+    tree \
+    && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openssh-server \
+    && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \ 
+    tigervnc-standalone-server \
+    tigervnc-common \
+    tigervnc-tools \
+    && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    expect \
+    && apt-get clean
+# use "apt-cache show tightvncserver" to see the version
+
+# RUN apt-get install -y --no-install-recommends \
+#     ubuntu-gnome-desktop \
+#     nano \
+#     && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    xfce4 \
+    xfce4-goodies \
+    dbus-x11 \
+    && apt-get clean
+# dbus-x11 is needed for xfce4-session to start
+
+# gnome-icon-theme needed for icons to show up in the desktop, controllable in Appearance app
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gnome-icon-theme \
+    && apt-get clean
+
+
+# Install VSCode
+
+RUN apt-get install -y --no-install-recommends \
+    wget gpg \
+    && apt-get clean
+
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+RUN install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+RUN echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | tee /etc/apt/sources.list.d/vscode.list > /dev/null
+RUN rm -f packages.microsoft.gpg
+RUN apt-get install -y --no-install-recommends apt-transport-https
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends code
+
+WORKDIR /app
+
+# COPY ../requirements.txt .
+COPY --from=root requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+# Create SSH directory
+RUN mkdir /var/run/sshd
+
+# Add a new user 'dockeruser'
+RUN useradd -m -s /bin/bash dockeruser
+
+# Disable password login for SSH entirely (substitute PasswordAuthentication from yes to no)
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config && \
+    echo "PermitEmptyPasswords no" >> /etc/ssh/sshd_config
+
+# Uncomment PubkeyAuthentication to enable public key authentication
+RUN sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+
+# optional: Disable root login
+RUN echo "PermitRootLogin no" >> /etc/ssh/sshd_config
+
+# Expose SSH port
+EXPOSE 22
+
+RUN mkdir -p /home/dockeruser/.ssh && \
+    chmod 700 /home/dockeruser/.ssh
+
+# Copy the public key to the authorized_keys file
+# Note that "COPY id_rsa.pub /home/dockeruser/.ssh/authorized_keys" will NOT work because we ran with docker build ..
+# COPY ../debug/id_rsa.pub /home/dockeruser/.ssh/authorized_keys
+COPY --from=root debug/id_rsa.pub /home/dockeruser/.ssh/authorized_keys
+# --from=root, where root is defined by the --build-context flag when running docker build
+
+RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
+    chown -R dockeruser:dockeruser /home/dockeruser/.ssh
+
+
+# Install VSCode extensions
+# Switch to dockeruser, VSCode wouldn't allow it to be installed by root
+USER dockeruser
+# COPY ../debug/install_vscode_extension.sh .
+COPY install_vscode_extension.sh .
+# COPY ../debug/vscode_extensions.txt .
+COPY vscode_extensions.txt .
+RUN ./install_vscode_extension.sh
+
+# Switch back to root for the rest of the Dockerfile
+USER root
+
+# if you run as root, the cuda bin is already in the PATH, but not for newly created dockeruser
+RUN echo 'export PATH=/usr/local/cuda/bin:$PATH' >> /home/dockeruser/.bashrc
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nvidia-utils-550 \
+    && apt-get clean
+
+# Start SSH service
+# -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.
+
+# CMD ["/bin/bash", "-c", "cat /etc/ssh/sshd_config"]
+# CMD ["/usr/sbin/sshd", "-D", "-e"]
+
+CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D"]

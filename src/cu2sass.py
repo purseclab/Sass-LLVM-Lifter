@@ -23,7 +23,7 @@ def run_command(cmd):
 def compile_cuda(cuda_file, output_executable):
     """Compile CUDA file to executable using nvcc"""
     run_command([
-        "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
+        "nvcc", "-g" , "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
     ])
 
 def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
@@ -57,6 +57,8 @@ def disassemble_cubin(cubin_file, output_sass_file):
         f.write(output)
 
 def main():
+    project_root = (current_dir / "..").resolve()
+    
     config_path = current_dir / ".." / "launch" / "config.json"
     
     with open(config_path.resolve(), 'r') as file:
@@ -88,7 +90,12 @@ def main():
         exec_and_cubin_path = (output_dir / "0_exec_and_cubin").resolve()
         output_executable_path = (exec_and_cubin_path / output_executable).resolve()
         
-        compile_cuda(cuda_file, output_executable_path)
+        original_dir = os.getcwd()
+        os.chdir(project_root)
+        # when compiling with -g flag, the compiler will embed path to your source file in the binary. if you provide absolute path to nvcc, this will be stored as absolute path, and since we compiled in docker container and running in host computer, this is problematic, so we compile in relative path relative to project root
+        # make sure that you have called .resolve on project_root, because otherwise it'll be like this "/app/src/..", and when you call .relative_to below, it'll say that cuda_file is not a descendant of project root
+        compile_cuda(cuda_file.relative_to(project_root), output_executable_path.relative_to(project_root))
+        os.chdir(original_dir)    
 
         # Step 2: Extract .cubin files
         cubin_files = extract_cubin(output_executable, exec_and_cubin_path, output_cubin_prefix, output_cubin_name)
