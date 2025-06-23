@@ -38,10 +38,7 @@ echo "Output will be saved as $LLVM_OUTPUT"
 
 # Compile CUDA to LLVM IR using clang
 # --cuda-device-only flag needed to prevent "fatbinary fatal   : fatbinary elf mismatch: elf not '64bit'"
-ORIGINAL_DIR=$(pwd)
-cd ../output/3_llvm_ir/
-clang++-20 -emit-llvm -S --cuda-device-only "../../input/$CUDA_FILE" --cuda-gpu-arch=sm_75 # -o "${LLVM_OUTPUT}"
-cd $ORIGINAL_DIR
+clang++-20 -emit-llvm -S --cuda-device-only "../input/$CUDA_FILE" --cuda-gpu-arch=sm_75 -o "../output/3_llvm_ir/${LLVM_OUTPUT}"
 
 if [ $? -eq 0 ]; then
     echo "Success! LLVM IR written"

@@ -1,5 +1,5 @@
-; ModuleID = '../../input/gru.cu'
-source_filename = "../../input/gru.cu"
+; ModuleID = '../input/gru.cu'
+source_filename = "../input/gru.cu"
 target datalayout = "e-i64:64-i128:128-v16:16-v32:32-n16:32:64"
 target triple = "nvptx64-nvidia-cuda"
 
