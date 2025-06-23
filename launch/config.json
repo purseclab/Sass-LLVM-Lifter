@@ -1,10 +1,10 @@
 {
     "lifter": {
-        "input_file": "gru.sass",
-        "output_file": "gru.ll"
+        "input_file": "divergent_warp.sass",
+        "output_file": "divergent_warp.ll"
     },
     "cu2sass": {
-        "cuda_file": "gru.cu",
-        "select_cubin": "gru.2.sm_75.cubin"
+        "cuda_file": "divergent_warp.cu",
+        "select_cubin": "divergent_warp.2.sm_75.cubin"
     }
 }

@@ -1,0 +1,522 @@
+{
+    "_Z20warpDivergenceKernelPii": {
+        ".function_name": "_Z20warpDivergenceKernelPii",
+        ".section": ".text._Z20warpDivergenceKernelPii,\"ax\",@progbits",
+        ".sectioninfo": "@\"SHI_REGISTERS=10\"",
+        ".align": "128",
+        ".global": "_Z20warpDivergenceKernelPii",
+        ".type": "_Z20warpDivergenceKernelPii,@function",
+        ".size": "_Z20warpDivergenceKernelPii,(.L_x_4 - _Z20warpDivergenceKernelPii)",
+        ".other": "_Z20warpDivergenceKernelPii,@\"STO_CUDA_ENTRY STV_DEFAULT\"",
+        "Basicblocks": [
+            {
+                "label": ".text._Z20warpDivergenceKernelPii",
+                "instructions": [
+                    {
+                        "addr": "0x0000",
+                        "content": [
+                            [
+                                "IMAD",
+                                "MOV",
+                                "U32"
+                            ],
+                            [
+                                "R1",
+                                "RZ",
+                                "RZ",
+                                "c[0x0][0x28]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0010",
+                        "content": [
+                            [
+                                "S2R"
+                            ],
+                            [
+                                "R2",
+                                "SR_CTAID.X"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0020",
+                        "content": [
+                            [
+                                "MOV"
+                            ],
+                            [
+                                "R5",
+                                "0x4"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0030",
+                        "content": [
+                            [
+                                "S2R"
+                            ],
+                            [
+                                "R3",
+                                "SR_TID.X"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0040",
+                        "content": [
+                            [
+                                "IMAD"
+                            ],
+                            [
+                                "R2",
+                                "R2",
+                                "c[0x0][0x0]",
+                                "R3"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0050",
+                        "content": [
+                            [
+                                "IMAD",
+                                "WIDE"
+                            ],
+                            [
+                                "R2",
+                                "R2",
+                                "R5",
+                                "c[0x0][0x160]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0060",
+                        "content": [
+                            [
+                                "LDG",
+                                "E",
+                                "SYS"
+                            ],
+                            [
+                                "R5",
+                                "[R2]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0070",
+                        "content": [
+                            [
+                                "BMOV",
+                                "32",
+                                "CLEAR"
+                            ],
+                            [
+                                "RZ",
+                                "B0"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0080",
+                        "content": [
+                            [
+                                "BSSY"
+                            ],
+                            [
+                                "B0",
+                                "`(.L_x_0)"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0090",
+                        "content": [
+                            [
+                                "ISETP",
+                                "GE",
+                                "AND"
+                            ],
+                            [
+                                "P0",
+                                "PT",
+                                "R5",
+                                "c[0x0][0x168]",
+                                "PT"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00a0",
+                        "content": [
+                            [
+                                "BRA"
+                            ],
+                            [
+                                "`(.L_x_1)"
+                            ],
+                            "@!P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x00b0",
+                        "content": [
+                            [
+                                "IMAD",
+                                "HI"
+                            ],
+                            [
+                                "R0",
+                                "R5",
+                                "0x55555556",
+                                "RZ"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00c0",
+                        "content": [
+                            [
+                                "LEA",
+                                "HI"
+                            ],
+                            [
+                                "R4",
+                                "R0",
+                                "R0",
+                                "RZ",
+                                "0x1"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00d0",
+                        "content": [
+                            [
+                                "IMAD"
+                            ],
+                            [
+                                "R4",
+                                "R4",
+                                "-0x3",
+                                "R5"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00e0",
+                        "content": [
+                            [
+                                "ISETP",
+                                "NE",
+                                "AND"
+                            ],
+                            [
+                                "P0",
+                                "PT",
+                                "R4",
+                                "RZ",
+                                "PT"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00f0",
+                        "content": [
+                            [
+                                "IMAD",
+                                "HI"
+                            ],
+                            [
+                                "R7",
+                                "R5",
+                                "0x51eb851f",
+                                "RZ"
+                            ],
+                            "@P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0100",
+                        "content": [
+                            [
+                                "SHF",
+                                "R",
+                                "U32",
+                                "HI"
+                            ],
+                            [
+                                "R0",
+                                "RZ",
+                                "0x1f",
+                                "R7"
+                            ],
+                            "@P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0110",
+                        "content": [
+                            [
+                                "LEA",
+                                "HI",
+                                "SX32"
+                            ],
+                            [
+                                "R7",
+                                "R7",
+                                "R0",
+                                "0x1d"
+                            ],
+                            "@P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0120",
+                        "content": [
+                            [
+                                "IMAD"
+                            ],
+                            [
+                                "R7",
+                                "R5",
+                                "0x1a",
+                                "RZ"
+                            ],
+                            "@!P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0130",
+                        "content": [
+                            [
+                                "BRA"
+                            ],
+                            [
+                                "`(.L_x_2)"
+                            ],
+                            ""
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": ".L_x_1",
+                "instructions": [
+                    {
+                        "addr": "0x0140",
+                        "content": [
+                            [
+                                "LOP3",
+                                "LUT"
+                            ],
+                            [
+                                "R0",
+                                "R5",
+                                "0x1",
+                                "RZ",
+                                "0xc0",
+                                "!PT"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0150",
+                        "content": [
+                            [
+                                "ISETP",
+                                "NE",
+                                "U32",
+                                "AND"
+                            ],
+                            [
+                                "P0",
+                                "PT",
+                                "R0",
+                                "0x1",
+                                "PT"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0160",
+                        "content": [
+                            [
+                                "IMAD",
+                                "MOV",
+                                "U32"
+                            ],
+                            [
+                                "R4",
+                                "RZ",
+                                "RZ",
+                                "RZ"
+                            ],
+                            "@!P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0170",
+                        "content": [
+                            [
+                                "IMAD",
+                                "HI"
+                            ],
+                            [
+                                "R7",
+                                "R5",
+                                "-0x15f15f15",
+                                "R4"
+                            ],
+                            "@!P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0180",
+                        "content": [
+                            [
+                                "SHF",
+                                "R",
+                                "U32",
+                                "HI"
+                            ],
+                            [
+                                "R0",
+                                "RZ",
+                                "0x1f",
+                                "R7"
+                            ],
+                            "@!P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x0190",
+                        "content": [
+                            [
+                                "LEA",
+                                "HI",
+                                "SX32"
+                            ],
+                            [
+                                "R7",
+                                "R7",
+                                "R0",
+                                "0x1b"
+                            ],
+                            "@!P0"
+                        ]
+                    },
+                    {
+                        "addr": "0x01a0",
+                        "content": [
+                            [
+                                "IMAD"
+                            ],
+                            [
+                                "R7",
+                                "R5",
+                                "0x1c",
+                                "RZ"
+                            ],
+                            "@P0"
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": ".L_x_2",
+                "instructions": [
+                    {
+                        "addr": "0x01b0",
+                        "content": [
+                            [
+                                "BSYNC"
+                            ],
+                            [
+                                "B0"
+                            ],
+                            ""
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": ".L_x_0",
+                "instructions": [
+                    {
+                        "addr": "0x01c0",
+                        "content": [
+                            [
+                                "STG",
+                                "E",
+                                "SYS"
+                            ],
+                            [
+                                "[R2]",
+                                "R7"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x01d0",
+                        "content": [
+                            [
+                                "EXIT"
+                            ],
+                            [],
+                            ""
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": ".L_x_3",
+                "instructions": [
+                    {
+                        "addr": "0x01e0",
+                        "content": [
+                            [
+                                "BRA"
+                            ],
+                            [
+                                "`(.L_x_3)"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x01f0",
+                        "content": [
+                            [
+                                "NOP"
+                            ],
+                            [],
+                            ""
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
