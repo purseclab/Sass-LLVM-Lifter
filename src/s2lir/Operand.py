@@ -210,6 +210,7 @@ class Operand:
             result = match.group(1)
             self.isConst = True
             self.Value = float(content)
+            # self.typeDesc = "Float32"
             return
         
         # Decimal Constant, 123 or -123
