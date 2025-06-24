@@ -25,6 +25,8 @@ SM_75_SepcialReg = ["SR_TID.X", "SR_TID.Y", "SR_TID.Z", "SR_CTAID.X", "SR_CTAID.
 
 COnSTANT_MEMORY="c[0x0]"
 
+tmp_cnt = 0
+
 class Operand:
 
     def __init__(self, OriginalContent, ins):
@@ -201,6 +203,24 @@ class Operand:
                 self.Value = int(content, 16)
             return
 
+        # Float Constant, 0.4 or -0.4
+        pattern = r"^(-*\d+\.\d+)$"
+        match = re.match(pattern, content.strip())
+        if match:
+            result = match.group(1)
+            self.isConst = True
+            self.Value = float(content)
+            return
+        
+        # Decimal Constant, 123 or -123
+        pattern = r"^(-*\d+)$"
+        match = re.match(pattern, content.strip())
+        if match:
+            result = match.group(1)
+            self.isConst = True
+            self.Value = int(content)
+            return
+        
         # Special Registers
         if content in SM_75_SepcialReg:
             self.SReg = True
