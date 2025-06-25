@@ -1,8 +1,9 @@
+Script started on 2025-06-25 02:26:29-04:00 [TERM="xterm-256color" TTY="/dev/pts/11" COLUMNS="175" LINES="48"]
 NVIDIA (R) CUDA Debugger
 11.5 release
 Portions Copyright (C) 2007-2021 NVIDIA Corporation
-GNU gdb (GDB) 10.1
-Copyright (C) 2020 Free Software Foundation, Inc.
+[35;1m[35;1mGNU gdb [m[35;1m(GDB) [m[35;1m10.1[m[35;1m
+[m[mCopyright (C) 2020 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -16,37 +17,37 @@ Find the GDB manual and other documentation resources online at:
 
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
-Reading symbols from gru...
-Breakpoint 1 at 0xb7fa: file input/gru.cu, line 27.
+Reading symbols from [32mgru[m...
+Breakpoint 1 at [34m0xb7fa[m: file [32minput/gru.cu[m, line 27.
 [Thread debugging using libthread_db enabled]
-Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
-[New Thread 0x7ffff4bff000 (LWP 582583)]
-[New Thread 0x7fffef3ff000 (LWP 582584)]
-[Detaching after fork from child process 582585]
-[New Thread 0x7fffed9dd000 (LWP 582595)]
-[New Thread 0x7fffed1dc000 (LWP 582596)]
-Breakpoint 2 at 0x7fffdb26c9b0
-Breakpoint 3 at 0x7fffdb26cb40
-Breakpoint 4 at 0x7fffdb26da70
-Breakpoint 5 at 0x7fffdb26dbc0
-Breakpoint 6 at 0x7fffdb26f020
-Breakpoint 7 at 0x7fffdb26f1e0
-Breakpoint 8 at 0x7fffdb2700c0
-Breakpoint 9 at 0x7fffdb2700e0
-Breakpoint 10 at 0x7fffdb270110
-Breakpoint 11 at 0x7fffdb270210
-Breakpoint 12 at 0x7fffdb2702e0
-Breakpoint 13 at 0x7fffdb270320
-Breakpoint 14 at 0x7fffdb270390
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 585922)]
+[New Thread 0x7fffef3ff000 (LWP 585923)]
+[Detaching after fork from child process 585924]
+[New Thread 0x7fffed9dd000 (LWP 585934)]
+[New Thread 0x7fffed1dc000 (LWP 585935)]
+Breakpoint 2 at [34m0x7fffdb26c9b0[m
+Breakpoint 3 at [34m0x7fffdb26cb40[m
+Breakpoint 4 at [34m0x7fffdb26da70[m
+Breakpoint 5 at [34m0x7fffdb26dbc0[m
+Breakpoint 6 at [34m0x7fffdb26f020[m
+Breakpoint 7 at [34m0x7fffdb26f1e0[m
+Breakpoint 8 at [34m0x7fffdb2700c0[m
+Breakpoint 9 at [34m0x7fffdb2700e0[m
+Breakpoint 10 at [34m0x7fffdb270110[m
+Breakpoint 11 at [34m0x7fffdb270210[m
+Breakpoint 12 at [34m0x7fffdb2702e0[m
+Breakpoint 13 at [34m0x7fffdb270320[m
+Breakpoint 14 at [34m0x7fffdb270390[m
 Set 13 breakpoints for 'SHF' instructions.
 Sanity check PASSED: Found 'SHF' at offset 4528[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
-Thread 1 "gru" hit Breakpoint 4, 0x00007fffdb26da70 in gru_forward(float*, float*, float*, float*, int, int, int)<<<(1,1,1),(256,1,1)>>> ()
-=> 0x7fffdb26da70 <_Z11gru_forwardPfS_S_S_iii+8816>:	SHF.R.S32.HI R7, RZ, 0x1f, R7 
+Thread 1 "gru" hit Breakpoint 4, [34m0x00007fffdb26da70[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da70[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8816>:	SHF.R.S32.HI R7, RZ, 0x1f, R7 
 [?2004h(cuda-gdb) q
 [?2004l[?2004hA debugging session is active.
 
-	Inferior 1 [process 582578] will be killed.
+	Inferior 1 [process 585917] will be killed.
 
 Quit anyway? (y or n) y
 [?2004lwarning: Breakpoint 2 is disabled because device address may change on the next run.
@@ -62,3 +63,5 @@ warning: Breakpoint 11 is disabled because device address may change on the next
 warning: Breakpoint 12 is disabled because device address may change on the next run.
 warning: Breakpoint 13 is disabled because device address may change on the next run.
 warning: Breakpoint 14 is disabled because device address may change on the next run.
+
+Script done on 2025-06-25 02:26:32-04:00 [COMMAND_EXIT_CODE="0"]
