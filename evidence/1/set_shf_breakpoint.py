@@ -71,9 +71,9 @@ def set_breakpoints_at_instructions(function_name, instruction_pattern, sanity_o
     # Set the initial breakpoint on the function
     FunctionEntryBreakpoint(function_name)
 
-# Example usage: Set breakpoints at all SHF instructions in gru_forward
-set_breakpoints_at_instructions(
-    function_name="gru_forward",
-    instruction_pattern=r"SHF",  # Regex pattern for SHF instructions
-    sanity_offset=4528  # Optional offset for sanity check
-)
+
+# set_breakpoints_at_instructions(
+#     function_name="gru_forward",
+#     instruction_pattern=r"SHF",  # Regex pattern for SHF instructions
+#     sanity_offset=4528  # Optional offset for sanity check
+# )

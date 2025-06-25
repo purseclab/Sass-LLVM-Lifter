@@ -20,11 +20,11 @@ Reading symbols from gru...
 Breakpoint 1 at 0xb7fa: file input/gru.cu, line 27.
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
-[New Thread 0x7ffff4bff000 (LWP 580683)]
-[New Thread 0x7fffef3ff000 (LWP 580684)]
-[Detaching after fork from child process 580685]
-[New Thread 0x7fffed9dd000 (LWP 580695)]
-[New Thread 0x7fffed1dc000 (LWP 580696)]
+[New Thread 0x7ffff4bff000 (LWP 582583)]
+[New Thread 0x7fffef3ff000 (LWP 582584)]
+[Detaching after fork from child process 582585]
+[New Thread 0x7fffed9dd000 (LWP 582595)]
+[New Thread 0x7fffed1dc000 (LWP 582596)]
 Breakpoint 2 at 0x7fffdb26c9b0
 Breakpoint 3 at 0x7fffdb26cb40
 Breakpoint 4 at 0x7fffdb26da70
@@ -39,14 +39,14 @@ Breakpoint 12 at 0x7fffdb2702e0
 Breakpoint 13 at 0x7fffdb270320
 Breakpoint 14 at 0x7fffdb270390
 Set 13 breakpoints for 'SHF' instructions.
-   0x7fffdb26c9b0 <_Z11gru_forwardPfS_S_S_iii+4528>:	SHF.L.U32 R9, R9, 0x17, RZ 
 Sanity check PASSED: Found 'SHF' at offset 4528[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
 Thread 1 "gru" hit Breakpoint 4, 0x00007fffdb26da70 in gru_forward(float*, float*, float*, float*, int, int, int)<<<(1,1,1),(256,1,1)>>> ()
+=> 0x7fffdb26da70 <_Z11gru_forwardPfS_S_S_iii+8816>:	SHF.R.S32.HI R7, RZ, 0x1f, R7 
 [?2004h(cuda-gdb) q
 [?2004l[?2004hA debugging session is active.
 
-	Inferior 1 [process 580678] will be killed.
+	Inferior 1 [process 582578] will be killed.
 
 Quit anyway? (y or n) y
 [?2004lwarning: Breakpoint 2 is disabled because device address may change on the next run.
