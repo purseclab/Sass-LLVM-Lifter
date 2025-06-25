@@ -1,0 +1,64 @@
+NVIDIA (R) CUDA Debugger
+11.5 release
+Portions Copyright (C) 2007-2021 NVIDIA Corporation
+GNU gdb (GDB) 10.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from gru...
+Breakpoint 1 at 0xb7fa: file input/gru.cu, line 27.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+[New Thread 0x7ffff4bff000 (LWP 580683)]
+[New Thread 0x7fffef3ff000 (LWP 580684)]
+[Detaching after fork from child process 580685]
+[New Thread 0x7fffed9dd000 (LWP 580695)]
+[New Thread 0x7fffed1dc000 (LWP 580696)]
+Breakpoint 2 at 0x7fffdb26c9b0
+Breakpoint 3 at 0x7fffdb26cb40
+Breakpoint 4 at 0x7fffdb26da70
+Breakpoint 5 at 0x7fffdb26dbc0
+Breakpoint 6 at 0x7fffdb26f020
+Breakpoint 7 at 0x7fffdb26f1e0
+Breakpoint 8 at 0x7fffdb2700c0
+Breakpoint 9 at 0x7fffdb2700e0
+Breakpoint 10 at 0x7fffdb270110
+Breakpoint 11 at 0x7fffdb270210
+Breakpoint 12 at 0x7fffdb2702e0
+Breakpoint 13 at 0x7fffdb270320
+Breakpoint 14 at 0x7fffdb270390
+Set 13 breakpoints for 'SHF' instructions.
+   0x7fffdb26c9b0 <_Z11gru_forwardPfS_S_S_iii+4528>:	SHF.L.U32 R9, R9, 0x17, RZ 
+Sanity check PASSED: Found 'SHF' at offset 4528[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 4, 0x00007fffdb26da70 in gru_forward(float*, float*, float*, float*, int, int, int)<<<(1,1,1),(256,1,1)>>> ()
+[?2004h(cuda-gdb) q
+[?2004l[?2004hA debugging session is active.
+
+	Inferior 1 [process 580678] will be killed.
+
+Quit anyway? (y or n) y
+[?2004lwarning: Breakpoint 2 is disabled because device address may change on the next run.
+warning: Breakpoint 3 is disabled because device address may change on the next run.
+warning: Breakpoint 4 is disabled because device address may change on the next run.
+warning: Breakpoint 5 is disabled because device address may change on the next run.
+warning: Breakpoint 6 is disabled because device address may change on the next run.
+warning: Breakpoint 7 is disabled because device address may change on the next run.
+warning: Breakpoint 8 is disabled because device address may change on the next run.
+warning: Breakpoint 9 is disabled because device address may change on the next run.
+warning: Breakpoint 10 is disabled because device address may change on the next run.
+warning: Breakpoint 11 is disabled because device address may change on the next run.
+warning: Breakpoint 12 is disabled because device address may change on the next run.
+warning: Breakpoint 13 is disabled because device address may change on the next run.
+warning: Breakpoint 14 is disabled because device address may change on the next run.
