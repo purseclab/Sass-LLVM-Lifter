@@ -212,11 +212,12 @@ class Operand:
             self.isConst = True
             self.Value = float(content)
             self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
+            # TODO: differentiate between float32 and 64 (doubletype)
             # self.typeDesc = "Float32"
             return
         
         # Decimal Constant, 123 or -123
-        pattern = r"^(-*\d+)$"
+        pattern = r"^(-?\d+)$"
         match = re.match(pattern, content.strip())
         if match:
             result = match.group(1)
