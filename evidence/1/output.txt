@@ -1,4 +1,4 @@
-Script started on 2025-06-25 18:46:20-04:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="175" LINES="48"]
+Script started on 2025-06-25 22:39:43-04:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="175" LINES="48"]
 NVIDIA (R) CUDA Debugger
 11.5 release
 Portions Copyright (C) 2007-2021 NVIDIA Corporation
@@ -21,11 +21,11 @@ Reading symbols from [32mgru[m...
 Breakpoint 1 at [34m0xb7fa[m: file [32minput/gru.cu[m, line 27.
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 606868)]
-[New Thread 0x7fffef3ff000 (LWP 606869)]
-[Detaching after fork from child process 606870]
-[New Thread 0x7fffed9dd000 (LWP 606883)]
-[New Thread 0x7fffed1dc000 (LWP 606884)]
+[New Thread 0x7ffff4bff000 (LWP 614076)]
+[New Thread 0x7fffef3ff000 (LWP 614077)]
+[Detaching after fork from child process 614078]
+[New Thread 0x7fffed9dd000 (LWP 614088)]
+[New Thread 0x7fffed1dc000 (LWP 614089)]
 Breakpoint 2 at [34m0x7fffdb26c9b0[m
 Breakpoint 3 at [34m0x7fffdb26cb40[m
 Breakpoint 4 at [34m0x7fffdb26dbc0[m
@@ -50,11 +50,11 @@ $6 = 100000
 Breakpoint 11 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 606891)]
-[New Thread 0x7fffef3ff000 (LWP 606892)]
-[Detaching after fork from child process 606893]
-[New Thread 0x7fffed9dd000 (LWP 606903)]
-[New Thread 0x7fffed1dc000 (LWP 606904)]
+[New Thread 0x7ffff4bff000 (LWP 614096)]
+[New Thread 0x7fffef3ff000 (LWP 614097)]
+[Detaching after fork from child process 614098]
+[New Thread 0x7fffed9dd000 (LWP 614108)]
+[New Thread 0x7fffed1dc000 (LWP 614109)]
 Breakpoint 12 at [34m0x7fffdb26c9b0[m
 Breakpoint 13 at [34m0x7fffdb26cb40[m
 Breakpoint 14 at [34m0x7fffdb26dbc0[m
@@ -78,11 +78,11 @@ $12 = 129123
 Breakpoint 21 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 606911)]
-[New Thread 0x7fffef3ff000 (LWP 606912)]
-[Detaching after fork from child process 606913]
-[New Thread 0x7fffed9dd000 (LWP 606923)]
-[New Thread 0x7fffed1dc000 (LWP 606924)]
+[New Thread 0x7ffff4bff000 (LWP 614116)]
+[New Thread 0x7fffef3ff000 (LWP 614117)]
+[Detaching after fork from child process 614118]
+[New Thread 0x7fffed9dd000 (LWP 614128)]
+[New Thread 0x7fffed1dc000 (LWP 614129)]
 Breakpoint 22 at [34m0x7fffdb26c9b0[m
 Breakpoint 23 at [34m0x7fffdb26cb40[m
 Breakpoint 24 at [34m0x7fffdb26dbc0[m
@@ -103,5 +103,72 @@ $15 = 129123
 $16 = 516493
 $17 = 1200000499
 $18 = 129123
+Breakpoint 31 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 614136)]
+[New Thread 0x7fffef3ff000 (LWP 614137)]
+[Detaching after fork from child process 614138]
+[New Thread 0x7fffed9dd000 (LWP 614148)]
+[New Thread 0x7fffed1dc000 (LWP 614149)]
+Breakpoint 32 at [34m0x7fffdb26da70[m
+Breakpoint 33 at [34m0x7fffdb2700e0[m
+Breakpoint 34 at [34m0x7fffdb2702e0[m
+Breakpoint 35 at [34m0x7fffdb270320[m
+Set 4 breakpoints for '\sSHF\.R' instructions.
+Sanity check PASSED: Found '\sSHF\.R' at offset 8816[Switching focus to CUDA kernel 3, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
-Script done on 2025-06-25 18:46:22-04:00 [COMMAND_EXIT_CODE="0"]
+Thread 1 "gru" hit Breakpoint 32, [34m0x00007fffdb26da70[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da70[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8816>:	SHF.R.S32.HI R7, RZ, 0x1f, R7 
+$19 = 64
+[34m0x00007fffdb26da80[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da80[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8832>:	MOV R8, RZ 
+$20 = 0
+Breakpoint 36 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 614156)]
+[New Thread 0x7fffef3ff000 (LWP 614157)]
+[Detaching after fork from child process 614158]
+[New Thread 0x7fffed9dd000 (LWP 614168)]
+[New Thread 0x7fffed1dc000 (LWP 614169)]
+Breakpoint 37 at [34m0x7fffdb26da70[m
+Breakpoint 38 at [34m0x7fffdb2700e0[m
+Breakpoint 39 at [34m0x7fffdb2702e0[m
+Breakpoint 40 at [34m0x7fffdb270320[m
+Set 4 breakpoints for '\sSHF\.R' instructions.
+Sanity check PASSED: Found '\sSHF\.R' at offset 8816[Switching focus to CUDA kernel 4, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 37, [34m0x00007fffdb26da70[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da70[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8816>:	SHF.R.S32.HI R7, RZ, 0x1f, R7 
+$21 = -268435456
+$22 = 4026531840
+[34m0x00007fffdb26da80[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da80[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8832>:	MOV R8, RZ 
+$23 = -1
+$24 = 4026531840
+Breakpoint 41 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 614176)]
+[New Thread 0x7fffef3ff000 (LWP 614177)]
+[Detaching after fork from child process 614178]
+[New Thread 0x7fffed9dd000 (LWP 614188)]
+[New Thread 0x7fffed1dc000 (LWP 614189)]
+Breakpoint 42 at [34m0x7fffdb26da70[m
+Breakpoint 43 at [34m0x7fffdb2700e0[m
+Breakpoint 44 at [34m0x7fffdb2702e0[m
+Breakpoint 45 at [34m0x7fffdb270320[m
+Set 4 breakpoints for '\sSHF\.R' instructions.
+Sanity check PASSED: Found '\sSHF\.R' at offset 8816[Switching focus to CUDA kernel 5, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 42, [34m0x00007fffdb26da70[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da70[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8816>:	SHF.R.S32.HI R7, RZ, 0x1f, R7 
+$25 = -268435456
+$26 = 0
+[34m0x00007fffdb26da80[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26da80[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8832>:	MOV R8, RZ 
+$27 = -1
+$28 = 0
+
+Script done on 2025-06-25 22:39:47-04:00 [COMMAND_EXIT_CODE="0"]
