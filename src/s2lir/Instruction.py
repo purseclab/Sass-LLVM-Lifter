@@ -2,6 +2,11 @@ import typing
 from s2lir.Operand import *
 from utils import *
 from llvmlite import ir as llvmir
+from pathlib import Path
+import json
+
+current_dir = Path(__file__).parent
+
 class Instruction:
     def __init__(self, inst_dict, BB):
         self.addr = inst_dict["addr"]
@@ -19,6 +24,10 @@ class Instruction:
         self.branch_target = None
 
         self.BB = BB
+        config_path = current_dir / "../.." / "launch" / "config.json"
+    
+        with open(config_path.resolve(), 'r') as file:
+            self.config = json.load(file)
 
     def parse(self):
         for ope in self.operands:
@@ -436,8 +445,26 @@ class Instruction:
 
             assert ResOp.isReg
             IRResOp = IRRegs[ResOp.getIRRegName()]
-
+            
+            if not self.config["allow_temp_behavior"]:
+                assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                
+            else:
+                assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
+                assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
+                assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
+            
+            
             tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul")
+            # if IRValOp1 and IRValOp2 were i32, tmp would be i32
+            # but if one of the operandsto fadd, i.e. IRValOp3 is not i32, then this would throw exception
+            
+            if self.config["allow_temp_behavior"]:
+                if isinstance(IRValOp3.type, (llvmir.DoubleType,llvmir.FloatType)) and isinstance(IRValOp1.type, llvmir.IntType) and isinstance(IRValOp2.type, llvmir.IntType):
+                    IRValOp3 = IRBuilder.fptosi(IRValOp3, llvmir.IntType(32), name="fp_to_sint32")
+
             tmp = IRBuilder.fadd(tmp, IRValOp3, "fadd")
             IRBuilder.store(tmp, IRResOp)
 
