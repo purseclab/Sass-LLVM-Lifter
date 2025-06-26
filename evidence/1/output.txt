@@ -1,4 +1,4 @@
-Script started on 2025-06-25 22:39:43-04:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="175" LINES="48"]
+Script started on 2025-06-26 01:25:13-04:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="175" LINES="48"]
 NVIDIA (R) CUDA Debugger
 11.5 release
 Portions Copyright (C) 2007-2021 NVIDIA Corporation
@@ -21,11 +21,11 @@ Reading symbols from [32mgru[m...
 Breakpoint 1 at [34m0xb7fa[m: file [32minput/gru.cu[m, line 27.
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 614076)]
-[New Thread 0x7fffef3ff000 (LWP 614077)]
-[Detaching after fork from child process 614078]
-[New Thread 0x7fffed9dd000 (LWP 614088)]
-[New Thread 0x7fffed1dc000 (LWP 614089)]
+[New Thread 0x7ffff4bff000 (LWP 629594)]
+[New Thread 0x7fffef3ff000 (LWP 629595)]
+[Detaching after fork from child process 629596]
+[New Thread 0x7fffed9dd000 (LWP 629606)]
+[New Thread 0x7fffed1dc000 (LWP 629607)]
 Breakpoint 2 at [34m0x7fffdb26c9b0[m
 Breakpoint 3 at [34m0x7fffdb26cb40[m
 Breakpoint 4 at [34m0x7fffdb26dbc0[m
@@ -50,11 +50,11 @@ $6 = 100000
 Breakpoint 11 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 614096)]
-[New Thread 0x7fffef3ff000 (LWP 614097)]
-[Detaching after fork from child process 614098]
-[New Thread 0x7fffed9dd000 (LWP 614108)]
-[New Thread 0x7fffed1dc000 (LWP 614109)]
+[New Thread 0x7ffff4bff000 (LWP 629614)]
+[New Thread 0x7fffef3ff000 (LWP 629615)]
+[Detaching after fork from child process 629616]
+[New Thread 0x7fffed9dd000 (LWP 629626)]
+[New Thread 0x7fffed1dc000 (LWP 629627)]
 Breakpoint 12 at [34m0x7fffdb26c9b0[m
 Breakpoint 13 at [34m0x7fffdb26cb40[m
 Breakpoint 14 at [34m0x7fffdb26dbc0[m
@@ -78,11 +78,11 @@ $12 = 129123
 Breakpoint 21 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 614116)]
-[New Thread 0x7fffef3ff000 (LWP 614117)]
-[Detaching after fork from child process 614118]
-[New Thread 0x7fffed9dd000 (LWP 614128)]
-[New Thread 0x7fffed1dc000 (LWP 614129)]
+[New Thread 0x7ffff4bff000 (LWP 629634)]
+[New Thread 0x7fffef3ff000 (LWP 629635)]
+[Detaching after fork from child process 629636]
+[New Thread 0x7fffed9dd000 (LWP 629646)]
+[New Thread 0x7fffed1dc000 (LWP 629647)]
 Breakpoint 22 at [34m0x7fffdb26c9b0[m
 Breakpoint 23 at [34m0x7fffdb26cb40[m
 Breakpoint 24 at [34m0x7fffdb26dbc0[m
@@ -106,11 +106,11 @@ $18 = 129123
 Breakpoint 31 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 614136)]
-[New Thread 0x7fffef3ff000 (LWP 614137)]
-[Detaching after fork from child process 614138]
-[New Thread 0x7fffed9dd000 (LWP 614148)]
-[New Thread 0x7fffed1dc000 (LWP 614149)]
+[New Thread 0x7ffff4bff000 (LWP 629654)]
+[New Thread 0x7fffef3ff000 (LWP 629655)]
+[Detaching after fork from child process 629656]
+[New Thread 0x7fffed9dd000 (LWP 629666)]
+[New Thread 0x7fffed1dc000 (LWP 629667)]
 Breakpoint 32 at [34m0x7fffdb26da70[m
 Breakpoint 33 at [34m0x7fffdb2700e0[m
 Breakpoint 34 at [34m0x7fffdb2702e0[m
@@ -127,11 +127,11 @@ $20 = 0
 Breakpoint 36 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 614156)]
-[New Thread 0x7fffef3ff000 (LWP 614157)]
-[Detaching after fork from child process 614158]
-[New Thread 0x7fffed9dd000 (LWP 614168)]
-[New Thread 0x7fffed1dc000 (LWP 614169)]
+[New Thread 0x7ffff4bff000 (LWP 629674)]
+[New Thread 0x7fffef3ff000 (LWP 629675)]
+[Detaching after fork from child process 629676]
+[New Thread 0x7fffed9dd000 (LWP 629686)]
+[New Thread 0x7fffed1dc000 (LWP 629687)]
 Breakpoint 37 at [34m0x7fffdb26da70[m
 Breakpoint 38 at [34m0x7fffdb2700e0[m
 Breakpoint 39 at [34m0x7fffdb2702e0[m
@@ -150,11 +150,11 @@ $24 = 4026531840
 Breakpoint 41 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 614176)]
-[New Thread 0x7fffef3ff000 (LWP 614177)]
-[Detaching after fork from child process 614178]
-[New Thread 0x7fffed9dd000 (LWP 614188)]
-[New Thread 0x7fffed1dc000 (LWP 614189)]
+[New Thread 0x7ffff4bff000 (LWP 629694)]
+[New Thread 0x7fffef3ff000 (LWP 629695)]
+[Detaching after fork from child process 629696]
+[New Thread 0x7fffed9dd000 (LWP 629706)]
+[New Thread 0x7fffed1dc000 (LWP 629707)]
 Breakpoint 42 at [34m0x7fffdb26da70[m
 Breakpoint 43 at [34m0x7fffdb2700e0[m
 Breakpoint 44 at [34m0x7fffdb2702e0[m
@@ -170,5 +170,88 @@ $26 = 0
 => [34m0x7fffdb26da80[m <[33m_Z11gru_forwardPfS_S_S_iii[m+8832>:	MOV R8, RZ 
 $27 = -1
 $28 = 0
+Breakpoint 46 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 629714)]
+[New Thread 0x7fffef3ff000 (LWP 629715)]
+[Detaching after fork from child process 629716]
+[New Thread 0x7fffed9dd000 (LWP 629726)]
+[New Thread 0x7fffed1dc000 (LWP 629727)]
+Breakpoint 47 at [34m0x7fffdb26c9b0[m
+Breakpoint 48 at [34m0x7fffdb26cb40[m
+Breakpoint 49 at [34m0x7fffdb26f020[m
+Breakpoint 50 at [34m0x7fffdb26f1e0[m
+Breakpoint 51 at [34m0x7fffdb2700c0[m
+Breakpoint 52 at [34m0x7fffdb270110[m
+Breakpoint 53 at [34m0x7fffdb270210[m
+Breakpoint 54 at [34m0x7fffdb270390[m
+Set 8 breakpoints for '\sSHF\.L\.U32' instructions.
+Sanity check PASSED: Found '\sSHF\.L\.U32' at offset 14368[Switching focus to CUDA kernel 6, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
-Script done on 2025-06-25 22:39:47-04:00 [COMMAND_EXIT_CODE="0"]
+Thread 1 "gru" hit Breakpoint 49, [34m0x00007fffdb26f020[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f020[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14368>:	SHF.L.U32 R12, R12, 0x17, RZ 
+$29 = 1262485631
+[34m0x00007fffdb26f030[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f030[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14384>:	FFMA R20, -R13, 1.4426950216293334961, -R20 
+$30 = 1065353216
+Breakpoint 55 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 629736)]
+[New Thread 0x7fffef3ff000 (LWP 629737)]
+[Detaching after fork from child process 629738]
+[New Thread 0x7fffed9dd000 (LWP 629748)]
+[New Thread 0x7fffed1dc000 (LWP 629749)]
+Breakpoint 56 at [34m0x7fffdb26c9b0[m
+Breakpoint 57 at [34m0x7fffdb26cb40[m
+Breakpoint 58 at [34m0x7fffdb26f020[m
+Breakpoint 59 at [34m0x7fffdb26f1e0[m
+Breakpoint 60 at [34m0x7fffdb2700c0[m
+Breakpoint 61 at [34m0x7fffdb270110[m
+Breakpoint 62 at [34m0x7fffdb270210[m
+Breakpoint 63 at [34m0x7fffdb270390[m
+Set 8 breakpoints for '\sSHF\.L\.U32' instructions.
+Sanity check PASSED: Found '\sSHF\.L\.U32' at offset 14368[Switching focus to CUDA kernel 7, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 58, [34m0x00007fffdb26f020[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f020[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14368>:	SHF.L.U32 R12, R12, 0x17, RZ 
+$31 = 1234
+[34m0x00007fffdb26f030[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f030[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14384>:	FFMA R20, -R13, 1.4426950216293334961, -R20 
+$32 = 1761607680
+Breakpoint 64 at [34m0x55555555f7fa[m: gru_forward. (2 locations)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 629756)]
+[New Thread 0x7fffef3ff000 (LWP 629757)]
+[Detaching after fork from child process 629758]
+[New Thread 0x7fffed9dd000 (LWP 629768)]
+[New Thread 0x7fffed1dc000 (LWP 629769)]
+Breakpoint 65 at [34m0x7fffdb26c9b0[m
+Breakpoint 66 at [34m0x7fffdb26cb40[m
+Breakpoint 67 at [34m0x7fffdb26f020[m
+Breakpoint 68 at [34m0x7fffdb26f1e0[m
+Breakpoint 69 at [34m0x7fffdb2700c0[m
+Breakpoint 70 at [34m0x7fffdb270110[m
+Breakpoint 71 at [34m0x7fffdb270210[m
+Breakpoint 72 at [34m0x7fffdb270390[m
+Set 8 breakpoints for '\sSHF\.L\.U32' instructions.
+Sanity check PASSED: Found '\sSHF\.L\.U32' at offset 14368[Switching focus to CUDA kernel 8, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 67, [34m0x00007fffdb26f020[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f020[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14368>:	SHF.L.U32 R12, R12, 0x17, RZ 
+$33 = 1262485631
+[34m0x00007fffdb26f030[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f030[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14384>:	FFMA R20, -R13, 1.4426950216293334961, -R20 
+$34 = 1065353216
+warning: Breakpoint 65 is disabled because device address may change on the next run.
+warning: Breakpoint 66 is disabled because device address may change on the next run.
+warning: Breakpoint 67 is disabled because device address may change on the next run.
+warning: Breakpoint 68 is disabled because device address may change on the next run.
+warning: Breakpoint 69 is disabled because device address may change on the next run.
+warning: Breakpoint 70 is disabled because device address may change on the next run.
+warning: Breakpoint 71 is disabled because device address may change on the next run.
+warning: Breakpoint 72 is disabled because device address may change on the next run.
+
+Script done on 2025-06-26 01:25:20-04:00 [COMMAND_EXIT_CODE="0"]

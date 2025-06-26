@@ -15,8 +15,8 @@ x/i $pc
 
 # -- Test SHF.L.U64.HI R29, R30, 0x2, R7 
 # Assumptions: 
-# mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .S32) is probably 32 bits
-# shift = min(Sb, 32)
+# mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .U64) is probably 64 bits
+# shift = min(Sb, 64)
 # val = (Rc << 32 | Ra)
 # Rd = ((Signed) val << shift) >> 32
 # Rd = R29, Ra= R30, Rc = R7
@@ -182,4 +182,84 @@ x/i $pc
 p $R7
 p $RZ
 delete
+
+
+
+
+python
+set_breakpoints_at_instructions(
+    function_name="gru_forward",
+    instruction_pattern=r"\sSHF\.L\.U32",  # Regex pattern for SHF instructions
+    sanity_offset=14368  # Optional offset for sanity check
+)
+end
+
+# --- Test SHF.L.U32 R12, R12, 0x17, RZ 
+
+# Assumptions: 
+
+# mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .U32) is probably 32 bits
+# shift = min(Sb, 32)
+# val = (Rc << 32 | Ra)
+# Rd = ((Signed) val << shift) & 0x00000000ffffffff
+# based on observation, seems like on U32 if you don't have .HI, then by default you take the lower 32 bits, 
+
+# R12 = 1262485631
+# ((0 << 32  | 1262485631 ) << 0x17) & 0x00000000ffffffff == 1065353216
+
+
+r
+x/i $pc
+p $R12
+ni
+x/i $pc
+p $R12
+
+delete
+
+python
+set_breakpoints_at_instructions(
+    function_name="gru_forward",
+    instruction_pattern=r"\sSHF\.L\.U32",  # Regex pattern for SHF instructions
+    sanity_offset=14368  # Optional offset for sanity check
+)
+end
+
+# --- retest with $R12 = 1234
+
+# ((0 << 32  | 1234 ) << 0x17) & 0xffffffff == 1761607680
+
+r
+x/i $pc
+set $R12 = 1234
+p $R12
+ni
+x/i $pc
+p $R12
+
+
+
+delete
+
+python
+set_breakpoints_at_instructions(
+    function_name="gru_forward",
+    instruction_pattern=r"\sSHF\.L\.U32",  # Regex pattern for SHF instructions
+    sanity_offset=14368  # Optional offset for sanity check
+)
+end
+
+# --- retest with $RZ = 1262485631
+
+# ((1262485631 << 32  | 1262485631 ) << 0x17) & 0xffffffff == 1065353216
+# same answer as a case above because we're just extracting the lower part and so RZ's contribution have always been filtered out
+
+r
+x/i $pc
+set $R12 = 1262485631
+set $RZ = 1262485631
+p $R12
+ni
+x/i $pc
+p $R12
 q
