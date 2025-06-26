@@ -150,6 +150,7 @@ class Operand:
         elif self.isConst:
             return llvmir.Constant(self.getIRType(), self.Value)
 
+        print(f"Unknown Operand {self}")
         raise NotImplementedError
 
     def parse(self):
@@ -204,12 +205,13 @@ class Operand:
             return
 
         # Float Constant, 0.4 or -0.4
-        pattern = r"^(-*\d+\.\d+)$"
+        pattern = r"^(-?\d+\.\d+(e[-+]\d+)?)$"
         match = re.match(pattern, content.strip())
         if match:
             result = match.group(1)
             self.isConst = True
             self.Value = float(content)
+            self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
             # self.typeDesc = "Float32"
             return
         

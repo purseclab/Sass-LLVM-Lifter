@@ -385,7 +385,7 @@ class Instruction:
                 
             elif settings["dir"] == "R":
                 # right shift
-                pass
+                raise NotImplementedError
             else:
                 print(f"settings[\"dir\"] = {settings['dir']}")
                 raise InvalidSyntaxException
