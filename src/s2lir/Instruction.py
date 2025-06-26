@@ -456,14 +456,19 @@ class Instruction:
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
                 assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
             
+            if self.config["allow_temp_behavior"]:
+                # TODO: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750971276767179
+                if isinstance(IRValOp3.type, (llvmir.DoubleType,llvmir.FloatType)):
+                    IRValOp3 = IRBuilder.fptosi(IRValOp3, llvmir.IntType(32), name="fp_to_sint32")
+                if isinstance(IRValOp1.type, (llvmir.DoubleType,llvmir.FloatType)):
+                    IRValOp1 = IRBuilder.fptosi(IRValOp1, llvmir.IntType(32), name="fp_to_sint32")
+                if isinstance(IRValOp2.type, (llvmir.DoubleType,llvmir.FloatType)):
+                    IRValOp2 = IRBuilder.fptosi(IRValOp2, llvmir.IntType(32), name="fp_to_sint32")
             
             tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul")
             # if IRValOp1 and IRValOp2 were i32, tmp would be i32
             # but if one of the operandsto fadd, i.e. IRValOp3 is not i32, then this would throw exception
             
-            if self.config["allow_temp_behavior"]:
-                if isinstance(IRValOp3.type, (llvmir.DoubleType,llvmir.FloatType)) and isinstance(IRValOp1.type, llvmir.IntType) and isinstance(IRValOp2.type, llvmir.IntType):
-                    IRValOp3 = IRBuilder.fptosi(IRValOp3, llvmir.IntType(32), name="fp_to_sint32")
 
             tmp = IRBuilder.fadd(tmp, IRValOp3, "fadd")
             IRBuilder.store(tmp, IRResOp)
