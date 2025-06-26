@@ -1,3 +1,4 @@
+import typing
 from s2lir.Operand import *
 from utils import *
 from llvmlite import ir as llvmir
@@ -6,7 +7,7 @@ class Instruction:
         self.addr = inst_dict["addr"]
         self.opcode = inst_dict["content"][0][0]
         self.modifiers = inst_dict["content"][0][1:]
-        self.operands = [Operand(Ope, self) for Ope in inst_dict["content"][1]]
+        self.operands: typing.List[Operand] = [Operand(Ope, self) for Ope in inst_dict["content"][1]]
         self.condition_expr = inst_dict["content"][2]
         self.content_dict = inst_dict
         
@@ -133,7 +134,7 @@ class Instruction:
         else:
             return f"{new_opcode} {', '.join(operands)}"
 
-    def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
+    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
         # generate_ir_comment(IRBuilder, self.dump_text())
         
         if self.opcode == "EXIT":
@@ -273,6 +274,123 @@ class Instruction:
 
             return
         
+        if self.opcode == "SHF":
+            # SHF - Funnel shift
+            # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opSHF.htm
+            
+            if len(self.operands) != 4:
+                print(f"SHF len(self.operands) != 4, len={len(self.operands)}")
+                raise InvalidSyntaxException
+            
+            R_dest = self.operands[0]
+            R_a = self.operands[1]
+            R_b = self.operands[2] # shift amt
+            R_c = self.operands[3]
+            
+            # pattern = (
+            #     r'^SHF'
+            #     r'(?:\.(?P<dir>[LR]))'
+            #     r'(?:\.(?P<mode>[WC]))?'
+            #     r'(?:\.(?P<maxshift>[US]{0,1}(32|64|64)))?'
+            #     r'(?:\.(?P<xmode>(HI|X|XHI)))?'
+            #     r'$'
+            # )
+            # match = re.match(pattern, ".".join([self.opcode]+ self.modifiers))
+            # print({k: v for k, v in match.groupdict().items() if v is not None})
+            
+            settings = {
+                "dir": None,
+                "mode": "C",
+                "maxshift": None,
+                "xmode": None
+            }
+            
+            for mod in self.modifiers:
+                if mod in ("L", "R"):
+                    settings["dir"] = mod
+                    continue
+                elif mod in ("W", "C"):
+                    settings["mode"] = mod
+                    continue
+                pattern = r"^([US]{0,1})((32|64|64))$"
+                match = re.match(pattern, mod)
+                if match:
+                    settings["maxshift"] = {
+                        "signage" : match.group(1), # None if not present
+                        "bits" : match.group(2)
+                    }
+                    continue
+                if mod in ("HI", "X", "XHI"):
+                    settings["xmode"] = mod
+                    continue
+                raise InvalidSyntaxException
+            
+            if settings["mode"] == "C":
+                IRValOp1 = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                # seems like LLVM doesn't have unsigned integer type, there's also no UintType in the llvmlite source code, so we're just using inttype below. https://stackoverflow.com/questions/30519005/how-to-distinguish-signed-and-unsigned-integer-in-llvm
+                IRValOp2 = llvmir.Constant(llvmir.IntType(32), settings["maxshift"]["bits"])
+                shift = IRBuilder.select(
+                    IRBuilder.icmp_unsigned('<', IRValOp1, IRValOp2),
+                    IRValOp1,
+                    IRValOp2,
+                    "SHF_min"
+                )
+            else:
+                raise NotImplementedError
+                
+            if settings["dir"] == "L":
+                # left shift
+                if settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                    if settings["xmode"] is None:
+                        # assumed to be taking the lower 32 bits
+                        # val = (Rc << 32 | Ra)
+                        # Rd = ((Signed) val << shift) & 0x00000000ffffffff
+                        
+                        IRResOp_Rd = IRRegs[R_dest.getIRRegName()]
+                        IRValOp_Rc = R_c.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                        IRValOp_Ra = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                        IRValOp_Rb = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                        
+                        # zero extend to be 64 bit
+                        if IRValOp_Rc.type == llvmir.IntType(32):
+                            IRValOp_Rc_64 = IRBuilder.zext(IRValOp_Rc, llvmir.IntType(64), name="zext")
+                        elif IRValOp_Rc.type == llvmir.IntType(64):
+                            IRValOp_Rc_64 = IRValOp_Rc
+                            
+                        if IRValOp_Ra.type == llvmir.IntType(32):
+                            IRValOp_Ra_64 = IRBuilder.zext(IRValOp_Ra, llvmir.IntType(64), name="zext")
+                        elif IRValOp_Ra.type == llvmir.IntType(64):
+                            IRValOp_Ra_64 = IRValOp_Ra
+                            
+                        if IRValOp_Rb.type == llvmir.IntType(32):
+                            IRValOp_Rb_64 = IRBuilder.zext(IRValOp_Rb, llvmir.IntType(64), name="zext")
+                        elif IRValOp_Rb.type == llvmir.IntType(64):
+                            IRValOp_Rb_64 = IRValOp_Rb
+                            
+                        
+                        
+                        tmp = IRBuilder.shl(IRValOp_Rc_64, llvmir.Constant(llvmir.IntType(64), 32), "shl")
+                        
+                        tmp = IRBuilder.or_(tmp, IRValOp_Ra_64, "or")
+                        tmp = IRBuilder.shl(tmp, IRValOp_Rb_64, "shl")
+                        tmp = IRBuilder.and_(tmp, llvmir.Constant(llvmir.IntType(64), 0xffffffff), "and")
+                        
+                        tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
+                        
+                        IRBuilder.store(tmp, IRResOp_Rd)
+                    else:
+                        raise NotImplementedError
+                else:
+                    raise NotImplementedError
+                
+            elif settings["dir"] == "R":
+                # right shift
+                pass
+            else:
+                print(f"settings[\"dir\"] = {settings['dir']}")
+                raise InvalidSyntaxException
+            return
+
         if self.opcode == "FMNMX":
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
