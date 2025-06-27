@@ -730,13 +730,19 @@ class Instruction:
                 
                 if not self.config["allow_temp_behavior"]:
                     assert isinstance(IRValOp.type, (llvmir.FloatType)) 
+                    assert isinstance(IRResOp.type, (llvmir.FloatType)) 
                 else:
-                    if isinstance(IRValOp.type, (llvmir.IntType)):
+                    if isinstance(IRValOp.type, llvmir.IntType):
                         IRValOp = IRBuilder.sitofp(IRValOp, llvmir.FloatType(), name="sint_to_f32")
                     else:
                         raise NotImplementedError
                 
                 tmp = IRBuilder.call(llvm_exp2_f32(llvm_module), [IRValOp], name="llvm_exp2_f32_result")
+                
+                if self.config["allow_temp_behavior"]:
+                    if str(IRResOp.type) == "i32*": # int pointer, not the same as inttype
+                        # cast tmp back to input("Please enter: ")
+                        tmp = IRBuilder.fptosi(tmp, llvmir.IntType(32), name="fp_to_sint32")
             else:
                 print(self.modifiers[0])
                 raise NotImplementedError
