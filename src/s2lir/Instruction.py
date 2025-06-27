@@ -164,7 +164,7 @@ class Instruction:
 
         # BRA is Handled in the BasicBlock.py
         if self.opcode == "BRA":
-            raise NotImplementedError
+            raise InvalidSyntaxException
 
         if self.opcode == "S2R":
             ResOp = self.operands[0]
@@ -252,7 +252,7 @@ class Instruction:
 
             return
         
-        if self.opcode == "ISETP":
+        if self.opcode == "ISETP" or self.opcode == "FSETP":
             # https://stackoverflow.com/questions/19357452/cuda-assembly-instructions
             ResOp = self.operands[0]
             PReg1 = self.operands[1]
@@ -263,6 +263,12 @@ class Instruction:
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
+            if self.opcode == "FSETP":
+                assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
+            elif self.opcode == "FSETP":
+                assert isinstance(IRValOp1.type, (llvmir.IntType)) 
+                assert isinstance(IRValOp2.type, (llvmir.IntType)) 
 
             assert ResOp.isPReg and PReg1.isPReg and PReg2.isPReg
         
@@ -278,7 +284,13 @@ class Instruction:
             if cmp_op is None:
                 raise InvalidSyntaxException
 
-            tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
+            if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
+                tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
+            elif self.opcode == 'FSETP':
+                # TODO fcmp_ordered vs unordere
+                tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "cmp")
+            else:
+                raise InvalidSyntaxException
 
             if self.modifiers[-1] == "AND":
                 tmp = IRBuilder.and_(tmp, IRPreg1Val)
