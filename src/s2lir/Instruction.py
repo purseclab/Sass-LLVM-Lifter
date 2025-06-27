@@ -29,6 +29,8 @@ class Instruction:
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
+        
+        self.llvm_module = None
 
     def parse(self):
         for ope in self.operands:
@@ -145,6 +147,11 @@ class Instruction:
             return f"{new_opcode} {', '.join(operands)}"
 
     def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
+        if self.llvm_module is None:
+            # note we cannot setup self.llvm_module in init because llvmir.module is not created until the lift() in main.py
+            self.llvm_module = self.BB.func.module.llvm_module
+            assert self.llvm_module is not None
+        
         # generate_ir_comment(IRBuilder, self.dump_text())
         
         if self.opcode == "EXIT":
@@ -725,8 +732,7 @@ class Instruction:
                 # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opMUFU.htm
                 # TODO: there's some small precision issue, as noted here: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750988222773009
                 
-                llvm_module = self.BB.func.module.llvm_module
-                assert llvm_module is not None
+                llvm_module = self.llvm_module
                 
                 if not self.config["allow_temp_behavior"]:
                     assert isinstance(IRValOp.type, (llvmir.FloatType)) 
@@ -811,6 +817,52 @@ class Instruction:
             # these instructions managed the warp divergence when the cuda program is executing. In detail, bssy will start the divergence and mark when all the threads in a warp will merge. BSYNC is the merging point. BMOV will clear the registers, i.e., b0, b1, to track the thread execution.
             
             # print(f"Skipping opcode {self.opcode}")
+            return
+        
+        if self.opcode == "CALL":
+            settings = {
+                "rel": None,
+                "noinc": None
+            }
+            for mod in self.modifiers:
+                if mod == "REL":
+                    settings["rel"] = True
+                    continue
+                elif mod == "NOINC":
+                    settings["noinc"] = True
+                    continue
+                raise InvalidSyntaxException
+            
+            if settings["rel"]:
+                assert len(self.operands) == 1
+                
+                if str(self.operands[0])[0] == "`":
+                    # e.g. CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
+                    # TODO not entirely sure but I believe that `() means that "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath" is an unresolved target that might be resolved at runtime. definition of $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath can be found within the SASS file
+                    # TODO i think the f32 is just refering to the return type, im also assuming that the instructions prior to CALL would set up the arguments, so Function() call will just say that there's no args being passed as input
+                    # TODO not handling NOINC yet
+                    
+                    pattern = r'^`\((.*?_(f\d+)[^)]*)\)$'
+                    match = re.match(pattern, str(self.operands[0]))
+                    if not match:
+                        raise InvalidSyntaxException
+                    function_name = match.group(1)
+                    return_type = match.group(2)
+                    
+                    # syntax inspired from llvm_exp2_f32, not necessarily correct
+                    if return_type == "f32":
+                        function_type = llvmir.FunctionType(llvmir.FloatType(), [])
+                    else:
+                        raise NotImplementedError
+                    
+                    function = llvmir.Function(self.llvm_module, function_type, name=function_name)
+                    IRBuilder.call(function, [], name="call_rel")
+                else:
+                    raise NotImplementedError
+                
+            else:
+                raise NotImplementedError
+            
             return
         
         print("Instruction: ", self.opcode)
