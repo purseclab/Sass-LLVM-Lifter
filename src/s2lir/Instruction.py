@@ -865,6 +865,35 @@ class Instruction:
             
             return
         
-        print("Instruction: ", self.opcode)
+        if self.opcode == "FMUL":
+            assert len(self.modifiers) == 0
+            assert len(self.operands) == 3
+            
+            ResOp = self.operands[0]
+            ValOp1 = self.operands[1]
+            ValOp2 = self.operands[2]
+            
+            IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+
+            assert ResOp.isReg
+            IRResOp = IRRegs[ResOp.getIRRegName()]
+            
+            
+            if not self.config["allow_temp_behavior"]:
+                assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                
+            else:
+                assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
+                assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
+                
+            tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
+            IRBuilder.store(tmp, IRResOp)
+                
+
+            return
+        
+        print("\nInstruction: ", self)
         raise NotImplementedError
 
