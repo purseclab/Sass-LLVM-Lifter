@@ -4,6 +4,7 @@ from utils import *
 from llvmlite import ir as llvmir
 from pathlib import Path
 import json
+from s2lir.intrinsics import *
 
 current_dir = Path(__file__).parent
 
@@ -716,11 +717,21 @@ class Instruction:
             ValOp = self.operands[1]
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             assert ResOp.isReg
-
+            IRResOp = IRRegs[ResOp.getIRRegName()]
+            
             if self.modifiers[0] == "RCP": # Reciprocal
-                IRResOp = IRRegs[ResOp.getIRRegName()]
                 tmp = IRBuilder.fdiv(llvmir.Constant(IRResOp.type.pointee, 1), IRValOp)
+            elif self.modifiers[0] == "EX2": # Exponent base-2
+                # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opMUFU.htm
+                # TODO: there's some small precision issue, as noted here: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750988222773009
+                
+                module = self.BB.func.module
+                assert module is not None
+                tmp = IRBuilder.call(llvm_exp2_f32(self.BB.func.module), [IRValOp], name="llvm_exp2_f32_result")
+                print("bello")
+                exit(1)
             else:
+                print(self.modifiers[0])
                 raise NotImplementedError
 
             IRBuilder.store(tmp, IRResOp)
