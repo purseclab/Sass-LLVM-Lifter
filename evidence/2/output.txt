@@ -1,0 +1,89 @@
+Script started on 2025-06-26 22:00:28-04:00 [TERM="xterm-256color" TTY="/dev/pts/13" COLUMNS="175" LINES="48"]
+NVIDIA (R) CUDA Debugger
+11.5 release
+Portions Copyright (C) 2007-2021 NVIDIA Corporation
+[35;1m[35;1mGNU gdb [m[35;1m(GDB) [m[35;1m10.1[m[35;1m
+[m[mCopyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from [32mgru[m...
+Breakpoint 1 at [34m0xb7fa[m: file [32minput/gru.cu[m, line 27.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 677985)]
+[New Thread 0x7fffef3ff000 (LWP 677986)]
+[Detaching after fork from child process 677987]
+[New Thread 0x7fffed9dd000 (LWP 677997)]
+[New Thread 0x7fffed1dc000 (LWP 677998)]
+Breakpoint 2 at [34m0x7fffdb26c9e0[m
+Breakpoint 3 at [34m0x7fffdb26cb70[m
+Breakpoint 4 at [34m0x7fffdb26d7f0[m
+Breakpoint 5 at [34m0x7fffdb26f050[m
+Breakpoint 6 at [34m0x7fffdb26f210[m
+Breakpoint 7 at [34m0x7fffdb26fe70[m
+Set 6 breakpoints for '\sMUFU\.EX2' instructions.
+Sanity check PASSED: Found '\sMUFU\.EX2' at offset 14416[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 5, [34m0x00007fffdb26f050[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f050[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14416>:	MUFU.EX2 R13, R20 
+$1 = -1103838548
+$2 = 1048732703
+[34m0x00007fffdb26f060[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+$3 = 1066972745
+$4 = 1048732703
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (32,0,0), device 0, sm 0, warp 1, lane 0]
+
+Thread 1 "gru" hit Breakpoint 5, [34m0x00007fffdb26f050[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 6, [34m0x00007fffdb26f210[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f210[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14864>:	MUFU.EX2 R22, R22 
+$5 = 1060286713
+[34m0x00007fffdb26f220[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+$6 = 1070573185
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (32,0,0), device 0, sm 0, warp 1, lane 0]
+
+Thread 1 "gru" hit Breakpoint 6, [34m0x00007fffdb26f210[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f210[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14864>:	MUFU.EX2 R22, R22 
+$7 = 23
+[34m0x00007fffdb26f220[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+$8 = 1065353216
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 7, [34m0x00007fffdb26fe70[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (33,0,0), device 0, sm 0, warp 1, lane 1]
+
+Thread 1 "gru" hit Breakpoint 7, [34m0x00007fffdb26fe70[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 5, [34m0x00007fffdb26f050[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+
+Thread 1 "gru" hit Breakpoint 6, [34m0x00007fffdb26f210[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (32,0,0), device 0, sm 0, warp 1, lane 0]
+
+Thread 1 "gru" hit Breakpoint 5, [34m0x00007fffdb26f050[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26f050[m <[33m_Z11gru_forwardPfS_S_S_iii[m+14416>:	MUFU.EX2 R13, R20 
+$9 = 233232323
+$10 = -1070730223
+[34m0x00007fffdb26f060[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+$11 = 233232323
+$12 = 1065353216
+warning: Breakpoint 2 is disabled because device address may change on the next run.
+warning: Breakpoint 3 is disabled because device address may change on the next run.
+warning: Breakpoint 4 is disabled because device address may change on the next run.
+warning: Breakpoint 5 is disabled because device address may change on the next run.
+warning: Breakpoint 6 is disabled because device address may change on the next run.
+warning: Breakpoint 7 is disabled because device address may change on the next run.
+
+Script done on 2025-06-26 22:00:29-04:00 [COMMAND_EXIT_CODE="0"]
