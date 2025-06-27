@@ -18,6 +18,7 @@ class LLVMModule:
     def __init__(self, name, functions):
         self.name = name
         self.functions = functions
+        self.llvm_module = None
 
         for func in self.functions:
             func.module = self
@@ -41,7 +42,7 @@ class LLVMModule:
     def lift(self):
         # Generate module level information
         llvm_module = llvmir.Module(self.name)
-
+        self.llvm_module = llvm_module
         # e.g. create thread idx function
         self.addPseudoFunctions(llvm_module)
         

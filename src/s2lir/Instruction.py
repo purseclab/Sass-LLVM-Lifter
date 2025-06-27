@@ -725,11 +725,18 @@ class Instruction:
                 # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opMUFU.htm
                 # TODO: there's some small precision issue, as noted here: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750988222773009
                 
-                module = self.BB.func.module
-                assert module is not None
-                tmp = IRBuilder.call(llvm_exp2_f32(self.BB.func.module), [IRValOp], name="llvm_exp2_f32_result")
-                print("bello")
-                exit(1)
+                llvm_module = self.BB.func.module.llvm_module
+                assert llvm_module is not None
+                
+                if not self.config["allow_temp_behavior"]:
+                    assert isinstance(IRValOp.type, (llvmir.FloatType)) 
+                else:
+                    if isinstance(IRValOp.type, (llvmir.IntType)):
+                        IRValOp = IRBuilder.sitofp(IRValOp, llvmir.FloatType(), name="sint_to_f32")
+                    else:
+                        raise NotImplementedError
+                
+                tmp = IRBuilder.call(llvm_exp2_f32(llvm_module), [IRValOp], name="llvm_exp2_f32_result")
             else:
                 print(self.modifiers[0])
                 raise NotImplementedError
