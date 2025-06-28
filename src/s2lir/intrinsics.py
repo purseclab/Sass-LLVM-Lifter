@@ -13,3 +13,45 @@ def llvm_exp2_f32(module):
                 ir.FunctionType(ir.FloatType(), [ir.FloatType()]),
                 name="llvm.exp2.f32"
             )
+    
+    
+def llvm_abs(module):
+    # integer absolute value
+    
+    # https://llvm.org/docs/LangRef.html#id2283
+    # overloaded, so we don't need to specify the type here
+    
+    # The first argument is the value for which the absolute value is to be returned. This argument may be of any integer type or a vector with integer element type. The return type must match the first argument type.
+    # The second argument must be a constant and is a flag to indicate whether the result value of the ‘llvm.abs’ intrinsic is a poison value if the first argument is statically or dynamically an INT_MIN value.
+
+    # The ‘llvm.abs’ intrinsic returns the magnitude (always positive) of the first argument or each element of a vector argument.”. If the first argument is INT_MIN, then the result is also INT_MIN if is_int_min_poison == 0 and poison otherwise.
+    
+    
+    # Check if the function already exists
+    existing_fn = module.globals.get("llvm.abs", None)
+    if existing_fn is not None:
+        return existing_fn
+    
+    return ir.Function(
+                module,
+                ir.FunctionType(ir.IntType(32), [ir.IntType(32), ir.IntType(1)]),
+                name="llvm.abs"
+            )
+
+def llvm_fabs(module):
+    # https://llvm.org/docs/LangRef.html#id2283
+    # overloaded, so we don't need to specify the type here
+    
+    # float absolute value
+    intrinsic_name = "llvm.fabs"
+    
+    # Check if the function already exists
+    existing_fn = module.globals.get(intrinsic_name, None)
+    if existing_fn is not None:
+        return existing_fn
+    
+    return ir.Function(
+                module,
+                ir.FunctionType(ir.FloatType(), [ir.FloatType()]),
+                name=intrinsic_name
+            )

@@ -263,12 +263,13 @@ class Instruction:
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
-            if self.opcode == "FSETP":
-                assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
-                assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
-            elif self.opcode == "FSETP":
-                assert isinstance(IRValOp1.type, (llvmir.IntType)) 
-                assert isinstance(IRValOp2.type, (llvmir.IntType)) 
+            if not self.config["allow_temp_behavior"]:
+                if self.opcode == "FSETP":
+                    assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                    assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                elif self.opcode == "ISETP":
+                    assert isinstance(IRValOp1.type, (llvmir.IntType)) 
+                    assert isinstance(IRValOp2.type, (llvmir.IntType)) 
 
             assert ResOp.isPReg and PReg1.isPReg and PReg2.isPReg
         

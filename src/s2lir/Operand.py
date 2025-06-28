@@ -1,6 +1,7 @@
 from s2lir import *
 from utils import *
 from llvmlite import ir as llvmir
+from s2lir.intrinsics import *
 import re
 
 # Append R0 to R255
@@ -75,6 +76,9 @@ class Operand:
 
         # Father Pointer
         self.ins = ins
+        
+        
+        self.llvm_module = None
 
     def IR_ValueFromPointer(self, IRBuilder, IRPtrOp, PinterType):
 
@@ -111,6 +115,10 @@ class Operand:
         IRBuilder.store(IRVal, PtrAddr)
     
     def IR_FetchValue(self, IRBuilder, IRRegs, IRArgs):
+        if self.llvm_module is None:
+            self.llvm_module = self.ins.llvm_module
+            assert self.llvm_module is not None
+        
         # TODO: assume that normal operand other than LDG and STG is not pointers. Check it later.
         if self.isReg:
             if self.reg == "RZ":
@@ -121,7 +129,13 @@ class Operand:
             IRVal = IRBuilder.load(IRVal)
             
             if self.reg_abs:
-                raise NotImplementedError
+                if isinstance(self.getIRType(), llvmir.FloatType):
+                    IRVal = IRBuilder.call(llvm_fabs(self.llvm_module), [IRVal], name="llvm_fabs_result")
+                elif isinstance(self.getIRType(), llvmir.IntType):
+                    # TODO setting 2nd parameter to be false arbitrarily, only affects result if INT_MIN is passed
+                    IRVal = IRBuilder.call(llvm_abs(self.llvm_module), [IRVal, llvmir.Constant(llvmir.IntType(1), 0)], name="llvm_abs_result")
+                else:
+                    raise InvalidSyntaxException
             if self.reg_neg:
                 IRVal = IRBuilder.neg(IRVal)
 
