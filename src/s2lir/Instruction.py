@@ -5,6 +5,7 @@ from llvmlite import ir as llvmir
 from pathlib import Path
 import json
 from s2lir.intrinsics import *
+from s2lir.helper import *
 
 current_dir = Path(__file__).parent
 
@@ -565,6 +566,10 @@ class Instruction:
             assert ResOp.isReg
             IRResOp = IRRegs[ResOp.getIRRegName()]
 
+            # using promote_integer_list to prevent issue with "LEA R8, P0, R25, R4, 0x2", P0 is i1, need to extend them otherwise there'd be issue mixing different inttype
+            
+            [IRValOp1, IRValOp2, IRShift], _ = promote_integer_list(IRBuilder, [IRValOp1, IRValOp2, IRShift])
+            
             tmp = IRBuilder.shl(IRValOp1, IRShift, "shl")
             tmp = IRBuilder.add(tmp, IRValOp2, "add")
             IRBuilder.store(tmp, IRResOp)
