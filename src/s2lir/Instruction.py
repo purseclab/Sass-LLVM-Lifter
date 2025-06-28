@@ -430,12 +430,14 @@ class Instruction:
                     # TODO not entirely sure if shld use ashr, need further testing
                     if settings["xmode"] == "HI":
                         tmp = IRBuilder.ashr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "ashr")
+                        tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
                     else:
                         raise NotImplementedError
                 elif settings["maxshift"] and settings["maxshift"]["signage"] == "U":
                     tmp = IRBuilder.lshr(tmp, IRValOp_Rb_64, "lshr")
                     if settings["xmode"] == "HI":
                         tmp = IRBuilder.lshr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "lshr")
+                        tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
                     else:
                         raise NotImplementedError
                 else:
