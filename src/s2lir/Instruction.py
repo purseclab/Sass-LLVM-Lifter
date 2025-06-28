@@ -646,7 +646,7 @@ class Instruction:
             elif immLut.Value == 0xF8: # (A | B) & (A | C)
                 tmp = IRBuilder.or_(IRValOp1, IRValOp2)
                 tmp2 = IRBuilder.or_(IRValOp1, IRValOp3)
-                tmp = IRBuilder.or_(tmp, tmp2)
+                tmp = IRBuilder.and_(tmp, tmp2)
             else:
                 print(self)
                 raise NotImplementedError
