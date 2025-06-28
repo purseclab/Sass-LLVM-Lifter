@@ -394,20 +394,29 @@ class Instruction:
             if settings["dir"] == "L":
                 # left shift
                 if settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                    # Assumptions: 
+                    # mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .U64) is probably 64 bits
+                    # shift = min(Sb, 64)
+                    # val = (Rc << 32 | Ra)
+                    # WITH .HI
+                    ### Rd = ((Signed) val << shift) >> 32
+                    # WITHOUT .HI: assumed to be taking the lower 32 bits
+                    ### Rd = ((Signed) val << shift) & 0x00000000ffffffff
+                    
+                    tmp = IRBuilder.shl(IRValOp_Rc_64, llvmir.Constant(llvmir.IntType(64), 32), "shl")
+                    
+                    tmp = IRBuilder.or_(tmp, IRValOp_Ra_64, "or")
+                    tmp = IRBuilder.shl(tmp, IRValOp_Rb_64, "shl")
                     if settings["xmode"] is None:
-                        # assumed to be taking the lower 32 bits
-                        # val = (Rc << 32 | Ra)
-                        # Rd = ((Signed) val << shift) & 0x00000000ffffffff
-                        
-                        tmp = IRBuilder.shl(IRValOp_Rc_64, llvmir.Constant(llvmir.IntType(64), 32), "shl")
-                        
-                        tmp = IRBuilder.or_(tmp, IRValOp_Ra_64, "or")
-                        tmp = IRBuilder.shl(tmp, IRValOp_Rb_64, "shl")
                         tmp = IRBuilder.and_(tmp, llvmir.Constant(llvmir.IntType(64), 0xffffffff), "and")
-                        
-                        tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
+                    elif settings["xmode"] == "HI":
+                        # TODO: not sure if shld use lshr or ashr, i assume lshr since we're in U mode
+                        tmp = IRBuilder.lshr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "lshr")
                     else:
                         raise NotImplementedError
+                    
+                    tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
+                        
                 else:
                     raise NotImplementedError
                 
