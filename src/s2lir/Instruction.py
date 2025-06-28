@@ -874,7 +874,14 @@ class Instruction:
                     else:
                         raise NotImplementedError
                     
-                    function = llvmir.Function(self.llvm_module, function_type, name=function_name)
+                    existing_fn = self.llvm_module.globals.get(function_name, None)
+                    
+                    # Check if the function already exists
+                    if existing_fn is not None:
+                        assert existing_fn.function_type == function_type
+                        function = existing_fn
+                    else:
+                        function = llvmir.Function(self.llvm_module, function_type, name=function_name)
                     IRBuilder.call(function, [], name="call_rel")
                 else:
                     raise NotImplementedError
