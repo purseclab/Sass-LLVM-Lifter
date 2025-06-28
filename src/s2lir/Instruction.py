@@ -358,6 +358,7 @@ class Instruction:
             if settings["mode"] == "C":
                 IRValOp1 = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
                 # seems like LLVM doesn't have unsigned integer type, there's also no UintType in the llvmlite source code, so we're just using inttype below. https://stackoverflow.com/questions/30519005/how-to-distinguish-signed-and-unsigned-integer-in-llvm
+                # https://nondot.org/~sabre/LLVMNotes/TypeSystemChanges.txt
                 IRValOp2 = llvmir.Constant(llvmir.IntType(32), settings["maxshift"]["bits"])
                 shift = IRBuilder.select(
                     IRBuilder.icmp_unsigned('<', IRValOp1, IRValOp2),
@@ -907,6 +908,30 @@ class Instruction:
 
             return
         
+        if self.opcode == "SEL" or self.opcode == "FSEL":
+            R_dest = self.operands[0]
+            R_a = self.operands[1] # select wheb True
+            S_b = self.operands[2] # select wheb False
+            P_reg = self.operands[3] # predicate
+            
+            IRValOp1 = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRValOp2 = S_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRPreg = P_reg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            assert R_dest.isReg and P_reg.isPReg
+            assert str(IRPreg.type) == 'i1'
+            IRResOp = IRRegs[R_dest.getIRRegName()]
+            
+            tmp = IRBuilder.select(
+                IRBuilder.icmp_signed('==', IRPreg, llvmir.Constant(IRPreg.type, 1)), # predicate register are stricly i1, even when doing FSEL. FSEL just means that IRValOp1 and IRValOp2 are floats (bytes will be interpreted as float)
+                IRValOp1,
+                IRValOp2,
+                self.opcode.lower()
+            )
+
+            IRBuilder.store(tmp, IRResOp)
+            return
+
         print("\nInstruction: ", self)
         raise NotImplementedError
 
