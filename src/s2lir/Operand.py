@@ -28,6 +28,11 @@ COnSTANT_MEMORY="c[0x0]"
 
 tmp_cnt = 0
 
+
+from pathlib import Path
+import json
+current_dir = Path(__file__).parent
+
 class Operand:
 
     def __init__(self, OriginalContent, ins):
@@ -79,6 +84,12 @@ class Operand:
         
         
         self.llvm_module = None
+        
+        
+        config_path = current_dir / "../.." / "launch" / "config.json"
+    
+        with open(config_path.resolve(), 'r') as file:
+            self.config = json.load(file)
 
     def IR_ValueFromPointer(self, IRBuilder, IRPtrOp, PinterType):
 
@@ -225,7 +236,9 @@ class Operand:
             result = match.group(1)
             self.isConst = True
             self.Value = float(content)
-            self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
+            
+            if not self.config["allow_temp_behavior"]:
+                self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
             # TODO: differentiate between float32 and 64 (doubletype)
             # self.typeDesc = "Float32"
             return
