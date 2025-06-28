@@ -368,7 +368,29 @@ class Instruction:
                 )
             else:
                 raise NotImplementedError
+            
+            IRResOp_Rd = IRRegs[R_dest.getIRRegName()]
+            IRValOp_Rc = R_c.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRValOp_Ra = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRValOp_Rb = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)    
+            
+            # zero extend to be 64 bit
+            if IRValOp_Rc.type == llvmir.IntType(32):
+                IRValOp_Rc_64 = IRBuilder.zext(IRValOp_Rc, llvmir.IntType(64), name="zext")
+            elif IRValOp_Rc.type == llvmir.IntType(64):
+                IRValOp_Rc_64 = IRValOp_Rc
                 
+            if IRValOp_Ra.type == llvmir.IntType(32):
+                IRValOp_Ra_64 = IRBuilder.zext(IRValOp_Ra, llvmir.IntType(64), name="zext")
+            elif IRValOp_Ra.type == llvmir.IntType(64):
+                IRValOp_Ra_64 = IRValOp_Ra
+                
+            if IRValOp_Rb.type == llvmir.IntType(32):
+                IRValOp_Rb_64 = IRBuilder.zext(IRValOp_Rb, llvmir.IntType(64), name="zext")
+            elif IRValOp_Rb.type == llvmir.IntType(64):
+                IRValOp_Rb_64 = IRValOp_Rb
+            
+            
             if settings["dir"] == "L":
                 # left shift
                 if settings["maxshift"] and settings["maxshift"]["signage"] == "U":
@@ -377,29 +399,6 @@ class Instruction:
                         # val = (Rc << 32 | Ra)
                         # Rd = ((Signed) val << shift) & 0x00000000ffffffff
                         
-                        IRResOp_Rd = IRRegs[R_dest.getIRRegName()]
-                        IRValOp_Rc = R_c.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                        IRValOp_Ra = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                        IRValOp_Rb = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                        
-                        # zero extend to be 64 bit
-                        if IRValOp_Rc.type == llvmir.IntType(32):
-                            IRValOp_Rc_64 = IRBuilder.zext(IRValOp_Rc, llvmir.IntType(64), name="zext")
-                        elif IRValOp_Rc.type == llvmir.IntType(64):
-                            IRValOp_Rc_64 = IRValOp_Rc
-                            
-                        if IRValOp_Ra.type == llvmir.IntType(32):
-                            IRValOp_Ra_64 = IRBuilder.zext(IRValOp_Ra, llvmir.IntType(64), name="zext")
-                        elif IRValOp_Ra.type == llvmir.IntType(64):
-                            IRValOp_Ra_64 = IRValOp_Ra
-                            
-                        if IRValOp_Rb.type == llvmir.IntType(32):
-                            IRValOp_Rb_64 = IRBuilder.zext(IRValOp_Rb, llvmir.IntType(64), name="zext")
-                        elif IRValOp_Rb.type == llvmir.IntType(64):
-                            IRValOp_Rb_64 = IRValOp_Rb
-                            
-                        
-                        
                         tmp = IRBuilder.shl(IRValOp_Rc_64, llvmir.Constant(llvmir.IntType(64), 32), "shl")
                         
                         tmp = IRBuilder.or_(tmp, IRValOp_Ra_64, "or")
@@ -407,8 +406,6 @@ class Instruction:
                         tmp = IRBuilder.and_(tmp, llvmir.Constant(llvmir.IntType(64), 0xffffffff), "and")
                         
                         tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
-                        
-                        IRBuilder.store(tmp, IRResOp_Rd)
                     else:
                         raise NotImplementedError
                 else:
@@ -416,10 +413,39 @@ class Instruction:
                 
             elif settings["dir"] == "R":
                 # right shift
-                raise NotImplementedError
+                
+                # Assumptions:
+                # mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .S32) is probably 32 bits
+                # shift = min(Sb, 32)
+                # val = (Rc << 32 | Ra)
+                # Rd = (((Signed) val >> shift)) >> 32
+                # the last 32 right shift is for HI (probably)
+                # not entirely sure about the sign extended behavior
+                
+                tmp = IRBuilder.shl(IRValOp_Rc_64, llvmir.Constant(llvmir.IntType(64), 32), "shl")
+                tmp = IRBuilder.or_(tmp, IRValOp_Ra_64, "or")
+                
+                if settings["maxshift"] and settings["maxshift"]["signage"] == "S":
+                    tmp = IRBuilder.ashr(tmp, IRValOp_Rb_64, "ashr")
+                    # TODO not entirely sure if shld use ashr, need further testing
+                    if settings["xmode"] == "HI":
+                        tmp = IRBuilder.ashr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "ashr")
+                    else:
+                        raise NotImplementedError
+                elif settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                    tmp = IRBuilder.lshr(tmp, IRValOp_Rb_64, "lshr")
+                    if settings["xmode"] == "HI":
+                        tmp = IRBuilder.lshr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "lshr")
+                    else:
+                        raise NotImplementedError
+                else:
+                    raise NotImplementedError
+                
             else:
                 print(f"settings[\"dir\"] = {settings['dir']}")
                 raise InvalidSyntaxException
+            
+            IRBuilder.store(tmp, IRResOp_Rd)
             return
 
         if self.opcode == "FMNMX":
