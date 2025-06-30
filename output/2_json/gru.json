@@ -5,8 +5,8 @@
         ".sectioninfo": "@\"SHI_REGISTERS=64\"",
         ".align": "128",
         ".global": "_Z11gru_forwardPfS_S_S_iii",
-        ".type": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath,@function",
-        ".size": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath,(.L_x_53 - $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)",
+        ".type": "_Z11gru_forwardPfS_S_S_iii,@function",
+        ".size": "_Z11gru_forwardPfS_S_S_iii,(.L_x_53 - _Z11gru_forwardPfS_S_S_iii)",
         ".other": "_Z11gru_forwardPfS_S_S_iii,@\"STO_CUDA_ENTRY STV_DEFAULT\"",
         "Basicblocks": [
             {
@@ -17668,7 +17668,26 @@
                             [],
                             ""
                         ]
-                    },
+                    }
+                ]
+            }
+        ],
+        ".weak": null,
+        "internal_func": false
+    },
+    "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath": {
+        ".function_name": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath",
+        ".section": null,
+        ".sectioninfo": null,
+        ".align": null,
+        ".global": null,
+        ".type": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath,@function",
+        ".size": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath,(.L_x_53 - $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)",
+        ".other": null,
+        "Basicblocks": [
+            {
+                "label": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath",
+                "instructions": [
                     {
                         "addr": "0x4900",
                         "content": [
@@ -18576,6 +18595,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        ".weak": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath",
+        "internal_func": true
     }
 }

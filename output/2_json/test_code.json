@@ -2598,7 +2598,9 @@
                     }
                 ]
             }
-        ]
+        ],
+        ".weak": null,
+        "internal_func": false
     },
     "_Z10max_pool2dPfS_iii": {
         ".function_name": "_Z10max_pool2dPfS_iii",
@@ -4326,7 +4328,9 @@
                     }
                 ]
             }
-        ]
+        ],
+        ".weak": null,
+        "internal_func": false
     },
     "_Z4reluPfS_i": {
         ".function_name": "_Z4reluPfS_i",
@@ -4562,7 +4566,9 @@
                     }
                 ]
             }
-        ]
+        ],
+        ".weak": null,
+        "internal_func": false
     },
     "_Z6conv2dPfS_S_iiii": {
         ".function_name": "_Z6conv2dPfS_S_iiii",
@@ -6259,6 +6265,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        ".weak": null,
+        "internal_func": false
     }
 }
