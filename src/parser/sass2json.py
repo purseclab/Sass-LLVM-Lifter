@@ -52,7 +52,8 @@ def parse_sass(file_content):
                 ".size": None,
                 ".other": None,
                 "Basicblocks": [],
-                "internal_func": None
+                ".weak" : None,
+                "internal_func": False
             }
             functions[func_name] = current_function
             continue
@@ -77,7 +78,8 @@ def parse_sass(file_content):
                     ".size": None,
                     ".other": None,
                     "Basicblocks": [],
-                    "internal_func": None
+                    ".weak" : None,
+                    "internal_func": False
                 }
                 intializing_func = True
             
