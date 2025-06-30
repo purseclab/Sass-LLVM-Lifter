@@ -13,7 +13,9 @@ class Function:
         self.global_name = function_dict[".global"]
         self.type = function_dict[".type"]
         self.size = function_dict[".size"]
+        self.weak = function_dict[".weak"]
         self.other = function_dict[".other"]
+        self.internal_func = function_dict["internal_func"]
         # self.name = name
         self.blocks = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
 
@@ -121,7 +123,7 @@ class Function:
 
 
     # Build the map between basic block and its IR version
-    def BuildBBToIRMap(self, IRFunc):
+    def BuildBBToIRMap(self, IRFunc: llvmir.Function):
         # IRFunc is LLVM Function
         IsEntry = True
         for BB in self.blocks:

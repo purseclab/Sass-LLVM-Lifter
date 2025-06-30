@@ -31,6 +31,7 @@ def parse_ins(ins_content):
 def parse_sass(file_content):
     functions = {}
     current_function = None
+    intializing_func = False
     current_block = None
 
     for line in file_content.splitlines():
@@ -38,6 +39,7 @@ def parse_sass(file_content):
         func_start_pattern = re.compile(r'//-+\s+\.text\.(\w+)\s+-+')
 
         if func_start_match := func_start_pattern.match(line):
+            intializing_func = True
             func_name = func_start_match.group(1)
             dprint(func_name)
             current_function = {
@@ -49,16 +51,36 @@ def parse_sass(file_content):
                 ".type": None,
                 ".size": None,
                 ".other": None,
-                "Basicblocks": []
+                "Basicblocks": [],
+                "internal_func": None
             }
             functions[func_name] = current_function
             continue
             # is_parsing_function = True
         
         # Match the function info with .
-        func_info_pattern = re.compile(r'\s+\.(section|sectioninfo|align|global|type|size|other)\s+(.*)')
+        func_info_pattern = re.compile(r'\s+\.(section|sectioninfo|align|global|type|size|weak|other)\s+(.*)')
         func_info_match = func_info_pattern.match(line)
         if func_info_match:
+            if not intializing_func and current_function is None:
+                raise InvalidSyntaxException
+            
+            if not intializing_func:
+                # probably an internal function
+                current_function = {
+                    ".function_name": None,
+                    ".section": None,
+                    ".sectioninfo": None,
+                    ".align": None,
+                    ".global": None,
+                    ".type": None,
+                    ".size": None,
+                    ".other": None,
+                    "Basicblocks": [],
+                    "internal_func": None
+                }
+                intializing_func = True
+            
             key = func_info_match.group(1)
             value = func_info_match.group(2)
             dprint(key, " ", value)
@@ -76,6 +98,8 @@ def parse_sass(file_content):
                 current_function[".size"] = value
             elif key == "other":
                 current_function[".other"] = value
+            elif key == "weak":
+                current_function[".weak"] = value
             continue
         
         # Match Funcanme
@@ -86,8 +110,24 @@ def parse_sass(file_content):
             # if current_function[".function_name"] is None: # Match the first label as function name
             # assert block_label == functions[func_name]
             current_function[".function_name"] = func_label
+            intializing_func = False
             continue
-
+        
+        # Match Internal func_name
+        internal_func_label_pattern = re.compile(r'^(\$__internal[^:]+):$')
+        internal_func_label_match = internal_func_label_pattern.match(line)
+        if internal_func_label_match and intializing_func:
+            assert current_function[".function_name"] is None
+            func_label = func_label_match.group(1)
+            # if current_function[".function_name"] is None: # Match the first label as function name
+            # assert block_label == functions[func_name]
+            current_function[".function_name"] = func_label
+            current_function["internal_func"] = True
+            intializing_func = False
+            continue
+        
+        assert not intializing_func
+        
         # Match Labels
         black_label_pattern = re.compile(r'^(\.[^:]+):$')
         block_label_match = black_label_pattern.match(line)
