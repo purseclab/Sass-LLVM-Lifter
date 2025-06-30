@@ -128,6 +128,15 @@ def parse_sass(file_content):
             current_function["internal_func"] = True
             functions[current_function[".function_name"]] = current_function
             intializing_func = False
+            
+            # internal function doesnt seem to have a duplicate label prepended with .text at the start, so we need to set the block here
+            
+            current_block = {
+                "label": func_label,
+                "instructions": []
+            }
+            current_function["Basicblocks"].append(current_block)
+            
             continue
         
         assert not intializing_func
@@ -138,6 +147,9 @@ def parse_sass(file_content):
         black_label_pattern = re.compile(r'^(\.[^:]+):$')
         block_label_match = black_label_pattern.match(line)
         if block_label_match:
+            if current_function["internal_func"]:
+                assert len(current_function["Basicblocks"]) > 0 # since we have already manually set up the block above
+                
             block_label = block_label_match.group(1)
             dprint(block_label)
             current_block = {
