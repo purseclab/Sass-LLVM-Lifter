@@ -109,11 +109,12 @@ def parse_sass(file_content):
         func_label_match = func_label_pattern.match(line)
         if func_label_match and current_function[".function_name"] is None:
             func_label = func_label_match.group(1)
-            # if current_function[".function_name"] is None: # Match the first label as function name
-            # assert block_label == functions[func_name]
-            current_function[".function_name"] = func_label
-            intializing_func = False
-            continue
+            if "__internal" not in func_label:
+                # if current_function[".function_name"] is None: # Match the first label as function name
+                # assert block_label == functions[func_name]
+                current_function[".function_name"] = func_label
+                intializing_func = False
+                continue
         
         # Match Internal func_name
         internal_func_label_pattern = re.compile(r'^(\$__internal[^:]+):$')
@@ -125,10 +126,13 @@ def parse_sass(file_content):
             # assert block_label == functions[func_name]
             current_function[".function_name"] = func_label
             current_function["internal_func"] = True
+            functions[current_function[".function_name"]] = current_function
             intializing_func = False
             continue
         
         assert not intializing_func
+        # note that .headerflags and .elftype will fall through the assertion above and thats fine, doesn't affect
+        
         
         # Match Labels
         black_label_pattern = re.compile(r'^(\.[^:]+):$')
