@@ -4,6 +4,189 @@ target datalayout = ""
 
 declare i32 @"thread_idx"()
 
+define i32 @"custom_lop3"(i32 %".1", i32 %".2", i32 %".3", i32 %".4")
+{
+entry:
+  switch i32 %".1", label %"default" [i32 128, label %"block_0x80" i32 0, label %"block_0x0" i32 64, label %"block_0x40" i32 254, label %"block_0xfe" i32 255, label %"block_0xff" i32 26, label %"block_0x1a" i32 51, label %"block_0x33" i32 192, label %"block_0xc0" i32 8, label %"block_0x8" i32 60, label %"block_0x3c" i32 15, label %"block_0xf" i32 85, label %"block_0x55" i32 252, label %"block_0xfc" i32 248, label %"block_0xf8"]
+exit:
+  %"tmp" = phi  i32 [4294967295, %"default"], [%".8", %"block_0x80"], [0, %"block_0x0"], [%".13", %"block_0x40"], [%".16", %"block_0xfe"], [1, %"block_0xff"], [%".21", %"block_0x1a"], [%".23", %"block_0x33"], [%".25", %"block_0xc0"], [%".29", %"block_0x8"], [%".31", %"block_0x3c"], [%".33", %"block_0xf"], [%".35", %"block_0x55"], [%".37", %"block_0xfc"], [%".41", %"block_0xf8"]
+  ret i32 %"tmp"
+default:
+  br label %"exit"
+block_0x80:
+  %".7" = and i32 %".2", %".3"
+  %".8" = or i32 %".7", %".4"
+  br label %"exit"
+block_0x0:
+  br label %"exit"
+block_0x40:
+  %".11" = and i32 %".2", %".3"
+  %".12" = xor i32 %".4", -1
+  %".13" = and i32 %".11", %".12"
+  br label %"exit"
+block_0xfe:
+  %".15" = or i32 %".2", %".3"
+  %".16" = or i32 %".15", %".4"
+  br label %"exit"
+block_0xff:
+  br label %"exit"
+block_0x1a:
+  %".19" = and i32 %".2", %".3"
+  %".20" = or i32 %".19", %".4"
+  %".21" = xor i32 %".20", %".2"
+  br label %"exit"
+block_0x33:
+  %".23" = xor i32 %".3", -1
+  br label %"exit"
+block_0xc0:
+  %".25" = and i32 %".2", %".3"
+  br label %"exit"
+block_0x8:
+  %".27" = xor i32 %".2", -1
+  %".28" = and i32 %".27", %".3"
+  %".29" = and i32 %".28", %".4"
+  br label %"exit"
+block_0x3c:
+  %".31" = xor i32 %".2", %".3"
+  br label %"exit"
+block_0xf:
+  %".33" = xor i32 %".2", -1
+  br label %"exit"
+block_0x55:
+  %".35" = xor i32 %".4", -1
+  br label %"exit"
+block_0xfc:
+  %".37" = or i32 %".2", %".3"
+  br label %"exit"
+block_0xf8:
+  %".39" = or i32 %".2", %".3"
+  %".40" = or i32 %".2", %".4"
+  %".41" = and i32 %".39", %".40"
+  br label %"exit"
+}
+
+define i32 @"custom_plop3"(i32 %".1", i32 %".2", i32 %".3", i32 %".4")
+{
+entry:
+  switch i32 %".1", label %"default" [i32 128, label %"block_0x80" i32 0, label %"block_0x0" i32 64, label %"block_0x40" i32 254, label %"block_0xfe" i32 255, label %"block_0xff" i32 26, label %"block_0x1a" i32 51, label %"block_0x33" i32 192, label %"block_0xc0" i32 8, label %"block_0x8" i32 60, label %"block_0x3c" i32 15, label %"block_0xf" i32 85, label %"block_0x55" i32 252, label %"block_0xfc" i32 248, label %"block_0xf8"]
+exit:
+  %"tmp" = phi  i32 [4294967295, %"default"], [%".8", %"block_0x80"], [0, %"block_0x0"], [%".13", %"block_0x40"], [%".16", %"block_0xfe"], [1, %"block_0xff"], [%".21", %"block_0x1a"], [%".23", %"block_0x33"], [%".25", %"block_0xc0"], [%".29", %"block_0x8"], [%".31", %"block_0x3c"], [%".33", %"block_0xf"], [%".35", %"block_0x55"], [%".37", %"block_0xfc"], [%".41", %"block_0xf8"]
+  ret i32 %"tmp"
+default:
+  br label %"exit"
+block_0x80:
+  %".7" = and i32 %".2", %".3"
+  %".8" = or i32 %".7", %".4"
+  br label %"exit"
+block_0x0:
+  br label %"exit"
+block_0x40:
+  %".11" = and i32 %".2", %".3"
+  %".12" = xor i32 %".4", 1
+  %".13" = and i32 %".11", %".12"
+  br label %"exit"
+block_0xfe:
+  %".15" = or i32 %".2", %".3"
+  %".16" = or i32 %".15", %".4"
+  br label %"exit"
+block_0xff:
+  br label %"exit"
+block_0x1a:
+  %".19" = and i32 %".2", %".3"
+  %".20" = or i32 %".19", %".4"
+  %".21" = xor i32 %".20", %".2"
+  br label %"exit"
+block_0x33:
+  %".23" = xor i32 %".3", 1
+  br label %"exit"
+block_0xc0:
+  %".25" = and i32 %".2", %".3"
+  br label %"exit"
+block_0x8:
+  %".27" = xor i32 %".2", 1
+  %".28" = and i32 %".27", %".3"
+  %".29" = and i32 %".28", %".4"
+  br label %"exit"
+block_0x3c:
+  %".31" = xor i32 %".2", %".3"
+  br label %"exit"
+block_0xf:
+  %".33" = xor i32 %".2", 1
+  br label %"exit"
+block_0x55:
+  %".35" = xor i32 %".4", 1
+  br label %"exit"
+block_0xfc:
+  %".37" = or i32 %".2", %".3"
+  br label %"exit"
+block_0xf8:
+  %".39" = or i32 %".2", %".3"
+  %".40" = or i32 %".2", %".4"
+  %".41" = and i32 %".39", %".40"
+  br label %"exit"
+}
+
+define i32 @"custom_ulop3"(i32 %".1", i32 %".2", i32 %".3", i32 %".4")
+{
+entry:
+  switch i32 %".1", label %"default" [i32 128, label %"block_0x80" i32 0, label %"block_0x0" i32 64, label %"block_0x40" i32 254, label %"block_0xfe" i32 255, label %"block_0xff" i32 26, label %"block_0x1a" i32 51, label %"block_0x33" i32 192, label %"block_0xc0" i32 8, label %"block_0x8" i32 60, label %"block_0x3c" i32 15, label %"block_0xf" i32 85, label %"block_0x55" i32 252, label %"block_0xfc" i32 248, label %"block_0xf8"]
+exit:
+  %"tmp" = phi  i32 [4294967295, %"default"], [%".8", %"block_0x80"], [0, %"block_0x0"], [%".13", %"block_0x40"], [%".16", %"block_0xfe"], [1, %"block_0xff"], [%".21", %"block_0x1a"], [%".23", %"block_0x33"], [%".25", %"block_0xc0"], [%".29", %"block_0x8"], [%".31", %"block_0x3c"], [%".33", %"block_0xf"], [%".35", %"block_0x55"], [%".37", %"block_0xfc"], [%".41", %"block_0xf8"]
+  ret i32 %"tmp"
+default:
+  br label %"exit"
+block_0x80:
+  %".7" = and i32 %".2", %".3"
+  %".8" = or i32 %".7", %".4"
+  br label %"exit"
+block_0x0:
+  br label %"exit"
+block_0x40:
+  %".11" = and i32 %".2", %".3"
+  %".12" = xor i32 %".4", -1
+  %".13" = and i32 %".11", %".12"
+  br label %"exit"
+block_0xfe:
+  %".15" = or i32 %".2", %".3"
+  %".16" = or i32 %".15", %".4"
+  br label %"exit"
+block_0xff:
+  br label %"exit"
+block_0x1a:
+  %".19" = and i32 %".2", %".3"
+  %".20" = or i32 %".19", %".4"
+  %".21" = xor i32 %".20", %".2"
+  br label %"exit"
+block_0x33:
+  %".23" = xor i32 %".3", -1
+  br label %"exit"
+block_0xc0:
+  %".25" = and i32 %".2", %".3"
+  br label %"exit"
+block_0x8:
+  %".27" = xor i32 %".2", -1
+  %".28" = and i32 %".27", %".3"
+  %".29" = and i32 %".28", %".4"
+  br label %"exit"
+block_0x3c:
+  %".31" = xor i32 %".2", %".3"
+  br label %"exit"
+block_0xf:
+  %".33" = xor i32 %".2", -1
+  br label %"exit"
+block_0x55:
+  %".35" = xor i32 %".4", -1
+  br label %"exit"
+block_0xfc:
+  %".37" = or i32 %".2", %".3"
+  br label %"exit"
+block_0xf8:
+  %".39" = or i32 %".2", %".3"
+  %".40" = or i32 %".2", %".4"
+  %".41" = and i32 %".39", %".40"
+  br label %"exit"
+}
+
 define void @"_Z8fc_layerPfS_S_S_ii"(i32 %"Arg_0", i32 %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6", i32 %"Arg_7")
 {
 Entry_.text._Z8fc_layerPfS_S_S_ii:
