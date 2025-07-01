@@ -282,15 +282,25 @@ class Instruction:
             IRPreg1Val = IRBuilder.load(IRPReg1)
             # IRPreg2Val = IRBuilder.load(IRPReg2)
 
-            cmp_op = self.GetCmpOp(self.modifiers[0])
+            if "U" in self.modifiers[0]:
+                assert self.modifiers[0][-1] == "U"
+                assert self.opcode == "FSETP"
+            
+            cmp_op = self.GetCmpOp(self.modifiers[0].replace("U", ""))
             if cmp_op is None:
                 raise InvalidSyntaxException
 
             if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
                 tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
             elif self.opcode == 'FSETP':
-                # TODO fcmp_ordered vs unordere
-                tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "cmp")
+                if "U" in self.modifiers[0]:
+                    # https://llvm.org/docs/LangRef.html#fcmp-instruction
+                    # une, ult, etc
+                    # meaning of unordered vs ordered: https://docs.factorcode.org/content/article-math.floats.compare.html
+                    # TODO: determine the true behavior when one of the operand is NaN
+                    tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
+                else:
+                    tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
             else:
                 raise InvalidSyntaxException
 
