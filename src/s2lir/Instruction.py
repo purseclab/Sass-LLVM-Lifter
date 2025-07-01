@@ -799,6 +799,9 @@ class Instruction:
                 tmp = IRBuilder.xor(IRValOp3, llvmir.Constant(llvmir.IntType(1), 1)) # ~C
             elif immLut.Value == 0xFC: # A | B
                 tmp = IRBuilder.or_(IRValOp1, IRValOp2)
+            elif immLut.Value == 0xE0: # A & (B|C)
+                tmp = IRBuilder.or_(IRValOp2, IRValOp3)
+                tmp = IRBuilder.and_(tmp, IRValOp1)
             else:
                 raise NotImplementedError
             return
