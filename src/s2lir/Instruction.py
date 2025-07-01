@@ -281,19 +281,45 @@ class Instruction:
 
             IRPreg1Val = IRBuilder.load(IRPReg1)
             # IRPreg2Val = IRBuilder.load(IRPReg2)
-
-            if "U" in self.modifiers[0]:
-                assert self.modifiers[0][-1] == "U"
-                assert self.opcode == "FSETP"
             
-            cmp_op = self.GetCmpOp(self.modifiers[0].replace("U", ""))
+            
+            
+            settings = {
+                "ordered": True,
+                "cmp_op": None,
+                "ftz": False,
+                "boolean_op": None
+            }
+            
+            for mod in self.modifiers:
+                if mod in ("AND", "OR"):
+                    settings["boolean_op"] = mod
+                    continue
+                
+                pattern = r"^((EQ|NE|LT|LE|GT|GE))(U?)$"
+                match = re.match(pattern, mod)
+                if match:
+                    settings["cmp_op"] = match.group(1)
+                    if match.group(2) is not None:
+                        assert match.group(2) == "U"
+                        assert self.opcode == "FSETP"
+                        settings["ordered"] = False
+                    continue
+                
+                if mod == "FTZ":
+                    settings["ftz"] = True # TODO handle this. Probably means subnormal/very small numbers are just zeroed out
+                    continue
+                
+                raise InvalidSyntaxException
+            
+            cmp_op = self.GetCmpOp(settings["cmp_op"])
             if cmp_op is None:
                 raise InvalidSyntaxException
 
             if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
                 tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
             elif self.opcode == 'FSETP':
-                if "U" in self.modifiers[0]:
+                if not settings["ordered"]:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
                     # une, ult, etc
                     # meaning of unordered vs ordered: https://docs.factorcode.org/content/article-math.floats.compare.html
@@ -304,9 +330,9 @@ class Instruction:
             else:
                 raise InvalidSyntaxException
 
-            if self.modifiers[-1] == "AND":
+            if settings["boolean_op"] == "AND":
                 tmp = IRBuilder.and_(tmp, IRPreg1Val)
-            elif self.modifiers[-1] == "OR":
+            elif settings["boolean_op"] == "OR":
                 tmp = IRBuilder.or_(tmp, IRPreg1Val)
             else:
                 raise NotImplementedError
