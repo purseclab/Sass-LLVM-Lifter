@@ -26,6 +26,14 @@ class Function:
         # self.labels = [BB.label for BB in self.blocks]
         # BB.label such as .L_x_3; creates a mapping to the block itself
         self.labels2block = {BB.label: BB for BB in self.blocks}
+        
+        # SASS addr (such as 0x47f0) to the first LLVM instruction inside a BB that implements that specific SASS instruction (there's usually more than one line of LLVM instruction for a given SASS instruction)
+        # dont confuse Instruction.py with LLVM instruction (generated via IRBuilder)
+        # IGNORE ABOVE
+        
+        # SASS addr (such as 0x47f0) to Instruction Object
+        # TODO handle cases where Instruction Object is redefined
+        self.sassAddr2Inst = {}
 
         ################################################################
         self.ArgMap = {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}

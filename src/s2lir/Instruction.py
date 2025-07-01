@@ -153,6 +153,10 @@ class Instruction:
             self.llvm_module = self.BB.func.module.llvm_module
             assert self.llvm_module is not None
         
+        # BB already undergo splitting inside Function.py before lifting process
+        
+        self.BB.func.sassAddr2Inst[self.addr] = self
+        
         # generate_ir_comment(IRBuilder, self.dump_text())
         
         if self.opcode == "EXIT":
@@ -1054,7 +1058,19 @@ class Instruction:
             return
 
         if self.opcode == "RET":
-            pass
+            # TODO Implement this later
+            # TODO right now we're assuming that it's only being used to return to the address below a CALL instruction
+            # therefore, the instruction we're returning to would be the first instruction in a BB
+            # assuming that the register is storing the SASS addr to return to
+            assert len(self.operands) == 2
+            assert self.operands[0].isReg
+            # but i cant do branch to the BB... because the RET is a register so need to be read dynamically and i cant set a branch rn at lifter stage
+            # we might need to implement a giant table
+            
+            # SOLUTION: we'll have to propagate the constant return address value down to the ret instruction so that we can do unconditional branch to the basic block, the address shld be at the beginning of a basic block
+            return
+            
+            print(self)
         
         print("\nInstruction: ", self)
         raise NotImplementedError
