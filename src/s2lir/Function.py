@@ -151,7 +151,16 @@ class Function:
             ArgTypes.append(Arg.getIRType())
 
         FuncTy = llvmir.FunctionType(llvmir.VoidType(), ArgTypes)
-        IRFunc = llvmir.Function(llvm_module, FuncTy, self.name)
+        
+        
+        existing_fn = llvm_module.globals.get(self.name, None)
+        if existing_fn is not None:
+            # This fixes llvmlite.ir._utils.DuplicatedNameError: $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath
+            # TODO but we still need to investigate whether it's right to use llvmir.Function in the CALL instruction's parsing, or if there's other ways to maybe declare the function (for linking later on)
+            # test_intrinsics.py does show that llvmir.Function appears to be the correct way
+            IRFunc = existing_fn
+        else:
+            IRFunc = llvmir.Function(llvm_module, FuncTy, self.name)
 
         # Set name for each argument
         for i in range(len(ArgTypes)):
