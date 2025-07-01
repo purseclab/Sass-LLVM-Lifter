@@ -17,6 +17,9 @@ class BasicBlock:
         # To parent function
         self.func = func
 
+    def __str__(self):
+        return f"BasicBlock {self.label}\n"+ '\n'.join([str(i) for i in self.instructions])
+    
     def parse(self):
         for inst in self.instructions:
             inst.parse()

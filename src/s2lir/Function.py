@@ -13,7 +13,9 @@ class Function:
         self.global_name = function_dict[".global"]
         self.type = function_dict[".type"]
         self.size = function_dict[".size"]
+        self.weak = function_dict[".weak"]
         self.other = function_dict[".other"]
+        self.internal_func = function_dict["internal_func"]
         # self.name = name
         self.blocks = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
 
@@ -24,6 +26,14 @@ class Function:
         # self.labels = [BB.label for BB in self.blocks]
         # BB.label such as .L_x_3; creates a mapping to the block itself
         self.labels2block = {BB.label: BB for BB in self.blocks}
+        
+        # SASS addr (such as 0x47f0) to the first LLVM instruction inside a BB that implements that specific SASS instruction (there's usually more than one line of LLVM instruction for a given SASS instruction)
+        # dont confuse Instruction.py with LLVM instruction (generated via IRBuilder)
+        # IGNORE ABOVE
+        
+        # SASS addr (such as 0x47f0) to Instruction Object
+        # TODO handle cases where Instruction Object is redefined
+        self.sassAddr2Inst = {}
 
         ################################################################
         self.ArgMap = {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
@@ -121,7 +131,7 @@ class Function:
 
 
     # Build the map between basic block and its IR version
-    def BuildBBToIRMap(self, IRFunc):
+    def BuildBBToIRMap(self, IRFunc: llvmir.Function):
         # IRFunc is LLVM Function
         IsEntry = True
         for BB in self.blocks:
@@ -149,7 +159,16 @@ class Function:
             ArgTypes.append(Arg.getIRType())
 
         FuncTy = llvmir.FunctionType(llvmir.VoidType(), ArgTypes)
-        IRFunc = llvmir.Function(llvm_module, FuncTy, self.name)
+        
+        
+        existing_fn = llvm_module.globals.get(self.name, None)
+        if existing_fn is not None:
+            # This fixes llvmlite.ir._utils.DuplicatedNameError: $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath
+            # TODO but we still need to investigate whether it's right to use llvmir.Function in the CALL instruction's parsing, or if there's other ways to maybe declare the function (for linking later on)
+            # test_intrinsics.py does show that llvmir.Function appears to be the correct way
+            IRFunc = existing_fn
+        else:
+            IRFunc = llvmir.Function(llvm_module, FuncTy, self.name)
 
         # Set name for each argument
         for i in range(len(ArgTypes)):

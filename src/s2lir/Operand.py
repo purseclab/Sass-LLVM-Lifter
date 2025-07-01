@@ -1,6 +1,7 @@
 from s2lir import *
 from utils import *
 from llvmlite import ir as llvmir
+from s2lir.intrinsics import *
 import re
 
 # Append R0 to R255
@@ -24,6 +25,13 @@ SM_75_Predicate_Reg_Set.append(f"UPT")
 SM_75_SepcialReg = ["SR_TID.X", "SR_TID.Y", "SR_TID.Z", "SR_CTAID.X", "SR_CTAID.Y", "SR_CTAID.Z"]
 
 COnSTANT_MEMORY="c[0x0]"
+
+tmp_cnt = 0
+
+
+from pathlib import Path
+import json
+current_dir = Path(__file__).parent
 
 class Operand:
 
@@ -73,6 +81,15 @@ class Operand:
 
         # Father Pointer
         self.ins = ins
+        
+        
+        self.llvm_module = None
+        
+        
+        config_path = current_dir / "../.." / "launch" / "config.json"
+    
+        with open(config_path.resolve(), 'r') as file:
+            self.config = json.load(file)
 
     def IR_ValueFromPointer(self, IRBuilder, IRPtrOp, PinterType):
 
@@ -109,6 +126,10 @@ class Operand:
         IRBuilder.store(IRVal, PtrAddr)
     
     def IR_FetchValue(self, IRBuilder, IRRegs, IRArgs):
+        if self.llvm_module is None:
+            self.llvm_module = self.ins.llvm_module
+            assert self.llvm_module is not None
+        
         # TODO: assume that normal operand other than LDG and STG is not pointers. Check it later.
         if self.isReg:
             if self.reg == "RZ":
@@ -119,7 +140,13 @@ class Operand:
             IRVal = IRBuilder.load(IRVal)
             
             if self.reg_abs:
-                raise NotImplementedError
+                if isinstance(self.getIRType(), llvmir.FloatType):
+                    IRVal = IRBuilder.call(llvm_fabs(self.llvm_module), [IRVal], name="llvm_fabs_result")
+                elif isinstance(self.getIRType(), llvmir.IntType):
+                    # TODO setting 2nd parameter to be false arbitrarily, only affects result if INT_MIN is passed
+                    IRVal = IRBuilder.call(llvm_abs(self.llvm_module), [IRVal, llvmir.Constant(llvmir.IntType(1), 0)], name="llvm_abs_result")
+                else:
+                    raise InvalidSyntaxException
             if self.reg_neg:
                 IRVal = IRBuilder.neg(IRVal)
 
@@ -148,6 +175,7 @@ class Operand:
         elif self.isConst:
             return llvmir.Constant(self.getIRType(), self.Value)
 
+        print(f"Unknown Operand {self}")
         raise NotImplementedError
 
     def parse(self):
@@ -201,6 +229,29 @@ class Operand:
                 self.Value = int(content, 16)
             return
 
+        # Float Constant, 0.4 or -0.4
+        pattern = r"^(-?\d+\.\d+(e[-+]\d+)?)$"
+        match = re.match(pattern, content.strip())
+        if match:
+            result = match.group(1)
+            self.isConst = True
+            self.Value = float(content)
+            
+            if not self.config["allow_temp_behavior"]:
+                self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
+            # TODO: differentiate between float32 and 64 (doubletype)
+            # self.typeDesc = "Float32"
+            return
+        
+        # Decimal Constant, 123 or -123
+        pattern = r"^(-?\d+)$"
+        match = re.match(pattern, content.strip())
+        if match:
+            result = match.group(1)
+            self.isConst = True
+            self.Value = int(content)
+            return
+        
         # Special Registers
         if content in SM_75_SepcialReg:
             self.SReg = True

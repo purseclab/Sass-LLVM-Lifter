@@ -6,5 +6,6 @@
     "cu2sass": {
         "cuda_file": "gru.cu",
         "select_cubin": "gru.2.sm_75.cubin"
-    }
+    },
+    "allow_temp_behavior": true
 }

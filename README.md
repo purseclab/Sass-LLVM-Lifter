@@ -4,6 +4,16 @@
 
 ## Usage
 
+### Setting up Docker for the first time
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+### Running lifter pipeline
+
 Edit `launch/config.json` to configure the path to `.cu` file, names of intermediate files, and the output file name. For example, rename all `gru` into the new name you want:
 ```json
 {

@@ -1,0 +1,53 @@
+Script started on 2025-06-27 22:09:42-04:00 [TERM="xterm-256color" TTY="/dev/pts/7" COLUMNS="175" LINES="48"]
+NVIDIA (R) CUDA Debugger
+11.5 release
+Portions Copyright (C) 2007-2021 NVIDIA Corporation
+[35;1m[35;1mGNU gdb [m[35;1m(GDB) [m[35;1m10.1[m[35;1m
+[m[mCopyright (C) 2020 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from [32mgru[m...
+Breakpoint 1 at [34m0xb7fa[m: file [32minput/gru.cu[m, line 27.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7ffff4bff000 (LWP 732973)]
+[New Thread 0x7fffef3ff000 (LWP 732974)]
+[Detaching after fork from child process 732975]
+[New Thread 0x7fffed9dd000 (LWP 732985)]
+[New Thread 0x7fffed1dc000 (LWP 732986)]
+Breakpoint 2 at [34m0x7fffdb26d830[m
+Breakpoint 3 at [34m0x7fffdb26feb0[m
+Set 2 breakpoints for '\sFSEL' instructions.
+Sanity check PASSED: Found '\sFSEL' at offset 18096[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "gru" hit Breakpoint 3, [34m0x00007fffdb26feb0[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26feb0[m <[33m_Z11gru_forwardPfS_S_S_iii[m+18096>:	FSEL R11, R11, 1, !P0 
+$1 = 1058464352
+$2 = 0
+[34m0x00007fffdb26fec0[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+$3 = 1058464352
+$4 = 0
+[Switching focus to CUDA kernel 0, grid 1, block (0,0,0), thread (33,0,0), device 0, sm 0, warp 1, lane 1]
+
+Thread 1 "gru" hit Breakpoint 3, [34m0x00007fffdb26feb0[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+=> [34m0x7fffdb26feb0[m <[33m_Z11gru_forwardPfS_S_S_iii[m+18096>:	FSEL R11, R11, 1, !P0 
+$5 = 1063101156
+$6 = 1
+[34m0x00007fffdb26fec0[m in [33mgru_forward(float*, float*, float*, float*, int, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+$7 = 1065353216
+$8 = 1
+warning: Breakpoint 2 is disabled because device address may change on the next run.
+warning: Breakpoint 3 is disabled because device address may change on the next run.
+
+Script done on 2025-06-27 22:09:43-04:00 [COMMAND_EXIT_CODE="0"]

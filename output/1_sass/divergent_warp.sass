@@ -1,0 +1,51 @@
+	.headerflags	@"EF_CUDA_TEXMODE_UNIFIED EF_CUDA_64BIT_ADDRESS EF_CUDA_SM75 EF_CUDA_VIRTUAL_SM(EF_CUDA_SM75)"
+	.elftype	@"ET_EXEC"
+
+
+//--------------------- .text._Z20warpDivergenceKernelPii --------------------------
+	.section	.text._Z20warpDivergenceKernelPii,"ax",@progbits
+	.sectioninfo	@"SHI_REGISTERS=10"
+	.align	128
+        .global         _Z20warpDivergenceKernelPii
+        .type           _Z20warpDivergenceKernelPii,@function
+        .size           _Z20warpDivergenceKernelPii,(.L_x_4 - _Z20warpDivergenceKernelPii)
+        .other          _Z20warpDivergenceKernelPii,@"STO_CUDA_ENTRY STV_DEFAULT"
+_Z20warpDivergenceKernelPii:
+.text._Z20warpDivergenceKernelPii:
+        /*0000*/                   IMAD.MOV.U32 R1, RZ, RZ, c[0x0][0x28] ;
+        /*0010*/                   S2R R2, SR_CTAID.X ;
+        /*0020*/                   MOV R5, 0x4 ;
+        /*0030*/                   S2R R3, SR_TID.X ;
+        /*0040*/                   IMAD R2, R2, c[0x0][0x0], R3 ;
+        /*0050*/                   IMAD.WIDE R2, R2, R5, c[0x0][0x160] ;
+        /*0060*/                   LDG.E.SYS R5, [R2] ;
+        /*0070*/                   BMOV.32.CLEAR RZ, B0 ;
+        /*0080*/                   BSSY B0, `(.L_x_0) ;
+        /*0090*/                   ISETP.GE.AND P0, PT, R5, c[0x0][0x168], PT ;
+        /*00a0*/              @!P0 BRA `(.L_x_1) ;
+        /*00b0*/                   IMAD.HI R0, R5, 0x55555556, RZ ;
+        /*00c0*/                   LEA.HI R4, R0, R0, RZ, 0x1 ;
+        /*00d0*/                   IMAD R4, R4, -0x3, R5 ;
+        /*00e0*/                   ISETP.NE.AND P0, PT, R4, RZ, PT ;
+        /*00f0*/               @P0 IMAD.HI R7, R5, 0x51eb851f, RZ ;
+        /*0100*/               @P0 SHF.R.U32.HI R0, RZ, 0x1f, R7 ;
+        /*0110*/               @P0 LEA.HI.SX32 R7, R7, R0, 0x1d ;
+        /*0120*/              @!P0 IMAD R7, R5, 0x1a, RZ ;
+        /*0130*/                   BRA `(.L_x_2) ;
+.L_x_1:
+        /*0140*/                   LOP3.LUT R0, R5, 0x1, RZ, 0xc0, !PT ;
+        /*0150*/                   ISETP.NE.U32.AND P0, PT, R0, 0x1, PT ;
+        /*0160*/              @!P0 IMAD.MOV.U32 R4, RZ, RZ, RZ ;
+        /*0170*/              @!P0 IMAD.HI R7, R5, -0x15f15f15, R4 ;
+        /*0180*/              @!P0 SHF.R.U32.HI R0, RZ, 0x1f, R7 ;
+        /*0190*/              @!P0 LEA.HI.SX32 R7, R7, R0, 0x1b ;
+        /*01a0*/               @P0 IMAD R7, R5, 0x1c, RZ ;
+.L_x_2:
+        /*01b0*/                   BSYNC B0 ;
+.L_x_0:
+        /*01c0*/                   STG.E.SYS [R2], R7 ;
+        /*01d0*/                   EXIT ;
+.L_x_3:
+        /*01e0*/                   BRA `(.L_x_3);
+        /*01f0*/                   NOP;
+.L_x_4:
