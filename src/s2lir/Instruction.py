@@ -754,6 +754,9 @@ class Instruction:
                     print(self)
                     raise NotImplementedError
             
+            if self.config["allow_temp_behavior"]:
+                if str(IRRegs[ResOp.getIRRegName()].type) == "i1*":
+                    tmp = IRBuilder.trunc(tmp, llvmir.IntType(1), "trunc1")
             
             IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
             return
