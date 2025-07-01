@@ -2,6 +2,7 @@
 import parser.sass2json as s2j
 import parser.json2ir as j2ir
 from s2lir import Function
+from s2lir import custom_func
 from utils import *
 from llvmlite import ir as llvmir
 from passes import TypeAnalysis, CreateCFG
@@ -45,6 +46,9 @@ class LLVMModule:
         self.llvm_module = llvm_module
         # e.g. create thread idx function
         self.addPseudoFunctions(llvm_module)
+        
+        # create custom functions (that might be referenced by the lifter)
+        custom_func.lop3(llvm_module)
         
         for func in self.functions:
             func.lift(llvm_module)

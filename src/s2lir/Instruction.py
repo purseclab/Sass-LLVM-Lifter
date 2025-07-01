@@ -690,8 +690,6 @@ class Instruction:
             ValOp2 = self.operands[2]
             ValOp3 = self.operands[3]
             immLut = self.operands[4]
-            assert immLut.isConst
-
             # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
             PReg = self.operands[5]
 
@@ -700,49 +698,61 @@ class Instruction:
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             # IRImmLut = llvmir.Constant(llvmir.IntType(32), immLut.Value)
             IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-
-            # https://zhuanlan.zhihu.com/p/712356884
-            if immLut.Value == 0x80: # A & B & C
-                tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-                tmp = IRBuilder.or_(tmp, IRValOp3)
-            elif immLut.Value == 0x0: # 0
-                tmp = llvmir.Constant(llvmir.IntType(32), 0)
-            elif immLut.Value == 0x40: # A & B & ~C
-                tmp = IRBuilder.and_(IRValOp1, IRValOp2)
-                tmp2 = IRBuilder.xor(IRValOp3, llvmir.Constant(llvmir.IntType(32), -1)) # ~C
-                tmp = IRBuilder.and_(tmp, tmp2)
-            elif immLut.Value == 0xFE: # A | B | C
-                tmp = IRBuilder.or_(IRValOp1, IRValOp2)
-                tmp = IRBuilder.or_(tmp, IRValOp3)
-            elif immLut.Value == 0xFF: # 1
-                tmp = llvmir.Constant(llvmir.IntType(32), 1)
-            elif immLut.Value == 0x1A: # (A & B | C ) ^ A
-                tmp = IRBuilder.and_(IRValOp1, IRValOp2)
-                tmp = IRBuilder.or_(tmp, IRValOp3)
-                tmp = IRBuilder.xor(tmp,IRValOp1)
-            elif immLut.Value == 0x33: # ~B
-                tmp = IRBuilder.xor(IRValOp2, llvmir.Constant(llvmir.IntType(32), -1)) # ~B
-            elif immLut.Value == 0xC0:  # A & B
-                tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-            elif immLut.Value == 0x8: # (~A) & B & C
-                tmp = IRBuilder.xor(IRValOp1, llvmir.Constant(llvmir.IntType(32), -1)) # ~A
-                tmp = IRBuilder.and_(tmp, IRValOp2)
-                tmp = IRBuilder.and_(tmp, IRValOp3)
-            elif immLut.Value == 0x3c: # A ^ B
-                tmp = IRBuilder.xor(IRValOp1, IRValOp2)
-            elif immLut.Value == 0x0f: # ~A
-                tmp = IRBuilder.xor(IRValOp1, llvmir.Constant(llvmir.IntType(32), -1)) # ~A
-            elif immLut.Value == 0x55: # ~C
-                tmp = IRBuilder.xor(IRValOp3, llvmir.Constant(llvmir.IntType(32), -1)) # ~C
-            elif immLut.Value == 0xFC: # A | B
-                tmp = IRBuilder.or_(IRValOp1, IRValOp2)
-            elif immLut.Value == 0xF8: # (A | B) & (A | C)
-                tmp = IRBuilder.or_(IRValOp1, IRValOp2)
-                tmp2 = IRBuilder.or_(IRValOp1, IRValOp3)
-                tmp = IRBuilder.and_(tmp, tmp2)
+            
+            
+            if not immLut.isConst:
+                assert immLut.isReg
+                # we'll need to create a new basic block and perform dynamic comparison to determine and select the correct operation (done with IRFunc.append_basic_block), but that means everytime we encounter this instruction we will have to create this basicblock with unique name.  Instead we're just going to create a function
+                IRImmLut = immLut.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                
+                # get the custom function's handle
+                lop_func = self.llvm_module.globals.get("custom_" + self.opcode.lower(), None)
+                if lop_func is None:
+                    raise Exception
+                tmp = IRBuilder.call(lop_func, [IRImmLut, IRValOp1, IRValOp2, IRValOp3], name=f"{self.opcode}_result")
             else:
-                print(self)
-                raise NotImplementedError
+                # https://zhuanlan.zhihu.com/p/712356884
+                if immLut.Value == 0x80: # A & B & C
+                    tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
+                    tmp = IRBuilder.or_(tmp, IRValOp3)
+                elif immLut.Value == 0x0: # 0
+                    tmp = llvmir.Constant(llvmir.IntType(32), 0)
+                elif immLut.Value == 0x40: # A & B & ~C
+                    tmp = IRBuilder.and_(IRValOp1, IRValOp2)
+                    tmp2 = IRBuilder.xor(IRValOp3, llvmir.Constant(llvmir.IntType(32), -1)) # ~C
+                    tmp = IRBuilder.and_(tmp, tmp2)
+                elif immLut.Value == 0xFE: # A | B | C
+                    tmp = IRBuilder.or_(IRValOp1, IRValOp2)
+                    tmp = IRBuilder.or_(tmp, IRValOp3)
+                elif immLut.Value == 0xFF: # 1
+                    tmp = llvmir.Constant(llvmir.IntType(32), 1)
+                elif immLut.Value == 0x1A: # (A & B | C ) ^ A
+                    tmp = IRBuilder.and_(IRValOp1, IRValOp2)
+                    tmp = IRBuilder.or_(tmp, IRValOp3)
+                    tmp = IRBuilder.xor(tmp,IRValOp1)
+                elif immLut.Value == 0x33: # ~B
+                    tmp = IRBuilder.xor(IRValOp2, llvmir.Constant(llvmir.IntType(32), -1)) # ~B
+                elif immLut.Value == 0xC0:  # A & B
+                    tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
+                elif immLut.Value == 0x8: # (~A) & B & C
+                    tmp = IRBuilder.xor(IRValOp1, llvmir.Constant(llvmir.IntType(32), -1)) # ~A
+                    tmp = IRBuilder.and_(tmp, IRValOp2)
+                    tmp = IRBuilder.and_(tmp, IRValOp3)
+                elif immLut.Value == 0x3c: # A ^ B
+                    tmp = IRBuilder.xor(IRValOp1, IRValOp2)
+                elif immLut.Value == 0x0f: # ~A
+                    tmp = IRBuilder.xor(IRValOp1, llvmir.Constant(llvmir.IntType(32), -1)) # ~A
+                elif immLut.Value == 0x55: # ~C
+                    tmp = IRBuilder.xor(IRValOp3, llvmir.Constant(llvmir.IntType(32), -1)) # ~C
+                elif immLut.Value == 0xFC: # A | B
+                    tmp = IRBuilder.or_(IRValOp1, IRValOp2)
+                elif immLut.Value == 0xF8: # (A | B) & (A | C)
+                    tmp = IRBuilder.or_(IRValOp1, IRValOp2)
+                    tmp2 = IRBuilder.or_(IRValOp1, IRValOp3)
+                    tmp = IRBuilder.and_(tmp, tmp2)
+                else:
+                    print(self)
+                    raise NotImplementedError
             
             
             IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
@@ -1040,6 +1050,9 @@ class Instruction:
             IRBuilder.store(tmp, IRResOp)
             return
 
+        if self.opcode == "RET":
+            pass
+        
         print("\nInstruction: ", self)
         raise NotImplementedError
 
