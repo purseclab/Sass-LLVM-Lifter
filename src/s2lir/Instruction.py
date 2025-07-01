@@ -288,7 +288,11 @@ class Instruction:
                 "ordered": True,
                 "cmp_op": None,
                 "ftz": False,
-                "boolean_op": None
+                "boolean_op": None,
+                "type": {
+                    "signage": None,
+                    "bits": None
+                }
             }
             
             for mod in self.modifiers:
@@ -300,14 +304,25 @@ class Instruction:
                 match = re.match(pattern, mod)
                 if match:
                     settings["cmp_op"] = match.group(1)
-                    if match.group(2) is not None:
-                        assert match.group(2) == "U"
+                    if match.group(3) != "":
+                        # group 1 and 2 seem to capture the same thing (inner and outer bracket of comparators)
+                        assert match.group(3) == "U"
                         assert self.opcode == "FSETP"
                         settings["ordered"] = False
                     continue
                 
                 if mod == "FTZ":
                     settings["ftz"] = True # TODO handle this. Probably means subnormal/very small numbers are just zeroed out
+                    continue
+                
+                pattern = r"^([US]{0,1})((32|64))$"
+                match = re.match(pattern, mod)
+                if match:
+                    settings["type"] = {
+                        "signage" : match.group(1), # None if not present
+                        "bits" : match.group(2)
+                    }
+                    # TODO handle this
                     continue
                 
                 raise InvalidSyntaxException
