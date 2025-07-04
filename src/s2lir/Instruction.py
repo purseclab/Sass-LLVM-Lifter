@@ -77,7 +77,7 @@ class Instruction:
 
     # Get use operand
     def GetUses(self):
-        Uses = []
+        Uses : typing.List[Operand] = []
         for i in range(1, len(self.operands)):
             Uses.append(self.operands[i])
 
@@ -85,7 +85,7 @@ class Instruction:
 
     # JP: Now, only update Reg Type
     # Check and update the use operand's type from the givenn operand
-    def CheckAndUpdateUseType(self, Def):
+    def CheckAndUpdateUseType(self, Def: Operand):
         for i in range(1, len(self.operands)):
             CurrOperand = self.operands[i]
             if  CurrOperand.isReg and Def.isReg and CurrOperand.reg == Def.reg:
@@ -95,7 +95,7 @@ class Instruction:
         return False
     
     # Check and update the def operand's type from the given operands
-    def CheckAndUpdateDefType(self, Uses):
+    def CheckAndUpdateDefType(self, Uses: typing.List[Operand]):
         Def = self.operands[0]
         for i in range(len(Uses)):
             CurrUse = Uses[i]
@@ -152,7 +152,7 @@ class Instruction:
         else:
             return f"{new_opcode} {', '.join(operands)}"
 
-    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
+    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], ExitBlock: llvmir.values.Block):
         if self.llvm_module is None:
             # note we cannot setup self.llvm_module in init because llvmir.module is not created until the lift() in main.py
             self.llvm_module = self.BB.func.module.llvm_module

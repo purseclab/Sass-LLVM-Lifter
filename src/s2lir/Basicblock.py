@@ -35,7 +35,7 @@ class BasicBlock:
             Inst.getRegs(Regs)
 
 
-    def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, IRFunc, ExitBlock):
+    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], IRFunc: llvmir.values.Function, ExitBlock: llvmir.values.Block):
         dprint("^"*100)
         dprint(self.addr)
         dprint(self.label)

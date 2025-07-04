@@ -197,7 +197,7 @@ class Function:
         ExitIRBuilder.ret_void()
 
         # Collect registers' name with type information
-        IRRegs = {}
+        IRRegs = {} # e.g. IRRegs["R39_NOTYPE"]
         Regs = self.getRegs() # => self.Regs
         dprint(Regs)
 
