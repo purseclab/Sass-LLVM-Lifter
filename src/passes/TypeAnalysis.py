@@ -1,11 +1,12 @@
 
-from s2lir import *
+from s2lir import Function, Basicblock, Instruction, Operand
 from utils import *
+import typing
 
 class TypeAnalysis:
 
     def __init__(self, func):
-        self.func = func
+        self.func : Function.Function  = func
         self.__apply()
     def __apply(self):
 

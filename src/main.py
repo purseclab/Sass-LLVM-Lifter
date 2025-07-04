@@ -10,7 +10,7 @@ import json
 from colorprint import *
 import os
 from pathlib import Path
-
+import typing
 
 current_dir = Path(__file__).parent
 
@@ -18,7 +18,7 @@ class LLVMModule:
     # def __init__(self, name, parser):
     def __init__(self, name, functions):
         self.name = name
-        self.functions = functions
+        self.functions : typing.List[Function.Function] = functions
         self.llvm_module = None
 
         for func in self.functions:

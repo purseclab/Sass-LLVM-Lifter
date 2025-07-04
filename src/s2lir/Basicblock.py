@@ -1,21 +1,25 @@
 from s2lir.Instruction import Instruction, Operand
 from utils import *
 from llvmlite import ir as llvmir
+import typing
+if typing.TYPE_CHECKING:
+    from s2lir.Function import Function
+
 class BasicBlock:
     def __init__(self, BB_dict, func):
         # The address of the start of this basic block
         self.label = BB_dict['label']
         # Instruction list
-        self.instructions = [Instruction(inst, self) for inst in BB_dict['instructions']]
+        self.instructions : typing.List[Instruction] = [Instruction(inst, self) for inst in BB_dict['instructions']]
         # Predecessor
-        self.preds = []
+        self.preds : typing.List[BasicBlock] = []
         # Successors
-        self.succs = []
+        self.succs : typing.List[BasicBlock] = []
         # Addr
         self.addr = 0
 
         # To parent function
-        self.func = func
+        self.func : 'Function' = func
 
     def __str__(self):
         return f"BasicBlock {self.label}\n"+ '\n'.join([str(i) for i in self.instructions])
@@ -25,7 +29,8 @@ class BasicBlock:
             inst.parse()
 
     # Collect registers with type
-    def GetRegs(self, Regs):
+    def GetRegs(self, Regs : dict[str, Operand]):
+        # e.g. in Regs: 'R1_NOTYPE': <s2lir.Operand.Operand object at 0x73718d1b4df0>
         for Inst in self.instructions:
             Inst.getRegs(Regs)
 

@@ -2,10 +2,15 @@ from s2lir.Basicblock import BasicBlock
 from utils import *
 from llvmlite import ir as llvmir
 import copy
+import typing
+if typing.TYPE_CHECKING:
+    from main import LLVMModule
+    from s2lir.Operand import Operand
+
 
 class Function:
     def __init__(self, function_dict):
-        self.module = None
+        self.module : LLVMModule = None
         self.name = function_dict[".function_name"] 
         self.section = function_dict[".section"]
         self.sectioninfo = function_dict[".sectioninfo"]
@@ -15,17 +20,14 @@ class Function:
         self.size = function_dict[".size"]
         self.weak = function_dict[".weak"]
         self.other = function_dict[".other"]
-        self.internal_func = function_dict["internal_func"]
+        self.internal_func : bool = function_dict["internal_func"]
         # self.name = name
-        self.blocks = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
-
-        # All the Arguments
-        self.Args = []
+        self.blocks : typing.List[BasicBlock] = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
 
         # All the Labels
         # self.labels = [BB.label for BB in self.blocks]
         # BB.label such as .L_x_3; creates a mapping to the block itself
-        self.labels2block = {BB.label: BB for BB in self.blocks}
+        self.labels2block : dict[str, BasicBlock] = {BB.label: BB for BB in self.blocks} # e.g. '.text._Z11gru_forwardPfS_S_S_iii': <s2lir.Basicblock.BasicBlock object at 0x79115787c8e0>
         
         # SASS addr (such as 0x47f0) to the first LLVM instruction inside a BB that implements that specific SASS instruction (there's usually more than one line of LLVM instruction for a given SASS instruction)
         # dont confuse Instruction.py with LLVM instruction (generated via IRBuilder)
@@ -36,10 +38,11 @@ class Function:
         self.sassAddr2Inst = {}
 
         ################################################################
-        self.ArgMap = {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
+        self.ArgMap : dict[int, Operand]= {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
         self.BlockMap = {} # key: LLVMModule's BB, value: llvmlite's BB
         self.ArgIdxes = []
-        self.Args = []
+        # All the Arguments
+        self.Args : Operand = []
     
     def parse(self):
         # Parse all the BasicBlocks
@@ -148,7 +151,7 @@ class Function:
             IsEntry = False
 
 
-    def lift(self, llvm_module):
+    def lift(self, llvm_module : llvmir.Module):
 
         # Collect all Args
         self.getArgs()
