@@ -1,11 +1,16 @@
 import typing
-from s2lir.Operand import *
+from s2lir.Operand import Operand
+# from s2lir.Basicblock import BasicBlock
+if typing.TYPE_CHECKING:
+    from s2lir.Basicblock import BasicBlock
 from utils import *
 from llvmlite import ir as llvmir
 from pathlib import Path
 import json
 from s2lir.intrinsics import *
 from s2lir.helper import *
+import typing
+import re
 
 current_dir = Path(__file__).parent
 
@@ -25,7 +30,7 @@ class Instruction:
         # Initialized via parsing
         self.branch_target = None
 
-        self.BB = BB
+        self.BB: 'BasicBlock' = BB
         config_path = current_dir / "../.." / "launch" / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
@@ -59,7 +64,7 @@ class Instruction:
 
         return None
     
-    def getRegs(self, Regs):
+    def getRegs(self, Regs : dict[str, Operand]):
         # Collect registers used in instructions (In Reg, PReg and Ptr)
         for Operand in self.operands:
             if Operand.isReg or Operand.isPReg or Operand.isPtr:
