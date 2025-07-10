@@ -9,7 +9,7 @@
 	// .globl	my_kernel               // -- Begin function my_kernel
 .weak .global .align 4 .u32 cta_id_x;
                                         // @my_kernel
-.visible .func my_kernel()
+.entry my_kernel()
 {
 	.reg .b32 	%r<2>;
 
