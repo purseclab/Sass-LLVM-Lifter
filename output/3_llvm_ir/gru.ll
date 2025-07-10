@@ -258,13 +258,13 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   ; MOV R1, c[0x0][0x28]
   store i32 %"Arg_1", i32* %"R1_NOTYPE"
   ; S2R R14, SR_CTAID.X
-  %"ThreadIdx" = call i32 @"thread_idx"()
-  store i32 %"ThreadIdx", i32* %"R14_NOTYPE"
+  %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
+  store i32 %"nvvm_ctaid_x", i32* %"R14_NOTYPE"
   ; MOV R0, c[0x0][0x188]
   store i32 %"Arg_8", i32* %"R0_NOTYPE"
   ; S2R R3, SR_TID.X
-  %"ThreadIdx.1" = call i32 @"thread_idx"()
-  store i32 %"ThreadIdx.1", i32* %"R3_NOTYPE"
+  %"ThreadIdx" = call i32 @"thread_idx"()
+  store i32 %"ThreadIdx", i32* %"R3_NOTYPE"
   ; ISETP.GE.AND P0, PT, R0, 0x1, PT
   %".21" = load i32, i32* %"R0_NOTYPE"
   %".22" = load i1, i1* %"PT_Bool"
@@ -7085,6 +7085,8 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
 ExitFunction:
   ret void
 }
+
+declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
 
 declare float @"llvm.exp2.f32"(float %".1")
 

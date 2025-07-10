@@ -182,8 +182,18 @@ class Instruction:
             if ResOp.isReg and ValOp.SReg:
                 # TODO: Fix it later;
                 IRResOp = IRRegs[ResOp.getIRRegName()]
-                # Call thread idx operation
-                IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
+                
+                if str(ValOp) == "SR_CTAID.X":
+                    IRVal = IRBuilder.call(nvvm_ctaid_x(self.llvm_module), [], name="nvvm_ctaid_x")
+                elif str(ValOp) == "SR_CTAID.Y":
+                    IRVal = IRBuilder.call(nvvm_ctaid_y(self.llvm_module), [], name="nvvm_ctaid_y")
+                elif str(ValOp) == "SR_CTAID.Z":
+                    IRVal = IRBuilder.call(nvvm_ctaid_z(self.llvm_module), [], name="nvvm_ctaid_z")
+                else:
+                    # TODO: Fix later, e.g. S2R R3, SR_TID.X
+                    # Call thread idx operation
+                    IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
+                    
                 # Store the result
                 IRBuilder.store(IRVal, IRResOp)
             else:

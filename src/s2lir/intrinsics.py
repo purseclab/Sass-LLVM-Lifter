@@ -1,5 +1,17 @@
 from llvmlite import ir
 
+def intrinsic_construct(module, intrinsic_type, intrinsic_name):
+    existing_fn = module.globals.get(intrinsic_name, None)
+    if existing_fn is not None:
+        return existing_fn
+    
+    return ir.Function(
+                module,
+                intrinsic_type,
+                name=intrinsic_name
+            )
+
+
 def llvm_exp2_f32(module):
     # https://llvm.org/docs/LangRef.html#llvm-exp2-intrinsic
     
@@ -55,3 +67,28 @@ def llvm_fabs(module):
                 ir.FunctionType(ir.FloatType(), [ir.FloatType()]),
                 name=intrinsic_name
             )
+    
+def nvvm_ctaid_x(module):
+
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.ctaid.x"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+
+def nvvm_ctaid_y(module):
+
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.ctaid.y"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def nvvm_ctaid_z(module):
+
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.ctaid.z"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
