@@ -69,19 +69,6 @@ class Instruction:
         for Operand in self.operands:
             if Operand.isReg or Operand.isPReg or Operand.isPtr:
                 Regs[Operand.getIRRegName()] = Operand
-        
-    
-    # Get def operand
-    def GetDef(self):
-        return self.operands[0]
-
-    # Get use operand
-    def GetUses(self):
-        Uses : typing.List[Operand] = []
-        for i in range(1, len(self.operands)):
-            Uses.append(self.operands[i])
-
-        return Uses
 
     # JP: Now, only update Reg Type
     # Check and update the use operand's type from the givenn operand
@@ -1090,3 +1077,18 @@ class Instruction:
         print("\nInstruction: ", self)
         raise NotImplementedError
 
+
+    ############ Type/Liveness Analysis ############
+    
+    def get_defs(self):
+        """Return list of operands defined by this instruction."""
+        return [op for op in self.operands if op.is_def()]
+
+    def get_uses(self):
+        """Return list of operands used by this instruction."""
+        return [op for op in self.operands if op.is_use()]
+    
+    def get_kill_set(self):
+        """Return set of registers defined (killed) by this instruction."""
+        # TODO handle 64 bit (need to add both registers [there'd be one implicit register] into kill set)
+        return {op.reg for op in self.get_defs() if op.isReg or op.isPReg}
