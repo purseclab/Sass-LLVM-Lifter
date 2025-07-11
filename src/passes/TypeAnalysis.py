@@ -9,6 +9,7 @@ class TypeAnalysis:
     def __init__(self, func):
         self.func : Function.Function  = func
         self.reaching_defs = ReachingDefinitionsAnalysis(func)
+        self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
         self.__apply()
     def __apply(self):
 
@@ -39,6 +40,31 @@ class TypeAnalysis:
                         continue
                 if self.DirectlySolveType(inst) is None:
                     self.PartialSolveType(inst)
+        
+        
+        # Iterative solving until convergence
+        changed = True
+        while changed:
+            changed = False
+            for BB in self.func.blocks:
+                for inst in BB.instructions:
+                    # Direct solving
+                    if self.DirectlySolveType(inst) is not None:
+                        changed = True
+                    # Partial solving
+                    elif self.PartialSolveType(inst):
+                        changed = True
+                    # Propagate types
+                    if self.propagate_types(inst):
+                        changed = True
+
+        # Report unsolvable types
+        for BB in self.func.blocks:
+            for inst in BB.instructions:
+                for Op in inst.operands:
+                    if Op.getTypeDesc() == "NOTYPE":
+                        print(f"Unsolvable type for operand {Op} in instruction {inst}")
+                        raise InvalidTypeException("Type analysis incomplete")
 
     # Directly resolve the type description, this is mainly working for binary operation
     def DirectlySolveType(self, inst):
@@ -47,39 +73,40 @@ class TypeAnalysis:
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD"]:
             TypeDesc = "Float32"
-        
         elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R"] :
             TypeDesc = "Int32"
 
 
-        if TypeDesc != None:
+        if TypeDesc is not None:
             for operand in inst.operands:
                 operand.setTypeDesc(TypeDesc)
+                self.type_map[(inst, operand.reg)] = TypeDesc
             return TypeDesc
         
         #### Batch 2
         if inst.opcode == "FMNMX":
-            TypeDesc = "Float32"
-
-        if TypeDesc != None:
             for i in range(3):
-                operand = inst.operands[i]
-                operand.setTypeDesc(TypeDesc)
-            inst.operands[3].setTypeDesc("Bool")
-            return TypeDesc
+                if inst.operands[i].setTypeDesc("Float32"):
+                    self.type_map[(inst, inst.operands[i].reg)] = "Float32"
+            if inst.operands[3].setTypeDesc("Bool"):
+                self.type_map[(inst, inst.operands[3].reg)] = "Bool"
+            return "Float32"
 
         #### Batch 3
         if inst.opcode == "ISETP":
             TypeDesc = "Float32"
-
-        if TypeDesc != None:
             inst.operands[0].setTypeDesc("Bool")
+            self.type_map[(inst, inst.operands[0].reg)] = "Bool"
             inst.operands[1].setTypeDesc("Bool")
+            self.type_map[(inst, inst.operands[1].reg)] = "Bool"
             inst.operands[2].setTypeDesc("Int32")
+            self.type_map[(inst, inst.operands[2].reg)] = "Int32"
             inst.operands[3].setTypeDesc("Int32")
+            self.type_map[(inst, inst.operands[3].reg)] = "Int32"
             inst.operands[4].setTypeDesc("Bool")
+            self.type_map[(inst, inst.operands[4].reg)] = "Bool"
 
-            return TypeDesc
+            return TypeDesc # TODO ????
 
         return TypeDesc
         
@@ -88,35 +115,68 @@ class TypeAnalysis:
             TypeDesc = inst.operands[0].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[1].setTypeDesc(TypeDesc + "_PTR")
+                self.type_map[(inst, inst.operands[1].reg)] = TypeDesc + "_PTR"
+                return True
+            
+            TypeDesc = inst.operands[1].getTypeDesc()
+            if TypeDesc != None and TypeDesc != "NOTYPE":
+                assert '_PTR' in TypeDesc
+                inst.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
+                self.type_map[(inst, inst.operands[0].reg)] = TypeDesc.replace("_PTR", "")
             else:
-                TypeDesc = inst.operands[1].getTypeDesc()
-                if TypeDesc != None and TypeDesc != "NOTYPE":
-                    assert '_PTR' in TypeDesc
-                    inst.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
-                else:
-                    print(TypeDesc, inst)
-                    raise InvalidTypeException
-
+                return False
+        
         elif inst.opcode == "STG":
             TypeDesc = inst.operands[1].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
-                inst.operands[0].setTypeDesc(TypeDesc + "_PTR")
+                inst.operands[0].setTypeDesc(TypeDesc + "_PTR") # TODO: make sure it shld be inst.operands[0] instead of inst.operands[1], and the type map below as well
+                self.type_map[(inst, inst.operands[0].reg)] = TypeDesc + "_PTR"
+                return True
+            TypeDesc = inst.operands[0].getTypeDesc()
+            if TypeDesc != None and TypeDesc != "NOTYPE":
+                assert '_PTR' in TypeDesc
+                inst.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
+                self.type_map[(inst, inst.operands[0].reg)] = TypeDesc.replace("_PTR", "")
+                return True
             else:
-                TypeDesc = inst.operands[0].getTypeDesc()
-                if TypeDesc != None and TypeDesc != "NOTYPE":
-                    assert '_PTR' in TypeDesc
-                    inst.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
-                else:
-                    raise InvalidTypeException
+                return False
+        
         elif inst.opcode == 'IADD':
             TypeDesc = inst.operands[0].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[1].setTypeDesc("Int32") # The integer offset
                 inst.operands[2].setTypeDesc(TypeDesc)
-        else:
-            return False
 
-        return True
+        elif inst.opcode == "IADD":
+            TypeDesc = inst.operands[0].getTypeDesc()
+            if TypeDesc != None and TypeDesc != "NOTYPE":
+                inst.operands[1].setTypeDesc("Int32")
+                self.type_map[(inst, inst.operands[1].reg)] = "Int32"
+                inst.operands[2].setTypeDesc(TypeDesc)
+                self.type_map[(inst, inst.operands[2].reg)] = TypeDesc
+                return True
+            else:
+                return False
+        return False
+
+    def propagate_types(self, inst: Instruction):
+        changed = False
+        for Op in inst.operands:
+            if (Op.isReg or Op.isPReg) and Op.reg and Op.getTypeDesc() == "NOTYPE":
+                reaching_defs = self.reaching_defs.get_reaching_definitions_before(inst)
+                types = set()
+                for d_inst, reg in reaching_defs:
+                    if reg == Op.reg and (d_inst, reg) in self.type_map:
+                        types.add(self.type_map[(d_inst, reg)])
+                if len(types) == 1:
+                    new_type = list(types)[0]
+                    Op.setTypeDesc(new_type)
+                    self.type_map[(inst, Op.reg)] = new_type
+                    changed = True
+                elif len(types) > 1:
+                    raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+        return changed
+
 
     def get_kill_set_for_instruction(self, inst):
         """Return the kill set for a given instruction as (inst, reg) pairs."""
