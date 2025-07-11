@@ -51,12 +51,15 @@ class TypeAnalysis:
                     # Direct solving
                     if self.DirectlySolveType(inst) is not None:
                         changed = True
+                        # print("here1")
                     # Partial solving
                     elif self.PartialSolveType(inst):
                         changed = True
+                        # print("here2")
                     # Propagate types
                     if self.propagate_types(inst):
                         changed = True
+                        # print("here3")
 
         # Report unsolvable types
         for BB in self.func.blocks:
@@ -67,8 +70,11 @@ class TypeAnalysis:
                         raise InvalidTypeException("Type analysis incomplete")
 
     # Directly resolve the type description, this is mainly working for binary operation
-    def DirectlySolveType(self, inst):
+    def DirectlySolveType(self, inst: Instruction):
         TypeDesc = None
+        
+        if len([op for op in inst.operands if op.getTypeDesc() == "NOTYPE"]) == 0:
+            return None
 
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD"]:
@@ -111,6 +117,9 @@ class TypeAnalysis:
         return TypeDesc
         
     def PartialSolveType(self, inst):
+        if len([op for op in inst.operands if op.getTypeDesc() == "NOTYPE"]) == 0:
+            return False
+        
         if inst.opcode == "LDG":
             TypeDesc = inst.operands[0].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":

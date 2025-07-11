@@ -95,6 +95,10 @@ class Function:
                 # new_BB = copy.deepcopy(BB)
                 new_BB = BasicBlock({"label": BB.label, "instructions": []}, self)
                 new_BB.instructions = sublist
+                
+                for inst in new_BB.instructions:
+                    inst.BB = new_BB
+                
                 new_BB.addr = sublist[0].addr
                 new_BB.label = new_BB.label + "_split_" + str(sublist[0].addr)
                 split_blocks.append(new_BB)
