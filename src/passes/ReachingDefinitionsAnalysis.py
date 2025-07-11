@@ -1,9 +1,9 @@
 import typing
-if typing.TYPE_CHECKING:
-    from s2lir.Function import Function
-    from s2lir.Basicblock import BasicBlock
-    from s2lir.Operand import Operand
-    from s2lir.Instruction import Instruction
+
+from s2lir.Function import Function
+from s2lir.Basicblock import BasicBlock
+from s2lir.Operand import Operand
+from s2lir.Instruction import Instruction
     
 class ReachingDefinitionsAnalysis:
     def __init__(self, func):
@@ -19,7 +19,7 @@ class ReachingDefinitionsAnalysis:
     def _collect_all_definitions(self):
         """Collect all definitions of each register across the program."""
         for bb in self.func.blocks:
-            for inst in bb.ins:
+            for inst in bb.instructions:
                 for reg in inst.get_kill_set():
                     if reg not in self.all_defs:
                         self.all_defs[reg] = set()
@@ -37,7 +37,7 @@ class ReachingDefinitionsAnalysis:
 
         # Compute GEN and KILL per block
         for bb in self.func.blocks:
-            for inst in bb.ins:
+            for inst in bb.instructions:
                 for reg in inst.get_kill_set():  # Each destination operand
                     G = {(inst, reg)}  # Current definition
                     K = self.all_defs.get(reg, set()) - G  # All other defs of reg
@@ -68,7 +68,7 @@ class ReachingDefinitionsAnalysis:
         bb = inst.BB
         defs = self.in_defs[bb].copy() # get definitions that reaches this BB at the start
         # Process instructions before 'inst' in program order
-        for i in bb.ins[:bb.instructions.index(inst)]:
+        for i in bb.instructions[:bb.instructions.index(inst)]:
             for reg in i.get_kill_set():
                 # Remove prior definitions of this register, since it's now killed by the current definition
                 defs.difference_update({(d_inst, r) for d_inst, r in defs if r == reg})

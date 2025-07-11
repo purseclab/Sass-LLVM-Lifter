@@ -2,11 +2,13 @@
 from s2lir import Function, Basicblock, Instruction, Operand
 from utils import *
 import typing
+from passes.ReachingDefinitionsAnalysis import ReachingDefinitionsAnalysis
 
 class TypeAnalysis:
 
     def __init__(self, func):
         self.func : Function.Function  = func
+        self.reaching_defs = ReachingDefinitionsAnalysis(func)
         self.__apply()
     def __apply(self):
 
