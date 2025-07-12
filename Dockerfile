@@ -13,6 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
     && apt-get clean
 
+
+RUN apt-get install -y --no-install-recommends \
+    python3-dev \
+    graphviz \
+    graphviz-dev \
+    && apt-get clean
 # Set working directory, files will be copied here inside the docker container
 WORKDIR /app
 

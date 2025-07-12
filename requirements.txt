@@ -2,3 +2,4 @@ colorama==0.4.6
 llvmlite==0.44.0
 pyvis==0.3.2
 networkx==3.4.2
+pygraphviz==1.11

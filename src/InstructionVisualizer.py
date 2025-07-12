@@ -53,40 +53,33 @@ class InstructionVisualizer:
 
     def _add_operand_nodes(self, inst: Instruction, operand_info: dict):
         inst_id = self.node_map[inst]
-        for idx, op in enumerate(inst.operands):
-            op_id = f"op_{id(inst)}_{idx}"
-            info = operand_info.get(idx, {})
+        for idx, op in operand_info.items():
+            op_node_id = f"op_{id(inst)}_{idx}"
+            info = op
             title = (
-                f"Operand: {op}<br>USE: {info.get('is_use')} DEF: {info.get('is_def')}" 
+                f"Operand: {info['operand']}<br>USE: {info['is_use']} DEF: {info['is_def']}" 
                 f"<br><a href=\"#{inst_id}\">Back to Instruction</a>"
             )
             self.graph.add_node(
-                op_id,
-                label=str(op),
+                op_node_id,
+                label=str(info['operand']),
                 title=title,
                 shape="ellipse",
                 color="#EEEEFF",
                 level=2,
                 parent=inst_id
             )
-            # link inst -> operand
-            self.graph.add_edge(inst_id, op_id, title="has operand", dashes=True)
-            self.node_map[(inst, idx)] = op_id
+            self.graph.add_edge(inst_id, op_node_id, title="has operand", dashes=True)
+            self.node_map[(inst, idx)] = op_node_id
 
     def _add_data_flow_edges(self, inst: Instruction, operand_info: dict):
         for idx, info in operand_info.items():
-            if not info.get('is_use'):
+            if not info['is_use']:
                 continue
             use_node = self.node_map.get((inst, idx))
-            for def_inst, reg in info.get('defs_reaching', []):
-                # find matching def operand node
-                for key, op_node in self.node_map.items():
-                    if not isinstance(key, tuple):
-                        # skips BasicBlock
-                        continue
-                    d_inst, d_idx = key
-                    if d_inst is def_inst:
-                        # draw data flow edge
+            for def_inst, reg in info['defs_reaching']:
+                for key, op_node in list(self.node_map.items()):
+                    if isinstance(key, tuple) and key[0] is def_inst:
                         self.graph.add_edge(
                             op_node,
                             use_node,
@@ -97,38 +90,30 @@ class InstructionVisualizer:
                         )
 
     def visualize(self, filename="instruction_flow.html"):
-        # add BBs
+        # Add BB nodes
         for bb in self.type_analyzer.func.blocks:
             self._add_basic_block_node(bb)
-
-        # add control flow
+        # Control-flow edges
         self._add_control_flow_edges()
 
-        # add instructions and operand nodes
+        # Instructions and operand nodes
         for bb in self.type_analyzer.func.blocks:
             bb_id = self.node_map[bb]
             for inst in bb.instructions:
-                inst_id = self._add_instruction_node(inst, bb_id)
-                # collect use-def info
+                self._add_instruction_node(inst, bb_id)
+                # Collect only register operands
                 operand_info = {}
                 for idx, op in enumerate(inst.operands):
                     if (op.isReg or op.isPReg) and op.reg:
-                        operand_info[idx] = self.type_analyzer.get_use_def_info(inst, op)
-                    else:
-                        info = {
-                            "is_use": False,
-                            "is_def": False,
-                            "kill_set": {},
-                            "defs_reaching": [],
-                            "reaches_next": False
-                        }
+                        info = self.type_analyzer.get_use_def_info(inst, op)
+                        info['operand'] = op
                         operand_info[idx] = info
-                # add operand nodes
-                self._add_operand_nodes(inst, operand_info)
-                # add data flow edges
-                self._add_data_flow_edges(inst, operand_info)
+                # Add only register operand nodes
+                if operand_info:
+                    self._add_operand_nodes(inst, operand_info)
+                    self._add_data_flow_edges(inst, operand_info)
 
-        # build network
+
         self.net.from_nx(self.graph)
         self.net.set_options(self._default_options())
         self.net.show(filename, notebook=False)
