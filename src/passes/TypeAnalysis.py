@@ -3,14 +3,27 @@ from s2lir import Function, Basicblock, Instruction, Operand
 from utils import *
 import typing
 from passes.ReachingDefinitionsAnalysis import ReachingDefinitionsAnalysis
+from pathlib import Path
+import json
 
 class TypeAnalysis:
-
+    
     def __init__(self, func):
         self.func : Function.Function  = func
         self.reaching_defs = ReachingDefinitionsAnalysis(func)
         self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
+        
+        current_dir = Path(__file__).parent
+        project_root = (current_dir / "..").resolve()
+    
+        config_path = current_dir / ".." / "launch" / "config.json"
+        
+        with open(config_path.resolve(), 'r') as file:
+            config = json.load(file)
+        
         self.__apply()
+        
+        
     def __apply(self):
 
         # Set RZ, URZ, PZ to 0
@@ -62,12 +75,14 @@ class TypeAnalysis:
                         # print("here3")
 
         # Report unsolvable types
-        for BB in self.func.blocks:
-            for inst in BB.instructions:
-                for Op in inst.operands:
-                    if Op.getTypeDesc() == "NOTYPE":
-                        print(f"Unsolvable type for operand {Op} in instruction {inst}")
-                        raise InvalidTypeException("Type analysis incomplete")
+        
+        if not self.config["allow_incomplete_type_analysis"]:
+            for BB in self.func.blocks:
+                for inst in BB.instructions:
+                    for Op in inst.operands:
+                        if Op.getTypeDesc() == "NOTYPE":
+                            print(f"Unsolvable type for operand {Op} in instruction {inst}")
+                            raise InvalidTypeException("Type analysis incomplete")
 
     # Directly resolve the type description, this is mainly working for binary operation
     def DirectlySolveType(self, inst: Instruction):

@@ -7,5 +7,6 @@
         "cuda_file": "gru.cu",
         "select_cubin": "gru.2.sm_75.cubin"
     },
-    "allow_temp_behavior": true
+    "allow_temp_behavior": true,
+    "allow_incomplete_type_analysis": true
 }

@@ -6,6 +6,7 @@ from s2lir import custom_func
 from utils import *
 from llvmlite import ir as llvmir
 from passes import TypeAnalysis, CreateCFG
+from InstructionVisualizer import InstructionVisualizer
 import json
 from colorprint import *
 import os
@@ -36,8 +37,11 @@ class LLVMModule:
     
     def analysisAndTransform(self):
         for func in self.functions:
-            TypeAnalysis.TypeAnalysis(func)
+            typeAnalysis = TypeAnalysis.TypeAnalysis(func)
             CreateCFG.CFG(func)
+            visualizer: InstructionVisualizer = InstructionVisualizer(typeAnalysis)
+            visualizer.visualize(f"{func.name}.html")
+            
 
 
     def lift(self):
