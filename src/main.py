@@ -40,8 +40,8 @@ class LLVMModule:
             CreateCFG.CFG(func)
             # CreateCFG might split blocks too, so typeanalysis cannot happen before it
             typeAnalysis = TypeAnalysis.TypeAnalysis(func)
-            visualizer: InstructionVisualizer = InstructionVisualizer(typeAnalysis)
-            visualizer.visualize(f"{func.name}.html")
+            # visualizer: InstructionVisualizer = InstructionVisualizer(typeAnalysis)
+            # visualizer.visualize(f"{func.name}.html")
             
 
 
