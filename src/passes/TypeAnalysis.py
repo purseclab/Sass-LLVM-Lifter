@@ -14,12 +14,12 @@ class TypeAnalysis:
         self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
         
         current_dir = Path(__file__).parent
-        project_root = (current_dir / "..").resolve()
+        project_root = (current_dir / "../..").resolve()
     
-        config_path = current_dir / ".." / "launch" / "config.json"
+        config_path = project_root / "launch" / "config.json"
         
         with open(config_path.resolve(), 'r') as file:
-            config = json.load(file)
+            self.config = json.load(file)
         
         self.__apply()
         

@@ -37,8 +37,9 @@ class LLVMModule:
     
     def analysisAndTransform(self):
         for func in self.functions:
-            typeAnalysis = TypeAnalysis.TypeAnalysis(func)
             CreateCFG.CFG(func)
+            # CreateCFG might split blocks too, so typeanalysis cannot happen before it
+            typeAnalysis = TypeAnalysis.TypeAnalysis(func)
             visualizer: InstructionVisualizer = InstructionVisualizer(typeAnalysis)
             visualizer.visualize(f"{func.name}.html")
             
