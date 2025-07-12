@@ -1,0 +1,1377 @@
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath ##########################
+############# SHF.L.U32 R11, R24, 0x1, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BMOV.32.CLEAR RZ, B1 #############
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### B1 #######
+############# BSSY B1, `(.L_x_48) #############
+####### B1 #######
+####### `(.L_x_48) #######
+############# SHF.R.U32.HI R25, RZ, 0x18, R11 #############
+####### R25 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x18 #######
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# ISETP.NE.U32.AND P0, PT, R25, RZ, PT #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R25 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# @P0 BRA `(.L_x_49) #############
+####### `(.L_x_49) #######
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4960 ##########################
+############# SHF.L.U32 R11, R24, 0x1, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# ISETP.NE.AND P0, PT, R11, RZ, PT #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# @P0 FFMA R12, R24, 1.84467440737095516160e+19, RZ #############
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 1.84467440737095516160e+19 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4960_conditionalExpr_0x4980 ##########################
+############# FFMA R12, R24, 1.84467440737095516160e+19, RZ #############
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 1.84467440737095516160e+19 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4990) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4990) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4990 ##########################
+############# @!P0 MUFU.RCP R11, R24 #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### !P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4990_conditionalExpr_0x4990 ##########################
+############# MUFU.RCP R11, R24 #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0 ##########################
+############# @P0 MUFU.RCP R13, R12 #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0_conditionalExpr_0x49a0 ##########################
+############# MUFU.RCP R13, R12 #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0 ##########################
+############# @P0 FFMA R22, R12, R13, -1 #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -1 #######
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0_conditionalExpr_0x49b0 ##########################
+############# FFMA R22, R12, R13, -1 #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -1 #######
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0 ##########################
+############# @P0 FADD.FTZ R22, -R22, -RZ #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0_conditionalExpr_0x49c0 ##########################
+############# FADD.FTZ R22, -R22, -RZ #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0 ##########################
+############# @P0 FFMA R22, R13, R22, R13 #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0_conditionalExpr_0x49d0 ##########################
+############# FFMA R22, R13, R22, R13 #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0 ##########################
+############# @P0 FFMA R11, R22, 1.84467440737095516160e+19, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 1.84467440737095516160e+19 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0_conditionalExpr_0x49e0 ##########################
+############# FFMA R11, R22, 1.84467440737095516160e+19, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 1.84467440737095516160e+19 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0) #############
+####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0) #######
+########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0 ##########################
+############# BRA `(.L_x_50) #############
+####### `(.L_x_50) #######
+########################## .L_x_49 ##########################
+############# IADD3 R34, R25, -0xfd, RZ #############
+####### R34 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R25 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -0xfd #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# ISETP.GT.U32.AND P0, PT, R34, 0x1, PT #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R34 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# @P0 BRA `(.L_x_51) #############
+####### `(.L_x_51) #######
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## .L_x_49_split_0x4a30 ##########################
+############# LOP3.LUT R11, R24, 0x7fffff, RZ, 0xc0, !PT #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x7fffff #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xc0 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# MOV R23, 0x3 #############
+####### R23 #######
+is_use: False
+is_def: True
+kill_set: {(<s2lir.Instruction.Instruction object at 0x7734fcf13550>, 'R23')}
+defs_reaching: []
+reaches_next: True
+####### 0x3 #######
+############# LOP3.LUT R11, R11, 0x3f800000, RZ, 0xfc, !PT #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x3f800000 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xfc #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# SHF.L.U32 R23, R23, R34, RZ #############
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### R34 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# MUFU.RCP R12, R11 #############
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# FFMA R13, R11, R12, -1 #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -1 #######
+############# FADD.FTZ R13, -R13, -RZ #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# FFMA.RM R22, R12.reuse, R13.reuse, R12.reuse #############
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12.reuse #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13.reuse #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12.reuse #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# FFMA.RP R13, R12, R13, R12 #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# LOP3.LUT R12, R22.reuse, 0x7fffff, RZ, 0xc0, !PT #############
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R22.reuse #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x7fffff #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xc0 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# FSETP.NEU.FTZ.AND P0, PT, R22, R13, PT #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R22 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# LOP3.LUT R12, R12, 0x800000, RZ, 0xfc, !PT #############
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x800000 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xfc #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# SEL R13, RZ, 0xffffffff, !P0 #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xffffffff #######
+####### !P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# LOP3.LUT R23, R23, R12, RZ, 0xc0, !PT #############
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xc0 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# IADD3 R13, -R13, RZ, RZ #############
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# SHF.R.U32.HI R23, RZ, R34.reuse, R23 #############
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R34.reuse #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+############# LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT #############
+####### P1 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R13 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R34 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xf8 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# LOP3.LUT P0, RZ, R23.reuse, 0x1, RZ, 0xc0, !PT #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R23.reuse #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xc0 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# LOP3.LUT P2, RZ, R23, 0x2, RZ, 0xc0, !PT #############
+####### P2 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R23 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: ['(0x4a40, R23)']
+reaches_next: False
+####### 0x2 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xc0 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# PLOP3.LUT P0, PT, P0, P1, P2, 0xe0, 0x0 #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P1 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### P2 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xe0 #######
+####### 0x0 #######
+############# LOP3.LUT P1, RZ, R24, 0x7fffff, RZ, 0xc0, !PT #############
+####### P1 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x7fffff #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xc0 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# SEL R11, RZ, 0x1, !P0 #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### !P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# IADD3 R11, -R11, RZ, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# ISETP.GE.AND P0, PT, R11, RZ, PT #############
+####### P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# IADD3 R11, R25, -0xfc, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R25 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### -0xfc #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# SHF.R.U32.HI R11, RZ, R11, R12 #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R12 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# @!P0 IADD3 R11, R11, 0x1, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### !P0 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## .L_x_49_split_0x4a30_conditionalExpr_0x4bd0 ##########################
+############# IADD3 R11, R11, 0x1, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `(.L_x_49_split_0x4be0) #############
+####### `(.L_x_49_split_0x4be0) #######
+########################## .L_x_49_split_0x4be0 ##########################
+############# @!P1 SHF.L.U32 R11, R11, 0x1, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### !P1 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## .L_x_49_split_0x4be0_conditionalExpr_0x4be0 ##########################
+############# SHF.L.U32 R11, R11, 0x1, RZ #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x1 #######
+####### RZ #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `(.L_x_49_split_0x4bf0) #############
+####### `(.L_x_49_split_0x4bf0) #######
+########################## .L_x_49_split_0x4bf0 ##########################
+############# LOP3.LUT R11, R11, 0x80000000, R24, 0xf8, !PT #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0x80000000 #######
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### 0xf8 #######
+####### !PT #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+############# BRA `(.L_x_50) #############
+####### `(.L_x_50) #######
+########################## .L_x_51 ##########################
+############# MUFU.RCP R11, R24 #############
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### R24 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+########################## .L_x_50 ##########################
+############# BSYNC B1 #############
+####### B1 #######
+########################## .L_x_48 ##########################
+############# MOV R22, R11 #############
+####### R22 #######
+is_use: False
+is_def: True
+kill_set: {(<s2lir.Instruction.Instruction object at 0x7734fcfb1390>, 'R22')}
+defs_reaching: []
+reaches_next: True
+####### R11 #######
+is_use: True
+is_def: False
+kill_set: {(<s2lir.Instruction.Instruction object at 0x7734fcfb1390>, 'R22')}
+defs_reaching: []
+reaches_next: False
+############# MOV R11, 0x0 #############
+####### R11 #######
+is_use: False
+is_def: True
+kill_set: {(<s2lir.Instruction.Instruction object at 0x7734fcfb13f0>, 'R11')}
+defs_reaching: []
+reaches_next: True
+####### 0x0 #######
+############# RET.REL.NODEC R10, `(_Z11gru_forwardPfS_S_S_iii) #############
+####### R10 #######
+is_use: True
+is_def: False
+kill_set: set()
+defs_reaching: []
+reaches_next: False
+####### `(_Z11gru_forwardPfS_S_S_iii) #######
+########################## .L_x_52 ##########################
+############# BRA `(.L_x_52) #############
+####### `(.L_x_52) #######

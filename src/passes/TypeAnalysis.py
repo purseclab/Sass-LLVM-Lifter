@@ -14,9 +14,9 @@ class TypeAnalysis:
         self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
         
         current_dir = Path(__file__).parent
-        project_root = (current_dir / "../..").resolve()
+        self.project_root = (current_dir / "../..").resolve()
     
-        config_path = project_root / "launch" / "config.json"
+        config_path = self.project_root / "launch" / "config.json"
         
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
@@ -84,6 +84,25 @@ class TypeAnalysis:
                             print(f"Unsolvable type for operand {Op} in instruction {inst}")
                             raise InvalidTypeException("Type analysis incomplete")
 
+
+        typeAnalysisInfo = ""
+        for BB in self.func.blocks:
+            typeAnalysisInfo += f"########################## {BB.label} ##########################\n"
+            for inst in BB.instructions:
+                typeAnalysisInfo += f"############# {inst} #############\n"
+                for op in inst.operands:
+                    typeAnalysisInfo += f"####### {op} #######\n"
+                    if (op.isReg or op.isPReg) and op.reg:
+                        info = self.get_use_def_info(inst, op)
+                        for key, val  in  info.items():
+                            if key == "defs_reaching":
+                                typeAnalysisInfo += f"{key}: {[f'({inst.addr}, {reg})' for inst, reg in val]}\n"
+                            else:
+                                typeAnalysisInfo += f"{key}: {val}\n"
+        typeAnalysisInfo_path = (self.project_root / "output/debug" / "typeAnalysisInfo.txt").resolve()
+        with open(typeAnalysisInfo_path, "w") as f:
+            f.write(typeAnalysisInfo)
+        
     # Directly resolve the type description, this is mainly working for binary operation
     def DirectlySolveType(self, inst: Instruction):
         TypeDesc = None
