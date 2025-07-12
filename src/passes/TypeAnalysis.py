@@ -95,11 +95,11 @@ class TypeAnalysis:
                     if (op.isReg or op.isPReg) and op.reg:
                         info = self.get_use_def_info(inst, op)
                         for key, val  in  info.items():
-                            if key == "defs_reaching":
+                            if key in ("defs_reaching", "kill_set"):
                                 typeAnalysisInfo += f"{key}: {[f'({inst.addr}, {reg})' for inst, reg in val]}\n"
                             else:
                                 typeAnalysisInfo += f"{key}: {val}\n"
-        typeAnalysisInfo_path = (self.project_root / "output/debug" / "typeAnalysisInfo.txt").resolve()
+        typeAnalysisInfo_path = (self.project_root / "output/debug" / f"typeAnalysisInfo/{self.func.name}.txt").resolve()
         with open(typeAnalysisInfo_path, "w") as f:
             f.write(typeAnalysisInfo)
         
