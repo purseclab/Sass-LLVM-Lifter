@@ -8,17 +8,17 @@ from s2lir.Instruction import Instruction
 class ReachingDefinitionsAnalysis:
     def __init__(self, func):
         self.func : Function = func
-        self.all_defs : dict[str, tuple[Instruction, str]] = {}  # {reg: set of (inst, reg) pairs defining reg}
+        self.all_defs : dict[str, set[tuple[Instruction, str]]] = {}  # {reg: set of (inst, reg) pairs defining reg}
         self.gen : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, reg) pairs}
         self.kill : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, reg) pairs}
         self.in_defs : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, reg) pairs}
         self.out_defs : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, reg) pairs}
         
-        self._all_defs : dict[str, tuple[Instruction, str]] = {}  # {reg: set of (inst, Reg Operand) pairs defining reg}
-        self._gen : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
-        self._kill : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
-        self._in_defs : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
-        self._out_defs : dict[BasicBlock, set[tuple[Instruction, str]]] = {}  # {bb: set of (inst, OReg perand) pairs}
+        self._all_defs : dict[str, set[tuple[Instruction, Operand]]] = {}  # {reg: set of (inst, Reg Operand) pairs defining reg}
+        self._gen : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
+        self._kill : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
+        self._in_defs : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
+        self._out_defs : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, OReg perand) pairs}
         
         self._collect_all_definitions()
         self.compute_reaching_definitions()
@@ -28,10 +28,11 @@ class ReachingDefinitionsAnalysis:
         for bb in self.func.blocks:
             for inst in bb.instructions:
                 for regOp in inst._get_kill_set():
-                    if regOp not in self._all_defs:
-                        self._all_defs[regOp] = set()
-                    assert (inst, regOp) not in self._all_defs[regOp]
-                    self._all_defs[regOp].add((inst, regOp))
+                    reg = regOp.reg
+                    if reg not in self._all_defs:
+                        self._all_defs[reg] = set()
+                    assert (inst, regOp) not in self._all_defs[reg]
+                    self._all_defs[reg].add((inst, regOp))
                 
                 
                 for reg in inst.get_kill_set():
@@ -40,6 +41,10 @@ class ReachingDefinitionsAnalysis:
                     assert (inst, reg) not in self.all_defs[reg]
                     self.all_defs[reg].add((inst, reg))
                 
+                
+                # print("A:",[f"{reg_str}: " + "\n".join([f"{str(inst)} | {str(op)}" for inst, op  in inst_op])  for reg_str, inst_op in self._all_defs.items()])
+                # print("\n")
+                # print("B:",[f"{reg_str}: " + "\n".join([f"{inst} | {op}" for inst, op  in inst_op])  for reg_str, inst_op in self.all_defs.items()])
                 assert len(self._all_defs) == len(self.all_defs)
 
     def compute_reaching_definitions(self):
@@ -75,8 +80,16 @@ class ReachingDefinitionsAnalysis:
         
         assert len(self._kill) == len(self.kill)
         assert len(self._gen) == len(self.gen)
+        
+        for key, val in self._kill.items():
+            print("\n\n")
+            print("tt1", val)
+            print("tt2",self.kill[key])
+            assert len(val) == len(self.kill[key])
 
-
+        for key, val in self._gen.items():
+            assert len(val) == len(self.gen[key])
+        
         # Fixed-point iteration for IN and OUT
         changed = True
         while changed:
@@ -116,11 +129,18 @@ class ReachingDefinitionsAnalysis:
                     
         assert len(self._out_defs) == len(self.out_defs)
         assert len(self._in_defs) == len(self.in_defs)
+        
+        for key, val in self._out_defs.items():
+            assert len(val) == len(self.out_defs[key])
 
+        for key, val in self._in_defs.items():
+            assert len(val) == len(self.in_defs[key])
+        
     def get_reaching_definitions_before(self, inst: Instruction):
         """Get definitions reaching the instruction. compute_reaching_definitions's info is BB-level info."""
         bb = inst.BB
         defs = self.in_defs[bb].copy() # get definitions that reaches this BB at the start
+        # cnt = 0
         # Process instructions before 'inst' in program order
         for i in bb.instructions[:bb.instructions.index(inst)]:
             for reg in i.get_kill_set():
@@ -128,19 +148,29 @@ class ReachingDefinitionsAnalysis:
                 defs.difference_update({(d_inst, r) for d_inst, r in defs if r == reg})
                 # Add this new definition
                 defs.add((i, reg))
+                # cnt += 1
+        # print("t1", len(self.in_defs[bb]))
+        # print("t2", cnt)
         return defs
     
     def _get_reaching_definitions_before(self, inst: Instruction):
         bb = inst.BB
         defs = self._in_defs[bb].copy() # get definitions that reaches this BB at the start
         # Process instructions before 'inst' in program order
+        # cnt = 0
         for i in bb.instructions[:bb.instructions.index(inst)]:
             for regOp in i._get_kill_set():
                 # Remove prior definitions of this register, since it's now killed by the current definition
                 defs.difference_update({(d_inst, r_op) for d_inst, r_op in defs if r_op.reg == regOp.reg})
                 # Add this new definition
                 defs.add((i, regOp))
+                # cnt += 1
         
+        print(len(defs), len(self.get_reaching_definitions_before(inst)))
+        # print(cnt, len(self._in_defs[bb]))
+        print("A:\n", f"BB: {bb.label} | " + str([f"({ins} <> {op})" for ins, op in defs]))
+        print("B:\n", f"BB: {bb.label} | " + str([f"({ins} <> {op})" for ins, op in self.get_reaching_definitions_before(inst)]))
+        print("\n\n\n")
         assert len(self.get_reaching_definitions_before(inst)) == len(defs)
         return defs
 

@@ -338,7 +338,7 @@ class TypeAnalysis:
                 for reachingInst, registerOp in instReachingUse:
                     reg_to_DefOp_tmp = reg_to_DefOp.get(registerOp.reg, set())
                     reg_to_DefOp[registerOp.reg] = reg_to_DefOp_tmp | {registerOp}
-                    assert len(reg_to_DefOp_tmp) + 1 == reg_to_DefOp[registerOp.reg]
+                    assert len(reg_to_DefOp_tmp) + 1 == len(reg_to_DefOp[registerOp.reg])
                 
                 for op in inst.operands:
                     if op.is_use:
