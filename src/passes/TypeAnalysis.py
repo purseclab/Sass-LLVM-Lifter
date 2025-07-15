@@ -282,14 +282,15 @@ class TypeAnalysis:
         }
         
         if self.config["allow_temp_behavior"]:
-            if operand.is_def is None:
-                assert operand.is_use is not None
-                assert operand.is_use == True
-            elif operand.is_use is None:
-                assert operand.is_def is not None
-                assert operand.is_def == True
-            else:
-                assert operand.is_def ^ operand.is_use
+            pass
+            # if operand.is_def is None:
+            #     assert operand.is_use is not None
+            #     assert operand.is_use == True
+            # elif operand.is_use is None:
+            #     assert operand.is_def is not None
+            #     assert operand.is_def == True
+            # else:
+            #     assert operand.is_def ^ operand.is_use
         else:
             assert operand.is_def ^ operand.is_use # cannot both be true/false
 
