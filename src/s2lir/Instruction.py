@@ -227,14 +227,14 @@ class Instruction:
             return
 
         if self.opcode == "STG":
-            ResOp = self.operands[1]
-            PtrOp = self.operands[0]
-            if ResOp.isReg and PtrOp.isPtr:
+            ResOp = self.operands[0]
+            ValOp = self.operands[1]
+            if ValOp.isReg and ResOp.isPtr:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
-                IRPtrOp = IRRegs[PtrOp.getIRRegName()]
-                IRVal = IRBuilder.load(IRResOp)
+                IRValOp = IRRegs[ValOp.getIRRegName()]
+                IRVal = IRBuilder.load(IRValOp)
 
-                PtrOp.IR_ValueToPointer(IRBuilder, IRPtrOp, IRVal)
+                ResOp.IR_ValueToPointer(IRBuilder, IRResOp, IRVal)
             else:
                 raise InvalidSyntaxException
             return
@@ -1086,7 +1086,7 @@ class Instruction:
 
     def get_uses(self):
         """Return list of operands used by this instruction."""
-        return [op for op in self.operands if op.is_use()]
+        return [op for op in self.operands if op.is_use]
     
     def get_kill_set(self):
         """Return set of registers defined (killed) by this instruction."""
