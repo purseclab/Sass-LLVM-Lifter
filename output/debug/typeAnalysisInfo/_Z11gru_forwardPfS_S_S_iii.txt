@@ -1,11 +1,11 @@
 ########################## .text._Z11gru_forwardPfS_S_S_iii ##########################
 ############# MOV R1, c[0x0][0x28] #############
 ####### R1 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0000, R1)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x28] #######
 ############# S2R R14, SR_CTAID.X #############
 ####### R14 #######
@@ -17,11 +17,11 @@ reaches_next: True
 ####### SR_CTAID.X #######
 ############# MOV R0, c[0x0][0x188] #############
 ####### R0 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0020, R0)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x188] #######
 ############# S2R R3, SR_TID.X #############
 ####### R3 #######
@@ -48,7 +48,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0040, P0)']
-defs_reaching: []
+defs_reaching: ['(0x0020, R0)']
 reaches_next: False
 ####### 0x1 #######
 ####### PT #######
@@ -161,27 +161,27 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R33, 0x4 #############
 ####### R33 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x00a0, R33)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# MOV R3, c[0x0][0x184] #############
 ####### R3 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x00b0, R3)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# MOV R15, c[0x0][0x180] #############
 ####### R15 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x00c0, R15)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x180] #######
 ############# IMAD.WIDE R26, R14.reuse, R33.reuse, c[0x0][0x178] #############
 ####### R26 #######
@@ -200,7 +200,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x00d0, R26)']
-defs_reaching: []
+defs_reaching: ['(0x00a0, R33)']
 reaches_next: False
 ####### c[0x0][0x178] #######
 ############# LEA R30, R3, R14, 0x1 #############
@@ -214,7 +214,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x00b0, R3)']
 reaches_next: False
 ####### R14 #######
 is_def: None
@@ -225,11 +225,11 @@ reaches_next: False
 ####### 0x1 #######
 ############# MOV R5, c[0x0][0x184] #############
 ####### R5 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x00f0, R5)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# IMAD.WIDE R28, R14, R33, c[0x0][0x168] #############
 ####### R28 #######
@@ -248,7 +248,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0100, R28)']
-defs_reaching: []
+defs_reaching: ['(0x00a0, R33)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LEA R3, R15, R15, 0x2 #############
@@ -256,19 +256,19 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x00b0, R3)']
 reaches_next: False
 ####### R15 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x00c0, R15)']
 reaches_next: False
 ####### R15 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x00c0, R15)']
 reaches_next: False
 ####### 0x2 #######
 ############# IMAD.WIDE R30, R30, R33, c[0x0][0x178] #############
@@ -288,7 +288,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0120, R30)']
-defs_reaching: []
+defs_reaching: ['(0x00a0, R33)']
 reaches_next: False
 ####### c[0x0][0x178] #######
 ############# IMAD R2, R5, c[0x0][0x180], RZ #############
@@ -302,7 +302,7 @@ reaches_next: True
 is_def: False
 is_use: True
 kill_set: ['(0x0130, R2)']
-defs_reaching: []
+defs_reaching: ['(0x00f0, R5)']
 reaches_next: False
 ####### c[0x0][0x180] #######
 ####### RZ #######
@@ -316,13 +316,13 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x0140, R3)']
-defs_reaching: []
+defs_reaching: ['(0x00b0, R3)']
 reaches_next: True
 ####### R3 #######
 is_def: False
 is_use: True
 kill_set: ['(0x0140, R3)']
-defs_reaching: []
+defs_reaching: ['(0x00b0, R3)']
 reaches_next: False
 ####### c[0x0][0x184] #######
 ####### R0 #######
@@ -342,7 +342,7 @@ reaches_next: True
 is_def: False
 is_use: True
 kill_set: ['(0x0150, R32)']
-defs_reaching: []
+defs_reaching: ['(0x00a0, R33)']
 reaches_next: False
 ####### c[0x0][0x184] #######
 ####### R26 #######
@@ -409,15 +409,15 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R6, RZ #############
 ####### R6 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0190, R6)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0190, R6)']
 defs_reaching: []
 reaches_next: False
 ############# IADD3 R7, -R4, c[0x0][0x184], RZ #############
@@ -443,11 +443,11 @@ reaches_next: False
 ########################## .L_x_22 ##########################
 ############# MOV R8, c[0x0][0x184] #############
 ####### R8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x01b0, R8)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# IADD3 R6, R6, 0x1, RZ #############
 ####### R6 #######
@@ -486,7 +486,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x01d0, P4)']
-defs_reaching: []
+defs_reaching: ['(0x01b0, R8)']
 reaches_next: False
 ####### 0x1 #######
 ####### PT #######
@@ -523,41 +523,41 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R8, RZ #############
 ####### R8 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
+is_def: True
+is_use: False
+kill_set: ['(0x01f0, R8)']
+defs_reaching: ['(0x01b0, R8)']
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x01f0, R8)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R52, RZ #############
 ####### R52 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0200, R52)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0200, R52)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R54, RZ #############
 ####### R54 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0210, R54)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0210, R54)']
 defs_reaching: []
 reaches_next: False
 ############# @!P4 BRA `(.L_x_1) #############
@@ -597,41 +597,41 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R54, RZ #############
 ####### R54 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0240, R54)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0240, R54)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R11, RZ #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0250, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0250, R11)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R52, RZ #############
 ####### R52 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0260, R52)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0260, R52)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_2) #############
@@ -676,41 +676,41 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R54, RZ #############
 ####### R54 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0290, R54)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0290, R54)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R11, RZ #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x02a0, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x02a0, R11)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R9, R7 #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x02b0, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x02b0, R9)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_3) #############
@@ -851,11 +851,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R18, 0x4 #############
 ####### R18 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0320, R18)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IMAD R23, R2.reuse, 0x3, R25 #############
 ####### R23 #######
@@ -914,7 +914,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0350, R38)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R16, R23, R18, c[0x0][0x170] #############
@@ -934,7 +934,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0360, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R20, R25, R18, c[0x0][0x170] #############
@@ -954,7 +954,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0370, R20)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R57, [R38] #############
@@ -1130,7 +1130,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0470, R40)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IADD3 R37, R11, 0xc, RZ #############
@@ -1170,7 +1170,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0490, R38)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3 R51, R25, 0x4, RZ #############
@@ -1218,7 +1218,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x04c0, R34)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R10, [R40+0x4] #############
@@ -1246,7 +1246,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x04e0, R36)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R16, [R40+0x8] #############
@@ -1298,7 +1298,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0530, R40)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R51, [R38] #############
@@ -1430,7 +1430,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x05f0, R34)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R55, [R38+0x8] #############
@@ -1458,7 +1458,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0610, R36)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R61, [R40+0x8] #############
@@ -1731,7 +1731,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0740, R24)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R43, [R36+0xc] #############
@@ -1784,7 +1784,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0770, R22)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R18, [R24] #############
@@ -1792,7 +1792,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x0780, R18)']
-defs_reaching: []
+defs_reaching: ['(0x0320, R18)']
 reaches_next: True
 ####### [R24] #######
 ############# FFMA R14, R14, R15, R49 #############
@@ -2638,11 +2638,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R17, 0x4 #############
 ####### R17 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0a10, R17)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# LEA R14, R2.reuse, R13, 0x2 #############
 ####### R14 #######
@@ -2721,7 +2721,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0a50, R18)']
-defs_reaching: []
+defs_reaching: ['(0x0a10, R17)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IADD3 R16, R14, 0x4, RZ #############
@@ -2781,7 +2781,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0a80, R22)']
-defs_reaching: []
+defs_reaching: ['(0x0a10, R17)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R20, R14, R17.reuse, c[0x0][0x170] #############
@@ -2801,7 +2801,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0a90, R20)']
-defs_reaching: []
+defs_reaching: ['(0x0a10, R17)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R39, [R18] #############
@@ -2829,7 +2829,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0ab0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0a10, R17)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R37, [R22] #############
@@ -2865,7 +2865,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0ae0, R14)']
-defs_reaching: []
+defs_reaching: ['(0x0a10, R17)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R34, [R18+0x4] #############
@@ -2909,7 +2909,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0b20, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0a10, R17)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R24, [R18+0x8] #############
@@ -3597,11 +3597,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R16, 0x4 #############
 ####### R16 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0db0, R16)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# LEA R17, R2.reuse, R13, 0x2 #############
 ####### R17 #######
@@ -3660,7 +3660,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0de0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0db0, R16)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R14, R15, R16, c[0x0][0x170] #############
@@ -3680,7 +3680,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0df0, R14)']
-defs_reaching: []
+defs_reaching: ['(0x0db0, R16)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R16, R17, R16, c[0x0][0x170] #############
@@ -3688,7 +3688,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x0e00, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0db0, R16)']
 reaches_next: True
 ####### R17 #######
 is_def: False
@@ -3700,7 +3700,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0e00, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0db0, R16)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R21, [R12] #############
@@ -4146,11 +4146,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R15, 0x4 #############
 ####### R15 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0fc0, R15)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# LEA R14, R2.reuse, R9, 0x2 #############
 ####### R14 #######
@@ -4209,7 +4209,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x0ff0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x0fc0, R15)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R12, R12, R15, c[0x0][0x170] #############
@@ -4229,7 +4229,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1000, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0fc0, R15)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R14, R14, R15, c[0x0][0x170] #############
@@ -4249,7 +4249,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1010, R14)']
-defs_reaching: []
+defs_reaching: ['(0x0fc0, R15)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R17, [R10] #############
@@ -4669,11 +4669,11 @@ reaches_next: True
 ####### [R26] #######
 ############# MOV R10, 0x3bbb989d #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1150, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3bbb989d #######
 ############# BMOV.32.CLEAR RZ, B0 #############
 ####### RZ #######
@@ -4685,11 +4685,11 @@ reaches_next: False
 ####### B0 #######
 ############# MOV R11, 0x437c0000 #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1170, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x437c0000 #######
 ############# BSSY B0, `(.L_x_7) #############
 ####### B0 #######
@@ -4718,7 +4718,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x11a0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1150, R10)']
 reaches_next: True
 ####### -R9 #######
 is_def: False
@@ -4730,7 +4730,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x11a0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1150, R10)']
 reaches_next: False
 ####### 0.5 #######
 ############# FFMA.RM R10, R10, R11, 12582913 #############
@@ -4750,7 +4750,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x11b0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1170, R11)']
 reaches_next: False
 ####### 12582913 #######
 ############# FADD R12, R10.reuse, -12583039 #############
@@ -4944,25 +4944,25 @@ reaches_next: False
 ########################## .L_x_1_split_0x1260 ##########################
 ############# MOV R10, 0x1280 #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1260, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x1280 #######
 ############# CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #############
 ####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #######
 ############# MOV R9, R22 #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1280, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x1280, R9)']
 defs_reaching: []
 reaches_next: False
 ############# BRA `(.L_x_9) #############
@@ -5059,19 +5059,19 @@ reaches_next: True
 ####### [R32] #######
 ############# MOV R10, 0x3bbb989d #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1300, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3bbb989d #######
 ############# MOV R13, 0x437c0000 #############
 ####### R13 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1310, R13)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x437c0000 #######
 ############# FADD R11, R11, R54 #############
 ####### R11 #######
@@ -5097,7 +5097,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x1330, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1300, R10)']
 reaches_next: True
 ####### -R11 #######
 is_def: False
@@ -5109,7 +5109,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1330, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1300, R10)']
 reaches_next: False
 ####### 0.5 #######
 ############# FFMA.RM R10, R10, R13, 12582913 #############
@@ -5129,7 +5129,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1340, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1310, R13)']
 reaches_next: False
 ####### 12582913 #######
 ############# FADD R12, R10.reuse, -12583039 #############
@@ -5276,28 +5276,28 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R8, RZ #############
 ####### R8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x13d0, R8)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x13d0, R8)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R22, RZ #############
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x13e0, R22)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x13e0, R22)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_11) #############
@@ -5342,41 +5342,41 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R8, RZ #############
 ####### R8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1410, R8)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x1410, R8)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R22, RZ #############
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1420, R22)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x1420, R22)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R23, R7 #############
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1430, R23)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x1430, R23)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_12) #############
@@ -5492,11 +5492,11 @@ reaches_next: False
 ########################## .L_x_14 ##########################
 ############# MOV R49, 0x4 #############
 ####### R49 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1490, R49)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R16, R3, R22, RZ #############
 ####### R16 #######
@@ -5540,7 +5540,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x14b0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R16, R16, R49, c[0x0][0x170] #############
@@ -5560,7 +5560,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x14c0, R16)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3 R18, R22, 0x4, RZ #############
@@ -5649,7 +5649,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1520, R18)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R25, [R16+0x4] #############
@@ -5685,7 +5685,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1550, R14)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R34, [R16+0x8] #############
@@ -5798,7 +5798,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x15e0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R37, [R14+0x4] #############
@@ -5834,7 +5834,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1610, R12)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R35, [R14+0x8] #############
@@ -5947,7 +5947,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x16a0, R16)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R43, [R12+0x4] #############
@@ -5983,7 +5983,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x16d0, R14)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R18, [R12+0x8] #############
@@ -6039,7 +6039,7 @@ reaches_next: True
 is_def: True
 is_use: False
 kill_set: ['(0x1740, R49)']
-defs_reaching: []
+defs_reaching: ['(0x1490, R49)']
 reaches_next: True
 ####### [R14+0x4] #######
 ############# LDG.E.SYS R58, [R16+0x8] #############
@@ -6890,11 +6890,11 @@ reaches_next: False
 ########################## .L_x_13_split_0x19f0 ##########################
 ############# MOV R13, 0x4 #############
 ####### R13 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x19f0, R13)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R16, R3, R22, RZ #############
 ####### R16 #######
@@ -6938,7 +6938,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1a10, R14)']
-defs_reaching: []
+defs_reaching: ['(0x19f0, R13)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R16, R16, R13, c[0x0][0x170] #############
@@ -6958,7 +6958,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1a20, R16)']
-defs_reaching: []
+defs_reaching: ['(0x19f0, R13)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3 R10, R22, 0x4, RZ #############
@@ -7047,7 +7047,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1a80, R10)']
-defs_reaching: []
+defs_reaching: ['(0x19f0, R13)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R21, [R16+0x4] #############
@@ -7083,7 +7083,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1ab0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x19f0, R13)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R25, [R16+0x8] #############
@@ -7642,11 +7642,11 @@ reaches_next: False
 ########################## .L_x_12 ##########################
 ############# MOV R13, 0x4 #############
 ####### R13 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1cc0, R13)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R12, R3, R22, RZ #############
 ####### R12 #######
@@ -7690,7 +7690,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1ce0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1cc0, R13)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R12, R12, R13, c[0x0][0x170] #############
@@ -7710,7 +7710,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1cf0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x1cc0, R13)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R14, [R10] #############
@@ -8075,11 +8075,11 @@ reaches_next: False
 ########################## .L_x_11_split_0x1e60 ##########################
 ############# MOV R11, 0x4 #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x1e60, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R10, R3, R22, RZ #############
 ####### R10 #######
@@ -8123,7 +8123,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1e80, R22)']
-defs_reaching: []
+defs_reaching: ['(0x1e60, R11)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R10, R10, R11, c[0x0][0x170] #############
@@ -8143,7 +8143,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x1e90, R10)']
-defs_reaching: []
+defs_reaching: ['(0x1e60, R11)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R12, [R22] #############
@@ -8576,11 +8576,11 @@ reaches_next: False
 ####### 2.8853900432586669922 #######
 ############# MOV R9, 0x3f800000 #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2000, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3f800000 #######
 ############# FSETP.GE.AND P0, PT, |R12|, 9.010913848876953125, PT #############
 ####### P0 #######
@@ -8653,7 +8653,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x2050, R9)']
-defs_reaching: []
+defs_reaching: ['(0x2000, R9)']
 reaches_next: True
 ####### R10 #######
 is_def: False
@@ -8666,7 +8666,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2050, R9)']
-defs_reaching: []
+defs_reaching: ['(0x2000, R9)']
 reaches_next: False
 ############# FSEL R9, R9, 1, !P0 #############
 ####### R9 #######
@@ -8720,11 +8720,11 @@ reaches_next: False
 ########################## .L_x_17 ##########################
 ############# MOV R9, 0x3c80f082 #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2090, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3c80f082 #######
 ############# FMUL R8, R12, R12 #############
 ####### R8 #######
@@ -8750,7 +8750,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x20b0, R9)']
-defs_reaching: []
+defs_reaching: ['(0x2090, R9)']
 reaches_next: True
 ####### R8 #######
 is_def: False
@@ -8762,7 +8762,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x20b0, R9)']
-defs_reaching: []
+defs_reaching: ['(0x2090, R9)']
 reaches_next: False
 ####### -0.052303962409496307373 #######
 ############# FFMA R9, R8, R9, 0.1331529766321182251 #############
@@ -8954,38 +8954,38 @@ reaches_next: False
 ########################## .L_x_16_split_0x2170 ##########################
 ############# MOV R24, R20 #############
 ####### R24 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2170, R24)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R20 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2170, R24)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R10, 0x21a0 #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2180, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x21a0 #######
 ############# CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #############
 ####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #######
 ############# MOV R8, R22 #############
 ####### R8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x21a0, R8)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x21a0, R8)']
 defs_reaching: []
 reaches_next: False
 ############# BRA `(.L_x_21) #############
@@ -9159,11 +9159,11 @@ reaches_next: False
 ########################## .L_x_0 ##########################
 ############# MOV R18, 0x1 #############
 ####### R18 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2280, R18)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x1 #######
 ############# LOP3.LUT R15, R15, 0x3, RZ, 0xc0, !PT #############
 ####### R15 #######
@@ -9230,7 +9230,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2280, R18)']
 reaches_next: False
 ####### c[0x0][0x180] #######
 ####### RZ #######
@@ -9261,15 +9261,15 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R17, RZ #############
 ####### R17 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x22d0, R17)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x22d0, R17)']
 defs_reaching: []
 reaches_next: False
 ############# IADD3 R18, -R18, c[0x0][0x184], RZ #############
@@ -9277,13 +9277,13 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2280, R18)']
 reaches_next: False
 ####### -R18 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2280, R18)']
 reaches_next: False
 ####### c[0x0][0x184] #######
 ####### RZ #######
@@ -9361,24 +9361,24 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R13, R17 #############
 ####### R13 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2320, R13)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R17 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2320, R13)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R4, c[0x0][0x184] #############
 ####### R4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2330, R4)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# IADD3 R17, R17, 0x1, RZ #############
 ####### R17 #######
@@ -9417,7 +9417,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2350, P4)']
-defs_reaching: []
+defs_reaching: ['(0x2330, R4)']
 reaches_next: False
 ####### 0x1 #######
 ####### PT #######
@@ -9485,54 +9485,54 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R21, RZ #############
 ####### R21 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2380, R21)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2380, R21)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R22, RZ #############
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2390, R22)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2390, R22)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R56, RZ #############
 ####### R56 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x23a0, R56)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x23a0, R56)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R44, RZ #############
 ####### R44 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x23b0, R44)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x23b0, R44)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_23) #############
@@ -9546,49 +9546,49 @@ reaches_next: False
 ########################## .L_x_47_split_0x23d0 ##########################
 ############# MOV R25, c[0x0][0x184] #############
 ####### R25 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x23d0, R25)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# MOV R21, RZ #############
 ####### R21 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x23e0, R21)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x23e0, R21)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R22, RZ #############
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x23f0, R22)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x23f0, R22)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R12, R19 #############
 ####### R12 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2400, R12)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R19 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2400, R12)']
 defs_reaching: []
 reaches_next: False
 ############# SHF.L.U64.HI R23, R25, 0x2, R16 #############
@@ -9602,7 +9602,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x23d0, R25)']
 reaches_next: False
 ####### 0x2 #######
 ####### R16 #######
@@ -9614,11 +9614,11 @@ reaches_next: False
 ########################## .L_x_24 ##########################
 ############# MOV R7, 0x4 #############
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2420, R7)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IMAD R6, R14, c[0x0][0x180], R22.reuse #############
 ####### R6 #######
@@ -9642,11 +9642,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R9, c[0x0][0x184] #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2440, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# IMAD R10, R13, c[0x0][0x180], R22 #############
 ####### R10 #######
@@ -9685,7 +9685,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2460, R4)']
-defs_reaching: []
+defs_reaching: ['(0x2420, R7)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LEA R6, R9, R6, 0x1 #############
@@ -9699,7 +9699,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2440, R9)']
 reaches_next: False
 ####### R6 #######
 is_def: None
@@ -9725,7 +9725,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2480, R10)']
-defs_reaching: []
+defs_reaching: ['(0x2420, R7)']
 reaches_next: False
 ####### c[0x0][0x160] #######
 ############# LEA R8, P0, R25, R4, 0x2 #############
@@ -9771,7 +9771,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x24a0, R6)']
-defs_reaching: []
+defs_reaching: ['(0x2420, R7)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3.X R9, R5, R23, RZ, P0, !PT #############
@@ -9779,7 +9779,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2440, R9)']
 reaches_next: False
 ####### R5 #######
 is_def: None
@@ -10330,11 +10330,11 @@ reaches_next: False
 ########################## .L_x_23_split_0x26d0 ##########################
 ############# MOV R11, 0x4 #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x26d0, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IMAD R7, R14, c[0x0][0x180], R22.reuse #############
 ####### R7 #######
@@ -10358,11 +10358,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R10, c[0x0][0x184] #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x26f0, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# IMAD R6, R13, c[0x0][0x180], R22 #############
 ####### R6 #######
@@ -10386,11 +10386,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R9, c[0x0][0x184] #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2710, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### c[0x0][0x184] #######
 ############# IMAD.WIDE R4, R7, R11, c[0x0][0x170] #############
 ####### R4 #######
@@ -10409,7 +10409,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2720, R4)']
-defs_reaching: []
+defs_reaching: ['(0x26d0, R11)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LEA R10, R10, R7, 0x1 #############
@@ -10417,13 +10417,13 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x26f0, R10)']
 reaches_next: False
 ####### R10 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x26f0, R10)']
 reaches_next: False
 ####### R7 #######
 is_def: None
@@ -10449,7 +10449,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2740, R6)']
-defs_reaching: []
+defs_reaching: ['(0x26d0, R11)']
 reaches_next: False
 ####### c[0x0][0x160] #######
 ############# LEA R8, P0, R9, R4, 0x2 #############
@@ -10469,7 +10469,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2710, R9)']
 reaches_next: False
 ####### R4 #######
 is_def: None
@@ -10483,19 +10483,19 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x2760, R10)']
-defs_reaching: []
+defs_reaching: ['(0x26f0, R10)']
 reaches_next: True
 ####### R10 #######
 is_def: False
 is_use: True
 kill_set: ['(0x2760, R10)']
-defs_reaching: []
+defs_reaching: ['(0x26f0, R10)']
 reaches_next: False
 ####### R11 #######
 is_def: False
 is_use: True
 kill_set: ['(0x2760, R10)']
-defs_reaching: []
+defs_reaching: ['(0x26d0, R11)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LEA.HI.X R9, R9, R5, R16, 0x2, P0 #############
@@ -10503,13 +10503,13 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2710, R9)']
 reaches_next: False
 ####### R9 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x2710, R9)']
 reaches_next: False
 ####### R5 #######
 is_def: None
@@ -11126,15 +11126,15 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R23, RZ #############
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2920, R23)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2920, R23)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_27) #############
@@ -11179,28 +11179,28 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R23, RZ #############
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2950, R23)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2950, R23)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R22, R20 #############
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x2960, R22)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R20 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x2960, R22)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_28) #############
@@ -11341,11 +11341,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R24, 0x4 #############
 ####### R24 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x29d0, R24)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IMAD R35, R2.reuse, 0x3, R25 #############
 ####### R35 #######
@@ -11404,7 +11404,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2a00, R36)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R8, R35, R24, c[0x0][0x170] #############
@@ -11424,7 +11424,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2a10, R8)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R12, R25, R24, c[0x0][0x170] #############
@@ -11444,7 +11444,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2a20, R12)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R39, [R36] #############
@@ -11620,7 +11620,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2b20, R10)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R6, R7, R24, c[0x0][0x170] #############
@@ -11640,7 +11640,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2b30, R6)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R4, R5, R24, c[0x0][0x170] #############
@@ -11660,7 +11660,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2b40, R4)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R46, [R10] #############
@@ -11748,7 +11748,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2bc0, R8)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R38, [R10+0xc] #############
@@ -11816,7 +11816,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2c00, R12)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# FFMA R57, R41, R39, R44 #############
@@ -12009,7 +12009,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2cc0, R8)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R52, [R12+0x8] #############
@@ -12164,7 +12164,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2d60, R10)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R51, [R4+0x8] #############
@@ -12322,7 +12322,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2e10, R12)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R6, [R8+0x8] #############
@@ -12338,7 +12338,7 @@ reaches_next: True
 is_def: True
 is_use: False
 kill_set: ['(0x2e30, R24)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: True
 ####### R25 #######
 is_def: False
@@ -12350,7 +12350,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x2e30, R24)']
-defs_reaching: []
+defs_reaching: ['(0x29d0, R24)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R4, [R10+0x8] #############
@@ -13128,11 +13128,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R25, 0x4 #############
 ####### R25 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x30c0, R25)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# LEA R13, R2.reuse, R5, 0x2 #############
 ####### R13 #######
@@ -13211,7 +13211,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3100, R8)']
-defs_reaching: []
+defs_reaching: ['(0x30c0, R25)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IADD3 R24, R13, 0x4, RZ #############
@@ -13251,7 +13251,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3120, R4)']
-defs_reaching: []
+defs_reaching: ['(0x30c0, R25)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3 R12, R12, 0x4, RZ #############
@@ -13291,7 +13291,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3140, R10)']
-defs_reaching: []
+defs_reaching: ['(0x30c0, R25)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R43, [R8] #############
@@ -13319,7 +13319,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3160, R6)']
-defs_reaching: []
+defs_reaching: ['(0x30c0, R25)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R52, [R4] #############
@@ -13355,7 +13355,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3190, R12)']
-defs_reaching: []
+defs_reaching: ['(0x30c0, R25)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R36, [R8+0x4] #############
@@ -13399,7 +13399,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x31d0, R24)']
-defs_reaching: []
+defs_reaching: ['(0x30c0, R25)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R34, [R8+0x8] #############
@@ -14087,11 +14087,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R6, 0x4 #############
 ####### R6 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3460, R6)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# LEA R11, R2.reuse, R5, 0x2 #############
 ####### R11 #######
@@ -14150,7 +14150,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3490, R8)']
-defs_reaching: []
+defs_reaching: ['(0x3460, R6)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R4, R7, R6, c[0x0][0x170] #############
@@ -14170,7 +14170,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x34a0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3460, R6)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R6, R11, R6, c[0x0][0x170] #############
@@ -14178,7 +14178,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x34b0, R6)']
-defs_reaching: []
+defs_reaching: ['(0x3460, R6)']
 reaches_next: True
 ####### R11 #######
 is_def: False
@@ -14190,7 +14190,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x34b0, R6)']
-defs_reaching: []
+defs_reaching: ['(0x3460, R6)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R13, [R8] #############
@@ -14636,11 +14636,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R9, 0x4 #############
 ####### R9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3670, R9)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# LEA R8, R2.reuse, R5, 0x2 #############
 ####### R8 #######
@@ -14699,7 +14699,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x36a0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3670, R9)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R6, R6, R9, c[0x0][0x170] #############
@@ -14719,7 +14719,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x36b0, R6)']
-defs_reaching: []
+defs_reaching: ['(0x3670, R9)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IMAD.WIDE R8, R8, R9, c[0x0][0x170] #############
@@ -14739,7 +14739,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x36c0, R8)']
-defs_reaching: []
+defs_reaching: ['(0x3670, R9)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R13, [R4] #############
@@ -15159,11 +15159,11 @@ reaches_next: True
 ####### [R26] #######
 ############# MOV R4, 0x3bbb989d #############
 ####### R4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3800, R4)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3bbb989d #######
 ############# BMOV.32.CLEAR RZ, B0 #############
 ####### RZ #######
@@ -15175,11 +15175,11 @@ reaches_next: False
 ####### B0 #######
 ############# MOV R7, 0x437c0000 #############
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3820, R7)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x437c0000 #######
 ############# BSSY B0, `(.L_x_32) #############
 ####### B0 #######
@@ -15208,7 +15208,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x3850, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3800, R4)']
 reaches_next: True
 ####### -R5 #######
 is_def: False
@@ -15220,7 +15220,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3850, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3800, R4)']
 reaches_next: False
 ####### 0.5 #######
 ############# FFMA.RM R4, R4, R7, 12582913 #############
@@ -15240,7 +15240,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3860, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3820, R7)']
 reaches_next: False
 ####### 12582913 #######
 ############# FADD R6, R4.reuse, -12583039 #############
@@ -15434,11 +15434,11 @@ reaches_next: False
 ########################## .L_x_26_split_0x3910 ##########################
 ############# MOV R10, 0x3930 #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3910, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3930 #######
 ############# CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #############
 ####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #######
@@ -15536,19 +15536,19 @@ reaches_next: True
 ####### [R32] #######
 ############# MOV R4, 0x3bbb989d #############
 ####### R4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x39a0, R4)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3bbb989d #######
 ############# MOV R7, 0x437c0000 #############
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x39b0, R7)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x437c0000 #######
 ############# FADD R5, R5, R56 #############
 ####### R5 #######
@@ -15574,7 +15574,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x39d0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x39a0, R4)']
 reaches_next: True
 ####### -R5 #######
 is_def: False
@@ -15586,7 +15586,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x39d0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x39a0, R4)']
 reaches_next: False
 ####### 0.5 #######
 ############# FFMA.RM R4, R4, R7, 12582913 #############
@@ -15606,7 +15606,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x39e0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x39b0, R7)']
 reaches_next: False
 ####### 12582913 #######
 ############# FADD R6, R4.reuse, -12583039 #############
@@ -15753,15 +15753,15 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R34, RZ #############
 ####### R34 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3a70, R34)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x3a70, R34)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_36) #############
@@ -15806,28 +15806,28 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R34, RZ #############
 ####### R34 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3aa0, R34)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x3aa0, R34)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R35, R20 #############
 ####### R35 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3ab0, R35)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R20 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x3ab0, R35)']
 defs_reaching: []
 reaches_next: False
 ############# @!P0 BRA `(.L_x_37) #############
@@ -15943,11 +15943,11 @@ reaches_next: False
 ########################## .L_x_39 ##########################
 ############# MOV R41, 0x4 #############
 ####### R41 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x3b10, R41)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R10, R3, R34, RZ #############
 ####### R10 #######
@@ -15991,7 +15991,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3b30, R12)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R10, R10, R41, c[0x0][0x170] #############
@@ -16011,7 +16011,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3b40, R10)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3 R4, R34, 0x4, RZ #############
@@ -16100,7 +16100,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3ba0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R24, [R10+0x4] #############
@@ -16136,7 +16136,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3bd0, R6)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R38, [R10+0x8] #############
@@ -16249,7 +16249,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3c60, R8)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R42, [R6+0x4] #############
@@ -16285,7 +16285,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3c90, R10)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R40, [R6+0x8] #############
@@ -16398,7 +16398,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3d20, R12)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R50, [R10+0x4] #############
@@ -16434,7 +16434,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x3d50, R4)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R61, [R8+0xc] #############
@@ -16474,7 +16474,7 @@ reaches_next: True
 is_def: True
 is_use: False
 kill_set: ['(0x3da0, R41)']
-defs_reaching: []
+defs_reaching: ['(0x3b10, R41)']
 reaches_next: True
 ####### [R12+0x4] #######
 ############# LDG.E.SYS R10, [R4] #############
@@ -17341,11 +17341,11 @@ reaches_next: False
 ########################## .L_x_38_split_0x4070 ##########################
 ############# MOV R11, 0x4 #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4070, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R6, R3, R34, RZ #############
 ####### R6 #######
@@ -17389,7 +17389,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4090, R8)']
-defs_reaching: []
+defs_reaching: ['(0x4070, R11)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R6, R6, R11, c[0x0][0x170] #############
@@ -17409,7 +17409,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x40a0, R6)']
-defs_reaching: []
+defs_reaching: ['(0x4070, R11)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# IADD3 R4, R34, 0x4, RZ #############
@@ -17498,7 +17498,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4100, R4)']
-defs_reaching: []
+defs_reaching: ['(0x4070, R11)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# LDG.E.SYS R24, [R6+0x4] #############
@@ -17534,7 +17534,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4130, R10)']
-defs_reaching: []
+defs_reaching: ['(0x4070, R11)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R36, [R6+0x8] #############
@@ -18093,11 +18093,11 @@ reaches_next: False
 ########################## .L_x_37 ##########################
 ############# MOV R7, 0x4 #############
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4340, R7)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R6, R3, R34, RZ #############
 ####### R6 #######
@@ -18141,7 +18141,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4360, R4)']
-defs_reaching: []
+defs_reaching: ['(0x4340, R7)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R6, R6, R7, c[0x0][0x170] #############
@@ -18161,7 +18161,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4370, R6)']
-defs_reaching: []
+defs_reaching: ['(0x4340, R7)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R9, [R4] #############
@@ -18526,11 +18526,11 @@ reaches_next: False
 ########################## .L_x_36_split_0x44e0 ##########################
 ############# MOV R5, 0x4 #############
 ####### R5 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x44e0, R5)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4 #######
 ############# IADD3 R4, R3, R34, RZ #############
 ####### R4 #######
@@ -18574,7 +18574,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4500, R34)']
-defs_reaching: []
+defs_reaching: ['(0x44e0, R5)']
 reaches_next: False
 ####### c[0x0][0x168] #######
 ############# IMAD.WIDE R4, R4, R5, c[0x0][0x170] #############
@@ -18594,7 +18594,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4510, R4)']
-defs_reaching: []
+defs_reaching: ['(0x44e0, R5)']
 reaches_next: False
 ####### c[0x0][0x170] #######
 ############# LDG.E.SYS R7, [R34] #############
@@ -19027,11 +19027,11 @@ reaches_next: False
 ####### 2.8853900432586669922 #######
 ############# MOV R7, 0x3f800000 #############
 ####### R7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4680, R7)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3f800000 #######
 ############# FSETP.GE.AND P0, PT, |R21|, 9.010913848876953125, PT #############
 ####### P0 #######
@@ -19117,7 +19117,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x46d0, R4)']
-defs_reaching: []
+defs_reaching: ['(0x4680, R7)']
 reaches_next: False
 ############# FSEL R4, R4, 1, !P0 #############
 ####### R4 #######
@@ -19171,11 +19171,11 @@ reaches_next: False
 ########################## .L_x_42 ##########################
 ############# MOV R5, 0x3c80f082 #############
 ####### R5 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4710, R5)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3c80f082 #######
 ############# FMUL R4, R21, R21 #############
 ####### R4 #######
@@ -19201,7 +19201,7 @@ reaches_next: False
 is_def: True
 is_use: False
 kill_set: ['(0x4730, R5)']
-defs_reaching: []
+defs_reaching: ['(0x4710, R5)']
 reaches_next: True
 ####### R4 #######
 is_def: False
@@ -19213,7 +19213,7 @@ reaches_next: False
 is_def: False
 is_use: True
 kill_set: ['(0x4730, R5)']
-defs_reaching: []
+defs_reaching: ['(0x4710, R5)']
 reaches_next: False
 ####### -0.052303962409496307373 #######
 ############# FFMA R5, R4, R5, 0.1331529766321182251 #############
@@ -19405,38 +19405,38 @@ reaches_next: False
 ########################## .L_x_41_split_0x47f0 ##########################
 ############# MOV R24, R23 #############
 ####### R24 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x47f0, R24)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x47f0, R24)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R10, 0x4820 #############
 ####### R10 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4800, R10)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x4820 #######
 ############# CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #############
 ####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath) #######
 ############# MOV R5, R22 #############
 ####### R5 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4820, R5)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4820, R5)']
 defs_reaching: []
 reaches_next: False
 ############# BRA `(.L_x_46) #############

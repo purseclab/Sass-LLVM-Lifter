@@ -354,3 +354,10 @@ class Operand:
                 raise NameError("Unknown Operand Type")
 
         return self.IRRegName
+    
+    def is_use_disqualifier(self):
+        if self.isConst:
+            return False
+        if not self.isReg and not self.isPReg:
+            return False
+        return True

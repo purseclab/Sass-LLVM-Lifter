@@ -558,11 +558,11 @@ defs_reaching: []
 reaches_next: False
 ############# MOV R23, 0x3 #############
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4a40, R23)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x3 #######
 ############# LOP3.LUT R11, R11, 0x3f800000, RZ, 0xfc, !PT #############
 ####### R11 #######
@@ -596,13 +596,13 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### R23 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### R34 #######
 is_def: None
@@ -828,13 +828,13 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### R23 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### R12 #######
 is_def: None
@@ -885,7 +885,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### RZ #######
 is_def: None
@@ -903,7 +903,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ############# LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT #############
 ####### P1 #######
@@ -960,7 +960,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### 0x1 #######
 ####### RZ #######
@@ -993,7 +993,7 @@ reaches_next: False
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
 ####### 0x2 #######
 ####### RZ #######
@@ -1345,24 +1345,24 @@ reaches_next: False
 ########################## .L_x_48 ##########################
 ############# MOV R22, R11 #############
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4c30, R22)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4c30, R22)']
 defs_reaching: []
 reaches_next: False
 ############# MOV R11, 0x0 #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4c40, R11)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 ####### 0x0 #######
 ############# RET.REL.NODEC R10, `(_Z11gru_forwardPfS_S_S_iii) #############
 ####### R10 #######

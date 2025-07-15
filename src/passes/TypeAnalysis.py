@@ -124,7 +124,7 @@ class TypeAnalysis:
                     operand.is_def = True
                     operand.is_use = False
                 else:
-                    operand.is_use = True
+                    operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
             return TypeDesc
         
@@ -141,7 +141,7 @@ class TypeAnalysis:
                     operand.is_def = True
                     operand.is_use = False
                 else:
-                    operand.is_use = True
+                    operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
             return "Float32"
 
@@ -164,7 +164,7 @@ class TypeAnalysis:
                     operand.is_def = True
                     operand.is_use = False
                 else:
-                    operand.is_use = True
+                    operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
             
             
@@ -176,6 +176,16 @@ class TypeAnalysis:
         if len([op for op in inst.operands if op.getTypeDesc() == "NOTYPE"]) == 0:
             return False
         
+        if inst.opcode == "MOV":
+            # we can't know the type with this opcode, but we need to set is_def and is_use
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = operand.is_use_disqualifier()
+                    operand.is_def = False
+                    
         if inst.opcode == "LDG":
             TypeDesc = inst.operands[0].getTypeDesc()
             
@@ -184,7 +194,7 @@ class TypeAnalysis:
                     operand.is_def = True
                     operand.is_use = False
                 else:
-                    operand.is_use = True
+                    operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
             
             if TypeDesc != None and TypeDesc != "NOTYPE":
@@ -207,7 +217,7 @@ class TypeAnalysis:
                     operand.is_def = True
                     operand.is_use = False
                 else:
-                    operand.is_use = True
+                    operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
             
             TypeDesc = inst.operands[1].getTypeDesc()
@@ -230,7 +240,7 @@ class TypeAnalysis:
                     operand.is_def = True
                     operand.is_use = False
                 else:
-                    operand.is_use = True
+                    operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
             
             TypeDesc = inst.operands[0].getTypeDesc()
