@@ -46,6 +46,8 @@ class ReachingDefinitionsAnalysis:
                 # print("\n")
                 # print("B:",[f"{reg_str}: " + "\n".join([f"{inst} | {op}" for inst, op  in inst_op])  for reg_str, inst_op in self.all_defs.items()])
                 assert len(self._all_defs) == len(self.all_defs)
+                for key, val in self._all_defs.items():
+                    assert len(val) == len(self.all_defs[key])
 
     def compute_reaching_definitions(self):
         """Perform forward dataflow analysis for reaching definitions."""
@@ -74,7 +76,7 @@ class ReachingDefinitionsAnalysis:
             for inst in bb.instructions:
                 for regOp in inst._get_kill_set():  # Each destination operand
                     G = {(inst, regOp)}  # Current definition
-                    K = self._all_defs.get(regOp, set()) - G  # All other defs of reg
+                    K = self._all_defs.get(regOp.reg, set()) - G  # All other defs of reg
                     self._gen[bb] = G | (self._gen[bb] - K)
                     self._kill[bb] = K | (self._kill[bb] - G)
         
@@ -82,9 +84,6 @@ class ReachingDefinitionsAnalysis:
         assert len(self._gen) == len(self.gen)
         
         for key, val in self._kill.items():
-            print("\n\n")
-            print("tt1", val)
-            print("tt2",self.kill[key])
             assert len(val) == len(self.kill[key])
 
         for key, val in self._gen.items():
@@ -166,11 +165,11 @@ class ReachingDefinitionsAnalysis:
                 defs.add((i, regOp))
                 # cnt += 1
         
-        print(len(defs), len(self.get_reaching_definitions_before(inst)))
+        # print(len(defs), len(self.get_reaching_definitions_before(inst)))
         # print(cnt, len(self._in_defs[bb]))
-        print("A:\n", f"BB: {bb.label} | " + str([f"({ins} <> {op})" for ins, op in defs]))
-        print("B:\n", f"BB: {bb.label} | " + str([f"({ins} <> {op})" for ins, op in self.get_reaching_definitions_before(inst)]))
-        print("\n\n\n")
+        # print("A:\n", f"BB: {bb.label} | " + str([f"({ins} <> {op})" for ins, op in defs]))
+        # print("B:\n", f"BB: {bb.label} | " + str([f"({ins} <> {op})" for ins, op in self.get_reaching_definitions_before(inst)]))
+        # print("\n\n\n")
         assert len(self.get_reaching_definitions_before(inst)) == len(defs)
         return defs
 
