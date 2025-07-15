@@ -1091,4 +1091,7 @@ class Instruction:
     def get_kill_set(self):
         """Return set of registers defined (killed) by this instruction."""
         # TODO handle 64 bit (need to add both registers [there'd be one implicit register] into kill set)
-        return {op.reg for op in self.get_defs() if op.isReg or op.isPReg}
+        return {op.reg for op in self._get_kill_set()}
+    
+    def _get_kill_set(self):
+        return {op for op in self.get_defs() if op.isReg or op.isPReg}

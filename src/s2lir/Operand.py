@@ -361,3 +361,10 @@ class Operand:
         if not self.isReg and not self.isPReg:
             return False
         return True
+    
+    def is_def_disqualifier(self):
+        if self.isConst:
+            return False
+        if not self.isReg and not self.isPReg:
+            return False
+        return True

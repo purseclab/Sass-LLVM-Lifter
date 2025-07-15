@@ -10,6 +10,12 @@ class TypeAnalysis:
     
     def __init__(self, func):
         self.func : Function.Function  = func
+        
+        for BB in self.func.blocks:
+            for inst in BB.instructions:
+                # is_use and is_def need to be set before ReachingDefinitionsAnalysis
+                self.assign_use_def(inst)
+
         self.reaching_defs = ReachingDefinitionsAnalysis(func)
         self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
         
@@ -61,18 +67,12 @@ class TypeAnalysis:
             changed = False
             for BB in self.func.blocks:
                 for inst in BB.instructions:
-                    # Direct solving
-                    if self.DirectlySolveType(inst) is not None:
-                        changed = True
-                        # print("here1")
                     # Partial solving
-                    elif self.PartialSolveType(inst):
+                    if self.PartialSolveType(inst):
                         changed = True
-                        # print("here2")
                     # Propagate types
                     if self.propagate_types(inst):
                         changed = True
-                        # print("here3")
 
         # Report unsolvable types
         
@@ -99,10 +99,23 @@ class TypeAnalysis:
                                 typeAnalysisInfo += f"{key}: {[f'({inst.addr}, {reg})' for inst, reg in val]}\n"
                             else:
                                 typeAnalysisInfo += f"{key}: {val}\n"
+                        typeAnalysisInfo += f"Typedesc: {op.getTypeDesc()}\n"
+                    typeAnalysisInfo += "\n"
+                        
         typeAnalysisInfo_path = (self.project_root / "output/debug" / f"typeAnalysisInfo/{self.func.name}.txt").resolve()
         with open(typeAnalysisInfo_path, "w") as f:
             f.write(typeAnalysisInfo)
-        
+    
+    def assign_use_def(self, inst: Instruction):
+        if inst.opcode in ["FFMA", "FADD", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD"]:
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = operand.is_def_disqualifier()
+                    operand.is_use = False
+                else:
+                    operand.is_use = operand.is_use_disqualifier()
+                    operand.is_def = False
+                    
     # Directly resolve the type description, this is mainly working for binary operation
     def DirectlySolveType(self, inst: Instruction):
         TypeDesc = None
@@ -120,12 +133,7 @@ class TypeAnalysis:
             for i, operand in enumerate(inst.operands):
                 operand.setTypeDesc(TypeDesc)
                 self.type_map[(inst, operand.reg)] = TypeDesc
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
+
             return TypeDesc
         
         #### Batch 2
@@ -136,13 +144,6 @@ class TypeAnalysis:
             inst.operands[3].setTypeDesc("Bool")
             self.type_map[(inst, inst.operands[3].reg)] = "Bool"
             
-            for i, operand in enumerate(inst.operands):
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
             return "Float32"
 
         #### Batch 3
@@ -158,15 +159,6 @@ class TypeAnalysis:
             self.type_map[(inst, inst.operands[3].reg)] = "Int32"
             inst.operands[4].setTypeDesc("Bool")
             self.type_map[(inst, inst.operands[4].reg)] = "Bool"
-
-            for i, operand in enumerate(inst.operands):
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
-            
             
             return TypeDesc # TODO ????
 
@@ -177,25 +169,24 @@ class TypeAnalysis:
             return False
         
         if inst.opcode == "MOV":
-            # we can't know the type with this opcode, but we need to set is_def and is_use
-            for i, operand in enumerate(inst.operands):
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
+            op0 = inst.operands[0]
+            op1 = inst.operands[1]
+            op0TypeDesc = op0.getTypeDesc()
+            op1TypeDesc = op1.getTypeDesc()
+            if op0TypeDesc != "NOTYPE" and op1TypeDesc != "NOTYPE":
+                assert op0TypeDesc == op1TypeDesc
+                return False
+            elif op0TypeDesc != "NOTYPE" or op1TypeDesc != "NOTYPE":
+                if op0TypeDesc != "NOTYPE":
+                    op1.setTypeDesc(op0TypeDesc)
+                elif op1TypeDesc != "NOTYPE":
+                    op0.setTypeDesc(op1TypeDesc)
+                return True
+            
                     
         if inst.opcode == "LDG":
             TypeDesc = inst.operands[0].getTypeDesc()
-            
-            for i, operand in enumerate(inst.operands):
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
+
             
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[1].setTypeDesc(TypeDesc + "_PTR")
@@ -212,14 +203,6 @@ class TypeAnalysis:
         
         elif inst.opcode == "STG":
             
-            for i, operand in enumerate(inst.operands):
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
-            
             TypeDesc = inst.operands[1].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[0].setTypeDesc(TypeDesc + "_PTR") # TODO: make sure it shld be inst.operands[0] instead of inst.operands[1], and the type map below as well
@@ -235,14 +218,6 @@ class TypeAnalysis:
                 return False
 
         elif inst.opcode == "IADD":
-            for i, operand in enumerate(inst.operands):
-                if i == 0:
-                    operand.is_def = True
-                    operand.is_use = False
-                else:
-                    operand.is_use = operand.is_use_disqualifier()
-                    operand.is_def = False
-            
             TypeDesc = inst.operands[0].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[1].setTypeDesc("Int32")
@@ -255,9 +230,12 @@ class TypeAnalysis:
         return False
 
     def propagate_types(self, inst: Instruction):
+        # we need to propagate both from use->def  and def->use. E.g. if we discovered R4 is used as type int, we'd want to set R3 to be int as well for "MOV R4, R3". Similarly, If we figured out R9 is of type int from "IMUL R9, R10, R11", then we'd want to propagate type int to all the use
+        
         changed = False
         for Op in inst.operands:
             if (Op.isReg or Op.isPReg) and Op.reg and Op.getTypeDesc() == "NOTYPE":
+                # def->use
                 reaching_defs = self.reaching_defs.get_reaching_definitions_before(inst)
                 types = set()
                 for d_inst, reg in reaching_defs:
@@ -270,6 +248,22 @@ class TypeAnalysis:
                     changed = True
                 elif len(types) > 1:
                     raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+                
+                # use->def
+                useOp = Op
+                useOpType = useOp.getTypeDesc()
+                if useOpType != "NOTYPE":
+                    self.ud_chain = self.get_UD_chain()
+                    if useOp in self.ud_chain:
+                        for defOp in self.ud_chain[useOp]:
+                            if defOp.getTypeDesc() != "NOTYPE":
+                                assert useOpType == defOp.getTypeDesc()
+                            else:
+                                defOp.setTypeDesc(useOpType)
+                                changed = True
+                    else:
+                        pass # TODO
+                
         return changed
 
 
@@ -317,3 +311,38 @@ class TypeAnalysis:
             raise Exception
         
         return info
+    
+    def get_DU_chain(self) -> dict[Operand.Operand, typing.Set[Operand.Operand]]:
+        du_chain: dict[Operand.Operand, typing.Set[Operand.Operand]] = {}
+        
+        ud_chain: dict[Operand.Operand, typing.Set[Operand.Operand]] = self.get_UD_chain()
+        
+        for use, defs in ud_chain.items():
+            for definition in defs:
+                du_chain_def_tmp = du_chain.get(definition, set())
+                du_chain[definition] = du_chain_def_tmp | {use}
+                assert len(du_chain_def_tmp) + 1 == len(du_chain[definition])
+        
+        return du_chain
+    
+    def get_UD_chain(self) -> dict[Operand.Operand, typing.Set[Operand.Operand]]:
+        ud_chain: dict[Operand.Operand, typing.Set[Operand.Operand]] = {}
+        
+        for BB in self.func.blocks:
+            for inst in BB.instructions:
+                instReachingUse = self.reaching_defs._get_reaching_definitions_before(inst)
+                
+                reg_to_DefOp: dict[str, set[Operand.Operand]] = dict() # Register name (type str) to Defintion operands
+                
+                
+                for reachingInst, registerOp in instReachingUse:
+                    reg_to_DefOp_tmp = reg_to_DefOp.get(registerOp.reg, set())
+                    reg_to_DefOp[registerOp.reg] = reg_to_DefOp_tmp | {registerOp}
+                    assert len(reg_to_DefOp_tmp) + 1 == reg_to_DefOp[registerOp.reg]
+                
+                for op in inst.operands:
+                    if op.is_use:
+                        assert op not in ud_chain
+                        ud_chain[op] = reg_to_DefOp.get(op.reg, set())
+        
+        return ud_chain
