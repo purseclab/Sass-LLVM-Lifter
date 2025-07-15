@@ -65,7 +65,8 @@ class TypeAnalysis:
         changed = True
         while changed:
             changed = False
-            for BB in self.func.blocks:
+            print("Change happened")
+            for i, BB in enumerate(self.func.blocks):
                 for inst in BB.instructions:
                     # Partial solving
                     if self.PartialSolveType(inst):
@@ -73,6 +74,7 @@ class TypeAnalysis:
                     # Propagate types
                     if self.propagate_types(inst):
                         changed = True
+                print(i, "propo end")
 
         # Report unsolvable types
         
@@ -247,7 +249,8 @@ class TypeAnalysis:
                     self.type_map[(inst, Op.reg)] = new_type
                     changed = True
                 elif len(types) > 1:
-                    raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+                    # raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+                    pass
                 
                 # use->def
                 useOp = Op

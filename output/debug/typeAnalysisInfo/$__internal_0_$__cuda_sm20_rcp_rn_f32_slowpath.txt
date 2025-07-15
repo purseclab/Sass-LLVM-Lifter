@@ -154,7 +154,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4970, P0)']
-defs_reaching: []
+defs_reaching: ['(0x4940, P0)']
 reaches_next: True
 Typedesc: Bool
 
@@ -231,7 +231,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x4980, R12)']
-defs_reaching: []
+defs_reaching: ['(0x4980, R12)']
 reaches_next: True
 Typedesc: Float32
 
@@ -278,7 +278,7 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4970, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -317,15 +317,15 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4980, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ####### P0 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4970, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -343,9 +343,9 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4980, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0) #############
 ####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0) #######
@@ -364,7 +364,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49b0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x4980, R12)']
 reaches_next: False
 Typedesc: Float32
 
@@ -382,7 +382,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49b0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x4970, P0)']
 reaches_next: False
 Typedesc: Float32
 
@@ -392,7 +392,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49b0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49b0, R22)']
 reaches_next: True
 Typedesc: Float32
 
@@ -400,7 +400,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49b0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x4980, R12)']
 reaches_next: False
 Typedesc: Float32
 
@@ -423,7 +423,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49c0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49b0, R22)']
 reaches_next: True
 Typedesc: Float32
 
@@ -431,7 +431,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49c0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49b0, R22)']
 reaches_next: False
 Typedesc: Float32
 
@@ -447,7 +447,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49c0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x4970, P0)']
 reaches_next: False
 Typedesc: Float32
 
@@ -457,7 +457,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49c0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49c0, R22)']
 reaches_next: True
 Typedesc: Float32
 
@@ -465,7 +465,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49c0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49c0, R22)']
 reaches_next: False
 Typedesc: Float32
 
@@ -486,7 +486,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49d0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49c0, R22)']
 reaches_next: True
 Typedesc: Float32
 
@@ -502,7 +502,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49d0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49c0, R22)']
 reaches_next: False
 Typedesc: Float32
 
@@ -518,7 +518,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49d0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x4970, P0)']
 reaches_next: False
 Typedesc: Float32
 
@@ -528,7 +528,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49d0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49d0, R22)']
 reaches_next: True
 Typedesc: Float32
 
@@ -544,7 +544,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49d0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49d0, R22)']
 reaches_next: False
 Typedesc: Float32
 
@@ -573,7 +573,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49e0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x49d0, R22)']
 reaches_next: False
 Typedesc: Float32
 
@@ -591,7 +591,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49e0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x4970, P0)']
 reaches_next: False
 Typedesc: Float32
 
@@ -601,7 +601,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49e0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x49e0, R11)']
 reaches_next: True
 Typedesc: Float32
 
@@ -609,7 +609,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x49e0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x49d0, R22)']
 reaches_next: False
 Typedesc: Float32
 
@@ -663,7 +663,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4a10, P0)']
-defs_reaching: []
+defs_reaching: ['(0x4940, P0)']
 reaches_next: True
 Typedesc: Bool
 
@@ -1000,7 +1000,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1096,7 +1096,7 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1265,7 +1265,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1355,7 +1355,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1371,7 +1371,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1463,7 +1463,7 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1505,7 +1505,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4ba0, P0)']
-defs_reaching: []
+defs_reaching: ['(0x4a10, P0)']
 reaches_next: True
 Typedesc: Bool
 
@@ -1803,26 +1803,26 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4c30, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49d0, R22)', '(0x4aa0, R22)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ####### R11 #######
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: []
+defs_reaching: ['(0x49e0, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ############# MOV R11, 0x0 #############
 ####### R11 #######
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: []
+defs_reaching: ['(0x49e0, R11)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ####### 0x0 #######
 
