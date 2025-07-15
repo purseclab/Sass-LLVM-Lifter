@@ -89,11 +89,16 @@ class Operand:
         
         self.llvm_module = None
         
-        
         config_path = current_dir / "../.." / "launch" / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
+            
+            
+        ############ Type/Liveness Analysis ############
+        
+        self.is_use = None
+        self.is_def = None
 
     def IR_ValueFromPointer(self, IRBuilder, IRPtrOp, PinterType):
 
@@ -349,24 +354,3 @@ class Operand:
                 raise NameError("Unknown Operand Type")
 
         return self.IRRegName
-    
-    
-    
-    ############ Type/Liveness Analysis ############
-    
-    def is_def(self):
-        """Return True if this operand is a definition."""
-        
-        if self.isReg or self.isPReg:
-            return self == self.ins.operands[0] and self.ins.opcode == "MOV"
-        return False
-    
-    def is_use(self):
-        """Return True if this operand is a use."""
-        # Example: Operands after the first are uses, unless it's a constant
-        if self.isConst:
-            return False
-        if self.isReg or self.isPReg:
-            return self != self.ins.operands[0] or self.ins.opcode != "MOV"
-        return False
-    

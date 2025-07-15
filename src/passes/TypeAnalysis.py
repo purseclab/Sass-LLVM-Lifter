@@ -116,20 +116,33 @@ class TypeAnalysis:
         elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R"] :
             TypeDesc = "Int32"
 
-
         if TypeDesc is not None:
-            for operand in inst.operands:
+            for i, operand in enumerate(inst.operands):
                 operand.setTypeDesc(TypeDesc)
                 self.type_map[(inst, operand.reg)] = TypeDesc
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = True
+                    operand.is_def = False
             return TypeDesc
         
         #### Batch 2
         if inst.opcode == "FMNMX":
             for i in range(3):
-                if inst.operands[i].setTypeDesc("Float32"):
-                    self.type_map[(inst, inst.operands[i].reg)] = "Float32"
-            if inst.operands[3].setTypeDesc("Bool"):
-                self.type_map[(inst, inst.operands[3].reg)] = "Bool"
+                inst.operands[i].setTypeDesc("Float32")
+                self.type_map[(inst, inst.operands[i].reg)] = "Float32"
+            inst.operands[3].setTypeDesc("Bool")
+            self.type_map[(inst, inst.operands[3].reg)] = "Bool"
+            
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = True
+                    operand.is_def = False
             return "Float32"
 
         #### Batch 3
@@ -146,6 +159,15 @@ class TypeAnalysis:
             inst.operands[4].setTypeDesc("Bool")
             self.type_map[(inst, inst.operands[4].reg)] = "Bool"
 
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = True
+                    operand.is_def = False
+            
+            
             return TypeDesc # TODO ????
 
         return TypeDesc
@@ -156,6 +178,15 @@ class TypeAnalysis:
         
         if inst.opcode == "LDG":
             TypeDesc = inst.operands[0].getTypeDesc()
+            
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = True
+                    operand.is_def = False
+            
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[1].setTypeDesc(TypeDesc + "_PTR")
                 self.type_map[(inst, inst.operands[1].reg)] = TypeDesc + "_PTR"
@@ -170,6 +201,15 @@ class TypeAnalysis:
                 return False
         
         elif inst.opcode == "STG":
+            
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = True
+                    operand.is_def = False
+            
             TypeDesc = inst.operands[1].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[0].setTypeDesc(TypeDesc + "_PTR") # TODO: make sure it shld be inst.operands[0] instead of inst.operands[1], and the type map below as well
@@ -183,14 +223,16 @@ class TypeAnalysis:
                 return True
             else:
                 return False
-        
-        elif inst.opcode == 'IADD':
-            TypeDesc = inst.operands[0].getTypeDesc()
-            if TypeDesc != None and TypeDesc != "NOTYPE":
-                inst.operands[1].setTypeDesc("Int32") # The integer offset
-                inst.operands[2].setTypeDesc(TypeDesc)
 
         elif inst.opcode == "IADD":
+            for i, operand in enumerate(inst.operands):
+                if i == 0:
+                    operand.is_def = True
+                    operand.is_use = False
+                else:
+                    operand.is_use = True
+                    operand.is_def = False
+            
             TypeDesc = inst.operands[0].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
                 inst.operands[1].setTypeDesc("Int32")
@@ -232,12 +274,24 @@ class TypeAnalysis:
         Note: UD Chain (Use-Def Chain): For each use, list the definitions that could have provided its value.
         """
         info = {
-            "is_use": operand.is_use(),
-            "is_def": operand.is_def(),
+            "is_def": operand.is_def,
+            "is_use": operand.is_use,
             "kill_set": self.get_kill_set_for_instruction(inst),
             "defs_reaching": [],
             "reaches_next": False # Check if this operand's definition reaches the next instruction
         }
+        
+        if self.config["allow_temp_behavior"]:
+            if operand.is_def is None:
+                assert operand.is_use is not None
+                assert operand.is_use == True
+            elif operand.is_use is None:
+                assert operand.is_def is not None
+                assert operand.is_def == True
+            else:
+                assert operand.is_def ^ operand.is_use
+        else:
+            assert operand.is_def ^ operand.is_use # cannot both be true/false
 
         if (operand.isReg or operand.isPReg) and operand.reg:
             # Get definitions reaching this instruction
