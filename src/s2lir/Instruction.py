@@ -1082,7 +1082,7 @@ class Instruction:
     
     def get_defs(self):
         """Return list of operands defined by this instruction."""
-        return [op for op in self.operands if op.is_def()]
+        return [op for op in self.operands if op.is_def]
 
     def get_uses(self):
         """Return list of operands used by this instruction."""

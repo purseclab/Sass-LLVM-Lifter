@@ -299,7 +299,7 @@ class TypeAnalysis:
             # Filter for this operand's register
             info["defs_reaching"] = [(d_inst, reg) for d_inst, reg in reaching_defs if reg == operand.reg]
             # Check if this operand's definition reaches the next instruction
-            if operand.is_def():
+            if operand.is_def:
                 defs_after = self.reaching_defs.get_reaching_definitions_after(inst)
                 info["reaches_next"] = (inst, operand.reg) in defs_after
         else:
