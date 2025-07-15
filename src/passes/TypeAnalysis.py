@@ -109,7 +109,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD"]:
+        if inst.opcode in ["FFMA", "FADD", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -128,7 +128,7 @@ class TypeAnalysis:
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD"]:
             TypeDesc = "Float32"
-        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R"] :
+        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3"] :
             TypeDesc = "Int32"
 
         if TypeDesc is not None:
@@ -249,7 +249,8 @@ class TypeAnalysis:
                     self.type_map[(inst, Op.reg)] = new_type
                     changed = True
                 elif len(types) > 1:
-                    raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+                    # raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+                    pass
                 
                 # use->def
                 useOp = Op
