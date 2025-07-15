@@ -19,6 +19,8 @@ class TypeAnalysis:
         self.reaching_defs = ReachingDefinitionsAnalysis(func)
         self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
         
+        self.ud_chain = self.get_UD_chain()
+        
         current_dir = Path(__file__).parent
         self.project_root = (current_dir / "../..").resolve()
     
@@ -65,7 +67,6 @@ class TypeAnalysis:
         changed = True
         while changed:
             changed = False
-            print("Change happened")
             for i, BB in enumerate(self.func.blocks):
                 for inst in BB.instructions:
                     # Partial solving
@@ -74,7 +75,6 @@ class TypeAnalysis:
                     # Propagate types
                     if self.propagate_types(inst):
                         changed = True
-                print(i, "propo end")
 
         # Report unsolvable types
         
@@ -249,14 +249,12 @@ class TypeAnalysis:
                     self.type_map[(inst, Op.reg)] = new_type
                     changed = True
                 elif len(types) > 1:
-                    # raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
-                    pass
+                    raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
                 
                 # use->def
                 useOp = Op
                 useOpType = useOp.getTypeDesc()
                 if useOpType != "NOTYPE":
-                    self.ud_chain = self.get_UD_chain()
                     if useOp in self.ud_chain:
                         for defOp in self.ud_chain[useOp]:
                             if defOp.getTypeDesc() != "NOTYPE":
