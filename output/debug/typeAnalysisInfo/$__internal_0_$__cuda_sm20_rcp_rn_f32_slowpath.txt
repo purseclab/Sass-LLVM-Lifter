@@ -1,30 +1,30 @@
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath ##########################
 ############# SHF.L.U32 R11, R24, 0x1, RZ #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4900, R11)']
 defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### R24 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4900, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1 #######
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4900, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# BMOV.32.CLEAR RZ, B1 #############
 ####### RZ #######
@@ -44,30 +44,30 @@ Typedesc: NOTYPE
 
 ############# SHF.R.U32.HI R25, RZ, 0x18, R11 #############
 ####### R25 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4930, R25)']
 defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4930, R25)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x18 #######
 
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
+is_def: False
+is_use: True
+kill_set: ['(0x4930, R25)']
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# ISETP.NE.U32.AND P0, PT, R25, RZ, PT #############
 ####### P0 #######
@@ -90,7 +90,7 @@ Typedesc: Bool
 is_def: False
 is_use: True
 kill_set: ['(0x4940, P0)']
-defs_reaching: []
+defs_reaching: ['(0x4930, R25)']
 reaches_next: False
 Typedesc: Int32
 
@@ -124,30 +124,30 @@ Typedesc: Bool
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4960 ##########################
 ############# SHF.L.U32 R11, R24, 0x1, RZ #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+is_def: True
+is_use: False
+kill_set: ['(0x4960, R11)']
+defs_reaching: ['(0x4900, R11)']
+reaches_next: True
+Typedesc: Int32
 
 ####### R24 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4960, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1 #######
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4960, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# ISETP.NE.AND P0, PT, R11, RZ, PT #############
 ####### P0 #######
@@ -170,7 +170,7 @@ Typedesc: Bool
 is_def: False
 is_use: True
 kill_set: ['(0x4970, P0)']
-defs_reaching: []
+defs_reaching: ['(0x4960, R11)']
 reaches_next: False
 Typedesc: Int32
 
@@ -262,9 +262,9 @@ Typedesc: Float32
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4960, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: None
@@ -288,9 +288,9 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4960, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: None
@@ -565,7 +565,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x49e0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x4960, R11)']
 reaches_next: True
 Typedesc: Float32
 
@@ -644,7 +644,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x4a00, R34)']
-defs_reaching: []
+defs_reaching: ['(0x4930, R25)']
 reaches_next: False
 Typedesc: Int32
 
@@ -710,9 +710,9 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: None
@@ -749,7 +749,7 @@ is_use: False
 kill_set: ['(0x4a40, R23)']
 defs_reaching: []
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3 #######
 
@@ -758,17 +758,17 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R11 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3f800000 #######
 
@@ -792,36 +792,36 @@ Typedesc: Bool
 
 ############# SHF.L.U32 R23, R23, R34, RZ #############
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4a60, R23)']
 defs_reaching: ['(0x4a40, R23)']
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4a60, R23)']
 defs_reaching: ['(0x4a40, R23)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R34 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4a60, R23)']
 defs_reaching: ['(0x4a00, R34)']
 reaches_next: False
 Typedesc: Int32
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4a60, R23)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# MUFU.RCP R12, R11 #############
 ####### R12 #######
@@ -836,9 +836,9 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# FFMA R13, R11, R12, -1 #############
 ####### R13 #######
@@ -853,7 +853,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x4a80, R13)']
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
 Typedesc: Float32
 
@@ -1105,17 +1105,17 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a40, R23)']
+defs_reaching: ['(0x4a60, R23)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23 #######
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a40, R23)']
+defs_reaching: ['(0x4a60, R23)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R12 #######
 is_def: None
@@ -1178,36 +1178,36 @@ Typedesc: Int32
 
 ############# SHF.R.U32.HI R23, RZ, R34.reuse, R23 #############
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: ['(0x4a40, R23)']
-reaches_next: False
-Typedesc: NOTYPE
+is_def: True
+is_use: False
+kill_set: ['(0x4b20, R23)']
+defs_reaching: ['(0x4a60, R23)']
+reaches_next: True
+Typedesc: Int32
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4b20, R23)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R34.reuse #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4b20, R23)']
 defs_reaching: ['(0x4a00, R34)']
 reaches_next: False
 Typedesc: Int32
 
 ####### R23 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: ['(0x4a40, R23)']
+is_def: False
+is_use: True
+kill_set: ['(0x4b20, R23)']
+defs_reaching: ['(0x4a60, R23)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT #############
 ####### P1 #######
@@ -1248,7 +1248,7 @@ is_use: None
 kill_set: []
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xf8 #######
 
@@ -1281,9 +1281,9 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a40, R23)']
+defs_reaching: ['(0x4b20, R23)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1 #######
 
@@ -1293,7 +1293,7 @@ is_use: None
 kill_set: []
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -1326,9 +1326,9 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a40, R23)']
+defs_reaching: ['(0x4b20, R23)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
@@ -1338,7 +1338,7 @@ is_use: None
 kill_set: []
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -1428,7 +1428,7 @@ is_use: None
 kill_set: []
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -1445,9 +1445,9 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### RZ #######
 is_def: None
@@ -1472,7 +1472,7 @@ Typedesc: Bool
 is_def: True
 is_use: False
 kill_set: ['(0x4b90, R11)']
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: True
 Typedesc: Int32
 
@@ -1480,7 +1480,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x4b90, R11)']
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1554,7 +1554,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x4bb0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x4930, R25)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1570,43 +1570,43 @@ Typedesc: Int32
 
 ############# SHF.R.U32.HI R11, RZ, R11, R12 #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4bc0, R11)']
 defs_reaching: ['(0x4bb0, R11)']
-reaches_next: False
+reaches_next: True
 Typedesc: Int32
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4bc0, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4bc0, R11)']
 defs_reaching: ['(0x4bb0, R11)']
 reaches_next: False
 Typedesc: Int32
 
 ####### R12 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4bc0, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# @!P0 IADD3 R11, R11, 0x1, RZ #############
 ####### R11 #######
 is_def: True
 is_use: False
 kill_set: ['(0x4bd0, R11)']
-defs_reaching: ['(0x4bb0, R11)']
+defs_reaching: ['(0x4bc0, R11)']
 reaches_next: True
 Typedesc: Int32
 
@@ -1614,7 +1614,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x4bd0, R11)']
-defs_reaching: ['(0x4bb0, R11)']
+defs_reaching: ['(0x4bc0, R11)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1670,17 +1670,17 @@ Typedesc: Int32
 ########################## .L_x_49_split_0x4be0 ##########################
 ############# @!P1 SHF.L.U32 R11, R11, 0x1, RZ #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4be0, R11)']
 defs_reaching: ['(0x4bd0, R11)']
-reaches_next: False
+reaches_next: True
 Typedesc: Int32
 
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4be0, R11)']
 defs_reaching: ['(0x4bd0, R11)']
 reaches_next: False
 Typedesc: Int32
@@ -1688,48 +1688,48 @@ Typedesc: Int32
 ####### 0x1 #######
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4be0, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### !P1 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4be0, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Bool
+Typedesc: Int32
 
 ########################## .L_x_49_split_0x4be0_conditionalExpr_0x4be0 ##########################
 ############# SHF.L.U32 R11, R11, 0x1, RZ #############
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: ['(0x4bd0, R11)']
-reaches_next: False
+is_def: True
+is_use: False
+kill_set: ['(0x4be0, R11)']
+defs_reaching: ['(0x4be0, R11)']
+reaches_next: True
 Typedesc: Int32
 
 ####### R11 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: ['(0x4bd0, R11)']
+is_def: False
+is_use: True
+kill_set: ['(0x4be0, R11)']
+defs_reaching: ['(0x4be0, R11)']
 reaches_next: False
 Typedesc: Int32
 
 ####### 0x1 #######
 
 ####### RZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4be0, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# BRA `(.L_x_49_split_0x4bf0) #############
 ####### `(.L_x_49_split_0x4bf0) #######
@@ -1740,7 +1740,7 @@ Typedesc: NOTYPE
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4bd0, R11)']
+defs_reaching: ['(0x4be0, R11)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1748,7 +1748,7 @@ Typedesc: Int32
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4bd0, R11)']
+defs_reaching: ['(0x4be0, R11)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1781,9 +1781,9 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: []
+defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: None
@@ -1803,7 +1803,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x4aa0, R22)', '(0x49d0, R22)']
+defs_reaching: ['(0x49d0, R22)', '(0x4aa0, R22)']
 reaches_next: True
 Typedesc: Float32
 
@@ -1811,7 +1811,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x49e0, R11)', '(0x4bd0, R11)']
+defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
 reaches_next: False
 Typedesc: Float32
 
@@ -1820,7 +1820,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: ['(0x49e0, R11)', '(0x4bd0, R11)']
+defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
 reaches_next: True
 Typedesc: NOTYPE
 

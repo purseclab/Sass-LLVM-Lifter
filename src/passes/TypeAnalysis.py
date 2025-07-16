@@ -109,7 +109,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA"]:
+        if inst.opcode in ["FFMA", "FADD", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -128,7 +128,7 @@ class TypeAnalysis:
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD"]:
             TypeDesc = "Float32"
-        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "LEA"] :
+        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "LEA", "SHF"] :
             TypeDesc = "Int32"
 
         if TypeDesc is not None:
@@ -181,10 +181,22 @@ class TypeAnalysis:
             elif op0TypeDesc != "NOTYPE" or op1TypeDesc != "NOTYPE":
                 if op0TypeDesc != "NOTYPE":
                     op1.setTypeDesc(op0TypeDesc)
+                    self.type_map[(inst, op1.reg)] = op0TypeDesc
                 elif op1TypeDesc != "NOTYPE":
                     op0.setTypeDesc(op1TypeDesc)
+                    self.type_map[(inst, op0.reg)] = op1TypeDesc
                 return True
-            
+        
+        if inst.opcode in ("ULOP3", "LOP3"):
+            op4 = inst.operands[4]
+            op4TypeDesc = op4.getTypeDesc()
+            if op4TypeDesc != "NOTYPE":
+                assert op4TypeDesc == "Int32"
+                return False
+            else:
+                op4.setTypeDesc("Int32")
+                self.type_map[(inst, op4.reg)] = "Int32"
+                return True
                     
         if inst.opcode == "LDG":
             TypeDesc = inst.operands[0].getTypeDesc()
