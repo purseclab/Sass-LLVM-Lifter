@@ -997,41 +997,41 @@ Typedesc: Bool
 
 ############# FSETP.NEU.FTZ.AND P0, PT, R22, R13, PT #############
 ####### P0 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x4ad0, P0)']
 defs_reaching: ['(0x4a10, P0)']
-reaches_next: False
+reaches_next: True
 Typedesc: Bool
 
 ####### PT #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4ad0, P0)']
 defs_reaching: []
 reaches_next: False
 Typedesc: Bool
 
 ####### R22 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4ad0, P0)']
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ####### R13 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4ad0, P0)']
 defs_reaching: ['(0x4ab0, R13)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Float32
 
 ####### PT #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x4ad0, P0)']
 defs_reaching: []
 reaches_next: False
 Typedesc: Bool
@@ -1096,7 +1096,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x4af0, R13)']
-defs_reaching: ['(0x4a10, P0)']
+defs_reaching: ['(0x4ad0, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1265,7 +1265,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a10, P0)']
+defs_reaching: ['(0x4ad0, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1355,7 +1355,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a10, P0)']
+defs_reaching: ['(0x4ad0, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1371,7 +1371,7 @@ Typedesc: Bool
 is_def: None
 is_use: None
 kill_set: []
-defs_reaching: ['(0x4a10, P0)']
+defs_reaching: ['(0x4ad0, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1463,7 +1463,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x4b80, R11)']
-defs_reaching: ['(0x4a10, P0)']
+defs_reaching: ['(0x4ad0, P0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -1505,7 +1505,7 @@ Typedesc: Int32
 is_def: True
 is_use: False
 kill_set: ['(0x4ba0, P0)']
-defs_reaching: ['(0x4a10, P0)']
+defs_reaching: ['(0x4ad0, P0)']
 reaches_next: True
 Typedesc: Bool
 
@@ -1811,7 +1811,7 @@ Typedesc: NOTYPE
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
+defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
 reaches_next: False
 Typedesc: NOTYPE
 
@@ -1820,7 +1820,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
+defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
 reaches_next: True
 Typedesc: NOTYPE
 

@@ -82,7 +82,7 @@ class TypeAnalysis:
             for BB in self.func.blocks:
                 for inst in BB.instructions:
                     for Op in inst.operands:
-                        if Op.getTypeDesc() == "NOTYPE":
+                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "LDG", "BSSY", "CALL", "BSYNC", "RET"] + ["BRA"]:
                             print(f"Unsolvable type for operand {Op} in instruction {inst}")
                             raise InvalidTypeException("Type analysis incomplete")
 
@@ -109,7 +109,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF", "SEL", "FSEL"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF", "SEL", "FSEL"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -150,20 +150,23 @@ class TypeAnalysis:
             return "Float32"
 
         #### Batch 3
-        if inst.opcode == "ISETP":
-            TypeDesc = "Float32"
+        if inst.opcode == "ISETP" or inst.opcode == "FSETP":
+            if inst.opcode == "ISETP":
+                TypeDesc = "Int32"
+            elif inst.opcode == "FSETP":
+                TypeDesc = "Float32"
             inst.operands[0].setTypeDesc("Bool")
             self.type_map[(inst, inst.operands[0].reg)] = "Bool"
             inst.operands[1].setTypeDesc("Bool")
             self.type_map[(inst, inst.operands[1].reg)] = "Bool"
-            inst.operands[2].setTypeDesc("Int32")
-            self.type_map[(inst, inst.operands[2].reg)] = "Int32"
-            inst.operands[3].setTypeDesc("Int32")
-            self.type_map[(inst, inst.operands[3].reg)] = "Int32"
+            inst.operands[2].setTypeDesc(TypeDesc)
+            self.type_map[(inst, inst.operands[2].reg)] = TypeDesc
+            inst.operands[3].setTypeDesc(TypeDesc)
+            self.type_map[(inst, inst.operands[3].reg)] = TypeDesc
             inst.operands[4].setTypeDesc("Bool")
             self.type_map[(inst, inst.operands[4].reg)] = "Bool"
             
-            return TypeDesc # TODO ????
+            return TypeDesc
 
         if inst.opcode == "SEL" or inst.opcode == "FSEL":
             if inst.opcode == "SEL":
