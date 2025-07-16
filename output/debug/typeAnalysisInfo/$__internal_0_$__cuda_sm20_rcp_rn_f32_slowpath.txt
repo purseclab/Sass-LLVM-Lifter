@@ -223,7 +223,7 @@ is_use: True
 kill_set: ['(0x4980, R12)']
 defs_reaching: ['(0x4970, P0)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Bool
 
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4960_conditionalExpr_0x4980 ##########################
 ############# FFMA R12, R24, 1.84467440737095516160e+19, RZ #############
@@ -384,7 +384,7 @@ is_use: True
 kill_set: ['(0x49b0, R22)']
 defs_reaching: ['(0x4970, P0)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Bool
 
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0_conditionalExpr_0x49b0 ##########################
 ############# FFMA R22, R12, R13, -1 #############
@@ -449,7 +449,7 @@ is_use: True
 kill_set: ['(0x49c0, R22)']
 defs_reaching: ['(0x4970, P0)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Bool
 
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0_conditionalExpr_0x49c0 ##########################
 ############# FADD.FTZ R22, -R22, -RZ #############
@@ -520,7 +520,7 @@ is_use: True
 kill_set: ['(0x49d0, R22)']
 defs_reaching: ['(0x4970, P0)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Bool
 
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0_conditionalExpr_0x49d0 ##########################
 ############# FFMA R22, R13, R22, R13 #############
@@ -593,7 +593,7 @@ is_use: True
 kill_set: ['(0x49e0, R11)']
 defs_reaching: ['(0x4970, P0)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Bool
 
 ########################## $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0_conditionalExpr_0x49e0 ##########################
 ############# FFMA R11, R22, 1.84467440737095516160e+19, RZ #############
@@ -1634,7 +1634,7 @@ is_use: True
 kill_set: ['(0x4bd0, R11)']
 defs_reaching: ['(0x4ba0, P0)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: Bool
 
 ########################## .L_x_49_split_0x4a30_conditionalExpr_0x4bd0 ##########################
 ############# IADD3 R11, R11, 0x1, RZ #############
@@ -1701,7 +1701,7 @@ is_use: True
 kill_set: ['(0x4be0, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Bool
 
 ########################## .L_x_49_split_0x4be0_conditionalExpr_0x4be0 ##########################
 ############# SHF.L.U32 R11, R11, 0x1, RZ #############
@@ -1803,7 +1803,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x4aa0, R22)', '(0x49d0, R22)']
+defs_reaching: ['(0x49d0, R22)', '(0x4aa0, R22)']
 reaches_next: True
 Typedesc: NOTYPE
 
@@ -1811,7 +1811,7 @@ Typedesc: NOTYPE
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
+defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
 reaches_next: False
 Typedesc: NOTYPE
 
@@ -1820,7 +1820,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
+defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
 reaches_next: True
 Typedesc: NOTYPE
 

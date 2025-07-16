@@ -133,8 +133,9 @@ class TypeAnalysis:
 
         if TypeDesc is not None:
             for i, operand in enumerate(inst.operands):
-                operand.setTypeDesc(TypeDesc)
-                self.type_map[(inst, operand.reg)] = TypeDesc
+                if not operand.isPReg:
+                    operand.setTypeDesc(TypeDesc)
+                    self.type_map[(inst, operand.reg)] = TypeDesc
 
             return TypeDesc
         
