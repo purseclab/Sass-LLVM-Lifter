@@ -29,6 +29,8 @@ class TypeAnalysis:
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
         
+        self.conflicting_types = {"def_to_use": [], "use_to_def": []}
+        
         self.__apply()
         
         
@@ -104,6 +106,8 @@ class TypeAnalysis:
                         typeAnalysisInfo += f"Typedesc: {op.getTypeDesc()}\n"
                     typeAnalysisInfo += "\n"
                         
+        typeAnalysisInfo += "======================= Conflicting Types Report =======================\n\n"
+        typeAnalysisInfo += self.stringify_conflicting_types()
         typeAnalysisInfo_path = (self.project_root / "output/debug" / f"typeAnalysisInfo/{self.func.name}.txt").resolve()
         with open(typeAnalysisInfo_path, "w") as f:
             f.write(typeAnalysisInfo)
@@ -118,6 +122,25 @@ class TypeAnalysis:
                     operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
                     
+    def stringify_conflicting_types(self) -> str:
+        output = []
+
+        def section_to_str(section_name: str, hashes_major: int, hashes_minor: int) -> str:
+            result = [f"{'#' * hashes_major} {section_name} {'#' * hashes_major}"]
+            for type_dict in self.conflicting_types.get(section_name, []):
+                for typ, entries in type_dict.items():
+                    result.append(f"\n{'#' * hashes_minor} Type: {typ} {'#' * hashes_minor}")
+                    for _, reg_str, addr_str in entries:
+                        result.append(f"Operand: {reg_str}; Instruction Addr: {addr_str}")
+            return "\n".join(result)
+
+        output.append(section_to_str("def_to_use", 10, 5))
+        output.append("")  # empty line between sections
+        output.append(section_to_str("use_to_def", 10, 5))
+
+        return "\n".join(output)
+
+    
     # Directly resolve the type description, this is mainly working for binary operation
     def DirectlySolveType(self, inst: Instruction):
         TypeDesc = None
@@ -133,7 +156,7 @@ class TypeAnalysis:
 
         if TypeDesc is not None:
             for i, operand in enumerate(inst.operands):
-                if not operand.isPReg:
+                if not operand.isPReg: # PReg for @P0 would be the last operand
                     operand.setTypeDesc(TypeDesc)
                     self.type_map[(inst, operand.reg)] = TypeDesc
 
@@ -271,20 +294,21 @@ class TypeAnalysis:
             if (Op.isReg or Op.isPReg) and Op.reg:
                 # def->use
                 if Op.is_use:
-                    reaching_defs = self.reaching_defs.get_reaching_definitions_before(inst)
-                    types = set()
-                    tmp = []
-                    for d_inst, reg in reaching_defs:
-                        if reg == Op.reg and (d_inst, reg) in self.type_map:
-                            types.add(self.type_map[(d_inst, reg)])
-                            tmp.append(str(d_inst))
+                    reaching_defs = self.reaching_defs._get_reaching_definitions_before(inst)
+                    type_dict: dict[str, set[tuple[Operand.Operand, str, str]]] = {} # maps between the type and (Operands [with the type], str(Operand), address of instruction containing the operand)
+                    for d_inst, regOp in reaching_defs:
+                        if regOp.reg == Op.reg and (d_inst, regOp.reg) in self.type_map:
+                            cur_type = self.type_map[(d_inst, regOp.reg)]
+                            type_dict[cur_type] = type_dict.get(cur_type, set()) | {(regOp, str(regOp), str(regOp.ins.addr))}
                     if Op.getTypeDesc() != "NOTYPE":
-                        types.add(Op.getTypeDesc())
-                    if len(types) > 1:
-                        # raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
-                        pass
-                    elif len(types) == 1 and Op.getTypeDesc() == "NOTYPE":
-                        new_type = list(types)[0]
+                        cur_type = Op.getTypeDesc()
+                        type_dict[cur_type] = type_dict.get(cur_type, set()) | {(Op, str(Op), str(Op.ins.addr))}
+                    
+                    if len(type_dict) > 1:
+                        # if str(inst) not in ("SHF.L.U32 R10, R10, 0x17, RZ", "FFMA R24, R10, R9, 1", "IADD3 R9, R24, 0x1800000, RZ", "FFMA R10, R24, R9, -1", "FFMA R9, R9, R10, R9"):
+                        self.conflicting_types["def_to_use"].append(type_dict)
+                    elif len(type_dict) == 1 and Op.getTypeDesc() == "NOTYPE":
+                        new_type = list(type_dict)[0]
                         Op.setTypeDesc(new_type)
                         self.type_map[(inst, Op.reg)] = new_type
                         changed = True
@@ -294,14 +318,22 @@ class TypeAnalysis:
                     useOpType = useOp.getTypeDesc()
                     if useOpType != "NOTYPE":
                         if useOp in self.ud_chain:
+                            type_dict: dict[str, set[tuple[Operand.Operand, str, str]]] = {} # maps between the type and (Operands [with the type], str(Operand), address of instruction containing the operand)
+                            conflict = False
+                            type_dict[useOpType] = type_dict.get(useOpType, set()) | {(useOp, str(useOp), str(useOp.ins.addr))}
                             for defOp in self.ud_chain[useOp]:
                                 # note that useOp is type Operand, which is necessary or we'd be mapping the same register at different instruction to the same entry, which would be wrong
                                 if defOp.getTypeDesc() != "NOTYPE":
-                                    # assert useOpType == defOp.getTypeDesc()
-                                    pass
+                                    # if str(inst) not in ("SHF.L.U32 R10, R10, 0x17, RZ", "FFMA R24, R10, R9, 1", "IADD3 R9, R24, 0x1800000, RZ", "MOV R9, R22", "FFMA R10, R24, R9, -1", "FFMA R9, R9, R10, R9"):
+                                    defOpType = defOp.getTypeDesc()
+                                    if defOpType != useOpType:
+                                        conflict = True
+                                    type_dict[defOpType] = type_dict.get(defOpType, set()) | {(defOp, str(defOp), str(defOp.ins.addr))}
                                 else:
                                     defOp.setTypeDesc(useOpType)
                                     changed = True
+                            if conflict:
+                                self.conflicting_types["use_to_def"].append(type_dict)
                         else:
                             pass # TODO
                 
