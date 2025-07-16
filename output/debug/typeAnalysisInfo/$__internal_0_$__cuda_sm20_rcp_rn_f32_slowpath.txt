@@ -264,7 +264,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4960, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R24 #######
 is_def: None
@@ -290,7 +290,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4960, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R24 #######
 is_def: None
@@ -319,7 +319,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4980, R12)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: None
@@ -345,7 +345,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4980, R12)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ############# BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0) #############
 ####### `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0) #######
@@ -712,7 +712,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R24 #######
 is_def: None
@@ -760,7 +760,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R11 #######
 is_def: None
@@ -768,7 +768,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### 0x3f800000 #######
 
@@ -838,7 +838,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ############# FFMA R13, R11, R12, -1 #############
 ####### R13 #######
@@ -973,7 +973,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ####### 0x7fffff #######
 
@@ -1018,7 +1018,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ####### R13 #######
 is_def: None
@@ -1026,7 +1026,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4ab0, R13)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ####### PT #######
 is_def: None
@@ -1107,7 +1107,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4a60, R23)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R23 #######
 is_def: None
@@ -1115,7 +1115,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4a60, R23)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R12 #######
 is_def: None
@@ -1232,7 +1232,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4b10, R13)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R34 #######
 is_def: None
@@ -1240,7 +1240,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4a00, R34)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R12 #######
 is_def: None
@@ -1283,7 +1283,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4b20, R23)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### 0x1 #######
 
@@ -1328,7 +1328,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4b20, R23)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### 0x2 #######
 
@@ -1742,7 +1742,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4be0, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R11 #######
 is_def: None
@@ -1750,7 +1750,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4be0, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### 0x80000000 #######
 
@@ -1783,7 +1783,7 @@ is_use: None
 kill_set: []
 defs_reaching: ['(0x4900, R11)']
 reaches_next: False
-Typedesc: Int32
+Typedesc: NOTYPE
 
 ####### R24 #######
 is_def: None
@@ -1805,22 +1805,22 @@ is_use: False
 kill_set: ['(0x4c30, R22)']
 defs_reaching: ['(0x4aa0, R22)', '(0x49d0, R22)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ####### R11 #######
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
+defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: NOTYPE
 
 ############# MOV R11, 0x0 #############
 ####### R11 #######
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
+defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
 reaches_next: True
 Typedesc: NOTYPE
 

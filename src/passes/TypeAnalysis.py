@@ -266,39 +266,40 @@ class TypeAnalysis:
         for Op in inst.operands:
             if (Op.isReg or Op.isPReg) and Op.reg:
                 # def->use
-                reaching_defs = self.reaching_defs.get_reaching_definitions_before(inst)
-                types = set()
-                tmp = []
-                for d_inst, reg in reaching_defs:
-                    if reg == Op.reg and (d_inst, reg) in self.type_map:
-                        types.add(self.type_map[(d_inst, reg)])
-                        tmp.append(str(d_inst))
-                if Op.getTypeDesc() != "NOTYPE":
-                    types.add(Op.getTypeDesc())
-                if len(types) > 1:
-                    raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
-                    pass
-                elif len(types) == 1 and Op.getTypeDesc() == "NOTYPE":
-                    new_type = list(types)[0]
-                    Op.setTypeDesc(new_type)
-                    self.type_map[(inst, Op.reg)] = new_type
-                    changed = True
+                if Op.is_use:
+                    reaching_defs = self.reaching_defs.get_reaching_definitions_before(inst)
+                    types = set()
+                    tmp = []
+                    for d_inst, reg in reaching_defs:
+                        if reg == Op.reg and (d_inst, reg) in self.type_map:
+                            types.add(self.type_map[(d_inst, reg)])
+                            tmp.append(str(d_inst))
+                    if Op.getTypeDesc() != "NOTYPE":
+                        types.add(Op.getTypeDesc())
+                    if len(types) > 1:
+                        # raise InvalidTypeException(f"Conflicting types {types} for operand {Op} in {inst}")
+                        pass
+                    elif len(types) == 1 and Op.getTypeDesc() == "NOTYPE":
+                        new_type = list(types)[0]
+                        Op.setTypeDesc(new_type)
+                        self.type_map[(inst, Op.reg)] = new_type
+                        changed = True
                 
-                # use->def
-                useOp = Op
-                useOpType = useOp.getTypeDesc()
-                if useOpType != "NOTYPE":
-                    if useOp in self.ud_chain:
-                        for defOp in self.ud_chain[useOp]:
-                            # note that useOp is type Operand, which is necessary or we'd be mapping the same register at different instruction to the same entry, which would be wrong
-                            if defOp.getTypeDesc() != "NOTYPE":
-                                assert useOpType == defOp.getTypeDesc()
-                                pass
-                            else:
-                                defOp.setTypeDesc(useOpType)
-                                changed = True
-                    else:
-                        pass # TODO
+                    # use->def
+                    useOp = Op
+                    useOpType = useOp.getTypeDesc()
+                    if useOpType != "NOTYPE":
+                        if useOp in self.ud_chain:
+                            for defOp in self.ud_chain[useOp]:
+                                # note that useOp is type Operand, which is necessary or we'd be mapping the same register at different instruction to the same entry, which would be wrong
+                                if defOp.getTypeDesc() != "NOTYPE":
+                                    # assert useOpType == defOp.getTypeDesc()
+                                    pass
+                                else:
+                                    defOp.setTypeDesc(useOpType)
+                                    changed = True
+                        else:
+                            pass # TODO
                 
         return changed
 
