@@ -1811,7 +1811,7 @@ Typedesc: Float32
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
+defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
 reaches_next: False
 Typedesc: Float32
 
@@ -1820,7 +1820,7 @@ Typedesc: Float32
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: ['(0x4900, R11)', '(0x4be0, R11)', '(0x49e0, R11)']
+defs_reaching: ['(0x4be0, R11)', '(0x49e0, R11)', '(0x4900, R11)']
 reaches_next: True
 Typedesc: NOTYPE
 

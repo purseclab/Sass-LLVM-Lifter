@@ -109,7 +109,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -126,7 +126,7 @@ class TypeAnalysis:
             return None
 
         #### Batch 1
-        if inst.opcode in ["FFMA", "FADD"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL"]:
             TypeDesc = "Float32"
         elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "LEA", "SHF"] :
             TypeDesc = "Int32"
