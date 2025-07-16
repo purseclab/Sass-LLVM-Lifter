@@ -109,7 +109,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF", "SEL", "FSEL"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -164,6 +164,22 @@ class TypeAnalysis:
             
             return TypeDesc # TODO ????
 
+        if inst.opcode == "SEL" or inst.opcode == "FSEL":
+            if inst.opcode == "SEL":
+                TypeDesc = "Int32"
+            elif inst.opcode == "FSEL":
+                TypeDesc = "Float32"
+            inst.operands[0].setTypeDesc(TypeDesc)
+            self.type_map[(inst, inst.operands[0].reg)] = TypeDesc
+            inst.operands[1].setTypeDesc(TypeDesc)
+            self.type_map[(inst, inst.operands[1].reg)] = TypeDesc
+            inst.operands[2].setTypeDesc(TypeDesc)
+            self.type_map[(inst, inst.operands[2].reg)] = TypeDesc
+            inst.operands[3].setTypeDesc("Bool")
+            self.type_map[(inst, inst.operands[3].reg)] = "Bool"
+            
+            return TypeDesc
+        
         return TypeDesc
         
     def PartialSolveType(self, inst):
