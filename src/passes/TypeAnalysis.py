@@ -29,7 +29,7 @@ class TypeAnalysis:
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
         
-        self.conflicting_types = {"def_to_use": [], "use_to_def": []}
+        self.conflicting_types = {"def_to_use": {}, "use_to_def": {}}
         
         self.__apply()
         
@@ -106,7 +106,8 @@ class TypeAnalysis:
                         typeAnalysisInfo += f"Typedesc: {op.getTypeDesc()}\n"
                     typeAnalysisInfo += "\n"
                         
-        typeAnalysisInfo += "======================= Conflicting Types Report =======================\n\n"
+        typeAnalysisInfo += "\n\n\n======================= Conflicting Types Report =======================\n\n"
+        typeAnalysisInfo += "There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates different instances of conflict\n\n"
         typeAnalysisInfo += self.stringify_conflicting_types()
         typeAnalysisInfo_path = (self.project_root / "output/debug" / f"typeAnalysisInfo/{self.func.name}.txt").resolve()
         with open(typeAnalysisInfo_path, "w") as f:
@@ -126,17 +127,19 @@ class TypeAnalysis:
         output = []
 
         def section_to_str(section_name: str, hashes_major: int, hashes_minor: int) -> str:
-            result = [f"{'#' * hashes_major} {section_name} {'#' * hashes_major}"]
-            for type_dict in self.conflicting_types.get(section_name, []):
+            result = [f"{'=' * hashes_major} {section_name} {'=' * hashes_major}"]
+            for Op in self.conflicting_types.get(section_name, {}):
+                type_dict = self.conflicting_types[section_name][Op]
                 for typ, entries in type_dict.items():
                     result.append(f"\n{'#' * hashes_minor} Type: {typ} {'#' * hashes_minor}")
                     for _, reg_str, addr_str in entries:
                         result.append(f"Operand: {reg_str}; Instruction Addr: {addr_str}")
+                result.append("\n"+"*" * 40)
             return "\n".join(result)
 
-        output.append(section_to_str("def_to_use", 10, 5))
+        output.append(section_to_str("def_to_use", 15, 5))
         output.append("")  # empty line between sections
-        output.append(section_to_str("use_to_def", 10, 5))
+        output.append(section_to_str("use_to_def", 15, 5))
 
         return "\n".join(output)
 
@@ -306,7 +309,13 @@ class TypeAnalysis:
                     
                     if len(type_dict) > 1:
                         # if str(inst) not in ("SHF.L.U32 R10, R10, 0x17, RZ", "FFMA R24, R10, R9, 1", "IADD3 R9, R24, 0x1800000, RZ", "FFMA R10, R24, R9, -1", "FFMA R9, R9, R10, R9"):
-                        self.conflicting_types["def_to_use"].append(type_dict)
+                        
+                        # merge type_dict if this specific Operand has been here before so that we dont get a bunch of duplicates
+                        if Op in self.conflicting_types["def_to_use"]:
+                            for typ, values in self.conflicting_types["def_to_use"][Op].items():
+                                self.conflicting_types["def_to_use"][Op][typ] = values | (type_dict[typ] if typ in type_dict else set())
+                        else:
+                            self.conflicting_types["def_to_use"][Op] = type_dict
                     elif len(type_dict) == 1 and Op.getTypeDesc() == "NOTYPE":
                         new_type = list(type_dict)[0]
                         Op.setTypeDesc(new_type)
@@ -333,7 +342,13 @@ class TypeAnalysis:
                                     defOp.setTypeDesc(useOpType)
                                     changed = True
                             if conflict:
-                                self.conflicting_types["use_to_def"].append(type_dict)
+                                
+                                # merge type_dict if this specific Operand has been here before so that we dont get a bunch of duplicates
+                                if useOp in self.conflicting_types["use_to_def"]:
+                                    for typ, values in self.conflicting_types["use_to_def"][useOp].items():
+                                        self.conflicting_types["use_to_def"][useOp][typ] = values | (type_dict[typ] if typ in type_dict else set())
+                                else:
+                                    self.conflicting_types["use_to_def"][useOp] = type_dict
                         else:
                             pass # TODO
                 
