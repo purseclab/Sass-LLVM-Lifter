@@ -247,7 +247,7 @@ class Operand:
             self.Value = float(content)
             
             if not self.config["allow_temp_behavior"]:
-                self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
+                self.IRType = llvmir.FloatType() # needed otherwise IRFetchValue wont create the correct type of constant
             # TODO: differentiate between float32 and 64 (doubletype)
             # self.typeDesc = "Float32"
             return

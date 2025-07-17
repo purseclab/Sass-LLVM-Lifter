@@ -566,7 +566,12 @@ class Instruction:
             if not self.config["allow_temp_behavior"]:
                 assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
-                assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType))
+                IRValOp_list = [IRValOp1, IRValOp2, IRValOp3]
+                if any(isinstance(IRVal.type, llvmir.DoubleType) for IRVal in IRValOp_list):
+                    # Promote all float operands to double
+                    IRValOp_list = [IRBuilder.fpext(IRVal, llvmir.DoubleType()) if IRVal.type == llvmir.FloatType() else IRVal for IRVal in IRValOp_list]
+                    IRValOp1, IRValOp2, IRValOp3 = IRValOp_list
                 
             else:
                 assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 

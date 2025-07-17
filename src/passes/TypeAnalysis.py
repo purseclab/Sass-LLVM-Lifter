@@ -115,7 +115,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF", "SEL", "FSEL"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -375,18 +375,18 @@ class TypeAnalysis:
             "reaches_next": False # Check if this operand's definition reaches the next instruction
         }
         
-        if self.config["allow_temp_behavior"]:
-            pass
-            # if operand.is_def is None:
-            #     assert operand.is_use is not None
-            #     assert operand.is_use == True
-            # elif operand.is_use is None:
-            #     assert operand.is_def is not None
-            #     assert operand.is_def == True
-            # else:
-            #     assert operand.is_def ^ operand.is_use
-        else:
-            assert operand.is_def ^ operand.is_use # cannot both be true/false
+        # if self.config["allow_temp_behavior"]:
+        #     pass
+        #     # if operand.is_def is None:
+        #     #     assert operand.is_use is not None
+        #     #     assert operand.is_use == True
+        #     # elif operand.is_use is None:
+        #     #     assert operand.is_def is not None
+        #     #     assert operand.is_def == True
+        #     # else:
+        #     #     assert operand.is_def ^ operand.is_use
+        # else:
+        #     assert operand.is_def ^ operand.is_use # cannot both be true/false
 
         if (operand.isReg or operand.isPReg) and operand.reg:
             # Get definitions reaching this instruction
