@@ -100,6 +100,7 @@ class TypeAnalysis:
                         info = self.get_use_def_info(inst, op)
                         for key, val  in  info.items():
                             if key in ("defs_reaching", "kill_set"):
+                                val = sorted(list(val), key=lambda x: int(x[0].addr, 16))
                                 typeAnalysisInfo += f"{key}: {[f'({inst.addr}, {reg})' for inst, reg in val]}\n"
                             else:
                                 typeAnalysisInfo += f"{key}: {val}\n"
@@ -133,14 +134,14 @@ class TypeAnalysis:
                 for typ in sorted(list(type_dict.keys())):
                     entries = type_dict[typ]
                     result.append(f"\n{'#' * hashes_minor} Type: {typ} {'#' * hashes_minor}")
-                    for _, reg_str, addr_str in entries:
+                    for _, reg_str, addr_str in sorted(list(entries), key=lambda x: int(x[2], 16)):
                         result.append(f"Operand: {reg_str}; Instruction Addr: {addr_str}")
                 result.append("\n"+"*" * 40)
             return "\n".join(result)
 
-        output.append(section_to_str("def_to_use", 15, 5))
+        output.append(section_to_str("def_to_use", 20, 5))
         output.append("")  # empty line between sections
-        output.append(section_to_str("use_to_def", 15, 5))
+        output.append(section_to_str("use_to_def", 20, 5))
 
         return "\n".join(output)
 

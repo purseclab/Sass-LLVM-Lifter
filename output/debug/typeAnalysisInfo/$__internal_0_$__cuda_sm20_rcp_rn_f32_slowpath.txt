@@ -1811,7 +1811,7 @@ Typedesc: NOTYPE
 is_def: False
 is_use: True
 kill_set: ['(0x4c30, R22)']
-defs_reaching: ['(0x49e0, R11)', '(0x4900, R11)', '(0x4be0, R11)']
+defs_reaching: ['(0x4900, R11)', '(0x49e0, R11)', '(0x4be0, R11)']
 reaches_next: False
 Typedesc: NOTYPE
 
@@ -1820,7 +1820,7 @@ Typedesc: NOTYPE
 is_def: True
 is_use: False
 kill_set: ['(0x4c40, R11)']
-defs_reaching: ['(0x49e0, R11)', '(0x4900, R11)', '(0x4be0, R11)']
+defs_reaching: ['(0x4900, R11)', '(0x49e0, R11)', '(0x4be0, R11)']
 reaches_next: True
 Typedesc: NOTYPE
 
@@ -1848,7 +1848,7 @@ Typedesc: NOTYPE
 
 There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates different instances of conflict
 
-=============== def_to_use ===============
+==================== def_to_use ====================
 
 ##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x4a80
@@ -1867,7 +1867,7 @@ Operand: R11; Instruction Addr: 0x4be0
 
 ****************************************
 
-=============== use_to_def ===============
+==================== use_to_def ====================
 
 ##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x4a80
