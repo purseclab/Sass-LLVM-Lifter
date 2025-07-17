@@ -279,6 +279,8 @@ class TypeAnalysis:
             else:
                 return False
         
+        # TODO propagate for ULDG
+        
         elif inst.opcode == "STG":
             
             TypeDesc = inst.operands[1].getTypeDesc()

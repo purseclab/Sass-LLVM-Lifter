@@ -182,7 +182,8 @@ class Instruction:
                     IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
                     
                 # Store the result
-                IRBuilder.store(IRVal, IRResOp)
+                # IRBuilder.store(IRVal, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
             else:
                 raise InvalidSyntaxException
             return
@@ -193,19 +194,23 @@ class Instruction:
             if ResOp.isReg and ValOp.isReg:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 IRValOp = IRRegs[ValOp.getIRRegName()]
-                IRVal = IRBuilder.load(IRValOp)
-                IRBuilder.store(IRVal, IRResOp)
-                # IRBuilder.store(IRValOp, IRResOp)
+                # IRVal = IRBuilder.load(IRValOp)
+                IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
+                # IRBuilder.store(IRVal, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
+                # old: # IRBuilder.store(IRValOp, IRResOp)
             elif ResOp.isReg and ValOp.isConst:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 tmp = llvmir.Constant(IRResOp.type.pointee, ValOp.Value)
-                IRBuilder.store(tmp, IRResOp)
+                # IRBuilder.store(tmp, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
             elif ResOp.isReg and ValOp.isArg:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 # Find IR from IRArgs
                 IRValOp = IRArgs[ValOp.offset_in_const_mem]
 
-                IRBuilder.store(IRValOp, IRResOp)
+                # IRBuilder.store(IRValOp, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
                 # IRBuilder.store(IRArgs[ValOp.offset_in_const_mem], IRResOp)
             else:
                 raise InvalidSyntaxException
@@ -218,10 +223,11 @@ class Instruction:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 IRPtrOp = IRRegs[PtrOp.getIRRegName()]
                 
-                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRPtrOp, IRResOp.type.pointee)
+                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, PtrOp, IRResOp.type.pointee)
 
                 # IRVal = IRBuilder.load(IRPtrOp)
-                IRBuilder.store(IRVal, IRResOp)
+                # IRBuilder.store(IRVal, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
             else:
                 raise InvalidSyntaxException
             return
@@ -232,9 +238,10 @@ class Instruction:
             if ValOp.isReg and ResOp.isPtr:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 IRValOp = IRRegs[ValOp.getIRRegName()]
-                IRVal = IRBuilder.load(IRValOp)
+                # IRVal = IRBuilder.load(IRValOp)
+                IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
 
-                ResOp.IR_ValueToPointer(IRBuilder, IRResOp, IRVal)
+                ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal)
             else:
                 raise InvalidSyntaxException
             return
@@ -255,7 +262,8 @@ class Instruction:
 
             tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul")
             tmp = IRBuilder.add(tmp, IRValOp3, "add")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -358,7 +366,8 @@ class Instruction:
             else:
                 raise NotImplementedError
         
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -514,7 +523,8 @@ class Instruction:
                 print(f"settings[\"dir\"] = {settings['dir']}")
                 raise InvalidSyntaxException
             
-            IRBuilder.store(tmp, IRResOp_Rd)
+            # IRBuilder.store(tmp, IRResOp_Rd)
+            R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
         if self.opcode == "FMNMX":
@@ -546,7 +556,8 @@ class Instruction:
 
             # https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
             tmp = IRBuilder.select(IRPreg, min, max, "fmnmx_final")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -593,7 +604,8 @@ class Instruction:
             
 
             tmp = IRBuilder.fadd(tmp, IRValOp3, "fadd")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -609,7 +621,8 @@ class Instruction:
             IRResOp = IRRegs[ResOp.getIRRegName()]
 
             tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -634,7 +647,8 @@ class Instruction:
             
             tmp = IRBuilder.shl(IRValOp1, IRShift, "shl")
             tmp = IRBuilder.add(tmp, IRValOp2, "add")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -654,7 +668,8 @@ class Instruction:
                 IRBuilder.neg(IRValOp),
                 "iabs"
             )
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -669,7 +684,8 @@ class Instruction:
             assert ResOp.reg in SM_75_UReg_Set
             IRResOp = IRRegs[ResOp.getIRRegName()]
 
-            IRBuilder.store(IRValOp, IRResOp)
+            # IRBuilder.store(IRValOp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
             return
         
 
@@ -769,7 +785,8 @@ class Instruction:
                 if str(IRRegs[ResOp.getIRRegName()].type) == "i1*":
                     tmp = IRBuilder.trunc(tmp, llvmir.IntType(1), "trunc1")
             
-            IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
+            # IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
 
@@ -840,7 +857,8 @@ class Instruction:
             IRResOp = IRRegs[ResOp.getIRRegName()]
 
             tmp = IRBuilder.sitofp(IRValOp, IRResOp.type.pointee)
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -854,7 +872,8 @@ class Instruction:
             IRResOp = IRRegs[ResOp.getIRRegName()]
 
             tmp = IRBuilder.fptosi(IRValOp, IRResOp.type.pointee)
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
 
@@ -892,7 +911,8 @@ class Instruction:
                 print(self.modifiers[0])
                 raise NotImplementedError
 
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
         
         if self.opcode == "IADD3" or self.opcode == "UIADD3" :
@@ -918,7 +938,8 @@ class Instruction:
 
                 assert ResOp.isReg
                 IRResOp = IRRegs[ResOp.getIRRegName()]
-                IRBuilder.store(sum, IRResOp)
+                # IRBuilder.store(sum, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
 
             else:
                 # Currrently, just drop the Carry;
@@ -941,14 +962,16 @@ class Instruction:
 
                 sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
                 sum = IRBuilder.add(sum, IRValOp3, "add")
-                IRBuilder.store(sum, IRResOp)
+                # IRBuilder.store(sum, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
 
                 if self.operands[1].isPReg:
                     # TODO: Make sure Using comparation is correct; 
                     carry = IRBuilder.icmp_unsigned('<', sum, IRValOp1, name="carry")
                     Preg = self.operands[1]
                     IRPreg = IRRegs[Preg.getIRRegName()]
-                    IRBuilder.store(carry, IRPreg)
+                    # IRBuilder.store(carry, IRPreg)
+                    Preg.IRReg_Store(IRRegs, IRBuilder, carry)
             
             return
         
@@ -1035,7 +1058,8 @@ class Instruction:
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
                 
             tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
                 
 
             return
@@ -1061,7 +1085,8 @@ class Instruction:
                 self.opcode.lower()
             )
 
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
         if self.opcode == "RET":

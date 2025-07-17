@@ -100,10 +100,12 @@ class Operand:
         self.is_use = None
         self.is_def = None
 
-    def IR_ValueFromPointer(self, IRBuilder, IRPtrOp, PinterType):
+    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PtrOp, PinterType):
 
         # Fetch Value from IRPtrOp
-        PtrAddr = IRBuilder.load(IRPtrOp)
+        # PtrAddr = IRBuilder.load(IRPtrOp)
+        PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
+        
         PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(32), self.ptr_offset))
 
         # Fetch value from PtrAddr e.g.,[R2]
@@ -119,9 +121,10 @@ class Operand:
 
         return IRVal
     
-    def IR_ValueToPointer(self, IRBuilder, IRPtrOp, IRVal):
+    def IR_ValueToPointer(self, IRBuilder, IRRegs, PtrOp, IRVal):
         # Fetch address from IRPtrOp
-        PtrAddr = IRBuilder.load(IRPtrOp)
+        # PtrAddr = IRBuilder.load(IRPtrOp)
+        PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
         PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(32), self.ptr_offset))
 
         # Convert address to pointer type
@@ -145,8 +148,11 @@ class Operand:
                 return llvmir.Constant(llvmir.IntType(32), 0)
             if self.reg == "URZ":
                 return llvmir.Constant(llvmir.IntType(32), 0)
-            IRVal = IRRegs[self.getIRRegName()]
-            IRVal = IRBuilder.load(IRVal)
+
+            # IRVal = IRRegs[self.getIRRegName()]
+            # IRVal = IRBuilder.load(IRVal)
+            
+            IRVal = self.IRReg_Load(IRRegs, IRBuilder)
             
             if self.reg_abs:
                 if isinstance(self.getIRType(), llvmir.FloatType):
@@ -187,6 +193,43 @@ class Operand:
         print(f"Unknown Operand {self}")
         raise NotImplementedError
 
+    def IRReg_Load(self, IRRegs, IRBuilder):
+        IRVal = None
+        if self.isReg:
+            curRegName = self.getCurRegName()
+            # assert curRegName != ""
+            if curRegName == "":
+                curRegName = self.getIRRegName()
+            IRReg = IRRegs[curRegName]
+            # we cant just use IRBuilder.load because there might be type difference
+            if curRegName != self.getIRRegName():
+                IRRegNew = IRRegs[self.getIRRegName()]
+                # note: it seems like allocainstr is a pointertype since we previously are able to call builder.load on it, to be confirmed later
+                copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
+                isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
+                IRVal = IRBuilder.call(llvm_memcpy_i32(self.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
+                IRReg = IRRegNew
+            
+            IRVal = IRBuilder.load(IRReg)
+        return IRVal
+    
+    def IRReg_Store(self, IRRegs, IRBuilder, storeVal):
+        if self.isReg:
+            curRegName = self.getIRRegName()
+            IRReg = IRRegs[curRegName]
+            # prevRegName = self.getCurRegName()
+            IRBuilder.store(storeVal, IRReg)
+            
+            # if curRegName != self.getCurRegName() and self.getCurRegName() != "":
+            #     print(curRegName, self.getCurRegName(), "---")
+            #     self.setCurRegName(curRegName)
+            #     print(self.ins.BB.func.IRRegs_cur_status)
+            #     exit(1)
+            
+            self.setCurRegName(curRegName)
+            return self.getCurRegName() == curRegName
+        return False
+    
     def parse(self):
         content = self.OriginalContent # an element from ["Basicblocks"]["instructions"][.]["content"][1], e.g. an element from ["Basicblocks"]["instructions"][.]["content"][1][0] == "R1" for test_code.json
         # dprint("Operand Content", content)
@@ -336,6 +379,8 @@ class Operand:
                 self.IRType = llvmir.FloatType()
             elif self.typeDesc == "Bool":
                 self.IRType = llvmir.IntType(1)
+            elif self.typeDesc == "Void":
+                self.IRType = llvmir.VoidType()
             else:
                 return llvmir.IntType(32)
 
@@ -354,6 +399,15 @@ class Operand:
                 raise NameError("Unknown Operand Type")
 
         return self.IRRegName
+    
+    def getRegName(self):
+        return self.reg
+    
+    def getCurRegName(self):
+        return self.ins.BB.func.IRRegs_cur_status[self.getRegName()]
+    
+    def setCurRegName(self, curRegName):
+        self.ins.BB.func.IRRegs_cur_status[self.getRegName()] = curRegName
     
     def is_use_disqualifier(self):
         if self.isConst:

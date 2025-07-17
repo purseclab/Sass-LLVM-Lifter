@@ -23,6 +23,8 @@ class Function:
         self.internal_func : bool = function_dict["internal_func"]
         # self.name = name
         self.blocks : typing.List[BasicBlock] = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
+        
+        self.IRRegs_cur_status: dict[str, str] = {} # tells us which register_type was last loaded value, e.g. R24: R24_Float32 means that the last store operation is done to R24_Float32 and it therefore holds the most up-to-date content for register R24
 
         # All the Labels
         # self.labels = [BB.label for BB in self.blocks]
@@ -216,7 +218,7 @@ class Function:
             # if IRBlock == EntryBlock:
             #     Builder = EntryBuilder
             # else:
-            Builder = llvmir.IRBuilder(IRBlock)
+            Builder: llvmir.IRBuilder = llvmir.IRBuilder(IRBlock)
 
             if IsEntry:
                 # Alloc the variable for registers
@@ -224,10 +226,14 @@ class Function:
                     Operand = Regs[Reg]
                     RegName = Operand.getIRRegName()
                     assert RegName == Reg
-                    IRReg = Builder.alloca(Operand.getIRType(), 8, RegName)
+                    IRReg = Builder.alloca(Operand.getIRType(), 1, RegName)
                     # Register the IR registers
                     IRRegs[RegName] = IRReg
-
+                    
+                    # Create entry in IRRegs_cur_status
+                    RegName_without_type = RegName.split("_")[0]
+                    if RegName_without_type not in self.IRRegs_cur_status:
+                        self.IRRegs_cur_status[RegName_without_type] = ""
 
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock)
 

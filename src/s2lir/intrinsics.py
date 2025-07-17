@@ -92,3 +92,12 @@ def nvvm_ctaid_z(module):
     intrinsic_type = ir.FunctionType(ir.IntType(32), [])
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_memcpy_i32(module):
+    # https://llvm.org/docs/LangRef.html#id2252
+    
+    intrinsic_name = "llvm.memcpy.p0.p0.i32"
+    
+    intrinsic_type = ir.FunctionType(ir.VoidType(), [ir.PointerType(), ir.PointerType(), ir.IntType(32), ir.IntType(1)])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
