@@ -130,7 +130,8 @@ class TypeAnalysis:
             result = [f"{'=' * hashes_major} {section_name} {'=' * hashes_major}"]
             for Op in self.conflicting_types.get(section_name, {}):
                 type_dict = self.conflicting_types[section_name][Op]
-                for typ, entries in type_dict.items():
+                for typ in sorted(list(type_dict.keys())):
+                    entries = type_dict[typ]
                     result.append(f"\n{'#' * hashes_minor} Type: {typ} {'#' * hashes_minor}")
                     for _, reg_str, addr_str in entries:
                         result.append(f"Operand: {reg_str}; Instruction Addr: {addr_str}")
