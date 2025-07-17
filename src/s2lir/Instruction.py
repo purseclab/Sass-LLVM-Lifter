@@ -875,7 +875,7 @@ class Instruction:
                 
                 if not self.config["allow_temp_behavior"]:
                     assert isinstance(IRValOp.type, (llvmir.FloatType)) 
-                    assert isinstance(IRResOp.type, (llvmir.FloatType)) 
+                    assert IRResOp.type == llvmir.PointerType(llvmir.FloatType())
                 else:
                     if isinstance(IRValOp.type, llvmir.IntType):
                         IRValOp = IRBuilder.sitofp(IRValOp, llvmir.FloatType(), name="sint_to_f32")
