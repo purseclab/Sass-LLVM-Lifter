@@ -84,7 +84,7 @@ class TypeAnalysis:
             for BB in self.func.blocks:
                 for inst in BB.instructions:
                     for Op in inst.operands:
-                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "LDG", "BSSY", "CALL", "BSYNC", "RET"] + ["BRA"]:
+                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "ULOP3", "LDG", "BSSY", "CALL", "BSYNC", "RET", "ULDC", "STG"] + ["BRA"]:
                             print(f"Unsolvable type for operand {Op} in instruction {inst}")
                             raise InvalidTypeException("Type analysis incomplete")
 
@@ -115,7 +115,7 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "LDG", "STG", "IADD", "IADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "STG", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     operand.is_def = operand.is_def_disqualifier()
@@ -156,7 +156,7 @@ class TypeAnalysis:
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD", "FMUL"]:
             TypeDesc = "Float32"
-        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "LEA", "SHF"] :
+        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "UIADD3", "LEA", "SHF", "IABS"] :
             TypeDesc = "Int32"
 
         if TypeDesc is not None:
@@ -212,13 +212,29 @@ class TypeAnalysis:
             
             return TypeDesc
         
+        if inst.opcode == "I2F":
+            inst.operands[0].setTypeDesc("Float32")
+            self.type_map[(inst, inst.operands[0].reg)] = "Float32"
+            inst.operands[1].setTypeDesc("Int32")
+            self.type_map[(inst, inst.operands[1].reg)] = "Int32"
+            
+            return "Float32"
+        
+        if inst.opcode == "F2I":
+            inst.operands[0].setTypeDesc("Int32")
+            self.type_map[(inst, inst.operands[0].reg)] = "Int32"
+            inst.operands[1].setTypeDesc("Float32")
+            self.type_map[(inst, inst.operands[1].reg)] = "Float32"
+            
+            return "Int32"
+        
         return TypeDesc
         
     def PartialSolveType(self, inst):
         if len([op for op in inst.operands if op.getTypeDesc() == "NOTYPE"]) == 0:
             return False
         
-        if inst.opcode == "MOV":
+        if inst.opcode in ("MOV", "UMOV"):
             op0 = inst.operands[0]
             op1 = inst.operands[1]
             op0TypeDesc = op0.getTypeDesc()
