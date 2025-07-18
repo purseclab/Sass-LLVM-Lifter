@@ -760,6 +760,7 @@ class Instruction:
                 elif immLut.Value == 0x33: # ~B
                     tmp = IRBuilder.xor(IRValOp2, llvmir.Constant(llvmir.IntType(32), -1)) # ~B
                 elif immLut.Value == 0xC0:  # A & B
+                    IRValOp1, IRValOp2 = bitcast_all_to_type(IRBuilder, ResOp.getIRType(), IRValOp1, IRValOp2)
                     tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
                 elif immLut.Value == 0x8: # (~A) & B & C
                     tmp = IRBuilder.xor(IRValOp1, llvmir.Constant(llvmir.IntType(32), -1)) # ~A
