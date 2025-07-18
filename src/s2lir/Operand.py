@@ -232,11 +232,12 @@ class Operand:
             # prevRegName = self.getCurRegName()
             IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
             
-            curRegName = self.getIRRegName()
-            IRRegNew = IRRegs[curRegName]
-            copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
-            isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
-            IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
+            if curRegName != self.getIRRegName():
+                curRegName = self.getIRRegName()
+                IRRegNew = IRRegs[curRegName]
+                copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
+                isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
+                IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
             
             # if curRegName != self.getCurRegName() and self.getCurRegName() != "":
             #     print(curRegName, self.getCurRegName(), "---")
