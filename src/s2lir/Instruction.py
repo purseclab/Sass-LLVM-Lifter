@@ -880,6 +880,10 @@ class Instruction:
         if self.opcode == "MUFU": # Multi-Function Unit
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            if ValOp.getTypeDesc() == "NOTYPE": # TODO tmp solution
+                ValOp.setTypeDesc(ResOp.getTypeDesc())
+            
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             assert ResOp.isReg
             IRResOp = IRRegs[ResOp.getIRRegName()]

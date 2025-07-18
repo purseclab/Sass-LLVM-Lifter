@@ -1,4 +1,4 @@
-
+from collections import Counter
 from s2lir import Function, Basicblock, Instruction, Operand
 from utils import *
 import typing
@@ -252,15 +252,38 @@ class TypeAnalysis:
                 return True
         
         if inst.opcode in ("ULOP3", "LOP3"):
+            changed = False
             op4 = inst.operands[4]
             op4TypeDesc = op4.getTypeDesc()
             if op4TypeDesc != "NOTYPE":
                 assert op4TypeDesc == "Int32"
-                return False
             else:
                 op4.setTypeDesc("Int32")
                 self.type_map[(inst, op4.reg)] = "Int32"
-                return True
+                changed = True
+            
+            operands = [inst.operands[0], inst.operands[1], inst.operands[2], inst.operands[3]]
+
+            # Get type descriptions for all 4 operands
+            type_descs = [op.getTypeDesc() for op in operands]
+
+            # Count all defined types (i.e., not "NOTYPE")
+            defined_types = [t for t in type_descs if t != "NOTYPE"]
+            type_counter = Counter(defined_types)
+
+            # Find the most common defined type, and how often it appears
+            if type_counter:
+                most_common_type, count = type_counter.most_common(1)[0]
+
+                # Only act if 3 or more operands have the same non-NOTYPE type
+                if count >= 3:
+                    for i, (op, t) in enumerate(zip(operands, type_descs)):
+                        if t == "NOTYPE":
+                            # Set the missing type to the majority type
+                            op.setTypeDesc(most_common_type)
+            
+            
+            return changed
                     
         if inst.opcode == "LDG":
             TypeDesc = inst.operands[0].getTypeDesc()

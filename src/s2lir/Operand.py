@@ -144,10 +144,14 @@ class Operand:
         
         # TODO: assume that normal operand other than LDG and STG is not pointers. Check it later.
         if self.isReg:
-            if self.reg == "RZ":
-                return llvmir.Constant(llvmir.IntType(32), 0)
-            if self.reg == "URZ":
-                return llvmir.Constant(llvmir.IntType(32), 0)
+            if self.reg in ("RZ", "URZ"):
+                if self.getTypeDesc() == "Float32":
+                    return llvmir.Constant(llvmir.FloatType(), 0)
+                elif self.getTypeDesc() == "Int32":
+                    return llvmir.Constant(llvmir.IntType(32), 0)
+                elif self.getTypeDesc() == "NOTYPE":
+                    return llvmir.Constant(llvmir.IntType(32), 0)
+                raise Exception(f"Invalid TypeDesc: {self.getTypeDesc()}")
 
             # IRVal = IRRegs[self.getIRRegName()]
             # IRVal = IRBuilder.load(IRVal)
@@ -380,6 +384,10 @@ class Operand:
     # Set the type description for operand
     def setTypeDesc(self, Type):
         self.typeDesc = Type
+        if self.IRRegName != None:
+            # Reset the name to incorporate the new type
+            self.IRRegName = None
+            self.getIRRegName()
 
     # Get the type description
     def getTypeDesc(self):
