@@ -195,7 +195,8 @@ class Operand:
 
     def IRReg_Load(self, IRRegs, IRBuilder):
         IRVal = None
-        if self.isReg:
+        if self.isReg or self.isPtr: 
+            # note: [R38] isPtr, but not isReg.
             curRegName = self.getCurRegName()
             # assert curRegName != ""
             if curRegName == "":
@@ -207,18 +208,31 @@ class Operand:
                 # note: it seems like allocainstr is a pointertype since we previously are able to call builder.load on it, to be confirmed later
                 copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
                 isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
-                IRVal = IRBuilder.call(llvm_memcpy_i32(self.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
+                IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
                 IRReg = IRRegNew
             
-            IRVal = IRBuilder.load(IRReg)
+            IRVal = IRBuilder.load(IRReg) # TODO: Confirm if this changes data layout
         return IRVal
     
     def IRReg_Store(self, IRRegs, IRBuilder, storeVal):
         if self.isReg:
-            curRegName = self.getIRRegName()
+            storeValTypeDesc = None
+            if storeVal.type == llvmir.IntType(32):
+                storeValTypeDesc = "Int32"
+            elif storeVal.type == llvmir.FloatType():
+                storeValTypeDesc = "Float32"
+            curRegName = self.getOtherIRRegName(storeValTypeDesc)
+            if curRegName not in IRRegs:
+                IRRegs[curRegName] = IRBuilder.alloca(storeVal.type, 1, curRegName)
             IRReg = IRRegs[curRegName]
             # prevRegName = self.getCurRegName()
-            IRBuilder.store(storeVal, IRReg)
+            IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
+            
+            curRegName = self.getIRRegName()
+            IRRegNew = IRRegs[curRegName]
+            copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
+            isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
+            IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
             
             # if curRegName != self.getCurRegName() and self.getCurRegName() != "":
             #     print(curRegName, self.getCurRegName(), "---")
@@ -399,6 +413,10 @@ class Operand:
                 raise NameError("Unknown Operand Type")
 
         return self.IRRegName
+    
+    def getOtherIRRegName(self, targetType):
+        assert targetType in ("Float32", "Int32")
+        return self.reg + "_" + targetType
     
     def getRegName(self):
         return self.reg
