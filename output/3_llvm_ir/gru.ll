@@ -294,19 +294,20 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R10_Float32_PTR" = alloca i32, i32 1
   %"R9_Float32" = alloca float, i32 1
   %"R19_NOTYPE" = alloca i32, i32 1
-  %"R12_NOTYPE" = alloca i32, i32 1
+  %"R12_NOTYPE_PTR" = alloca i32, i32 1
   %"R21_NOTYPE" = alloca i32, i32 1
-  %"R10_NOTYPE" = alloca i32, i32 1
+  %"R10_NOTYPE_PTR" = alloca i32, i32 1
   %"R18_NOTYPE" = alloca i32, i32 1
-  %"R14_NOTYPE" = alloca i32, i32 1
+  %"R14_NOTYPE_PTR" = alloca i32, i32 1
   %"R26_Float32_PTR" = alloca i32, i32 1
   %"R11_Float32" = alloca float, i32 1
+  %"R10_NOTYPE" = alloca i32, i32 1
   %"R32_Float32_PTR" = alloca i32, i32 1
   %"R49_Int32" = alloca i32, i32 1
   %"R50_Int32" = alloca i32, i32 1
   %"R58_Int32" = alloca i32, i32 1
   %"R16_NOTYPE" = alloca i32, i32 1
-  %"R22_NOTYPE" = alloca i32, i32 1
+  %"R22_NOTYPE_PTR" = alloca i32, i32 1
   %"R15_NOTYPE" = alloca i32, i32 1
   %"R30_Float32_PTR" = alloca i32, i32 1
   %"R28_Float32_PTR" = alloca i32, i32 1
@@ -316,11 +317,11 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R8_Float32_PTR" = alloca i32, i32 1
   %"R6_Float32_PTR" = alloca i32, i32 1
   %"R25_NOTYPE" = alloca i32, i32 1
-  %"R4_NOTYPE" = alloca i32, i32 1
+  %"R4_NOTYPE_PTR" = alloca i32, i32 1
   %"R24_NOTYPE" = alloca i32, i32 1
-  %"R6_NOTYPE" = alloca i32, i32 1
+  %"R6_NOTYPE_PTR" = alloca i32, i32 1
   %"R35_NOTYPE" = alloca i32, i32 1
-  %"R8_NOTYPE" = alloca i32, i32 1
+  %"R8_NOTYPE_PTR" = alloca i32, i32 1
   %"R34_NOTYPE" = alloca i32, i32 1
   %"R57_Int32" = alloca i32, i32 1
   %"R6_Float32" = alloca float, i32 1
@@ -328,7 +329,9 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R5_Float32" = alloca float, i32 1
   %"R7_Float32" = alloca float, i32 1
   %"R23_NOTYPE" = alloca i32, i32 1
+  %"R12_NOTYPE" = alloca i32, i32 1
   %"R9_NOTYPE" = alloca i32, i32 1
+  %"R34_NOTYPE_PTR" = alloca i32, i32 1
   ; MOV R1, c[0x0][0x28]
   %"R1_Int32" = alloca i32, i32 1
   store i32 %"Arg_1", ptr %"R1_Int32"

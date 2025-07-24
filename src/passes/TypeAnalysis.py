@@ -286,39 +286,78 @@ class TypeAnalysis:
             return changed
                     
         if inst.opcode == "LDG":
-            TypeDesc = inst.operands[0].getTypeDesc()
-
+            changes = False
+            TypeDescOp1 = inst.operands[1].getTypeDesc()
             
-            if TypeDesc != None and TypeDesc != "NOTYPE":
-                inst.operands[1].setTypeDesc(TypeDesc + "_PTR")
-                self.type_map[(inst, inst.operands[1].reg)] = TypeDesc + "_PTR"
-                return True
+            if TypeDescOp1 is None or TypeDescOp1 == "NOTYPE":
+                # at least designate this operand as a PTR so that we can treat it as a PTR later on
+                TypeDescOp1 = "NOTYPE_PTR" # 64 bit
+                inst.operands[1].setTypeDesc(TypeDescOp1)
+                self.type_map[(inst, inst.operands[1].reg)] = TypeDescOp1
+                changes = True
+                
+            TypeDescOp0 = inst.operands[0].getTypeDesc()
             
-            TypeDesc = inst.operands[1].getTypeDesc()
-            if TypeDesc != None and TypeDesc != "NOTYPE":
-                assert '_PTR' in TypeDesc
-                inst.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
-                self.type_map[(inst, inst.operands[0].reg)] = TypeDesc.replace("_PTR", "")
+            if TypeDescOp0 != None and TypeDescOp0 != "NOTYPE":
+                if TypeDescOp1 != "NOTYPE_PTR":
+                    assert TypeDescOp0 + "_PTR" == TypeDescOp1
+                    return changes
+                
+                # propagate type from op0 to op1
+                inst.operands[1].setTypeDesc(TypeDescOp0 + "_PTR")
+                self.type_map[(inst, inst.operands[1].reg)] = TypeDescOp0 + "_PTR"
+                changes = True
+                return changes
+            
+            if TypeDescOp1 != "NOTYPE" and TypeDescOp1 != "NOTYPE_PTR":
+                # propagate type from op1 to op0
+                assert '_PTR' in TypeDescOp1
+                TypeDescOp0 = TypeDescOp1.replace('_PTR', "")
+                inst.operands[0].setTypeDesc(TypeDescOp0)
+                self.type_map[(inst, inst.operands[0].reg)] = TypeDescOp0
+                changes = True
+                return changes
             else:
-                return False
+                return changes
         
         # TODO propagate for ULDG
         
         elif inst.opcode == "STG":
             
-            TypeDesc = inst.operands[1].getTypeDesc()
-            if TypeDesc != None and TypeDesc != "NOTYPE":
-                inst.operands[0].setTypeDesc(TypeDesc + "_PTR") # TODO: make sure it shld be inst.operands[0] instead of inst.operands[1], and the type map below as well
-                self.type_map[(inst, inst.operands[0].reg)] = TypeDesc + "_PTR"
-                return True
-            TypeDesc = inst.operands[0].getTypeDesc()
-            if TypeDesc != None and TypeDesc != "NOTYPE":
-                assert '_PTR' in TypeDesc
-                inst.operands[0].setTypeDesc(TypeDesc.replace('_PTR', ""))
-                self.type_map[(inst, inst.operands[0].reg)] = TypeDesc.replace("_PTR", "")
-                return True
+            changes = False
+            TypeDescOp0 = inst.operands[0].getTypeDesc()
+            
+            if TypeDescOp0 is None or TypeDescOp0 == "NOTYPE":
+                # at least designate this operand as a PTR so that we can treat it as a PTR later on
+                TypeDescOp0 = "NOTYPE_PTR" # 64 bit
+                inst.operands[0].setTypeDesc(TypeDescOp0)
+                self.type_map[(inst, inst.operands[0].reg)] = TypeDescOp0
+                changes = True
+            
+            TypeDescOp1 = inst.operands[1].getTypeDesc()
+            
+            if TypeDescOp1 != None and TypeDescOp1 != "NOTYPE":
+                if TypeDescOp0 != "NOTYPE_PTR":
+                    assert TypeDescOp1 + "_PTR" == TypeDescOp0
+                    return changes
+                
+                # propagate type from op1 to op0
+                TypeDescOp0 = TypeDescOp1 + "_PTR"
+                inst.operands[0].setTypeDesc(TypeDescOp0)
+                self.type_map[(inst, inst.operands[0].reg)] = TypeDescOp0
+                changes = True
+                return changes
+            
+            if TypeDescOp0 != "NOTYPE" and TypeDescOp0 != "NOTYPE_PTR":
+                # propagate type from op0 to op1
+                assert '_PTR' in TypeDescOp0
+                TypeDescOp1 = TypeDescOp0.replace('_PTR', "")
+                inst.operands[1].setTypeDesc(TypeDescOp1)
+                self.type_map[(inst, inst.operands[1].reg)] = TypeDescOp1
+                changes = True
+                return changes
             else:
-                return False
+                return changes    
 
         elif inst.opcode == "IADD":
             TypeDesc = inst.operands[0].getTypeDesc()

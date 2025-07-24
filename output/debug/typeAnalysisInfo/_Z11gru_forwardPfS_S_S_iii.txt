@@ -6472,7 +6472,7 @@ is_use: False
 kill_set: ['(0x10d0, R19)']
 defs_reaching: ['(0x1000, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -6519,7 +6519,7 @@ is_use: False
 kill_set: ['(0x10e0, R21)']
 defs_reaching: ['(0x0ff0, R10)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -6566,7 +6566,7 @@ is_use: False
 kill_set: ['(0x10f0, R18)']
 defs_reaching: ['(0x1010, R14)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -12058,7 +12058,7 @@ is_use: False
 kill_set: ['(0x1f30, R16)']
 defs_reaching: ['(0x1e80, R22)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -12105,7 +12105,7 @@ is_use: False
 kill_set: ['(0x1f40, R15)']
 defs_reaching: ['(0x1e90, R10)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -15523,7 +15523,7 @@ is_use: False
 kill_set: ['(0x2860, R25)']
 defs_reaching: ['(0x2720, R4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -15570,7 +15570,7 @@ is_use: False
 kill_set: ['(0x2870, R24)']
 defs_reaching: ['(0x2740, R6)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -15617,7 +15617,7 @@ is_use: False
 kill_set: ['(0x2880, R35)']
 defs_reaching: ['(0x2750, R8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -15664,7 +15664,7 @@ is_use: False
 kill_set: ['(0x2890, R34)']
 defs_reaching: ['(0x2760, R10)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -21699,7 +21699,7 @@ is_use: False
 kill_set: ['(0x3780, R23)']
 defs_reaching: ['(0x36b0, R6)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -21746,7 +21746,7 @@ is_use: False
 kill_set: ['(0x3790, R25)']
 defs_reaching: ['(0x36a0, R4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -21793,7 +21793,7 @@ is_use: False
 kill_set: ['(0x37a0, R12)']
 defs_reaching: ['(0x36c0, R8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -27234,7 +27234,7 @@ is_use: False
 kill_set: ['(0x45b0, R9)']
 defs_reaching: ['(0x4500, R34)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
@@ -27281,7 +27281,7 @@ is_use: False
 kill_set: ['(0x45c0, R10)']
 defs_reaching: ['(0x4510, R4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: NOTYPE_PTR
 
 ####### P0 #######
 is_def: False
