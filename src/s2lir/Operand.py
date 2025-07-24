@@ -106,7 +106,8 @@ class Operand:
         # PtrAddr = IRBuilder.load(IRPtrOp)
         PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
         
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(32), self.ptr_offset))
+        PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
+        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
         # Fetch value from PtrAddr e.g.,[R2]
         PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(PinterType), "for_LDG")
@@ -125,7 +126,9 @@ class Operand:
         # Fetch address from IRPtrOp
         # PtrAddr = IRBuilder.load(IRPtrOp)
         PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(32), self.ptr_offset))
+        
+        PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
+        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
         # Convert address to pointer type
         PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(IRVal.type), "for_STG")
@@ -404,6 +407,8 @@ class Operand:
                 self.IRType = llvmir.IntType(1)
             elif self.typeDesc == "Void":
                 self.IRType = llvmir.VoidType()
+            elif "_PTR" in self.typeDesc:
+                self.IRType = llvmir.PointerType()
             else:
                 return llvmir.IntType(32)
 

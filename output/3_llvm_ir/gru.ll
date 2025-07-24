@@ -227,11 +227,11 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R16_Int32" = alloca i32, i32 1
   %"R20_Int32" = alloca i32, i32 1
   %"R57_Float32" = alloca float, i32 1
-  %"R38_Float32_PTR" = alloca i32, i32 1
+  %"R38_Float32_PTR" = alloca ptr, i32 1
   %"R56_Float32" = alloca float, i32 1
-  %"R16_Float32_PTR" = alloca i32, i32 1
+  %"R16_Float32_PTR" = alloca ptr, i32 1
   %"R58_Float32" = alloca float, i32 1
-  %"R20_Float32_PTR" = alloca i32, i32 1
+  %"R20_Float32_PTR" = alloca ptr, i32 1
   %"R24_Float32" = alloca float, i32 1
   %"R47_Float32" = alloca float, i32 1
   %"R49_Float32" = alloca float, i32 1
@@ -247,20 +247,20 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R40_Int32" = alloca i32, i32 1
   %"R37_Int32" = alloca i32, i32 1
   %"R12_Float32" = alloca float, i32 1
-  %"R40_Float32_PTR" = alloca i32, i32 1
+  %"R40_Float32_PTR" = alloca ptr, i32 1
   %"R34_Int32" = alloca i32, i32 1
   %"R10_Float32" = alloca float, i32 1
   %"R36_Int32" = alloca i32, i32 1
   %"R16_Float32" = alloca float, i32 1
   %"R17_Float32" = alloca float, i32 1
   %"R19_Float32" = alloca float, i32 1
-  %"R34_Float32_PTR" = alloca i32, i32 1
+  %"R34_Float32_PTR" = alloca ptr, i32 1
   %"R20_Float32" = alloca float, i32 1
   %"R51_Float32" = alloca float, i32 1
   %"R21_Float32" = alloca float, i32 1
   %"R42_Float32" = alloca float, i32 1
   %"R44_Float32" = alloca float, i32 1
-  %"R36_Float32_PTR" = alloca i32, i32 1
+  %"R36_Float32_PTR" = alloca ptr, i32 1
   %"R46_Float32" = alloca float, i32 1
   %"R48_Float32" = alloca float, i32 1
   %"R50_Float32" = alloca float, i32 1
@@ -276,52 +276,52 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R24_Int32" = alloca i32, i32 1
   %"R22_Int32" = alloca i32, i32 1
   %"R18_Float32" = alloca float, i32 1
-  %"R24_Float32_PTR" = alloca i32, i32 1
+  %"R24_Float32_PTR" = alloca ptr, i32 1
   %"R35_Float32" = alloca float, i32 1
-  %"R22_Float32_PTR" = alloca i32, i32 1
+  %"R22_Float32_PTR" = alloca ptr, i32 1
   %"R37_Float32" = alloca float, i32 1
   %"R34_Float32" = alloca float, i32 1
   %"R13_Int32" = alloca i32, i32 1
   %"R17_Int32" = alloca i32, i32 1
   %"R10_Int32" = alloca i32, i32 1
   %"R12_Int32" = alloca i32, i32 1
-  %"R18_Float32_PTR" = alloca i32, i32 1
+  %"R18_Float32_PTR" = alloca ptr, i32 1
   %"R36_Float32" = alloca float, i32 1
-  %"R12_Float32_PTR" = alloca i32, i32 1
-  %"R14_Float32_PTR" = alloca i32, i32 1
+  %"R12_Float32_PTR" = alloca ptr, i32 1
+  %"R14_Float32_PTR" = alloca ptr, i32 1
   %"R25_Float32" = alloca float, i32 1
   %"R23_Float32" = alloca float, i32 1
-  %"R10_Float32_PTR" = alloca i32, i32 1
+  %"R10_Float32_PTR" = alloca ptr, i32 1
   %"R9_Float32" = alloca float, i32 1
   %"R19_NOTYPE" = alloca i32, i32 1
-  %"R12_NOTYPE_PTR" = alloca i32, i32 1
+  %"R12_NOTYPE_PTR" = alloca ptr, i32 1
   %"R21_NOTYPE" = alloca i32, i32 1
-  %"R10_NOTYPE_PTR" = alloca i32, i32 1
+  %"R10_NOTYPE_PTR" = alloca ptr, i32 1
   %"R18_NOTYPE" = alloca i32, i32 1
-  %"R14_NOTYPE_PTR" = alloca i32, i32 1
-  %"R26_Float32_PTR" = alloca i32, i32 1
+  %"R14_NOTYPE_PTR" = alloca ptr, i32 1
+  %"R26_Float32_PTR" = alloca ptr, i32 1
   %"R11_Float32" = alloca float, i32 1
   %"R10_NOTYPE" = alloca i32, i32 1
-  %"R32_Float32_PTR" = alloca i32, i32 1
+  %"R32_Float32_PTR" = alloca ptr, i32 1
   %"R49_Int32" = alloca i32, i32 1
   %"R50_Int32" = alloca i32, i32 1
   %"R58_Int32" = alloca i32, i32 1
   %"R16_NOTYPE" = alloca i32, i32 1
-  %"R22_NOTYPE_PTR" = alloca i32, i32 1
+  %"R22_NOTYPE_PTR" = alloca ptr, i32 1
   %"R15_NOTYPE" = alloca i32, i32 1
-  %"R30_Float32_PTR" = alloca i32, i32 1
-  %"R28_Float32_PTR" = alloca i32, i32 1
+  %"R30_Float32_PTR" = alloca ptr, i32 1
+  %"R28_Float32_PTR" = alloca ptr, i32 1
   %"R48_Int32" = alloca i32, i32 1
   %"R19_Int32" = alloca i32, i32 1
-  %"R4_Float32_PTR" = alloca i32, i32 1
-  %"R8_Float32_PTR" = alloca i32, i32 1
-  %"R6_Float32_PTR" = alloca i32, i32 1
+  %"R4_Float32_PTR" = alloca ptr, i32 1
+  %"R8_Float32_PTR" = alloca ptr, i32 1
+  %"R6_Float32_PTR" = alloca ptr, i32 1
   %"R25_NOTYPE" = alloca i32, i32 1
-  %"R4_NOTYPE_PTR" = alloca i32, i32 1
+  %"R4_NOTYPE_PTR" = alloca ptr, i32 1
   %"R24_NOTYPE" = alloca i32, i32 1
-  %"R6_NOTYPE_PTR" = alloca i32, i32 1
+  %"R6_NOTYPE_PTR" = alloca ptr, i32 1
   %"R35_NOTYPE" = alloca i32, i32 1
-  %"R8_NOTYPE_PTR" = alloca i32, i32 1
+  %"R8_NOTYPE_PTR" = alloca ptr, i32 1
   %"R34_NOTYPE" = alloca i32, i32 1
   %"R57_Int32" = alloca i32, i32 1
   %"R6_Float32" = alloca float, i32 1
@@ -331,7 +331,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"R23_NOTYPE" = alloca i32, i32 1
   %"R12_NOTYPE" = alloca i32, i32 1
   %"R9_NOTYPE" = alloca i32, i32 1
-  %"R34_NOTYPE_PTR" = alloca i32, i32 1
+  %"R34_NOTYPE_PTR" = alloca ptr, i32 1
   ; MOV R1, c[0x0][0x28]
   %"R1_Int32" = alloca i32, i32 1
   store i32 %"Arg_1", ptr %"R1_Int32"
@@ -584,1482 +584,1576 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 %"add.22", ptr %"R20_Int32"
   ; LDG.E.SYS R57, [R38]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".203" = load i32, ptr %"R38_Float32_PTR"
-  %".204" = add i32 %".203", 0
-  %"for_LDG" = inttoptr i32 %".204" to ptr
-  %".205" = load float, ptr %"for_LDG"
-  store float %".205", ptr %"R57_Float32"
+  %".203" = load ptr, ptr %"R38_Float32_PTR"
+  %".204" = ptrtoint ptr %".203" to i64
+  %".205" = add i64 %".204", 0
+  %"for_LDG" = inttoptr i64 %".205" to ptr
+  %".206" = load float, ptr %"for_LDG"
+  store float %".206", ptr %"R57_Float32"
   ; LDG.E.SYS R56, [R16]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".208" = load i32, ptr %"R16_Float32_PTR"
-  %".209" = add i32 %".208", 0
-  %"for_LDG.1" = inttoptr i32 %".209" to ptr
-  %".210" = load float, ptr %"for_LDG.1"
-  store float %".210", ptr %"R56_Float32"
+  %".209" = load ptr, ptr %"R16_Float32_PTR"
+  %".210" = ptrtoint ptr %".209" to i64
+  %".211" = add i64 %".210", 0
+  %"for_LDG.1" = inttoptr i64 %".211" to ptr
+  %".212" = load float, ptr %"for_LDG.1"
+  store float %".212", ptr %"R56_Float32"
   ; LDG.E.SYS R58, [R20]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".213" = load i32, ptr %"R20_Float32_PTR"
-  %".214" = add i32 %".213", 0
-  %"for_LDG.2" = inttoptr i32 %".214" to ptr
-  %".215" = load float, ptr %"for_LDG.2"
-  store float %".215", ptr %"R58_Float32"
+  %".215" = load ptr, ptr %"R20_Float32_PTR"
+  %".216" = ptrtoint ptr %".215" to i64
+  %".217" = add i64 %".216", 0
+  %"for_LDG.2" = inttoptr i64 %".217" to ptr
+  %".218" = load float, ptr %"for_LDG.2"
+  store float %".218", ptr %"R58_Float32"
   ; LDG.E.SYS R24, [R38+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".218" = load i32, ptr %"R38_Float32_PTR"
-  %".219" = add i32 %".218", 4
-  %"for_LDG.3" = inttoptr i32 %".219" to ptr
-  %".220" = load float, ptr %"for_LDG.3"
-  store float %".220", ptr %"R24_Float32"
+  %".221" = load ptr, ptr %"R38_Float32_PTR"
+  %".222" = ptrtoint ptr %".221" to i64
+  %".223" = add i64 %".222", 4
+  %"for_LDG.3" = inttoptr i64 %".223" to ptr
+  %".224" = load float, ptr %"for_LDG.3"
+  store float %".224", ptr %"R24_Float32"
   ; LDG.E.SYS R47, [R16+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".223" = load i32, ptr %"R16_Float32_PTR"
-  %".224" = add i32 %".223", 4
-  %"for_LDG.4" = inttoptr i32 %".224" to ptr
-  %".225" = load float, ptr %"for_LDG.4"
-  store float %".225", ptr %"R47_Float32"
+  %".227" = load ptr, ptr %"R16_Float32_PTR"
+  %".228" = ptrtoint ptr %".227" to i64
+  %".229" = add i64 %".228", 4
+  %"for_LDG.4" = inttoptr i64 %".229" to ptr
+  %".230" = load float, ptr %"for_LDG.4"
+  store float %".230", ptr %"R47_Float32"
   ; LDG.E.SYS R49, [R20+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".228" = load i32, ptr %"R20_Float32_PTR"
-  %".229" = add i32 %".228", 4
-  %"for_LDG.5" = inttoptr i32 %".229" to ptr
-  %".230" = load float, ptr %"for_LDG.5"
-  store float %".230", ptr %"R49_Float32"
+  %".233" = load ptr, ptr %"R20_Float32_PTR"
+  %".234" = ptrtoint ptr %".233" to i64
+  %".235" = add i64 %".234", 4
+  %"for_LDG.5" = inttoptr i64 %".235" to ptr
+  %".236" = load float, ptr %"for_LDG.5"
+  store float %".236", ptr %"R49_Float32"
   ; LDG.E.SYS R22, [R38+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".233" = load i32, ptr %"R38_Float32_PTR"
-  %".234" = add i32 %".233", 8
-  %"for_LDG.6" = inttoptr i32 %".234" to ptr
-  %".235" = load float, ptr %"for_LDG.6"
-  store float %".235", ptr %"R22_Float32"
+  %".239" = load ptr, ptr %"R38_Float32_PTR"
+  %".240" = ptrtoint ptr %".239" to i64
+  %".241" = add i64 %".240", 8
+  %"for_LDG.6" = inttoptr i64 %".241" to ptr
+  %".242" = load float, ptr %"for_LDG.6"
+  store float %".242", ptr %"R22_Float32"
   ; LDG.E.SYS R43, [R16+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".238" = load i32, ptr %"R16_Float32_PTR"
-  %".239" = add i32 %".238", 8
-  %"for_LDG.7" = inttoptr i32 %".239" to ptr
-  %".240" = load float, ptr %"for_LDG.7"
-  store float %".240", ptr %"R43_Float32"
+  %".245" = load ptr, ptr %"R16_Float32_PTR"
+  %".246" = ptrtoint ptr %".245" to i64
+  %".247" = add i64 %".246", 8
+  %"for_LDG.7" = inttoptr i64 %".247" to ptr
+  %".248" = load float, ptr %"for_LDG.7"
+  store float %".248", ptr %"R43_Float32"
   ; LDG.E.SYS R45, [R20+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".243" = load i32, ptr %"R20_Float32_PTR"
-  %".244" = add i32 %".243", 8
-  %"for_LDG.8" = inttoptr i32 %".244" to ptr
-  %".245" = load float, ptr %"for_LDG.8"
-  store float %".245", ptr %"R45_Float32"
+  %".251" = load ptr, ptr %"R20_Float32_PTR"
+  %".252" = ptrtoint ptr %".251" to i64
+  %".253" = add i64 %".252", 8
+  %"for_LDG.8" = inttoptr i64 %".253" to ptr
+  %".254" = load float, ptr %"for_LDG.8"
+  store float %".254", ptr %"R45_Float32"
   ; LDG.E.SYS R15, [R38+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".248" = load i32, ptr %"R38_Float32_PTR"
-  %".249" = add i32 %".248", 12
-  %"for_LDG.9" = inttoptr i32 %".249" to ptr
-  %".250" = load float, ptr %"for_LDG.9"
-  store float %".250", ptr %"R15_Float32"
+  %".257" = load ptr, ptr %"R38_Float32_PTR"
+  %".258" = ptrtoint ptr %".257" to i64
+  %".259" = add i64 %".258", 12
+  %"for_LDG.9" = inttoptr i64 %".259" to ptr
+  %".260" = load float, ptr %"for_LDG.9"
+  store float %".260", ptr %"R15_Float32"
   ; LDG.E.SYS R14, [R16+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".253" = load i32, ptr %"R16_Float32_PTR"
-  %".254" = add i32 %".253", 12
-  %"for_LDG.10" = inttoptr i32 %".254" to ptr
-  %".255" = load float, ptr %"for_LDG.10"
-  store float %".255", ptr %"R14_Float32"
+  %".263" = load ptr, ptr %"R16_Float32_PTR"
+  %".264" = ptrtoint ptr %".263" to i64
+  %".265" = add i64 %".264", 12
+  %"for_LDG.10" = inttoptr i64 %".265" to ptr
+  %".266" = load float, ptr %"for_LDG.10"
+  store float %".266", ptr %"R14_Float32"
   ; LDG.E.SYS R13, [R20+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".258" = load i32, ptr %"R20_Float32_PTR"
-  %".259" = add i32 %".258", 12
-  %"for_LDG.11" = inttoptr i32 %".259" to ptr
-  %".260" = load float, ptr %"for_LDG.11"
-  store float %".260", ptr %"R13_Float32"
+  %".269" = load ptr, ptr %"R20_Float32_PTR"
+  %".270" = ptrtoint ptr %".269" to i64
+  %".271" = add i64 %".270", 12
+  %"for_LDG.11" = inttoptr i64 %".271" to ptr
+  %".272" = load float, ptr %"for_LDG.11"
+  store float %".272", ptr %"R13_Float32"
   ; IADD3 R41, R11, 0x4, RZ
-  %".263" = load i32, ptr %"R11_Int32"
-  %"add.23" = add i32 %".263", 4
+  %".275" = load i32, ptr %"R11_Int32"
+  %"add.23" = add i32 %".275", 4
   %"add.24" = add i32 %"add.23", 0
   store i32 %"add.24", ptr %"R41_Int32"
   ; IADD3 R51, R23, 0x4, RZ
-  %".266" = load i32, ptr %"R23_Int32"
-  %"add.25" = add i32 %".266", 4
+  %".278" = load i32, ptr %"R23_Int32"
+  %"add.25" = add i32 %".278", 4
   %"add.26" = add i32 %"add.25", 0
   store i32 %"add.26", ptr %"R51_Int32"
   ; IADD3 R35, R11, 0x8, RZ
-  %".269" = load i32, ptr %"R11_Int32"
-  %"add.27" = add i32 %".269", 8
+  %".281" = load i32, ptr %"R11_Int32"
+  %"add.27" = add i32 %".281", 8
   %"add.28" = add i32 %"add.27", 0
   store i32 %"add.28", ptr %"R35_Int32"
   ; IMAD.WIDE R40, R41, R18, c[0x0][0x168]
-  %".272" = load i32, ptr %"R41_Int32"
-  %".273" = load i32, ptr %"R18_Int32"
-  %"mul.12" = mul i32 %".272", %".273"
+  %".284" = load i32, ptr %"R41_Int32"
+  %".285" = load i32, ptr %"R18_Int32"
+  %"mul.12" = mul i32 %".284", %".285"
   %"add.29" = add i32 %"mul.12", %"Arg_3"
   store i32 %"add.29", ptr %"R40_Int32"
   ; IADD3 R37, R11, 0xc, RZ
-  %".276" = load i32, ptr %"R11_Int32"
-  %"add.30" = add i32 %".276", 12
+  %".288" = load i32, ptr %"R11_Int32"
+  %"add.30" = add i32 %".288", 12
   %"add.31" = add i32 %"add.30", 0
   store i32 %"add.31", ptr %"R37_Int32"
   ; IMAD.WIDE R38, R51, R18, c[0x0][0x170]
-  %".279" = load i32, ptr %"R51_Int32"
-  %".280" = load i32, ptr %"R18_Int32"
-  %"mul.13" = mul i32 %".279", %".280"
+  %".291" = load i32, ptr %"R51_Int32"
+  %".292" = load i32, ptr %"R18_Int32"
+  %"mul.13" = mul i32 %".291", %".292"
   %"add.32" = add i32 %"mul.13", %"Arg_4"
   store i32 %"add.32", ptr %"R38_Int32"
   ; IADD3 R51, R25, 0x4, RZ
-  %".283" = load i32, ptr %"R25_Int32"
-  %"add.33" = add i32 %".283", 4
+  %".295" = load i32, ptr %"R25_Int32"
+  %"add.33" = add i32 %".295", 4
   %"add.34" = add i32 %"add.33", 0
   store i32 %"add.34", ptr %"R51_Int32"
   ; LDG.E.SYS R12, [R40]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".286" = load i32, ptr %"R40_Float32_PTR"
-  %".287" = add i32 %".286", 0
-  %"for_LDG.12" = inttoptr i32 %".287" to ptr
-  %".288" = load float, ptr %"for_LDG.12"
-  store float %".288", ptr %"R12_Float32"
+  %".298" = load ptr, ptr %"R40_Float32_PTR"
+  %".299" = ptrtoint ptr %".298" to i64
+  %".300" = add i64 %".299", 0
+  %"for_LDG.12" = inttoptr i64 %".300" to ptr
+  %".301" = load float, ptr %"for_LDG.12"
+  store float %".301", ptr %"R12_Float32"
   ; IMAD.WIDE R34, R35, R18, c[0x0][0x168]
-  %".291" = load i32, ptr %"R35_Int32"
-  %".292" = load i32, ptr %"R18_Int32"
-  %"mul.14" = mul i32 %".291", %".292"
+  %".304" = load i32, ptr %"R35_Int32"
+  %".305" = load i32, ptr %"R18_Int32"
+  %"mul.14" = mul i32 %".304", %".305"
   %"add.35" = add i32 %"mul.14", %"Arg_3"
   store i32 %"add.35", ptr %"R34_Int32"
   ; LDG.E.SYS R10, [R40+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".295" = load i32, ptr %"R40_Float32_PTR"
-  %".296" = add i32 %".295", 4
-  %"for_LDG.13" = inttoptr i32 %".296" to ptr
-  %".297" = load float, ptr %"for_LDG.13"
-  store float %".297", ptr %"R10_Float32"
+  %".308" = load ptr, ptr %"R40_Float32_PTR"
+  %".309" = ptrtoint ptr %".308" to i64
+  %".310" = add i64 %".309", 4
+  %"for_LDG.13" = inttoptr i64 %".310" to ptr
+  %".311" = load float, ptr %"for_LDG.13"
+  store float %".311", ptr %"R10_Float32"
   ; IMAD.WIDE R36, R37, R18, c[0x0][0x168]
-  %".300" = load i32, ptr %"R37_Int32"
-  %".301" = load i32, ptr %"R18_Int32"
-  %"mul.15" = mul i32 %".300", %".301"
+  %".314" = load i32, ptr %"R37_Int32"
+  %".315" = load i32, ptr %"R18_Int32"
+  %"mul.15" = mul i32 %".314", %".315"
   %"add.36" = add i32 %"mul.15", %"Arg_3"
   store i32 %"add.36", ptr %"R36_Int32"
   ; LDG.E.SYS R16, [R40+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".304" = load i32, ptr %"R40_Float32_PTR"
-  %".305" = add i32 %".304", 8
-  %"for_LDG.14" = inttoptr i32 %".305" to ptr
-  %".306" = load float, ptr %"for_LDG.14"
-  store float %".306", ptr %"R16_Float32"
+  %".318" = load ptr, ptr %"R40_Float32_PTR"
+  %".319" = ptrtoint ptr %".318" to i64
+  %".320" = add i64 %".319", 8
+  %"for_LDG.14" = inttoptr i64 %".320" to ptr
+  %".321" = load float, ptr %"for_LDG.14"
+  store float %".321", ptr %"R16_Float32"
   ; LDG.E.SYS R17, [R40+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".309" = load i32, ptr %"R40_Float32_PTR"
-  %".310" = add i32 %".309", 12
-  %"for_LDG.15" = inttoptr i32 %".310" to ptr
-  %".311" = load float, ptr %"for_LDG.15"
-  store float %".311", ptr %"R17_Float32"
+  %".324" = load ptr, ptr %"R40_Float32_PTR"
+  %".325" = ptrtoint ptr %".324" to i64
+  %".326" = add i64 %".325", 12
+  %"for_LDG.15" = inttoptr i64 %".326" to ptr
+  %".327" = load float, ptr %"for_LDG.15"
+  store float %".327", ptr %"R17_Float32"
   ; LDG.E.SYS R19, [R34]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".314" = load i32, ptr %"R34_Float32_PTR"
-  %".315" = add i32 %".314", 0
-  %"for_LDG.16" = inttoptr i32 %".315" to ptr
-  %".316" = load float, ptr %"for_LDG.16"
-  store float %".316", ptr %"R19_Float32"
+  %".330" = load ptr, ptr %"R34_Float32_PTR"
+  %".331" = ptrtoint ptr %".330" to i64
+  %".332" = add i64 %".331", 0
+  %"for_LDG.16" = inttoptr i64 %".332" to ptr
+  %".333" = load float, ptr %"for_LDG.16"
+  store float %".333", ptr %"R19_Float32"
   ; LDG.E.SYS R20, [R34+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".319" = load i32, ptr %"R34_Float32_PTR"
-  %".320" = add i32 %".319", 4
-  %"for_LDG.17" = inttoptr i32 %".320" to ptr
-  %".321" = load float, ptr %"for_LDG.17"
-  store float %".321", ptr %"R20_Float32"
+  %".336" = load ptr, ptr %"R34_Float32_PTR"
+  %".337" = ptrtoint ptr %".336" to i64
+  %".338" = add i64 %".337", 4
+  %"for_LDG.17" = inttoptr i64 %".338" to ptr
+  %".339" = load float, ptr %"for_LDG.17"
+  store float %".339", ptr %"R20_Float32"
   ; IMAD.WIDE R40, R51, R18, c[0x0][0x170]
-  %".324" = load i32, ptr %"R51_Int32"
-  %".325" = load i32, ptr %"R18_Int32"
-  %"mul.16" = mul i32 %".324", %".325"
+  %".342" = load i32, ptr %"R51_Int32"
+  %".343" = load i32, ptr %"R18_Int32"
+  %"mul.16" = mul i32 %".342", %".343"
   %"add.37" = add i32 %"mul.16", %"Arg_4"
   store i32 %"add.37", ptr %"R40_Int32"
   ; LDG.E.SYS R51, [R38]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".328" = load i32, ptr %"R38_Float32_PTR"
-  %".329" = add i32 %".328", 0
-  %"for_LDG.18" = inttoptr i32 %".329" to ptr
-  %".330" = load float, ptr %"for_LDG.18"
-  store float %".330", ptr %"R51_Float32"
+  %".346" = load ptr, ptr %"R38_Float32_PTR"
+  %".347" = ptrtoint ptr %".346" to i64
+  %".348" = add i64 %".347", 0
+  %"for_LDG.18" = inttoptr i64 %".348" to ptr
+  %".349" = load float, ptr %"for_LDG.18"
+  store float %".349", ptr %"R51_Float32"
   ; LDG.E.SYS R21, [R34+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".333" = load i32, ptr %"R34_Float32_PTR"
-  %".334" = add i32 %".333", 8
-  %"for_LDG.19" = inttoptr i32 %".334" to ptr
-  %".335" = load float, ptr %"for_LDG.19"
-  store float %".335", ptr %"R21_Float32"
+  %".352" = load ptr, ptr %"R34_Float32_PTR"
+  %".353" = ptrtoint ptr %".352" to i64
+  %".354" = add i64 %".353", 8
+  %"for_LDG.19" = inttoptr i64 %".354" to ptr
+  %".355" = load float, ptr %"for_LDG.19"
+  store float %".355", ptr %"R21_Float32"
   ; LDG.E.SYS R42, [R34+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".338" = load i32, ptr %"R34_Float32_PTR"
-  %".339" = add i32 %".338", 12
-  %"for_LDG.20" = inttoptr i32 %".339" to ptr
-  %".340" = load float, ptr %"for_LDG.20"
-  store float %".340", ptr %"R42_Float32"
+  %".358" = load ptr, ptr %"R34_Float32_PTR"
+  %".359" = ptrtoint ptr %".358" to i64
+  %".360" = add i64 %".359", 12
+  %"for_LDG.20" = inttoptr i64 %".360" to ptr
+  %".361" = load float, ptr %"for_LDG.20"
+  store float %".361", ptr %"R42_Float32"
   ; LDG.E.SYS R44, [R36]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".343" = load i32, ptr %"R36_Float32_PTR"
-  %".344" = add i32 %".343", 0
-  %"for_LDG.21" = inttoptr i32 %".344" to ptr
-  %".345" = load float, ptr %"for_LDG.21"
-  store float %".345", ptr %"R44_Float32"
+  %".364" = load ptr, ptr %"R36_Float32_PTR"
+  %".365" = ptrtoint ptr %".364" to i64
+  %".366" = add i64 %".365", 0
+  %"for_LDG.21" = inttoptr i64 %".366" to ptr
+  %".367" = load float, ptr %"for_LDG.21"
+  store float %".367", ptr %"R44_Float32"
   ; LDG.E.SYS R46, [R36+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".348" = load i32, ptr %"R36_Float32_PTR"
-  %".349" = add i32 %".348", 4
-  %"for_LDG.22" = inttoptr i32 %".349" to ptr
-  %".350" = load float, ptr %"for_LDG.22"
-  store float %".350", ptr %"R46_Float32"
+  %".370" = load ptr, ptr %"R36_Float32_PTR"
+  %".371" = ptrtoint ptr %".370" to i64
+  %".372" = add i64 %".371", 4
+  %"for_LDG.22" = inttoptr i64 %".372" to ptr
+  %".373" = load float, ptr %"for_LDG.22"
+  store float %".373", ptr %"R46_Float32"
   ; IADD3 R35, R23, 0x8, RZ
-  %".353" = load i32, ptr %"R23_Int32"
-  %"add.38" = add i32 %".353", 8
+  %".376" = load i32, ptr %"R23_Int32"
+  %"add.38" = add i32 %".376", 8
   %"add.39" = add i32 %"add.38", 0
   store i32 %"add.39", ptr %"R35_Int32"
   ; LDG.E.SYS R48, [R36+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".356" = load i32, ptr %"R36_Float32_PTR"
-  %".357" = add i32 %".356", 8
-  %"for_LDG.23" = inttoptr i32 %".357" to ptr
-  %".358" = load float, ptr %"for_LDG.23"
-  store float %".358", ptr %"R48_Float32"
+  %".379" = load ptr, ptr %"R36_Float32_PTR"
+  %".380" = ptrtoint ptr %".379" to i64
+  %".381" = add i64 %".380", 8
+  %"for_LDG.23" = inttoptr i64 %".381" to ptr
+  %".382" = load float, ptr %"for_LDG.23"
+  store float %".382", ptr %"R48_Float32"
   ; LDG.E.SYS R50, [R36+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".361" = load i32, ptr %"R36_Float32_PTR"
-  %".362" = add i32 %".361", 12
-  %"for_LDG.24" = inttoptr i32 %".362" to ptr
-  %".363" = load float, ptr %"for_LDG.24"
-  store float %".363", ptr %"R50_Float32"
+  %".385" = load ptr, ptr %"R36_Float32_PTR"
+  %".386" = ptrtoint ptr %".385" to i64
+  %".387" = add i64 %".386", 12
+  %"for_LDG.24" = inttoptr i64 %".387" to ptr
+  %".388" = load float, ptr %"for_LDG.24"
+  store float %".388", ptr %"R50_Float32"
   ; LDG.E.SYS R53, [R38+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".366" = load i32, ptr %"R38_Float32_PTR"
-  %".367" = add i32 %".366", 4
-  %"for_LDG.25" = inttoptr i32 %".367" to ptr
-  %".368" = load float, ptr %"for_LDG.25"
-  store float %".368", ptr %"R53_Float32"
+  %".391" = load ptr, ptr %"R38_Float32_PTR"
+  %".392" = ptrtoint ptr %".391" to i64
+  %".393" = add i64 %".392", 4
+  %"for_LDG.25" = inttoptr i64 %".393" to ptr
+  %".394" = load float, ptr %"for_LDG.25"
+  store float %".394", ptr %"R53_Float32"
   ; LDG.E.SYS R59, [R40+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".371" = load i32, ptr %"R40_Float32_PTR"
-  %".372" = add i32 %".371", 4
-  %"for_LDG.26" = inttoptr i32 %".372" to ptr
-  %".373" = load float, ptr %"for_LDG.26"
-  store float %".373", ptr %"R59_Float32"
+  %".397" = load ptr, ptr %"R40_Float32_PTR"
+  %".398" = ptrtoint ptr %".397" to i64
+  %".399" = add i64 %".398", 4
+  %"for_LDG.26" = inttoptr i64 %".399" to ptr
+  %".400" = load float, ptr %"for_LDG.26"
+  store float %".400", ptr %"R59_Float32"
   ; IADD3 R37, R25, 0x8, RZ
-  %".376" = load i32, ptr %"R25_Int32"
-  %"add.40" = add i32 %".376", 8
+  %".403" = load i32, ptr %"R25_Int32"
+  %"add.40" = add i32 %".403", 8
   %"add.41" = add i32 %"add.40", 0
   store i32 %"add.41", ptr %"R37_Int32"
   ; IMAD.WIDE R34, R35, R18, c[0x0][0x170]
-  %".379" = load i32, ptr %"R35_Int32"
-  %".380" = load i32, ptr %"R18_Int32"
-  %"mul.17" = mul i32 %".379", %".380"
+  %".406" = load i32, ptr %"R35_Int32"
+  %".407" = load i32, ptr %"R18_Int32"
+  %"mul.17" = mul i32 %".406", %".407"
   %"add.42" = add i32 %"mul.17", %"Arg_4"
   store i32 %"add.42", ptr %"R34_Int32"
   ; LDG.E.SYS R55, [R38+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".383" = load i32, ptr %"R38_Float32_PTR"
-  %".384" = add i32 %".383", 8
-  %"for_LDG.27" = inttoptr i32 %".384" to ptr
-  %".385" = load float, ptr %"for_LDG.27"
-  store float %".385", ptr %"R55_Float32"
+  %".410" = load ptr, ptr %"R38_Float32_PTR"
+  %".411" = ptrtoint ptr %".410" to i64
+  %".412" = add i64 %".411", 8
+  %"for_LDG.27" = inttoptr i64 %".412" to ptr
+  %".413" = load float, ptr %"for_LDG.27"
+  store float %".413", ptr %"R55_Float32"
   ; IMAD.WIDE R36, R37, R18, c[0x0][0x170]
-  %".388" = load i32, ptr %"R37_Int32"
-  %".389" = load i32, ptr %"R18_Int32"
-  %"mul.18" = mul i32 %".388", %".389"
+  %".416" = load i32, ptr %"R37_Int32"
+  %".417" = load i32, ptr %"R18_Int32"
+  %"mul.18" = mul i32 %".416", %".417"
   %"add.43" = add i32 %"mul.18", %"Arg_4"
   store i32 %"add.43", ptr %"R36_Int32"
   ; LDG.E.SYS R61, [R40+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".392" = load i32, ptr %"R40_Float32_PTR"
-  %".393" = add i32 %".392", 8
-  %"for_LDG.28" = inttoptr i32 %".393" to ptr
-  %".394" = load float, ptr %"for_LDG.28"
-  store float %".394", ptr %"R61_Float32"
+  %".420" = load ptr, ptr %"R40_Float32_PTR"
+  %".421" = ptrtoint ptr %".420" to i64
+  %".422" = add i64 %".421", 8
+  %"for_LDG.28" = inttoptr i64 %".422" to ptr
+  %".423" = load float, ptr %"for_LDG.28"
+  store float %".423", ptr %"R61_Float32"
   ; LDG.E.SYS R60, [R38+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R38_Float32_PTR", ptr %"R38_Int32", i32 4, i1 0)
-  %".397" = load i32, ptr %"R38_Float32_PTR"
-  %".398" = add i32 %".397", 12
-  %"for_LDG.29" = inttoptr i32 %".398" to ptr
-  %".399" = load float, ptr %"for_LDG.29"
-  store float %".399", ptr %"R60_Float32"
+  %".426" = load ptr, ptr %"R38_Float32_PTR"
+  %".427" = ptrtoint ptr %".426" to i64
+  %".428" = add i64 %".427", 12
+  %"for_LDG.29" = inttoptr i64 %".428" to ptr
+  %".429" = load float, ptr %"for_LDG.29"
+  store float %".429", ptr %"R60_Float32"
   ; IADD3 R23, R23, 0xc, RZ
-  %".402" = load i32, ptr %"R23_Int32"
-  %"add.44" = add i32 %".402", 12
+  %".432" = load i32, ptr %"R23_Int32"
+  %"add.44" = add i32 %".432", 12
   %"add.45" = add i32 %"add.44", 0
   store i32 %"add.45", ptr %"R23_Int32"
   ; IADD3 R25, R25, 0xc, RZ
-  %".405" = load i32, ptr %"R25_Int32"
-  %"add.46" = add i32 %".405", 12
+  %".435" = load i32, ptr %"R25_Int32"
+  %"add.46" = add i32 %".435", 12
   %"add.47" = add i32 %"add.46", 0
   store i32 %"add.47", ptr %"R25_Int32"
   ; LDG.E.SYS R39, [R34+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".408" = load i32, ptr %"R34_Float32_PTR"
-  %".409" = add i32 %".408", 4
-  %"for_LDG.30" = inttoptr i32 %".409" to ptr
-  %".410" = load float, ptr %"for_LDG.30"
-  store float %".410", ptr %"R39_Float32"
+  %".438" = load ptr, ptr %"R34_Float32_PTR"
+  %".439" = ptrtoint ptr %".438" to i64
+  %".440" = add i64 %".439", 4
+  %"for_LDG.30" = inttoptr i64 %".440" to ptr
+  %".441" = load float, ptr %"for_LDG.30"
+  store float %".441", ptr %"R39_Float32"
   ; LDG.E.SYS R38, [R34+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".413" = load i32, ptr %"R34_Float32_PTR"
-  %".414" = add i32 %".413", 8
-  %"for_LDG.31" = inttoptr i32 %".414" to ptr
-  %".415" = load float, ptr %"for_LDG.31"
-  store float %".415", ptr %"R38_Float32"
+  %".444" = load ptr, ptr %"R34_Float32_PTR"
+  %".445" = ptrtoint ptr %".444" to i64
+  %".446" = add i64 %".445", 8
+  %"for_LDG.31" = inttoptr i64 %".446" to ptr
+  %".447" = load float, ptr %"for_LDG.31"
+  store float %".447", ptr %"R38_Float32"
   ; FFMA R56, R56, R57, R52
-  %".418" = load float, ptr %"R56_Float32"
-  %".419" = load float, ptr %"R57_Float32"
-  %".420" = load float, ptr %"R52_Float32"
-  %"fmul" = fmul float %".418", %".419"
-  %"fadd" = fadd float %"fmul", %".420"
+  %".450" = load float, ptr %"R56_Float32"
+  %".451" = load float, ptr %"R57_Float32"
+  %".452" = load float, ptr %"R52_Float32"
+  %"fmul" = fmul float %".450", %".451"
+  %"fadd" = fadd float %"fmul", %".452"
   store float %"fadd", ptr %"R56_Float32"
   ; LDG.E.SYS R52, [R40+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".423" = load i32, ptr %"R40_Float32_PTR"
-  %".424" = add i32 %".423", 12
-  %"for_LDG.32" = inttoptr i32 %".424" to ptr
-  %".425" = load float, ptr %"for_LDG.32"
-  store float %".425", ptr %"R52_Float32"
+  %".455" = load ptr, ptr %"R40_Float32_PTR"
+  %".456" = ptrtoint ptr %".455" to i64
+  %".457" = add i64 %".456", 12
+  %"for_LDG.32" = inttoptr i64 %".457" to ptr
+  %".458" = load float, ptr %"for_LDG.32"
+  store float %".458", ptr %"R52_Float32"
   ; FFMA R58, R57, R58, R54
-  %".428" = load float, ptr %"R57_Float32"
-  %".429" = load float, ptr %"R58_Float32"
-  %".430" = load float, ptr %"R54_Float32"
-  %"fmul.1" = fmul float %".428", %".429"
-  %"fadd.1" = fadd float %"fmul.1", %".430"
+  %".461" = load float, ptr %"R57_Float32"
+  %".462" = load float, ptr %"R58_Float32"
+  %".463" = load float, ptr %"R54_Float32"
+  %"fmul.1" = fmul float %".461", %".462"
+  %"fadd.1" = fadd float %"fmul.1", %".463"
   store float %"fadd.1", ptr %"R58_Float32"
   ; LDG.E.SYS R57, [R40]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R40_Float32_PTR", ptr %"R40_Int32", i32 4, i1 0)
-  %".433" = load i32, ptr %"R40_Float32_PTR"
-  %".434" = add i32 %".433", 0
-  %"for_LDG.33" = inttoptr i32 %".434" to ptr
-  %".435" = load float, ptr %"for_LDG.33"
-  store float %".435", ptr %"R57_Float32"
+  %".466" = load ptr, ptr %"R40_Float32_PTR"
+  %".467" = ptrtoint ptr %".466" to i64
+  %".468" = add i64 %".467", 0
+  %"for_LDG.33" = inttoptr i64 %".468" to ptr
+  %".469" = load float, ptr %"for_LDG.33"
+  store float %".469", ptr %"R57_Float32"
   ; LDG.E.SYS R54, [R34]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".438" = load i32, ptr %"R34_Float32_PTR"
-  %".439" = add i32 %".438", 0
-  %"for_LDG.34" = inttoptr i32 %".439" to ptr
-  %".440" = load float, ptr %"for_LDG.34"
-  store float %".440", ptr %"R54_Float32"
+  %".472" = load ptr, ptr %"R34_Float32_PTR"
+  %".473" = ptrtoint ptr %".472" to i64
+  %".474" = add i64 %".473", 0
+  %"for_LDG.34" = inttoptr i64 %".474" to ptr
+  %".475" = load float, ptr %"for_LDG.34"
+  store float %".475", ptr %"R54_Float32"
   ; FFMA R56, R47, R24, R56
-  %".443" = load float, ptr %"R47_Float32"
-  %".444" = load float, ptr %"R24_Float32"
-  %".445" = load float, ptr %"R56_Float32"
-  %"fmul.2" = fmul float %".443", %".444"
-  %"fadd.2" = fadd float %"fmul.2", %".445"
+  %".478" = load float, ptr %"R47_Float32"
+  %".479" = load float, ptr %"R24_Float32"
+  %".480" = load float, ptr %"R56_Float32"
+  %"fmul.2" = fmul float %".478", %".479"
+  %"fadd.2" = fadd float %"fmul.2", %".480"
   store float %"fadd.2", ptr %"R56_Float32"
   ; LDG.E.SYS R47, [R34+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".448" = load i32, ptr %"R34_Float32_PTR"
-  %".449" = add i32 %".448", 12
-  %"for_LDG.35" = inttoptr i32 %".449" to ptr
-  %".450" = load float, ptr %"for_LDG.35"
-  store float %".450", ptr %"R47_Float32"
+  %".483" = load ptr, ptr %"R34_Float32_PTR"
+  %".484" = ptrtoint ptr %".483" to i64
+  %".485" = add i64 %".484", 12
+  %"for_LDG.35" = inttoptr i64 %".485" to ptr
+  %".486" = load float, ptr %"for_LDG.35"
+  store float %".486", ptr %"R47_Float32"
   ; FFMA R58, R24, R49, R58
-  %".453" = load float, ptr %"R24_Float32"
-  %".454" = load float, ptr %"R49_Float32"
-  %".455" = load float, ptr %"R58_Float32"
-  %"fmul.3" = fmul float %".453", %".454"
-  %"fadd.3" = fadd float %"fmul.3", %".455"
+  %".489" = load float, ptr %"R24_Float32"
+  %".490" = load float, ptr %"R49_Float32"
+  %".491" = load float, ptr %"R58_Float32"
+  %"fmul.3" = fmul float %".489", %".490"
+  %"fadd.3" = fadd float %"fmul.3", %".491"
   store float %"fadd.3", ptr %"R58_Float32"
   ; LDG.E.SYS R41, [R36+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".458" = load i32, ptr %"R36_Float32_PTR"
-  %".459" = add i32 %".458", 4
-  %"for_LDG.36" = inttoptr i32 %".459" to ptr
-  %".460" = load float, ptr %"for_LDG.36"
-  store float %".460", ptr %"R41_Float32"
+  %".494" = load ptr, ptr %"R36_Float32_PTR"
+  %".495" = ptrtoint ptr %".494" to i64
+  %".496" = add i64 %".495", 4
+  %"for_LDG.36" = inttoptr i64 %".496" to ptr
+  %".497" = load float, ptr %"for_LDG.36"
+  store float %".497", ptr %"R41_Float32"
   ; LDG.E.SYS R40, [R36+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".463" = load i32, ptr %"R36_Float32_PTR"
-  %".464" = add i32 %".463", 8
-  %"for_LDG.37" = inttoptr i32 %".464" to ptr
-  %".465" = load float, ptr %"for_LDG.37"
-  store float %".465", ptr %"R40_Float32"
+  %".500" = load ptr, ptr %"R36_Float32_PTR"
+  %".501" = ptrtoint ptr %".500" to i64
+  %".502" = add i64 %".501", 8
+  %"for_LDG.37" = inttoptr i64 %".502" to ptr
+  %".503" = load float, ptr %"for_LDG.37"
+  store float %".503", ptr %"R40_Float32"
   ; FFMA R49, R43, R22, R56
-  %".468" = load float, ptr %"R43_Float32"
-  %".469" = load float, ptr %"R22_Float32"
-  %".470" = load float, ptr %"R56_Float32"
-  %"fmul.4" = fmul float %".468", %".469"
-  %"fadd.4" = fadd float %"fmul.4", %".470"
+  %".506" = load float, ptr %"R43_Float32"
+  %".507" = load float, ptr %"R22_Float32"
+  %".508" = load float, ptr %"R56_Float32"
+  %"fmul.4" = fmul float %".506", %".507"
+  %"fadd.4" = fadd float %"fmul.4", %".508"
   store float %"fadd.4", ptr %"R49_Float32"
   ; LDG.E.SYS R56, [R36]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".473" = load i32, ptr %"R36_Float32_PTR"
-  %".474" = add i32 %".473", 0
-  %"for_LDG.38" = inttoptr i32 %".474" to ptr
-  %".475" = load float, ptr %"for_LDG.38"
-  store float %".475", ptr %"R56_Float32"
+  %".511" = load ptr, ptr %"R36_Float32_PTR"
+  %".512" = ptrtoint ptr %".511" to i64
+  %".513" = add i64 %".512", 0
+  %"for_LDG.38" = inttoptr i64 %".513" to ptr
+  %".514" = load float, ptr %"for_LDG.38"
+  store float %".514", ptr %"R56_Float32"
   ; IMAD.WIDE R24, R25, R18, c[0x0][0x170]
-  %".478" = load i32, ptr %"R25_Int32"
-  %".479" = load i32, ptr %"R18_Int32"
-  %"mul.19" = mul i32 %".478", %".479"
+  %".517" = load i32, ptr %"R25_Int32"
+  %".518" = load i32, ptr %"R18_Int32"
+  %"mul.19" = mul i32 %".517", %".518"
   %"add.48" = add i32 %"mul.19", %"Arg_4"
   store i32 %"add.48", ptr %"R24_Int32"
   ; LDG.E.SYS R43, [R36+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".482" = load i32, ptr %"R36_Float32_PTR"
-  %".483" = add i32 %".482", 12
-  %"for_LDG.39" = inttoptr i32 %".483" to ptr
-  %".484" = load float, ptr %"for_LDG.39"
-  store float %".484", ptr %"R43_Float32"
+  %".521" = load ptr, ptr %"R36_Float32_PTR"
+  %".522" = ptrtoint ptr %".521" to i64
+  %".523" = add i64 %".522", 12
+  %"for_LDG.39" = inttoptr i64 %".523" to ptr
+  %".524" = load float, ptr %"for_LDG.39"
+  store float %".524", ptr %"R43_Float32"
   ; FFMA R58, R22, R45, R58
-  %".487" = load float, ptr %"R22_Float32"
-  %".488" = load float, ptr %"R45_Float32"
-  %".489" = load float, ptr %"R58_Float32"
-  %"fmul.5" = fmul float %".487", %".488"
-  %"fadd.5" = fadd float %"fmul.5", %".489"
+  %".527" = load float, ptr %"R22_Float32"
+  %".528" = load float, ptr %"R45_Float32"
+  %".529" = load float, ptr %"R58_Float32"
+  %"fmul.5" = fmul float %".527", %".528"
+  %"fadd.5" = fadd float %"fmul.5", %".529"
   store float %"fadd.5", ptr %"R58_Float32"
   ; IMAD.WIDE R22, R23, R18, c[0x0][0x170]
-  %".492" = load i32, ptr %"R23_Int32"
-  %".493" = load i32, ptr %"R18_Int32"
-  %"mul.20" = mul i32 %".492", %".493"
+  %".532" = load i32, ptr %"R23_Int32"
+  %".533" = load i32, ptr %"R18_Int32"
+  %"mul.20" = mul i32 %".532", %".533"
   %"add.49" = add i32 %"mul.20", %"Arg_4"
   store i32 %"add.49", ptr %"R22_Int32"
   ; LDG.E.SYS R18, [R24]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".496" = load i32, ptr %"R24_Float32_PTR"
-  %".497" = add i32 %".496", 0
-  %"for_LDG.40" = inttoptr i32 %".497" to ptr
-  %".498" = load float, ptr %"for_LDG.40"
-  store float %".498", ptr %"R18_Float32"
+  %".536" = load ptr, ptr %"R24_Float32_PTR"
+  %".537" = ptrtoint ptr %".536" to i64
+  %".538" = add i64 %".537", 0
+  %"for_LDG.40" = inttoptr i64 %".538" to ptr
+  %".539" = load float, ptr %"for_LDG.40"
+  store float %".539", ptr %"R18_Float32"
   ; FFMA R14, R14, R15, R49
-  %".501" = load float, ptr %"R14_Float32"
-  %".502" = load float, ptr %"R15_Float32"
-  %".503" = load float, ptr %"R49_Float32"
-  %"fmul.6" = fmul float %".501", %".502"
-  %"fadd.6" = fadd float %"fmul.6", %".503"
+  %".542" = load float, ptr %"R14_Float32"
+  %".543" = load float, ptr %"R15_Float32"
+  %".544" = load float, ptr %"R49_Float32"
+  %"fmul.6" = fmul float %".542", %".543"
+  %"fadd.6" = fadd float %"fmul.6", %".544"
   store float %"fadd.6", ptr %"R14_Float32"
   ; LDG.E.SYS R49, [R24+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".506" = load i32, ptr %"R24_Float32_PTR"
-  %".507" = add i32 %".506", 4
-  %"for_LDG.41" = inttoptr i32 %".507" to ptr
-  %".508" = load float, ptr %"for_LDG.41"
-  store float %".508", ptr %"R49_Float32"
+  %".547" = load ptr, ptr %"R24_Float32_PTR"
+  %".548" = ptrtoint ptr %".547" to i64
+  %".549" = add i64 %".548", 4
+  %"for_LDG.41" = inttoptr i64 %".549" to ptr
+  %".550" = load float, ptr %"for_LDG.41"
+  store float %".550", ptr %"R49_Float32"
   ; FFMA R58, R15, R13, R58
-  %".511" = load float, ptr %"R15_Float32"
-  %".512" = load float, ptr %"R13_Float32"
-  %".513" = load float, ptr %"R58_Float32"
-  %"fmul.7" = fmul float %".511", %".512"
-  %"fadd.7" = fadd float %"fmul.7", %".513"
+  %".553" = load float, ptr %"R15_Float32"
+  %".554" = load float, ptr %"R13_Float32"
+  %".555" = load float, ptr %"R58_Float32"
+  %"fmul.7" = fmul float %".553", %".554"
+  %"fadd.7" = fadd float %"fmul.7", %".555"
   store float %"fadd.7", ptr %"R58_Float32"
   ; LDG.E.SYS R35, [R22]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".516" = load i32, ptr %"R22_Float32_PTR"
-  %".517" = add i32 %".516", 0
-  %"for_LDG.42" = inttoptr i32 %".517" to ptr
-  %".518" = load float, ptr %"for_LDG.42"
-  store float %".518", ptr %"R35_Float32"
+  %".558" = load ptr, ptr %"R22_Float32_PTR"
+  %".559" = ptrtoint ptr %".558" to i64
+  %".560" = add i64 %".559", 0
+  %"for_LDG.42" = inttoptr i64 %".560" to ptr
+  %".561" = load float, ptr %"for_LDG.42"
+  store float %".561", ptr %"R35_Float32"
   ; LDG.E.SYS R15, [R22+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".521" = load i32, ptr %"R22_Float32_PTR"
-  %".522" = add i32 %".521", 4
-  %"for_LDG.43" = inttoptr i32 %".522" to ptr
-  %".523" = load float, ptr %"for_LDG.43"
-  store float %".523", ptr %"R15_Float32"
+  %".564" = load ptr, ptr %"R22_Float32_PTR"
+  %".565" = ptrtoint ptr %".564" to i64
+  %".566" = add i64 %".565", 4
+  %"for_LDG.43" = inttoptr i64 %".566" to ptr
+  %".567" = load float, ptr %"for_LDG.43"
+  store float %".567", ptr %"R15_Float32"
   ; LDG.E.SYS R13, [R22+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".526" = load i32, ptr %"R22_Float32_PTR"
-  %".527" = add i32 %".526", 8
-  %"for_LDG.44" = inttoptr i32 %".527" to ptr
-  %".528" = load float, ptr %"for_LDG.44"
-  store float %".528", ptr %"R13_Float32"
+  %".570" = load ptr, ptr %"R22_Float32_PTR"
+  %".571" = ptrtoint ptr %".570" to i64
+  %".572" = add i64 %".571", 8
+  %"for_LDG.44" = inttoptr i64 %".572" to ptr
+  %".573" = load float, ptr %"for_LDG.44"
+  store float %".573", ptr %"R13_Float32"
   ; LDG.E.SYS R37, [R24+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".531" = load i32, ptr %"R24_Float32_PTR"
-  %".532" = add i32 %".531", 8
-  %"for_LDG.45" = inttoptr i32 %".532" to ptr
-  %".533" = load float, ptr %"for_LDG.45"
-  store float %".533", ptr %"R37_Float32"
+  %".576" = load ptr, ptr %"R24_Float32_PTR"
+  %".577" = ptrtoint ptr %".576" to i64
+  %".578" = add i64 %".577", 8
+  %"for_LDG.45" = inttoptr i64 %".578" to ptr
+  %".579" = load float, ptr %"for_LDG.45"
+  store float %".579", ptr %"R37_Float32"
   ; LDG.E.SYS R45, [R22+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".536" = load i32, ptr %"R22_Float32_PTR"
-  %".537" = add i32 %".536", 12
-  %"for_LDG.46" = inttoptr i32 %".537" to ptr
-  %".538" = load float, ptr %"for_LDG.46"
-  store float %".538", ptr %"R45_Float32"
+  %".582" = load ptr, ptr %"R22_Float32_PTR"
+  %".583" = ptrtoint ptr %".582" to i64
+  %".584" = add i64 %".583", 12
+  %"for_LDG.46" = inttoptr i64 %".584" to ptr
+  %".585" = load float, ptr %"for_LDG.46"
+  store float %".585", ptr %"R45_Float32"
   ; LDG.E.SYS R34, [R24+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".541" = load i32, ptr %"R24_Float32_PTR"
-  %".542" = add i32 %".541", 12
-  %"for_LDG.47" = inttoptr i32 %".542" to ptr
-  %".543" = load float, ptr %"for_LDG.47"
-  store float %".543", ptr %"R34_Float32"
+  %".588" = load ptr, ptr %"R24_Float32_PTR"
+  %".589" = ptrtoint ptr %".588" to i64
+  %".590" = add i64 %".589", 12
+  %"for_LDG.47" = inttoptr i64 %".590" to ptr
+  %".591" = load float, ptr %"for_LDG.47"
+  store float %".591", ptr %"R34_Float32"
   ; FFMA R14, R51, R12, R14
-  %".546" = load float, ptr %"R51_Float32"
-  %".547" = load float, ptr %"R12_Float32"
-  %".548" = load float, ptr %"R14_Float32"
-  %"fmul.8" = fmul float %".546", %".547"
-  %"fadd.8" = fadd float %"fmul.8", %".548"
+  %".594" = load float, ptr %"R51_Float32"
+  %".595" = load float, ptr %"R12_Float32"
+  %".596" = load float, ptr %"R14_Float32"
+  %"fmul.8" = fmul float %".594", %".595"
+  %"fadd.8" = fadd float %"fmul.8", %".596"
   store float %"fadd.8", ptr %"R14_Float32"
   ; IADD3 R9, R9, -0x10, RZ
-  %".551" = load i32, ptr %"R9_Int32"
-  %"add.50" = add i32 %".551", -16
+  %".599" = load i32, ptr %"R9_Int32"
+  %"add.50" = add i32 %".599", -16
   %"add.51" = add i32 %"add.50", 0
   store i32 %"add.51", ptr %"R9_Int32"
   ; FFMA R14, R53, R10, R14
-  %".554" = load float, ptr %"R53_Float32"
-  %".555" = load float, ptr %"R10_Float32"
-  %".556" = load float, ptr %"R14_Float32"
-  %"fmul.9" = fmul float %".554", %".555"
-  %"fadd.9" = fadd float %"fmul.9", %".556"
+  %".602" = load float, ptr %"R53_Float32"
+  %".603" = load float, ptr %"R10_Float32"
+  %".604" = load float, ptr %"R14_Float32"
+  %"fmul.9" = fmul float %".602", %".603"
+  %"fadd.9" = fadd float %"fmul.9", %".604"
   store float %"fadd.9", ptr %"R14_Float32"
   ; FFMA R14, R55, R16, R14
-  %".559" = load float, ptr %"R55_Float32"
-  %".560" = load float, ptr %"R16_Float32"
-  %".561" = load float, ptr %"R14_Float32"
-  %"fmul.10" = fmul float %".559", %".560"
-  %"fadd.10" = fadd float %"fmul.10", %".561"
+  %".607" = load float, ptr %"R55_Float32"
+  %".608" = load float, ptr %"R16_Float32"
+  %".609" = load float, ptr %"R14_Float32"
+  %"fmul.10" = fmul float %".607", %".608"
+  %"fadd.10" = fadd float %"fmul.10", %".609"
   store float %"fadd.10", ptr %"R14_Float32"
   ; FFMA R14, R60, R17, R14
-  %".564" = load float, ptr %"R60_Float32"
-  %".565" = load float, ptr %"R17_Float32"
-  %".566" = load float, ptr %"R14_Float32"
-  %"fmul.11" = fmul float %".564", %".565"
-  %"fadd.11" = fadd float %"fmul.11", %".566"
+  %".612" = load float, ptr %"R60_Float32"
+  %".613" = load float, ptr %"R17_Float32"
+  %".614" = load float, ptr %"R14_Float32"
+  %"fmul.11" = fmul float %".612", %".613"
+  %"fadd.11" = fadd float %"fmul.11", %".614"
   store float %"fadd.11", ptr %"R14_Float32"
   ; ISETP.GT.AND P1, PT, R9, 0xc, PT
-  %".569" = load i32, ptr %"R9_Int32"
-  %".570" = load i1, ptr %"PT_Bool"
-  %"cmp.8" = icmp sgt i32 %".569", 12
-  %".571" = and i1 %"cmp.8", %".570"
+  %".617" = load i32, ptr %"R9_Int32"
+  %".618" = load i1, ptr %"PT_Bool"
+  %"cmp.8" = icmp sgt i32 %".617", 12
+  %".619" = and i1 %"cmp.8", %".618"
   ; IADD3 R11, R11, 0x10, RZ
-  %".573" = load i32, ptr %"R11_Int32"
-  %"add.52" = add i32 %".573", 16
+  %".621" = load i32, ptr %"R11_Int32"
+  %"add.52" = add i32 %".621", 16
   %"add.53" = add i32 %"add.52", 0
   store i32 %"add.53", ptr %"R11_Int32"
   ; FFMA R57, R12, R57, R58
-  %".576" = load float, ptr %"R12_Float32"
-  %".577" = load float, ptr %"R57_Float32"
-  %".578" = load float, ptr %"R58_Float32"
-  %"fmul.12" = fmul float %".576", %".577"
-  %"fadd.12" = fadd float %"fmul.12", %".578"
+  %".624" = load float, ptr %"R12_Float32"
+  %".625" = load float, ptr %"R57_Float32"
+  %".626" = load float, ptr %"R58_Float32"
+  %"fmul.12" = fmul float %".624", %".625"
+  %"fadd.12" = fadd float %"fmul.12", %".626"
   store float %"fadd.12", ptr %"R57_Float32"
   ; FFMA R57, R10, R59, R57
-  %".581" = load float, ptr %"R10_Float32"
-  %".582" = load float, ptr %"R59_Float32"
-  %".583" = load float, ptr %"R57_Float32"
-  %"fmul.13" = fmul float %".581", %".582"
-  %"fadd.13" = fadd float %"fmul.13", %".583"
+  %".629" = load float, ptr %"R10_Float32"
+  %".630" = load float, ptr %"R59_Float32"
+  %".631" = load float, ptr %"R57_Float32"
+  %"fmul.13" = fmul float %".629", %".630"
+  %"fadd.13" = fadd float %"fmul.13", %".631"
   store float %"fadd.13", ptr %"R57_Float32"
   ; FFMA R57, R16, R61, R57
-  %".586" = load float, ptr %"R16_Float32"
-  %".587" = load float, ptr %"R61_Float32"
-  %".588" = load float, ptr %"R57_Float32"
-  %"fmul.14" = fmul float %".586", %".587"
-  %"fadd.14" = fadd float %"fmul.14", %".588"
+  %".634" = load float, ptr %"R16_Float32"
+  %".635" = load float, ptr %"R61_Float32"
+  %".636" = load float, ptr %"R57_Float32"
+  %"fmul.14" = fmul float %".634", %".635"
+  %"fadd.14" = fadd float %"fmul.14", %".636"
   store float %"fadd.14", ptr %"R57_Float32"
   ; FFMA R52, R17, R52, R57
-  %".591" = load float, ptr %"R17_Float32"
-  %".592" = load float, ptr %"R52_Float32"
-  %".593" = load float, ptr %"R57_Float32"
-  %"fmul.15" = fmul float %".591", %".592"
-  %"fadd.15" = fadd float %"fmul.15", %".593"
+  %".639" = load float, ptr %"R17_Float32"
+  %".640" = load float, ptr %"R52_Float32"
+  %".641" = load float, ptr %"R57_Float32"
+  %"fmul.15" = fmul float %".639", %".640"
+  %"fadd.15" = fadd float %"fmul.15", %".641"
   store float %"fadd.15", ptr %"R52_Float32"
   ; FFMA R14, R54, R19, R14
-  %".596" = load float, ptr %"R54_Float32"
-  %".597" = load float, ptr %"R19_Float32"
-  %".598" = load float, ptr %"R14_Float32"
-  %"fmul.16" = fmul float %".596", %".597"
-  %"fadd.16" = fadd float %"fmul.16", %".598"
+  %".644" = load float, ptr %"R54_Float32"
+  %".645" = load float, ptr %"R19_Float32"
+  %".646" = load float, ptr %"R14_Float32"
+  %"fmul.16" = fmul float %".644", %".645"
+  %"fadd.16" = fadd float %"fmul.16", %".646"
   store float %"fadd.16", ptr %"R14_Float32"
   ; FFMA R52, R19, R56, R52
-  %".601" = load float, ptr %"R19_Float32"
-  %".602" = load float, ptr %"R56_Float32"
-  %".603" = load float, ptr %"R52_Float32"
-  %"fmul.17" = fmul float %".601", %".602"
-  %"fadd.17" = fadd float %"fmul.17", %".603"
+  %".649" = load float, ptr %"R19_Float32"
+  %".650" = load float, ptr %"R56_Float32"
+  %".651" = load float, ptr %"R52_Float32"
+  %"fmul.17" = fmul float %".649", %".650"
+  %"fadd.17" = fadd float %"fmul.17", %".651"
   store float %"fadd.17", ptr %"R52_Float32"
   ; FFMA R14, R39, R20, R14
-  %".606" = load float, ptr %"R39_Float32"
-  %".607" = load float, ptr %"R20_Float32"
-  %".608" = load float, ptr %"R14_Float32"
-  %"fmul.18" = fmul float %".606", %".607"
-  %"fadd.18" = fadd float %"fmul.18", %".608"
+  %".654" = load float, ptr %"R39_Float32"
+  %".655" = load float, ptr %"R20_Float32"
+  %".656" = load float, ptr %"R14_Float32"
+  %"fmul.18" = fmul float %".654", %".655"
+  %"fadd.18" = fadd float %"fmul.18", %".656"
   store float %"fadd.18", ptr %"R14_Float32"
   ; FFMA R41, R20, R41, R52
-  %".611" = load float, ptr %"R20_Float32"
-  %".612" = load float, ptr %"R41_Float32"
-  %".613" = load float, ptr %"R52_Float32"
-  %"fmul.19" = fmul float %".611", %".612"
-  %"fadd.19" = fadd float %"fmul.19", %".613"
+  %".659" = load float, ptr %"R20_Float32"
+  %".660" = load float, ptr %"R41_Float32"
+  %".661" = load float, ptr %"R52_Float32"
+  %"fmul.19" = fmul float %".659", %".660"
+  %"fadd.19" = fadd float %"fmul.19", %".661"
   store float %"fadd.19", ptr %"R41_Float32"
   ; FFMA R14, R38, R21, R14
-  %".616" = load float, ptr %"R38_Float32"
-  %".617" = load float, ptr %"R21_Float32"
-  %".618" = load float, ptr %"R14_Float32"
-  %"fmul.20" = fmul float %".616", %".617"
-  %"fadd.20" = fadd float %"fmul.20", %".618"
+  %".664" = load float, ptr %"R38_Float32"
+  %".665" = load float, ptr %"R21_Float32"
+  %".666" = load float, ptr %"R14_Float32"
+  %"fmul.20" = fmul float %".664", %".665"
+  %"fadd.20" = fadd float %"fmul.20", %".666"
   store float %"fadd.20", ptr %"R14_Float32"
   ; FFMA R40, R21, R40, R41
-  %".621" = load float, ptr %"R21_Float32"
-  %".622" = load float, ptr %"R40_Float32"
-  %".623" = load float, ptr %"R41_Float32"
-  %"fmul.21" = fmul float %".621", %".622"
-  %"fadd.21" = fadd float %"fmul.21", %".623"
+  %".669" = load float, ptr %"R21_Float32"
+  %".670" = load float, ptr %"R40_Float32"
+  %".671" = load float, ptr %"R41_Float32"
+  %"fmul.21" = fmul float %".669", %".670"
+  %"fadd.21" = fadd float %"fmul.21", %".671"
   store float %"fadd.21", ptr %"R40_Float32"
   ; FFMA R14, R47, R42, R14
-  %".626" = load float, ptr %"R47_Float32"
-  %".627" = load float, ptr %"R42_Float32"
-  %".628" = load float, ptr %"R14_Float32"
-  %"fmul.22" = fmul float %".626", %".627"
-  %"fadd.22" = fadd float %"fmul.22", %".628"
+  %".674" = load float, ptr %"R47_Float32"
+  %".675" = load float, ptr %"R42_Float32"
+  %".676" = load float, ptr %"R14_Float32"
+  %"fmul.22" = fmul float %".674", %".675"
+  %"fadd.22" = fadd float %"fmul.22", %".676"
   store float %"fadd.22", ptr %"R14_Float32"
   ; FFMA R43, R42, R43, R40
-  %".631" = load float, ptr %"R42_Float32"
-  %".632" = load float, ptr %"R43_Float32"
-  %".633" = load float, ptr %"R40_Float32"
-  %"fmul.23" = fmul float %".631", %".632"
-  %"fadd.23" = fadd float %"fmul.23", %".633"
+  %".679" = load float, ptr %"R42_Float32"
+  %".680" = load float, ptr %"R43_Float32"
+  %".681" = load float, ptr %"R40_Float32"
+  %"fmul.23" = fmul float %".679", %".680"
+  %"fadd.23" = fadd float %"fmul.23", %".681"
   store float %"fadd.23", ptr %"R43_Float32"
   ; FFMA R18, R44, R18, R43
-  %".636" = load float, ptr %"R44_Float32"
-  %".637" = load float, ptr %"R18_Float32"
-  %".638" = load float, ptr %"R43_Float32"
-  %"fmul.24" = fmul float %".636", %".637"
-  %"fadd.24" = fadd float %"fmul.24", %".638"
+  %".684" = load float, ptr %"R44_Float32"
+  %".685" = load float, ptr %"R18_Float32"
+  %".686" = load float, ptr %"R43_Float32"
+  %"fmul.24" = fmul float %".684", %".685"
+  %"fadd.24" = fadd float %"fmul.24", %".686"
   store float %"fadd.24", ptr %"R18_Float32"
   ; FFMA R14, R35, R44, R14
-  %".641" = load float, ptr %"R35_Float32"
-  %".642" = load float, ptr %"R44_Float32"
-  %".643" = load float, ptr %"R14_Float32"
-  %"fmul.25" = fmul float %".641", %".642"
-  %"fadd.25" = fadd float %"fmul.25", %".643"
+  %".689" = load float, ptr %"R35_Float32"
+  %".690" = load float, ptr %"R44_Float32"
+  %".691" = load float, ptr %"R14_Float32"
+  %"fmul.25" = fmul float %".689", %".690"
+  %"fadd.25" = fadd float %"fmul.25", %".691"
   store float %"fadd.25", ptr %"R14_Float32"
   ; FFMA R18, R46, R49, R18
-  %".646" = load float, ptr %"R46_Float32"
-  %".647" = load float, ptr %"R49_Float32"
-  %".648" = load float, ptr %"R18_Float32"
-  %"fmul.26" = fmul float %".646", %".647"
-  %"fadd.26" = fadd float %"fmul.26", %".648"
+  %".694" = load float, ptr %"R46_Float32"
+  %".695" = load float, ptr %"R49_Float32"
+  %".696" = load float, ptr %"R18_Float32"
+  %"fmul.26" = fmul float %".694", %".695"
+  %"fadd.26" = fadd float %"fmul.26", %".696"
   store float %"fadd.26", ptr %"R18_Float32"
   ; FFMA R14, R15, R46, R14
-  %".651" = load float, ptr %"R15_Float32"
-  %".652" = load float, ptr %"R46_Float32"
-  %".653" = load float, ptr %"R14_Float32"
-  %"fmul.27" = fmul float %".651", %".652"
-  %"fadd.27" = fadd float %"fmul.27", %".653"
+  %".699" = load float, ptr %"R15_Float32"
+  %".700" = load float, ptr %"R46_Float32"
+  %".701" = load float, ptr %"R14_Float32"
+  %"fmul.27" = fmul float %".699", %".700"
+  %"fadd.27" = fadd float %"fmul.27", %".701"
   store float %"fadd.27", ptr %"R14_Float32"
   ; FFMA R13, R13, R48, R14
-  %".656" = load float, ptr %"R13_Float32"
-  %".657" = load float, ptr %"R48_Float32"
-  %".658" = load float, ptr %"R14_Float32"
-  %"fmul.28" = fmul float %".656", %".657"
-  %"fadd.28" = fadd float %"fmul.28", %".658"
+  %".704" = load float, ptr %"R13_Float32"
+  %".705" = load float, ptr %"R48_Float32"
+  %".706" = load float, ptr %"R14_Float32"
+  %"fmul.28" = fmul float %".704", %".705"
+  %"fadd.28" = fadd float %"fmul.28", %".706"
   store float %"fadd.28", ptr %"R13_Float32"
   ; FFMA R37, R48, R37, R18
-  %".661" = load float, ptr %"R48_Float32"
-  %".662" = load float, ptr %"R37_Float32"
-  %".663" = load float, ptr %"R18_Float32"
-  %"fmul.29" = fmul float %".661", %".662"
-  %"fadd.29" = fadd float %"fmul.29", %".663"
+  %".709" = load float, ptr %"R48_Float32"
+  %".710" = load float, ptr %"R37_Float32"
+  %".711" = load float, ptr %"R18_Float32"
+  %"fmul.29" = fmul float %".709", %".710"
+  %"fadd.29" = fadd float %"fmul.29", %".711"
   store float %"fadd.29", ptr %"R37_Float32"
   ; FFMA R52, R45, R50, R13
-  %".666" = load float, ptr %"R45_Float32"
-  %".667" = load float, ptr %"R50_Float32"
-  %".668" = load float, ptr %"R13_Float32"
-  %"fmul.30" = fmul float %".666", %".667"
-  %"fadd.30" = fadd float %"fmul.30", %".668"
+  %".714" = load float, ptr %"R45_Float32"
+  %".715" = load float, ptr %"R50_Float32"
+  %".716" = load float, ptr %"R13_Float32"
+  %"fmul.30" = fmul float %".714", %".715"
+  %"fadd.30" = fadd float %"fmul.30", %".716"
   store float %"fadd.30", ptr %"R52_Float32"
   ; FFMA R54, R50, R34, R37
-  %".671" = load float, ptr %"R50_Float32"
-  %".672" = load float, ptr %"R34_Float32"
-  %".673" = load float, ptr %"R37_Float32"
-  %"fmul.31" = fmul float %".671", %".672"
-  %"fadd.31" = fadd float %"fmul.31", %".673"
+  %".719" = load float, ptr %"R50_Float32"
+  %".720" = load float, ptr %"R34_Float32"
+  %".721" = load float, ptr %"R37_Float32"
+  %"fmul.31" = fmul float %".719", %".720"
+  %"fadd.31" = fadd float %"fmul.31", %".721"
   store float %"fadd.31", ptr %"R54_Float32"
   ; @P1 BRA `(.L_x_5)
-  %".676" = load i1, ptr %"P1_Bool"
-  %".677" = icmp ne i1 %".676", 1
-  br i1 %".677", label %".L_x_5", label %".L_x_4"
+  %".724" = load i1, ptr %"P1_Bool"
+  %".725" = icmp ne i1 %".724", 1
+  br i1 %".725", label %".L_x_5", label %".L_x_4"
 .L_x_4:
   ; ISETP.GT.AND P1, PT, R9, 0x4, PT
-  %".680" = load i32, ptr %"R9_Int32"
-  %".681" = load i1, ptr %"PT_Bool"
-  %"cmp.9" = icmp sgt i32 %".680", 4
-  %".682" = and i1 %"cmp.9", %".681"
+  %".728" = load i32, ptr %"R9_Int32"
+  %".729" = load i1, ptr %"PT_Bool"
+  %"cmp.9" = icmp sgt i32 %".728", 4
+  %".730" = and i1 %"cmp.9", %".729"
   ; @!P1 BRA `(.L_x_6)
-  %".684" = load i1, ptr %"P1_Bool"
-  %".685" = icmp eq i1 %".684", 1
-  br i1 %".685", label %".L_x_6", label %".L_x_4_split_0x0a00"
+  %".732" = load i1, ptr %"P1_Bool"
+  %".733" = icmp eq i1 %".732", 1
+  br i1 %".733", label %".L_x_6", label %".L_x_4_split_0x0a00"
 .L_x_4_split_0x0a00:
   ; IADD3 R13, R0, R11, RZ
-  %".688" = load i32, ptr %"R0_Int32"
-  %".689" = load i32, ptr %"R11_Int32"
-  %"add.54" = add i32 %".688", %".689"
+  %".736" = load i32, ptr %"R0_Int32"
+  %".737" = load i32, ptr %"R11_Int32"
+  %"add.54" = add i32 %".736", %".737"
   %"add.55" = add i32 %"add.54", 0
   store i32 %"add.55", ptr %"R13_Int32"
   ; MOV R17, 0x4
   store i32 4, ptr %"R17_Int32"
   ; LEA R14, R2.reuse, R13, 0x2
-  %".694" = load i32, ptr %"R2_Int32"
-  %".695" = load i32, ptr %"R13_Int32"
-  %"shl.3" = shl i32 %".694", 2
-  %"add.56" = add i32 %"shl.3", %".695"
+  %".742" = load i32, ptr %"R2_Int32"
+  %".743" = load i32, ptr %"R13_Int32"
+  %"shl.3" = shl i32 %".742", 2
+  %"add.56" = add i32 %"shl.3", %".743"
   store i32 %"add.56", ptr %"R14_Int32"
   ; IMAD R10, R2, 0x3, R13
-  %".698" = load i32, ptr %"R2_Int32"
-  %".699" = load i32, ptr %"R13_Int32"
-  %"mul.21" = mul i32 %".698", 3
-  %"add.57" = add i32 %"mul.21", %".699"
+  %".746" = load i32, ptr %"R2_Int32"
+  %".747" = load i32, ptr %"R13_Int32"
+  %"mul.21" = mul i32 %".746", 3
+  %"add.57" = add i32 %"mul.21", %".747"
   store i32 %"add.57", ptr %"R10_Int32"
   ; IADD3 R12, R11.reuse, 0x4, RZ
-  %".702" = load i32, ptr %"R11_Int32"
-  %"add.58" = add i32 %".702", 4
+  %".750" = load i32, ptr %"R11_Int32"
+  %"add.58" = add i32 %".750", 4
   %"add.59" = add i32 %"add.58", 0
   store i32 %"add.59", ptr %"R12_Int32"
   ; IMAD.WIDE R18, R11, R17.reuse, c[0x0][0x168]
-  %".705" = load i32, ptr %"R11_Int32"
-  %".706" = load i32, ptr %"R17_Int32"
-  %"mul.22" = mul i32 %".705", %".706"
+  %".753" = load i32, ptr %"R11_Int32"
+  %".754" = load i32, ptr %"R17_Int32"
+  %"mul.22" = mul i32 %".753", %".754"
   %"add.60" = add i32 %"mul.22", %"Arg_3"
   store i32 %"add.60", ptr %"R18_Int32"
   ; IADD3 R16, R14, 0x4, RZ
-  %".709" = load i32, ptr %"R14_Int32"
-  %"add.61" = add i32 %".709", 4
+  %".757" = load i32, ptr %"R14_Int32"
+  %"add.61" = add i32 %".757", 4
   %"add.62" = add i32 %"add.61", 0
   store i32 %"add.62", ptr %"R16_Int32"
   ; IADD3 R15, R10.reuse, 0x4, RZ
-  %".712" = load i32, ptr %"R10_Int32"
-  %"add.63" = add i32 %".712", 4
+  %".760" = load i32, ptr %"R10_Int32"
+  %"add.63" = add i32 %".760", 4
   %"add.64" = add i32 %"add.63", 0
   store i32 %"add.64", ptr %"R15_Int32"
   ; IMAD.WIDE R22, R10, R17, c[0x0][0x170]
-  %".715" = load i32, ptr %"R10_Int32"
-  %".716" = load i32, ptr %"R17_Int32"
-  %"mul.23" = mul i32 %".715", %".716"
+  %".763" = load i32, ptr %"R10_Int32"
+  %".764" = load i32, ptr %"R17_Int32"
+  %"mul.23" = mul i32 %".763", %".764"
   %"add.65" = add i32 %"mul.23", %"Arg_4"
   store i32 %"add.65", ptr %"R22_Int32"
   ; IMAD.WIDE R20, R14, R17.reuse, c[0x0][0x170]
-  %".719" = load i32, ptr %"R14_Int32"
-  %".720" = load i32, ptr %"R17_Int32"
-  %"mul.24" = mul i32 %".719", %".720"
+  %".767" = load i32, ptr %"R14_Int32"
+  %".768" = load i32, ptr %"R17_Int32"
+  %"mul.24" = mul i32 %".767", %".768"
   %"add.66" = add i32 %"mul.24", %"Arg_4"
   store i32 %"add.66", ptr %"R20_Int32"
   ; LDG.E.SYS R39, [R18]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".723" = load i32, ptr %"R18_Float32_PTR"
-  %".724" = add i32 %".723", 0
-  %"for_LDG.48" = inttoptr i32 %".724" to ptr
-  %".725" = load float, ptr %"for_LDG.48"
-  store float %".725", ptr %"R39_Float32"
+  %".771" = load ptr, ptr %"R18_Float32_PTR"
+  %".772" = ptrtoint ptr %".771" to i64
+  %".773" = add i64 %".772", 0
+  %"for_LDG.48" = inttoptr i64 %".773" to ptr
+  %".774" = load float, ptr %"for_LDG.48"
+  store float %".774", ptr %"R39_Float32"
   ; IMAD.WIDE R12, R12, R17.reuse, c[0x0][0x168]
-  %".728" = load i32, ptr %"R12_Int32"
-  %".729" = load i32, ptr %"R17_Int32"
-  %"mul.25" = mul i32 %".728", %".729"
+  %".777" = load i32, ptr %"R12_Int32"
+  %".778" = load i32, ptr %"R17_Int32"
+  %"mul.25" = mul i32 %".777", %".778"
   %"add.67" = add i32 %"mul.25", %"Arg_3"
   store i32 %"add.67", ptr %"R12_Int32"
   ; LDG.E.SYS R37, [R22]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".732" = load i32, ptr %"R22_Float32_PTR"
-  %".733" = add i32 %".732", 0
-  %"for_LDG.49" = inttoptr i32 %".733" to ptr
-  %".734" = load float, ptr %"for_LDG.49"
-  store float %".734", ptr %"R37_Float32"
+  %".781" = load ptr, ptr %"R22_Float32_PTR"
+  %".782" = ptrtoint ptr %".781" to i64
+  %".783" = add i64 %".782", 0
+  %"for_LDG.49" = inttoptr i64 %".783" to ptr
+  %".784" = load float, ptr %"for_LDG.49"
+  store float %".784", ptr %"R37_Float32"
   ; LDG.E.SYS R36, [R20]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".737" = load i32, ptr %"R20_Float32_PTR"
-  %".738" = add i32 %".737", 0
-  %"for_LDG.50" = inttoptr i32 %".738" to ptr
-  %".739" = load float, ptr %"for_LDG.50"
-  store float %".739", ptr %"R36_Float32"
+  %".787" = load ptr, ptr %"R20_Float32_PTR"
+  %".788" = ptrtoint ptr %".787" to i64
+  %".789" = add i64 %".788", 0
+  %"for_LDG.50" = inttoptr i64 %".789" to ptr
+  %".790" = load float, ptr %"for_LDG.50"
+  store float %".790", ptr %"R36_Float32"
   ; IMAD.WIDE R14, R15, R17, c[0x0][0x170]
-  %".742" = load i32, ptr %"R15_Int32"
-  %".743" = load i32, ptr %"R17_Int32"
-  %"mul.26" = mul i32 %".742", %".743"
+  %".793" = load i32, ptr %"R15_Int32"
+  %".794" = load i32, ptr %"R17_Int32"
+  %"mul.26" = mul i32 %".793", %".794"
   %"add.68" = add i32 %"mul.26", %"Arg_4"
   store i32 %"add.68", ptr %"R14_Int32"
   ; LDG.E.SYS R34, [R18+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".746" = load i32, ptr %"R18_Float32_PTR"
-  %".747" = add i32 %".746", 4
-  %"for_LDG.51" = inttoptr i32 %".747" to ptr
-  %".748" = load float, ptr %"for_LDG.51"
-  store float %".748", ptr %"R34_Float32"
+  %".797" = load ptr, ptr %"R18_Float32_PTR"
+  %".798" = ptrtoint ptr %".797" to i64
+  %".799" = add i64 %".798", 4
+  %"for_LDG.51" = inttoptr i64 %".799" to ptr
+  %".800" = load float, ptr %"for_LDG.51"
+  store float %".800", ptr %"R34_Float32"
   ; LDG.E.SYS R38, [R22+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".751" = load i32, ptr %"R22_Float32_PTR"
-  %".752" = add i32 %".751", 4
-  %"for_LDG.52" = inttoptr i32 %".752" to ptr
-  %".753" = load float, ptr %"for_LDG.52"
-  store float %".753", ptr %"R38_Float32"
+  %".803" = load ptr, ptr %"R22_Float32_PTR"
+  %".804" = ptrtoint ptr %".803" to i64
+  %".805" = add i64 %".804", 4
+  %"for_LDG.52" = inttoptr i64 %".805" to ptr
+  %".806" = load float, ptr %"for_LDG.52"
+  store float %".806", ptr %"R38_Float32"
   ; LDG.E.SYS R35, [R20+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".756" = load i32, ptr %"R20_Float32_PTR"
-  %".757" = add i32 %".756", 4
-  %"for_LDG.53" = inttoptr i32 %".757" to ptr
-  %".758" = load float, ptr %"for_LDG.53"
-  store float %".758", ptr %"R35_Float32"
+  %".809" = load ptr, ptr %"R20_Float32_PTR"
+  %".810" = ptrtoint ptr %".809" to i64
+  %".811" = add i64 %".810", 4
+  %"for_LDG.53" = inttoptr i64 %".811" to ptr
+  %".812" = load float, ptr %"for_LDG.53"
+  store float %".812", ptr %"R35_Float32"
   ; IMAD.WIDE R16, R16, R17, c[0x0][0x170]
-  %".761" = load i32, ptr %"R16_Int32"
-  %".762" = load i32, ptr %"R17_Int32"
-  %"mul.27" = mul i32 %".761", %".762"
+  %".815" = load i32, ptr %"R16_Int32"
+  %".816" = load i32, ptr %"R17_Int32"
+  %"mul.27" = mul i32 %".815", %".816"
   %"add.69" = add i32 %"mul.27", %"Arg_4"
   store i32 %"add.69", ptr %"R16_Int32"
   ; LDG.E.SYS R24, [R18+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".765" = load i32, ptr %"R18_Float32_PTR"
-  %".766" = add i32 %".765", 8
-  %"for_LDG.54" = inttoptr i32 %".766" to ptr
-  %".767" = load float, ptr %"for_LDG.54"
-  store float %".767", ptr %"R24_Float32"
+  %".819" = load ptr, ptr %"R18_Float32_PTR"
+  %".820" = ptrtoint ptr %".819" to i64
+  %".821" = add i64 %".820", 8
+  %"for_LDG.54" = inttoptr i64 %".821" to ptr
+  %".822" = load float, ptr %"for_LDG.54"
+  store float %".822", ptr %"R24_Float32"
   ; LDG.E.SYS R40, [R22+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".770" = load i32, ptr %"R22_Float32_PTR"
-  %".771" = add i32 %".770", 8
-  %"for_LDG.55" = inttoptr i32 %".771" to ptr
-  %".772" = load float, ptr %"for_LDG.55"
-  store float %".772", ptr %"R40_Float32"
+  %".825" = load ptr, ptr %"R22_Float32_PTR"
+  %".826" = ptrtoint ptr %".825" to i64
+  %".827" = add i64 %".826", 8
+  %"for_LDG.55" = inttoptr i64 %".827" to ptr
+  %".828" = load float, ptr %"for_LDG.55"
+  store float %".828", ptr %"R40_Float32"
   ; LDG.E.SYS R41, [R20+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".775" = load i32, ptr %"R20_Float32_PTR"
-  %".776" = add i32 %".775", 8
-  %"for_LDG.56" = inttoptr i32 %".776" to ptr
-  %".777" = load float, ptr %"for_LDG.56"
-  store float %".777", ptr %"R41_Float32"
+  %".831" = load ptr, ptr %"R20_Float32_PTR"
+  %".832" = ptrtoint ptr %".831" to i64
+  %".833" = add i64 %".832", 8
+  %"for_LDG.56" = inttoptr i64 %".833" to ptr
+  %".834" = load float, ptr %"for_LDG.56"
+  store float %".834", ptr %"R41_Float32"
   ; LDG.E.SYS R44, [R18+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".780" = load i32, ptr %"R18_Float32_PTR"
-  %".781" = add i32 %".780", 12
-  %"for_LDG.57" = inttoptr i32 %".781" to ptr
-  %".782" = load float, ptr %"for_LDG.57"
-  store float %".782", ptr %"R44_Float32"
+  %".837" = load ptr, ptr %"R18_Float32_PTR"
+  %".838" = ptrtoint ptr %".837" to i64
+  %".839" = add i64 %".838", 12
+  %"for_LDG.57" = inttoptr i64 %".839" to ptr
+  %".840" = load float, ptr %"for_LDG.57"
+  store float %".840", ptr %"R44_Float32"
   ; LDG.E.SYS R42, [R22+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".785" = load i32, ptr %"R22_Float32_PTR"
-  %".786" = add i32 %".785", 12
-  %"for_LDG.58" = inttoptr i32 %".786" to ptr
-  %".787" = load float, ptr %"for_LDG.58"
-  store float %".787", ptr %"R42_Float32"
+  %".843" = load ptr, ptr %"R22_Float32_PTR"
+  %".844" = ptrtoint ptr %".843" to i64
+  %".845" = add i64 %".844", 12
+  %"for_LDG.58" = inttoptr i64 %".845" to ptr
+  %".846" = load float, ptr %"for_LDG.58"
+  store float %".846", ptr %"R42_Float32"
   ; LDG.E.SYS R43, [R20+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32_PTR", ptr %"R20_Int32", i32 4, i1 0)
-  %".790" = load i32, ptr %"R20_Float32_PTR"
-  %".791" = add i32 %".790", 12
-  %"for_LDG.59" = inttoptr i32 %".791" to ptr
-  %".792" = load float, ptr %"for_LDG.59"
-  store float %".792", ptr %"R43_Float32"
+  %".849" = load ptr, ptr %"R20_Float32_PTR"
+  %".850" = ptrtoint ptr %".849" to i64
+  %".851" = add i64 %".850", 12
+  %"for_LDG.59" = inttoptr i64 %".851" to ptr
+  %".852" = load float, ptr %"for_LDG.59"
+  store float %".852", ptr %"R43_Float32"
   ; LDG.E.SYS R48, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".795" = load i32, ptr %"R12_Float32_PTR"
-  %".796" = add i32 %".795", 0
-  %"for_LDG.60" = inttoptr i32 %".796" to ptr
-  %".797" = load float, ptr %"for_LDG.60"
-  store float %".797", ptr %"R48_Float32"
+  %".855" = load ptr, ptr %"R12_Float32_PTR"
+  %".856" = ptrtoint ptr %".855" to i64
+  %".857" = add i64 %".856", 0
+  %"for_LDG.60" = inttoptr i64 %".857" to ptr
+  %".858" = load float, ptr %"for_LDG.60"
+  store float %".858", ptr %"R48_Float32"
   ; LDG.E.SYS R46, [R14]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".800" = load i32, ptr %"R14_Float32_PTR"
-  %".801" = add i32 %".800", 0
-  %"for_LDG.61" = inttoptr i32 %".801" to ptr
-  %".802" = load float, ptr %"for_LDG.61"
-  store float %".802", ptr %"R46_Float32"
+  %".861" = load ptr, ptr %"R14_Float32_PTR"
+  %".862" = ptrtoint ptr %".861" to i64
+  %".863" = add i64 %".862", 0
+  %"for_LDG.61" = inttoptr i64 %".863" to ptr
+  %".864" = load float, ptr %"for_LDG.61"
+  store float %".864", ptr %"R46_Float32"
   ; LDG.E.SYS R45, [R16]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".805" = load i32, ptr %"R16_Float32_PTR"
-  %".806" = add i32 %".805", 0
-  %"for_LDG.62" = inttoptr i32 %".806" to ptr
-  %".807" = load float, ptr %"for_LDG.62"
-  store float %".807", ptr %"R45_Float32"
+  %".867" = load ptr, ptr %"R16_Float32_PTR"
+  %".868" = ptrtoint ptr %".867" to i64
+  %".869" = add i64 %".868", 0
+  %"for_LDG.62" = inttoptr i64 %".869" to ptr
+  %".870" = load float, ptr %"for_LDG.62"
+  store float %".870", ptr %"R45_Float32"
   ; LDG.E.SYS R56, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".810" = load i32, ptr %"R12_Float32_PTR"
-  %".811" = add i32 %".810", 4
-  %"for_LDG.63" = inttoptr i32 %".811" to ptr
-  %".812" = load float, ptr %"for_LDG.63"
-  store float %".812", ptr %"R56_Float32"
+  %".873" = load ptr, ptr %"R12_Float32_PTR"
+  %".874" = ptrtoint ptr %".873" to i64
+  %".875" = add i64 %".874", 4
+  %"for_LDG.63" = inttoptr i64 %".875" to ptr
+  %".876" = load float, ptr %"for_LDG.63"
+  store float %".876", ptr %"R56_Float32"
   ; LDG.E.SYS R50, [R14+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".815" = load i32, ptr %"R14_Float32_PTR"
-  %".816" = add i32 %".815", 4
-  %"for_LDG.64" = inttoptr i32 %".816" to ptr
-  %".817" = load float, ptr %"for_LDG.64"
-  store float %".817", ptr %"R50_Float32"
+  %".879" = load ptr, ptr %"R14_Float32_PTR"
+  %".880" = ptrtoint ptr %".879" to i64
+  %".881" = add i64 %".880", 4
+  %"for_LDG.64" = inttoptr i64 %".881" to ptr
+  %".882" = load float, ptr %"for_LDG.64"
+  store float %".882", ptr %"R50_Float32"
   ; LDG.E.SYS R47, [R16+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".820" = load i32, ptr %"R16_Float32_PTR"
-  %".821" = add i32 %".820", 4
-  %"for_LDG.65" = inttoptr i32 %".821" to ptr
-  %".822" = load float, ptr %"for_LDG.65"
-  store float %".822", ptr %"R47_Float32"
+  %".885" = load ptr, ptr %"R16_Float32_PTR"
+  %".886" = ptrtoint ptr %".885" to i64
+  %".887" = add i64 %".886", 4
+  %"for_LDG.65" = inttoptr i64 %".887" to ptr
+  %".888" = load float, ptr %"for_LDG.65"
+  store float %".888", ptr %"R47_Float32"
   ; LDG.E.SYS R10, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".825" = load i32, ptr %"R12_Float32_PTR"
-  %".826" = add i32 %".825", 8
-  %"for_LDG.66" = inttoptr i32 %".826" to ptr
-  %".827" = load float, ptr %"for_LDG.66"
-  store float %".827", ptr %"R10_Float32"
+  %".891" = load ptr, ptr %"R12_Float32_PTR"
+  %".892" = ptrtoint ptr %".891" to i64
+  %".893" = add i64 %".892", 8
+  %"for_LDG.66" = inttoptr i64 %".893" to ptr
+  %".894" = load float, ptr %"for_LDG.66"
+  store float %".894", ptr %"R10_Float32"
   ; LDG.E.SYS R25, [R14+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".830" = load i32, ptr %"R14_Float32_PTR"
-  %".831" = add i32 %".830", 8
-  %"for_LDG.67" = inttoptr i32 %".831" to ptr
-  %".832" = load float, ptr %"for_LDG.67"
-  store float %".832", ptr %"R25_Float32"
+  %".897" = load ptr, ptr %"R14_Float32_PTR"
+  %".898" = ptrtoint ptr %".897" to i64
+  %".899" = add i64 %".898", 8
+  %"for_LDG.67" = inttoptr i64 %".899" to ptr
+  %".900" = load float, ptr %"for_LDG.67"
+  store float %".900", ptr %"R25_Float32"
   ; LDG.E.SYS R19, [R16+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".835" = load i32, ptr %"R16_Float32_PTR"
-  %".836" = add i32 %".835", 8
-  %"for_LDG.68" = inttoptr i32 %".836" to ptr
-  %".837" = load float, ptr %"for_LDG.68"
-  store float %".837", ptr %"R19_Float32"
+  %".903" = load ptr, ptr %"R16_Float32_PTR"
+  %".904" = ptrtoint ptr %".903" to i64
+  %".905" = add i64 %".904", 8
+  %"for_LDG.68" = inttoptr i64 %".905" to ptr
+  %".906" = load float, ptr %"for_LDG.68"
+  store float %".906", ptr %"R19_Float32"
   ; LDG.E.SYS R18, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".840" = load i32, ptr %"R12_Float32_PTR"
-  %".841" = add i32 %".840", 12
-  %"for_LDG.69" = inttoptr i32 %".841" to ptr
-  %".842" = load float, ptr %"for_LDG.69"
-  store float %".842", ptr %"R18_Float32"
+  %".909" = load ptr, ptr %"R12_Float32_PTR"
+  %".910" = ptrtoint ptr %".909" to i64
+  %".911" = add i64 %".910", 12
+  %"for_LDG.69" = inttoptr i64 %".911" to ptr
+  %".912" = load float, ptr %"for_LDG.69"
+  store float %".912", ptr %"R18_Float32"
   ; LDG.E.SYS R20, [R14+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".845" = load i32, ptr %"R14_Float32_PTR"
-  %".846" = add i32 %".845", 12
-  %"for_LDG.70" = inttoptr i32 %".846" to ptr
-  %".847" = load float, ptr %"for_LDG.70"
-  store float %".847", ptr %"R20_Float32"
+  %".915" = load ptr, ptr %"R14_Float32_PTR"
+  %".916" = ptrtoint ptr %".915" to i64
+  %".917" = add i64 %".916", 12
+  %"for_LDG.70" = inttoptr i64 %".917" to ptr
+  %".918" = load float, ptr %"for_LDG.70"
+  store float %".918", ptr %"R20_Float32"
   ; LDG.E.SYS R21, [R16+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".850" = load i32, ptr %"R16_Float32_PTR"
-  %".851" = add i32 %".850", 12
-  %"for_LDG.71" = inttoptr i32 %".851" to ptr
-  %".852" = load float, ptr %"for_LDG.71"
-  store float %".852", ptr %"R21_Float32"
+  %".921" = load ptr, ptr %"R16_Float32_PTR"
+  %".922" = ptrtoint ptr %".921" to i64
+  %".923" = add i64 %".922", 12
+  %"for_LDG.71" = inttoptr i64 %".923" to ptr
+  %".924" = load float, ptr %"for_LDG.71"
+  store float %".924", ptr %"R21_Float32"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".855" = xor i1 1, 1
-  %".856" = and i1 %".855", 1
-  %".857" = and i1 %".856", 1
+  %".927" = xor i1 1, 1
+  %".928" = and i1 %".927", 1
+  %".929" = and i1 %".928", 1
   ; IADD3 R9, R9, -0x8, RZ
-  %".859" = load i32, ptr %"R9_Int32"
-  %"add.70" = add i32 %".859", -8
+  %".931" = load i32, ptr %"R9_Int32"
+  %"add.70" = add i32 %".931", -8
   %"add.71" = add i32 %"add.70", 0
   store i32 %"add.71", ptr %"R9_Int32"
   ; IADD3 R11, R11, 0x8, RZ
-  %".862" = load i32, ptr %"R11_Int32"
-  %"add.72" = add i32 %".862", 8
+  %".934" = load i32, ptr %"R11_Int32"
+  %"add.72" = add i32 %".934", 8
   %"add.73" = add i32 %"add.72", 0
   store i32 %"add.73", ptr %"R11_Int32"
   ; FFMA R37, R37, R39, R52
-  %".865" = load float, ptr %"R37_Float32"
-  %".866" = load float, ptr %"R39_Float32"
-  %".867" = load float, ptr %"R52_Float32"
-  %"fmul.32" = fmul float %".865", %".866"
-  %"fadd.32" = fadd float %"fmul.32", %".867"
+  %".937" = load float, ptr %"R37_Float32"
+  %".938" = load float, ptr %"R39_Float32"
+  %".939" = load float, ptr %"R52_Float32"
+  %"fmul.32" = fmul float %".937", %".938"
+  %"fadd.32" = fadd float %"fmul.32", %".939"
   store float %"fadd.32", ptr %"R37_Float32"
   ; FFMA R36, R39, R36, R54
-  %".870" = load float, ptr %"R39_Float32"
-  %".871" = load float, ptr %"R36_Float32"
-  %".872" = load float, ptr %"R54_Float32"
-  %"fmul.33" = fmul float %".870", %".871"
-  %"fadd.33" = fadd float %"fmul.33", %".872"
+  %".942" = load float, ptr %"R39_Float32"
+  %".943" = load float, ptr %"R36_Float32"
+  %".944" = load float, ptr %"R54_Float32"
+  %"fmul.33" = fmul float %".942", %".943"
+  %"fadd.33" = fadd float %"fmul.33", %".944"
   store float %"fadd.33", ptr %"R36_Float32"
   ; FFMA R37, R38, R34, R37
-  %".875" = load float, ptr %"R38_Float32"
-  %".876" = load float, ptr %"R34_Float32"
-  %".877" = load float, ptr %"R37_Float32"
-  %"fmul.34" = fmul float %".875", %".876"
-  %"fadd.34" = fadd float %"fmul.34", %".877"
+  %".947" = load float, ptr %"R38_Float32"
+  %".948" = load float, ptr %"R34_Float32"
+  %".949" = load float, ptr %"R37_Float32"
+  %"fmul.34" = fmul float %".947", %".948"
+  %"fadd.34" = fadd float %"fmul.34", %".949"
   store float %"fadd.34", ptr %"R37_Float32"
   ; FFMA R35, R34, R35, R36
-  %".880" = load float, ptr %"R34_Float32"
-  %".881" = load float, ptr %"R35_Float32"
-  %".882" = load float, ptr %"R36_Float32"
-  %"fmul.35" = fmul float %".880", %".881"
-  %"fadd.35" = fadd float %"fmul.35", %".882"
+  %".952" = load float, ptr %"R34_Float32"
+  %".953" = load float, ptr %"R35_Float32"
+  %".954" = load float, ptr %"R36_Float32"
+  %"fmul.35" = fmul float %".952", %".953"
+  %"fadd.35" = fadd float %"fmul.35", %".954"
   store float %"fadd.35", ptr %"R35_Float32"
   ; FFMA R37, R40, R24, R37
-  %".885" = load float, ptr %"R40_Float32"
-  %".886" = load float, ptr %"R24_Float32"
-  %".887" = load float, ptr %"R37_Float32"
-  %"fmul.36" = fmul float %".885", %".886"
-  %"fadd.36" = fadd float %"fmul.36", %".887"
+  %".957" = load float, ptr %"R40_Float32"
+  %".958" = load float, ptr %"R24_Float32"
+  %".959" = load float, ptr %"R37_Float32"
+  %"fmul.36" = fmul float %".957", %".958"
+  %"fadd.36" = fadd float %"fmul.36", %".959"
   store float %"fadd.36", ptr %"R37_Float32"
   ; FFMA R35, R24, R41, R35
-  %".890" = load float, ptr %"R24_Float32"
-  %".891" = load float, ptr %"R41_Float32"
-  %".892" = load float, ptr %"R35_Float32"
-  %"fmul.37" = fmul float %".890", %".891"
-  %"fadd.37" = fadd float %"fmul.37", %".892"
+  %".962" = load float, ptr %"R24_Float32"
+  %".963" = load float, ptr %"R41_Float32"
+  %".964" = load float, ptr %"R35_Float32"
+  %"fmul.37" = fmul float %".962", %".963"
+  %"fadd.37" = fadd float %"fmul.37", %".964"
   store float %"fadd.37", ptr %"R35_Float32"
   ; FFMA R37, R42, R44, R37
-  %".895" = load float, ptr %"R42_Float32"
-  %".896" = load float, ptr %"R44_Float32"
-  %".897" = load float, ptr %"R37_Float32"
-  %"fmul.38" = fmul float %".895", %".896"
-  %"fadd.38" = fadd float %"fmul.38", %".897"
+  %".967" = load float, ptr %"R42_Float32"
+  %".968" = load float, ptr %"R44_Float32"
+  %".969" = load float, ptr %"R37_Float32"
+  %"fmul.38" = fmul float %".967", %".968"
+  %"fadd.38" = fadd float %"fmul.38", %".969"
   store float %"fadd.38", ptr %"R37_Float32"
   ; FFMA R35, R44, R43, R35
-  %".900" = load float, ptr %"R44_Float32"
-  %".901" = load float, ptr %"R43_Float32"
-  %".902" = load float, ptr %"R35_Float32"
-  %"fmul.39" = fmul float %".900", %".901"
-  %"fadd.39" = fadd float %"fmul.39", %".902"
+  %".972" = load float, ptr %"R44_Float32"
+  %".973" = load float, ptr %"R43_Float32"
+  %".974" = load float, ptr %"R35_Float32"
+  %"fmul.39" = fmul float %".972", %".973"
+  %"fadd.39" = fadd float %"fmul.39", %".974"
   store float %"fadd.39", ptr %"R35_Float32"
   ; FFMA R37, R46, R48, R37
-  %".905" = load float, ptr %"R46_Float32"
-  %".906" = load float, ptr %"R48_Float32"
-  %".907" = load float, ptr %"R37_Float32"
-  %"fmul.40" = fmul float %".905", %".906"
-  %"fadd.40" = fadd float %"fmul.40", %".907"
+  %".977" = load float, ptr %"R46_Float32"
+  %".978" = load float, ptr %"R48_Float32"
+  %".979" = load float, ptr %"R37_Float32"
+  %"fmul.40" = fmul float %".977", %".978"
+  %"fadd.40" = fadd float %"fmul.40", %".979"
   store float %"fadd.40", ptr %"R37_Float32"
   ; FFMA R35, R48, R45, R35
-  %".910" = load float, ptr %"R48_Float32"
-  %".911" = load float, ptr %"R45_Float32"
-  %".912" = load float, ptr %"R35_Float32"
-  %"fmul.41" = fmul float %".910", %".911"
-  %"fadd.41" = fadd float %"fmul.41", %".912"
+  %".982" = load float, ptr %"R48_Float32"
+  %".983" = load float, ptr %"R45_Float32"
+  %".984" = load float, ptr %"R35_Float32"
+  %"fmul.41" = fmul float %".982", %".983"
+  %"fadd.41" = fadd float %"fmul.41", %".984"
   store float %"fadd.41", ptr %"R35_Float32"
   ; FFMA R37, R50, R56, R37
-  %".915" = load float, ptr %"R50_Float32"
-  %".916" = load float, ptr %"R56_Float32"
-  %".917" = load float, ptr %"R37_Float32"
-  %"fmul.42" = fmul float %".915", %".916"
-  %"fadd.42" = fadd float %"fmul.42", %".917"
+  %".987" = load float, ptr %"R50_Float32"
+  %".988" = load float, ptr %"R56_Float32"
+  %".989" = load float, ptr %"R37_Float32"
+  %"fmul.42" = fmul float %".987", %".988"
+  %"fadd.42" = fadd float %"fmul.42", %".989"
   store float %"fadd.42", ptr %"R37_Float32"
   ; FFMA R35, R56, R47, R35
-  %".920" = load float, ptr %"R56_Float32"
-  %".921" = load float, ptr %"R47_Float32"
-  %".922" = load float, ptr %"R35_Float32"
-  %"fmul.43" = fmul float %".920", %".921"
-  %"fadd.43" = fadd float %"fmul.43", %".922"
+  %".992" = load float, ptr %"R56_Float32"
+  %".993" = load float, ptr %"R47_Float32"
+  %".994" = load float, ptr %"R35_Float32"
+  %"fmul.43" = fmul float %".992", %".993"
+  %"fadd.43" = fadd float %"fmul.43", %".994"
   store float %"fadd.43", ptr %"R35_Float32"
   ; FFMA R25, R25, R10, R37
-  %".925" = load float, ptr %"R25_Float32"
-  %".926" = load float, ptr %"R10_Float32"
-  %".927" = load float, ptr %"R37_Float32"
-  %"fmul.44" = fmul float %".925", %".926"
-  %"fadd.44" = fadd float %"fmul.44", %".927"
+  %".997" = load float, ptr %"R25_Float32"
+  %".998" = load float, ptr %"R10_Float32"
+  %".999" = load float, ptr %"R37_Float32"
+  %"fmul.44" = fmul float %".997", %".998"
+  %"fadd.44" = fadd float %"fmul.44", %".999"
   store float %"fadd.44", ptr %"R25_Float32"
   ; FFMA R19, R10, R19, R35
-  %".930" = load float, ptr %"R10_Float32"
-  %".931" = load float, ptr %"R19_Float32"
-  %".932" = load float, ptr %"R35_Float32"
-  %"fmul.45" = fmul float %".930", %".931"
-  %"fadd.45" = fadd float %"fmul.45", %".932"
+  %".1002" = load float, ptr %"R10_Float32"
+  %".1003" = load float, ptr %"R19_Float32"
+  %".1004" = load float, ptr %"R35_Float32"
+  %"fmul.45" = fmul float %".1002", %".1003"
+  %"fadd.45" = fadd float %"fmul.45", %".1004"
   store float %"fadd.45", ptr %"R19_Float32"
   ; FFMA R52, R20, R18, R25
-  %".935" = load float, ptr %"R20_Float32"
-  %".936" = load float, ptr %"R18_Float32"
-  %".937" = load float, ptr %"R25_Float32"
-  %"fmul.46" = fmul float %".935", %".936"
-  %"fadd.46" = fadd float %"fmul.46", %".937"
+  %".1007" = load float, ptr %"R20_Float32"
+  %".1008" = load float, ptr %"R18_Float32"
+  %".1009" = load float, ptr %"R25_Float32"
+  %"fmul.46" = fmul float %".1007", %".1008"
+  %"fadd.46" = fadd float %"fmul.46", %".1009"
   store float %"fadd.46", ptr %"R52_Float32"
   ; FFMA R54, R18, R21, R19
-  %".940" = load float, ptr %"R18_Float32"
-  %".941" = load float, ptr %"R21_Float32"
-  %".942" = load float, ptr %"R19_Float32"
-  %"fmul.47" = fmul float %".940", %".941"
-  %"fadd.47" = fadd float %"fmul.47", %".942"
+  %".1012" = load float, ptr %"R18_Float32"
+  %".1013" = load float, ptr %"R21_Float32"
+  %".1014" = load float, ptr %"R19_Float32"
+  %"fmul.47" = fmul float %".1012", %".1013"
+  %"fadd.47" = fadd float %"fmul.47", %".1014"
   store float %"fadd.47", ptr %"R54_Float32"
 .L_x_6:
   ; ISETP.NE.OR P0, PT, R9, RZ, P0
-  %".945" = load i32, ptr %"R9_Int32"
-  %".946" = load i1, ptr %"PT_Bool"
-  %"cmp.10" = icmp ne i32 %".945", 0
-  %".947" = or i1 %"cmp.10", %".946"
+  %".1017" = load i32, ptr %"R9_Int32"
+  %".1018" = load i1, ptr %"PT_Bool"
+  %"cmp.10" = icmp ne i32 %".1017", 0
+  %".1019" = or i1 %"cmp.10", %".1018"
   ; @!P0 BRA `(.L_x_2)
-  %".949" = load i1, ptr %"P0_Bool"
-  %".950" = icmp eq i1 %".949", 1
-  br i1 %".950", label %".L_x_2", label %".L_x_3"
+  %".1021" = load i1, ptr %"P0_Bool"
+  %".1022" = icmp eq i1 %".1021", 1
+  br i1 %".1022", label %".L_x_2", label %".L_x_3"
 .L_x_3:
   ; IADD3 R13, R0, R11, RZ
-  %".953" = load i32, ptr %"R0_Int32"
-  %".954" = load i32, ptr %"R11_Int32"
-  %"add.74" = add i32 %".953", %".954"
+  %".1025" = load i32, ptr %"R0_Int32"
+  %".1026" = load i32, ptr %"R11_Int32"
+  %"add.74" = add i32 %".1025", %".1026"
   %"add.75" = add i32 %"add.74", 0
   store i32 %"add.75", ptr %"R13_Int32"
   ; MOV R16, 0x4
   store i32 4, ptr %"R16_Int32"
   ; LEA R17, R2.reuse, R13, 0x2
-  %".959" = load i32, ptr %"R2_Int32"
-  %".960" = load i32, ptr %"R13_Int32"
-  %"shl.4" = shl i32 %".959", 2
-  %"add.76" = add i32 %"shl.4", %".960"
+  %".1031" = load i32, ptr %"R2_Int32"
+  %".1032" = load i32, ptr %"R13_Int32"
+  %"shl.4" = shl i32 %".1031", 2
+  %"add.76" = add i32 %"shl.4", %".1032"
   store i32 %"add.76", ptr %"R17_Int32"
   ; IMAD R15, R2, 0x3, R13
-  %".963" = load i32, ptr %"R2_Int32"
-  %".964" = load i32, ptr %"R13_Int32"
-  %"mul.28" = mul i32 %".963", 3
-  %"add.77" = add i32 %"mul.28", %".964"
+  %".1035" = load i32, ptr %"R2_Int32"
+  %".1036" = load i32, ptr %"R13_Int32"
+  %"mul.28" = mul i32 %".1035", 3
+  %"add.77" = add i32 %"mul.28", %".1036"
   store i32 %"add.77", ptr %"R15_Int32"
   ; IMAD.WIDE R12, R11, R16, c[0x0][0x168]
-  %".967" = load i32, ptr %"R11_Int32"
-  %".968" = load i32, ptr %"R16_Int32"
-  %"mul.29" = mul i32 %".967", %".968"
+  %".1039" = load i32, ptr %"R11_Int32"
+  %".1040" = load i32, ptr %"R16_Int32"
+  %"mul.29" = mul i32 %".1039", %".1040"
   %"add.78" = add i32 %"mul.29", %"Arg_3"
   store i32 %"add.78", ptr %"R12_Int32"
   ; IMAD.WIDE R14, R15, R16, c[0x0][0x170]
-  %".971" = load i32, ptr %"R15_Int32"
-  %".972" = load i32, ptr %"R16_Int32"
-  %"mul.30" = mul i32 %".971", %".972"
+  %".1043" = load i32, ptr %"R15_Int32"
+  %".1044" = load i32, ptr %"R16_Int32"
+  %"mul.30" = mul i32 %".1043", %".1044"
   %"add.79" = add i32 %"mul.30", %"Arg_4"
   store i32 %"add.79", ptr %"R14_Int32"
   ; IMAD.WIDE R16, R17, R16, c[0x0][0x170]
-  %".975" = load i32, ptr %"R17_Int32"
-  %".976" = load i32, ptr %"R16_Int32"
-  %"mul.31" = mul i32 %".975", %".976"
+  %".1047" = load i32, ptr %"R17_Int32"
+  %".1048" = load i32, ptr %"R16_Int32"
+  %"mul.31" = mul i32 %".1047", %".1048"
   %"add.80" = add i32 %"mul.31", %"Arg_4"
   store i32 %"add.80", ptr %"R16_Int32"
   ; LDG.E.SYS R21, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".979" = load i32, ptr %"R12_Float32_PTR"
-  %".980" = add i32 %".979", 0
-  %"for_LDG.72" = inttoptr i32 %".980" to ptr
-  %".981" = load float, ptr %"for_LDG.72"
-  store float %".981", ptr %"R21_Float32"
+  %".1051" = load ptr, ptr %"R12_Float32_PTR"
+  %".1052" = ptrtoint ptr %".1051" to i64
+  %".1053" = add i64 %".1052", 0
+  %"for_LDG.72" = inttoptr i64 %".1053" to ptr
+  %".1054" = load float, ptr %"for_LDG.72"
+  store float %".1054", ptr %"R21_Float32"
   ; LDG.E.SYS R19, [R14]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".984" = load i32, ptr %"R14_Float32_PTR"
-  %".985" = add i32 %".984", 0
-  %"for_LDG.73" = inttoptr i32 %".985" to ptr
-  %".986" = load float, ptr %"for_LDG.73"
-  store float %".986", ptr %"R19_Float32"
+  %".1057" = load ptr, ptr %"R14_Float32_PTR"
+  %".1058" = ptrtoint ptr %".1057" to i64
+  %".1059" = add i64 %".1058", 0
+  %"for_LDG.73" = inttoptr i64 %".1059" to ptr
+  %".1060" = load float, ptr %"for_LDG.73"
+  store float %".1060", ptr %"R19_Float32"
   ; LDG.E.SYS R10, [R16]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".989" = load i32, ptr %"R16_Float32_PTR"
-  %".990" = add i32 %".989", 0
-  %"for_LDG.74" = inttoptr i32 %".990" to ptr
-  %".991" = load float, ptr %"for_LDG.74"
-  store float %".991", ptr %"R10_Float32"
+  %".1063" = load ptr, ptr %"R16_Float32_PTR"
+  %".1064" = ptrtoint ptr %".1063" to i64
+  %".1065" = add i64 %".1064", 0
+  %"for_LDG.74" = inttoptr i64 %".1065" to ptr
+  %".1066" = load float, ptr %"for_LDG.74"
+  store float %".1066", ptr %"R10_Float32"
   ; LDG.E.SYS R23, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".994" = load i32, ptr %"R12_Float32_PTR"
-  %".995" = add i32 %".994", 4
-  %"for_LDG.75" = inttoptr i32 %".995" to ptr
-  %".996" = load float, ptr %"for_LDG.75"
-  store float %".996", ptr %"R23_Float32"
+  %".1069" = load ptr, ptr %"R12_Float32_PTR"
+  %".1070" = ptrtoint ptr %".1069" to i64
+  %".1071" = add i64 %".1070", 4
+  %"for_LDG.75" = inttoptr i64 %".1071" to ptr
+  %".1072" = load float, ptr %"for_LDG.75"
+  store float %".1072", ptr %"R23_Float32"
   ; LDG.E.SYS R18, [R14+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".999" = load i32, ptr %"R14_Float32_PTR"
-  %".1000" = add i32 %".999", 4
-  %"for_LDG.76" = inttoptr i32 %".1000" to ptr
-  %".1001" = load float, ptr %"for_LDG.76"
-  store float %".1001", ptr %"R18_Float32"
+  %".1075" = load ptr, ptr %"R14_Float32_PTR"
+  %".1076" = ptrtoint ptr %".1075" to i64
+  %".1077" = add i64 %".1076", 4
+  %"for_LDG.76" = inttoptr i64 %".1077" to ptr
+  %".1078" = load float, ptr %"for_LDG.76"
+  store float %".1078", ptr %"R18_Float32"
   ; LDG.E.SYS R20, [R16+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1004" = load i32, ptr %"R16_Float32_PTR"
-  %".1005" = add i32 %".1004", 4
-  %"for_LDG.77" = inttoptr i32 %".1005" to ptr
-  %".1006" = load float, ptr %"for_LDG.77"
-  store float %".1006", ptr %"R20_Float32"
+  %".1081" = load ptr, ptr %"R16_Float32_PTR"
+  %".1082" = ptrtoint ptr %".1081" to i64
+  %".1083" = add i64 %".1082", 4
+  %"for_LDG.77" = inttoptr i64 %".1083" to ptr
+  %".1084" = load float, ptr %"for_LDG.77"
+  store float %".1084", ptr %"R20_Float32"
   ; LDG.E.SYS R35, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1009" = load i32, ptr %"R12_Float32_PTR"
-  %".1010" = add i32 %".1009", 8
-  %"for_LDG.78" = inttoptr i32 %".1010" to ptr
-  %".1011" = load float, ptr %"for_LDG.78"
-  store float %".1011", ptr %"R35_Float32"
+  %".1087" = load ptr, ptr %"R12_Float32_PTR"
+  %".1088" = ptrtoint ptr %".1087" to i64
+  %".1089" = add i64 %".1088", 8
+  %"for_LDG.78" = inttoptr i64 %".1089" to ptr
+  %".1090" = load float, ptr %"for_LDG.78"
+  store float %".1090", ptr %"R35_Float32"
   ; LDG.E.SYS R25, [R14+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1014" = load i32, ptr %"R14_Float32_PTR"
-  %".1015" = add i32 %".1014", 8
-  %"for_LDG.79" = inttoptr i32 %".1015" to ptr
-  %".1016" = load float, ptr %"for_LDG.79"
-  store float %".1016", ptr %"R25_Float32"
+  %".1093" = load ptr, ptr %"R14_Float32_PTR"
+  %".1094" = ptrtoint ptr %".1093" to i64
+  %".1095" = add i64 %".1094", 8
+  %"for_LDG.79" = inttoptr i64 %".1095" to ptr
+  %".1096" = load float, ptr %"for_LDG.79"
+  store float %".1096", ptr %"R25_Float32"
   ; LDG.E.SYS R22, [R16+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1019" = load i32, ptr %"R16_Float32_PTR"
-  %".1020" = add i32 %".1019", 8
-  %"for_LDG.80" = inttoptr i32 %".1020" to ptr
-  %".1021" = load float, ptr %"for_LDG.80"
-  store float %".1021", ptr %"R22_Float32"
+  %".1099" = load ptr, ptr %"R16_Float32_PTR"
+  %".1100" = ptrtoint ptr %".1099" to i64
+  %".1101" = add i64 %".1100", 8
+  %"for_LDG.80" = inttoptr i64 %".1101" to ptr
+  %".1102" = load float, ptr %"for_LDG.80"
+  store float %".1102", ptr %"R22_Float32"
   ; LDG.E.SYS R39, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1024" = load i32, ptr %"R12_Float32_PTR"
-  %".1025" = add i32 %".1024", 12
-  %"for_LDG.81" = inttoptr i32 %".1025" to ptr
-  %".1026" = load float, ptr %"for_LDG.81"
-  store float %".1026", ptr %"R39_Float32"
+  %".1105" = load ptr, ptr %"R12_Float32_PTR"
+  %".1106" = ptrtoint ptr %".1105" to i64
+  %".1107" = add i64 %".1106", 12
+  %"for_LDG.81" = inttoptr i64 %".1107" to ptr
+  %".1108" = load float, ptr %"for_LDG.81"
+  store float %".1108", ptr %"R39_Float32"
   ; LDG.E.SYS R37, [R14+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1029" = load i32, ptr %"R14_Float32_PTR"
-  %".1030" = add i32 %".1029", 12
-  %"for_LDG.82" = inttoptr i32 %".1030" to ptr
-  %".1031" = load float, ptr %"for_LDG.82"
-  store float %".1031", ptr %"R37_Float32"
+  %".1111" = load ptr, ptr %"R14_Float32_PTR"
+  %".1112" = ptrtoint ptr %".1111" to i64
+  %".1113" = add i64 %".1112", 12
+  %"for_LDG.82" = inttoptr i64 %".1113" to ptr
+  %".1114" = load float, ptr %"for_LDG.82"
+  store float %".1114", ptr %"R37_Float32"
   ; LDG.E.SYS R24, [R16+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1034" = load i32, ptr %"R16_Float32_PTR"
-  %".1035" = add i32 %".1034", 12
-  %"for_LDG.83" = inttoptr i32 %".1035" to ptr
-  %".1036" = load float, ptr %"for_LDG.83"
-  store float %".1036", ptr %"R24_Float32"
+  %".1117" = load ptr, ptr %"R16_Float32_PTR"
+  %".1118" = ptrtoint ptr %".1117" to i64
+  %".1119" = add i64 %".1118", 12
+  %"for_LDG.83" = inttoptr i64 %".1119" to ptr
+  %".1120" = load float, ptr %"for_LDG.83"
+  store float %".1120", ptr %"R24_Float32"
   ; IADD3 R9, R9, -0x4, RZ
-  %".1039" = load i32, ptr %"R9_Int32"
-  %"add.81" = add i32 %".1039", -4
+  %".1123" = load i32, ptr %"R9_Int32"
+  %"add.81" = add i32 %".1123", -4
   %"add.82" = add i32 %"add.81", 0
   store i32 %"add.82", ptr %"R9_Int32"
   ; IADD3 R11, R11, 0x4, RZ
-  %".1042" = load i32, ptr %"R11_Int32"
-  %"add.83" = add i32 %".1042", 4
+  %".1126" = load i32, ptr %"R11_Int32"
+  %"add.83" = add i32 %".1126", 4
   %"add.84" = add i32 %"add.83", 0
   store i32 %"add.84", ptr %"R11_Int32"
   ; ISETP.NE.AND P0, PT, R9, RZ, PT
-  %".1045" = load i32, ptr %"R9_Int32"
-  %".1046" = load i1, ptr %"PT_Bool"
-  %"cmp.11" = icmp ne i32 %".1045", 0
-  %".1047" = and i1 %"cmp.11", %".1046"
+  %".1129" = load i32, ptr %"R9_Int32"
+  %".1130" = load i1, ptr %"PT_Bool"
+  %"cmp.11" = icmp ne i32 %".1129", 0
+  %".1131" = and i1 %"cmp.11", %".1130"
   ; FFMA R19, R19, R21, R52
-  %".1049" = load float, ptr %"R19_Float32"
-  %".1050" = load float, ptr %"R21_Float32"
-  %".1051" = load float, ptr %"R52_Float32"
-  %"fmul.48" = fmul float %".1049", %".1050"
-  %"fadd.48" = fadd float %"fmul.48", %".1051"
+  %".1133" = load float, ptr %"R19_Float32"
+  %".1134" = load float, ptr %"R21_Float32"
+  %".1135" = load float, ptr %"R52_Float32"
+  %"fmul.48" = fmul float %".1133", %".1134"
+  %"fadd.48" = fadd float %"fmul.48", %".1135"
   store float %"fadd.48", ptr %"R19_Float32"
   ; FFMA R10, R21, R10, R54
-  %".1054" = load float, ptr %"R21_Float32"
-  %".1055" = load float, ptr %"R10_Float32"
-  %".1056" = load float, ptr %"R54_Float32"
-  %"fmul.49" = fmul float %".1054", %".1055"
-  %"fadd.49" = fadd float %"fmul.49", %".1056"
+  %".1138" = load float, ptr %"R21_Float32"
+  %".1139" = load float, ptr %"R10_Float32"
+  %".1140" = load float, ptr %"R54_Float32"
+  %"fmul.49" = fmul float %".1138", %".1139"
+  %"fadd.49" = fadd float %"fmul.49", %".1140"
   store float %"fadd.49", ptr %"R10_Float32"
   ; FFMA R18, R18, R23, R19
-  %".1059" = load float, ptr %"R18_Float32"
-  %".1060" = load float, ptr %"R23_Float32"
-  %".1061" = load float, ptr %"R19_Float32"
-  %"fmul.50" = fmul float %".1059", %".1060"
-  %"fadd.50" = fadd float %"fmul.50", %".1061"
+  %".1143" = load float, ptr %"R18_Float32"
+  %".1144" = load float, ptr %"R23_Float32"
+  %".1145" = load float, ptr %"R19_Float32"
+  %"fmul.50" = fmul float %".1143", %".1144"
+  %"fadd.50" = fadd float %"fmul.50", %".1145"
   store float %"fadd.50", ptr %"R18_Float32"
   ; FFMA R10, R23, R20, R10
-  %".1064" = load float, ptr %"R23_Float32"
-  %".1065" = load float, ptr %"R20_Float32"
-  %".1066" = load float, ptr %"R10_Float32"
-  %"fmul.51" = fmul float %".1064", %".1065"
-  %"fadd.51" = fadd float %"fmul.51", %".1066"
+  %".1148" = load float, ptr %"R23_Float32"
+  %".1149" = load float, ptr %"R20_Float32"
+  %".1150" = load float, ptr %"R10_Float32"
+  %"fmul.51" = fmul float %".1148", %".1149"
+  %"fadd.51" = fadd float %"fmul.51", %".1150"
   store float %"fadd.51", ptr %"R10_Float32"
   ; FFMA R18, R25, R35, R18
-  %".1069" = load float, ptr %"R25_Float32"
-  %".1070" = load float, ptr %"R35_Float32"
-  %".1071" = load float, ptr %"R18_Float32"
-  %"fmul.52" = fmul float %".1069", %".1070"
-  %"fadd.52" = fadd float %"fmul.52", %".1071"
+  %".1153" = load float, ptr %"R25_Float32"
+  %".1154" = load float, ptr %"R35_Float32"
+  %".1155" = load float, ptr %"R18_Float32"
+  %"fmul.52" = fmul float %".1153", %".1154"
+  %"fadd.52" = fadd float %"fmul.52", %".1155"
   store float %"fadd.52", ptr %"R18_Float32"
   ; FFMA R10, R35, R22, R10
-  %".1074" = load float, ptr %"R35_Float32"
-  %".1075" = load float, ptr %"R22_Float32"
-  %".1076" = load float, ptr %"R10_Float32"
-  %"fmul.53" = fmul float %".1074", %".1075"
-  %"fadd.53" = fadd float %"fmul.53", %".1076"
+  %".1158" = load float, ptr %"R35_Float32"
+  %".1159" = load float, ptr %"R22_Float32"
+  %".1160" = load float, ptr %"R10_Float32"
+  %"fmul.53" = fmul float %".1158", %".1159"
+  %"fadd.53" = fadd float %"fmul.53", %".1160"
   store float %"fadd.53", ptr %"R10_Float32"
   ; FFMA R52, R37, R39, R18
-  %".1079" = load float, ptr %"R37_Float32"
-  %".1080" = load float, ptr %"R39_Float32"
-  %".1081" = load float, ptr %"R18_Float32"
-  %"fmul.54" = fmul float %".1079", %".1080"
-  %"fadd.54" = fadd float %"fmul.54", %".1081"
+  %".1163" = load float, ptr %"R37_Float32"
+  %".1164" = load float, ptr %"R39_Float32"
+  %".1165" = load float, ptr %"R18_Float32"
+  %"fmul.54" = fmul float %".1163", %".1164"
+  %"fadd.54" = fadd float %"fmul.54", %".1165"
   store float %"fadd.54", ptr %"R52_Float32"
   ; FFMA R54, R39, R24, R10
-  %".1084" = load float, ptr %"R39_Float32"
-  %".1085" = load float, ptr %"R24_Float32"
-  %".1086" = load float, ptr %"R10_Float32"
-  %"fmul.55" = fmul float %".1084", %".1085"
-  %"fadd.55" = fadd float %"fmul.55", %".1086"
+  %".1168" = load float, ptr %"R39_Float32"
+  %".1169" = load float, ptr %"R24_Float32"
+  %".1170" = load float, ptr %"R10_Float32"
+  %"fmul.55" = fmul float %".1168", %".1169"
+  %"fadd.55" = fadd float %"fmul.55", %".1170"
   store float %"fadd.55", ptr %"R54_Float32"
   ; @P0 BRA `(.L_x_3)
-  %".1089" = load i1, ptr %"P0_Bool"
-  %".1090" = icmp ne i1 %".1089", 1
-  br i1 %".1090", label %".L_x_3", label %".L_x_2"
+  %".1173" = load i1, ptr %"P0_Bool"
+  %".1174" = icmp ne i1 %".1173", 1
+  br i1 %".1174", label %".L_x_3", label %".L_x_2"
 .L_x_2:
   ; ISETP.NE.AND P0, PT, R4, RZ, PT
-  %".1093" = load i32, ptr %"R4_Int32"
-  %".1094" = load i1, ptr %"PT_Bool"
-  %"cmp.12" = icmp ne i32 %".1093", 0
-  %".1095" = and i1 %"cmp.12", %".1094"
+  %".1177" = load i32, ptr %"R4_Int32"
+  %".1178" = load i1, ptr %"PT_Bool"
+  %"cmp.12" = icmp ne i32 %".1177", 0
+  %".1179" = and i1 %"cmp.12", %".1178"
   ; @!P0 BRA `(.L_x_1)
-  %".1097" = load i1, ptr %"P0_Bool"
-  %".1098" = icmp eq i1 %".1097", 1
-  br i1 %".1098", label %".L_x_1", label %".L_x_2_split_0x0fb0"
+  %".1181" = load i1, ptr %"P0_Bool"
+  %".1182" = icmp eq i1 %".1181", 1
+  br i1 %".1182", label %".L_x_1", label %".L_x_2_split_0x0fb0"
 .L_x_2_split_0x0fb0:
   ; IADD3 R9, R0, R11, RZ
-  %".1101" = load i32, ptr %"R0_Int32"
-  %".1102" = load i32, ptr %"R11_Int32"
-  %"add.85" = add i32 %".1101", %".1102"
+  %".1185" = load i32, ptr %"R0_Int32"
+  %".1186" = load i32, ptr %"R11_Int32"
+  %"add.85" = add i32 %".1185", %".1186"
   %"add.86" = add i32 %"add.85", 0
   store i32 %"add.86", ptr %"R9_Int32"
   ; MOV R15, 0x4
   store i32 4, ptr %"R15_Int32"
   ; LEA R14, R2.reuse, R9, 0x2
-  %".1107" = load i32, ptr %"R2_Int32"
-  %".1108" = load i32, ptr %"R9_Int32"
-  %"shl.5" = shl i32 %".1107", 2
-  %"add.87" = add i32 %"shl.5", %".1108"
+  %".1191" = load i32, ptr %"R2_Int32"
+  %".1192" = load i32, ptr %"R9_Int32"
+  %"shl.5" = shl i32 %".1191", 2
+  %"add.87" = add i32 %"shl.5", %".1192"
   store i32 %"add.87", ptr %"R14_Int32"
   ; IMAD R12, R2, 0x3, R9
-  %".1111" = load i32, ptr %"R2_Int32"
-  %".1112" = load i32, ptr %"R9_Int32"
-  %"mul.32" = mul i32 %".1111", 3
-  %"add.88" = add i32 %"mul.32", %".1112"
+  %".1195" = load i32, ptr %"R2_Int32"
+  %".1196" = load i32, ptr %"R9_Int32"
+  %"mul.32" = mul i32 %".1195", 3
+  %"add.88" = add i32 %"mul.32", %".1196"
   store i32 %"add.88", ptr %"R12_Int32"
   ; IMAD.WIDE R10, R11, R15, c[0x0][0x168]
-  %".1115" = load i32, ptr %"R11_Int32"
-  %".1116" = load i32, ptr %"R15_Int32"
-  %"mul.33" = mul i32 %".1115", %".1116"
+  %".1199" = load i32, ptr %"R11_Int32"
+  %".1200" = load i32, ptr %"R15_Int32"
+  %"mul.33" = mul i32 %".1199", %".1200"
   %"add.89" = add i32 %"mul.33", %"Arg_3"
   store i32 %"add.89", ptr %"R10_Int32"
   ; IMAD.WIDE R12, R12, R15, c[0x0][0x170]
-  %".1119" = load i32, ptr %"R12_Int32"
-  %".1120" = load i32, ptr %"R15_Int32"
-  %"mul.34" = mul i32 %".1119", %".1120"
+  %".1203" = load i32, ptr %"R12_Int32"
+  %".1204" = load i32, ptr %"R15_Int32"
+  %"mul.34" = mul i32 %".1203", %".1204"
   %"add.90" = add i32 %"mul.34", %"Arg_4"
   store i32 %"add.90", ptr %"R12_Int32"
   ; IMAD.WIDE R14, R14, R15, c[0x0][0x170]
-  %".1123" = load i32, ptr %"R14_Int32"
-  %".1124" = load i32, ptr %"R15_Int32"
-  %"mul.35" = mul i32 %".1123", %".1124"
+  %".1207" = load i32, ptr %"R14_Int32"
+  %".1208" = load i32, ptr %"R15_Int32"
+  %"mul.35" = mul i32 %".1207", %".1208"
   %"add.91" = add i32 %"mul.35", %"Arg_4"
   store i32 %"add.91", ptr %"R14_Int32"
   ; LDG.E.SYS R17, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1127" = load i32, ptr %"R10_Float32_PTR"
-  %".1128" = add i32 %".1127", 0
-  %"for_LDG.84" = inttoptr i32 %".1128" to ptr
-  %".1129" = load float, ptr %"for_LDG.84"
-  store float %".1129", ptr %"R17_Float32"
+  %".1211" = load ptr, ptr %"R10_Float32_PTR"
+  %".1212" = ptrtoint ptr %".1211" to i64
+  %".1213" = add i64 %".1212", 0
+  %"for_LDG.84" = inttoptr i64 %".1213" to ptr
+  %".1214" = load float, ptr %"for_LDG.84"
+  store float %".1214", ptr %"R17_Float32"
   ; LDG.E.SYS R9, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1132" = load i32, ptr %"R12_Float32_PTR"
-  %".1133" = add i32 %".1132", 0
-  %"for_LDG.85" = inttoptr i32 %".1133" to ptr
-  %".1134" = load float, ptr %"for_LDG.85"
-  store float %".1134", ptr %"R9_Float32"
+  %".1217" = load ptr, ptr %"R12_Float32_PTR"
+  %".1218" = ptrtoint ptr %".1217" to i64
+  %".1219" = add i64 %".1218", 0
+  %"for_LDG.85" = inttoptr i64 %".1219" to ptr
+  %".1220" = load float, ptr %"for_LDG.85"
+  store float %".1220", ptr %"R9_Float32"
   ; LDG.E.SYS R16, [R14]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1137" = load i32, ptr %"R14_Float32_PTR"
-  %".1138" = add i32 %".1137", 0
-  %"for_LDG.86" = inttoptr i32 %".1138" to ptr
-  %".1139" = load float, ptr %"for_LDG.86"
-  store float %".1139", ptr %"R16_Float32"
+  %".1223" = load ptr, ptr %"R14_Float32_PTR"
+  %".1224" = ptrtoint ptr %".1223" to i64
+  %".1225" = add i64 %".1224", 0
+  %"for_LDG.86" = inttoptr i64 %".1225" to ptr
+  %".1226" = load float, ptr %"for_LDG.86"
+  store float %".1226", ptr %"R16_Float32"
   ; ISETP.NE.AND P0, PT, R4, 0x1, PT
-  %".1142" = load i32, ptr %"R4_Int32"
-  %".1143" = load i1, ptr %"PT_Bool"
-  %"cmp.13" = icmp ne i32 %".1142", 1
-  %".1144" = and i1 %"cmp.13", %".1143"
+  %".1229" = load i32, ptr %"R4_Int32"
+  %".1230" = load i1, ptr %"PT_Bool"
+  %"cmp.13" = icmp ne i32 %".1229", 1
+  %".1231" = and i1 %"cmp.13", %".1230"
   ; FFMA R52, R9, R17, R52
-  %".1146" = load float, ptr %"R9_Float32"
-  %".1147" = load float, ptr %"R17_Float32"
-  %".1148" = load float, ptr %"R52_Float32"
-  %"fmul.56" = fmul float %".1146", %".1147"
-  %"fadd.56" = fadd float %"fmul.56", %".1148"
+  %".1233" = load float, ptr %"R9_Float32"
+  %".1234" = load float, ptr %"R17_Float32"
+  %".1235" = load float, ptr %"R52_Float32"
+  %"fmul.56" = fmul float %".1233", %".1234"
+  %"fadd.56" = fadd float %"fmul.56", %".1235"
   store float %"fadd.56", ptr %"R52_Float32"
   ; FFMA R54, R17, R16, R54
-  %".1151" = load float, ptr %"R17_Float32"
-  %".1152" = load float, ptr %"R16_Float32"
-  %".1153" = load float, ptr %"R54_Float32"
-  %"fmul.57" = fmul float %".1151", %".1152"
-  %"fadd.57" = fadd float %"fmul.57", %".1153"
+  %".1238" = load float, ptr %"R17_Float32"
+  %".1239" = load float, ptr %"R16_Float32"
+  %".1240" = load float, ptr %"R54_Float32"
+  %"fmul.57" = fmul float %".1238", %".1239"
+  %"fadd.57" = fadd float %"fmul.57", %".1240"
   store float %"fadd.57", ptr %"R54_Float32"
   ; @!P0 BRA `(.L_x_1)
-  %".1156" = load i1, ptr %"P0_Bool"
-  %".1157" = icmp eq i1 %".1156", 1
-  br i1 %".1157", label %".L_x_1", label %".L_x_2_split_0x1090"
+  %".1243" = load i1, ptr %"P0_Bool"
+  %".1244" = icmp eq i1 %".1243", 1
+  br i1 %".1244", label %".L_x_1", label %".L_x_2_split_0x1090"
 .L_x_2_split_0x1090:
   ; ISETP.NE.AND P0, PT, R4, 0x2, PT
-  %".1160" = load i32, ptr %"R4_Int32"
-  %".1161" = load i1, ptr %"PT_Bool"
-  %"cmp.14" = icmp ne i32 %".1160", 2
-  %".1162" = and i1 %"cmp.14", %".1161"
+  %".1247" = load i32, ptr %"R4_Int32"
+  %".1248" = load i1, ptr %"PT_Bool"
+  %"cmp.14" = icmp ne i32 %".1247", 2
+  %".1249" = and i1 %"cmp.14", %".1248"
   ; LDG.E.SYS R9, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1164" = load i32, ptr %"R12_Float32_PTR"
-  %".1165" = add i32 %".1164", 4
-  %"for_LDG.87" = inttoptr i32 %".1165" to ptr
-  %".1166" = load float, ptr %"for_LDG.87"
-  store float %".1166", ptr %"R9_Float32"
+  %".1251" = load ptr, ptr %"R12_Float32_PTR"
+  %".1252" = ptrtoint ptr %".1251" to i64
+  %".1253" = add i64 %".1252", 4
+  %"for_LDG.87" = inttoptr i64 %".1253" to ptr
+  %".1254" = load float, ptr %"for_LDG.87"
+  store float %".1254", ptr %"R9_Float32"
   ; LDG.E.SYS R17, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1169" = load i32, ptr %"R10_Float32_PTR"
-  %".1170" = add i32 %".1169", 4
-  %"for_LDG.88" = inttoptr i32 %".1170" to ptr
-  %".1171" = load float, ptr %"for_LDG.88"
-  store float %".1171", ptr %"R17_Float32"
+  %".1257" = load ptr, ptr %"R10_Float32_PTR"
+  %".1258" = ptrtoint ptr %".1257" to i64
+  %".1259" = add i64 %".1258", 4
+  %"for_LDG.88" = inttoptr i64 %".1259" to ptr
+  %".1260" = load float, ptr %"for_LDG.88"
+  store float %".1260", ptr %"R17_Float32"
   ; LDG.E.SYS R16, [R14+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1174" = load i32, ptr %"R14_Float32_PTR"
-  %".1175" = add i32 %".1174", 4
-  %"for_LDG.89" = inttoptr i32 %".1175" to ptr
-  %".1176" = load float, ptr %"for_LDG.89"
-  store float %".1176", ptr %"R16_Float32"
+  %".1263" = load ptr, ptr %"R14_Float32_PTR"
+  %".1264" = ptrtoint ptr %".1263" to i64
+  %".1265" = add i64 %".1264", 4
+  %"for_LDG.89" = inttoptr i64 %".1265" to ptr
+  %".1266" = load float, ptr %"for_LDG.89"
+  store float %".1266", ptr %"R16_Float32"
   ; @P0 LDG.E.SYS R19, [R12+0x8]
-  %".1179" = load i1, ptr %"P0_Bool"
-  %".1180" = icmp ne i1 %".1179", 1
-  br i1 %".1180", label %".L_x_2_split_0x1090_conditionalExpr_0x10d0", label %".L_x_2_split_0x10e0"
+  %".1269" = load i1, ptr %"P0_Bool"
+  %".1270" = icmp ne i1 %".1269", 1
+  br i1 %".1270", label %".L_x_2_split_0x1090_conditionalExpr_0x10d0", label %".L_x_2_split_0x10e0"
 .L_x_2_split_0x1090_conditionalExpr_0x10d0:
   ; LDG.E.SYS R19, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1183" = load i32, ptr %"R12_Float32_PTR"
-  %".1184" = add i32 %".1183", 8
-  %"for_LDG.90" = inttoptr i32 %".1184" to ptr
-  %".1185" = load float, ptr %"for_LDG.90"
-  store float %".1185", ptr %"R19_Float32"
+  %".1273" = load ptr, ptr %"R12_Float32_PTR"
+  %".1274" = ptrtoint ptr %".1273" to i64
+  %".1275" = add i64 %".1274", 8
+  %"for_LDG.90" = inttoptr i64 %".1275" to ptr
+  %".1276" = load float, ptr %"for_LDG.90"
+  store float %".1276", ptr %"R19_Float32"
   ; BRA `(.L_x_2_split_0x10e0)
   br label %".L_x_2_split_0x10e0"
 .L_x_2_split_0x10e0:
   ; @P0 LDG.E.SYS R21, [R10+0x8]
-  %".1190" = load i1, ptr %"P0_Bool"
-  %".1191" = icmp ne i1 %".1190", 1
-  br i1 %".1191", label %".L_x_2_split_0x10e0_conditionalExpr_0x10e0", label %".L_x_2_split_0x10f0"
+  %".1281" = load i1, ptr %"P0_Bool"
+  %".1282" = icmp ne i1 %".1281", 1
+  br i1 %".1282", label %".L_x_2_split_0x10e0_conditionalExpr_0x10e0", label %".L_x_2_split_0x10f0"
 .L_x_2_split_0x10e0_conditionalExpr_0x10e0:
   ; LDG.E.SYS R21, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1194" = load i32, ptr %"R10_Float32_PTR"
-  %".1195" = add i32 %".1194", 8
-  %"for_LDG.91" = inttoptr i32 %".1195" to ptr
-  %".1196" = load float, ptr %"for_LDG.91"
-  store float %".1196", ptr %"R21_Float32"
+  %".1285" = load ptr, ptr %"R10_Float32_PTR"
+  %".1286" = ptrtoint ptr %".1285" to i64
+  %".1287" = add i64 %".1286", 8
+  %"for_LDG.91" = inttoptr i64 %".1287" to ptr
+  %".1288" = load float, ptr %"for_LDG.91"
+  store float %".1288", ptr %"R21_Float32"
   ; BRA `(.L_x_2_split_0x10f0)
   br label %".L_x_2_split_0x10f0"
 .L_x_2_split_0x10f0:
   ; @P0 LDG.E.SYS R18, [R14+0x8]
-  %".1201" = load i1, ptr %"P0_Bool"
-  %".1202" = icmp ne i1 %".1201", 1
-  br i1 %".1202", label %".L_x_2_split_0x10f0_conditionalExpr_0x10f0", label %".L_x_2_split_0x1100"
+  %".1293" = load i1, ptr %"P0_Bool"
+  %".1294" = icmp ne i1 %".1293", 1
+  br i1 %".1294", label %".L_x_2_split_0x10f0_conditionalExpr_0x10f0", label %".L_x_2_split_0x1100"
 .L_x_2_split_0x10f0_conditionalExpr_0x10f0:
   ; LDG.E.SYS R18, [R14+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1205" = load i32, ptr %"R14_Float32_PTR"
-  %".1206" = add i32 %".1205", 8
-  %"for_LDG.92" = inttoptr i32 %".1206" to ptr
-  %".1207" = load float, ptr %"for_LDG.92"
-  store float %".1207", ptr %"R18_Float32"
+  %".1297" = load ptr, ptr %"R14_Float32_PTR"
+  %".1298" = ptrtoint ptr %".1297" to i64
+  %".1299" = add i64 %".1298", 8
+  %"for_LDG.92" = inttoptr i64 %".1299" to ptr
+  %".1300" = load float, ptr %"for_LDG.92"
+  store float %".1300", ptr %"R18_Float32"
   ; BRA `(.L_x_2_split_0x1100)
   br label %".L_x_2_split_0x1100"
 .L_x_2_split_0x1100:
   ; FFMA R52, R9, R17, R52
-  %".1212" = load float, ptr %"R9_Float32"
-  %".1213" = load float, ptr %"R17_Float32"
-  %".1214" = load float, ptr %"R52_Float32"
-  %"fmul.58" = fmul float %".1212", %".1213"
-  %"fadd.58" = fadd float %"fmul.58", %".1214"
+  %".1305" = load float, ptr %"R9_Float32"
+  %".1306" = load float, ptr %"R17_Float32"
+  %".1307" = load float, ptr %"R52_Float32"
+  %"fmul.58" = fmul float %".1305", %".1306"
+  %"fadd.58" = fadd float %"fmul.58", %".1307"
   store float %"fadd.58", ptr %"R52_Float32"
   ; FFMA R54, R17, R16, R54
-  %".1217" = load float, ptr %"R17_Float32"
-  %".1218" = load float, ptr %"R16_Float32"
-  %".1219" = load float, ptr %"R54_Float32"
-  %"fmul.59" = fmul float %".1217", %".1218"
-  %"fadd.59" = fadd float %"fmul.59", %".1219"
+  %".1310" = load float, ptr %"R17_Float32"
+  %".1311" = load float, ptr %"R16_Float32"
+  %".1312" = load float, ptr %"R54_Float32"
+  %"fmul.59" = fmul float %".1310", %".1311"
+  %"fadd.59" = fadd float %"fmul.59", %".1312"
   store float %"fadd.59", ptr %"R54_Float32"
   ; @P0 FFMA R52, R19, R21, R52
-  %".1222" = load i1, ptr %"P0_Bool"
-  %".1223" = icmp ne i1 %".1222", 1
-  br i1 %".1223", label %".L_x_2_split_0x1100_conditionalExpr_0x1120", label %".L_x_2_split_0x1130"
+  %".1315" = load i1, ptr %"P0_Bool"
+  %".1316" = icmp ne i1 %".1315", 1
+  br i1 %".1316", label %".L_x_2_split_0x1100_conditionalExpr_0x1120", label %".L_x_2_split_0x1130"
 .L_x_2_split_0x1100_conditionalExpr_0x1120:
   ; FFMA R52, R19, R21, R52
-  %".1226" = load float, ptr %"R19_Float32"
-  %".1227" = load float, ptr %"R21_Float32"
-  %".1228" = load float, ptr %"R52_Float32"
-  %"fmul.60" = fmul float %".1226", %".1227"
-  %"fadd.60" = fadd float %"fmul.60", %".1228"
+  %".1319" = load float, ptr %"R19_Float32"
+  %".1320" = load float, ptr %"R21_Float32"
+  %".1321" = load float, ptr %"R52_Float32"
+  %"fmul.60" = fmul float %".1319", %".1320"
+  %"fadd.60" = fadd float %"fmul.60", %".1321"
   store float %"fadd.60", ptr %"R52_Float32"
   ; BRA `(.L_x_2_split_0x1130)
   br label %".L_x_2_split_0x1130"
 .L_x_2_split_0x1130:
   ; @P0 FFMA R54, R21, R18, R54
-  %".1233" = load i1, ptr %"P0_Bool"
-  %".1234" = icmp ne i1 %".1233", 1
-  br i1 %".1234", label %".L_x_2_split_0x1130_conditionalExpr_0x1130", label %".L_x_1"
+  %".1326" = load i1, ptr %"P0_Bool"
+  %".1327" = icmp ne i1 %".1326", 1
+  br i1 %".1327", label %".L_x_2_split_0x1130_conditionalExpr_0x1130", label %".L_x_1"
 .L_x_2_split_0x1130_conditionalExpr_0x1130:
   ; FFMA R54, R21, R18, R54
-  %".1237" = load float, ptr %"R21_Float32"
-  %".1238" = load float, ptr %"R18_Float32"
-  %".1239" = load float, ptr %"R54_Float32"
-  %"fmul.61" = fmul float %".1237", %".1238"
-  %"fadd.61" = fadd float %"fmul.61", %".1239"
+  %".1330" = load float, ptr %"R21_Float32"
+  %".1331" = load float, ptr %"R18_Float32"
+  %".1332" = load float, ptr %"R54_Float32"
+  %"fmul.61" = fmul float %".1330", %".1331"
+  %"fadd.61" = fadd float %"fmul.61", %".1332"
   store float %"fadd.61", ptr %"R54_Float32"
   ; BRA `(.L_x_1)
   br label %".L_x_1"
 .L_x_1:
   ; LDG.E.SYS R9, [R26]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R26_Float32_PTR", ptr %"R26_Int32", i32 4, i1 0)
-  %".1244" = load i32, ptr %"R26_Float32_PTR"
-  %".1245" = add i32 %".1244", 0
-  %"for_LDG.93" = inttoptr i32 %".1245" to ptr
-  %".1246" = load float, ptr %"for_LDG.93"
-  store float %".1246", ptr %"R9_Float32"
+  %".1337" = load ptr, ptr %"R26_Float32_PTR"
+  %".1338" = ptrtoint ptr %".1337" to i64
+  %".1339" = add i64 %".1338", 0
+  %"for_LDG.93" = inttoptr i64 %".1339" to ptr
+  %".1340" = load float, ptr %"for_LDG.93"
+  store float %".1340", ptr %"R9_Float32"
   ; MOV R10, 0x3bbb989d
   store float 0x41cdddcc40000000, ptr %"R10_Float32"
   ; BMOV.32.CLEAR RZ, B0
@@ -2067,34 +2161,34 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float 0x41d0df0000000000, ptr %"R11_Float32"
   ; BSSY B0, `(.L_x_7)
   ; FADD R9, R9, R52
-  %".1255" = load float, ptr %"R9_Float32"
-  %".1256" = load float, ptr %"R52_Float32"
-  %"fadd.62" = fadd float %".1255", %".1256"
+  %".1349" = load float, ptr %"R9_Float32"
+  %".1350" = load float, ptr %"R52_Float32"
+  %"fadd.62" = fadd float %".1349", %".1350"
   store float %"fadd.62", ptr %"R9_Float32"
   ; FFMA.SAT R10, -R9, R10, 0.5
-  %".1259" = load float, ptr %"R9_Float32"
-  %".1260" = sub float              0x0, %".1259"
-  %".1261" = load float, ptr %"R10_Float32"
-  %"fmul.62" = fmul float %".1260", %".1261"
+  %".1353" = load float, ptr %"R9_Float32"
+  %".1354" = sub float              0x0, %".1353"
+  %".1355" = load float, ptr %"R10_Float32"
+  %"fmul.62" = fmul float %".1354", %".1355"
   %"fadd.63" = fadd float %"fmul.62", 0x3fe0000000000000
   store float %"fadd.63", ptr %"R10_Float32"
   ; FFMA.RM R10, R10, R11, 12582913
-  %".1264" = load float, ptr %"R10_Float32"
-  %".1265" = load float, ptr %"R11_Float32"
-  %"fmul.63" = fmul float %".1264", %".1265"
+  %".1358" = load float, ptr %"R10_Float32"
+  %".1359" = load float, ptr %"R11_Float32"
+  %"fmul.63" = fmul float %".1358", %".1359"
   %"fadd.64" = fadd float %"fmul.63", 0x4168000020000000
   store float %"fadd.64", ptr %"R10_Float32"
   ; FADD R12, R10.reuse, -12583039
-  %".1268" = load float, ptr %"R10_Float32"
-  %"fadd.65" = fadd float %".1268", 0xc168000fe0000000
+  %".1362" = load float, ptr %"R10_Float32"
+  %"fadd.65" = fadd float %".1362", 0xc168000fe0000000
   store float %"fadd.65", ptr %"R12_Float32"
   ; SHF.L.U32 R10, R10, 0x17, RZ
-  %".1271" = icmp ult i32 23, 32
-  %"SHF_min" = select  i1 %".1271", i32 23, i32 32
+  %".1365" = icmp ult i32 23, 32
+  %"SHF_min" = select  i1 %".1365", i32 23, i32 32
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Int32", ptr %"R10_Float32", i32 4, i1 0)
-  %".1272" = load i32, ptr %"R10_Int32"
+  %".1366" = load i32, ptr %"R10_Int32"
   %"zext" = zext i32 0 to i64
-  %"zext.1" = zext i32 %".1272" to i64
+  %"zext.1" = zext i32 %".1366" to i64
   %"zext.2" = zext i32 23 to i64
   %"shl.6" = shl i64 %"zext", 32
   %"or" = or i64 %"shl.6", %"zext.1"
@@ -2103,50 +2197,50 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"trunc32" = trunc i64 %"and" to i32
   store i32 %"trunc32", ptr %"R10_Int32"
   ; FFMA R12, -R9, 1.4426950216293334961, -R12
-  %".1275" = load float, ptr %"R9_Float32"
-  %".1276" = sub float              0x0, %".1275"
-  %".1277" = load float, ptr %"R12_Float32"
-  %".1278" = sub float              0x0, %".1277"
-  %"fmul.64" = fmul float %".1276", 0x3ff7154760000000
-  %"fadd.66" = fadd float %"fmul.64", %".1278"
+  %".1369" = load float, ptr %"R9_Float32"
+  %".1370" = sub float              0x0, %".1369"
+  %".1371" = load float, ptr %"R12_Float32"
+  %".1372" = sub float              0x0, %".1371"
+  %"fmul.64" = fmul float %".1370", 0x3ff7154760000000
+  %"fadd.66" = fadd float %"fmul.64", %".1372"
   store float %"fadd.66", ptr %"R12_Float32"
   ; FFMA R12, -R9, 1.925963033500011079e-08, R12
-  %".1281" = load float, ptr %"R9_Float32"
-  %".1282" = sub float              0x0, %".1281"
-  %".1283" = load float, ptr %"R12_Float32"
-  %"fmul.65" = fmul float %".1282", 0x3e54ae0c00000000
-  %"fadd.67" = fadd float %"fmul.65", %".1283"
+  %".1375" = load float, ptr %"R9_Float32"
+  %".1376" = sub float              0x0, %".1375"
+  %".1377" = load float, ptr %"R12_Float32"
+  %"fmul.65" = fmul float %".1376", 0x3e54ae0c00000000
+  %"fadd.67" = fadd float %"fmul.65", %".1377"
   store float %"fadd.67", ptr %"R12_Float32"
   ; MUFU.EX2 R9, R12
-  %".1286" = load float, ptr %"R12_Float32"
-  %"llvm_exp2_f32_result" = call float @"llvm.exp2.f32"(float %".1286")
+  %".1380" = load float, ptr %"R12_Float32"
+  %"llvm_exp2_f32_result" = call float @"llvm.exp2.f32"(float %".1380")
   store float %"llvm_exp2_f32_result", ptr %"R9_Float32"
   ; FFMA R24, R10, R9, 1
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32", ptr %"R10_Int32", i32 4, i1 0)
-  %".1289" = load float, ptr %"R10_Float32"
-  %".1290" = load float, ptr %"R9_Float32"
-  %"fmul.66" = fmul float %".1289", %".1290"
+  %".1383" = load float, ptr %"R10_Float32"
+  %".1384" = load float, ptr %"R9_Float32"
+  %"fmul.66" = fmul float %".1383", %".1384"
   %"fadd.68" = fadd float %"fmul.66", 0x3ff0000000000000
   store float %"fadd.68", ptr %"R24_Float32"
   ; IADD3 R9, R24, 0x1800000, RZ
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Int32", ptr %"R24_Float32", i32 4, i1 0)
-  %".1293" = load i32, ptr %"R24_Int32"
-  %"add.92" = add i32 %".1293", 25165824
+  %".1387" = load i32, ptr %"R24_Int32"
+  %"add.92" = add i32 %".1387", 25165824
   %"add.93" = add i32 %"add.92", 0
   store i32 %"add.93", ptr %"R9_Int32"
   ; LOP3.LUT R9, R9, 0x7f800000, RZ, 0xc0, !PT
-  %".1296" = load i32, ptr %"R9_Int32"
-  %".1297" = and i32 %".1296", 2139095040
-  store i32 %".1297", ptr %"R9_Int32"
+  %".1390" = load i32, ptr %"R9_Int32"
+  %".1391" = and i32 %".1390", 2139095040
+  store i32 %".1391", ptr %"R9_Int32"
   ; ISETP.GT.U32.AND P0, PT, R9, 0x1ffffff, PT
-  %".1300" = load i32, ptr %"R9_Int32"
-  %".1301" = load i1, ptr %"PT_Bool"
-  %"cmp.15" = icmp sgt i32 %".1300", 33554431
-  %".1302" = and i1 %"cmp.15", %".1301"
+  %".1394" = load i32, ptr %"R9_Int32"
+  %".1395" = load i1, ptr %"PT_Bool"
+  %"cmp.15" = icmp sgt i32 %".1394", 33554431
+  %".1396" = and i1 %"cmp.15", %".1395"
   ; @P0 BRA `(.L_x_8)
-  %".1304" = load i1, ptr %"P0_Bool"
-  %".1305" = icmp ne i1 %".1304", 1
-  br i1 %".1305", label %".L_x_8", label %".L_x_1_split_0x1260"
+  %".1398" = load i1, ptr %"P0_Bool"
+  %".1399" = icmp ne i1 %".1398", 1
+  br i1 %".1399", label %".L_x_8", label %".L_x_1_split_0x1260"
 .L_x_1_split_0x1260:
   ; MOV R10, 0x1280
   store i32 4736, ptr %"R10_Int32"
@@ -2155,77 +2249,78 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"call_rel" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; MOV R9, R22
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Int32", ptr %"R22_Float32", i32 4, i1 0)
-  %".1311" = load i32, ptr %"R22_Int32"
-  store i32 %".1311", ptr %"R9_Int32"
+  %".1405" = load i32, ptr %"R22_Int32"
+  store i32 %".1405", ptr %"R9_Int32"
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R9_Float32", ptr %"R9_Int32", i32 4, i1 0)
   ; BRA `(.L_x_9)
   br label %".L_x_9"
 .L_x_8:
   ; MUFU.RCP R9, R24
-  %".1316" = load float, ptr %"R24_Float32"
-  %".1317" = fdiv float 0x3ff0000000000000, %".1316"
-  store float %".1317", ptr %"R9_Float32"
+  %".1410" = load float, ptr %"R24_Float32"
+  %".1411" = fdiv float 0x3ff0000000000000, %".1410"
+  store float %".1411", ptr %"R9_Float32"
   ; FFMA R10, R24, R9, -1
-  %".1320" = load float, ptr %"R24_Float32"
-  %".1321" = load float, ptr %"R9_Float32"
-  %"fmul.67" = fmul float %".1320", %".1321"
+  %".1414" = load float, ptr %"R24_Float32"
+  %".1415" = load float, ptr %"R9_Float32"
+  %"fmul.67" = fmul float %".1414", %".1415"
   %"fadd.69" = fadd float %"fmul.67", 0xbff0000000000000
   store float %"fadd.69", ptr %"R10_Float32"
   ; FADD.FTZ R10, -R10, -RZ
-  %".1324" = load float, ptr %"R10_Float32"
-  %".1325" = sub float              0x0, %".1324"
-  %"fadd.70" = fadd float %".1325",              0x0
+  %".1418" = load float, ptr %"R10_Float32"
+  %".1419" = sub float              0x0, %".1418"
+  %"fadd.70" = fadd float %".1419",              0x0
   store float %"fadd.70", ptr %"R10_Float32"
   ; FFMA R9, R9, R10, R9
-  %".1328" = load float, ptr %"R9_Float32"
-  %".1329" = load float, ptr %"R10_Float32"
-  %".1330" = load float, ptr %"R9_Float32"
-  %"fmul.68" = fmul float %".1328", %".1329"
-  %"fadd.71" = fadd float %"fmul.68", %".1330"
+  %".1422" = load float, ptr %"R9_Float32"
+  %".1423" = load float, ptr %"R10_Float32"
+  %".1424" = load float, ptr %"R9_Float32"
+  %"fmul.68" = fmul float %".1422", %".1423"
+  %"fadd.71" = fadd float %"fmul.68", %".1424"
   store float %"fadd.71", ptr %"R9_Float32"
 .L_x_9:
   ; BSYNC B0
 .L_x_7:
   ; LDG.E.SYS R11, [R32]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R32_Float32_PTR", ptr %"R32_Int32", i32 4, i1 0)
-  %".1334" = load i32, ptr %"R32_Float32_PTR"
-  %".1335" = add i32 %".1334", 0
-  %"for_LDG.94" = inttoptr i32 %".1335" to ptr
-  %".1336" = load float, ptr %"for_LDG.94"
-  store float %".1336", ptr %"R11_Float32"
+  %".1428" = load ptr, ptr %"R32_Float32_PTR"
+  %".1429" = ptrtoint ptr %".1428" to i64
+  %".1430" = add i64 %".1429", 0
+  %"for_LDG.94" = inttoptr i64 %".1430" to ptr
+  %".1431" = load float, ptr %"for_LDG.94"
+  store float %".1431", ptr %"R11_Float32"
   ; MOV R10, 0x3bbb989d
   store float 0x41cdddcc40000000, ptr %"R10_Float32"
   ; MOV R13, 0x437c0000
   store float 0x41d0df0000000000, ptr %"R13_Float32"
   ; FADD R11, R11, R54
-  %".1343" = load float, ptr %"R11_Float32"
-  %".1344" = load float, ptr %"R54_Float32"
-  %"fadd.72" = fadd float %".1343", %".1344"
+  %".1438" = load float, ptr %"R11_Float32"
+  %".1439" = load float, ptr %"R54_Float32"
+  %"fadd.72" = fadd float %".1438", %".1439"
   store float %"fadd.72", ptr %"R11_Float32"
   ; FFMA.SAT R10, -R11, R10, 0.5
-  %".1347" = load float, ptr %"R11_Float32"
-  %".1348" = sub float              0x0, %".1347"
-  %".1349" = load float, ptr %"R10_Float32"
-  %"fmul.69" = fmul float %".1348", %".1349"
+  %".1442" = load float, ptr %"R11_Float32"
+  %".1443" = sub float              0x0, %".1442"
+  %".1444" = load float, ptr %"R10_Float32"
+  %"fmul.69" = fmul float %".1443", %".1444"
   %"fadd.73" = fadd float %"fmul.69", 0x3fe0000000000000
   store float %"fadd.73", ptr %"R10_Float32"
   ; FFMA.RM R10, R10, R13, 12582913
-  %".1352" = load float, ptr %"R10_Float32"
-  %".1353" = load float, ptr %"R13_Float32"
-  %"fmul.70" = fmul float %".1352", %".1353"
+  %".1447" = load float, ptr %"R10_Float32"
+  %".1448" = load float, ptr %"R13_Float32"
+  %"fmul.70" = fmul float %".1447", %".1448"
   %"fadd.74" = fadd float %"fmul.70", 0x4168000020000000
   store float %"fadd.74", ptr %"R10_Float32"
   ; FADD R12, R10.reuse, -12583039
-  %".1356" = load float, ptr %"R10_Float32"
-  %"fadd.75" = fadd float %".1356", 0xc168000fe0000000
+  %".1451" = load float, ptr %"R10_Float32"
+  %"fadd.75" = fadd float %".1451", 0xc168000fe0000000
   store float %"fadd.75", ptr %"R12_Float32"
   ; SHF.L.U32 R20, R10, 0x17, RZ
-  %".1359" = icmp ult i32 23, 32
-  %"SHF_min.1" = select  i1 %".1359", i32 23, i32 32
+  %".1454" = icmp ult i32 23, 32
+  %"SHF_min.1" = select  i1 %".1454", i32 23, i32 32
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Int32", ptr %"R10_Float32", i32 4, i1 0)
-  %".1360" = load i32, ptr %"R10_Int32"
+  %".1455" = load i32, ptr %"R10_Int32"
   %"zext.3" = zext i32 0 to i64
-  %"zext.4" = zext i32 %".1360" to i64
+  %"zext.4" = zext i32 %".1455" to i64
   %"zext.5" = zext i32 23 to i64
   %"shl.8" = shl i64 %"zext.3", 32
   %"or.1" = or i64 %"shl.8", %"zext.4"
@@ -2234,1409 +2329,1474 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"trunc32.1" = trunc i64 %"and.1" to i32
   store i32 %"trunc32.1", ptr %"R20_Int32"
   ; FFMA R12, -R11, 1.4426950216293334961, -R12
-  %".1363" = load float, ptr %"R11_Float32"
-  %".1364" = sub float              0x0, %".1363"
-  %".1365" = load float, ptr %"R12_Float32"
-  %".1366" = sub float              0x0, %".1365"
-  %"fmul.71" = fmul float %".1364", 0x3ff7154760000000
-  %"fadd.76" = fadd float %"fmul.71", %".1366"
+  %".1458" = load float, ptr %"R11_Float32"
+  %".1459" = sub float              0x0, %".1458"
+  %".1460" = load float, ptr %"R12_Float32"
+  %".1461" = sub float              0x0, %".1460"
+  %"fmul.71" = fmul float %".1459", 0x3ff7154760000000
+  %"fadd.76" = fadd float %"fmul.71", %".1461"
   store float %"fadd.76", ptr %"R12_Float32"
   ; FFMA R12, -R11, 1.925963033500011079e-08, R12
-  %".1369" = load float, ptr %"R11_Float32"
-  %".1370" = sub float              0x0, %".1369"
-  %".1371" = load float, ptr %"R12_Float32"
-  %"fmul.72" = fmul float %".1370", 0x3e54ae0c00000000
-  %"fadd.77" = fadd float %"fmul.72", %".1371"
+  %".1464" = load float, ptr %"R11_Float32"
+  %".1465" = sub float              0x0, %".1464"
+  %".1466" = load float, ptr %"R12_Float32"
+  %"fmul.72" = fmul float %".1465", 0x3e54ae0c00000000
+  %"fadd.77" = fadd float %"fmul.72", %".1466"
   store float %"fadd.77", ptr %"R12_Float32"
   ; MUFU.EX2 R11, R12
-  %".1374" = load float, ptr %"R12_Float32"
-  %"llvm_exp2_f32_result.1" = call float @"llvm.exp2.f32"(float %".1374")
+  %".1469" = load float, ptr %"R12_Float32"
+  %"llvm_exp2_f32_result.1" = call float @"llvm.exp2.f32"(float %".1469")
   store float %"llvm_exp2_f32_result.1", ptr %"R11_Float32"
   ; FFMA R20, R20, R11, 1
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Float32", ptr %"R20_Int32", i32 4, i1 0)
-  %".1377" = load float, ptr %"R20_Float32"
-  %".1378" = load float, ptr %"R11_Float32"
-  %"fmul.73" = fmul float %".1377", %".1378"
+  %".1472" = load float, ptr %"R20_Float32"
+  %".1473" = load float, ptr %"R11_Float32"
+  %"fmul.73" = fmul float %".1472", %".1473"
   %"fadd.78" = fadd float %"fmul.73", 0x3ff0000000000000
   store float %"fadd.78", ptr %"R20_Float32"
   ; @!P4 BRA `(.L_x_10)
-  %".1381" = load i1, ptr %"P4_Bool"
-  %".1382" = icmp eq i1 %".1381", 1
-  br i1 %".1382", label %".L_x_10", label %".L_x_7_split_0x13c0"
+  %".1476" = load i1, ptr %"P4_Bool"
+  %".1477" = icmp eq i1 %".1476", 1
+  br i1 %".1477", label %".L_x_10", label %".L_x_7_split_0x13c0"
 .L_x_7_split_0x13c0:
   ; ISETP.GE.U32.AND P0, PT, R5, 0x3, PT
-  %".1385" = load i32, ptr %"R5_Int32"
-  %".1386" = load i1, ptr %"PT_Bool"
-  %"cmp.16" = icmp sge i32 %".1385", 3
-  %".1387" = and i1 %"cmp.16", %".1386"
+  %".1480" = load i32, ptr %"R5_Int32"
+  %".1481" = load i1, ptr %"PT_Bool"
+  %"cmp.16" = icmp sge i32 %".1480", 3
+  %".1482" = and i1 %"cmp.16", %".1481"
   ; MOV R8, RZ
-  %".1389" = load float, ptr %"RZ_Float32"
-  store float %".1389", ptr %"R8_Float32"
+  %".1484" = load float, ptr %"RZ_Float32"
+  store float %".1484", ptr %"R8_Float32"
   ; MOV R22, RZ
-  %".1392" = load i32, ptr %"RZ_Int32"
-  store i32 %".1392", ptr %"R22_Int32"
+  %".1487" = load i32, ptr %"RZ_Int32"
+  store i32 %".1487", ptr %"R22_Int32"
   ; @!P0 BRA `(.L_x_11)
-  %".1395" = load i1, ptr %"P0_Bool"
-  %".1396" = icmp eq i1 %".1395", 1
-  br i1 %".1396", label %".L_x_11", label %".L_x_7_split_0x1400"
+  %".1490" = load i1, ptr %"P0_Bool"
+  %".1491" = icmp eq i1 %".1490", 1
+  br i1 %".1491", label %".L_x_11", label %".L_x_7_split_0x1400"
 .L_x_7_split_0x1400:
   ; ISETP.GT.AND P0, PT, R7, RZ, PT
-  %".1399" = load i32, ptr %"R7_Int32"
-  %".1400" = load i1, ptr %"PT_Bool"
-  %"cmp.17" = icmp sgt i32 %".1399", 0
-  %".1401" = and i1 %"cmp.17", %".1400"
+  %".1494" = load i32, ptr %"R7_Int32"
+  %".1495" = load i1, ptr %"PT_Bool"
+  %"cmp.17" = icmp sgt i32 %".1494", 0
+  %".1496" = and i1 %"cmp.17", %".1495"
   ; MOV R8, RZ
-  %".1403" = load float, ptr %"RZ_Float32"
-  store float %".1403", ptr %"R8_Float32"
+  %".1498" = load float, ptr %"RZ_Float32"
+  store float %".1498", ptr %"R8_Float32"
   ; MOV R22, RZ
-  %".1406" = load i32, ptr %"RZ_Int32"
-  store i32 %".1406", ptr %"R22_Int32"
+  %".1501" = load i32, ptr %"RZ_Int32"
+  store i32 %".1501", ptr %"R22_Int32"
   ; MOV R23, R7
-  %".1409" = load i32, ptr %"R7_Int32"
-  store i32 %".1409", ptr %"R23_Int32"
+  %".1504" = load i32, ptr %"R7_Int32"
+  store i32 %".1504", ptr %"R23_Int32"
   ; @!P0 BRA `(.L_x_12)
-  %".1412" = load i1, ptr %"P0_Bool"
-  %".1413" = icmp eq i1 %".1412", 1
-  br i1 %".1413", label %".L_x_12", label %".L_x_7_split_0x1450"
+  %".1507" = load i1, ptr %"P0_Bool"
+  %".1508" = icmp eq i1 %".1507", 1
+  br i1 %".1508", label %".L_x_12", label %".L_x_7_split_0x1450"
 .L_x_7_split_0x1450:
   ; ISETP.GT.AND P1, PT, R23, 0xc, PT
-  %".1416" = load i32, ptr %"R23_Int32"
-  %".1417" = load i1, ptr %"PT_Bool"
-  %"cmp.18" = icmp sgt i32 %".1416", 12
-  %".1418" = and i1 %"cmp.18", %".1417"
+  %".1511" = load i32, ptr %"R23_Int32"
+  %".1512" = load i1, ptr %"PT_Bool"
+  %"cmp.18" = icmp sgt i32 %".1511", 12
+  %".1513" = and i1 %"cmp.18", %".1512"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
-  %".1420" = and i1 1, 1
-  %".1421" = or i1 %".1420", 1
+  %".1515" = and i1 1, 1
+  %".1516" = or i1 %".1515", 1
   ; @!P1 BRA `(.L_x_13)
-  %".1423" = load i1, ptr %"P1_Bool"
-  %".1424" = icmp eq i1 %".1423", 1
-  br i1 %".1424", label %".L_x_13", label %".L_x_7_split_0x1480"
+  %".1518" = load i1, ptr %"P1_Bool"
+  %".1519" = icmp eq i1 %".1518", 1
+  br i1 %".1519", label %".L_x_13", label %".L_x_7_split_0x1480"
 .L_x_7_split_0x1480:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".1427" = xor i1 1, 1
-  %".1428" = and i1 %".1427", 1
-  %".1429" = and i1 %".1428", 1
+  %".1522" = xor i1 1, 1
+  %".1523" = and i1 %".1522", 1
+  %".1524" = and i1 %".1523", 1
 .L_x_14:
   ; MOV R49, 0x4
   store i32 4, ptr %"R49_Int32"
   ; IADD3 R16, R3, R22, RZ
-  %".1433" = load i32, ptr %"R3_Int32"
-  %".1434" = load i32, ptr %"R22_Int32"
-  %"add.94" = add i32 %".1433", %".1434"
+  %".1528" = load i32, ptr %"R3_Int32"
+  %".1529" = load i32, ptr %"R22_Int32"
+  %"add.94" = add i32 %".1528", %".1529"
   %"add.95" = add i32 %"add.94", 0
   store i32 %"add.95", ptr %"R16_Int32"
   ; IMAD.WIDE R12, R22, R49, c[0x0][0x168]
-  %".1437" = load i32, ptr %"R22_Int32"
-  %".1438" = load i32, ptr %"R49_Int32"
-  %"mul.36" = mul i32 %".1437", %".1438"
+  %".1532" = load i32, ptr %"R22_Int32"
+  %".1533" = load i32, ptr %"R49_Int32"
+  %"mul.36" = mul i32 %".1532", %".1533"
   %"add.96" = add i32 %"mul.36", %"Arg_3"
   store i32 %"add.96", ptr %"R12_Int32"
   ; IMAD.WIDE R16, R16, R49, c[0x0][0x170]
-  %".1441" = load i32, ptr %"R16_Int32"
-  %".1442" = load i32, ptr %"R49_Int32"
-  %"mul.37" = mul i32 %".1441", %".1442"
+  %".1536" = load i32, ptr %"R16_Int32"
+  %".1537" = load i32, ptr %"R49_Int32"
+  %"mul.37" = mul i32 %".1536", %".1537"
   %"add.97" = add i32 %"mul.37", %"Arg_4"
   store i32 %"add.97", ptr %"R16_Int32"
   ; IADD3 R18, R22, 0x4, RZ
-  %".1445" = load i32, ptr %"R22_Int32"
-  %"add.98" = add i32 %".1445", 4
+  %".1540" = load i32, ptr %"R22_Int32"
+  %"add.98" = add i32 %".1540", 4
   %"add.99" = add i32 %"add.98", 0
   store i32 %"add.99", ptr %"R18_Int32"
   ; LDG.E.SYS R24, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1448" = load i32, ptr %"R12_Float32_PTR"
-  %".1449" = add i32 %".1448", 0
-  %"for_LDG.95" = inttoptr i32 %".1449" to ptr
-  %".1450" = load float, ptr %"for_LDG.95"
-  store float %".1450", ptr %"R24_Float32"
+  %".1543" = load ptr, ptr %"R12_Float32_PTR"
+  %".1544" = ptrtoint ptr %".1543" to i64
+  %".1545" = add i64 %".1544", 0
+  %"for_LDG.95" = inttoptr i64 %".1545" to ptr
+  %".1546" = load float, ptr %"for_LDG.95"
+  store float %".1546", ptr %"R24_Float32"
   ; IADD3 R14, R3, R18, RZ
-  %".1453" = load i32, ptr %"R3_Int32"
-  %".1454" = load i32, ptr %"R18_Int32"
-  %"add.100" = add i32 %".1453", %".1454"
+  %".1549" = load i32, ptr %"R3_Int32"
+  %".1550" = load i32, ptr %"R18_Int32"
+  %"add.100" = add i32 %".1549", %".1550"
   %"add.101" = add i32 %"add.100", 0
   store i32 %"add.101", ptr %"R14_Int32"
   ; LDG.E.SYS R21, [R16]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1457" = load i32, ptr %"R16_Float32_PTR"
-  %".1458" = add i32 %".1457", 0
-  %"for_LDG.96" = inttoptr i32 %".1458" to ptr
-  %".1459" = load float, ptr %"for_LDG.96"
-  store float %".1459", ptr %"R21_Float32"
+  %".1553" = load ptr, ptr %"R16_Float32_PTR"
+  %".1554" = ptrtoint ptr %".1553" to i64
+  %".1555" = add i64 %".1554", 0
+  %"for_LDG.96" = inttoptr i64 %".1555" to ptr
+  %".1556" = load float, ptr %"for_LDG.96"
+  store float %".1556", ptr %"R21_Float32"
   ; LDG.E.SYS R36, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1462" = load i32, ptr %"R12_Float32_PTR"
-  %".1463" = add i32 %".1462", 4
-  %"for_LDG.97" = inttoptr i32 %".1463" to ptr
-  %".1464" = load float, ptr %"for_LDG.97"
-  store float %".1464", ptr %"R36_Float32"
+  %".1559" = load ptr, ptr %"R12_Float32_PTR"
+  %".1560" = ptrtoint ptr %".1559" to i64
+  %".1561" = add i64 %".1560", 4
+  %"for_LDG.97" = inttoptr i64 %".1561" to ptr
+  %".1562" = load float, ptr %"for_LDG.97"
+  store float %".1562", ptr %"R36_Float32"
   ; IMAD.WIDE R18, R18, R49, c[0x0][0x168]
-  %".1467" = load i32, ptr %"R18_Int32"
-  %".1468" = load i32, ptr %"R49_Int32"
-  %"mul.38" = mul i32 %".1467", %".1468"
+  %".1565" = load i32, ptr %"R18_Int32"
+  %".1566" = load i32, ptr %"R49_Int32"
+  %"mul.38" = mul i32 %".1565", %".1566"
   %"add.102" = add i32 %"mul.38", %"Arg_3"
   store i32 %"add.102", ptr %"R18_Int32"
   ; LDG.E.SYS R25, [R16+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1471" = load i32, ptr %"R16_Float32_PTR"
-  %".1472" = add i32 %".1471", 4
-  %"for_LDG.98" = inttoptr i32 %".1472" to ptr
-  %".1473" = load float, ptr %"for_LDG.98"
-  store float %".1473", ptr %"R25_Float32"
+  %".1569" = load ptr, ptr %"R16_Float32_PTR"
+  %".1570" = ptrtoint ptr %".1569" to i64
+  %".1571" = add i64 %".1570", 4
+  %"for_LDG.98" = inttoptr i64 %".1571" to ptr
+  %".1572" = load float, ptr %"for_LDG.98"
+  store float %".1572", ptr %"R25_Float32"
   ; LDG.E.SYS R46, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1476" = load i32, ptr %"R12_Float32_PTR"
-  %".1477" = add i32 %".1476", 8
-  %"for_LDG.99" = inttoptr i32 %".1477" to ptr
-  %".1478" = load float, ptr %"for_LDG.99"
-  store float %".1478", ptr %"R46_Float32"
+  %".1575" = load ptr, ptr %"R12_Float32_PTR"
+  %".1576" = ptrtoint ptr %".1575" to i64
+  %".1577" = add i64 %".1576", 8
+  %"for_LDG.99" = inttoptr i64 %".1577" to ptr
+  %".1578" = load float, ptr %"for_LDG.99"
+  store float %".1578", ptr %"R46_Float32"
   ; IMAD.WIDE R14, R14, R49, c[0x0][0x170]
-  %".1481" = load i32, ptr %"R14_Int32"
-  %".1482" = load i32, ptr %"R49_Int32"
-  %"mul.39" = mul i32 %".1481", %".1482"
+  %".1581" = load i32, ptr %"R14_Int32"
+  %".1582" = load i32, ptr %"R49_Int32"
+  %"mul.39" = mul i32 %".1581", %".1582"
   %"add.103" = add i32 %"mul.39", %"Arg_4"
   store i32 %"add.103", ptr %"R14_Int32"
   ; LDG.E.SYS R34, [R16+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1485" = load i32, ptr %"R16_Float32_PTR"
-  %".1486" = add i32 %".1485", 8
-  %"for_LDG.100" = inttoptr i32 %".1486" to ptr
-  %".1487" = load float, ptr %"for_LDG.100"
-  store float %".1487", ptr %"R34_Float32"
+  %".1585" = load ptr, ptr %"R16_Float32_PTR"
+  %".1586" = ptrtoint ptr %".1585" to i64
+  %".1587" = add i64 %".1586", 8
+  %"for_LDG.100" = inttoptr i64 %".1587" to ptr
+  %".1588" = load float, ptr %"for_LDG.100"
+  store float %".1588", ptr %"R34_Float32"
   ; LDG.E.SYS R44, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1490" = load i32, ptr %"R12_Float32_PTR"
-  %".1491" = add i32 %".1490", 12
-  %"for_LDG.101" = inttoptr i32 %".1491" to ptr
-  %".1492" = load float, ptr %"for_LDG.101"
-  store float %".1492", ptr %"R44_Float32"
+  %".1591" = load ptr, ptr %"R12_Float32_PTR"
+  %".1592" = ptrtoint ptr %".1591" to i64
+  %".1593" = add i64 %".1592", 12
+  %"for_LDG.101" = inttoptr i64 %".1593" to ptr
+  %".1594" = load float, ptr %"for_LDG.101"
+  store float %".1594", ptr %"R44_Float32"
   ; IADD3 R10, R22, 0x8, RZ
-  %".1495" = load i32, ptr %"R22_Int32"
-  %"add.104" = add i32 %".1495", 8
+  %".1597" = load i32, ptr %"R22_Int32"
+  %"add.104" = add i32 %".1597", 8
   %"add.105" = add i32 %"add.104", 0
   store i32 %"add.105", ptr %"R10_Int32"
   ; LDG.E.SYS R41, [R16+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1498" = load i32, ptr %"R16_Float32_PTR"
-  %".1499" = add i32 %".1498", 12
-  %"for_LDG.102" = inttoptr i32 %".1499" to ptr
-  %".1500" = load float, ptr %"for_LDG.102"
-  store float %".1500", ptr %"R41_Float32"
+  %".1600" = load ptr, ptr %"R16_Float32_PTR"
+  %".1601" = ptrtoint ptr %".1600" to i64
+  %".1602" = add i64 %".1601", 12
+  %"for_LDG.102" = inttoptr i64 %".1602" to ptr
+  %".1603" = load float, ptr %"for_LDG.102"
+  store float %".1603", ptr %"R41_Float32"
   ; LDG.E.SYS R42, [R18]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".1503" = load i32, ptr %"R18_Float32_PTR"
-  %".1504" = add i32 %".1503", 0
-  %"for_LDG.103" = inttoptr i32 %".1504" to ptr
-  %".1505" = load float, ptr %"for_LDG.103"
-  store float %".1505", ptr %"R42_Float32"
+  %".1606" = load ptr, ptr %"R18_Float32_PTR"
+  %".1607" = ptrtoint ptr %".1606" to i64
+  %".1608" = add i64 %".1607", 0
+  %"for_LDG.103" = inttoptr i64 %".1608" to ptr
+  %".1609" = load float, ptr %"for_LDG.103"
+  store float %".1609", ptr %"R42_Float32"
   ; IADD3 R50, R3, R10, RZ
-  %".1508" = load i32, ptr %"R3_Int32"
-  %".1509" = load i32, ptr %"R10_Int32"
-  %"add.106" = add i32 %".1508", %".1509"
+  %".1612" = load i32, ptr %"R3_Int32"
+  %".1613" = load i32, ptr %"R10_Int32"
+  %"add.106" = add i32 %".1612", %".1613"
   %"add.107" = add i32 %"add.106", 0
   store i32 %"add.107", ptr %"R50_Int32"
   ; LDG.E.SYS R39, [R14]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1512" = load i32, ptr %"R14_Float32_PTR"
-  %".1513" = add i32 %".1512", 0
-  %"for_LDG.104" = inttoptr i32 %".1513" to ptr
-  %".1514" = load float, ptr %"for_LDG.104"
-  store float %".1514", ptr %"R39_Float32"
+  %".1616" = load ptr, ptr %"R14_Float32_PTR"
+  %".1617" = ptrtoint ptr %".1616" to i64
+  %".1618" = add i64 %".1617", 0
+  %"for_LDG.104" = inttoptr i64 %".1618" to ptr
+  %".1619" = load float, ptr %"for_LDG.104"
+  store float %".1619", ptr %"R39_Float32"
   ; LDG.E.SYS R40, [R18+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".1517" = load i32, ptr %"R18_Float32_PTR"
-  %".1518" = add i32 %".1517", 4
-  %"for_LDG.105" = inttoptr i32 %".1518" to ptr
-  %".1519" = load float, ptr %"for_LDG.105"
-  store float %".1519", ptr %"R40_Float32"
+  %".1622" = load ptr, ptr %"R18_Float32_PTR"
+  %".1623" = ptrtoint ptr %".1622" to i64
+  %".1624" = add i64 %".1623", 4
+  %"for_LDG.105" = inttoptr i64 %".1624" to ptr
+  %".1625" = load float, ptr %"for_LDG.105"
+  store float %".1625", ptr %"R40_Float32"
   ; IMAD.WIDE R10, R10, R49, c[0x0][0x168]
-  %".1522" = load i32, ptr %"R10_Int32"
-  %".1523" = load i32, ptr %"R49_Int32"
-  %"mul.40" = mul i32 %".1522", %".1523"
+  %".1628" = load i32, ptr %"R10_Int32"
+  %".1629" = load i32, ptr %"R49_Int32"
+  %"mul.40" = mul i32 %".1628", %".1629"
   %"add.108" = add i32 %"mul.40", %"Arg_3"
   store i32 %"add.108", ptr %"R10_Int32"
   ; LDG.E.SYS R37, [R14+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1526" = load i32, ptr %"R14_Float32_PTR"
-  %".1527" = add i32 %".1526", 4
-  %"for_LDG.106" = inttoptr i32 %".1527" to ptr
-  %".1528" = load float, ptr %"for_LDG.106"
-  store float %".1528", ptr %"R37_Float32"
+  %".1632" = load ptr, ptr %"R14_Float32_PTR"
+  %".1633" = ptrtoint ptr %".1632" to i64
+  %".1634" = add i64 %".1633", 4
+  %"for_LDG.106" = inttoptr i64 %".1634" to ptr
+  %".1635" = load float, ptr %"for_LDG.106"
+  store float %".1635", ptr %"R37_Float32"
   ; LDG.E.SYS R38, [R18+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".1531" = load i32, ptr %"R18_Float32_PTR"
-  %".1532" = add i32 %".1531", 8
-  %"for_LDG.107" = inttoptr i32 %".1532" to ptr
-  %".1533" = load float, ptr %"for_LDG.107"
-  store float %".1533", ptr %"R38_Float32"
+  %".1638" = load ptr, ptr %"R18_Float32_PTR"
+  %".1639" = ptrtoint ptr %".1638" to i64
+  %".1640" = add i64 %".1639", 8
+  %"for_LDG.107" = inttoptr i64 %".1640" to ptr
+  %".1641" = load float, ptr %"for_LDG.107"
+  store float %".1641", ptr %"R38_Float32"
   ; IMAD.WIDE R12, R50, R49, c[0x0][0x170]
-  %".1536" = load i32, ptr %"R50_Int32"
-  %".1537" = load i32, ptr %"R49_Int32"
-  %"mul.41" = mul i32 %".1536", %".1537"
+  %".1644" = load i32, ptr %"R50_Int32"
+  %".1645" = load i32, ptr %"R49_Int32"
+  %"mul.41" = mul i32 %".1644", %".1645"
   %"add.109" = add i32 %"mul.41", %"Arg_4"
   store i32 %"add.109", ptr %"R12_Int32"
   ; LDG.E.SYS R35, [R14+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1540" = load i32, ptr %"R14_Float32_PTR"
-  %".1541" = add i32 %".1540", 8
-  %"for_LDG.108" = inttoptr i32 %".1541" to ptr
-  %".1542" = load float, ptr %"for_LDG.108"
-  store float %".1542", ptr %"R35_Float32"
+  %".1648" = load ptr, ptr %"R14_Float32_PTR"
+  %".1649" = ptrtoint ptr %".1648" to i64
+  %".1650" = add i64 %".1649", 8
+  %"for_LDG.108" = inttoptr i64 %".1650" to ptr
+  %".1651" = load float, ptr %"for_LDG.108"
+  store float %".1651", ptr %"R35_Float32"
   ; LDG.E.SYS R48, [R18+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R18_Float32_PTR", ptr %"R18_Int32", i32 4, i1 0)
-  %".1545" = load i32, ptr %"R18_Float32_PTR"
-  %".1546" = add i32 %".1545", 12
-  %"for_LDG.109" = inttoptr i32 %".1546" to ptr
-  %".1547" = load float, ptr %"for_LDG.109"
-  store float %".1547", ptr %"R48_Float32"
+  %".1654" = load ptr, ptr %"R18_Float32_PTR"
+  %".1655" = ptrtoint ptr %".1654" to i64
+  %".1656" = add i64 %".1655", 12
+  %"for_LDG.109" = inttoptr i64 %".1656" to ptr
+  %".1657" = load float, ptr %"for_LDG.109"
+  store float %".1657", ptr %"R48_Float32"
   ; IADD3 R16, R22, 0xc, RZ
-  %".1550" = load i32, ptr %"R22_Int32"
-  %"add.110" = add i32 %".1550", 12
+  %".1660" = load i32, ptr %"R22_Int32"
+  %"add.110" = add i32 %".1660", 12
   %"add.111" = add i32 %"add.110", 0
   store i32 %"add.111", ptr %"R16_Int32"
   ; LDG.E.SYS R47, [R14+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1553" = load i32, ptr %"R14_Float32_PTR"
-  %".1554" = add i32 %".1553", 12
-  %"for_LDG.110" = inttoptr i32 %".1554" to ptr
-  %".1555" = load float, ptr %"for_LDG.110"
-  store float %".1555", ptr %"R47_Float32"
+  %".1663" = load ptr, ptr %"R14_Float32_PTR"
+  %".1664" = ptrtoint ptr %".1663" to i64
+  %".1665" = add i64 %".1664", 12
+  %"for_LDG.110" = inttoptr i64 %".1665" to ptr
+  %".1666" = load float, ptr %"for_LDG.110"
+  store float %".1666", ptr %"R47_Float32"
   ; LDG.E.SYS R54, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1558" = load i32, ptr %"R10_Float32_PTR"
-  %".1559" = add i32 %".1558", 0
-  %"for_LDG.111" = inttoptr i32 %".1559" to ptr
-  %".1560" = load float, ptr %"for_LDG.111"
-  store float %".1560", ptr %"R54_Float32"
+  %".1669" = load ptr, ptr %"R10_Float32_PTR"
+  %".1670" = ptrtoint ptr %".1669" to i64
+  %".1671" = add i64 %".1670", 0
+  %"for_LDG.111" = inttoptr i64 %".1671" to ptr
+  %".1672" = load float, ptr %"for_LDG.111"
+  store float %".1672", ptr %"R54_Float32"
   ; IADD3 R58, R3, R16, RZ
-  %".1563" = load i32, ptr %"R3_Int32"
-  %".1564" = load i32, ptr %"R16_Int32"
-  %"add.112" = add i32 %".1563", %".1564"
+  %".1675" = load i32, ptr %"R3_Int32"
+  %".1676" = load i32, ptr %"R16_Int32"
+  %"add.112" = add i32 %".1675", %".1676"
   %"add.113" = add i32 %"add.112", 0
   store i32 %"add.113", ptr %"R58_Int32"
   ; LDG.E.SYS R45, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1567" = load i32, ptr %"R12_Float32_PTR"
-  %".1568" = add i32 %".1567", 0
-  %"for_LDG.112" = inttoptr i32 %".1568" to ptr
-  %".1569" = load float, ptr %"for_LDG.112"
-  store float %".1569", ptr %"R45_Float32"
+  %".1679" = load ptr, ptr %"R12_Float32_PTR"
+  %".1680" = ptrtoint ptr %".1679" to i64
+  %".1681" = add i64 %".1680", 0
+  %"for_LDG.112" = inttoptr i64 %".1681" to ptr
+  %".1682" = load float, ptr %"for_LDG.112"
+  store float %".1682", ptr %"R45_Float32"
   ; LDG.E.SYS R52, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1572" = load i32, ptr %"R10_Float32_PTR"
-  %".1573" = add i32 %".1572", 4
-  %"for_LDG.113" = inttoptr i32 %".1573" to ptr
-  %".1574" = load float, ptr %"for_LDG.113"
-  store float %".1574", ptr %"R52_Float32"
+  %".1685" = load ptr, ptr %"R10_Float32_PTR"
+  %".1686" = ptrtoint ptr %".1685" to i64
+  %".1687" = add i64 %".1686", 4
+  %"for_LDG.113" = inttoptr i64 %".1687" to ptr
+  %".1688" = load float, ptr %"for_LDG.113"
+  store float %".1688", ptr %"R52_Float32"
   ; IMAD.WIDE R16, R16, R49, c[0x0][0x168]
-  %".1577" = load i32, ptr %"R16_Int32"
-  %".1578" = load i32, ptr %"R49_Int32"
-  %"mul.42" = mul i32 %".1577", %".1578"
+  %".1691" = load i32, ptr %"R16_Int32"
+  %".1692" = load i32, ptr %"R49_Int32"
+  %"mul.42" = mul i32 %".1691", %".1692"
   %"add.114" = add i32 %"mul.42", %"Arg_3"
   store i32 %"add.114", ptr %"R16_Int32"
   ; LDG.E.SYS R43, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1581" = load i32, ptr %"R12_Float32_PTR"
-  %".1582" = add i32 %".1581", 4
-  %"for_LDG.114" = inttoptr i32 %".1582" to ptr
-  %".1583" = load float, ptr %"for_LDG.114"
-  store float %".1583", ptr %"R43_Float32"
+  %".1695" = load ptr, ptr %"R12_Float32_PTR"
+  %".1696" = ptrtoint ptr %".1695" to i64
+  %".1697" = add i64 %".1696", 4
+  %"for_LDG.114" = inttoptr i64 %".1697" to ptr
+  %".1698" = load float, ptr %"for_LDG.114"
+  store float %".1698", ptr %"R43_Float32"
   ; LDG.E.SYS R50, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1586" = load i32, ptr %"R10_Float32_PTR"
-  %".1587" = add i32 %".1586", 8
-  %"for_LDG.115" = inttoptr i32 %".1587" to ptr
-  %".1588" = load float, ptr %"for_LDG.115"
-  store float %".1588", ptr %"R50_Float32"
+  %".1701" = load ptr, ptr %"R10_Float32_PTR"
+  %".1702" = ptrtoint ptr %".1701" to i64
+  %".1703" = add i64 %".1702", 8
+  %"for_LDG.115" = inttoptr i64 %".1703" to ptr
+  %".1704" = load float, ptr %"for_LDG.115"
+  store float %".1704", ptr %"R50_Float32"
   ; IMAD.WIDE R14, R58, R49, c[0x0][0x170]
-  %".1591" = load i32, ptr %"R58_Int32"
-  %".1592" = load i32, ptr %"R49_Int32"
-  %"mul.43" = mul i32 %".1591", %".1592"
+  %".1707" = load i32, ptr %"R58_Int32"
+  %".1708" = load i32, ptr %"R49_Int32"
+  %"mul.43" = mul i32 %".1707", %".1708"
   %"add.115" = add i32 %"mul.43", %"Arg_4"
   store i32 %"add.115", ptr %"R14_Int32"
   ; LDG.E.SYS R18, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1595" = load i32, ptr %"R12_Float32_PTR"
-  %".1596" = add i32 %".1595", 8
-  %"for_LDG.116" = inttoptr i32 %".1596" to ptr
-  %".1597" = load float, ptr %"for_LDG.116"
-  store float %".1597", ptr %"R18_Float32"
+  %".1711" = load ptr, ptr %"R12_Float32_PTR"
+  %".1712" = ptrtoint ptr %".1711" to i64
+  %".1713" = add i64 %".1712", 8
+  %"for_LDG.116" = inttoptr i64 %".1713" to ptr
+  %".1714" = load float, ptr %"for_LDG.116"
+  store float %".1714", ptr %"R18_Float32"
   ; LDG.E.SYS R56, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1600" = load i32, ptr %"R10_Float32_PTR"
-  %".1601" = add i32 %".1600", 12
-  %"for_LDG.117" = inttoptr i32 %".1601" to ptr
-  %".1602" = load float, ptr %"for_LDG.117"
-  store float %".1602", ptr %"R56_Float32"
+  %".1717" = load ptr, ptr %"R10_Float32_PTR"
+  %".1718" = ptrtoint ptr %".1717" to i64
+  %".1719" = add i64 %".1718", 12
+  %"for_LDG.117" = inttoptr i64 %".1719" to ptr
+  %".1720" = load float, ptr %"for_LDG.117"
+  store float %".1720", ptr %"R56_Float32"
   ; LDG.E.SYS R55, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1605" = load i32, ptr %"R12_Float32_PTR"
-  %".1606" = add i32 %".1605", 12
-  %"for_LDG.118" = inttoptr i32 %".1606" to ptr
-  %".1607" = load float, ptr %"for_LDG.118"
-  store float %".1607", ptr %"R55_Float32"
+  %".1723" = load ptr, ptr %"R12_Float32_PTR"
+  %".1724" = ptrtoint ptr %".1723" to i64
+  %".1725" = add i64 %".1724", 12
+  %"for_LDG.118" = inttoptr i64 %".1725" to ptr
+  %".1726" = load float, ptr %"for_LDG.118"
+  store float %".1726", ptr %"R55_Float32"
   ; LDG.E.SYS R51, [R16]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1610" = load i32, ptr %"R16_Float32_PTR"
-  %".1611" = add i32 %".1610", 0
-  %"for_LDG.119" = inttoptr i32 %".1611" to ptr
-  %".1612" = load float, ptr %"for_LDG.119"
-  store float %".1612", ptr %"R51_Float32"
+  %".1729" = load ptr, ptr %"R16_Float32_PTR"
+  %".1730" = ptrtoint ptr %".1729" to i64
+  %".1731" = add i64 %".1730", 0
+  %"for_LDG.119" = inttoptr i64 %".1731" to ptr
+  %".1732" = load float, ptr %"for_LDG.119"
+  store float %".1732", ptr %"R51_Float32"
   ; LDG.E.SYS R53, [R14]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1615" = load i32, ptr %"R14_Float32_PTR"
-  %".1616" = add i32 %".1615", 0
-  %"for_LDG.120" = inttoptr i32 %".1616" to ptr
-  %".1617" = load float, ptr %"for_LDG.120"
-  store float %".1617", ptr %"R53_Float32"
+  %".1735" = load ptr, ptr %"R14_Float32_PTR"
+  %".1736" = ptrtoint ptr %".1735" to i64
+  %".1737" = add i64 %".1736", 0
+  %"for_LDG.120" = inttoptr i64 %".1737" to ptr
+  %".1738" = load float, ptr %"for_LDG.120"
+  store float %".1738", ptr %"R53_Float32"
   ; LDG.E.SYS R60, [R16+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1620" = load i32, ptr %"R16_Float32_PTR"
-  %".1621" = add i32 %".1620", 4
-  %"for_LDG.121" = inttoptr i32 %".1621" to ptr
-  %".1622" = load float, ptr %"for_LDG.121"
-  store float %".1622", ptr %"R60_Float32"
+  %".1741" = load ptr, ptr %"R16_Float32_PTR"
+  %".1742" = ptrtoint ptr %".1741" to i64
+  %".1743" = add i64 %".1742", 4
+  %"for_LDG.121" = inttoptr i64 %".1743" to ptr
+  %".1744" = load float, ptr %"for_LDG.121"
+  store float %".1744", ptr %"R60_Float32"
   ; LDG.E.SYS R49, [R14+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1625" = load i32, ptr %"R14_Float32_PTR"
-  %".1626" = add i32 %".1625", 4
-  %"for_LDG.122" = inttoptr i32 %".1626" to ptr
-  %".1627" = load float, ptr %"for_LDG.122"
-  store float %".1627", ptr %"R49_Float32"
+  %".1747" = load ptr, ptr %"R14_Float32_PTR"
+  %".1748" = ptrtoint ptr %".1747" to i64
+  %".1749" = add i64 %".1748", 4
+  %"for_LDG.122" = inttoptr i64 %".1749" to ptr
+  %".1750" = load float, ptr %"for_LDG.122"
+  store float %".1750", ptr %"R49_Float32"
   ; LDG.E.SYS R58, [R16+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1630" = load i32, ptr %"R16_Float32_PTR"
-  %".1631" = add i32 %".1630", 8
-  %"for_LDG.123" = inttoptr i32 %".1631" to ptr
-  %".1632" = load float, ptr %"for_LDG.123"
-  store float %".1632", ptr %"R58_Float32"
+  %".1753" = load ptr, ptr %"R16_Float32_PTR"
+  %".1754" = ptrtoint ptr %".1753" to i64
+  %".1755" = add i64 %".1754", 8
+  %"for_LDG.123" = inttoptr i64 %".1755" to ptr
+  %".1756" = load float, ptr %"for_LDG.123"
+  store float %".1756", ptr %"R58_Float32"
   ; LDG.E.SYS R19, [R14+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1635" = load i32, ptr %"R14_Float32_PTR"
-  %".1636" = add i32 %".1635", 8
-  %"for_LDG.124" = inttoptr i32 %".1636" to ptr
-  %".1637" = load float, ptr %"for_LDG.124"
-  store float %".1637", ptr %"R19_Float32"
+  %".1759" = load ptr, ptr %"R14_Float32_PTR"
+  %".1760" = ptrtoint ptr %".1759" to i64
+  %".1761" = add i64 %".1760", 8
+  %"for_LDG.124" = inttoptr i64 %".1761" to ptr
+  %".1762" = load float, ptr %"for_LDG.124"
+  store float %".1762", ptr %"R19_Float32"
   ; LDG.E.SYS R57, [R16+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1640" = load i32, ptr %"R16_Float32_PTR"
-  %".1641" = add i32 %".1640", 12
-  %"for_LDG.125" = inttoptr i32 %".1641" to ptr
-  %".1642" = load float, ptr %"for_LDG.125"
-  store float %".1642", ptr %"R57_Float32"
+  %".1765" = load ptr, ptr %"R16_Float32_PTR"
+  %".1766" = ptrtoint ptr %".1765" to i64
+  %".1767" = add i64 %".1766", 12
+  %"for_LDG.125" = inttoptr i64 %".1767" to ptr
+  %".1768" = load float, ptr %"for_LDG.125"
+  store float %".1768", ptr %"R57_Float32"
   ; LDG.E.SYS R59, [R14+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1645" = load i32, ptr %"R14_Float32_PTR"
-  %".1646" = add i32 %".1645", 12
-  %"for_LDG.126" = inttoptr i32 %".1646" to ptr
-  %".1647" = load float, ptr %"for_LDG.126"
-  store float %".1647", ptr %"R59_Float32"
+  %".1771" = load ptr, ptr %"R14_Float32_PTR"
+  %".1772" = ptrtoint ptr %".1771" to i64
+  %".1773" = add i64 %".1772", 12
+  %"for_LDG.126" = inttoptr i64 %".1773" to ptr
+  %".1774" = load float, ptr %"for_LDG.126"
+  store float %".1774", ptr %"R59_Float32"
   ; IADD3 R23, R23, -0x10, RZ
-  %".1650" = load i32, ptr %"R23_Int32"
-  %"add.116" = add i32 %".1650", -16
+  %".1777" = load i32, ptr %"R23_Int32"
+  %"add.116" = add i32 %".1777", -16
   %"add.117" = add i32 %"add.116", 0
   store i32 %"add.117", ptr %"R23_Int32"
   ; IADD3 R22, R22, 0x10, RZ
-  %".1653" = load i32, ptr %"R22_Int32"
-  %"add.118" = add i32 %".1653", 16
+  %".1780" = load i32, ptr %"R22_Int32"
+  %"add.118" = add i32 %".1780", 16
   %"add.119" = add i32 %"add.118", 0
   store i32 %"add.119", ptr %"R22_Int32"
   ; ISETP.GT.AND P1, PT, R23, 0xc, PT
-  %".1656" = load i32, ptr %"R23_Int32"
-  %".1657" = load i1, ptr %"PT_Bool"
-  %"cmp.19" = icmp sgt i32 %".1656", 12
-  %".1658" = and i1 %"cmp.19", %".1657"
+  %".1783" = load i32, ptr %"R23_Int32"
+  %".1784" = load i1, ptr %"PT_Bool"
+  %"cmp.19" = icmp sgt i32 %".1783", 12
+  %".1785" = and i1 %"cmp.19", %".1784"
   ; FMUL R24, R24, R9
-  %".1660" = load float, ptr %"R24_Float32"
-  %".1661" = load float, ptr %"R9_Float32"
-  %"fmul.74" = fmul float %".1660", %".1661"
+  %".1787" = load float, ptr %"R24_Float32"
+  %".1788" = load float, ptr %"R9_Float32"
+  %"fmul.74" = fmul float %".1787", %".1788"
   store float %"fmul.74", ptr %"R24_Float32"
   ; FFMA R24, R24, R21, R8
-  %".1664" = load float, ptr %"R24_Float32"
-  %".1665" = load float, ptr %"R21_Float32"
-  %".1666" = load float, ptr %"R8_Float32"
-  %"fmul.75" = fmul float %".1664", %".1665"
-  %"fadd.79" = fadd float %"fmul.75", %".1666"
+  %".1791" = load float, ptr %"R24_Float32"
+  %".1792" = load float, ptr %"R21_Float32"
+  %".1793" = load float, ptr %"R8_Float32"
+  %"fmul.75" = fmul float %".1791", %".1792"
+  %"fadd.79" = fadd float %"fmul.75", %".1793"
   store float %"fadd.79", ptr %"R24_Float32"
   ; FMUL R36, R36, R9
-  %".1669" = load float, ptr %"R36_Float32"
-  %".1670" = load float, ptr %"R9_Float32"
-  %"fmul.76" = fmul float %".1669", %".1670"
+  %".1796" = load float, ptr %"R36_Float32"
+  %".1797" = load float, ptr %"R9_Float32"
+  %"fmul.76" = fmul float %".1796", %".1797"
   store float %"fmul.76", ptr %"R36_Float32"
   ; FFMA R25, R36, R25, R24
-  %".1673" = load float, ptr %"R36_Float32"
-  %".1674" = load float, ptr %"R25_Float32"
-  %".1675" = load float, ptr %"R24_Float32"
-  %"fmul.77" = fmul float %".1673", %".1674"
-  %"fadd.80" = fadd float %"fmul.77", %".1675"
+  %".1800" = load float, ptr %"R36_Float32"
+  %".1801" = load float, ptr %"R25_Float32"
+  %".1802" = load float, ptr %"R24_Float32"
+  %"fmul.77" = fmul float %".1800", %".1801"
+  %"fadd.80" = fadd float %"fmul.77", %".1802"
   store float %"fadd.80", ptr %"R25_Float32"
   ; FMUL R46, R46, R9
-  %".1678" = load float, ptr %"R46_Float32"
-  %".1679" = load float, ptr %"R9_Float32"
-  %"fmul.78" = fmul float %".1678", %".1679"
+  %".1805" = load float, ptr %"R46_Float32"
+  %".1806" = load float, ptr %"R9_Float32"
+  %"fmul.78" = fmul float %".1805", %".1806"
   store float %"fmul.78", ptr %"R46_Float32"
   ; FFMA R34, R46, R34, R25
-  %".1682" = load float, ptr %"R46_Float32"
-  %".1683" = load float, ptr %"R34_Float32"
-  %".1684" = load float, ptr %"R25_Float32"
-  %"fmul.79" = fmul float %".1682", %".1683"
-  %"fadd.81" = fadd float %"fmul.79", %".1684"
+  %".1809" = load float, ptr %"R46_Float32"
+  %".1810" = load float, ptr %"R34_Float32"
+  %".1811" = load float, ptr %"R25_Float32"
+  %"fmul.79" = fmul float %".1809", %".1810"
+  %"fadd.81" = fadd float %"fmul.79", %".1811"
   store float %"fadd.81", ptr %"R34_Float32"
   ; FMUL R44, R44, R9
-  %".1687" = load float, ptr %"R44_Float32"
-  %".1688" = load float, ptr %"R9_Float32"
-  %"fmul.80" = fmul float %".1687", %".1688"
+  %".1814" = load float, ptr %"R44_Float32"
+  %".1815" = load float, ptr %"R9_Float32"
+  %"fmul.80" = fmul float %".1814", %".1815"
   store float %"fmul.80", ptr %"R44_Float32"
   ; FFMA R34, R44, R41, R34
-  %".1691" = load float, ptr %"R44_Float32"
-  %".1692" = load float, ptr %"R41_Float32"
-  %".1693" = load float, ptr %"R34_Float32"
-  %"fmul.81" = fmul float %".1691", %".1692"
-  %"fadd.82" = fadd float %"fmul.81", %".1693"
+  %".1818" = load float, ptr %"R44_Float32"
+  %".1819" = load float, ptr %"R41_Float32"
+  %".1820" = load float, ptr %"R34_Float32"
+  %"fmul.81" = fmul float %".1818", %".1819"
+  %"fadd.82" = fadd float %"fmul.81", %".1820"
   store float %"fadd.82", ptr %"R34_Float32"
   ; FMUL R42, R42, R9
-  %".1696" = load float, ptr %"R42_Float32"
-  %".1697" = load float, ptr %"R9_Float32"
-  %"fmul.82" = fmul float %".1696", %".1697"
+  %".1823" = load float, ptr %"R42_Float32"
+  %".1824" = load float, ptr %"R9_Float32"
+  %"fmul.82" = fmul float %".1823", %".1824"
   store float %"fmul.82", ptr %"R42_Float32"
   ; FFMA R34, R42, R39, R34
-  %".1700" = load float, ptr %"R42_Float32"
-  %".1701" = load float, ptr %"R39_Float32"
-  %".1702" = load float, ptr %"R34_Float32"
-  %"fmul.83" = fmul float %".1700", %".1701"
-  %"fadd.83" = fadd float %"fmul.83", %".1702"
+  %".1827" = load float, ptr %"R42_Float32"
+  %".1828" = load float, ptr %"R39_Float32"
+  %".1829" = load float, ptr %"R34_Float32"
+  %"fmul.83" = fmul float %".1827", %".1828"
+  %"fadd.83" = fadd float %"fmul.83", %".1829"
   store float %"fadd.83", ptr %"R34_Float32"
   ; FMUL R40, R40, R9
-  %".1705" = load float, ptr %"R40_Float32"
-  %".1706" = load float, ptr %"R9_Float32"
-  %"fmul.84" = fmul float %".1705", %".1706"
+  %".1832" = load float, ptr %"R40_Float32"
+  %".1833" = load float, ptr %"R9_Float32"
+  %"fmul.84" = fmul float %".1832", %".1833"
   store float %"fmul.84", ptr %"R40_Float32"
   ; FFMA R34, R40, R37, R34
-  %".1709" = load float, ptr %"R40_Float32"
-  %".1710" = load float, ptr %"R37_Float32"
-  %".1711" = load float, ptr %"R34_Float32"
-  %"fmul.85" = fmul float %".1709", %".1710"
-  %"fadd.84" = fadd float %"fmul.85", %".1711"
+  %".1836" = load float, ptr %"R40_Float32"
+  %".1837" = load float, ptr %"R37_Float32"
+  %".1838" = load float, ptr %"R34_Float32"
+  %"fmul.85" = fmul float %".1836", %".1837"
+  %"fadd.84" = fadd float %"fmul.85", %".1838"
   store float %"fadd.84", ptr %"R34_Float32"
   ; FMUL R38, R38, R9
-  %".1714" = load float, ptr %"R38_Float32"
-  %".1715" = load float, ptr %"R9_Float32"
-  %"fmul.86" = fmul float %".1714", %".1715"
+  %".1841" = load float, ptr %"R38_Float32"
+  %".1842" = load float, ptr %"R9_Float32"
+  %"fmul.86" = fmul float %".1841", %".1842"
   store float %"fmul.86", ptr %"R38_Float32"
   ; FFMA R34, R38, R35, R34
-  %".1718" = load float, ptr %"R38_Float32"
-  %".1719" = load float, ptr %"R35_Float32"
-  %".1720" = load float, ptr %"R34_Float32"
-  %"fmul.87" = fmul float %".1718", %".1719"
-  %"fadd.85" = fadd float %"fmul.87", %".1720"
+  %".1845" = load float, ptr %"R38_Float32"
+  %".1846" = load float, ptr %"R35_Float32"
+  %".1847" = load float, ptr %"R34_Float32"
+  %"fmul.87" = fmul float %".1845", %".1846"
+  %"fadd.85" = fadd float %"fmul.87", %".1847"
   store float %"fadd.85", ptr %"R34_Float32"
   ; FMUL R48, R48, R9
-  %".1723" = load float, ptr %"R48_Float32"
-  %".1724" = load float, ptr %"R9_Float32"
-  %"fmul.88" = fmul float %".1723", %".1724"
+  %".1850" = load float, ptr %"R48_Float32"
+  %".1851" = load float, ptr %"R9_Float32"
+  %"fmul.88" = fmul float %".1850", %".1851"
   store float %"fmul.88", ptr %"R48_Float32"
   ; FFMA R34, R48, R47, R34
-  %".1727" = load float, ptr %"R48_Float32"
-  %".1728" = load float, ptr %"R47_Float32"
-  %".1729" = load float, ptr %"R34_Float32"
-  %"fmul.89" = fmul float %".1727", %".1728"
-  %"fadd.86" = fadd float %"fmul.89", %".1729"
+  %".1854" = load float, ptr %"R48_Float32"
+  %".1855" = load float, ptr %"R47_Float32"
+  %".1856" = load float, ptr %"R34_Float32"
+  %"fmul.89" = fmul float %".1854", %".1855"
+  %"fadd.86" = fadd float %"fmul.89", %".1856"
   store float %"fadd.86", ptr %"R34_Float32"
   ; FMUL R54, R54, R9
-  %".1732" = load float, ptr %"R54_Float32"
-  %".1733" = load float, ptr %"R9_Float32"
-  %"fmul.90" = fmul float %".1732", %".1733"
+  %".1859" = load float, ptr %"R54_Float32"
+  %".1860" = load float, ptr %"R9_Float32"
+  %"fmul.90" = fmul float %".1859", %".1860"
   store float %"fmul.90", ptr %"R54_Float32"
   ; FFMA R34, R54, R45, R34
-  %".1736" = load float, ptr %"R54_Float32"
-  %".1737" = load float, ptr %"R45_Float32"
-  %".1738" = load float, ptr %"R34_Float32"
-  %"fmul.91" = fmul float %".1736", %".1737"
-  %"fadd.87" = fadd float %"fmul.91", %".1738"
+  %".1863" = load float, ptr %"R54_Float32"
+  %".1864" = load float, ptr %"R45_Float32"
+  %".1865" = load float, ptr %"R34_Float32"
+  %"fmul.91" = fmul float %".1863", %".1864"
+  %"fadd.87" = fadd float %"fmul.91", %".1865"
   store float %"fadd.87", ptr %"R34_Float32"
   ; FMUL R52, R52, R9
-  %".1741" = load float, ptr %"R52_Float32"
-  %".1742" = load float, ptr %"R9_Float32"
-  %"fmul.92" = fmul float %".1741", %".1742"
+  %".1868" = load float, ptr %"R52_Float32"
+  %".1869" = load float, ptr %"R9_Float32"
+  %"fmul.92" = fmul float %".1868", %".1869"
   store float %"fmul.92", ptr %"R52_Float32"
   ; FFMA R43, R52, R43, R34
-  %".1745" = load float, ptr %"R52_Float32"
-  %".1746" = load float, ptr %"R43_Float32"
-  %".1747" = load float, ptr %"R34_Float32"
-  %"fmul.93" = fmul float %".1745", %".1746"
-  %"fadd.88" = fadd float %"fmul.93", %".1747"
+  %".1872" = load float, ptr %"R52_Float32"
+  %".1873" = load float, ptr %"R43_Float32"
+  %".1874" = load float, ptr %"R34_Float32"
+  %"fmul.93" = fmul float %".1872", %".1873"
+  %"fadd.88" = fadd float %"fmul.93", %".1874"
   store float %"fadd.88", ptr %"R43_Float32"
   ; FMUL R50, R50, R9
-  %".1750" = load float, ptr %"R50_Float32"
-  %".1751" = load float, ptr %"R9_Float32"
-  %"fmul.94" = fmul float %".1750", %".1751"
+  %".1877" = load float, ptr %"R50_Float32"
+  %".1878" = load float, ptr %"R9_Float32"
+  %"fmul.94" = fmul float %".1877", %".1878"
   store float %"fmul.94", ptr %"R50_Float32"
   ; FFMA R18, R50, R18, R43
-  %".1754" = load float, ptr %"R50_Float32"
-  %".1755" = load float, ptr %"R18_Float32"
-  %".1756" = load float, ptr %"R43_Float32"
-  %"fmul.95" = fmul float %".1754", %".1755"
-  %"fadd.89" = fadd float %"fmul.95", %".1756"
+  %".1881" = load float, ptr %"R50_Float32"
+  %".1882" = load float, ptr %"R18_Float32"
+  %".1883" = load float, ptr %"R43_Float32"
+  %"fmul.95" = fmul float %".1881", %".1882"
+  %"fadd.89" = fadd float %"fmul.95", %".1883"
   store float %"fadd.89", ptr %"R18_Float32"
   ; FMUL R56, R56, R9
-  %".1759" = load float, ptr %"R56_Float32"
-  %".1760" = load float, ptr %"R9_Float32"
-  %"fmul.96" = fmul float %".1759", %".1760"
+  %".1886" = load float, ptr %"R56_Float32"
+  %".1887" = load float, ptr %"R9_Float32"
+  %"fmul.96" = fmul float %".1886", %".1887"
   store float %"fmul.96", ptr %"R56_Float32"
   ; FFMA R18, R56, R55, R18
-  %".1763" = load float, ptr %"R56_Float32"
-  %".1764" = load float, ptr %"R55_Float32"
-  %".1765" = load float, ptr %"R18_Float32"
-  %"fmul.97" = fmul float %".1763", %".1764"
-  %"fadd.90" = fadd float %"fmul.97", %".1765"
+  %".1890" = load float, ptr %"R56_Float32"
+  %".1891" = load float, ptr %"R55_Float32"
+  %".1892" = load float, ptr %"R18_Float32"
+  %"fmul.97" = fmul float %".1890", %".1891"
+  %"fadd.90" = fadd float %"fmul.97", %".1892"
   store float %"fadd.90", ptr %"R18_Float32"
   ; FMUL R51, R51, R9
-  %".1768" = load float, ptr %"R51_Float32"
-  %".1769" = load float, ptr %"R9_Float32"
-  %"fmul.98" = fmul float %".1768", %".1769"
+  %".1895" = load float, ptr %"R51_Float32"
+  %".1896" = load float, ptr %"R9_Float32"
+  %"fmul.98" = fmul float %".1895", %".1896"
   store float %"fmul.98", ptr %"R51_Float32"
   ; FFMA R18, R51, R53, R18
-  %".1772" = load float, ptr %"R51_Float32"
-  %".1773" = load float, ptr %"R53_Float32"
-  %".1774" = load float, ptr %"R18_Float32"
-  %"fmul.99" = fmul float %".1772", %".1773"
-  %"fadd.91" = fadd float %"fmul.99", %".1774"
+  %".1899" = load float, ptr %"R51_Float32"
+  %".1900" = load float, ptr %"R53_Float32"
+  %".1901" = load float, ptr %"R18_Float32"
+  %"fmul.99" = fmul float %".1899", %".1900"
+  %"fadd.91" = fadd float %"fmul.99", %".1901"
   store float %"fadd.91", ptr %"R18_Float32"
   ; FMUL R60, R60, R9
-  %".1777" = load float, ptr %"R60_Float32"
-  %".1778" = load float, ptr %"R9_Float32"
-  %"fmul.100" = fmul float %".1777", %".1778"
+  %".1904" = load float, ptr %"R60_Float32"
+  %".1905" = load float, ptr %"R9_Float32"
+  %"fmul.100" = fmul float %".1904", %".1905"
   store float %"fmul.100", ptr %"R60_Float32"
   ; FFMA R18, R60, R49, R18
-  %".1781" = load float, ptr %"R60_Float32"
-  %".1782" = load float, ptr %"R49_Float32"
-  %".1783" = load float, ptr %"R18_Float32"
-  %"fmul.101" = fmul float %".1781", %".1782"
-  %"fadd.92" = fadd float %"fmul.101", %".1783"
+  %".1908" = load float, ptr %"R60_Float32"
+  %".1909" = load float, ptr %"R49_Float32"
+  %".1910" = load float, ptr %"R18_Float32"
+  %"fmul.101" = fmul float %".1908", %".1909"
+  %"fadd.92" = fadd float %"fmul.101", %".1910"
   store float %"fadd.92", ptr %"R18_Float32"
   ; FMUL R58, R58, R9
-  %".1786" = load float, ptr %"R58_Float32"
-  %".1787" = load float, ptr %"R9_Float32"
-  %"fmul.102" = fmul float %".1786", %".1787"
+  %".1913" = load float, ptr %"R58_Float32"
+  %".1914" = load float, ptr %"R9_Float32"
+  %"fmul.102" = fmul float %".1913", %".1914"
   store float %"fmul.102", ptr %"R58_Float32"
   ; FFMA R18, R58, R19, R18
-  %".1790" = load float, ptr %"R58_Float32"
-  %".1791" = load float, ptr %"R19_Float32"
-  %".1792" = load float, ptr %"R18_Float32"
-  %"fmul.103" = fmul float %".1790", %".1791"
-  %"fadd.93" = fadd float %"fmul.103", %".1792"
+  %".1917" = load float, ptr %"R58_Float32"
+  %".1918" = load float, ptr %"R19_Float32"
+  %".1919" = load float, ptr %"R18_Float32"
+  %"fmul.103" = fmul float %".1917", %".1918"
+  %"fadd.93" = fadd float %"fmul.103", %".1919"
   store float %"fadd.93", ptr %"R18_Float32"
   ; FMUL R57, R57, R9
-  %".1795" = load float, ptr %"R57_Float32"
-  %".1796" = load float, ptr %"R9_Float32"
-  %"fmul.104" = fmul float %".1795", %".1796"
+  %".1922" = load float, ptr %"R57_Float32"
+  %".1923" = load float, ptr %"R9_Float32"
+  %"fmul.104" = fmul float %".1922", %".1923"
   store float %"fmul.104", ptr %"R57_Float32"
   ; FFMA R8, R57, R59, R18
-  %".1799" = load float, ptr %"R57_Float32"
-  %".1800" = load float, ptr %"R59_Float32"
-  %".1801" = load float, ptr %"R18_Float32"
-  %"fmul.105" = fmul float %".1799", %".1800"
-  %"fadd.94" = fadd float %"fmul.105", %".1801"
+  %".1926" = load float, ptr %"R57_Float32"
+  %".1927" = load float, ptr %"R59_Float32"
+  %".1928" = load float, ptr %"R18_Float32"
+  %"fmul.105" = fmul float %".1926", %".1927"
+  %"fadd.94" = fadd float %"fmul.105", %".1928"
   store float %"fadd.94", ptr %"R8_Float32"
   ; @P1 BRA `(.L_x_14)
-  %".1804" = load i1, ptr %"P1_Bool"
-  %".1805" = icmp ne i1 %".1804", 1
-  br i1 %".1805", label %".L_x_14", label %".L_x_13"
+  %".1931" = load i1, ptr %"P1_Bool"
+  %".1932" = icmp ne i1 %".1931", 1
+  br i1 %".1932", label %".L_x_14", label %".L_x_13"
 .L_x_13:
   ; ISETP.GT.AND P1, PT, R23, 0x4, PT
-  %".1808" = load i32, ptr %"R23_Int32"
-  %".1809" = load i1, ptr %"PT_Bool"
-  %"cmp.20" = icmp sgt i32 %".1808", 4
-  %".1810" = and i1 %"cmp.20", %".1809"
+  %".1935" = load i32, ptr %"R23_Int32"
+  %".1936" = load i1, ptr %"PT_Bool"
+  %"cmp.20" = icmp sgt i32 %".1935", 4
+  %".1937" = and i1 %"cmp.20", %".1936"
   ; @!P1 BRA `(.L_x_15)
-  %".1812" = load i1, ptr %"P1_Bool"
-  %".1813" = icmp eq i1 %".1812", 1
-  br i1 %".1813", label %".L_x_15", label %".L_x_13_split_0x19f0"
+  %".1939" = load i1, ptr %"P1_Bool"
+  %".1940" = icmp eq i1 %".1939", 1
+  br i1 %".1940", label %".L_x_15", label %".L_x_13_split_0x19f0"
 .L_x_13_split_0x19f0:
   ; MOV R13, 0x4
   store i32 4, ptr %"R13_Int32"
   ; IADD3 R16, R3, R22, RZ
-  %".1818" = load i32, ptr %"R3_Int32"
-  %".1819" = load i32, ptr %"R22_Int32"
-  %"add.120" = add i32 %".1818", %".1819"
+  %".1945" = load i32, ptr %"R3_Int32"
+  %".1946" = load i32, ptr %"R22_Int32"
+  %"add.120" = add i32 %".1945", %".1946"
   %"add.121" = add i32 %"add.120", 0
   store i32 %"add.121", ptr %"R16_Int32"
   ; IMAD.WIDE R14, R22, R13, c[0x0][0x168]
-  %".1822" = load i32, ptr %"R22_Int32"
-  %".1823" = load i32, ptr %"R13_Int32"
-  %"mul.44" = mul i32 %".1822", %".1823"
+  %".1949" = load i32, ptr %"R22_Int32"
+  %".1950" = load i32, ptr %"R13_Int32"
+  %"mul.44" = mul i32 %".1949", %".1950"
   %"add.122" = add i32 %"mul.44", %"Arg_3"
   store i32 %"add.122", ptr %"R14_Int32"
   ; IMAD.WIDE R16, R16, R13, c[0x0][0x170]
-  %".1826" = load i32, ptr %"R16_Int32"
-  %".1827" = load i32, ptr %"R13_Int32"
-  %"mul.45" = mul i32 %".1826", %".1827"
+  %".1953" = load i32, ptr %"R16_Int32"
+  %".1954" = load i32, ptr %"R13_Int32"
+  %"mul.45" = mul i32 %".1953", %".1954"
   %"add.123" = add i32 %"mul.45", %"Arg_4"
   store i32 %"add.123", ptr %"R16_Int32"
   ; IADD3 R10, R22, 0x4, RZ
-  %".1830" = load i32, ptr %"R22_Int32"
-  %"add.124" = add i32 %".1830", 4
+  %".1957" = load i32, ptr %"R22_Int32"
+  %"add.124" = add i32 %".1957", 4
   %"add.125" = add i32 %"add.124", 0
   store i32 %"add.125", ptr %"R10_Int32"
   ; LDG.E.SYS R18, [R14]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1833" = load i32, ptr %"R14_Float32_PTR"
-  %".1834" = add i32 %".1833", 0
-  %"for_LDG.127" = inttoptr i32 %".1834" to ptr
-  %".1835" = load float, ptr %"for_LDG.127"
-  store float %".1835", ptr %"R18_Float32"
+  %".1960" = load ptr, ptr %"R14_Float32_PTR"
+  %".1961" = ptrtoint ptr %".1960" to i64
+  %".1962" = add i64 %".1961", 0
+  %"for_LDG.127" = inttoptr i64 %".1962" to ptr
+  %".1963" = load float, ptr %"for_LDG.127"
+  store float %".1963", ptr %"R18_Float32"
   ; IADD3 R12, R3, R10, RZ
-  %".1838" = load i32, ptr %"R3_Int32"
-  %".1839" = load i32, ptr %"R10_Int32"
-  %"add.126" = add i32 %".1838", %".1839"
+  %".1966" = load i32, ptr %"R3_Int32"
+  %".1967" = load i32, ptr %"R10_Int32"
+  %"add.126" = add i32 %".1966", %".1967"
   %"add.127" = add i32 %"add.126", 0
   store i32 %"add.127", ptr %"R12_Int32"
   ; LDG.E.SYS R19, [R16]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1842" = load i32, ptr %"R16_Float32_PTR"
-  %".1843" = add i32 %".1842", 0
-  %"for_LDG.128" = inttoptr i32 %".1843" to ptr
-  %".1844" = load float, ptr %"for_LDG.128"
-  store float %".1844", ptr %"R19_Float32"
+  %".1970" = load ptr, ptr %"R16_Float32_PTR"
+  %".1971" = ptrtoint ptr %".1970" to i64
+  %".1972" = add i64 %".1971", 0
+  %"for_LDG.128" = inttoptr i64 %".1972" to ptr
+  %".1973" = load float, ptr %"for_LDG.128"
+  store float %".1973", ptr %"R19_Float32"
   ; LDG.E.SYS R24, [R14+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1847" = load i32, ptr %"R14_Float32_PTR"
-  %".1848" = add i32 %".1847", 4
-  %"for_LDG.129" = inttoptr i32 %".1848" to ptr
-  %".1849" = load float, ptr %"for_LDG.129"
-  store float %".1849", ptr %"R24_Float32"
+  %".1976" = load ptr, ptr %"R14_Float32_PTR"
+  %".1977" = ptrtoint ptr %".1976" to i64
+  %".1978" = add i64 %".1977", 4
+  %"for_LDG.129" = inttoptr i64 %".1978" to ptr
+  %".1979" = load float, ptr %"for_LDG.129"
+  store float %".1979", ptr %"R24_Float32"
   ; IMAD.WIDE R10, R10, R13, c[0x0][0x168]
-  %".1852" = load i32, ptr %"R10_Int32"
-  %".1853" = load i32, ptr %"R13_Int32"
-  %"mul.46" = mul i32 %".1852", %".1853"
+  %".1982" = load i32, ptr %"R10_Int32"
+  %".1983" = load i32, ptr %"R13_Int32"
+  %"mul.46" = mul i32 %".1982", %".1983"
   %"add.128" = add i32 %"mul.46", %"Arg_3"
   store i32 %"add.128", ptr %"R10_Int32"
   ; LDG.E.SYS R21, [R16+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1856" = load i32, ptr %"R16_Float32_PTR"
-  %".1857" = add i32 %".1856", 4
-  %"for_LDG.130" = inttoptr i32 %".1857" to ptr
-  %".1858" = load float, ptr %"for_LDG.130"
-  store float %".1858", ptr %"R21_Float32"
+  %".1986" = load ptr, ptr %"R16_Float32_PTR"
+  %".1987" = ptrtoint ptr %".1986" to i64
+  %".1988" = add i64 %".1987", 4
+  %"for_LDG.130" = inttoptr i64 %".1988" to ptr
+  %".1989" = load float, ptr %"for_LDG.130"
+  store float %".1989", ptr %"R21_Float32"
   ; LDG.E.SYS R34, [R14+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1861" = load i32, ptr %"R14_Float32_PTR"
-  %".1862" = add i32 %".1861", 8
-  %"for_LDG.131" = inttoptr i32 %".1862" to ptr
-  %".1863" = load float, ptr %"for_LDG.131"
-  store float %".1863", ptr %"R34_Float32"
+  %".1992" = load ptr, ptr %"R14_Float32_PTR"
+  %".1993" = ptrtoint ptr %".1992" to i64
+  %".1994" = add i64 %".1993", 8
+  %"for_LDG.131" = inttoptr i64 %".1994" to ptr
+  %".1995" = load float, ptr %"for_LDG.131"
+  store float %".1995", ptr %"R34_Float32"
   ; IMAD.WIDE R12, R12, R13, c[0x0][0x170]
-  %".1866" = load i32, ptr %"R12_Int32"
-  %".1867" = load i32, ptr %"R13_Int32"
-  %"mul.47" = mul i32 %".1866", %".1867"
+  %".1998" = load i32, ptr %"R12_Int32"
+  %".1999" = load i32, ptr %"R13_Int32"
+  %"mul.47" = mul i32 %".1998", %".1999"
   %"add.129" = add i32 %"mul.47", %"Arg_4"
   store i32 %"add.129", ptr %"R12_Int32"
   ; LDG.E.SYS R25, [R16+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1870" = load i32, ptr %"R16_Float32_PTR"
-  %".1871" = add i32 %".1870", 8
-  %"for_LDG.132" = inttoptr i32 %".1871" to ptr
-  %".1872" = load float, ptr %"for_LDG.132"
-  store float %".1872", ptr %"R25_Float32"
+  %".2002" = load ptr, ptr %"R16_Float32_PTR"
+  %".2003" = ptrtoint ptr %".2002" to i64
+  %".2004" = add i64 %".2003", 8
+  %"for_LDG.132" = inttoptr i64 %".2004" to ptr
+  %".2005" = load float, ptr %"for_LDG.132"
+  store float %".2005", ptr %"R25_Float32"
   ; LDG.E.SYS R36, [R14+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Float32_PTR", ptr %"R14_Int32", i32 4, i1 0)
-  %".1875" = load i32, ptr %"R14_Float32_PTR"
-  %".1876" = add i32 %".1875", 12
-  %"for_LDG.133" = inttoptr i32 %".1876" to ptr
-  %".1877" = load float, ptr %"for_LDG.133"
-  store float %".1877", ptr %"R36_Float32"
+  %".2008" = load ptr, ptr %"R14_Float32_PTR"
+  %".2009" = ptrtoint ptr %".2008" to i64
+  %".2010" = add i64 %".2009", 12
+  %"for_LDG.133" = inttoptr i64 %".2010" to ptr
+  %".2011" = load float, ptr %"for_LDG.133"
+  store float %".2011", ptr %"R36_Float32"
   ; LDG.E.SYS R35, [R16+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R16_Float32_PTR", ptr %"R16_Int32", i32 4, i1 0)
-  %".1880" = load i32, ptr %"R16_Float32_PTR"
-  %".1881" = add i32 %".1880", 12
-  %"for_LDG.134" = inttoptr i32 %".1881" to ptr
-  %".1882" = load float, ptr %"for_LDG.134"
-  store float %".1882", ptr %"R35_Float32"
+  %".2014" = load ptr, ptr %"R16_Float32_PTR"
+  %".2015" = ptrtoint ptr %".2014" to i64
+  %".2016" = add i64 %".2015", 12
+  %"for_LDG.134" = inttoptr i64 %".2016" to ptr
+  %".2017" = load float, ptr %"for_LDG.134"
+  store float %".2017", ptr %"R35_Float32"
   ; LDG.E.SYS R38, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1885" = load i32, ptr %"R10_Float32_PTR"
-  %".1886" = add i32 %".1885", 0
-  %"for_LDG.135" = inttoptr i32 %".1886" to ptr
-  %".1887" = load float, ptr %"for_LDG.135"
-  store float %".1887", ptr %"R38_Float32"
+  %".2020" = load ptr, ptr %"R10_Float32_PTR"
+  %".2021" = ptrtoint ptr %".2020" to i64
+  %".2022" = add i64 %".2021", 0
+  %"for_LDG.135" = inttoptr i64 %".2022" to ptr
+  %".2023" = load float, ptr %"for_LDG.135"
+  store float %".2023", ptr %"R38_Float32"
   ; LDG.E.SYS R37, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1890" = load i32, ptr %"R12_Float32_PTR"
-  %".1891" = add i32 %".1890", 0
-  %"for_LDG.136" = inttoptr i32 %".1891" to ptr
-  %".1892" = load float, ptr %"for_LDG.136"
-  store float %".1892", ptr %"R37_Float32"
+  %".2026" = load ptr, ptr %"R12_Float32_PTR"
+  %".2027" = ptrtoint ptr %".2026" to i64
+  %".2028" = add i64 %".2027", 0
+  %"for_LDG.136" = inttoptr i64 %".2028" to ptr
+  %".2029" = load float, ptr %"for_LDG.136"
+  store float %".2029", ptr %"R37_Float32"
   ; LDG.E.SYS R40, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1895" = load i32, ptr %"R10_Float32_PTR"
-  %".1896" = add i32 %".1895", 4
-  %"for_LDG.137" = inttoptr i32 %".1896" to ptr
-  %".1897" = load float, ptr %"for_LDG.137"
-  store float %".1897", ptr %"R40_Float32"
+  %".2032" = load ptr, ptr %"R10_Float32_PTR"
+  %".2033" = ptrtoint ptr %".2032" to i64
+  %".2034" = add i64 %".2033", 4
+  %"for_LDG.137" = inttoptr i64 %".2034" to ptr
+  %".2035" = load float, ptr %"for_LDG.137"
+  store float %".2035", ptr %"R40_Float32"
   ; LDG.E.SYS R39, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1900" = load i32, ptr %"R12_Float32_PTR"
-  %".1901" = add i32 %".1900", 4
-  %"for_LDG.138" = inttoptr i32 %".1901" to ptr
-  %".1902" = load float, ptr %"for_LDG.138"
-  store float %".1902", ptr %"R39_Float32"
+  %".2038" = load ptr, ptr %"R12_Float32_PTR"
+  %".2039" = ptrtoint ptr %".2038" to i64
+  %".2040" = add i64 %".2039", 4
+  %"for_LDG.138" = inttoptr i64 %".2040" to ptr
+  %".2041" = load float, ptr %"for_LDG.138"
+  store float %".2041", ptr %"R39_Float32"
   ; LDG.E.SYS R42, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1905" = load i32, ptr %"R10_Float32_PTR"
-  %".1906" = add i32 %".1905", 8
-  %"for_LDG.139" = inttoptr i32 %".1906" to ptr
-  %".1907" = load float, ptr %"for_LDG.139"
-  store float %".1907", ptr %"R42_Float32"
+  %".2044" = load ptr, ptr %"R10_Float32_PTR"
+  %".2045" = ptrtoint ptr %".2044" to i64
+  %".2046" = add i64 %".2045", 8
+  %"for_LDG.139" = inttoptr i64 %".2046" to ptr
+  %".2047" = load float, ptr %"for_LDG.139"
+  store float %".2047", ptr %"R42_Float32"
   ; LDG.E.SYS R44, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".1910" = load i32, ptr %"R10_Float32_PTR"
-  %".1911" = add i32 %".1910", 12
-  %"for_LDG.140" = inttoptr i32 %".1911" to ptr
-  %".1912" = load float, ptr %"for_LDG.140"
-  store float %".1912", ptr %"R44_Float32"
+  %".2050" = load ptr, ptr %"R10_Float32_PTR"
+  %".2051" = ptrtoint ptr %".2050" to i64
+  %".2052" = add i64 %".2051", 12
+  %"for_LDG.140" = inttoptr i64 %".2052" to ptr
+  %".2053" = load float, ptr %"for_LDG.140"
+  store float %".2053", ptr %"R44_Float32"
   ; LDG.E.SYS R41, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1915" = load i32, ptr %"R12_Float32_PTR"
-  %".1916" = add i32 %".1915", 8
-  %"for_LDG.141" = inttoptr i32 %".1916" to ptr
-  %".1917" = load float, ptr %"for_LDG.141"
-  store float %".1917", ptr %"R41_Float32"
+  %".2056" = load ptr, ptr %"R12_Float32_PTR"
+  %".2057" = ptrtoint ptr %".2056" to i64
+  %".2058" = add i64 %".2057", 8
+  %"for_LDG.141" = inttoptr i64 %".2058" to ptr
+  %".2059" = load float, ptr %"for_LDG.141"
+  store float %".2059", ptr %"R41_Float32"
   ; LDG.E.SYS R43, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".1920" = load i32, ptr %"R12_Float32_PTR"
-  %".1921" = add i32 %".1920", 12
-  %"for_LDG.142" = inttoptr i32 %".1921" to ptr
-  %".1922" = load float, ptr %"for_LDG.142"
-  store float %".1922", ptr %"R43_Float32"
+  %".2062" = load ptr, ptr %"R12_Float32_PTR"
+  %".2063" = ptrtoint ptr %".2062" to i64
+  %".2064" = add i64 %".2063", 12
+  %"for_LDG.142" = inttoptr i64 %".2064" to ptr
+  %".2065" = load float, ptr %"for_LDG.142"
+  store float %".2065", ptr %"R43_Float32"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".1925" = xor i1 1, 1
-  %".1926" = and i1 %".1925", 1
-  %".1927" = and i1 %".1926", 1
+  %".2068" = xor i1 1, 1
+  %".2069" = and i1 %".2068", 1
+  %".2070" = and i1 %".2069", 1
   ; IADD3 R23, R23, -0x8, RZ
-  %".1929" = load i32, ptr %"R23_Int32"
-  %"add.130" = add i32 %".1929", -8
+  %".2072" = load i32, ptr %"R23_Int32"
+  %"add.130" = add i32 %".2072", -8
   %"add.131" = add i32 %"add.130", 0
   store i32 %"add.131", ptr %"R23_Int32"
   ; IADD3 R22, R22, 0x8, RZ
-  %".1932" = load i32, ptr %"R22_Int32"
-  %"add.132" = add i32 %".1932", 8
+  %".2075" = load i32, ptr %"R22_Int32"
+  %"add.132" = add i32 %".2075", 8
   %"add.133" = add i32 %"add.132", 0
   store i32 %"add.133", ptr %"R22_Int32"
   ; FMUL R15, R18, R9
-  %".1935" = load float, ptr %"R18_Float32"
-  %".1936" = load float, ptr %"R9_Float32"
-  %"fmul.106" = fmul float %".1935", %".1936"
+  %".2078" = load float, ptr %"R18_Float32"
+  %".2079" = load float, ptr %"R9_Float32"
+  %"fmul.106" = fmul float %".2078", %".2079"
   store float %"fmul.106", ptr %"R15_Float32"
   ; FFMA R15, R15, R19, R8
-  %".1939" = load float, ptr %"R15_Float32"
-  %".1940" = load float, ptr %"R19_Float32"
-  %".1941" = load float, ptr %"R8_Float32"
-  %"fmul.107" = fmul float %".1939", %".1940"
-  %"fadd.95" = fadd float %"fmul.107", %".1941"
+  %".2082" = load float, ptr %"R15_Float32"
+  %".2083" = load float, ptr %"R19_Float32"
+  %".2084" = load float, ptr %"R8_Float32"
+  %"fmul.107" = fmul float %".2082", %".2083"
+  %"fadd.95" = fadd float %"fmul.107", %".2084"
   store float %"fadd.95", ptr %"R15_Float32"
   ; FMUL R24, R24, R9
-  %".1944" = load float, ptr %"R24_Float32"
-  %".1945" = load float, ptr %"R9_Float32"
-  %"fmul.108" = fmul float %".1944", %".1945"
+  %".2087" = load float, ptr %"R24_Float32"
+  %".2088" = load float, ptr %"R9_Float32"
+  %"fmul.108" = fmul float %".2087", %".2088"
   store float %"fmul.108", ptr %"R24_Float32"
   ; FFMA R15, R24, R21, R15
-  %".1948" = load float, ptr %"R24_Float32"
-  %".1949" = load float, ptr %"R21_Float32"
-  %".1950" = load float, ptr %"R15_Float32"
-  %"fmul.109" = fmul float %".1948", %".1949"
-  %"fadd.96" = fadd float %"fmul.109", %".1950"
+  %".2091" = load float, ptr %"R24_Float32"
+  %".2092" = load float, ptr %"R21_Float32"
+  %".2093" = load float, ptr %"R15_Float32"
+  %"fmul.109" = fmul float %".2091", %".2092"
+  %"fadd.96" = fadd float %"fmul.109", %".2093"
   store float %"fadd.96", ptr %"R15_Float32"
   ; FMUL R34, R34, R9
-  %".1953" = load float, ptr %"R34_Float32"
-  %".1954" = load float, ptr %"R9_Float32"
-  %"fmul.110" = fmul float %".1953", %".1954"
+  %".2096" = load float, ptr %"R34_Float32"
+  %".2097" = load float, ptr %"R9_Float32"
+  %"fmul.110" = fmul float %".2096", %".2097"
   store float %"fmul.110", ptr %"R34_Float32"
   ; FFMA R15, R34, R25, R15
-  %".1957" = load float, ptr %"R34_Float32"
-  %".1958" = load float, ptr %"R25_Float32"
-  %".1959" = load float, ptr %"R15_Float32"
-  %"fmul.111" = fmul float %".1957", %".1958"
-  %"fadd.97" = fadd float %"fmul.111", %".1959"
+  %".2100" = load float, ptr %"R34_Float32"
+  %".2101" = load float, ptr %"R25_Float32"
+  %".2102" = load float, ptr %"R15_Float32"
+  %"fmul.111" = fmul float %".2100", %".2101"
+  %"fadd.97" = fadd float %"fmul.111", %".2102"
   store float %"fadd.97", ptr %"R15_Float32"
   ; FMUL R36, R36, R9
-  %".1962" = load float, ptr %"R36_Float32"
-  %".1963" = load float, ptr %"R9_Float32"
-  %"fmul.112" = fmul float %".1962", %".1963"
+  %".2105" = load float, ptr %"R36_Float32"
+  %".2106" = load float, ptr %"R9_Float32"
+  %"fmul.112" = fmul float %".2105", %".2106"
   store float %"fmul.112", ptr %"R36_Float32"
   ; FFMA R15, R36, R35, R15
-  %".1966" = load float, ptr %"R36_Float32"
-  %".1967" = load float, ptr %"R35_Float32"
-  %".1968" = load float, ptr %"R15_Float32"
-  %"fmul.113" = fmul float %".1966", %".1967"
-  %"fadd.98" = fadd float %"fmul.113", %".1968"
+  %".2109" = load float, ptr %"R36_Float32"
+  %".2110" = load float, ptr %"R35_Float32"
+  %".2111" = load float, ptr %"R15_Float32"
+  %"fmul.113" = fmul float %".2109", %".2110"
+  %"fadd.98" = fadd float %"fmul.113", %".2111"
   store float %"fadd.98", ptr %"R15_Float32"
   ; FMUL R38, R38, R9
-  %".1971" = load float, ptr %"R38_Float32"
-  %".1972" = load float, ptr %"R9_Float32"
-  %"fmul.114" = fmul float %".1971", %".1972"
+  %".2114" = load float, ptr %"R38_Float32"
+  %".2115" = load float, ptr %"R9_Float32"
+  %"fmul.114" = fmul float %".2114", %".2115"
   store float %"fmul.114", ptr %"R38_Float32"
   ; FFMA R15, R38, R37, R15
-  %".1975" = load float, ptr %"R38_Float32"
-  %".1976" = load float, ptr %"R37_Float32"
-  %".1977" = load float, ptr %"R15_Float32"
-  %"fmul.115" = fmul float %".1975", %".1976"
-  %"fadd.99" = fadd float %"fmul.115", %".1977"
+  %".2118" = load float, ptr %"R38_Float32"
+  %".2119" = load float, ptr %"R37_Float32"
+  %".2120" = load float, ptr %"R15_Float32"
+  %"fmul.115" = fmul float %".2118", %".2119"
+  %"fadd.99" = fadd float %"fmul.115", %".2120"
   store float %"fadd.99", ptr %"R15_Float32"
   ; FMUL R40, R40, R9
-  %".1980" = load float, ptr %"R40_Float32"
-  %".1981" = load float, ptr %"R9_Float32"
-  %"fmul.116" = fmul float %".1980", %".1981"
+  %".2123" = load float, ptr %"R40_Float32"
+  %".2124" = load float, ptr %"R9_Float32"
+  %"fmul.116" = fmul float %".2123", %".2124"
   store float %"fmul.116", ptr %"R40_Float32"
   ; FFMA R15, R40, R39, R15
-  %".1984" = load float, ptr %"R40_Float32"
-  %".1985" = load float, ptr %"R39_Float32"
-  %".1986" = load float, ptr %"R15_Float32"
-  %"fmul.117" = fmul float %".1984", %".1985"
-  %"fadd.100" = fadd float %"fmul.117", %".1986"
+  %".2127" = load float, ptr %"R40_Float32"
+  %".2128" = load float, ptr %"R39_Float32"
+  %".2129" = load float, ptr %"R15_Float32"
+  %"fmul.117" = fmul float %".2127", %".2128"
+  %"fadd.100" = fadd float %"fmul.117", %".2129"
   store float %"fadd.100", ptr %"R15_Float32"
   ; FMUL R42, R42, R9.reuse
-  %".1989" = load float, ptr %"R42_Float32"
-  %".1990" = load float, ptr %"R9_Float32"
-  %"fmul.118" = fmul float %".1989", %".1990"
+  %".2132" = load float, ptr %"R42_Float32"
+  %".2133" = load float, ptr %"R9_Float32"
+  %"fmul.118" = fmul float %".2132", %".2133"
   store float %"fmul.118", ptr %"R42_Float32"
   ; FMUL R44, R44, R9
-  %".1993" = load float, ptr %"R44_Float32"
-  %".1994" = load float, ptr %"R9_Float32"
-  %"fmul.119" = fmul float %".1993", %".1994"
+  %".2136" = load float, ptr %"R44_Float32"
+  %".2137" = load float, ptr %"R9_Float32"
+  %"fmul.119" = fmul float %".2136", %".2137"
   store float %"fmul.119", ptr %"R44_Float32"
   ; FFMA R15, R42, R41, R15
-  %".1997" = load float, ptr %"R42_Float32"
-  %".1998" = load float, ptr %"R41_Float32"
-  %".1999" = load float, ptr %"R15_Float32"
-  %"fmul.120" = fmul float %".1997", %".1998"
-  %"fadd.101" = fadd float %"fmul.120", %".1999"
+  %".2140" = load float, ptr %"R42_Float32"
+  %".2141" = load float, ptr %"R41_Float32"
+  %".2142" = load float, ptr %"R15_Float32"
+  %"fmul.120" = fmul float %".2140", %".2141"
+  %"fadd.101" = fadd float %"fmul.120", %".2142"
   store float %"fadd.101", ptr %"R15_Float32"
   ; FFMA R8, R44, R43, R15
-  %".2002" = load float, ptr %"R44_Float32"
-  %".2003" = load float, ptr %"R43_Float32"
-  %".2004" = load float, ptr %"R15_Float32"
-  %"fmul.121" = fmul float %".2002", %".2003"
-  %"fadd.102" = fadd float %"fmul.121", %".2004"
+  %".2145" = load float, ptr %"R44_Float32"
+  %".2146" = load float, ptr %"R43_Float32"
+  %".2147" = load float, ptr %"R15_Float32"
+  %"fmul.121" = fmul float %".2145", %".2146"
+  %"fadd.102" = fadd float %"fmul.121", %".2147"
   store float %"fadd.102", ptr %"R8_Float32"
 .L_x_15:
   ; ISETP.NE.OR P0, PT, R23, RZ, P0
-  %".2007" = load i32, ptr %"R23_Int32"
-  %".2008" = load i1, ptr %"PT_Bool"
-  %"cmp.21" = icmp ne i32 %".2007", 0
-  %".2009" = or i1 %"cmp.21", %".2008"
+  %".2150" = load i32, ptr %"R23_Int32"
+  %".2151" = load i1, ptr %"PT_Bool"
+  %"cmp.21" = icmp ne i32 %".2150", 0
+  %".2152" = or i1 %"cmp.21", %".2151"
   ; @!P0 BRA `(.L_x_11)
-  %".2011" = load i1, ptr %"P0_Bool"
-  %".2012" = icmp eq i1 %".2011", 1
-  br i1 %".2012", label %".L_x_11", label %".L_x_12"
+  %".2154" = load i1, ptr %"P0_Bool"
+  %".2155" = icmp eq i1 %".2154", 1
+  br i1 %".2155", label %".L_x_11", label %".L_x_12"
 .L_x_12:
   ; MOV R13, 0x4
   store i32 4, ptr %"R13_Int32"
   ; IADD3 R12, R3, R22, RZ
-  %".2017" = load i32, ptr %"R3_Int32"
-  %".2018" = load i32, ptr %"R22_Int32"
-  %"add.134" = add i32 %".2017", %".2018"
+  %".2160" = load i32, ptr %"R3_Int32"
+  %".2161" = load i32, ptr %"R22_Int32"
+  %"add.134" = add i32 %".2160", %".2161"
   %"add.135" = add i32 %"add.134", 0
   store i32 %"add.135", ptr %"R12_Int32"
   ; IMAD.WIDE R10, R22, R13, c[0x0][0x168]
-  %".2021" = load i32, ptr %"R22_Int32"
-  %".2022" = load i32, ptr %"R13_Int32"
-  %"mul.48" = mul i32 %".2021", %".2022"
+  %".2164" = load i32, ptr %"R22_Int32"
+  %".2165" = load i32, ptr %"R13_Int32"
+  %"mul.48" = mul i32 %".2164", %".2165"
   %"add.136" = add i32 %"mul.48", %"Arg_3"
   store i32 %"add.136", ptr %"R10_Int32"
   ; IMAD.WIDE R12, R12, R13, c[0x0][0x170]
-  %".2025" = load i32, ptr %"R12_Int32"
-  %".2026" = load i32, ptr %"R13_Int32"
-  %"mul.49" = mul i32 %".2025", %".2026"
+  %".2168" = load i32, ptr %"R12_Int32"
+  %".2169" = load i32, ptr %"R13_Int32"
+  %"mul.49" = mul i32 %".2168", %".2169"
   %"add.137" = add i32 %"mul.49", %"Arg_4"
   store i32 %"add.137", ptr %"R12_Int32"
   ; LDG.E.SYS R14, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2029" = load i32, ptr %"R10_Float32_PTR"
-  %".2030" = add i32 %".2029", 0
-  %"for_LDG.143" = inttoptr i32 %".2030" to ptr
-  %".2031" = load float, ptr %"for_LDG.143"
-  store float %".2031", ptr %"R14_Float32"
+  %".2172" = load ptr, ptr %"R10_Float32_PTR"
+  %".2173" = ptrtoint ptr %".2172" to i64
+  %".2174" = add i64 %".2173", 0
+  %"for_LDG.143" = inttoptr i64 %".2174" to ptr
+  %".2175" = load float, ptr %"for_LDG.143"
+  store float %".2175", ptr %"R14_Float32"
   ; LDG.E.SYS R16, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".2034" = load i32, ptr %"R12_Float32_PTR"
-  %".2035" = add i32 %".2034", 0
-  %"for_LDG.144" = inttoptr i32 %".2035" to ptr
-  %".2036" = load float, ptr %"for_LDG.144"
-  store float %".2036", ptr %"R16_Float32"
+  %".2178" = load ptr, ptr %"R12_Float32_PTR"
+  %".2179" = ptrtoint ptr %".2178" to i64
+  %".2180" = add i64 %".2179", 0
+  %"for_LDG.144" = inttoptr i64 %".2180" to ptr
+  %".2181" = load float, ptr %"for_LDG.144"
+  store float %".2181", ptr %"R16_Float32"
   ; LDG.E.SYS R18, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2039" = load i32, ptr %"R10_Float32_PTR"
-  %".2040" = add i32 %".2039", 4
-  %"for_LDG.145" = inttoptr i32 %".2040" to ptr
-  %".2041" = load float, ptr %"for_LDG.145"
-  store float %".2041", ptr %"R18_Float32"
+  %".2184" = load ptr, ptr %"R10_Float32_PTR"
+  %".2185" = ptrtoint ptr %".2184" to i64
+  %".2186" = add i64 %".2185", 4
+  %"for_LDG.145" = inttoptr i64 %".2186" to ptr
+  %".2187" = load float, ptr %"for_LDG.145"
+  store float %".2187", ptr %"R18_Float32"
   ; LDG.E.SYS R17, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".2044" = load i32, ptr %"R12_Float32_PTR"
-  %".2045" = add i32 %".2044", 4
-  %"for_LDG.146" = inttoptr i32 %".2045" to ptr
-  %".2046" = load float, ptr %"for_LDG.146"
-  store float %".2046", ptr %"R17_Float32"
+  %".2190" = load ptr, ptr %"R12_Float32_PTR"
+  %".2191" = ptrtoint ptr %".2190" to i64
+  %".2192" = add i64 %".2191", 4
+  %"for_LDG.146" = inttoptr i64 %".2192" to ptr
+  %".2193" = load float, ptr %"for_LDG.146"
+  store float %".2193", ptr %"R17_Float32"
   ; LDG.E.SYS R24, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2049" = load i32, ptr %"R10_Float32_PTR"
-  %".2050" = add i32 %".2049", 8
-  %"for_LDG.147" = inttoptr i32 %".2050" to ptr
-  %".2051" = load float, ptr %"for_LDG.147"
-  store float %".2051", ptr %"R24_Float32"
+  %".2196" = load ptr, ptr %"R10_Float32_PTR"
+  %".2197" = ptrtoint ptr %".2196" to i64
+  %".2198" = add i64 %".2197", 8
+  %"for_LDG.147" = inttoptr i64 %".2198" to ptr
+  %".2199" = load float, ptr %"for_LDG.147"
+  store float %".2199", ptr %"R24_Float32"
   ; LDG.E.SYS R19, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".2054" = load i32, ptr %"R12_Float32_PTR"
-  %".2055" = add i32 %".2054", 8
-  %"for_LDG.148" = inttoptr i32 %".2055" to ptr
-  %".2056" = load float, ptr %"for_LDG.148"
-  store float %".2056", ptr %"R19_Float32"
+  %".2202" = load ptr, ptr %"R12_Float32_PTR"
+  %".2203" = ptrtoint ptr %".2202" to i64
+  %".2204" = add i64 %".2203", 8
+  %"for_LDG.148" = inttoptr i64 %".2204" to ptr
+  %".2205" = load float, ptr %"for_LDG.148"
+  store float %".2205", ptr %"R19_Float32"
   ; LDG.E.SYS R34, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2059" = load i32, ptr %"R10_Float32_PTR"
-  %".2060" = add i32 %".2059", 12
-  %"for_LDG.149" = inttoptr i32 %".2060" to ptr
-  %".2061" = load float, ptr %"for_LDG.149"
-  store float %".2061", ptr %"R34_Float32"
+  %".2208" = load ptr, ptr %"R10_Float32_PTR"
+  %".2209" = ptrtoint ptr %".2208" to i64
+  %".2210" = add i64 %".2209", 12
+  %"for_LDG.149" = inttoptr i64 %".2210" to ptr
+  %".2211" = load float, ptr %"for_LDG.149"
+  store float %".2211", ptr %"R34_Float32"
   ; LDG.E.SYS R21, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".2064" = load i32, ptr %"R12_Float32_PTR"
-  %".2065" = add i32 %".2064", 12
-  %"for_LDG.150" = inttoptr i32 %".2065" to ptr
-  %".2066" = load float, ptr %"for_LDG.150"
-  store float %".2066", ptr %"R21_Float32"
+  %".2214" = load ptr, ptr %"R12_Float32_PTR"
+  %".2215" = ptrtoint ptr %".2214" to i64
+  %".2216" = add i64 %".2215", 12
+  %"for_LDG.150" = inttoptr i64 %".2216" to ptr
+  %".2217" = load float, ptr %"for_LDG.150"
+  store float %".2217", ptr %"R21_Float32"
   ; IADD3 R23, R23, -0x4, RZ
-  %".2069" = load i32, ptr %"R23_Int32"
-  %"add.138" = add i32 %".2069", -4
+  %".2220" = load i32, ptr %"R23_Int32"
+  %"add.138" = add i32 %".2220", -4
   %"add.139" = add i32 %"add.138", 0
   store i32 %"add.139", ptr %"R23_Int32"
   ; IADD3 R22, R22, 0x4, RZ
-  %".2072" = load i32, ptr %"R22_Int32"
-  %"add.140" = add i32 %".2072", 4
+  %".2223" = load i32, ptr %"R22_Int32"
+  %"add.140" = add i32 %".2223", 4
   %"add.141" = add i32 %"add.140", 0
   store i32 %"add.141", ptr %"R22_Int32"
   ; ISETP.NE.AND P0, PT, R23, RZ, PT
-  %".2075" = load i32, ptr %"R23_Int32"
-  %".2076" = load i1, ptr %"PT_Bool"
-  %"cmp.22" = icmp ne i32 %".2075", 0
-  %".2077" = and i1 %"cmp.22", %".2076"
+  %".2226" = load i32, ptr %"R23_Int32"
+  %".2227" = load i1, ptr %"PT_Bool"
+  %"cmp.22" = icmp ne i32 %".2226", 0
+  %".2228" = and i1 %"cmp.22", %".2227"
   ; FMUL R15, R14, R9
-  %".2079" = load float, ptr %"R14_Float32"
-  %".2080" = load float, ptr %"R9_Float32"
-  %"fmul.122" = fmul float %".2079", %".2080"
+  %".2230" = load float, ptr %"R14_Float32"
+  %".2231" = load float, ptr %"R9_Float32"
+  %"fmul.122" = fmul float %".2230", %".2231"
   store float %"fmul.122", ptr %"R15_Float32"
   ; FFMA R15, R15, R16, R8
-  %".2083" = load float, ptr %"R15_Float32"
-  %".2084" = load float, ptr %"R16_Float32"
-  %".2085" = load float, ptr %"R8_Float32"
-  %"fmul.123" = fmul float %".2083", %".2084"
-  %"fadd.103" = fadd float %"fmul.123", %".2085"
+  %".2234" = load float, ptr %"R15_Float32"
+  %".2235" = load float, ptr %"R16_Float32"
+  %".2236" = load float, ptr %"R8_Float32"
+  %"fmul.123" = fmul float %".2234", %".2235"
+  %"fadd.103" = fadd float %"fmul.123", %".2236"
   store float %"fadd.103", ptr %"R15_Float32"
   ; FMUL R18, R18, R9
-  %".2088" = load float, ptr %"R18_Float32"
-  %".2089" = load float, ptr %"R9_Float32"
-  %"fmul.124" = fmul float %".2088", %".2089"
+  %".2239" = load float, ptr %"R18_Float32"
+  %".2240" = load float, ptr %"R9_Float32"
+  %"fmul.124" = fmul float %".2239", %".2240"
   store float %"fmul.124", ptr %"R18_Float32"
   ; FFMA R15, R18, R17, R15
-  %".2092" = load float, ptr %"R18_Float32"
-  %".2093" = load float, ptr %"R17_Float32"
-  %".2094" = load float, ptr %"R15_Float32"
-  %"fmul.125" = fmul float %".2092", %".2093"
-  %"fadd.104" = fadd float %"fmul.125", %".2094"
+  %".2243" = load float, ptr %"R18_Float32"
+  %".2244" = load float, ptr %"R17_Float32"
+  %".2245" = load float, ptr %"R15_Float32"
+  %"fmul.125" = fmul float %".2243", %".2244"
+  %"fadd.104" = fadd float %"fmul.125", %".2245"
   store float %"fadd.104", ptr %"R15_Float32"
   ; FMUL R24, R24, R9
-  %".2097" = load float, ptr %"R24_Float32"
-  %".2098" = load float, ptr %"R9_Float32"
-  %"fmul.126" = fmul float %".2097", %".2098"
+  %".2248" = load float, ptr %"R24_Float32"
+  %".2249" = load float, ptr %"R9_Float32"
+  %"fmul.126" = fmul float %".2248", %".2249"
   store float %"fmul.126", ptr %"R24_Float32"
   ; FFMA R15, R24, R19, R15
-  %".2101" = load float, ptr %"R24_Float32"
-  %".2102" = load float, ptr %"R19_Float32"
-  %".2103" = load float, ptr %"R15_Float32"
-  %"fmul.127" = fmul float %".2101", %".2102"
-  %"fadd.105" = fadd float %"fmul.127", %".2103"
+  %".2252" = load float, ptr %"R24_Float32"
+  %".2253" = load float, ptr %"R19_Float32"
+  %".2254" = load float, ptr %"R15_Float32"
+  %"fmul.127" = fmul float %".2252", %".2253"
+  %"fadd.105" = fadd float %"fmul.127", %".2254"
   store float %"fadd.105", ptr %"R15_Float32"
   ; FMUL R34, R34, R9
-  %".2106" = load float, ptr %"R34_Float32"
-  %".2107" = load float, ptr %"R9_Float32"
-  %"fmul.128" = fmul float %".2106", %".2107"
+  %".2257" = load float, ptr %"R34_Float32"
+  %".2258" = load float, ptr %"R9_Float32"
+  %"fmul.128" = fmul float %".2257", %".2258"
   store float %"fmul.128", ptr %"R34_Float32"
   ; FFMA R8, R34, R21, R15
-  %".2110" = load float, ptr %"R34_Float32"
-  %".2111" = load float, ptr %"R21_Float32"
-  %".2112" = load float, ptr %"R15_Float32"
-  %"fmul.129" = fmul float %".2110", %".2111"
-  %"fadd.106" = fadd float %"fmul.129", %".2112"
+  %".2261" = load float, ptr %"R34_Float32"
+  %".2262" = load float, ptr %"R21_Float32"
+  %".2263" = load float, ptr %"R15_Float32"
+  %"fmul.129" = fmul float %".2261", %".2262"
+  %"fadd.106" = fadd float %"fmul.129", %".2263"
   store float %"fadd.106", ptr %"R8_Float32"
   ; @P0 BRA `(.L_x_12)
-  %".2115" = load i1, ptr %"P0_Bool"
-  %".2116" = icmp ne i1 %".2115", 1
-  br i1 %".2116", label %".L_x_12", label %".L_x_11"
+  %".2266" = load i1, ptr %"P0_Bool"
+  %".2267" = icmp ne i1 %".2266", 1
+  br i1 %".2267", label %".L_x_12", label %".L_x_11"
 .L_x_11:
   ; ISETP.NE.AND P0, PT, R4, RZ, PT
-  %".2119" = load i32, ptr %"R4_Int32"
-  %".2120" = load i1, ptr %"PT_Bool"
-  %"cmp.23" = icmp ne i32 %".2119", 0
-  %".2121" = and i1 %"cmp.23", %".2120"
+  %".2270" = load i32, ptr %"R4_Int32"
+  %".2271" = load i1, ptr %"PT_Bool"
+  %"cmp.23" = icmp ne i32 %".2270", 0
+  %".2272" = and i1 %"cmp.23", %".2271"
   ; @!P0 BRA `(.L_x_10)
-  %".2123" = load i1, ptr %"P0_Bool"
-  %".2124" = icmp eq i1 %".2123", 1
-  br i1 %".2124", label %".L_x_10", label %".L_x_11_split_0x1e60"
+  %".2274" = load i1, ptr %"P0_Bool"
+  %".2275" = icmp eq i1 %".2274", 1
+  br i1 %".2275", label %".L_x_10", label %".L_x_11_split_0x1e60"
 .L_x_11_split_0x1e60:
   ; MOV R11, 0x4
   store i32 4, ptr %"R11_Int32"
   ; IADD3 R10, R3, R22, RZ
-  %".2129" = load i32, ptr %"R3_Int32"
-  %".2130" = load i32, ptr %"R22_Int32"
-  %"add.142" = add i32 %".2129", %".2130"
+  %".2280" = load i32, ptr %"R3_Int32"
+  %".2281" = load i32, ptr %"R22_Int32"
+  %"add.142" = add i32 %".2280", %".2281"
   %"add.143" = add i32 %"add.142", 0
   store i32 %"add.143", ptr %"R10_Int32"
   ; IMAD.WIDE R22, R22, R11, c[0x0][0x168]
-  %".2133" = load i32, ptr %"R22_Int32"
-  %".2134" = load i32, ptr %"R11_Int32"
-  %"mul.50" = mul i32 %".2133", %".2134"
+  %".2284" = load i32, ptr %"R22_Int32"
+  %".2285" = load i32, ptr %"R11_Int32"
+  %"mul.50" = mul i32 %".2284", %".2285"
   %"add.144" = add i32 %"mul.50", %"Arg_3"
   store i32 %"add.144", ptr %"R22_Int32"
   ; IMAD.WIDE R10, R10, R11, c[0x0][0x170]
-  %".2137" = load i32, ptr %"R10_Int32"
-  %".2138" = load i32, ptr %"R11_Int32"
-  %"mul.51" = mul i32 %".2137", %".2138"
+  %".2288" = load i32, ptr %"R10_Int32"
+  %".2289" = load i32, ptr %"R11_Int32"
+  %"mul.51" = mul i32 %".2288", %".2289"
   %"add.145" = add i32 %"mul.51", %"Arg_4"
   store i32 %"add.145", ptr %"R10_Int32"
   ; LDG.E.SYS R12, [R22]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".2141" = load i32, ptr %"R22_Float32_PTR"
-  %".2142" = add i32 %".2141", 0
-  %"for_LDG.151" = inttoptr i32 %".2142" to ptr
-  %".2143" = load float, ptr %"for_LDG.151"
-  store float %".2143", ptr %"R12_Float32"
+  %".2292" = load ptr, ptr %"R22_Float32_PTR"
+  %".2293" = ptrtoint ptr %".2292" to i64
+  %".2294" = add i64 %".2293", 0
+  %"for_LDG.151" = inttoptr i64 %".2294" to ptr
+  %".2295" = load float, ptr %"for_LDG.151"
+  store float %".2295", ptr %"R12_Float32"
   ; LDG.E.SYS R14, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2146" = load i32, ptr %"R10_Float32_PTR"
-  %".2147" = add i32 %".2146", 0
-  %"for_LDG.152" = inttoptr i32 %".2147" to ptr
-  %".2148" = load float, ptr %"for_LDG.152"
-  store float %".2148", ptr %"R14_Float32"
+  %".2298" = load ptr, ptr %"R10_Float32_PTR"
+  %".2299" = ptrtoint ptr %".2298" to i64
+  %".2300" = add i64 %".2299", 0
+  %"for_LDG.152" = inttoptr i64 %".2300" to ptr
+  %".2301" = load float, ptr %"for_LDG.152"
+  store float %".2301", ptr %"R14_Float32"
   ; ISETP.NE.AND P0, PT, R4, 0x1, PT
-  %".2151" = load i32, ptr %"R4_Int32"
-  %".2152" = load i1, ptr %"PT_Bool"
-  %"cmp.24" = icmp ne i32 %".2151", 1
-  %".2153" = and i1 %"cmp.24", %".2152"
+  %".2304" = load i32, ptr %"R4_Int32"
+  %".2305" = load i1, ptr %"PT_Bool"
+  %"cmp.24" = icmp ne i32 %".2304", 1
+  %".2306" = and i1 %"cmp.24", %".2305"
   ; FMUL R13, R12, R9
-  %".2155" = load float, ptr %"R12_Float32"
-  %".2156" = load float, ptr %"R9_Float32"
-  %"fmul.130" = fmul float %".2155", %".2156"
+  %".2308" = load float, ptr %"R12_Float32"
+  %".2309" = load float, ptr %"R9_Float32"
+  %"fmul.130" = fmul float %".2308", %".2309"
   store float %"fmul.130", ptr %"R13_Float32"
   ; FFMA R8, R13, R14, R8
-  %".2159" = load float, ptr %"R13_Float32"
-  %".2160" = load float, ptr %"R14_Float32"
-  %".2161" = load float, ptr %"R8_Float32"
-  %"fmul.131" = fmul float %".2159", %".2160"
-  %"fadd.107" = fadd float %"fmul.131", %".2161"
+  %".2312" = load float, ptr %"R13_Float32"
+  %".2313" = load float, ptr %"R14_Float32"
+  %".2314" = load float, ptr %"R8_Float32"
+  %"fmul.131" = fmul float %".2312", %".2313"
+  %"fadd.107" = fadd float %"fmul.131", %".2314"
   store float %"fadd.107", ptr %"R8_Float32"
   ; @!P0 BRA `(.L_x_10)
-  %".2164" = load i1, ptr %"P0_Bool"
-  %".2165" = icmp eq i1 %".2164", 1
-  br i1 %".2165", label %".L_x_10", label %".L_x_11_split_0x1f00"
+  %".2317" = load i1, ptr %"P0_Bool"
+  %".2318" = icmp eq i1 %".2317", 1
+  br i1 %".2318", label %".L_x_10", label %".L_x_11_split_0x1f00"
 .L_x_11_split_0x1f00:
   ; ISETP.NE.AND P0, PT, R4, 0x2, PT
-  %".2168" = load i32, ptr %"R4_Int32"
-  %".2169" = load i1, ptr %"PT_Bool"
-  %"cmp.25" = icmp ne i32 %".2168", 2
-  %".2170" = and i1 %"cmp.25", %".2169"
+  %".2321" = load i32, ptr %"R4_Int32"
+  %".2322" = load i1, ptr %"PT_Bool"
+  %"cmp.25" = icmp ne i32 %".2321", 2
+  %".2323" = and i1 %"cmp.25", %".2322"
   ; LDG.E.SYS R12, [R22+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".2172" = load i32, ptr %"R22_Float32_PTR"
-  %".2173" = add i32 %".2172", 4
-  %"for_LDG.153" = inttoptr i32 %".2173" to ptr
-  %".2174" = load float, ptr %"for_LDG.153"
-  store float %".2174", ptr %"R12_Float32"
+  %".2325" = load ptr, ptr %"R22_Float32_PTR"
+  %".2326" = ptrtoint ptr %".2325" to i64
+  %".2327" = add i64 %".2326", 4
+  %"for_LDG.153" = inttoptr i64 %".2327" to ptr
+  %".2328" = load float, ptr %"for_LDG.153"
+  store float %".2328", ptr %"R12_Float32"
   ; LDG.E.SYS R14, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2177" = load i32, ptr %"R10_Float32_PTR"
-  %".2178" = add i32 %".2177", 4
-  %"for_LDG.154" = inttoptr i32 %".2178" to ptr
-  %".2179" = load float, ptr %"for_LDG.154"
-  store float %".2179", ptr %"R14_Float32"
+  %".2331" = load ptr, ptr %"R10_Float32_PTR"
+  %".2332" = ptrtoint ptr %".2331" to i64
+  %".2333" = add i64 %".2332", 4
+  %"for_LDG.154" = inttoptr i64 %".2333" to ptr
+  %".2334" = load float, ptr %"for_LDG.154"
+  store float %".2334", ptr %"R14_Float32"
   ; @P0 LDG.E.SYS R16, [R22+0x8]
-  %".2182" = load i1, ptr %"P0_Bool"
-  %".2183" = icmp ne i1 %".2182", 1
-  br i1 %".2183", label %".L_x_11_split_0x1f00_conditionalExpr_0x1f30", label %".L_x_11_split_0x1f40"
+  %".2337" = load i1, ptr %"P0_Bool"
+  %".2338" = icmp ne i1 %".2337", 1
+  br i1 %".2338", label %".L_x_11_split_0x1f00_conditionalExpr_0x1f30", label %".L_x_11_split_0x1f40"
 .L_x_11_split_0x1f00_conditionalExpr_0x1f30:
   ; LDG.E.SYS R16, [R22+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Float32_PTR", ptr %"R22_Int32", i32 4, i1 0)
-  %".2186" = load i32, ptr %"R22_Float32_PTR"
-  %".2187" = add i32 %".2186", 8
-  %"for_LDG.155" = inttoptr i32 %".2187" to ptr
-  %".2188" = load float, ptr %"for_LDG.155"
-  store float %".2188", ptr %"R16_Float32"
+  %".2341" = load ptr, ptr %"R22_Float32_PTR"
+  %".2342" = ptrtoint ptr %".2341" to i64
+  %".2343" = add i64 %".2342", 8
+  %"for_LDG.155" = inttoptr i64 %".2343" to ptr
+  %".2344" = load float, ptr %"for_LDG.155"
+  store float %".2344", ptr %"R16_Float32"
   ; BRA `(.L_x_11_split_0x1f40)
   br label %".L_x_11_split_0x1f40"
 .L_x_11_split_0x1f40:
   ; @P0 LDG.E.SYS R15, [R10+0x8]
-  %".2193" = load i1, ptr %"P0_Bool"
-  %".2194" = icmp ne i1 %".2193", 1
-  br i1 %".2194", label %".L_x_11_split_0x1f40_conditionalExpr_0x1f40", label %".L_x_11_split_0x1f50"
+  %".2349" = load i1, ptr %"P0_Bool"
+  %".2350" = icmp ne i1 %".2349", 1
+  br i1 %".2350", label %".L_x_11_split_0x1f40_conditionalExpr_0x1f40", label %".L_x_11_split_0x1f50"
 .L_x_11_split_0x1f40_conditionalExpr_0x1f40:
   ; LDG.E.SYS R15, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2197" = load i32, ptr %"R10_Float32_PTR"
-  %".2198" = add i32 %".2197", 8
-  %"for_LDG.156" = inttoptr i32 %".2198" to ptr
-  %".2199" = load float, ptr %"for_LDG.156"
-  store float %".2199", ptr %"R15_Float32"
+  %".2353" = load ptr, ptr %"R10_Float32_PTR"
+  %".2354" = ptrtoint ptr %".2353" to i64
+  %".2355" = add i64 %".2354", 8
+  %"for_LDG.156" = inttoptr i64 %".2355" to ptr
+  %".2356" = load float, ptr %"for_LDG.156"
+  store float %".2356", ptr %"R15_Float32"
   ; BRA `(.L_x_11_split_0x1f50)
   br label %".L_x_11_split_0x1f50"
 .L_x_11_split_0x1f50:
   ; FMUL R13, R12, R9
-  %".2204" = load float, ptr %"R12_Float32"
-  %".2205" = load float, ptr %"R9_Float32"
-  %"fmul.132" = fmul float %".2204", %".2205"
+  %".2361" = load float, ptr %"R12_Float32"
+  %".2362" = load float, ptr %"R9_Float32"
+  %"fmul.132" = fmul float %".2361", %".2362"
   store float %"fmul.132", ptr %"R13_Float32"
   ; FFMA R8, R13, R14, R8
-  %".2208" = load float, ptr %"R13_Float32"
-  %".2209" = load float, ptr %"R14_Float32"
-  %".2210" = load float, ptr %"R8_Float32"
-  %"fmul.133" = fmul float %".2208", %".2209"
-  %"fadd.108" = fadd float %"fmul.133", %".2210"
+  %".2365" = load float, ptr %"R13_Float32"
+  %".2366" = load float, ptr %"R14_Float32"
+  %".2367" = load float, ptr %"R8_Float32"
+  %"fmul.133" = fmul float %".2365", %".2366"
+  %"fadd.108" = fadd float %"fmul.133", %".2367"
   store float %"fadd.108", ptr %"R8_Float32"
   ; @P0 FMUL R9, R16, R9
-  %".2213" = load i1, ptr %"P0_Bool"
-  %".2214" = icmp ne i1 %".2213", 1
-  br i1 %".2214", label %".L_x_11_split_0x1f50_conditionalExpr_0x1f70", label %".L_x_11_split_0x1f80"
+  %".2370" = load i1, ptr %"P0_Bool"
+  %".2371" = icmp ne i1 %".2370", 1
+  br i1 %".2371", label %".L_x_11_split_0x1f50_conditionalExpr_0x1f70", label %".L_x_11_split_0x1f80"
 .L_x_11_split_0x1f50_conditionalExpr_0x1f70:
   ; FMUL R9, R16, R9
-  %".2217" = load float, ptr %"R16_Float32"
-  %".2218" = load float, ptr %"R9_Float32"
-  %"fmul.134" = fmul float %".2217", %".2218"
+  %".2374" = load float, ptr %"R16_Float32"
+  %".2375" = load float, ptr %"R9_Float32"
+  %"fmul.134" = fmul float %".2374", %".2375"
   store float %"fmul.134", ptr %"R9_Float32"
   ; BRA `(.L_x_11_split_0x1f80)
   br label %".L_x_11_split_0x1f80"
 .L_x_11_split_0x1f80:
   ; @P0 FFMA R8, R9, R15, R8
-  %".2223" = load i1, ptr %"P0_Bool"
-  %".2224" = icmp ne i1 %".2223", 1
-  br i1 %".2224", label %".L_x_11_split_0x1f80_conditionalExpr_0x1f80", label %".L_x_10"
+  %".2380" = load i1, ptr %"P0_Bool"
+  %".2381" = icmp ne i1 %".2380", 1
+  br i1 %".2381", label %".L_x_11_split_0x1f80_conditionalExpr_0x1f80", label %".L_x_10"
 .L_x_11_split_0x1f80_conditionalExpr_0x1f80:
   ; FFMA R8, R9, R15, R8
-  %".2227" = load float, ptr %"R9_Float32"
-  %".2228" = load float, ptr %"R15_Float32"
-  %".2229" = load float, ptr %"R8_Float32"
-  %"fmul.135" = fmul float %".2227", %".2228"
-  %"fadd.109" = fadd float %"fmul.135", %".2229"
+  %".2384" = load float, ptr %"R9_Float32"
+  %".2385" = load float, ptr %"R15_Float32"
+  %".2386" = load float, ptr %"R8_Float32"
+  %"fmul.135" = fmul float %".2384", %".2385"
+  %"fadd.109" = fadd float %"fmul.135", %".2386"
   store float %"fadd.109", ptr %"R8_Float32"
   ; BRA `(.L_x_10)
   br label %".L_x_10"
 .L_x_10:
   ; LDG.E.SYS R9, [R30]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R30_Float32_PTR", ptr %"R30_Int32", i32 4, i1 0)
-  %".2234" = load i32, ptr %"R30_Float32_PTR"
-  %".2235" = add i32 %".2234", 0
-  %"for_LDG.157" = inttoptr i32 %".2235" to ptr
-  %".2236" = load float, ptr %"for_LDG.157"
-  store float %".2236", ptr %"R9_Float32"
+  %".2391" = load ptr, ptr %"R30_Float32_PTR"
+  %".2392" = ptrtoint ptr %".2391" to i64
+  %".2393" = add i64 %".2392", 0
+  %"for_LDG.157" = inttoptr i64 %".2393" to ptr
+  %".2394" = load float, ptr %"for_LDG.157"
+  store float %".2394", ptr %"R9_Float32"
   ; BMOV.32.CLEAR RZ, B0
   ; BSSY B0, `(.L_x_16)
   ; FADD R12, R9, R8
-  %".2241" = load float, ptr %"R9_Float32"
-  %".2242" = load float, ptr %"R8_Float32"
-  %"fadd.110" = fadd float %".2241", %".2242"
+  %".2399" = load float, ptr %"R9_Float32"
+  %".2400" = load float, ptr %"R8_Float32"
+  %"fadd.110" = fadd float %".2399", %".2400"
   store float %"fadd.110", ptr %"R12_Float32"
   ; FSETP.GE.AND P0, PT, |R12|, 0.60000002384185791016, PT
-  %".2245" = load float, ptr %"R12_Float32"
-  %"llvm_fabs_result" = call float @"llvm.fabs"(float %".2245")
-  %".2246" = load i1, ptr %"PT_Bool"
+  %".2403" = load float, ptr %"R12_Float32"
+  %"llvm_fabs_result" = call float @"llvm.fabs"(float %".2403")
+  %".2404" = load i1, ptr %"PT_Bool"
   %"fcmp_unordered" = fcmp oge float %"llvm_fabs_result", 0x3fe3333340000000
-  %".2247" = and i1 %"fcmp_unordered", %".2246"
+  %".2405" = and i1 %"fcmp_unordered", %".2404"
   ; @!P0 BRA `(.L_x_17)
-  %".2249" = load i1, ptr %"P0_Bool"
-  %".2250" = icmp eq i1 %".2249", 1
-  br i1 %".2250", label %".L_x_17", label %".L_x_10_split_0x1ff0"
+  %".2407" = load i1, ptr %"P0_Bool"
+  %".2408" = icmp eq i1 %".2407", 1
+  br i1 %".2408", label %".L_x_17", label %".L_x_10_split_0x1ff0"
 .L_x_10_split_0x1ff0:
   ; FMUL R8, |R12|.reuse, 2.8853900432586669922
-  %".2253" = load float, ptr %"R12_Float32"
-  %"llvm_fabs_result.1" = call float @"llvm.fabs"(float %".2253")
+  %".2411" = load float, ptr %"R12_Float32"
+  %"llvm_fabs_result.1" = call float @"llvm.fabs"(float %".2411")
   %"fmul.136" = fmul float %"llvm_fabs_result.1", 0x4007154760000000
   store float %"fmul.136", ptr %"R8_Float32"
   ; MOV R9, 0x3f800000
   store float 0x41cfc00000000000, ptr %"R9_Float32"
   ; FSETP.GE.AND P0, PT, |R12|, 9.010913848876953125, PT
-  %".2258" = load float, ptr %"R12_Float32"
-  %"llvm_fabs_result.2" = call float @"llvm.fabs"(float %".2258")
-  %".2259" = load i1, ptr %"PT_Bool"
+  %".2416" = load float, ptr %"R12_Float32"
+  %"llvm_fabs_result.2" = call float @"llvm.fabs"(float %".2416")
+  %".2417" = load i1, ptr %"PT_Bool"
   %"fcmp_unordered.1" = fcmp oge float %"llvm_fabs_result.2", 0x4022059680000000
-  %".2260" = and i1 %"fcmp_unordered.1", %".2259"
+  %".2418" = and i1 %"fcmp_unordered.1", %".2417"
   ; MUFU.EX2 R8, R8
-  %".2262" = load float, ptr %"R8_Float32"
-  %"llvm_exp2_f32_result.2" = call float @"llvm.exp2.f32"(float %".2262")
+  %".2420" = load float, ptr %"R8_Float32"
+  %"llvm_exp2_f32_result.2" = call float @"llvm.exp2.f32"(float %".2420")
   store float %"llvm_exp2_f32_result.2", ptr %"R8_Float32"
   ; FADD R10, R8, 1
-  %".2265" = load float, ptr %"R8_Float32"
-  %"fadd.111" = fadd float %".2265", 0x3ff0000000000000
+  %".2423" = load float, ptr %"R8_Float32"
+  %"fadd.111" = fadd float %".2423", 0x3ff0000000000000
   store float %"fadd.111", ptr %"R10_Float32"
   ; MUFU.RCP R10, R10
-  %".2268" = load float, ptr %"R10_Float32"
-  %".2269" = fdiv float 0x3ff0000000000000, %".2268"
-  store float %".2269", ptr %"R10_Float32"
+  %".2426" = load float, ptr %"R10_Float32"
+  %".2427" = fdiv float 0x3ff0000000000000, %".2426"
+  store float %".2427", ptr %"R10_Float32"
   ; FFMA R9, R10, -2, R9
-  %".2272" = load float, ptr %"R10_Float32"
-  %".2273" = load float, ptr %"R9_Float32"
-  %"fmul.137" = fmul float %".2272", 0xc000000000000000
-  %"fadd.112" = fadd float %"fmul.137", %".2273"
+  %".2430" = load float, ptr %"R10_Float32"
+  %".2431" = load float, ptr %"R9_Float32"
+  %"fmul.137" = fmul float %".2430", 0xc000000000000000
+  %"fadd.112" = fadd float %"fmul.137", %".2431"
   store float %"fadd.112", ptr %"R9_Float32"
   ; FSEL R9, R9, 1, !P0
-  %".2276" = load float, ptr %"R9_Float32"
-  %".2277" = load i1, ptr %"P0_Bool"
-  %".2278" = icmp eq i1 %".2277", 1
-  %"fsel" = select  i1 %".2278", float %".2276", float 0x3ff0000000000000
+  %".2434" = load float, ptr %"R9_Float32"
+  %".2435" = load i1, ptr %"P0_Bool"
+  %".2436" = icmp eq i1 %".2435", 1
+  %"fsel" = select  i1 %".2436", float %".2434", float 0x3ff0000000000000
   store float %"fsel", ptr %"R9_Float32"
   ; LOP3.LUT R9, R9, 0x80000000, R12, 0xf8, !PT
-  %".2281" = load float, ptr %"R9_Float32"
-  %".2282" = load float, ptr %"R12_Float32"
-  %".2283" = or float %".2281", 0x41e0000000000000
-  %".2284" = or float %".2281", %".2282"
-  %".2285" = and float %".2283", %".2284"
-  store float %".2285", ptr %"R9_Float32"
+  %".2439" = load float, ptr %"R9_Float32"
+  %".2440" = load float, ptr %"R12_Float32"
+  %".2441" = or float %".2439", 0x41e0000000000000
+  %".2442" = or float %".2439", %".2440"
+  %".2443" = and float %".2441", %".2442"
+  store float %".2443", ptr %"R9_Float32"
   ; BRA `(.L_x_18)
   br label %".L_x_18"
 .L_x_17:
   ; MOV R9, 0x3c80f082
   store float 0x41ce407840000000, ptr %"R9_Float32"
   ; FMUL R8, R12, R12
-  %".2292" = load float, ptr %"R12_Float32"
-  %".2293" = load float, ptr %"R12_Float32"
-  %"fmul.138" = fmul float %".2292", %".2293"
+  %".2450" = load float, ptr %"R12_Float32"
+  %".2451" = load float, ptr %"R12_Float32"
+  %"fmul.138" = fmul float %".2450", %".2451"
   store float %"fmul.138", ptr %"R8_Float32"
   ; FFMA R9, R8, R9, -0.052303962409496307373
-  %".2296" = load float, ptr %"R8_Float32"
-  %".2297" = load float, ptr %"R9_Float32"
-  %"fmul.139" = fmul float %".2296", %".2297"
+  %".2454" = load float, ptr %"R8_Float32"
+  %".2455" = load float, ptr %"R9_Float32"
+  %"fmul.139" = fmul float %".2454", %".2455"
   %"fadd.113" = fadd float %"fmul.139", 0xbfaac795c0000000
   store float %"fadd.113", ptr %"R9_Float32"
   ; FFMA R9, R8, R9, 0.1331529766321182251
-  %".2300" = load float, ptr %"R8_Float32"
-  %".2301" = load float, ptr %"R9_Float32"
-  %"fmul.140" = fmul float %".2300", %".2301"
+  %".2458" = load float, ptr %"R8_Float32"
+  %".2459" = load float, ptr %"R9_Float32"
+  %"fmul.140" = fmul float %".2458", %".2459"
   %"fadd.114" = fadd float %"fmul.140", 0x3fc10b2820000000
   store float %"fadd.114", ptr %"R9_Float32"
   ; FFMA R9, R8, R9, -0.33332768082618713379
-  %".2304" = load float, ptr %"R8_Float32"
-  %".2305" = load float, ptr %"R9_Float32"
-  %"fmul.141" = fmul float %".2304", %".2305"
+  %".2462" = load float, ptr %"R8_Float32"
+  %".2463" = load float, ptr %"R9_Float32"
+  %"fmul.141" = fmul float %".2462", %".2463"
   %"fadd.115" = fadd float %"fmul.141", 0xbfd5553da0000000
   store float %"fadd.115", ptr %"R9_Float32"
   ; FFMA R9, R8, R9, RZ
-  %".2308" = load float, ptr %"R8_Float32"
-  %".2309" = load float, ptr %"R9_Float32"
-  %"fmul.142" = fmul float %".2308", %".2309"
+  %".2466" = load float, ptr %"R8_Float32"
+  %".2467" = load float, ptr %"R9_Float32"
+  %"fmul.142" = fmul float %".2466", %".2467"
   %"fadd.116" = fadd float %"fmul.142",              0x0
   store float %"fadd.116", ptr %"R9_Float32"
   ; FFMA R9, R12, R9, R12
-  %".2312" = load float, ptr %"R12_Float32"
-  %".2313" = load float, ptr %"R9_Float32"
-  %".2314" = load float, ptr %"R12_Float32"
-  %"fmul.143" = fmul float %".2312", %".2313"
-  %"fadd.117" = fadd float %"fmul.143", %".2314"
+  %".2470" = load float, ptr %"R12_Float32"
+  %".2471" = load float, ptr %"R9_Float32"
+  %".2472" = load float, ptr %"R12_Float32"
+  %"fmul.143" = fmul float %".2470", %".2471"
+  %"fadd.117" = fadd float %"fmul.143", %".2472"
   store float %"fadd.117", ptr %"R9_Float32"
 .L_x_18:
   ; BSYNC B0
 .L_x_16:
   ; IADD3 R8, R20, 0x1800000, RZ
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R20_Int32", ptr %"R20_Float32", i32 4, i1 0)
-  %".2318" = load i32, ptr %"R20_Int32"
-  %"add.146" = add i32 %".2318", 25165824
+  %".2476" = load i32, ptr %"R20_Int32"
+  %"add.146" = add i32 %".2476", 25165824
   %"add.147" = add i32 %"add.146", 0
   store i32 %"add.147", ptr %"R8_Int32"
   ; BMOV.32.CLEAR RZ, B0
   ; BSSY B0, `(.L_x_19)
   ; LOP3.LUT R8, R8, 0x7f800000, RZ, 0xc0, !PT
-  %".2323" = load i32, ptr %"R8_Int32"
-  %".2324" = and i32 %".2323", 2139095040
-  store i32 %".2324", ptr %"R8_Int32"
+  %".2481" = load i32, ptr %"R8_Int32"
+  %".2482" = and i32 %".2481", 2139095040
+  store i32 %".2482", ptr %"R8_Int32"
   ; ISETP.GT.U32.AND P0, PT, R8, 0x1ffffff, PT
-  %".2327" = load i32, ptr %"R8_Int32"
-  %".2328" = load i1, ptr %"PT_Bool"
-  %"cmp.26" = icmp sgt i32 %".2327", 33554431
-  %".2329" = and i1 %"cmp.26", %".2328"
+  %".2485" = load i32, ptr %"R8_Int32"
+  %".2486" = load i1, ptr %"PT_Bool"
+  %"cmp.26" = icmp sgt i32 %".2485", 33554431
+  %".2487" = and i1 %"cmp.26", %".2486"
   ; @P0 BRA `(.L_x_20)
-  %".2331" = load i1, ptr %"P0_Bool"
-  %".2332" = icmp ne i1 %".2331", 1
-  br i1 %".2332", label %".L_x_20", label %".L_x_16_split_0x2170"
+  %".2489" = load i1, ptr %"P0_Bool"
+  %".2490" = icmp ne i1 %".2489", 1
+  br i1 %".2490", label %".L_x_20", label %".L_x_16_split_0x2170"
 .L_x_16_split_0x2170:
   ; MOV R24, R20
-  %".2335" = load float, ptr %"R20_Float32"
-  store float %".2335", ptr %"R24_Float32"
+  %".2493" = load float, ptr %"R20_Float32"
+  store float %".2493", ptr %"R24_Float32"
   ; MOV R10, 0x21a0
   store i32 8608, ptr %"R10_Int32"
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_NOTYPE", ptr %"R10_Int32", i32 4, i1 0)
   ; CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
   %"call_rel.1" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; MOV R8, R22
-  %".2341" = load i32, ptr %"R22_Int32"
-  store i32 %".2341", ptr %"R8_Int32"
+  %".2499" = load i32, ptr %"R22_Int32"
+  store i32 %".2499", ptr %"R8_Int32"
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32", ptr %"R8_Int32", i32 4, i1 0)
   ; BRA `(.L_x_21)
   br label %".L_x_21"
 .L_x_20:
   ; MUFU.RCP R11, R20
-  %".2346" = load float, ptr %"R20_Float32"
-  %".2347" = fdiv float 0x3ff0000000000000, %".2346"
-  store float %".2347", ptr %"R11_Float32"
+  %".2504" = load float, ptr %"R20_Float32"
+  %".2505" = fdiv float 0x3ff0000000000000, %".2504"
+  store float %".2505", ptr %"R11_Float32"
   ; FFMA R8, R20, R11, -1
-  %".2350" = load float, ptr %"R20_Float32"
-  %".2351" = load float, ptr %"R11_Float32"
-  %"fmul.144" = fmul float %".2350", %".2351"
+  %".2508" = load float, ptr %"R20_Float32"
+  %".2509" = load float, ptr %"R11_Float32"
+  %"fmul.144" = fmul float %".2508", %".2509"
   %"fadd.118" = fadd float %"fmul.144", 0xbff0000000000000
   store float %"fadd.118", ptr %"R8_Float32"
   ; FADD.FTZ R8, -R8, -RZ
-  %".2354" = load float, ptr %"R8_Float32"
-  %".2355" = sub float              0x0, %".2354"
-  %"fadd.119" = fadd float %".2355",              0x0
+  %".2512" = load float, ptr %"R8_Float32"
+  %".2513" = sub float              0x0, %".2512"
+  %"fadd.119" = fadd float %".2513",              0x0
   store float %"fadd.119", ptr %"R8_Float32"
   ; FFMA R8, R11, R8, R11
-  %".2358" = load float, ptr %"R11_Float32"
-  %".2359" = load float, ptr %"R8_Float32"
-  %".2360" = load float, ptr %"R11_Float32"
-  %"fmul.145" = fmul float %".2358", %".2359"
-  %"fadd.120" = fadd float %"fmul.145", %".2360"
+  %".2516" = load float, ptr %"R11_Float32"
+  %".2517" = load float, ptr %"R8_Float32"
+  %".2518" = load float, ptr %"R11_Float32"
+  %"fmul.145" = fmul float %".2516", %".2517"
+  %"fadd.120" = fadd float %"fmul.145", %".2518"
   store float %"fadd.120", ptr %"R8_Float32"
 .L_x_21:
   ; BSYNC B0
 .L_x_19:
   ; LDG.E.SYS R11, [R28]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R28_Float32_PTR", ptr %"R28_Int32", i32 4, i1 0)
-  %".2364" = load i32, ptr %"R28_Float32_PTR"
-  %".2365" = add i32 %".2364", 0
-  %"for_LDG.158" = inttoptr i32 %".2365" to ptr
-  %".2366" = load float, ptr %"for_LDG.158"
-  store float %".2366", ptr %"R11_Float32"
+  %".2522" = load ptr, ptr %"R28_Float32_PTR"
+  %".2523" = ptrtoint ptr %".2522" to i64
+  %".2524" = add i64 %".2523", 0
+  %"for_LDG.158" = inttoptr i64 %".2524" to ptr
+  %".2525" = load float, ptr %"for_LDG.158"
+  store float %".2525", ptr %"R11_Float32"
   ; FADD R10, -R8, 1
-  %".2369" = load float, ptr %"R8_Float32"
-  %".2370" = sub float              0x0, %".2369"
-  %"fadd.121" = fadd float %".2370", 0x3ff0000000000000
+  %".2528" = load float, ptr %"R8_Float32"
+  %".2529" = sub float              0x0, %".2528"
+  %"fadd.121" = fadd float %".2529", 0x3ff0000000000000
   store float %"fadd.121", ptr %"R10_Float32"
   ; FMUL R11, R11, R8
-  %".2373" = load float, ptr %"R11_Float32"
-  %".2374" = load float, ptr %"R8_Float32"
-  %"fmul.146" = fmul float %".2373", %".2374"
+  %".2532" = load float, ptr %"R11_Float32"
+  %".2533" = load float, ptr %"R8_Float32"
+  %"fmul.146" = fmul float %".2532", %".2533"
   store float %"fmul.146", ptr %"R11_Float32"
   ; FFMA R9, R10, R9, R11
-  %".2377" = load float, ptr %"R10_Float32"
-  %".2378" = load float, ptr %"R9_Float32"
-  %".2379" = load float, ptr %"R11_Float32"
-  %"fmul.147" = fmul float %".2377", %".2378"
-  %"fadd.122" = fadd float %"fmul.147", %".2379"
+  %".2536" = load float, ptr %"R10_Float32"
+  %".2537" = load float, ptr %"R9_Float32"
+  %".2538" = load float, ptr %"R11_Float32"
+  %"fmul.147" = fmul float %".2536", %".2537"
+  %"fadd.122" = fadd float %"fmul.147", %".2538"
   store float %"fadd.122", ptr %"R9_Float32"
   ; STG.E.SYS [R28], R9
-  %".2382" = load float, ptr %"R9_Float32"
+  %".2541" = load float, ptr %"R9_Float32"
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R28_Float32_PTR", ptr %"R28_Int32", i32 4, i1 0)
-  %".2383" = load i32, ptr %"R28_Float32_PTR"
-  %".2384" = add i32 %".2383", 0
-  %"for_STG" = inttoptr i32 %".2384" to ptr
-  store float %".2382", ptr %"for_STG"
+  %".2542" = load ptr, ptr %"R28_Float32_PTR"
+  %".2543" = ptrtoint ptr %".2542" to i64
+  %".2544" = add i64 %".2543", 0
+  %"for_STG" = inttoptr i64 %".2544" to ptr
+  store float %".2541", ptr %"for_STG"
   ; @!P3 BRA `(.L_x_22)
-  %".2387" = load i1, ptr %"P3_Bool"
-  %".2388" = icmp eq i1 %".2387", 1
-  br i1 %".2388", label %".L_x_22", label %".L_x_19_split_0x2270"
+  %".2547" = load i1, ptr %"P3_Bool"
+  %".2548" = icmp eq i1 %".2547", 1
+  br i1 %".2548", label %".L_x_22", label %".L_x_19_split_0x2270"
 .L_x_19_split_0x2270:
   ; EXIT
   br label %"ExitFunction"
@@ -3645,24 +3805,24 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 1, ptr %"R18_Int32"
   ; LOP3.LUT R15, R15, 0x3, RZ, 0xc0, !PT
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R15_NOTYPE", ptr %"R15_Float32", i32 4, i1 0)
-  %".2395" = load i32, ptr %"R15_NOTYPE"
-  %".2396" = and i32 %".2395", 3
-  store i32 %".2396", ptr %"R15_Int32"
+  %".2555" = load i32, ptr %"R15_NOTYPE"
+  %".2556" = and i32 %".2555", 3
+  store i32 %".2556", ptr %"R15_Int32"
   ; LOP3.LUT R48, R5, 0x3, RZ, 0xc0, !PT
-  %".2399" = load i32, ptr %"R5_Int32"
-  %".2400" = and i32 %".2399", 3
-  store i32 %".2400", ptr %"R48_Int32"
+  %".2559" = load i32, ptr %"R5_Int32"
+  %".2560" = and i32 %".2559", 3
+  store i32 %".2560", ptr %"R48_Int32"
   ; IADD3 R49, -R18, c[0x0][0x180], RZ
-  %".2403" = load i32, ptr %"R18_Int32"
-  %".2404" = sub i32 0, %".2403"
-  %"add.148" = add i32 %".2404", %"Arg_6"
+  %".2563" = load i32, ptr %"R18_Int32"
+  %".2564" = sub i32 0, %".2563"
+  %"add.148" = add i32 %".2564", %"Arg_6"
   %"add.149" = add i32 %"add.148", 0
   store i32 %"add.149", ptr %"R49_Int32"
   ; SHF.R.S32.HI R16, RZ, 0x1f, R5
-  %".2407" = icmp ult i32 31, 32
-  %"SHF_min.2" = select  i1 %".2407", i32 31, i32 32
-  %".2408" = load i32, ptr %"R5_Int32"
-  %"zext.6" = zext i32 %".2408" to i64
+  %".2567" = icmp ult i32 31, 32
+  %"SHF_min.2" = select  i1 %".2567", i32 31, i32 32
+  %".2568" = load i32, ptr %"R5_Int32"
+  %"zext.6" = zext i32 %".2568" to i64
   %"zext.7" = zext i32 0 to i64
   %"zext.8" = zext i32 31 to i64
   %"shl.10" = shl i64 %"zext.6", 32
@@ -3672,92 +3832,92 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"trunc32.2" = trunc i64 %"ashr.1" to i32
   store i32 %"trunc32.2", ptr %"R16_Int32"
   ; MOV R17, RZ
-  %".2411" = load i32, ptr %"RZ_Int32"
-  store i32 %".2411", ptr %"R17_Int32"
+  %".2571" = load i32, ptr %"RZ_Int32"
+  store i32 %".2571", ptr %"R17_Int32"
   ; IADD3 R18, -R18, c[0x0][0x184], RZ
-  %".2414" = load i32, ptr %"R18_Int32"
-  %".2415" = sub i32 0, %".2414"
-  %"add.150" = add i32 %".2415", %"Arg_7"
+  %".2574" = load i32, ptr %"R18_Int32"
+  %".2575" = sub i32 0, %".2574"
+  %"add.150" = add i32 %".2575", %"Arg_7"
   %"add.151" = add i32 %"add.150", 0
   store i32 %"add.151", ptr %"R18_Int32"
   ; IADD3 R19, -R15, c[0x0][0x180], RZ
-  %".2418" = load i32, ptr %"R15_Int32"
-  %".2419" = sub i32 0, %".2418"
-  %"add.152" = add i32 %".2419", %"Arg_6"
+  %".2578" = load i32, ptr %"R15_Int32"
+  %".2579" = sub i32 0, %".2578"
+  %"add.152" = add i32 %".2579", %"Arg_6"
   %"add.153" = add i32 %"add.152", 0
   store i32 %"add.153", ptr %"R19_Int32"
   ; IADD3 R20, -R48, c[0x0][0x184], RZ
-  %".2422" = load i32, ptr %"R48_Int32"
-  %".2423" = sub i32 0, %".2422"
-  %"add.154" = add i32 %".2423", %"Arg_7"
+  %".2582" = load i32, ptr %"R48_Int32"
+  %".2583" = sub i32 0, %".2582"
+  %"add.154" = add i32 %".2583", %"Arg_7"
   %"add.155" = add i32 %"add.154", 0
   store i32 %"add.155", ptr %"R20_Int32"
 .L_x_47:
   ; ISETP.GE.U32.AND P0, PT, R49, 0x3, PT
-  %".2426" = load i32, ptr %"R49_Int32"
-  %".2427" = load i1, ptr %"PT_Bool"
-  %"cmp.27" = icmp sge i32 %".2426", 3
-  %".2428" = and i1 %"cmp.27", %".2427"
+  %".2586" = load i32, ptr %"R49_Int32"
+  %".2587" = load i1, ptr %"PT_Bool"
+  %"cmp.27" = icmp sge i32 %".2586", 3
+  %".2588" = and i1 %"cmp.27", %".2587"
   ; MOV R13, R17
-  %".2430" = load i32, ptr %"R17_Int32"
-  store i32 %".2430", ptr %"R13_Int32"
+  %".2590" = load i32, ptr %"R17_Int32"
+  store i32 %".2590", ptr %"R13_Int32"
   ; MOV R4, c[0x0][0x184]
   store i32 %"Arg_7", ptr %"R4_Int32"
   ; IADD3 R17, R17, 0x1, RZ
-  %".2435" = load i32, ptr %"R17_Int32"
-  %"add.156" = add i32 %".2435", 1
+  %".2595" = load i32, ptr %"R17_Int32"
+  %"add.156" = add i32 %".2595", 1
   %"add.157" = add i32 %"add.156", 0
   store i32 %"add.157", ptr %"R17_Int32"
   ; ISETP.GE.AND P4, PT, R4, 0x1, PT
-  %".2438" = load i32, ptr %"R4_Int32"
-  %".2439" = load i1, ptr %"PT_Bool"
-  %"cmp.28" = icmp sge i32 %".2438", 1
-  %".2440" = and i1 %"cmp.28", %".2439"
+  %".2598" = load i32, ptr %"R4_Int32"
+  %".2599" = load i1, ptr %"PT_Bool"
+  %"cmp.28" = icmp sge i32 %".2598", 1
+  %".2600" = and i1 %"cmp.28", %".2599"
   ; ISETP.NE.AND P1, PT, R15, RZ, PT
-  %".2442" = load i32, ptr %"R15_Int32"
-  %".2443" = load i1, ptr %"PT_Bool"
-  %"cmp.29" = icmp ne i32 %".2442", 0
-  %".2444" = and i1 %"cmp.29", %".2443"
+  %".2602" = load i32, ptr %"R15_Int32"
+  %".2603" = load i1, ptr %"PT_Bool"
+  %"cmp.29" = icmp ne i32 %".2602", 0
+  %".2604" = and i1 %"cmp.29", %".2603"
   ; ISETP.GE.AND P3, PT, R17, c[0x0][0x188], PT
-  %".2446" = load i32, ptr %"R17_Int32"
-  %".2447" = load i1, ptr %"PT_Bool"
-  %"cmp.30" = icmp sge i32 %".2446", %"Arg_8"
-  %".2448" = and i1 %"cmp.30", %".2447"
+  %".2606" = load i32, ptr %"R17_Int32"
+  %".2607" = load i1, ptr %"PT_Bool"
+  %"cmp.30" = icmp sge i32 %".2606", %"Arg_8"
+  %".2608" = and i1 %"cmp.30", %".2607"
   ; MOV R21, RZ
-  %".2450" = load float, ptr %"RZ_Float32"
-  store float %".2450", ptr %"R21_Float32"
+  %".2610" = load float, ptr %"RZ_Float32"
+  store float %".2610", ptr %"R21_Float32"
   ; MOV R22, RZ
-  %".2453" = load i32, ptr %"RZ_Int32"
-  store i32 %".2453", ptr %"R22_Int32"
+  %".2613" = load i32, ptr %"RZ_Int32"
+  store i32 %".2613", ptr %"R22_Int32"
   ; MOV R56, RZ
-  %".2456" = load float, ptr %"RZ_Float32"
-  store float %".2456", ptr %"R56_Float32"
+  %".2616" = load float, ptr %"RZ_Float32"
+  store float %".2616", ptr %"R56_Float32"
   ; MOV R44, RZ
-  %".2459" = load float, ptr %"RZ_Float32"
-  store float %".2459", ptr %"R44_Float32"
+  %".2619" = load float, ptr %"RZ_Float32"
+  store float %".2619", ptr %"R44_Float32"
   ; @!P0 BRA `(.L_x_23)
-  %".2462" = load i1, ptr %"P0_Bool"
-  %".2463" = icmp eq i1 %".2462", 1
-  br i1 %".2463", label %".L_x_23", label %".L_x_47_split_0x23d0"
+  %".2622" = load i1, ptr %"P0_Bool"
+  %".2623" = icmp eq i1 %".2622", 1
+  br i1 %".2623", label %".L_x_23", label %".L_x_47_split_0x23d0"
 .L_x_47_split_0x23d0:
   ; MOV R25, c[0x0][0x184]
   store i32 %"Arg_7", ptr %"R25_Int32"
   ; MOV R21, RZ
-  %".2468" = load float, ptr %"RZ_Float32"
-  store float %".2468", ptr %"R21_Float32"
+  %".2628" = load float, ptr %"RZ_Float32"
+  store float %".2628", ptr %"R21_Float32"
   ; MOV R22, RZ
-  %".2471" = load i32, ptr %"RZ_Int32"
-  store i32 %".2471", ptr %"R22_Int32"
+  %".2631" = load i32, ptr %"RZ_Int32"
+  store i32 %".2631", ptr %"R22_Int32"
   ; MOV R12, R19
-  %".2474" = load i32, ptr %"R19_Int32"
-  store i32 %".2474", ptr %"R12_Int32"
+  %".2634" = load i32, ptr %"R19_Int32"
+  store i32 %".2634", ptr %"R12_Int32"
   ; SHF.L.U64.HI R23, R25, 0x2, R16
-  %".2477" = icmp ult i32 2, 64
-  %"SHF_min.3" = select  i1 %".2477", i32 2, i32 64
-  %".2478" = load i32, ptr %"R16_Int32"
-  %".2479" = load i32, ptr %"R25_Int32"
-  %"zext.9" = zext i32 %".2478" to i64
-  %"zext.10" = zext i32 %".2479" to i64
+  %".2637" = icmp ult i32 2, 64
+  %"SHF_min.3" = select  i1 %".2637", i32 2, i32 64
+  %".2638" = load i32, ptr %"R16_Int32"
+  %".2639" = load i32, ptr %"R25_Int32"
+  %"zext.9" = zext i32 %".2638" to i64
+  %"zext.10" = zext i32 %".2639" to i64
   %"zext.11" = zext i32 2 to i64
   %"shl.11" = shl i64 %"zext.9", 32
   %"or.3" = or i64 %"shl.11", %"zext.10"
@@ -3770,2128 +3930,2250 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 4, ptr %"R7_Int32"
   ; IMAD R6, R14, c[0x0][0x180], R22.reuse
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Int32", ptr %"R14_Float32", i32 4, i1 0)
-  %".2484" = load i32, ptr %"R14_Int32"
-  %".2485" = load i32, ptr %"R22_Int32"
-  %"mul.52" = mul i32 %".2484", %"Arg_6"
-  %"add.158" = add i32 %"mul.52", %".2485"
+  %".2644" = load i32, ptr %"R14_Int32"
+  %".2645" = load i32, ptr %"R22_Int32"
+  %"mul.52" = mul i32 %".2644", %"Arg_6"
+  %"add.158" = add i32 %"mul.52", %".2645"
   store i32 %"add.158", ptr %"R6_Int32"
   ; MOV R9, c[0x0][0x184]
   store i32 %"Arg_7", ptr %"R9_Int32"
   ; IMAD R10, R13, c[0x0][0x180], R22
-  %".2490" = load i32, ptr %"R13_Int32"
-  %".2491" = load i32, ptr %"R22_Int32"
-  %"mul.53" = mul i32 %".2490", %"Arg_6"
-  %"add.159" = add i32 %"mul.53", %".2491"
+  %".2650" = load i32, ptr %"R13_Int32"
+  %".2651" = load i32, ptr %"R22_Int32"
+  %"mul.53" = mul i32 %".2650", %"Arg_6"
+  %"add.159" = add i32 %"mul.53", %".2651"
   store i32 %"add.159", ptr %"R10_Int32"
   ; IMAD.WIDE R4, R6, R7, c[0x0][0x170]
-  %".2494" = load i32, ptr %"R6_Int32"
-  %".2495" = load i32, ptr %"R7_Int32"
-  %"mul.54" = mul i32 %".2494", %".2495"
+  %".2654" = load i32, ptr %"R6_Int32"
+  %".2655" = load i32, ptr %"R7_Int32"
+  %"mul.54" = mul i32 %".2654", %".2655"
   %"add.160" = add i32 %"mul.54", %"Arg_4"
   store i32 %"add.160", ptr %"R4_Int32"
   ; LEA R6, R9, R6, 0x1
-  %".2498" = load i32, ptr %"R9_Int32"
-  %".2499" = load i32, ptr %"R6_Int32"
-  %"shl.13" = shl i32 %".2498", 1
-  %"add.161" = add i32 %"shl.13", %".2499"
+  %".2658" = load i32, ptr %"R9_Int32"
+  %".2659" = load i32, ptr %"R6_Int32"
+  %"shl.13" = shl i32 %".2658", 1
+  %"add.161" = add i32 %"shl.13", %".2659"
   store i32 %"add.161", ptr %"R6_Int32"
   ; IMAD.WIDE R10, R10, R7, c[0x0][0x160]
-  %".2502" = load i32, ptr %"R10_Int32"
-  %".2503" = load i32, ptr %"R7_Int32"
-  %"mul.55" = mul i32 %".2502", %".2503"
+  %".2662" = load i32, ptr %"R10_Int32"
+  %".2663" = load i32, ptr %"R7_Int32"
+  %"mul.55" = mul i32 %".2662", %".2663"
   %"add.162" = add i32 %"mul.55", %"Arg_2"
   store i32 %"add.162", ptr %"R10_Int32"
   ; LEA R8, P0, R25, R4, 0x2
-  %".2506" = load i1, ptr %"P0_Bool"
-  %".2507" = sub i1 0, %".2506"
-  %".2508" = load i32, ptr %"R25_Int32"
-  %".2509" = load i32, ptr %"R4_Int32"
-  %".2510" = sext i1 %".2507" to i32
-  %"shl.14" = shl i32 %".2510", %".2509"
-  %"add.163" = add i32 %"shl.14", %".2508"
+  %".2666" = load i1, ptr %"P0_Bool"
+  %".2667" = sub i1 0, %".2666"
+  %".2668" = load i32, ptr %"R25_Int32"
+  %".2669" = load i32, ptr %"R4_Int32"
+  %".2670" = sext i1 %".2667" to i32
+  %"shl.14" = shl i32 %".2670", %".2669"
+  %"add.163" = add i32 %"shl.14", %".2668"
   store i32 %"add.163", ptr %"R8_Int32"
   ; IMAD.WIDE R6, R6, R7, c[0x0][0x170]
-  %".2513" = load i32, ptr %"R6_Int32"
-  %".2514" = load i32, ptr %"R7_Int32"
-  %"mul.56" = mul i32 %".2513", %".2514"
+  %".2673" = load i32, ptr %"R6_Int32"
+  %".2674" = load i32, ptr %"R7_Int32"
+  %"mul.56" = mul i32 %".2673", %".2674"
   %"add.164" = add i32 %"mul.56", %"Arg_4"
   store i32 %"add.164", ptr %"R6_Int32"
   ; IADD3.X R9, R5, R23, RZ, P0, !PT
-  %".2517" = load i32, ptr %"R5_Int32"
-  %".2518" = load i32, ptr %"R23_Int32"
-  %".2519" = load i1, ptr %"P0_Bool"
-  %".2520" = sub i1 0, %".2519"
-  %".2521" = zext i1 %".2520" to i32
-  %"add.165" = add i32 %".2517", %".2518"
+  %".2677" = load i32, ptr %"R5_Int32"
+  %".2678" = load i32, ptr %"R23_Int32"
+  %".2679" = load i1, ptr %"P0_Bool"
+  %".2680" = sub i1 0, %".2679"
+  %".2681" = zext i1 %".2680" to i32
+  %"add.165" = add i32 %".2677", %".2678"
   %"add.166" = add i32 %"add.165", 0
-  %"add.167" = add i32 %"add.166", %".2521"
+  %"add.167" = add i32 %"add.166", %".2681"
   store i32 %"add.167", ptr %"R9_Int32"
   ; LDG.E.SYS R35, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2524" = load i32, ptr %"R4_Float32_PTR"
-  %".2525" = add i32 %".2524", 0
-  %"for_LDG.159" = inttoptr i32 %".2525" to ptr
-  %".2526" = load float, ptr %"for_LDG.159"
-  store float %".2526", ptr %"R35_Float32"
+  %".2684" = load ptr, ptr %"R4_Float32_PTR"
+  %".2685" = ptrtoint ptr %".2684" to i64
+  %".2686" = add i64 %".2685", 0
+  %"for_LDG.159" = inttoptr i64 %".2686" to ptr
+  %".2687" = load float, ptr %"for_LDG.159"
+  store float %".2687", ptr %"R35_Float32"
   ; LDG.E.SYS R24, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2529" = load i32, ptr %"R10_Float32_PTR"
-  %".2530" = add i32 %".2529", 0
-  %"for_LDG.160" = inttoptr i32 %".2530" to ptr
-  %".2531" = load float, ptr %"for_LDG.160"
-  store float %".2531", ptr %"R24_Float32"
+  %".2690" = load ptr, ptr %"R10_Float32_PTR"
+  %".2691" = ptrtoint ptr %".2690" to i64
+  %".2692" = add i64 %".2691", 0
+  %"for_LDG.160" = inttoptr i64 %".2692" to ptr
+  %".2693" = load float, ptr %"for_LDG.160"
+  store float %".2693", ptr %"R24_Float32"
   ; LDG.E.SYS R37, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2534" = load i32, ptr %"R8_Float32_PTR"
-  %".2535" = add i32 %".2534", 0
-  %"for_LDG.161" = inttoptr i32 %".2535" to ptr
-  %".2536" = load float, ptr %"for_LDG.161"
-  store float %".2536", ptr %"R37_Float32"
+  %".2696" = load ptr, ptr %"R8_Float32_PTR"
+  %".2697" = ptrtoint ptr %".2696" to i64
+  %".2698" = add i64 %".2697", 0
+  %"for_LDG.161" = inttoptr i64 %".2698" to ptr
+  %".2699" = load float, ptr %"for_LDG.161"
+  store float %".2699", ptr %"R37_Float32"
   ; LDG.E.SYS R34, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2539" = load i32, ptr %"R6_Float32_PTR"
-  %".2540" = add i32 %".2539", 0
-  %"for_LDG.162" = inttoptr i32 %".2540" to ptr
-  %".2541" = load float, ptr %"for_LDG.162"
-  store float %".2541", ptr %"R34_Float32"
+  %".2702" = load ptr, ptr %"R6_Float32_PTR"
+  %".2703" = ptrtoint ptr %".2702" to i64
+  %".2704" = add i64 %".2703", 0
+  %"for_LDG.162" = inttoptr i64 %".2704" to ptr
+  %".2705" = load float, ptr %"for_LDG.162"
+  store float %".2705", ptr %"R34_Float32"
   ; LDG.E.SYS R36, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2544" = load i32, ptr %"R4_Float32_PTR"
-  %".2545" = add i32 %".2544", 4
-  %"for_LDG.163" = inttoptr i32 %".2545" to ptr
-  %".2546" = load float, ptr %"for_LDG.163"
-  store float %".2546", ptr %"R36_Float32"
+  %".2708" = load ptr, ptr %"R4_Float32_PTR"
+  %".2709" = ptrtoint ptr %".2708" to i64
+  %".2710" = add i64 %".2709", 4
+  %"for_LDG.163" = inttoptr i64 %".2710" to ptr
+  %".2711" = load float, ptr %"for_LDG.163"
+  store float %".2711", ptr %"R36_Float32"
   ; LDG.E.SYS R38, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2549" = load i32, ptr %"R10_Float32_PTR"
-  %".2550" = add i32 %".2549", 4
-  %"for_LDG.164" = inttoptr i32 %".2550" to ptr
-  %".2551" = load float, ptr %"for_LDG.164"
-  store float %".2551", ptr %"R38_Float32"
+  %".2714" = load ptr, ptr %"R10_Float32_PTR"
+  %".2715" = ptrtoint ptr %".2714" to i64
+  %".2716" = add i64 %".2715", 4
+  %"for_LDG.164" = inttoptr i64 %".2716" to ptr
+  %".2717" = load float, ptr %"for_LDG.164"
+  store float %".2717", ptr %"R38_Float32"
   ; LDG.E.SYS R39, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2554" = load i32, ptr %"R8_Float32_PTR"
-  %".2555" = add i32 %".2554", 4
-  %"for_LDG.165" = inttoptr i32 %".2555" to ptr
-  %".2556" = load float, ptr %"for_LDG.165"
-  store float %".2556", ptr %"R39_Float32"
+  %".2720" = load ptr, ptr %"R8_Float32_PTR"
+  %".2721" = ptrtoint ptr %".2720" to i64
+  %".2722" = add i64 %".2721", 4
+  %"for_LDG.165" = inttoptr i64 %".2722" to ptr
+  %".2723" = load float, ptr %"for_LDG.165"
+  store float %".2723", ptr %"R39_Float32"
   ; LDG.E.SYS R41, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2559" = load i32, ptr %"R6_Float32_PTR"
-  %".2560" = add i32 %".2559", 4
-  %"for_LDG.166" = inttoptr i32 %".2560" to ptr
-  %".2561" = load float, ptr %"for_LDG.166"
-  store float %".2561", ptr %"R41_Float32"
+  %".2726" = load ptr, ptr %"R6_Float32_PTR"
+  %".2727" = ptrtoint ptr %".2726" to i64
+  %".2728" = add i64 %".2727", 4
+  %"for_LDG.166" = inttoptr i64 %".2728" to ptr
+  %".2729" = load float, ptr %"for_LDG.166"
+  store float %".2729", ptr %"R41_Float32"
   ; LDG.E.SYS R42, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2564" = load i32, ptr %"R10_Float32_PTR"
-  %".2565" = add i32 %".2564", 8
-  %"for_LDG.167" = inttoptr i32 %".2565" to ptr
-  %".2566" = load float, ptr %"for_LDG.167"
-  store float %".2566", ptr %"R42_Float32"
+  %".2732" = load ptr, ptr %"R10_Float32_PTR"
+  %".2733" = ptrtoint ptr %".2732" to i64
+  %".2734" = add i64 %".2733", 8
+  %"for_LDG.167" = inttoptr i64 %".2734" to ptr
+  %".2735" = load float, ptr %"for_LDG.167"
+  store float %".2735", ptr %"R42_Float32"
   ; LDG.E.SYS R40, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2569" = load i32, ptr %"R4_Float32_PTR"
-  %".2570" = add i32 %".2569", 8
-  %"for_LDG.168" = inttoptr i32 %".2570" to ptr
-  %".2571" = load float, ptr %"for_LDG.168"
-  store float %".2571", ptr %"R40_Float32"
+  %".2738" = load ptr, ptr %"R4_Float32_PTR"
+  %".2739" = ptrtoint ptr %".2738" to i64
+  %".2740" = add i64 %".2739", 8
+  %"for_LDG.168" = inttoptr i64 %".2740" to ptr
+  %".2741" = load float, ptr %"for_LDG.168"
+  store float %".2741", ptr %"R40_Float32"
   ; LDG.E.SYS R43, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2574" = load i32, ptr %"R8_Float32_PTR"
-  %".2575" = add i32 %".2574", 8
-  %"for_LDG.169" = inttoptr i32 %".2575" to ptr
-  %".2576" = load float, ptr %"for_LDG.169"
-  store float %".2576", ptr %"R43_Float32"
+  %".2744" = load ptr, ptr %"R8_Float32_PTR"
+  %".2745" = ptrtoint ptr %".2744" to i64
+  %".2746" = add i64 %".2745", 8
+  %"for_LDG.169" = inttoptr i64 %".2746" to ptr
+  %".2747" = load float, ptr %"for_LDG.169"
+  store float %".2747", ptr %"R43_Float32"
   ; LDG.E.SYS R45, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2579" = load i32, ptr %"R6_Float32_PTR"
-  %".2580" = add i32 %".2579", 8
-  %"for_LDG.170" = inttoptr i32 %".2580" to ptr
-  %".2581" = load float, ptr %"for_LDG.170"
-  store float %".2581", ptr %"R45_Float32"
+  %".2750" = load ptr, ptr %"R6_Float32_PTR"
+  %".2751" = ptrtoint ptr %".2750" to i64
+  %".2752" = add i64 %".2751", 8
+  %"for_LDG.170" = inttoptr i64 %".2752" to ptr
+  %".2753" = load float, ptr %"for_LDG.170"
+  store float %".2753", ptr %"R45_Float32"
   ; LDG.E.SYS R47, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2584" = load i32, ptr %"R10_Float32_PTR"
-  %".2585" = add i32 %".2584", 12
-  %"for_LDG.171" = inttoptr i32 %".2585" to ptr
-  %".2586" = load float, ptr %"for_LDG.171"
-  store float %".2586", ptr %"R47_Float32"
+  %".2756" = load ptr, ptr %"R10_Float32_PTR"
+  %".2757" = ptrtoint ptr %".2756" to i64
+  %".2758" = add i64 %".2757", 12
+  %"for_LDG.171" = inttoptr i64 %".2758" to ptr
+  %".2759" = load float, ptr %"for_LDG.171"
+  store float %".2759", ptr %"R47_Float32"
   ; LDG.E.SYS R46, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2589" = load i32, ptr %"R4_Float32_PTR"
-  %".2590" = add i32 %".2589", 12
-  %"for_LDG.172" = inttoptr i32 %".2590" to ptr
-  %".2591" = load float, ptr %"for_LDG.172"
-  store float %".2591", ptr %"R46_Float32"
+  %".2762" = load ptr, ptr %"R4_Float32_PTR"
+  %".2763" = ptrtoint ptr %".2762" to i64
+  %".2764" = add i64 %".2763", 12
+  %"for_LDG.172" = inttoptr i64 %".2764" to ptr
+  %".2765" = load float, ptr %"for_LDG.172"
+  store float %".2765", ptr %"R46_Float32"
   ; LDG.E.SYS R50, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2594" = load i32, ptr %"R8_Float32_PTR"
-  %".2595" = add i32 %".2594", 12
-  %"for_LDG.173" = inttoptr i32 %".2595" to ptr
-  %".2596" = load float, ptr %"for_LDG.173"
-  store float %".2596", ptr %"R50_Float32"
+  %".2768" = load ptr, ptr %"R8_Float32_PTR"
+  %".2769" = ptrtoint ptr %".2768" to i64
+  %".2770" = add i64 %".2769", 12
+  %"for_LDG.173" = inttoptr i64 %".2770" to ptr
+  %".2771" = load float, ptr %"for_LDG.173"
+  store float %".2771", ptr %"R50_Float32"
   ; LDG.E.SYS R51, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2599" = load i32, ptr %"R6_Float32_PTR"
-  %".2600" = add i32 %".2599", 12
-  %"for_LDG.174" = inttoptr i32 %".2600" to ptr
-  %".2601" = load float, ptr %"for_LDG.174"
-  store float %".2601", ptr %"R51_Float32"
+  %".2774" = load ptr, ptr %"R6_Float32_PTR"
+  %".2775" = ptrtoint ptr %".2774" to i64
+  %".2776" = add i64 %".2775", 12
+  %"for_LDG.174" = inttoptr i64 %".2776" to ptr
+  %".2777" = load float, ptr %"for_LDG.174"
+  store float %".2777", ptr %"R51_Float32"
   ; IADD3 R12, R12, -0x4, RZ
-  %".2604" = load i32, ptr %"R12_Int32"
-  %"add.168" = add i32 %".2604", -4
+  %".2780" = load i32, ptr %"R12_Int32"
+  %"add.168" = add i32 %".2780", -4
   %"add.169" = add i32 %"add.168", 0
   store i32 %"add.169", ptr %"R12_Int32"
   ; IADD3 R22, R22, 0x4, RZ
-  %".2607" = load i32, ptr %"R22_Int32"
-  %"add.170" = add i32 %".2607", 4
+  %".2783" = load i32, ptr %"R22_Int32"
+  %"add.170" = add i32 %".2783", 4
   %"add.171" = add i32 %"add.170", 0
   store i32 %"add.171", ptr %"R22_Int32"
   ; ISETP.NE.AND P0, PT, R12, RZ, PT
-  %".2610" = load i32, ptr %"R12_Int32"
-  %".2611" = load i1, ptr %"PT_Bool"
-  %"cmp.31" = icmp ne i32 %".2610", 0
-  %".2612" = and i1 %"cmp.31", %".2611"
+  %".2786" = load i32, ptr %"R12_Int32"
+  %".2787" = load i1, ptr %"PT_Bool"
+  %"cmp.31" = icmp ne i32 %".2786", 0
+  %".2788" = and i1 %"cmp.31", %".2787"
   ; FFMA R35, R35, R24, R44
-  %".2614" = load float, ptr %"R35_Float32"
-  %".2615" = load float, ptr %"R24_Float32"
-  %".2616" = load float, ptr %"R44_Float32"
-  %"fmul.148" = fmul float %".2614", %".2615"
-  %"fadd.123" = fadd float %"fmul.148", %".2616"
+  %".2790" = load float, ptr %"R35_Float32"
+  %".2791" = load float, ptr %"R24_Float32"
+  %".2792" = load float, ptr %"R44_Float32"
+  %"fmul.148" = fmul float %".2790", %".2791"
+  %"fadd.123" = fadd float %"fmul.148", %".2792"
   store float %"fadd.123", ptr %"R35_Float32"
   ; FFMA R37, R24.reuse, R37, R56
-  %".2619" = load float, ptr %"R24_Float32"
-  %".2620" = load float, ptr %"R37_Float32"
-  %".2621" = load float, ptr %"R56_Float32"
-  %"fmul.149" = fmul float %".2619", %".2620"
-  %"fadd.124" = fadd float %"fmul.149", %".2621"
+  %".2795" = load float, ptr %"R24_Float32"
+  %".2796" = load float, ptr %"R37_Float32"
+  %".2797" = load float, ptr %"R56_Float32"
+  %"fmul.149" = fmul float %".2795", %".2796"
+  %"fadd.124" = fadd float %"fmul.149", %".2797"
   store float %"fadd.124", ptr %"R37_Float32"
   ; FFMA R34, R24, R34, R21
-  %".2624" = load float, ptr %"R24_Float32"
-  %".2625" = load float, ptr %"R34_Float32"
-  %".2626" = load float, ptr %"R21_Float32"
-  %"fmul.150" = fmul float %".2624", %".2625"
-  %"fadd.125" = fadd float %"fmul.150", %".2626"
+  %".2800" = load float, ptr %"R24_Float32"
+  %".2801" = load float, ptr %"R34_Float32"
+  %".2802" = load float, ptr %"R21_Float32"
+  %"fmul.150" = fmul float %".2800", %".2801"
+  %"fadd.125" = fadd float %"fmul.150", %".2802"
   store float %"fadd.125", ptr %"R34_Float32"
   ; FFMA R35, R36, R38, R35
-  %".2629" = load float, ptr %"R36_Float32"
-  %".2630" = load float, ptr %"R38_Float32"
-  %".2631" = load float, ptr %"R35_Float32"
-  %"fmul.151" = fmul float %".2629", %".2630"
-  %"fadd.126" = fadd float %"fmul.151", %".2631"
+  %".2805" = load float, ptr %"R36_Float32"
+  %".2806" = load float, ptr %"R38_Float32"
+  %".2807" = load float, ptr %"R35_Float32"
+  %"fmul.151" = fmul float %".2805", %".2806"
+  %"fadd.126" = fadd float %"fmul.151", %".2807"
   store float %"fadd.126", ptr %"R35_Float32"
   ; FFMA R37, R38, R39, R37
-  %".2634" = load float, ptr %"R38_Float32"
-  %".2635" = load float, ptr %"R39_Float32"
-  %".2636" = load float, ptr %"R37_Float32"
-  %"fmul.152" = fmul float %".2634", %".2635"
-  %"fadd.127" = fadd float %"fmul.152", %".2636"
+  %".2810" = load float, ptr %"R38_Float32"
+  %".2811" = load float, ptr %"R39_Float32"
+  %".2812" = load float, ptr %"R37_Float32"
+  %"fmul.152" = fmul float %".2810", %".2811"
+  %"fadd.127" = fadd float %"fmul.152", %".2812"
   store float %"fadd.127", ptr %"R37_Float32"
   ; FFMA R34, R38, R41, R34
-  %".2639" = load float, ptr %"R38_Float32"
-  %".2640" = load float, ptr %"R41_Float32"
-  %".2641" = load float, ptr %"R34_Float32"
-  %"fmul.153" = fmul float %".2639", %".2640"
-  %"fadd.128" = fadd float %"fmul.153", %".2641"
+  %".2815" = load float, ptr %"R38_Float32"
+  %".2816" = load float, ptr %"R41_Float32"
+  %".2817" = load float, ptr %"R34_Float32"
+  %"fmul.153" = fmul float %".2815", %".2816"
+  %"fadd.128" = fadd float %"fmul.153", %".2817"
   store float %"fadd.128", ptr %"R34_Float32"
   ; FFMA R35, R40, R42, R35
-  %".2644" = load float, ptr %"R40_Float32"
-  %".2645" = load float, ptr %"R42_Float32"
-  %".2646" = load float, ptr %"R35_Float32"
-  %"fmul.154" = fmul float %".2644", %".2645"
-  %"fadd.129" = fadd float %"fmul.154", %".2646"
+  %".2820" = load float, ptr %"R40_Float32"
+  %".2821" = load float, ptr %"R42_Float32"
+  %".2822" = load float, ptr %"R35_Float32"
+  %"fmul.154" = fmul float %".2820", %".2821"
+  %"fadd.129" = fadd float %"fmul.154", %".2822"
   store float %"fadd.129", ptr %"R35_Float32"
   ; FFMA R37, R42.reuse, R43, R37
-  %".2649" = load float, ptr %"R42_Float32"
-  %".2650" = load float, ptr %"R43_Float32"
-  %".2651" = load float, ptr %"R37_Float32"
-  %"fmul.155" = fmul float %".2649", %".2650"
-  %"fadd.130" = fadd float %"fmul.155", %".2651"
+  %".2825" = load float, ptr %"R42_Float32"
+  %".2826" = load float, ptr %"R43_Float32"
+  %".2827" = load float, ptr %"R37_Float32"
+  %"fmul.155" = fmul float %".2825", %".2826"
+  %"fadd.130" = fadd float %"fmul.155", %".2827"
   store float %"fadd.130", ptr %"R37_Float32"
   ; FFMA R34, R42, R45, R34
-  %".2654" = load float, ptr %"R42_Float32"
-  %".2655" = load float, ptr %"R45_Float32"
-  %".2656" = load float, ptr %"R34_Float32"
-  %"fmul.156" = fmul float %".2654", %".2655"
-  %"fadd.131" = fadd float %"fmul.156", %".2656"
+  %".2830" = load float, ptr %"R42_Float32"
+  %".2831" = load float, ptr %"R45_Float32"
+  %".2832" = load float, ptr %"R34_Float32"
+  %"fmul.156" = fmul float %".2830", %".2831"
+  %"fadd.131" = fadd float %"fmul.156", %".2832"
   store float %"fadd.131", ptr %"R34_Float32"
   ; FFMA R44, R46, R47, R35
-  %".2659" = load float, ptr %"R46_Float32"
-  %".2660" = load float, ptr %"R47_Float32"
-  %".2661" = load float, ptr %"R35_Float32"
-  %"fmul.157" = fmul float %".2659", %".2660"
-  %"fadd.132" = fadd float %"fmul.157", %".2661"
+  %".2835" = load float, ptr %"R46_Float32"
+  %".2836" = load float, ptr %"R47_Float32"
+  %".2837" = load float, ptr %"R35_Float32"
+  %"fmul.157" = fmul float %".2835", %".2836"
+  %"fadd.132" = fadd float %"fmul.157", %".2837"
   store float %"fadd.132", ptr %"R44_Float32"
   ; FFMA R56, R47, R50, R37
-  %".2664" = load float, ptr %"R47_Float32"
-  %".2665" = load float, ptr %"R50_Float32"
-  %".2666" = load float, ptr %"R37_Float32"
-  %"fmul.158" = fmul float %".2664", %".2665"
-  %"fadd.133" = fadd float %"fmul.158", %".2666"
+  %".2840" = load float, ptr %"R47_Float32"
+  %".2841" = load float, ptr %"R50_Float32"
+  %".2842" = load float, ptr %"R37_Float32"
+  %"fmul.158" = fmul float %".2840", %".2841"
+  %"fadd.133" = fadd float %"fmul.158", %".2842"
   store float %"fadd.133", ptr %"R56_Float32"
   ; FFMA R21, R47, R51, R34
-  %".2669" = load float, ptr %"R47_Float32"
-  %".2670" = load float, ptr %"R51_Float32"
-  %".2671" = load float, ptr %"R34_Float32"
-  %"fmul.159" = fmul float %".2669", %".2670"
-  %"fadd.134" = fadd float %"fmul.159", %".2671"
+  %".2845" = load float, ptr %"R47_Float32"
+  %".2846" = load float, ptr %"R51_Float32"
+  %".2847" = load float, ptr %"R34_Float32"
+  %"fmul.159" = fmul float %".2845", %".2846"
+  %"fadd.134" = fadd float %"fmul.159", %".2847"
   store float %"fadd.134", ptr %"R21_Float32"
   ; @P0 BRA `(.L_x_24)
-  %".2674" = load i1, ptr %"P0_Bool"
-  %".2675" = icmp ne i1 %".2674", 1
-  br i1 %".2675", label %".L_x_24", label %".L_x_23"
+  %".2850" = load i1, ptr %"P0_Bool"
+  %".2851" = icmp ne i1 %".2850", 1
+  br i1 %".2851", label %".L_x_24", label %".L_x_23"
 .L_x_23:
   ; @!P1 BRA `(.L_x_25)
-  %".2678" = load i1, ptr %"P1_Bool"
-  %".2679" = icmp eq i1 %".2678", 1
-  br i1 %".2679", label %".L_x_25", label %".L_x_23_split_0x26d0"
+  %".2854" = load i1, ptr %"P1_Bool"
+  %".2855" = icmp eq i1 %".2854", 1
+  br i1 %".2855", label %".L_x_25", label %".L_x_23_split_0x26d0"
 .L_x_23_split_0x26d0:
   ; MOV R11, 0x4
   store i32 4, ptr %"R11_Int32"
   ; IMAD R7, R14, c[0x0][0x180], R22.reuse
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R14_Int32", ptr %"R14_Float32", i32 4, i1 0)
-  %".2684" = load i32, ptr %"R14_Int32"
-  %".2685" = load i32, ptr %"R22_Int32"
-  %"mul.57" = mul i32 %".2684", %"Arg_6"
-  %"add.172" = add i32 %"mul.57", %".2685"
+  %".2860" = load i32, ptr %"R14_Int32"
+  %".2861" = load i32, ptr %"R22_Int32"
+  %"mul.57" = mul i32 %".2860", %"Arg_6"
+  %"add.172" = add i32 %"mul.57", %".2861"
   store i32 %"add.172", ptr %"R7_Int32"
   ; MOV R10, c[0x0][0x184]
   store i32 %"Arg_7", ptr %"R10_Int32"
   ; IMAD R6, R13, c[0x0][0x180], R22
-  %".2690" = load i32, ptr %"R13_Int32"
-  %".2691" = load i32, ptr %"R22_Int32"
-  %"mul.58" = mul i32 %".2690", %"Arg_6"
-  %"add.173" = add i32 %"mul.58", %".2691"
+  %".2866" = load i32, ptr %"R13_Int32"
+  %".2867" = load i32, ptr %"R22_Int32"
+  %"mul.58" = mul i32 %".2866", %"Arg_6"
+  %"add.173" = add i32 %"mul.58", %".2867"
   store i32 %"add.173", ptr %"R6_Int32"
   ; MOV R9, c[0x0][0x184]
   store i32 %"Arg_7", ptr %"R9_Int32"
   ; IMAD.WIDE R4, R7, R11, c[0x0][0x170]
-  %".2696" = load i32, ptr %"R7_Int32"
-  %".2697" = load i32, ptr %"R11_Int32"
-  %"mul.59" = mul i32 %".2696", %".2697"
+  %".2872" = load i32, ptr %"R7_Int32"
+  %".2873" = load i32, ptr %"R11_Int32"
+  %"mul.59" = mul i32 %".2872", %".2873"
   %"add.174" = add i32 %"mul.59", %"Arg_4"
   store i32 %"add.174", ptr %"R4_Int32"
   ; LEA R10, R10, R7, 0x1
-  %".2700" = load i32, ptr %"R10_Int32"
-  %".2701" = load i32, ptr %"R7_Int32"
-  %"shl.15" = shl i32 %".2700", 1
-  %"add.175" = add i32 %"shl.15", %".2701"
+  %".2876" = load i32, ptr %"R10_Int32"
+  %".2877" = load i32, ptr %"R7_Int32"
+  %"shl.15" = shl i32 %".2876", 1
+  %"add.175" = add i32 %"shl.15", %".2877"
   store i32 %"add.175", ptr %"R10_Int32"
   ; IMAD.WIDE R6, R6, R11, c[0x0][0x160]
-  %".2704" = load i32, ptr %"R6_Int32"
-  %".2705" = load i32, ptr %"R11_Int32"
-  %"mul.60" = mul i32 %".2704", %".2705"
+  %".2880" = load i32, ptr %"R6_Int32"
+  %".2881" = load i32, ptr %"R11_Int32"
+  %"mul.60" = mul i32 %".2880", %".2881"
   %"add.176" = add i32 %"mul.60", %"Arg_2"
   store i32 %"add.176", ptr %"R6_Int32"
   ; LEA R8, P0, R9, R4, 0x2
-  %".2708" = load i1, ptr %"P0_Bool"
-  %".2709" = sub i1 0, %".2708"
-  %".2710" = load i32, ptr %"R9_Int32"
-  %".2711" = load i32, ptr %"R4_Int32"
-  %".2712" = sext i1 %".2709" to i32
-  %"shl.16" = shl i32 %".2712", %".2711"
-  %"add.177" = add i32 %"shl.16", %".2710"
+  %".2884" = load i1, ptr %"P0_Bool"
+  %".2885" = sub i1 0, %".2884"
+  %".2886" = load i32, ptr %"R9_Int32"
+  %".2887" = load i32, ptr %"R4_Int32"
+  %".2888" = sext i1 %".2885" to i32
+  %"shl.16" = shl i32 %".2888", %".2887"
+  %"add.177" = add i32 %"shl.16", %".2886"
   store i32 %"add.177", ptr %"R8_Int32"
   ; IMAD.WIDE R10, R10, R11, c[0x0][0x170]
-  %".2715" = load i32, ptr %"R10_Int32"
-  %".2716" = load i32, ptr %"R11_Int32"
-  %"mul.61" = mul i32 %".2715", %".2716"
+  %".2891" = load i32, ptr %"R10_Int32"
+  %".2892" = load i32, ptr %"R11_Int32"
+  %"mul.61" = mul i32 %".2891", %".2892"
   %"add.178" = add i32 %"mul.61", %"Arg_4"
   store i32 %"add.178", ptr %"R10_Int32"
   ; LEA.HI.X R9, R9, R5, R16, 0x2, P0
-  %".2719" = load i32, ptr %"R9_Int32"
-  %".2720" = load i32, ptr %"R5_Int32"
-  %".2721" = load i32, ptr %"R16_Int32"
-  %"shl.17" = shl i32 %".2719", %".2721"
-  %"add.179" = add i32 %"shl.17", %".2720"
+  %".2895" = load i32, ptr %"R9_Int32"
+  %".2896" = load i32, ptr %"R5_Int32"
+  %".2897" = load i32, ptr %"R16_Int32"
+  %"shl.17" = shl i32 %".2895", %".2897"
+  %"add.179" = add i32 %"shl.17", %".2896"
   store i32 %"add.179", ptr %"R9_Int32"
   ; LDG.E.SYS R13, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2724" = load i32, ptr %"R4_Float32_PTR"
-  %".2725" = add i32 %".2724", 0
-  %"for_LDG.175" = inttoptr i32 %".2725" to ptr
-  %".2726" = load float, ptr %"for_LDG.175"
-  store float %".2726", ptr %"R13_Float32"
+  %".2900" = load ptr, ptr %"R4_Float32_PTR"
+  %".2901" = ptrtoint ptr %".2900" to i64
+  %".2902" = add i64 %".2901", 0
+  %"for_LDG.175" = inttoptr i64 %".2902" to ptr
+  %".2903" = load float, ptr %"for_LDG.175"
+  store float %".2903", ptr %"R13_Float32"
   ; LDG.E.SYS R12, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2729" = load i32, ptr %"R6_Float32_PTR"
-  %".2730" = add i32 %".2729", 0
-  %"for_LDG.176" = inttoptr i32 %".2730" to ptr
-  %".2731" = load float, ptr %"for_LDG.176"
-  store float %".2731", ptr %"R12_Float32"
+  %".2906" = load ptr, ptr %"R6_Float32_PTR"
+  %".2907" = ptrtoint ptr %".2906" to i64
+  %".2908" = add i64 %".2907", 0
+  %"for_LDG.176" = inttoptr i64 %".2908" to ptr
+  %".2909" = load float, ptr %"for_LDG.176"
+  store float %".2909", ptr %"R12_Float32"
   ; LDG.E.SYS R23, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2734" = load i32, ptr %"R8_Float32_PTR"
-  %".2735" = add i32 %".2734", 0
-  %"for_LDG.177" = inttoptr i32 %".2735" to ptr
-  %".2736" = load float, ptr %"for_LDG.177"
-  store float %".2736", ptr %"R23_Float32"
+  %".2912" = load ptr, ptr %"R8_Float32_PTR"
+  %".2913" = ptrtoint ptr %".2912" to i64
+  %".2914" = add i64 %".2913", 0
+  %"for_LDG.177" = inttoptr i64 %".2914" to ptr
+  %".2915" = load float, ptr %"for_LDG.177"
+  store float %".2915", ptr %"R23_Float32"
   ; LDG.E.SYS R22, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2739" = load i32, ptr %"R10_Float32_PTR"
-  %".2740" = add i32 %".2739", 0
-  %"for_LDG.178" = inttoptr i32 %".2740" to ptr
-  %".2741" = load float, ptr %"for_LDG.178"
-  store float %".2741", ptr %"R22_Float32"
+  %".2918" = load ptr, ptr %"R10_Float32_PTR"
+  %".2919" = ptrtoint ptr %".2918" to i64
+  %".2920" = add i64 %".2919", 0
+  %"for_LDG.178" = inttoptr i64 %".2920" to ptr
+  %".2921" = load float, ptr %"for_LDG.178"
+  store float %".2921", ptr %"R22_Float32"
   ; ISETP.NE.AND P0, PT, R15, 0x1, PT
-  %".2744" = load i32, ptr %"R15_Int32"
-  %".2745" = load i1, ptr %"PT_Bool"
-  %"cmp.32" = icmp ne i32 %".2744", 1
-  %".2746" = and i1 %"cmp.32", %".2745"
+  %".2924" = load i32, ptr %"R15_Int32"
+  %".2925" = load i1, ptr %"PT_Bool"
+  %"cmp.32" = icmp ne i32 %".2924", 1
+  %".2926" = and i1 %"cmp.32", %".2925"
   ; FFMA R44, R13, R12, R44
-  %".2748" = load float, ptr %"R13_Float32"
-  %".2749" = load float, ptr %"R12_Float32"
-  %".2750" = load float, ptr %"R44_Float32"
-  %"fmul.160" = fmul float %".2748", %".2749"
-  %"fadd.135" = fadd float %"fmul.160", %".2750"
+  %".2928" = load float, ptr %"R13_Float32"
+  %".2929" = load float, ptr %"R12_Float32"
+  %".2930" = load float, ptr %"R44_Float32"
+  %"fmul.160" = fmul float %".2928", %".2929"
+  %"fadd.135" = fadd float %"fmul.160", %".2930"
   store float %"fadd.135", ptr %"R44_Float32"
   ; FFMA R56, R12.reuse, R23, R56
-  %".2753" = load float, ptr %"R12_Float32"
-  %".2754" = load float, ptr %"R23_Float32"
-  %".2755" = load float, ptr %"R56_Float32"
-  %"fmul.161" = fmul float %".2753", %".2754"
-  %"fadd.136" = fadd float %"fmul.161", %".2755"
+  %".2933" = load float, ptr %"R12_Float32"
+  %".2934" = load float, ptr %"R23_Float32"
+  %".2935" = load float, ptr %"R56_Float32"
+  %"fmul.161" = fmul float %".2933", %".2934"
+  %"fadd.136" = fadd float %"fmul.161", %".2935"
   store float %"fadd.136", ptr %"R56_Float32"
   ; FFMA R21, R12, R22, R21
-  %".2758" = load float, ptr %"R12_Float32"
-  %".2759" = load float, ptr %"R22_Float32"
-  %".2760" = load float, ptr %"R21_Float32"
-  %"fmul.162" = fmul float %".2758", %".2759"
-  %"fadd.137" = fadd float %"fmul.162", %".2760"
+  %".2938" = load float, ptr %"R12_Float32"
+  %".2939" = load float, ptr %"R22_Float32"
+  %".2940" = load float, ptr %"R21_Float32"
+  %"fmul.162" = fmul float %".2938", %".2939"
+  %"fadd.137" = fadd float %"fmul.162", %".2940"
   store float %"fadd.137", ptr %"R21_Float32"
   ; @!P0 BRA `(.L_x_25)
-  %".2763" = load i1, ptr %"P0_Bool"
-  %".2764" = icmp eq i1 %".2763", 1
-  br i1 %".2764", label %".L_x_25", label %".L_x_23_split_0x2810"
+  %".2943" = load i1, ptr %"P0_Bool"
+  %".2944" = icmp eq i1 %".2943", 1
+  br i1 %".2944", label %".L_x_25", label %".L_x_23_split_0x2810"
 .L_x_23_split_0x2810:
   ; ISETP.NE.AND P0, PT, R15, 0x2, PT
-  %".2767" = load i32, ptr %"R15_Int32"
-  %".2768" = load i1, ptr %"PT_Bool"
-  %"cmp.33" = icmp ne i32 %".2767", 2
-  %".2769" = and i1 %"cmp.33", %".2768"
+  %".2947" = load i32, ptr %"R15_Int32"
+  %".2948" = load i1, ptr %"PT_Bool"
+  %"cmp.33" = icmp ne i32 %".2947", 2
+  %".2949" = and i1 %"cmp.33", %".2948"
   ; LDG.E.SYS R13, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2771" = load i32, ptr %"R4_Float32_PTR"
-  %".2772" = add i32 %".2771", 4
-  %"for_LDG.179" = inttoptr i32 %".2772" to ptr
-  %".2773" = load float, ptr %"for_LDG.179"
-  store float %".2773", ptr %"R13_Float32"
+  %".2951" = load ptr, ptr %"R4_Float32_PTR"
+  %".2952" = ptrtoint ptr %".2951" to i64
+  %".2953" = add i64 %".2952", 4
+  %"for_LDG.179" = inttoptr i64 %".2953" to ptr
+  %".2954" = load float, ptr %"for_LDG.179"
+  store float %".2954", ptr %"R13_Float32"
   ; LDG.E.SYS R12, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2776" = load i32, ptr %"R6_Float32_PTR"
-  %".2777" = add i32 %".2776", 4
-  %"for_LDG.180" = inttoptr i32 %".2777" to ptr
-  %".2778" = load float, ptr %"for_LDG.180"
-  store float %".2778", ptr %"R12_Float32"
+  %".2957" = load ptr, ptr %"R6_Float32_PTR"
+  %".2958" = ptrtoint ptr %".2957" to i64
+  %".2959" = add i64 %".2958", 4
+  %"for_LDG.180" = inttoptr i64 %".2959" to ptr
+  %".2960" = load float, ptr %"for_LDG.180"
+  store float %".2960", ptr %"R12_Float32"
   ; LDG.E.SYS R23, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2781" = load i32, ptr %"R8_Float32_PTR"
-  %".2782" = add i32 %".2781", 4
-  %"for_LDG.181" = inttoptr i32 %".2782" to ptr
-  %".2783" = load float, ptr %"for_LDG.181"
-  store float %".2783", ptr %"R23_Float32"
+  %".2963" = load ptr, ptr %"R8_Float32_PTR"
+  %".2964" = ptrtoint ptr %".2963" to i64
+  %".2965" = add i64 %".2964", 4
+  %"for_LDG.181" = inttoptr i64 %".2965" to ptr
+  %".2966" = load float, ptr %"for_LDG.181"
+  store float %".2966", ptr %"R23_Float32"
   ; LDG.E.SYS R22, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2786" = load i32, ptr %"R10_Float32_PTR"
-  %".2787" = add i32 %".2786", 4
-  %"for_LDG.182" = inttoptr i32 %".2787" to ptr
-  %".2788" = load float, ptr %"for_LDG.182"
-  store float %".2788", ptr %"R22_Float32"
+  %".2969" = load ptr, ptr %"R10_Float32_PTR"
+  %".2970" = ptrtoint ptr %".2969" to i64
+  %".2971" = add i64 %".2970", 4
+  %"for_LDG.182" = inttoptr i64 %".2971" to ptr
+  %".2972" = load float, ptr %"for_LDG.182"
+  store float %".2972", ptr %"R22_Float32"
   ; @P0 LDG.E.SYS R25, [R4+0x8]
-  %".2791" = load i1, ptr %"P0_Bool"
-  %".2792" = icmp ne i1 %".2791", 1
-  br i1 %".2792", label %".L_x_23_split_0x2810_conditionalExpr_0x2860", label %".L_x_23_split_0x2870"
+  %".2975" = load i1, ptr %"P0_Bool"
+  %".2976" = icmp ne i1 %".2975", 1
+  br i1 %".2976", label %".L_x_23_split_0x2810_conditionalExpr_0x2860", label %".L_x_23_split_0x2870"
 .L_x_23_split_0x2810_conditionalExpr_0x2860:
   ; LDG.E.SYS R25, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".2795" = load i32, ptr %"R4_Float32_PTR"
-  %".2796" = add i32 %".2795", 8
-  %"for_LDG.183" = inttoptr i32 %".2796" to ptr
-  %".2797" = load float, ptr %"for_LDG.183"
-  store float %".2797", ptr %"R25_Float32"
+  %".2979" = load ptr, ptr %"R4_Float32_PTR"
+  %".2980" = ptrtoint ptr %".2979" to i64
+  %".2981" = add i64 %".2980", 8
+  %"for_LDG.183" = inttoptr i64 %".2981" to ptr
+  %".2982" = load float, ptr %"for_LDG.183"
+  store float %".2982", ptr %"R25_Float32"
   ; BRA `(.L_x_23_split_0x2870)
   br label %".L_x_23_split_0x2870"
 .L_x_23_split_0x2870:
   ; @P0 LDG.E.SYS R24, [R6+0x8]
-  %".2802" = load i1, ptr %"P0_Bool"
-  %".2803" = icmp ne i1 %".2802", 1
-  br i1 %".2803", label %".L_x_23_split_0x2870_conditionalExpr_0x2870", label %".L_x_23_split_0x2880"
+  %".2987" = load i1, ptr %"P0_Bool"
+  %".2988" = icmp ne i1 %".2987", 1
+  br i1 %".2988", label %".L_x_23_split_0x2870_conditionalExpr_0x2870", label %".L_x_23_split_0x2880"
 .L_x_23_split_0x2870_conditionalExpr_0x2870:
   ; LDG.E.SYS R24, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".2806" = load i32, ptr %"R6_Float32_PTR"
-  %".2807" = add i32 %".2806", 8
-  %"for_LDG.184" = inttoptr i32 %".2807" to ptr
-  %".2808" = load float, ptr %"for_LDG.184"
-  store float %".2808", ptr %"R24_Float32"
+  %".2991" = load ptr, ptr %"R6_Float32_PTR"
+  %".2992" = ptrtoint ptr %".2991" to i64
+  %".2993" = add i64 %".2992", 8
+  %"for_LDG.184" = inttoptr i64 %".2993" to ptr
+  %".2994" = load float, ptr %"for_LDG.184"
+  store float %".2994", ptr %"R24_Float32"
   ; BRA `(.L_x_23_split_0x2880)
   br label %".L_x_23_split_0x2880"
 .L_x_23_split_0x2880:
   ; @P0 LDG.E.SYS R35, [R8+0x8]
-  %".2813" = load i1, ptr %"P0_Bool"
-  %".2814" = icmp ne i1 %".2813", 1
-  br i1 %".2814", label %".L_x_23_split_0x2880_conditionalExpr_0x2880", label %".L_x_23_split_0x2890"
+  %".2999" = load i1, ptr %"P0_Bool"
+  %".3000" = icmp ne i1 %".2999", 1
+  br i1 %".3000", label %".L_x_23_split_0x2880_conditionalExpr_0x2880", label %".L_x_23_split_0x2890"
 .L_x_23_split_0x2880_conditionalExpr_0x2880:
   ; LDG.E.SYS R35, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2817" = load i32, ptr %"R8_Float32_PTR"
-  %".2818" = add i32 %".2817", 8
-  %"for_LDG.185" = inttoptr i32 %".2818" to ptr
-  %".2819" = load float, ptr %"for_LDG.185"
-  store float %".2819", ptr %"R35_Float32"
+  %".3003" = load ptr, ptr %"R8_Float32_PTR"
+  %".3004" = ptrtoint ptr %".3003" to i64
+  %".3005" = add i64 %".3004", 8
+  %"for_LDG.185" = inttoptr i64 %".3005" to ptr
+  %".3006" = load float, ptr %"for_LDG.185"
+  store float %".3006", ptr %"R35_Float32"
   ; BRA `(.L_x_23_split_0x2890)
   br label %".L_x_23_split_0x2890"
 .L_x_23_split_0x2890:
   ; @P0 LDG.E.SYS R34, [R10+0x8]
-  %".2824" = load i1, ptr %"P0_Bool"
-  %".2825" = icmp ne i1 %".2824", 1
-  br i1 %".2825", label %".L_x_23_split_0x2890_conditionalExpr_0x2890", label %".L_x_23_split_0x28a0"
+  %".3011" = load i1, ptr %"P0_Bool"
+  %".3012" = icmp ne i1 %".3011", 1
+  br i1 %".3012", label %".L_x_23_split_0x2890_conditionalExpr_0x2890", label %".L_x_23_split_0x28a0"
 .L_x_23_split_0x2890_conditionalExpr_0x2890:
   ; LDG.E.SYS R34, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".2828" = load i32, ptr %"R10_Float32_PTR"
-  %".2829" = add i32 %".2828", 8
-  %"for_LDG.186" = inttoptr i32 %".2829" to ptr
-  %".2830" = load float, ptr %"for_LDG.186"
-  store float %".2830", ptr %"R34_Float32"
+  %".3015" = load ptr, ptr %"R10_Float32_PTR"
+  %".3016" = ptrtoint ptr %".3015" to i64
+  %".3017" = add i64 %".3016", 8
+  %"for_LDG.186" = inttoptr i64 %".3017" to ptr
+  %".3018" = load float, ptr %"for_LDG.186"
+  store float %".3018", ptr %"R34_Float32"
   ; BRA `(.L_x_23_split_0x28a0)
   br label %".L_x_23_split_0x28a0"
 .L_x_23_split_0x28a0:
   ; FFMA R44, R13, R12, R44
-  %".2835" = load float, ptr %"R13_Float32"
-  %".2836" = load float, ptr %"R12_Float32"
-  %".2837" = load float, ptr %"R44_Float32"
-  %"fmul.163" = fmul float %".2835", %".2836"
-  %"fadd.138" = fadd float %"fmul.163", %".2837"
+  %".3023" = load float, ptr %"R13_Float32"
+  %".3024" = load float, ptr %"R12_Float32"
+  %".3025" = load float, ptr %"R44_Float32"
+  %"fmul.163" = fmul float %".3023", %".3024"
+  %"fadd.138" = fadd float %"fmul.163", %".3025"
   store float %"fadd.138", ptr %"R44_Float32"
   ; FFMA R56, R12.reuse, R23, R56
-  %".2840" = load float, ptr %"R12_Float32"
-  %".2841" = load float, ptr %"R23_Float32"
-  %".2842" = load float, ptr %"R56_Float32"
-  %"fmul.164" = fmul float %".2840", %".2841"
-  %"fadd.139" = fadd float %"fmul.164", %".2842"
+  %".3028" = load float, ptr %"R12_Float32"
+  %".3029" = load float, ptr %"R23_Float32"
+  %".3030" = load float, ptr %"R56_Float32"
+  %"fmul.164" = fmul float %".3028", %".3029"
+  %"fadd.139" = fadd float %"fmul.164", %".3030"
   store float %"fadd.139", ptr %"R56_Float32"
   ; FFMA R21, R12, R22, R21
-  %".2845" = load float, ptr %"R12_Float32"
-  %".2846" = load float, ptr %"R22_Float32"
-  %".2847" = load float, ptr %"R21_Float32"
-  %"fmul.165" = fmul float %".2845", %".2846"
-  %"fadd.140" = fadd float %"fmul.165", %".2847"
+  %".3033" = load float, ptr %"R12_Float32"
+  %".3034" = load float, ptr %"R22_Float32"
+  %".3035" = load float, ptr %"R21_Float32"
+  %"fmul.165" = fmul float %".3033", %".3034"
+  %"fadd.140" = fadd float %"fmul.165", %".3035"
   store float %"fadd.140", ptr %"R21_Float32"
   ; @P0 FFMA R44, R25, R24, R44
-  %".2850" = load i1, ptr %"P0_Bool"
-  %".2851" = icmp ne i1 %".2850", 1
-  br i1 %".2851", label %".L_x_23_split_0x28a0_conditionalExpr_0x28d0", label %".L_x_23_split_0x28e0"
+  %".3038" = load i1, ptr %"P0_Bool"
+  %".3039" = icmp ne i1 %".3038", 1
+  br i1 %".3039", label %".L_x_23_split_0x28a0_conditionalExpr_0x28d0", label %".L_x_23_split_0x28e0"
 .L_x_23_split_0x28a0_conditionalExpr_0x28d0:
   ; FFMA R44, R25, R24, R44
-  %".2854" = load float, ptr %"R25_Float32"
-  %".2855" = load float, ptr %"R24_Float32"
-  %".2856" = load float, ptr %"R44_Float32"
-  %"fmul.166" = fmul float %".2854", %".2855"
-  %"fadd.141" = fadd float %"fmul.166", %".2856"
+  %".3042" = load float, ptr %"R25_Float32"
+  %".3043" = load float, ptr %"R24_Float32"
+  %".3044" = load float, ptr %"R44_Float32"
+  %"fmul.166" = fmul float %".3042", %".3043"
+  %"fadd.141" = fadd float %"fmul.166", %".3044"
   store float %"fadd.141", ptr %"R44_Float32"
   ; BRA `(.L_x_23_split_0x28e0)
   br label %".L_x_23_split_0x28e0"
 .L_x_23_split_0x28e0:
   ; @P0 FFMA R56, R24.reuse, R35, R56
-  %".2861" = load i1, ptr %"P0_Bool"
-  %".2862" = icmp ne i1 %".2861", 1
-  br i1 %".2862", label %".L_x_23_split_0x28e0_conditionalExpr_0x28e0", label %".L_x_23_split_0x28f0"
+  %".3049" = load i1, ptr %"P0_Bool"
+  %".3050" = icmp ne i1 %".3049", 1
+  br i1 %".3050", label %".L_x_23_split_0x28e0_conditionalExpr_0x28e0", label %".L_x_23_split_0x28f0"
 .L_x_23_split_0x28e0_conditionalExpr_0x28e0:
   ; FFMA R56, R24.reuse, R35, R56
-  %".2865" = load float, ptr %"R24_Float32"
-  %".2866" = load float, ptr %"R35_Float32"
-  %".2867" = load float, ptr %"R56_Float32"
-  %"fmul.167" = fmul float %".2865", %".2866"
-  %"fadd.142" = fadd float %"fmul.167", %".2867"
+  %".3053" = load float, ptr %"R24_Float32"
+  %".3054" = load float, ptr %"R35_Float32"
+  %".3055" = load float, ptr %"R56_Float32"
+  %"fmul.167" = fmul float %".3053", %".3054"
+  %"fadd.142" = fadd float %"fmul.167", %".3055"
   store float %"fadd.142", ptr %"R56_Float32"
   ; BRA `(.L_x_23_split_0x28f0)
   br label %".L_x_23_split_0x28f0"
 .L_x_23_split_0x28f0:
   ; @P0 FFMA R21, R24, R34, R21
-  %".2872" = load i1, ptr %"P0_Bool"
-  %".2873" = icmp ne i1 %".2872", 1
-  br i1 %".2873", label %".L_x_23_split_0x28f0_conditionalExpr_0x28f0", label %".L_x_25"
+  %".3060" = load i1, ptr %"P0_Bool"
+  %".3061" = icmp ne i1 %".3060", 1
+  br i1 %".3061", label %".L_x_23_split_0x28f0_conditionalExpr_0x28f0", label %".L_x_25"
 .L_x_23_split_0x28f0_conditionalExpr_0x28f0:
   ; FFMA R21, R24, R34, R21
-  %".2876" = load float, ptr %"R24_Float32"
-  %".2877" = load float, ptr %"R34_Float32"
-  %".2878" = load float, ptr %"R21_Float32"
-  %"fmul.168" = fmul float %".2876", %".2877"
-  %"fadd.143" = fadd float %"fmul.168", %".2878"
+  %".3064" = load float, ptr %"R24_Float32"
+  %".3065" = load float, ptr %"R34_Float32"
+  %".3066" = load float, ptr %"R21_Float32"
+  %"fmul.168" = fmul float %".3064", %".3065"
+  %"fadd.143" = fadd float %"fmul.168", %".3066"
   store float %"fadd.143", ptr %"R21_Float32"
   ; BRA `(.L_x_25)
   br label %".L_x_25"
 .L_x_25:
   ; @!P4 BRA `(.L_x_26)
-  %".2883" = load i1, ptr %"P4_Bool"
-  %".2884" = icmp eq i1 %".2883", 1
-  br i1 %".2884", label %".L_x_26", label %".L_x_25_split_0x2910"
+  %".3071" = load i1, ptr %"P4_Bool"
+  %".3072" = icmp eq i1 %".3071", 1
+  br i1 %".3072", label %".L_x_26", label %".L_x_25_split_0x2910"
 .L_x_25_split_0x2910:
   ; ISETP.GE.U32.AND P0, PT, R18, 0x3, PT
-  %".2887" = load i32, ptr %"R18_Int32"
-  %".2888" = load i1, ptr %"PT_Bool"
-  %"cmp.34" = icmp sge i32 %".2887", 3
-  %".2889" = and i1 %"cmp.34", %".2888"
+  %".3075" = load i32, ptr %"R18_Int32"
+  %".3076" = load i1, ptr %"PT_Bool"
+  %"cmp.34" = icmp sge i32 %".3075", 3
+  %".3077" = and i1 %"cmp.34", %".3076"
   ; MOV R23, RZ
-  %".2891" = load i32, ptr %"RZ_Int32"
-  store i32 %".2891", ptr %"R23_Int32"
+  %".3079" = load i32, ptr %"RZ_Int32"
+  store i32 %".3079", ptr %"R23_Int32"
   ; @!P0 BRA `(.L_x_27)
-  %".2894" = load i1, ptr %"P0_Bool"
-  %".2895" = icmp eq i1 %".2894", 1
-  br i1 %".2895", label %".L_x_27", label %".L_x_25_split_0x2940"
+  %".3082" = load i1, ptr %"P0_Bool"
+  %".3083" = icmp eq i1 %".3082", 1
+  br i1 %".3083", label %".L_x_27", label %".L_x_25_split_0x2940"
 .L_x_25_split_0x2940:
   ; ISETP.GT.AND P0, PT, R20, RZ, PT
-  %".2898" = load i32, ptr %"R20_Int32"
-  %".2899" = load i1, ptr %"PT_Bool"
-  %"cmp.35" = icmp sgt i32 %".2898", 0
-  %".2900" = and i1 %"cmp.35", %".2899"
+  %".3086" = load i32, ptr %"R20_Int32"
+  %".3087" = load i1, ptr %"PT_Bool"
+  %"cmp.35" = icmp sgt i32 %".3086", 0
+  %".3088" = and i1 %"cmp.35", %".3087"
   ; MOV R23, RZ
-  %".2902" = load i32, ptr %"RZ_Int32"
-  store i32 %".2902", ptr %"R23_Int32"
+  %".3090" = load i32, ptr %"RZ_Int32"
+  store i32 %".3090", ptr %"R23_Int32"
   ; MOV R22, R20
-  %".2905" = load i32, ptr %"R20_Int32"
-  store i32 %".2905", ptr %"R22_Int32"
+  %".3093" = load i32, ptr %"R20_Int32"
+  store i32 %".3093", ptr %"R22_Int32"
   ; @!P0 BRA `(.L_x_28)
-  %".2908" = load i1, ptr %"P0_Bool"
-  %".2909" = icmp eq i1 %".2908", 1
-  br i1 %".2909", label %".L_x_28", label %".L_x_25_split_0x2980"
+  %".3096" = load i1, ptr %"P0_Bool"
+  %".3097" = icmp eq i1 %".3096", 1
+  br i1 %".3097", label %".L_x_28", label %".L_x_25_split_0x2980"
 .L_x_25_split_0x2980:
   ; ISETP.GT.AND P1, PT, R22, 0xc, PT
-  %".2912" = load i32, ptr %"R22_Int32"
-  %".2913" = load i1, ptr %"PT_Bool"
-  %"cmp.36" = icmp sgt i32 %".2912", 12
-  %".2914" = and i1 %"cmp.36", %".2913"
+  %".3100" = load i32, ptr %"R22_Int32"
+  %".3101" = load i1, ptr %"PT_Bool"
+  %"cmp.36" = icmp sgt i32 %".3100", 12
+  %".3102" = and i1 %"cmp.36", %".3101"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
-  %".2916" = and i1 1, 1
-  %".2917" = or i1 %".2916", 1
+  %".3104" = and i1 1, 1
+  %".3105" = or i1 %".3104", 1
   ; @!P1 BRA `(.L_x_29)
-  %".2919" = load i1, ptr %"P1_Bool"
-  %".2920" = icmp eq i1 %".2919", 1
-  br i1 %".2920", label %".L_x_29", label %".L_x_25_split_0x29b0"
+  %".3107" = load i1, ptr %"P1_Bool"
+  %".3108" = icmp eq i1 %".3107", 1
+  br i1 %".3108", label %".L_x_29", label %".L_x_25_split_0x29b0"
 .L_x_25_split_0x29b0:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".2923" = xor i1 1, 1
-  %".2924" = and i1 %".2923", 1
-  %".2925" = and i1 %".2924", 1
+  %".3111" = xor i1 1, 1
+  %".3112" = and i1 %".3111", 1
+  %".3113" = and i1 %".3112", 1
 .L_x_30:
   ; IADD3 R25, R0, R23, RZ
-  %".2927" = load i32, ptr %"R0_Int32"
-  %".2928" = load i32, ptr %"R23_Int32"
-  %"add.180" = add i32 %".2927", %".2928"
+  %".3115" = load i32, ptr %"R0_Int32"
+  %".3116" = load i32, ptr %"R23_Int32"
+  %"add.180" = add i32 %".3115", %".3116"
   %"add.181" = add i32 %"add.180", 0
   store i32 %"add.181", ptr %"R25_Int32"
   ; MOV R24, 0x4
   store i32 4, ptr %"R24_Int32"
   ; IMAD R35, R2.reuse, 0x3, R25
-  %".2933" = load i32, ptr %"R2_Int32"
-  %".2934" = load i32, ptr %"R25_Int32"
-  %"mul.62" = mul i32 %".2933", 3
-  %"add.182" = add i32 %"mul.62", %".2934"
+  %".3121" = load i32, ptr %"R2_Int32"
+  %".3122" = load i32, ptr %"R25_Int32"
+  %"mul.62" = mul i32 %".3121", 3
+  %"add.182" = add i32 %"mul.62", %".3122"
   store i32 %"add.182", ptr %"R35_Int32"
   ; LEA R25, R2, R25, 0x2
-  %".2937" = load i32, ptr %"R2_Int32"
-  %".2938" = load i32, ptr %"R25_Int32"
-  %"shl.18" = shl i32 %".2937", 2
-  %"add.183" = add i32 %"shl.18", %".2938"
+  %".3125" = load i32, ptr %"R2_Int32"
+  %".3126" = load i32, ptr %"R25_Int32"
+  %"shl.18" = shl i32 %".3125", 2
+  %"add.183" = add i32 %"shl.18", %".3126"
   store i32 %"add.183", ptr %"R25_Int32"
   ; IMAD.WIDE R36, R23, R24, c[0x0][0x168]
-  %".2941" = load i32, ptr %"R23_Int32"
-  %".2942" = load i32, ptr %"R24_Int32"
-  %"mul.63" = mul i32 %".2941", %".2942"
+  %".3129" = load i32, ptr %"R23_Int32"
+  %".3130" = load i32, ptr %"R24_Int32"
+  %"mul.63" = mul i32 %".3129", %".3130"
   %"add.184" = add i32 %"mul.63", %"Arg_3"
   store i32 %"add.184", ptr %"R36_Int32"
   ; IMAD.WIDE R8, R35, R24, c[0x0][0x170]
-  %".2945" = load i32, ptr %"R35_Int32"
-  %".2946" = load i32, ptr %"R24_Int32"
-  %"mul.64" = mul i32 %".2945", %".2946"
+  %".3133" = load i32, ptr %"R35_Int32"
+  %".3134" = load i32, ptr %"R24_Int32"
+  %"mul.64" = mul i32 %".3133", %".3134"
   %"add.185" = add i32 %"mul.64", %"Arg_4"
   store i32 %"add.185", ptr %"R8_Int32"
   ; IMAD.WIDE R12, R25, R24, c[0x0][0x170]
-  %".2949" = load i32, ptr %"R25_Int32"
-  %".2950" = load i32, ptr %"R24_Int32"
-  %"mul.65" = mul i32 %".2949", %".2950"
+  %".3137" = load i32, ptr %"R25_Int32"
+  %".3138" = load i32, ptr %"R24_Int32"
+  %"mul.65" = mul i32 %".3137", %".3138"
   %"add.186" = add i32 %"mul.65", %"Arg_4"
   store i32 %"add.186", ptr %"R12_Int32"
   ; LDG.E.SYS R39, [R36]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".2953" = load i32, ptr %"R36_Float32_PTR"
-  %".2954" = add i32 %".2953", 0
-  %"for_LDG.187" = inttoptr i32 %".2954" to ptr
-  %".2955" = load float, ptr %"for_LDG.187"
-  store float %".2955", ptr %"R39_Float32"
+  %".3141" = load ptr, ptr %"R36_Float32_PTR"
+  %".3142" = ptrtoint ptr %".3141" to i64
+  %".3143" = add i64 %".3142", 0
+  %"for_LDG.187" = inttoptr i64 %".3143" to ptr
+  %".3144" = load float, ptr %"for_LDG.187"
+  store float %".3144", ptr %"R39_Float32"
   ; LDG.E.SYS R41, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2958" = load i32, ptr %"R8_Float32_PTR"
-  %".2959" = add i32 %".2958", 0
-  %"for_LDG.188" = inttoptr i32 %".2959" to ptr
-  %".2960" = load float, ptr %"for_LDG.188"
-  store float %".2960", ptr %"R41_Float32"
+  %".3147" = load ptr, ptr %"R8_Float32_PTR"
+  %".3148" = ptrtoint ptr %".3147" to i64
+  %".3149" = add i64 %".3148", 0
+  %"for_LDG.188" = inttoptr i64 %".3149" to ptr
+  %".3150" = load float, ptr %"for_LDG.188"
+  store float %".3150", ptr %"R41_Float32"
   ; LDG.E.SYS R40, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".2963" = load i32, ptr %"R12_Float32_PTR"
-  %".2964" = add i32 %".2963", 0
-  %"for_LDG.189" = inttoptr i32 %".2964" to ptr
-  %".2965" = load float, ptr %"for_LDG.189"
-  store float %".2965", ptr %"R40_Float32"
+  %".3153" = load ptr, ptr %"R12_Float32_PTR"
+  %".3154" = ptrtoint ptr %".3153" to i64
+  %".3155" = add i64 %".3154", 0
+  %"for_LDG.189" = inttoptr i64 %".3155" to ptr
+  %".3156" = load float, ptr %"for_LDG.189"
+  store float %".3156", ptr %"R40_Float32"
   ; LDG.E.SYS R52, [R36+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".2968" = load i32, ptr %"R36_Float32_PTR"
-  %".2969" = add i32 %".2968", 4
-  %"for_LDG.190" = inttoptr i32 %".2969" to ptr
-  %".2970" = load float, ptr %"for_LDG.190"
-  store float %".2970", ptr %"R52_Float32"
+  %".3159" = load ptr, ptr %"R36_Float32_PTR"
+  %".3160" = ptrtoint ptr %".3159" to i64
+  %".3161" = add i64 %".3160", 4
+  %"for_LDG.190" = inttoptr i64 %".3161" to ptr
+  %".3162" = load float, ptr %"for_LDG.190"
+  store float %".3162", ptr %"R52_Float32"
   ; LDG.E.SYS R53, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2973" = load i32, ptr %"R8_Float32_PTR"
-  %".2974" = add i32 %".2973", 4
-  %"for_LDG.191" = inttoptr i32 %".2974" to ptr
-  %".2975" = load float, ptr %"for_LDG.191"
-  store float %".2975", ptr %"R53_Float32"
+  %".3165" = load ptr, ptr %"R8_Float32_PTR"
+  %".3166" = ptrtoint ptr %".3165" to i64
+  %".3167" = add i64 %".3166", 4
+  %"for_LDG.191" = inttoptr i64 %".3167" to ptr
+  %".3168" = load float, ptr %"for_LDG.191"
+  store float %".3168", ptr %"R53_Float32"
   ; LDG.E.SYS R55, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".2978" = load i32, ptr %"R12_Float32_PTR"
-  %".2979" = add i32 %".2978", 4
-  %"for_LDG.192" = inttoptr i32 %".2979" to ptr
-  %".2980" = load float, ptr %"for_LDG.192"
-  store float %".2980", ptr %"R55_Float32"
+  %".3171" = load ptr, ptr %"R12_Float32_PTR"
+  %".3172" = ptrtoint ptr %".3171" to i64
+  %".3173" = add i64 %".3172", 4
+  %"for_LDG.192" = inttoptr i64 %".3173" to ptr
+  %".3174" = load float, ptr %"for_LDG.192"
+  store float %".3174", ptr %"R55_Float32"
   ; IADD3 R11, R23, 0x4, RZ
-  %".2983" = load i32, ptr %"R23_Int32"
-  %"add.187" = add i32 %".2983", 4
+  %".3177" = load i32, ptr %"R23_Int32"
+  %"add.187" = add i32 %".3177", 4
   %"add.188" = add i32 %"add.187", 0
   store i32 %"add.188", ptr %"R11_Int32"
   ; LDG.E.SYS R50, [R36+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".2986" = load i32, ptr %"R36_Float32_PTR"
-  %".2987" = add i32 %".2986", 8
-  %"for_LDG.193" = inttoptr i32 %".2987" to ptr
-  %".2988" = load float, ptr %"for_LDG.193"
-  store float %".2988", ptr %"R50_Float32"
+  %".3180" = load ptr, ptr %"R36_Float32_PTR"
+  %".3181" = ptrtoint ptr %".3180" to i64
+  %".3182" = add i64 %".3181", 8
+  %"for_LDG.193" = inttoptr i64 %".3182" to ptr
+  %".3183" = load float, ptr %"for_LDG.193"
+  store float %".3183", ptr %"R50_Float32"
   ; IADD3 R7, R35, 0x4, RZ
-  %".2991" = load i32, ptr %"R35_Int32"
-  %"add.189" = add i32 %".2991", 4
+  %".3186" = load i32, ptr %"R35_Int32"
+  %"add.189" = add i32 %".3186", 4
   %"add.190" = add i32 %"add.189", 0
   store i32 %"add.190", ptr %"R7_Int32"
   ; LDG.E.SYS R43, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".2994" = load i32, ptr %"R8_Float32_PTR"
-  %".2995" = add i32 %".2994", 8
-  %"for_LDG.194" = inttoptr i32 %".2995" to ptr
-  %".2996" = load float, ptr %"for_LDG.194"
-  store float %".2996", ptr %"R43_Float32"
+  %".3189" = load ptr, ptr %"R8_Float32_PTR"
+  %".3190" = ptrtoint ptr %".3189" to i64
+  %".3191" = add i64 %".3190", 8
+  %"for_LDG.194" = inttoptr i64 %".3191" to ptr
+  %".3192" = load float, ptr %"for_LDG.194"
+  store float %".3192", ptr %"R43_Float32"
   ; IADD3 R5, R25, 0x4, RZ
-  %".2999" = load i32, ptr %"R25_Int32"
-  %"add.191" = add i32 %".2999", 4
+  %".3195" = load i32, ptr %"R25_Int32"
+  %"add.191" = add i32 %".3195", 4
   %"add.192" = add i32 %"add.191", 0
   store i32 %"add.192", ptr %"R5_Int32"
   ; LDG.E.SYS R51, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3002" = load i32, ptr %"R12_Float32_PTR"
-  %".3003" = add i32 %".3002", 8
-  %"for_LDG.195" = inttoptr i32 %".3003" to ptr
-  %".3004" = load float, ptr %"for_LDG.195"
-  store float %".3004", ptr %"R51_Float32"
+  %".3198" = load ptr, ptr %"R12_Float32_PTR"
+  %".3199" = ptrtoint ptr %".3198" to i64
+  %".3200" = add i64 %".3199", 8
+  %"for_LDG.195" = inttoptr i64 %".3200" to ptr
+  %".3201" = load float, ptr %"for_LDG.195"
+  store float %".3201", ptr %"R51_Float32"
   ; LDG.E.SYS R47, [R36+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R36_Float32_PTR", ptr %"R36_Int32", i32 4, i1 0)
-  %".3007" = load i32, ptr %"R36_Float32_PTR"
-  %".3008" = add i32 %".3007", 12
-  %"for_LDG.196" = inttoptr i32 %".3008" to ptr
-  %".3009" = load float, ptr %"for_LDG.196"
-  store float %".3009", ptr %"R47_Float32"
+  %".3204" = load ptr, ptr %"R36_Float32_PTR"
+  %".3205" = ptrtoint ptr %".3204" to i64
+  %".3206" = add i64 %".3205", 12
+  %"for_LDG.196" = inttoptr i64 %".3206" to ptr
+  %".3207" = load float, ptr %"for_LDG.196"
+  store float %".3207", ptr %"R47_Float32"
   ; LDG.E.SYS R54, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3012" = load i32, ptr %"R8_Float32_PTR"
-  %".3013" = add i32 %".3012", 12
-  %"for_LDG.197" = inttoptr i32 %".3013" to ptr
-  %".3014" = load float, ptr %"for_LDG.197"
-  store float %".3014", ptr %"R54_Float32"
+  %".3210" = load ptr, ptr %"R8_Float32_PTR"
+  %".3211" = ptrtoint ptr %".3210" to i64
+  %".3212" = add i64 %".3211", 12
+  %"for_LDG.197" = inttoptr i64 %".3212" to ptr
+  %".3213" = load float, ptr %"for_LDG.197"
+  store float %".3213", ptr %"R54_Float32"
   ; LDG.E.SYS R58, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3017" = load i32, ptr %"R12_Float32_PTR"
-  %".3018" = add i32 %".3017", 12
-  %"for_LDG.198" = inttoptr i32 %".3018" to ptr
-  %".3019" = load float, ptr %"for_LDG.198"
-  store float %".3019", ptr %"R58_Float32"
+  %".3216" = load ptr, ptr %"R12_Float32_PTR"
+  %".3217" = ptrtoint ptr %".3216" to i64
+  %".3218" = add i64 %".3217", 12
+  %"for_LDG.198" = inttoptr i64 %".3218" to ptr
+  %".3219" = load float, ptr %"for_LDG.198"
+  store float %".3219", ptr %"R58_Float32"
   ; IMAD.WIDE R10, R11, R24, c[0x0][0x168]
-  %".3022" = load i32, ptr %"R11_Int32"
-  %".3023" = load i32, ptr %"R24_Int32"
-  %"mul.66" = mul i32 %".3022", %".3023"
+  %".3222" = load i32, ptr %"R11_Int32"
+  %".3223" = load i32, ptr %"R24_Int32"
+  %"mul.66" = mul i32 %".3222", %".3223"
   %"add.193" = add i32 %"mul.66", %"Arg_3"
   store i32 %"add.193", ptr %"R10_Int32"
   ; IMAD.WIDE R6, R7, R24, c[0x0][0x170]
-  %".3026" = load i32, ptr %"R7_Int32"
-  %".3027" = load i32, ptr %"R24_Int32"
-  %"mul.67" = mul i32 %".3026", %".3027"
+  %".3226" = load i32, ptr %"R7_Int32"
+  %".3227" = load i32, ptr %"R24_Int32"
+  %"mul.67" = mul i32 %".3226", %".3227"
   %"add.194" = add i32 %"mul.67", %"Arg_4"
   store i32 %"add.194", ptr %"R6_Int32"
   ; IMAD.WIDE R4, R5, R24, c[0x0][0x170]
-  %".3030" = load i32, ptr %"R5_Int32"
-  %".3031" = load i32, ptr %"R24_Int32"
-  %"mul.68" = mul i32 %".3030", %".3031"
+  %".3230" = load i32, ptr %"R5_Int32"
+  %".3231" = load i32, ptr %"R24_Int32"
+  %"mul.68" = mul i32 %".3230", %".3231"
   %"add.195" = add i32 %"mul.68", %"Arg_4"
   store i32 %"add.195", ptr %"R4_Int32"
   ; LDG.E.SYS R46, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3034" = load i32, ptr %"R10_Float32_PTR"
-  %".3035" = add i32 %".3034", 0
-  %"for_LDG.199" = inttoptr i32 %".3035" to ptr
-  %".3036" = load float, ptr %"for_LDG.199"
-  store float %".3036", ptr %"R46_Float32"
+  %".3234" = load ptr, ptr %"R10_Float32_PTR"
+  %".3235" = ptrtoint ptr %".3234" to i64
+  %".3236" = add i64 %".3235", 0
+  %"for_LDG.199" = inttoptr i64 %".3236" to ptr
+  %".3237" = load float, ptr %"for_LDG.199"
+  store float %".3237", ptr %"R46_Float32"
   ; LDG.E.SYS R42, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3039" = load i32, ptr %"R6_Float32_PTR"
-  %".3040" = add i32 %".3039", 0
-  %"for_LDG.200" = inttoptr i32 %".3040" to ptr
-  %".3041" = load float, ptr %"for_LDG.200"
-  store float %".3041", ptr %"R42_Float32"
+  %".3240" = load ptr, ptr %"R6_Float32_PTR"
+  %".3241" = ptrtoint ptr %".3240" to i64
+  %".3242" = add i64 %".3241", 0
+  %"for_LDG.200" = inttoptr i64 %".3242" to ptr
+  %".3243" = load float, ptr %"for_LDG.200"
+  store float %".3243", ptr %"R42_Float32"
   ; LDG.E.SYS R45, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3044" = load i32, ptr %"R4_Float32_PTR"
-  %".3045" = add i32 %".3044", 0
-  %"for_LDG.201" = inttoptr i32 %".3045" to ptr
-  %".3046" = load float, ptr %"for_LDG.201"
-  store float %".3046", ptr %"R45_Float32"
+  %".3246" = load ptr, ptr %"R4_Float32_PTR"
+  %".3247" = ptrtoint ptr %".3246" to i64
+  %".3248" = add i64 %".3247", 0
+  %"for_LDG.201" = inttoptr i64 %".3248" to ptr
+  %".3249" = load float, ptr %"for_LDG.201"
+  store float %".3249", ptr %"R45_Float32"
   ; LDG.E.SYS R34, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3049" = load i32, ptr %"R10_Float32_PTR"
-  %".3050" = add i32 %".3049", 4
-  %"for_LDG.202" = inttoptr i32 %".3050" to ptr
-  %".3051" = load float, ptr %"for_LDG.202"
-  store float %".3051", ptr %"R34_Float32"
+  %".3252" = load ptr, ptr %"R10_Float32_PTR"
+  %".3253" = ptrtoint ptr %".3252" to i64
+  %".3254" = add i64 %".3253", 4
+  %"for_LDG.202" = inttoptr i64 %".3254" to ptr
+  %".3255" = load float, ptr %"for_LDG.202"
+  store float %".3255", ptr %"R34_Float32"
   ; LDG.E.SYS R37, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3054" = load i32, ptr %"R6_Float32_PTR"
-  %".3055" = add i32 %".3054", 4
-  %"for_LDG.203" = inttoptr i32 %".3055" to ptr
-  %".3056" = load float, ptr %"for_LDG.203"
-  store float %".3056", ptr %"R37_Float32"
+  %".3258" = load ptr, ptr %"R6_Float32_PTR"
+  %".3259" = ptrtoint ptr %".3258" to i64
+  %".3260" = add i64 %".3259", 4
+  %"for_LDG.203" = inttoptr i64 %".3260" to ptr
+  %".3261" = load float, ptr %"for_LDG.203"
+  store float %".3261", ptr %"R37_Float32"
   ; IADD3 R9, R23, 0x8, RZ
-  %".3059" = load i32, ptr %"R23_Int32"
-  %"add.196" = add i32 %".3059", 8
+  %".3264" = load i32, ptr %"R23_Int32"
+  %"add.196" = add i32 %".3264", 8
   %"add.197" = add i32 %"add.196", 0
   store i32 %"add.197", ptr %"R9_Int32"
   ; LDG.E.SYS R36, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3062" = load i32, ptr %"R10_Float32_PTR"
-  %".3063" = add i32 %".3062", 8
-  %"for_LDG.204" = inttoptr i32 %".3063" to ptr
-  %".3064" = load float, ptr %"for_LDG.204"
-  store float %".3064", ptr %"R36_Float32"
+  %".3267" = load ptr, ptr %"R10_Float32_PTR"
+  %".3268" = ptrtoint ptr %".3267" to i64
+  %".3269" = add i64 %".3268", 8
+  %"for_LDG.204" = inttoptr i64 %".3269" to ptr
+  %".3270" = load float, ptr %"for_LDG.204"
+  store float %".3270", ptr %"R36_Float32"
   ; IMAD.WIDE R8, R9, R24, c[0x0][0x168]
-  %".3067" = load i32, ptr %"R9_Int32"
-  %".3068" = load i32, ptr %"R24_Int32"
-  %"mul.69" = mul i32 %".3067", %".3068"
+  %".3273" = load i32, ptr %"R9_Int32"
+  %".3274" = load i32, ptr %"R24_Int32"
+  %"mul.69" = mul i32 %".3273", %".3274"
   %"add.198" = add i32 %"mul.69", %"Arg_3"
   store i32 %"add.198", ptr %"R8_Int32"
   ; LDG.E.SYS R38, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3071" = load i32, ptr %"R10_Float32_PTR"
-  %".3072" = add i32 %".3071", 12
-  %"for_LDG.205" = inttoptr i32 %".3072" to ptr
-  %".3073" = load float, ptr %"for_LDG.205"
-  store float %".3073", ptr %"R38_Float32"
+  %".3277" = load ptr, ptr %"R10_Float32_PTR"
+  %".3278" = ptrtoint ptr %".3277" to i64
+  %".3279" = add i64 %".3278", 12
+  %"for_LDG.205" = inttoptr i64 %".3279" to ptr
+  %".3280" = load float, ptr %"for_LDG.205"
+  store float %".3280", ptr %"R38_Float32"
   ; IADD3 R13, R23, 0xc, RZ
-  %".3076" = load i32, ptr %"R23_Int32"
-  %"add.199" = add i32 %".3076", 12
+  %".3283" = load i32, ptr %"R23_Int32"
+  %"add.199" = add i32 %".3283", 12
   %"add.200" = add i32 %"add.199", 0
   store i32 %"add.200", ptr %"R13_Int32"
   ; IADD3 R11, R35, 0x8, RZ
-  %".3079" = load i32, ptr %"R35_Int32"
-  %"add.201" = add i32 %".3079", 8
+  %".3286" = load i32, ptr %"R35_Int32"
+  %"add.201" = add i32 %".3286", 8
   %"add.202" = add i32 %"add.201", 0
   store i32 %"add.202", ptr %"R11_Int32"
   ; IMAD.WIDE R12, R13, R24, c[0x0][0x168]
-  %".3082" = load i32, ptr %"R13_Int32"
-  %".3083" = load i32, ptr %"R24_Int32"
-  %"mul.70" = mul i32 %".3082", %".3083"
+  %".3289" = load i32, ptr %"R13_Int32"
+  %".3290" = load i32, ptr %"R24_Int32"
+  %"mul.70" = mul i32 %".3289", %".3290"
   %"add.203" = add i32 %"mul.70", %"Arg_3"
   store i32 %"add.203", ptr %"R12_Int32"
   ; FFMA R57, R41, R39, R44
-  %".3086" = load float, ptr %"R41_Float32"
-  %".3087" = load float, ptr %"R39_Float32"
-  %".3088" = load float, ptr %"R44_Float32"
-  %"fmul.169" = fmul float %".3086", %".3087"
-  %"fadd.144" = fadd float %"fmul.169", %".3088"
+  %".3293" = load float, ptr %"R41_Float32"
+  %".3294" = load float, ptr %"R39_Float32"
+  %".3295" = load float, ptr %"R44_Float32"
+  %"fmul.169" = fmul float %".3293", %".3294"
+  %"fadd.144" = fadd float %"fmul.169", %".3295"
   store float %"fadd.144", ptr %"R57_Float32"
   ; LDG.E.SYS R41, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3091" = load i32, ptr %"R8_Float32_PTR"
-  %".3092" = add i32 %".3091", 0
-  %"for_LDG.206" = inttoptr i32 %".3092" to ptr
-  %".3093" = load float, ptr %"for_LDG.206"
-  store float %".3093", ptr %"R41_Float32"
+  %".3298" = load ptr, ptr %"R8_Float32_PTR"
+  %".3299" = ptrtoint ptr %".3298" to i64
+  %".3300" = add i64 %".3299", 0
+  %"for_LDG.206" = inttoptr i64 %".3300" to ptr
+  %".3301" = load float, ptr %"for_LDG.206"
+  store float %".3301", ptr %"R41_Float32"
   ; FFMA R56, R39, R40, R56
-  %".3096" = load float, ptr %"R39_Float32"
-  %".3097" = load float, ptr %"R40_Float32"
-  %".3098" = load float, ptr %"R56_Float32"
-  %"fmul.170" = fmul float %".3096", %".3097"
-  %"fadd.145" = fadd float %"fmul.170", %".3098"
+  %".3304" = load float, ptr %"R39_Float32"
+  %".3305" = load float, ptr %"R40_Float32"
+  %".3306" = load float, ptr %"R56_Float32"
+  %"fmul.170" = fmul float %".3304", %".3305"
+  %"fadd.145" = fadd float %"fmul.170", %".3306"
   store float %"fadd.145", ptr %"R56_Float32"
   ; LDG.E.SYS R40, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3101" = load i32, ptr %"R8_Float32_PTR"
-  %".3102" = add i32 %".3101", 4
-  %"for_LDG.207" = inttoptr i32 %".3102" to ptr
-  %".3103" = load float, ptr %"for_LDG.207"
-  store float %".3103", ptr %"R40_Float32"
+  %".3309" = load ptr, ptr %"R8_Float32_PTR"
+  %".3310" = ptrtoint ptr %".3309" to i64
+  %".3311" = add i64 %".3310", 4
+  %"for_LDG.207" = inttoptr i64 %".3311" to ptr
+  %".3312" = load float, ptr %"for_LDG.207"
+  store float %".3312", ptr %"R40_Float32"
   ; LDG.E.SYS R39, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3106" = load i32, ptr %"R8_Float32_PTR"
-  %".3107" = add i32 %".3106", 8
-  %"for_LDG.208" = inttoptr i32 %".3107" to ptr
-  %".3108" = load float, ptr %"for_LDG.208"
-  store float %".3108", ptr %"R39_Float32"
+  %".3315" = load ptr, ptr %"R8_Float32_PTR"
+  %".3316" = ptrtoint ptr %".3315" to i64
+  %".3317" = add i64 %".3316", 8
+  %"for_LDG.208" = inttoptr i64 %".3317" to ptr
+  %".3318" = load float, ptr %"for_LDG.208"
+  store float %".3318", ptr %"R39_Float32"
   ; FFMA R57, R53, R52, R57
-  %".3111" = load float, ptr %"R53_Float32"
-  %".3112" = load float, ptr %"R52_Float32"
-  %".3113" = load float, ptr %"R57_Float32"
-  %"fmul.171" = fmul float %".3111", %".3112"
-  %"fadd.146" = fadd float %"fmul.171", %".3113"
+  %".3321" = load float, ptr %"R53_Float32"
+  %".3322" = load float, ptr %"R52_Float32"
+  %".3323" = load float, ptr %"R57_Float32"
+  %"fmul.171" = fmul float %".3321", %".3322"
+  %"fadd.146" = fadd float %"fmul.171", %".3323"
   store float %"fadd.146", ptr %"R57_Float32"
   ; LDG.E.SYS R44, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3116" = load i32, ptr %"R8_Float32_PTR"
-  %".3117" = add i32 %".3116", 12
-  %"for_LDG.209" = inttoptr i32 %".3117" to ptr
-  %".3118" = load float, ptr %"for_LDG.209"
-  store float %".3118", ptr %"R44_Float32"
+  %".3326" = load ptr, ptr %"R8_Float32_PTR"
+  %".3327" = ptrtoint ptr %".3326" to i64
+  %".3328" = add i64 %".3327", 12
+  %"for_LDG.209" = inttoptr i64 %".3328" to ptr
+  %".3329" = load float, ptr %"for_LDG.209"
+  store float %".3329", ptr %"R44_Float32"
   ; FFMA R59, R52, R55, R56
-  %".3121" = load float, ptr %"R52_Float32"
-  %".3122" = load float, ptr %"R55_Float32"
-  %".3123" = load float, ptr %"R56_Float32"
-  %"fmul.172" = fmul float %".3121", %".3122"
-  %"fadd.147" = fadd float %"fmul.172", %".3123"
+  %".3332" = load float, ptr %"R52_Float32"
+  %".3333" = load float, ptr %"R55_Float32"
+  %".3334" = load float, ptr %"R56_Float32"
+  %"fmul.172" = fmul float %".3332", %".3333"
+  %"fadd.147" = fadd float %"fmul.172", %".3334"
   store float %"fadd.147", ptr %"R59_Float32"
   ; LDG.E.SYS R55, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3126" = load i32, ptr %"R12_Float32_PTR"
-  %".3127" = add i32 %".3126", 0
-  %"for_LDG.210" = inttoptr i32 %".3127" to ptr
-  %".3128" = load float, ptr %"for_LDG.210"
-  store float %".3128", ptr %"R55_Float32"
+  %".3337" = load ptr, ptr %"R12_Float32_PTR"
+  %".3338" = ptrtoint ptr %".3337" to i64
+  %".3339" = add i64 %".3338", 0
+  %"for_LDG.210" = inttoptr i64 %".3339" to ptr
+  %".3340" = load float, ptr %"for_LDG.210"
+  store float %".3340", ptr %"R55_Float32"
   ; LDG.E.SYS R53, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3131" = load i32, ptr %"R12_Float32_PTR"
-  %".3132" = add i32 %".3131", 4
-  %"for_LDG.211" = inttoptr i32 %".3132" to ptr
-  %".3133" = load float, ptr %"for_LDG.211"
-  store float %".3133", ptr %"R53_Float32"
+  %".3343" = load ptr, ptr %"R12_Float32_PTR"
+  %".3344" = ptrtoint ptr %".3343" to i64
+  %".3345" = add i64 %".3344", 4
+  %"for_LDG.211" = inttoptr i64 %".3345" to ptr
+  %".3346" = load float, ptr %"for_LDG.211"
+  store float %".3346", ptr %"R53_Float32"
   ; FFMA R43, R43, R50, R57
-  %".3136" = load float, ptr %"R43_Float32"
-  %".3137" = load float, ptr %"R50_Float32"
-  %".3138" = load float, ptr %"R57_Float32"
-  %"fmul.173" = fmul float %".3136", %".3137"
-  %"fadd.148" = fadd float %"fmul.173", %".3138"
+  %".3349" = load float, ptr %"R43_Float32"
+  %".3350" = load float, ptr %"R50_Float32"
+  %".3351" = load float, ptr %"R57_Float32"
+  %"fmul.173" = fmul float %".3349", %".3350"
+  %"fadd.148" = fadd float %"fmul.173", %".3351"
   store float %"fadd.148", ptr %"R43_Float32"
   ; IMAD.WIDE R8, R11, R24, c[0x0][0x170]
-  %".3141" = load i32, ptr %"R11_Int32"
-  %".3142" = load i32, ptr %"R24_Int32"
-  %"mul.71" = mul i32 %".3141", %".3142"
+  %".3354" = load i32, ptr %"R11_Int32"
+  %".3355" = load i32, ptr %"R24_Int32"
+  %"mul.71" = mul i32 %".3354", %".3355"
   %"add.204" = add i32 %"mul.71", %"Arg_4"
   store i32 %"add.204", ptr %"R8_Int32"
   ; LDG.E.SYS R52, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3145" = load i32, ptr %"R12_Float32_PTR"
-  %".3146" = add i32 %".3145", 8
-  %"for_LDG.212" = inttoptr i32 %".3146" to ptr
-  %".3147" = load float, ptr %"for_LDG.212"
-  store float %".3147", ptr %"R52_Float32"
+  %".3358" = load ptr, ptr %"R12_Float32_PTR"
+  %".3359" = ptrtoint ptr %".3358" to i64
+  %".3360" = add i64 %".3359", 8
+  %"for_LDG.212" = inttoptr i64 %".3360" to ptr
+  %".3361" = load float, ptr %"for_LDG.212"
+  store float %".3361", ptr %"R52_Float32"
   ; FFMA R51, R50, R51, R59
-  %".3150" = load float, ptr %"R50_Float32"
-  %".3151" = load float, ptr %"R51_Float32"
-  %".3152" = load float, ptr %"R59_Float32"
-  %"fmul.174" = fmul float %".3150", %".3151"
-  %"fadd.149" = fadd float %"fmul.174", %".3152"
+  %".3364" = load float, ptr %"R50_Float32"
+  %".3365" = load float, ptr %"R51_Float32"
+  %".3366" = load float, ptr %"R59_Float32"
+  %"fmul.174" = fmul float %".3364", %".3365"
+  %"fadd.149" = fadd float %"fmul.174", %".3366"
   store float %"fadd.149", ptr %"R51_Float32"
   ; IADD3 R57, R25, 0x8, RZ
-  %".3155" = load i32, ptr %"R25_Int32"
-  %"add.205" = add i32 %".3155", 8
+  %".3369" = load i32, ptr %"R25_Int32"
+  %"add.205" = add i32 %".3369", 8
   %"add.206" = add i32 %"add.205", 0
   store i32 %"add.206", ptr %"R57_Int32"
   ; LDG.E.SYS R59, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3158" = load i32, ptr %"R4_Float32_PTR"
-  %".3159" = add i32 %".3158", 12
-  %"for_LDG.213" = inttoptr i32 %".3159" to ptr
-  %".3160" = load float, ptr %"for_LDG.213"
-  store float %".3160", ptr %"R59_Float32"
+  %".3372" = load ptr, ptr %"R4_Float32_PTR"
+  %".3373" = ptrtoint ptr %".3372" to i64
+  %".3374" = add i64 %".3373", 12
+  %"for_LDG.213" = inttoptr i64 %".3374" to ptr
+  %".3375" = load float, ptr %"for_LDG.213"
+  store float %".3375", ptr %"R59_Float32"
   ; FFMA R61, R54, R47, R43
-  %".3163" = load float, ptr %"R54_Float32"
-  %".3164" = load float, ptr %"R47_Float32"
-  %".3165" = load float, ptr %"R43_Float32"
-  %"fmul.175" = fmul float %".3163", %".3164"
-  %"fadd.150" = fadd float %"fmul.175", %".3165"
+  %".3378" = load float, ptr %"R54_Float32"
+  %".3379" = load float, ptr %"R47_Float32"
+  %".3380" = load float, ptr %"R43_Float32"
+  %"fmul.175" = fmul float %".3378", %".3379"
+  %"fadd.150" = fadd float %"fmul.175", %".3380"
   store float %"fadd.150", ptr %"R61_Float32"
   ; LDG.E.SYS R50, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3168" = load i32, ptr %"R8_Float32_PTR"
-  %".3169" = add i32 %".3168", 0
-  %"for_LDG.214" = inttoptr i32 %".3169" to ptr
-  %".3170" = load float, ptr %"for_LDG.214"
-  store float %".3170", ptr %"R50_Float32"
+  %".3383" = load ptr, ptr %"R8_Float32_PTR"
+  %".3384" = ptrtoint ptr %".3383" to i64
+  %".3385" = add i64 %".3384", 0
+  %"for_LDG.214" = inttoptr i64 %".3385" to ptr
+  %".3386" = load float, ptr %"for_LDG.214"
+  store float %".3386", ptr %"R50_Float32"
   ; FFMA R58, R47, R58, R51
-  %".3173" = load float, ptr %"R47_Float32"
-  %".3174" = load float, ptr %"R58_Float32"
-  %".3175" = load float, ptr %"R51_Float32"
-  %"fmul.176" = fmul float %".3173", %".3174"
-  %"fadd.151" = fadd float %"fmul.176", %".3175"
+  %".3389" = load float, ptr %"R47_Float32"
+  %".3390" = load float, ptr %"R58_Float32"
+  %".3391" = load float, ptr %"R51_Float32"
+  %"fmul.176" = fmul float %".3389", %".3390"
+  %"fadd.151" = fadd float %"fmul.176", %".3391"
   store float %"fadd.151", ptr %"R58_Float32"
   ; LDG.E.SYS R43, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3178" = load i32, ptr %"R6_Float32_PTR"
-  %".3179" = add i32 %".3178", 8
-  %"for_LDG.215" = inttoptr i32 %".3179" to ptr
-  %".3180" = load float, ptr %"for_LDG.215"
-  store float %".3180", ptr %"R43_Float32"
+  %".3394" = load ptr, ptr %"R6_Float32_PTR"
+  %".3395" = ptrtoint ptr %".3394" to i64
+  %".3396" = add i64 %".3395", 8
+  %"for_LDG.215" = inttoptr i64 %".3396" to ptr
+  %".3397" = load float, ptr %"for_LDG.215"
+  store float %".3397", ptr %"R43_Float32"
   ; LDG.E.SYS R47, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3183" = load i32, ptr %"R4_Float32_PTR"
-  %".3184" = add i32 %".3183", 4
-  %"for_LDG.216" = inttoptr i32 %".3184" to ptr
-  %".3185" = load float, ptr %"for_LDG.216"
-  store float %".3185", ptr %"R47_Float32"
+  %".3400" = load ptr, ptr %"R4_Float32_PTR"
+  %".3401" = ptrtoint ptr %".3400" to i64
+  %".3402" = add i64 %".3401", 4
+  %"for_LDG.216" = inttoptr i64 %".3402" to ptr
+  %".3403" = load float, ptr %"for_LDG.216"
+  store float %".3403", ptr %"R47_Float32"
   ; IMAD.WIDE R10, R57, R24, c[0x0][0x170]
-  %".3188" = load i32, ptr %"R57_Int32"
-  %".3189" = load i32, ptr %"R24_Int32"
-  %"mul.72" = mul i32 %".3188", %".3189"
+  %".3406" = load i32, ptr %"R57_Int32"
+  %".3407" = load i32, ptr %"R24_Int32"
+  %"mul.72" = mul i32 %".3406", %".3407"
   %"add.207" = add i32 %"mul.72", %"Arg_4"
   store i32 %"add.207", ptr %"R10_Int32"
   ; LDG.E.SYS R51, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3192" = load i32, ptr %"R4_Float32_PTR"
-  %".3193" = add i32 %".3192", 8
-  %"for_LDG.217" = inttoptr i32 %".3193" to ptr
-  %".3194" = load float, ptr %"for_LDG.217"
-  store float %".3194", ptr %"R51_Float32"
+  %".3410" = load ptr, ptr %"R4_Float32_PTR"
+  %".3411" = ptrtoint ptr %".3410" to i64
+  %".3412" = add i64 %".3411", 8
+  %"for_LDG.217" = inttoptr i64 %".3412" to ptr
+  %".3413" = load float, ptr %"for_LDG.217"
+  store float %".3413", ptr %"R51_Float32"
   ; LDG.E.SYS R57, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3197" = load i32, ptr %"R6_Float32_PTR"
-  %".3198" = add i32 %".3197", 12
-  %"for_LDG.218" = inttoptr i32 %".3198" to ptr
-  %".3199" = load float, ptr %"for_LDG.218"
-  store float %".3199", ptr %"R57_Float32"
+  %".3416" = load ptr, ptr %"R6_Float32_PTR"
+  %".3417" = ptrtoint ptr %".3416" to i64
+  %".3418" = add i64 %".3417", 12
+  %"for_LDG.218" = inttoptr i64 %".3418" to ptr
+  %".3419" = load float, ptr %"for_LDG.218"
+  store float %".3419", ptr %"R57_Float32"
   ; FFMA R42, R42, R46, R61
-  %".3202" = load float, ptr %"R42_Float32"
-  %".3203" = load float, ptr %"R46_Float32"
-  %".3204" = load float, ptr %"R61_Float32"
-  %"fmul.177" = fmul float %".3202", %".3203"
-  %"fadd.152" = fadd float %"fmul.177", %".3204"
+  %".3422" = load float, ptr %"R42_Float32"
+  %".3423" = load float, ptr %"R46_Float32"
+  %".3424" = load float, ptr %"R61_Float32"
+  %"fmul.177" = fmul float %".3422", %".3423"
+  %"fadd.152" = fadd float %"fmul.177", %".3424"
   store float %"fadd.152", ptr %"R42_Float32"
   ; IADD3 R25, R25, 0xc, RZ
-  %".3207" = load i32, ptr %"R25_Int32"
-  %"add.208" = add i32 %".3207", 12
+  %".3427" = load i32, ptr %"R25_Int32"
+  %"add.208" = add i32 %".3427", 12
   %"add.209" = add i32 %"add.208", 0
   store i32 %"add.209", ptr %"R25_Int32"
   ; LDG.E.SYS R56, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3210" = load i32, ptr %"R12_Float32_PTR"
-  %".3211" = add i32 %".3210", 12
-  %"for_LDG.219" = inttoptr i32 %".3211" to ptr
-  %".3212" = load float, ptr %"for_LDG.219"
-  store float %".3212", ptr %"R56_Float32"
+  %".3430" = load ptr, ptr %"R12_Float32_PTR"
+  %".3431" = ptrtoint ptr %".3430" to i64
+  %".3432" = add i64 %".3431", 12
+  %"for_LDG.219" = inttoptr i64 %".3432" to ptr
+  %".3433" = load float, ptr %"for_LDG.219"
+  store float %".3433", ptr %"R56_Float32"
   ; FFMA R45, R46, R45, R58
-  %".3215" = load float, ptr %"R46_Float32"
-  %".3216" = load float, ptr %"R45_Float32"
-  %".3217" = load float, ptr %"R58_Float32"
-  %"fmul.178" = fmul float %".3215", %".3216"
-  %"fadd.153" = fadd float %"fmul.178", %".3217"
+  %".3436" = load float, ptr %"R46_Float32"
+  %".3437" = load float, ptr %"R45_Float32"
+  %".3438" = load float, ptr %"R58_Float32"
+  %"fmul.178" = fmul float %".3436", %".3437"
+  %"fadd.153" = fadd float %"fmul.178", %".3438"
   store float %"fadd.153", ptr %"R45_Float32"
   ; LDG.E.SYS R46, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3220" = load i32, ptr %"R10_Float32_PTR"
-  %".3221" = add i32 %".3220", 0
-  %"for_LDG.220" = inttoptr i32 %".3221" to ptr
-  %".3222" = load float, ptr %"for_LDG.220"
-  store float %".3222", ptr %"R46_Float32"
+  %".3441" = load ptr, ptr %"R10_Float32_PTR"
+  %".3442" = ptrtoint ptr %".3441" to i64
+  %".3443" = add i64 %".3442", 0
+  %"for_LDG.220" = inttoptr i64 %".3443" to ptr
+  %".3444" = load float, ptr %"for_LDG.220"
+  store float %".3444", ptr %"R46_Float32"
   ; LDG.E.SYS R61, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3225" = load i32, ptr %"R8_Float32_PTR"
-  %".3226" = add i32 %".3225", 4
-  %"for_LDG.221" = inttoptr i32 %".3226" to ptr
-  %".3227" = load float, ptr %"for_LDG.221"
-  store float %".3227", ptr %"R61_Float32"
+  %".3447" = load ptr, ptr %"R8_Float32_PTR"
+  %".3448" = ptrtoint ptr %".3447" to i64
+  %".3449" = add i64 %".3448", 4
+  %"for_LDG.221" = inttoptr i64 %".3449" to ptr
+  %".3450" = load float, ptr %"for_LDG.221"
+  store float %".3450", ptr %"R61_Float32"
   ; IADD3 R13, R35, 0xc, RZ
-  %".3230" = load i32, ptr %"R35_Int32"
-  %"add.210" = add i32 %".3230", 12
+  %".3453" = load i32, ptr %"R35_Int32"
+  %"add.210" = add i32 %".3453", 12
   %"add.211" = add i32 %"add.210", 0
   store i32 %"add.211", ptr %"R13_Int32"
   ; LDG.E.SYS R35, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3233" = load i32, ptr %"R10_Float32_PTR"
-  %".3234" = add i32 %".3233", 4
-  %"for_LDG.222" = inttoptr i32 %".3234" to ptr
-  %".3235" = load float, ptr %"for_LDG.222"
-  store float %".3235", ptr %"R35_Float32"
+  %".3456" = load ptr, ptr %"R10_Float32_PTR"
+  %".3457" = ptrtoint ptr %".3456" to i64
+  %".3458" = add i64 %".3457", 4
+  %"for_LDG.222" = inttoptr i64 %".3458" to ptr
+  %".3459" = load float, ptr %"for_LDG.222"
+  store float %".3459", ptr %"R35_Float32"
   ; IMAD.WIDE R12, R13, R24.reuse, c[0x0][0x170]
-  %".3238" = load i32, ptr %"R13_Int32"
-  %".3239" = load i32, ptr %"R24_Int32"
-  %"mul.73" = mul i32 %".3238", %".3239"
+  %".3462" = load i32, ptr %"R13_Int32"
+  %".3463" = load i32, ptr %"R24_Int32"
+  %"mul.73" = mul i32 %".3462", %".3463"
   %"add.212" = add i32 %"mul.73", %"Arg_4"
   store i32 %"add.212", ptr %"R12_Int32"
   ; LDG.E.SYS R6, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3242" = load i32, ptr %"R8_Float32_PTR"
-  %".3243" = add i32 %".3242", 8
-  %"for_LDG.223" = inttoptr i32 %".3243" to ptr
-  %".3244" = load float, ptr %"for_LDG.223"
-  store float %".3244", ptr %"R6_Float32"
+  %".3466" = load ptr, ptr %"R8_Float32_PTR"
+  %".3467" = ptrtoint ptr %".3466" to i64
+  %".3468" = add i64 %".3467", 8
+  %"for_LDG.223" = inttoptr i64 %".3468" to ptr
+  %".3469" = load float, ptr %"for_LDG.223"
+  store float %".3469", ptr %"R6_Float32"
   ; IMAD.WIDE R24, R25, R24, c[0x0][0x170]
-  %".3247" = load i32, ptr %"R25_Int32"
-  %".3248" = load i32, ptr %"R24_Int32"
-  %"mul.74" = mul i32 %".3247", %".3248"
+  %".3472" = load i32, ptr %"R25_Int32"
+  %".3473" = load i32, ptr %"R24_Int32"
+  %"mul.74" = mul i32 %".3472", %".3473"
   %"add.213" = add i32 %"mul.74", %"Arg_4"
   store i32 %"add.213", ptr %"R24_Int32"
   ; LDG.E.SYS R4, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3251" = load i32, ptr %"R10_Float32_PTR"
-  %".3252" = add i32 %".3251", 8
-  %"for_LDG.224" = inttoptr i32 %".3252" to ptr
-  %".3253" = load float, ptr %"for_LDG.224"
-  store float %".3253", ptr %"R4_Float32"
+  %".3476" = load ptr, ptr %"R10_Float32_PTR"
+  %".3477" = ptrtoint ptr %".3476" to i64
+  %".3478" = add i64 %".3477", 8
+  %"for_LDG.224" = inttoptr i64 %".3478" to ptr
+  %".3479" = load float, ptr %"for_LDG.224"
+  store float %".3479", ptr %"R4_Float32"
   ; LDG.E.SYS R5, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3256" = load i32, ptr %"R8_Float32_PTR"
-  %".3257" = add i32 %".3256", 12
-  %"for_LDG.225" = inttoptr i32 %".3257" to ptr
-  %".3258" = load float, ptr %"for_LDG.225"
-  store float %".3258", ptr %"R5_Float32"
+  %".3482" = load ptr, ptr %"R8_Float32_PTR"
+  %".3483" = ptrtoint ptr %".3482" to i64
+  %".3484" = add i64 %".3483", 12
+  %"for_LDG.225" = inttoptr i64 %".3484" to ptr
+  %".3485" = load float, ptr %"for_LDG.225"
+  store float %".3485", ptr %"R5_Float32"
   ; LDG.E.SYS R60, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3261" = load i32, ptr %"R10_Float32_PTR"
-  %".3262" = add i32 %".3261", 12
-  %"for_LDG.226" = inttoptr i32 %".3262" to ptr
-  %".3263" = load float, ptr %"for_LDG.226"
-  store float %".3263", ptr %"R60_Float32"
+  %".3488" = load ptr, ptr %"R10_Float32_PTR"
+  %".3489" = ptrtoint ptr %".3488" to i64
+  %".3490" = add i64 %".3489", 12
+  %"for_LDG.226" = inttoptr i64 %".3490" to ptr
+  %".3491" = load float, ptr %"for_LDG.226"
+  store float %".3491", ptr %"R60_Float32"
   ; LDG.E.SYS R58, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3266" = load i32, ptr %"R12_Float32_PTR"
-  %".3267" = add i32 %".3266", 0
-  %"for_LDG.227" = inttoptr i32 %".3267" to ptr
-  %".3268" = load float, ptr %"for_LDG.227"
-  store float %".3268", ptr %"R58_Float32"
+  %".3494" = load ptr, ptr %"R12_Float32_PTR"
+  %".3495" = ptrtoint ptr %".3494" to i64
+  %".3496" = add i64 %".3495", 0
+  %"for_LDG.227" = inttoptr i64 %".3496" to ptr
+  %".3497" = load float, ptr %"for_LDG.227"
+  store float %".3497", ptr %"R58_Float32"
   ; LDG.E.SYS R54, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3271" = load i32, ptr %"R12_Float32_PTR"
-  %".3272" = add i32 %".3271", 4
-  %"for_LDG.228" = inttoptr i32 %".3272" to ptr
-  %".3273" = load float, ptr %"for_LDG.228"
-  store float %".3273", ptr %"R54_Float32"
+  %".3500" = load ptr, ptr %"R12_Float32_PTR"
+  %".3501" = ptrtoint ptr %".3500" to i64
+  %".3502" = add i64 %".3501", 4
+  %"for_LDG.228" = inttoptr i64 %".3502" to ptr
+  %".3503" = load float, ptr %"for_LDG.228"
+  store float %".3503", ptr %"R54_Float32"
   ; FFMA R10, R37, R34, R42
-  %".3276" = load float, ptr %"R37_Float32"
-  %".3277" = load float, ptr %"R34_Float32"
-  %".3278" = load float, ptr %"R42_Float32"
-  %"fmul.179" = fmul float %".3276", %".3277"
-  %"fadd.154" = fadd float %"fmul.179", %".3278"
+  %".3506" = load float, ptr %"R37_Float32"
+  %".3507" = load float, ptr %"R34_Float32"
+  %".3508" = load float, ptr %"R42_Float32"
+  %"fmul.179" = fmul float %".3506", %".3507"
+  %"fadd.154" = fadd float %"fmul.179", %".3508"
   store float %"fadd.154", ptr %"R10_Float32"
   ; LDG.E.SYS R37, [R24]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3281" = load i32, ptr %"R24_Float32_PTR"
-  %".3282" = add i32 %".3281", 0
-  %"for_LDG.229" = inttoptr i32 %".3282" to ptr
-  %".3283" = load float, ptr %"for_LDG.229"
-  store float %".3283", ptr %"R37_Float32"
+  %".3511" = load ptr, ptr %"R24_Float32_PTR"
+  %".3512" = ptrtoint ptr %".3511" to i64
+  %".3513" = add i64 %".3512", 0
+  %"for_LDG.229" = inttoptr i64 %".3513" to ptr
+  %".3514" = load float, ptr %"for_LDG.229"
+  store float %".3514", ptr %"R37_Float32"
   ; LDG.E.SYS R42, [R24+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3286" = load i32, ptr %"R24_Float32_PTR"
-  %".3287" = add i32 %".3286", 4
-  %"for_LDG.230" = inttoptr i32 %".3287" to ptr
-  %".3288" = load float, ptr %"for_LDG.230"
-  store float %".3288", ptr %"R42_Float32"
+  %".3517" = load ptr, ptr %"R24_Float32_PTR"
+  %".3518" = ptrtoint ptr %".3517" to i64
+  %".3519" = add i64 %".3518", 4
+  %"for_LDG.230" = inttoptr i64 %".3519" to ptr
+  %".3520" = load float, ptr %"for_LDG.230"
+  store float %".3520", ptr %"R42_Float32"
   ; LDG.E.SYS R7, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3291" = load i32, ptr %"R12_Float32_PTR"
-  %".3292" = add i32 %".3291", 8
-  %"for_LDG.231" = inttoptr i32 %".3292" to ptr
-  %".3293" = load float, ptr %"for_LDG.231"
-  store float %".3293", ptr %"R7_Float32"
+  %".3523" = load ptr, ptr %"R12_Float32_PTR"
+  %".3524" = ptrtoint ptr %".3523" to i64
+  %".3525" = add i64 %".3524", 8
+  %"for_LDG.231" = inttoptr i64 %".3525" to ptr
+  %".3526" = load float, ptr %"for_LDG.231"
+  store float %".3526", ptr %"R7_Float32"
   ; LDG.E.SYS R9, [R24+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3296" = load i32, ptr %"R24_Float32_PTR"
-  %".3297" = add i32 %".3296", 8
-  %"for_LDG.232" = inttoptr i32 %".3297" to ptr
-  %".3298" = load float, ptr %"for_LDG.232"
-  store float %".3298", ptr %"R9_Float32"
+  %".3529" = load ptr, ptr %"R24_Float32_PTR"
+  %".3530" = ptrtoint ptr %".3529" to i64
+  %".3531" = add i64 %".3530", 8
+  %"for_LDG.232" = inttoptr i64 %".3531" to ptr
+  %".3532" = load float, ptr %"for_LDG.232"
+  store float %".3532", ptr %"R9_Float32"
   ; LDG.E.SYS R8, [R24+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3301" = load i32, ptr %"R24_Float32_PTR"
-  %".3302" = add i32 %".3301", 12
-  %"for_LDG.233" = inttoptr i32 %".3302" to ptr
-  %".3303" = load float, ptr %"for_LDG.233"
-  store float %".3303", ptr %"R8_Float32"
+  %".3535" = load ptr, ptr %"R24_Float32_PTR"
+  %".3536" = ptrtoint ptr %".3535" to i64
+  %".3537" = add i64 %".3536", 12
+  %"for_LDG.233" = inttoptr i64 %".3537" to ptr
+  %".3538" = load float, ptr %"for_LDG.233"
+  store float %".3538", ptr %"R8_Float32"
   ; LDG.E.SYS R13, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3306" = load i32, ptr %"R12_Float32_PTR"
-  %".3307" = add i32 %".3306", 12
-  %"for_LDG.234" = inttoptr i32 %".3307" to ptr
-  %".3308" = load float, ptr %"for_LDG.234"
-  store float %".3308", ptr %"R13_Float32"
+  %".3541" = load ptr, ptr %"R12_Float32_PTR"
+  %".3542" = ptrtoint ptr %".3541" to i64
+  %".3543" = add i64 %".3542", 12
+  %"for_LDG.234" = inttoptr i64 %".3543" to ptr
+  %".3544" = load float, ptr %"for_LDG.234"
+  store float %".3544", ptr %"R13_Float32"
   ; IADD3 R22, R22, -0x10, RZ
-  %".3311" = load i32, ptr %"R22_Int32"
-  %"add.214" = add i32 %".3311", -16
+  %".3547" = load i32, ptr %"R22_Int32"
+  %"add.214" = add i32 %".3547", -16
   %"add.215" = add i32 %"add.214", 0
   store i32 %"add.215", ptr %"R22_Int32"
   ; ISETP.GT.AND P1, PT, R22, 0xc, PT
-  %".3314" = load i32, ptr %"R22_Int32"
-  %".3315" = load i1, ptr %"PT_Bool"
-  %"cmp.37" = icmp sgt i32 %".3314", 12
-  %".3316" = and i1 %"cmp.37", %".3315"
+  %".3550" = load i32, ptr %"R22_Int32"
+  %".3551" = load i1, ptr %"PT_Bool"
+  %"cmp.37" = icmp sgt i32 %".3550", 12
+  %".3552" = and i1 %"cmp.37", %".3551"
   ; IADD3 R23, R23, 0x10, RZ
-  %".3318" = load i32, ptr %"R23_Int32"
-  %"add.216" = add i32 %".3318", 16
+  %".3554" = load i32, ptr %"R23_Int32"
+  %"add.216" = add i32 %".3554", 16
   %"add.217" = add i32 %"add.216", 0
   store i32 %"add.217", ptr %"R23_Int32"
   ; FFMA R10, R43, R36, R10
-  %".3321" = load float, ptr %"R43_Float32"
-  %".3322" = load float, ptr %"R36_Float32"
-  %".3323" = load float, ptr %"R10_Float32"
-  %"fmul.180" = fmul float %".3321", %".3322"
-  %"fadd.155" = fadd float %"fmul.180", %".3323"
+  %".3557" = load float, ptr %"R43_Float32"
+  %".3558" = load float, ptr %"R36_Float32"
+  %".3559" = load float, ptr %"R10_Float32"
+  %"fmul.180" = fmul float %".3557", %".3558"
+  %"fadd.155" = fadd float %"fmul.180", %".3559"
   store float %"fadd.155", ptr %"R10_Float32"
   ; FFMA R45, R34, R47, R45
-  %".3326" = load float, ptr %"R34_Float32"
-  %".3327" = load float, ptr %"R47_Float32"
-  %".3328" = load float, ptr %"R45_Float32"
-  %"fmul.181" = fmul float %".3326", %".3327"
-  %"fadd.156" = fadd float %"fmul.181", %".3328"
+  %".3562" = load float, ptr %"R34_Float32"
+  %".3563" = load float, ptr %"R47_Float32"
+  %".3564" = load float, ptr %"R45_Float32"
+  %"fmul.181" = fmul float %".3562", %".3563"
+  %"fadd.156" = fadd float %"fmul.181", %".3564"
   store float %"fadd.156", ptr %"R45_Float32"
   ; FFMA R45, R36, R51, R45
-  %".3331" = load float, ptr %"R36_Float32"
-  %".3332" = load float, ptr %"R51_Float32"
-  %".3333" = load float, ptr %"R45_Float32"
-  %"fmul.182" = fmul float %".3331", %".3332"
-  %"fadd.157" = fadd float %"fmul.182", %".3333"
+  %".3567" = load float, ptr %"R36_Float32"
+  %".3568" = load float, ptr %"R51_Float32"
+  %".3569" = load float, ptr %"R45_Float32"
+  %"fmul.182" = fmul float %".3567", %".3568"
+  %"fadd.157" = fadd float %"fmul.182", %".3569"
   store float %"fadd.157", ptr %"R45_Float32"
   ; FFMA R10, R57, R38, R10
-  %".3336" = load float, ptr %"R57_Float32"
-  %".3337" = load float, ptr %"R38_Float32"
-  %".3338" = load float, ptr %"R10_Float32"
-  %"fmul.183" = fmul float %".3336", %".3337"
-  %"fadd.158" = fadd float %"fmul.183", %".3338"
+  %".3572" = load float, ptr %"R57_Float32"
+  %".3573" = load float, ptr %"R38_Float32"
+  %".3574" = load float, ptr %"R10_Float32"
+  %"fmul.183" = fmul float %".3572", %".3573"
+  %"fadd.158" = fadd float %"fmul.183", %".3574"
   store float %"fadd.158", ptr %"R10_Float32"
   ; FFMA R45, R38, R59, R45
-  %".3341" = load float, ptr %"R38_Float32"
-  %".3342" = load float, ptr %"R59_Float32"
-  %".3343" = load float, ptr %"R45_Float32"
-  %"fmul.184" = fmul float %".3341", %".3342"
-  %"fadd.159" = fadd float %"fmul.184", %".3343"
+  %".3577" = load float, ptr %"R38_Float32"
+  %".3578" = load float, ptr %"R59_Float32"
+  %".3579" = load float, ptr %"R45_Float32"
+  %"fmul.184" = fmul float %".3577", %".3578"
+  %"fadd.159" = fadd float %"fmul.184", %".3579"
   store float %"fadd.159", ptr %"R45_Float32"
   ; FFMA R10, R50, R41, R10
-  %".3346" = load float, ptr %"R50_Float32"
-  %".3347" = load float, ptr %"R41_Float32"
-  %".3348" = load float, ptr %"R10_Float32"
-  %"fmul.185" = fmul float %".3346", %".3347"
-  %"fadd.160" = fadd float %"fmul.185", %".3348"
+  %".3582" = load float, ptr %"R50_Float32"
+  %".3583" = load float, ptr %"R41_Float32"
+  %".3584" = load float, ptr %"R10_Float32"
+  %"fmul.185" = fmul float %".3582", %".3583"
+  %"fadd.160" = fadd float %"fmul.185", %".3584"
   store float %"fadd.160", ptr %"R10_Float32"
   ; FFMA R45, R41, R46, R45
-  %".3351" = load float, ptr %"R41_Float32"
-  %".3352" = load float, ptr %"R46_Float32"
-  %".3353" = load float, ptr %"R45_Float32"
-  %"fmul.186" = fmul float %".3351", %".3352"
-  %"fadd.161" = fadd float %"fmul.186", %".3353"
+  %".3587" = load float, ptr %"R41_Float32"
+  %".3588" = load float, ptr %"R46_Float32"
+  %".3589" = load float, ptr %"R45_Float32"
+  %"fmul.186" = fmul float %".3587", %".3588"
+  %"fadd.161" = fadd float %"fmul.186", %".3589"
   store float %"fadd.161", ptr %"R45_Float32"
   ; FFMA R10, R61, R40, R10
-  %".3356" = load float, ptr %"R61_Float32"
-  %".3357" = load float, ptr %"R40_Float32"
-  %".3358" = load float, ptr %"R10_Float32"
-  %"fmul.187" = fmul float %".3356", %".3357"
-  %"fadd.162" = fadd float %"fmul.187", %".3358"
+  %".3592" = load float, ptr %"R61_Float32"
+  %".3593" = load float, ptr %"R40_Float32"
+  %".3594" = load float, ptr %"R10_Float32"
+  %"fmul.187" = fmul float %".3592", %".3593"
+  %"fadd.162" = fadd float %"fmul.187", %".3594"
   store float %"fadd.162", ptr %"R10_Float32"
   ; FFMA R35, R40, R35, R45
-  %".3361" = load float, ptr %"R40_Float32"
-  %".3362" = load float, ptr %"R35_Float32"
-  %".3363" = load float, ptr %"R45_Float32"
-  %"fmul.188" = fmul float %".3361", %".3362"
-  %"fadd.163" = fadd float %"fmul.188", %".3363"
+  %".3597" = load float, ptr %"R40_Float32"
+  %".3598" = load float, ptr %"R35_Float32"
+  %".3599" = load float, ptr %"R45_Float32"
+  %"fmul.188" = fmul float %".3597", %".3598"
+  %"fadd.163" = fadd float %"fmul.188", %".3599"
   store float %"fadd.163", ptr %"R35_Float32"
   ; FFMA R6, R6, R39, R10
-  %".3366" = load float, ptr %"R6_Float32"
-  %".3367" = load float, ptr %"R39_Float32"
-  %".3368" = load float, ptr %"R10_Float32"
-  %"fmul.189" = fmul float %".3366", %".3367"
-  %"fadd.164" = fadd float %"fmul.189", %".3368"
+  %".3602" = load float, ptr %"R6_Float32"
+  %".3603" = load float, ptr %"R39_Float32"
+  %".3604" = load float, ptr %"R10_Float32"
+  %"fmul.189" = fmul float %".3602", %".3603"
+  %"fadd.164" = fadd float %"fmul.189", %".3604"
   store float %"fadd.164", ptr %"R6_Float32"
   ; FFMA R35, R39, R4, R35
-  %".3371" = load float, ptr %"R39_Float32"
-  %".3372" = load float, ptr %"R4_Float32"
-  %".3373" = load float, ptr %"R35_Float32"
-  %"fmul.190" = fmul float %".3371", %".3372"
-  %"fadd.165" = fadd float %"fmul.190", %".3373"
+  %".3607" = load float, ptr %"R39_Float32"
+  %".3608" = load float, ptr %"R4_Float32"
+  %".3609" = load float, ptr %"R35_Float32"
+  %"fmul.190" = fmul float %".3607", %".3608"
+  %"fadd.165" = fadd float %"fmul.190", %".3609"
   store float %"fadd.165", ptr %"R35_Float32"
   ; FFMA R5, R5, R44, R6
-  %".3376" = load float, ptr %"R5_Float32"
-  %".3377" = load float, ptr %"R44_Float32"
-  %".3378" = load float, ptr %"R6_Float32"
-  %"fmul.191" = fmul float %".3376", %".3377"
-  %"fadd.166" = fadd float %"fmul.191", %".3378"
+  %".3612" = load float, ptr %"R5_Float32"
+  %".3613" = load float, ptr %"R44_Float32"
+  %".3614" = load float, ptr %"R6_Float32"
+  %"fmul.191" = fmul float %".3612", %".3613"
+  %"fadd.166" = fadd float %"fmul.191", %".3614"
   store float %"fadd.166", ptr %"R5_Float32"
   ; FFMA R60, R44, R60, R35
-  %".3381" = load float, ptr %"R44_Float32"
-  %".3382" = load float, ptr %"R60_Float32"
-  %".3383" = load float, ptr %"R35_Float32"
-  %"fmul.192" = fmul float %".3381", %".3382"
-  %"fadd.167" = fadd float %"fmul.192", %".3383"
+  %".3617" = load float, ptr %"R44_Float32"
+  %".3618" = load float, ptr %"R60_Float32"
+  %".3619" = load float, ptr %"R35_Float32"
+  %"fmul.192" = fmul float %".3617", %".3618"
+  %"fadd.167" = fadd float %"fmul.192", %".3619"
   store float %"fadd.167", ptr %"R60_Float32"
   ; FFMA R5, R58, R55, R5
-  %".3386" = load float, ptr %"R58_Float32"
-  %".3387" = load float, ptr %"R55_Float32"
-  %".3388" = load float, ptr %"R5_Float32"
-  %"fmul.193" = fmul float %".3386", %".3387"
-  %"fadd.168" = fadd float %"fmul.193", %".3388"
+  %".3622" = load float, ptr %"R58_Float32"
+  %".3623" = load float, ptr %"R55_Float32"
+  %".3624" = load float, ptr %"R5_Float32"
+  %"fmul.193" = fmul float %".3622", %".3623"
+  %"fadd.168" = fadd float %"fmul.193", %".3624"
   store float %"fadd.168", ptr %"R5_Float32"
   ; FFMA R5, R54, R53, R5
-  %".3391" = load float, ptr %"R54_Float32"
-  %".3392" = load float, ptr %"R53_Float32"
-  %".3393" = load float, ptr %"R5_Float32"
-  %"fmul.194" = fmul float %".3391", %".3392"
-  %"fadd.169" = fadd float %"fmul.194", %".3393"
+  %".3627" = load float, ptr %"R54_Float32"
+  %".3628" = load float, ptr %"R53_Float32"
+  %".3629" = load float, ptr %"R5_Float32"
+  %"fmul.194" = fmul float %".3627", %".3628"
+  %"fadd.169" = fadd float %"fmul.194", %".3629"
   store float %"fadd.169", ptr %"R5_Float32"
   ; FFMA R37, R55, R37, R60
-  %".3396" = load float, ptr %"R55_Float32"
-  %".3397" = load float, ptr %"R37_Float32"
-  %".3398" = load float, ptr %"R60_Float32"
-  %"fmul.195" = fmul float %".3396", %".3397"
-  %"fadd.170" = fadd float %"fmul.195", %".3398"
+  %".3632" = load float, ptr %"R55_Float32"
+  %".3633" = load float, ptr %"R37_Float32"
+  %".3634" = load float, ptr %"R60_Float32"
+  %"fmul.195" = fmul float %".3632", %".3633"
+  %"fadd.170" = fadd float %"fmul.195", %".3634"
   store float %"fadd.170", ptr %"R37_Float32"
   ; FFMA R37, R53, R42, R37
-  %".3401" = load float, ptr %"R53_Float32"
-  %".3402" = load float, ptr %"R42_Float32"
-  %".3403" = load float, ptr %"R37_Float32"
-  %"fmul.196" = fmul float %".3401", %".3402"
-  %"fadd.171" = fadd float %"fmul.196", %".3403"
+  %".3637" = load float, ptr %"R53_Float32"
+  %".3638" = load float, ptr %"R42_Float32"
+  %".3639" = load float, ptr %"R37_Float32"
+  %"fmul.196" = fmul float %".3637", %".3638"
+  %"fadd.171" = fadd float %"fmul.196", %".3639"
   store float %"fadd.171", ptr %"R37_Float32"
   ; FFMA R5, R7, R52, R5
-  %".3406" = load float, ptr %"R7_Float32"
-  %".3407" = load float, ptr %"R52_Float32"
-  %".3408" = load float, ptr %"R5_Float32"
-  %"fmul.197" = fmul float %".3406", %".3407"
-  %"fadd.172" = fadd float %"fmul.197", %".3408"
+  %".3642" = load float, ptr %"R7_Float32"
+  %".3643" = load float, ptr %"R52_Float32"
+  %".3644" = load float, ptr %"R5_Float32"
+  %"fmul.197" = fmul float %".3642", %".3643"
+  %"fadd.172" = fadd float %"fmul.197", %".3644"
   store float %"fadd.172", ptr %"R5_Float32"
   ; FFMA R9, R52, R9, R37
-  %".3411" = load float, ptr %"R52_Float32"
-  %".3412" = load float, ptr %"R9_Float32"
-  %".3413" = load float, ptr %"R37_Float32"
-  %"fmul.198" = fmul float %".3411", %".3412"
-  %"fadd.173" = fadd float %"fmul.198", %".3413"
+  %".3647" = load float, ptr %"R52_Float32"
+  %".3648" = load float, ptr %"R9_Float32"
+  %".3649" = load float, ptr %"R37_Float32"
+  %"fmul.198" = fmul float %".3647", %".3648"
+  %"fadd.173" = fadd float %"fmul.198", %".3649"
   store float %"fadd.173", ptr %"R9_Float32"
   ; FFMA R44, R13, R56, R5
-  %".3416" = load float, ptr %"R13_Float32"
-  %".3417" = load float, ptr %"R56_Float32"
-  %".3418" = load float, ptr %"R5_Float32"
-  %"fmul.199" = fmul float %".3416", %".3417"
-  %"fadd.174" = fadd float %"fmul.199", %".3418"
+  %".3652" = load float, ptr %"R13_Float32"
+  %".3653" = load float, ptr %"R56_Float32"
+  %".3654" = load float, ptr %"R5_Float32"
+  %"fmul.199" = fmul float %".3652", %".3653"
+  %"fadd.174" = fadd float %"fmul.199", %".3654"
   store float %"fadd.174", ptr %"R44_Float32"
   ; FFMA R56, R56, R8, R9
-  %".3421" = load float, ptr %"R56_Float32"
-  %".3422" = load float, ptr %"R8_Float32"
-  %".3423" = load float, ptr %"R9_Float32"
-  %"fmul.200" = fmul float %".3421", %".3422"
-  %"fadd.175" = fadd float %"fmul.200", %".3423"
+  %".3657" = load float, ptr %"R56_Float32"
+  %".3658" = load float, ptr %"R8_Float32"
+  %".3659" = load float, ptr %"R9_Float32"
+  %"fmul.200" = fmul float %".3657", %".3658"
+  %"fadd.175" = fadd float %"fmul.200", %".3659"
   store float %"fadd.175", ptr %"R56_Float32"
   ; @P1 BRA `(.L_x_30)
-  %".3426" = load i1, ptr %"P1_Bool"
-  %".3427" = icmp ne i1 %".3426", 1
-  br i1 %".3427", label %".L_x_30", label %".L_x_29"
+  %".3662" = load i1, ptr %"P1_Bool"
+  %".3663" = icmp ne i1 %".3662", 1
+  br i1 %".3663", label %".L_x_30", label %".L_x_29"
 .L_x_29:
   ; ISETP.GT.AND P1, PT, R22, 0x4, PT
-  %".3430" = load i32, ptr %"R22_Int32"
-  %".3431" = load i1, ptr %"PT_Bool"
-  %"cmp.38" = icmp sgt i32 %".3430", 4
-  %".3432" = and i1 %"cmp.38", %".3431"
+  %".3666" = load i32, ptr %"R22_Int32"
+  %".3667" = load i1, ptr %"PT_Bool"
+  %"cmp.38" = icmp sgt i32 %".3666", 4
+  %".3668" = and i1 %"cmp.38", %".3667"
   ; @!P1 BRA `(.L_x_31)
-  %".3434" = load i1, ptr %"P1_Bool"
-  %".3435" = icmp eq i1 %".3434", 1
-  br i1 %".3435", label %".L_x_31", label %".L_x_29_split_0x30b0"
+  %".3670" = load i1, ptr %"P1_Bool"
+  %".3671" = icmp eq i1 %".3670", 1
+  br i1 %".3671", label %".L_x_31", label %".L_x_29_split_0x30b0"
 .L_x_29_split_0x30b0:
   ; IADD3 R5, R0, R23, RZ
-  %".3438" = load i32, ptr %"R0_Int32"
-  %".3439" = load i32, ptr %"R23_Int32"
-  %"add.218" = add i32 %".3438", %".3439"
+  %".3674" = load i32, ptr %"R0_Int32"
+  %".3675" = load i32, ptr %"R23_Int32"
+  %"add.218" = add i32 %".3674", %".3675"
   %"add.219" = add i32 %"add.218", 0
   store i32 %"add.219", ptr %"R5_Int32"
   ; MOV R25, 0x4
   store i32 4, ptr %"R25_Int32"
   ; LEA R13, R2.reuse, R5, 0x2
-  %".3444" = load i32, ptr %"R2_Int32"
-  %".3445" = load i32, ptr %"R5_Int32"
-  %"shl.19" = shl i32 %".3444", 2
-  %"add.220" = add i32 %"shl.19", %".3445"
+  %".3680" = load i32, ptr %"R2_Int32"
+  %".3681" = load i32, ptr %"R5_Int32"
+  %"shl.19" = shl i32 %".3680", 2
+  %"add.220" = add i32 %"shl.19", %".3681"
   store i32 %"add.220", ptr %"R13_Int32"
   ; IMAD R12, R2, 0x3, R5
-  %".3448" = load i32, ptr %"R2_Int32"
-  %".3449" = load i32, ptr %"R5_Int32"
-  %"mul.75" = mul i32 %".3448", 3
-  %"add.221" = add i32 %"mul.75", %".3449"
+  %".3684" = load i32, ptr %"R2_Int32"
+  %".3685" = load i32, ptr %"R5_Int32"
+  %"mul.75" = mul i32 %".3684", 3
+  %"add.221" = add i32 %"mul.75", %".3685"
   store i32 %"add.221", ptr %"R12_Int32"
   ; IADD3 R6, R23.reuse, 0x4, RZ
-  %".3452" = load i32, ptr %"R23_Int32"
-  %"add.222" = add i32 %".3452", 4
+  %".3688" = load i32, ptr %"R23_Int32"
+  %"add.222" = add i32 %".3688", 4
   %"add.223" = add i32 %"add.222", 0
   store i32 %"add.223", ptr %"R6_Int32"
   ; IMAD.WIDE R8, R23, R25, c[0x0][0x168]
-  %".3455" = load i32, ptr %"R23_Int32"
-  %".3456" = load i32, ptr %"R25_Int32"
-  %"mul.76" = mul i32 %".3455", %".3456"
+  %".3691" = load i32, ptr %"R23_Int32"
+  %".3692" = load i32, ptr %"R25_Int32"
+  %"mul.76" = mul i32 %".3691", %".3692"
   %"add.224" = add i32 %"mul.76", %"Arg_3"
   store i32 %"add.224", ptr %"R8_Int32"
   ; IADD3 R24, R13, 0x4, RZ
-  %".3459" = load i32, ptr %"R13_Int32"
-  %"add.225" = add i32 %".3459", 4
+  %".3695" = load i32, ptr %"R13_Int32"
+  %"add.225" = add i32 %".3695", 4
   %"add.226" = add i32 %"add.225", 0
   store i32 %"add.226", ptr %"R24_Int32"
   ; IMAD.WIDE R4, R12.reuse, R25, c[0x0][0x170]
-  %".3462" = load i32, ptr %"R12_Int32"
-  %".3463" = load i32, ptr %"R25_Int32"
-  %"mul.77" = mul i32 %".3462", %".3463"
+  %".3698" = load i32, ptr %"R12_Int32"
+  %".3699" = load i32, ptr %"R25_Int32"
+  %"mul.77" = mul i32 %".3698", %".3699"
   %"add.227" = add i32 %"mul.77", %"Arg_4"
   store i32 %"add.227", ptr %"R4_Int32"
   ; IADD3 R12, R12, 0x4, RZ
-  %".3466" = load i32, ptr %"R12_Int32"
-  %"add.228" = add i32 %".3466", 4
+  %".3702" = load i32, ptr %"R12_Int32"
+  %"add.228" = add i32 %".3702", 4
   %"add.229" = add i32 %"add.228", 0
   store i32 %"add.229", ptr %"R12_Int32"
   ; IMAD.WIDE R10, R13, R25.reuse, c[0x0][0x170]
-  %".3469" = load i32, ptr %"R13_Int32"
-  %".3470" = load i32, ptr %"R25_Int32"
-  %"mul.78" = mul i32 %".3469", %".3470"
+  %".3705" = load i32, ptr %"R13_Int32"
+  %".3706" = load i32, ptr %"R25_Int32"
+  %"mul.78" = mul i32 %".3705", %".3706"
   %"add.230" = add i32 %"mul.78", %"Arg_4"
   store i32 %"add.230", ptr %"R10_Int32"
   ; LDG.E.SYS R43, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3473" = load i32, ptr %"R8_Float32_PTR"
-  %".3474" = add i32 %".3473", 0
-  %"for_LDG.235" = inttoptr i32 %".3474" to ptr
-  %".3475" = load float, ptr %"for_LDG.235"
-  store float %".3475", ptr %"R43_Float32"
+  %".3709" = load ptr, ptr %"R8_Float32_PTR"
+  %".3710" = ptrtoint ptr %".3709" to i64
+  %".3711" = add i64 %".3710", 0
+  %"for_LDG.235" = inttoptr i64 %".3711" to ptr
+  %".3712" = load float, ptr %"for_LDG.235"
+  store float %".3712", ptr %"R43_Float32"
   ; IMAD.WIDE R6, R6, R25.reuse, c[0x0][0x168]
-  %".3478" = load i32, ptr %"R6_Int32"
-  %".3479" = load i32, ptr %"R25_Int32"
-  %"mul.79" = mul i32 %".3478", %".3479"
+  %".3715" = load i32, ptr %"R6_Int32"
+  %".3716" = load i32, ptr %"R25_Int32"
+  %"mul.79" = mul i32 %".3715", %".3716"
   %"add.231" = add i32 %"mul.79", %"Arg_3"
   store i32 %"add.231", ptr %"R6_Int32"
   ; LDG.E.SYS R52, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3482" = load i32, ptr %"R4_Float32_PTR"
-  %".3483" = add i32 %".3482", 0
-  %"for_LDG.236" = inttoptr i32 %".3483" to ptr
-  %".3484" = load float, ptr %"for_LDG.236"
-  store float %".3484", ptr %"R52_Float32"
+  %".3719" = load ptr, ptr %"R4_Float32_PTR"
+  %".3720" = ptrtoint ptr %".3719" to i64
+  %".3721" = add i64 %".3720", 0
+  %"for_LDG.236" = inttoptr i64 %".3721" to ptr
+  %".3722" = load float, ptr %"for_LDG.236"
+  store float %".3722", ptr %"R52_Float32"
   ; LDG.E.SYS R38, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3487" = load i32, ptr %"R10_Float32_PTR"
-  %".3488" = add i32 %".3487", 0
-  %"for_LDG.237" = inttoptr i32 %".3488" to ptr
-  %".3489" = load float, ptr %"for_LDG.237"
-  store float %".3489", ptr %"R38_Float32"
+  %".3725" = load ptr, ptr %"R10_Float32_PTR"
+  %".3726" = ptrtoint ptr %".3725" to i64
+  %".3727" = add i64 %".3726", 0
+  %"for_LDG.237" = inttoptr i64 %".3727" to ptr
+  %".3728" = load float, ptr %"for_LDG.237"
+  store float %".3728", ptr %"R38_Float32"
   ; IMAD.WIDE R12, R12, R25, c[0x0][0x170]
-  %".3492" = load i32, ptr %"R12_Int32"
-  %".3493" = load i32, ptr %"R25_Int32"
-  %"mul.80" = mul i32 %".3492", %".3493"
+  %".3731" = load i32, ptr %"R12_Int32"
+  %".3732" = load i32, ptr %"R25_Int32"
+  %"mul.80" = mul i32 %".3731", %".3732"
   %"add.232" = add i32 %"mul.80", %"Arg_4"
   store i32 %"add.232", ptr %"R12_Int32"
   ; LDG.E.SYS R36, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3496" = load i32, ptr %"R8_Float32_PTR"
-  %".3497" = add i32 %".3496", 4
-  %"for_LDG.238" = inttoptr i32 %".3497" to ptr
-  %".3498" = load float, ptr %"for_LDG.238"
-  store float %".3498", ptr %"R36_Float32"
+  %".3735" = load ptr, ptr %"R8_Float32_PTR"
+  %".3736" = ptrtoint ptr %".3735" to i64
+  %".3737" = add i64 %".3736", 4
+  %"for_LDG.238" = inttoptr i64 %".3737" to ptr
+  %".3738" = load float, ptr %"for_LDG.238"
+  store float %".3738", ptr %"R36_Float32"
   ; LDG.E.SYS R41, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3501" = load i32, ptr %"R4_Float32_PTR"
-  %".3502" = add i32 %".3501", 4
-  %"for_LDG.239" = inttoptr i32 %".3502" to ptr
-  %".3503" = load float, ptr %"for_LDG.239"
-  store float %".3503", ptr %"R41_Float32"
+  %".3741" = load ptr, ptr %"R4_Float32_PTR"
+  %".3742" = ptrtoint ptr %".3741" to i64
+  %".3743" = add i64 %".3742", 4
+  %"for_LDG.239" = inttoptr i64 %".3743" to ptr
+  %".3744" = load float, ptr %"for_LDG.239"
+  store float %".3744", ptr %"R41_Float32"
   ; LDG.E.SYS R39, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3506" = load i32, ptr %"R10_Float32_PTR"
-  %".3507" = add i32 %".3506", 4
-  %"for_LDG.240" = inttoptr i32 %".3507" to ptr
-  %".3508" = load float, ptr %"for_LDG.240"
-  store float %".3508", ptr %"R39_Float32"
+  %".3747" = load ptr, ptr %"R10_Float32_PTR"
+  %".3748" = ptrtoint ptr %".3747" to i64
+  %".3749" = add i64 %".3748", 4
+  %"for_LDG.240" = inttoptr i64 %".3749" to ptr
+  %".3750" = load float, ptr %"for_LDG.240"
+  store float %".3750", ptr %"R39_Float32"
   ; IMAD.WIDE R24, R24, R25, c[0x0][0x170]
-  %".3511" = load i32, ptr %"R24_Int32"
-  %".3512" = load i32, ptr %"R25_Int32"
-  %"mul.81" = mul i32 %".3511", %".3512"
+  %".3753" = load i32, ptr %"R24_Int32"
+  %".3754" = load i32, ptr %"R25_Int32"
+  %"mul.81" = mul i32 %".3753", %".3754"
   %"add.233" = add i32 %"mul.81", %"Arg_4"
   store i32 %"add.233", ptr %"R24_Int32"
   ; LDG.E.SYS R34, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3515" = load i32, ptr %"R8_Float32_PTR"
-  %".3516" = add i32 %".3515", 8
-  %"for_LDG.241" = inttoptr i32 %".3516" to ptr
-  %".3517" = load float, ptr %"for_LDG.241"
-  store float %".3517", ptr %"R34_Float32"
+  %".3757" = load ptr, ptr %"R8_Float32_PTR"
+  %".3758" = ptrtoint ptr %".3757" to i64
+  %".3759" = add i64 %".3758", 8
+  %"for_LDG.241" = inttoptr i64 %".3759" to ptr
+  %".3760" = load float, ptr %"for_LDG.241"
+  store float %".3760", ptr %"R34_Float32"
   ; LDG.E.SYS R37, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3520" = load i32, ptr %"R4_Float32_PTR"
-  %".3521" = add i32 %".3520", 8
-  %"for_LDG.242" = inttoptr i32 %".3521" to ptr
-  %".3522" = load float, ptr %"for_LDG.242"
-  store float %".3522", ptr %"R37_Float32"
+  %".3763" = load ptr, ptr %"R4_Float32_PTR"
+  %".3764" = ptrtoint ptr %".3763" to i64
+  %".3765" = add i64 %".3764", 8
+  %"for_LDG.242" = inttoptr i64 %".3765" to ptr
+  %".3766" = load float, ptr %"for_LDG.242"
+  store float %".3766", ptr %"R37_Float32"
   ; LDG.E.SYS R35, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3525" = load i32, ptr %"R10_Float32_PTR"
-  %".3526" = add i32 %".3525", 8
-  %"for_LDG.243" = inttoptr i32 %".3526" to ptr
-  %".3527" = load float, ptr %"for_LDG.243"
-  store float %".3527", ptr %"R35_Float32"
+  %".3769" = load ptr, ptr %"R10_Float32_PTR"
+  %".3770" = ptrtoint ptr %".3769" to i64
+  %".3771" = add i64 %".3770", 8
+  %"for_LDG.243" = inttoptr i64 %".3771" to ptr
+  %".3772" = load float, ptr %"for_LDG.243"
+  store float %".3772", ptr %"R35_Float32"
   ; LDG.E.SYS R40, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3530" = load i32, ptr %"R8_Float32_PTR"
-  %".3531" = add i32 %".3530", 12
-  %"for_LDG.244" = inttoptr i32 %".3531" to ptr
-  %".3532" = load float, ptr %"for_LDG.244"
-  store float %".3532", ptr %"R40_Float32"
+  %".3775" = load ptr, ptr %"R8_Float32_PTR"
+  %".3776" = ptrtoint ptr %".3775" to i64
+  %".3777" = add i64 %".3776", 12
+  %"for_LDG.244" = inttoptr i64 %".3777" to ptr
+  %".3778" = load float, ptr %"for_LDG.244"
+  store float %".3778", ptr %"R40_Float32"
   ; LDG.E.SYS R45, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3535" = load i32, ptr %"R4_Float32_PTR"
-  %".3536" = add i32 %".3535", 12
-  %"for_LDG.245" = inttoptr i32 %".3536" to ptr
-  %".3537" = load float, ptr %"for_LDG.245"
-  store float %".3537", ptr %"R45_Float32"
+  %".3781" = load ptr, ptr %"R4_Float32_PTR"
+  %".3782" = ptrtoint ptr %".3781" to i64
+  %".3783" = add i64 %".3782", 12
+  %"for_LDG.245" = inttoptr i64 %".3783" to ptr
+  %".3784" = load float, ptr %"for_LDG.245"
+  store float %".3784", ptr %"R45_Float32"
   ; LDG.E.SYS R59, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".3540" = load i32, ptr %"R10_Float32_PTR"
-  %".3541" = add i32 %".3540", 12
-  %"for_LDG.246" = inttoptr i32 %".3541" to ptr
-  %".3542" = load float, ptr %"for_LDG.246"
-  store float %".3542", ptr %"R59_Float32"
+  %".3787" = load ptr, ptr %"R10_Float32_PTR"
+  %".3788" = ptrtoint ptr %".3787" to i64
+  %".3789" = add i64 %".3788", 12
+  %"for_LDG.246" = inttoptr i64 %".3789" to ptr
+  %".3790" = load float, ptr %"for_LDG.246"
+  store float %".3790", ptr %"R59_Float32"
   ; LDG.E.SYS R50, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3545" = load i32, ptr %"R6_Float32_PTR"
-  %".3546" = add i32 %".3545", 0
-  %"for_LDG.247" = inttoptr i32 %".3546" to ptr
-  %".3547" = load float, ptr %"for_LDG.247"
-  store float %".3547", ptr %"R50_Float32"
+  %".3793" = load ptr, ptr %"R6_Float32_PTR"
+  %".3794" = ptrtoint ptr %".3793" to i64
+  %".3795" = add i64 %".3794", 0
+  %"for_LDG.247" = inttoptr i64 %".3795" to ptr
+  %".3796" = load float, ptr %"for_LDG.247"
+  store float %".3796", ptr %"R50_Float32"
   ; LDG.E.SYS R57, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3550" = load i32, ptr %"R12_Float32_PTR"
-  %".3551" = add i32 %".3550", 0
-  %"for_LDG.248" = inttoptr i32 %".3551" to ptr
-  %".3552" = load float, ptr %"for_LDG.248"
-  store float %".3552", ptr %"R57_Float32"
+  %".3799" = load ptr, ptr %"R12_Float32_PTR"
+  %".3800" = ptrtoint ptr %".3799" to i64
+  %".3801" = add i64 %".3800", 0
+  %"for_LDG.248" = inttoptr i64 %".3801" to ptr
+  %".3802" = load float, ptr %"for_LDG.248"
+  store float %".3802", ptr %"R57_Float32"
   ; LDG.E.SYS R55, [R24]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3555" = load i32, ptr %"R24_Float32_PTR"
-  %".3556" = add i32 %".3555", 0
-  %"for_LDG.249" = inttoptr i32 %".3556" to ptr
-  %".3557" = load float, ptr %"for_LDG.249"
-  store float %".3557", ptr %"R55_Float32"
+  %".3805" = load ptr, ptr %"R24_Float32_PTR"
+  %".3806" = ptrtoint ptr %".3805" to i64
+  %".3807" = add i64 %".3806", 0
+  %"for_LDG.249" = inttoptr i64 %".3807" to ptr
+  %".3808" = load float, ptr %"for_LDG.249"
+  store float %".3808", ptr %"R55_Float32"
   ; LDG.E.SYS R46, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3560" = load i32, ptr %"R6_Float32_PTR"
-  %".3561" = add i32 %".3560", 4
-  %"for_LDG.250" = inttoptr i32 %".3561" to ptr
-  %".3562" = load float, ptr %"for_LDG.250"
-  store float %".3562", ptr %"R46_Float32"
+  %".3811" = load ptr, ptr %"R6_Float32_PTR"
+  %".3812" = ptrtoint ptr %".3811" to i64
+  %".3813" = add i64 %".3812", 4
+  %"for_LDG.250" = inttoptr i64 %".3813" to ptr
+  %".3814" = load float, ptr %"for_LDG.250"
+  store float %".3814", ptr %"R46_Float32"
   ; LDG.E.SYS R53, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3565" = load i32, ptr %"R12_Float32_PTR"
-  %".3566" = add i32 %".3565", 4
-  %"for_LDG.251" = inttoptr i32 %".3566" to ptr
-  %".3567" = load float, ptr %"for_LDG.251"
-  store float %".3567", ptr %"R53_Float32"
+  %".3817" = load ptr, ptr %"R12_Float32_PTR"
+  %".3818" = ptrtoint ptr %".3817" to i64
+  %".3819" = add i64 %".3818", 4
+  %"for_LDG.251" = inttoptr i64 %".3819" to ptr
+  %".3820" = load float, ptr %"for_LDG.251"
+  store float %".3820", ptr %"R53_Float32"
   ; LDG.E.SYS R51, [R24+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3570" = load i32, ptr %"R24_Float32_PTR"
-  %".3571" = add i32 %".3570", 4
-  %"for_LDG.252" = inttoptr i32 %".3571" to ptr
-  %".3572" = load float, ptr %"for_LDG.252"
-  store float %".3572", ptr %"R51_Float32"
+  %".3823" = load ptr, ptr %"R24_Float32_PTR"
+  %".3824" = ptrtoint ptr %".3823" to i64
+  %".3825" = add i64 %".3824", 4
+  %"for_LDG.252" = inttoptr i64 %".3825" to ptr
+  %".3826" = load float, ptr %"for_LDG.252"
+  store float %".3826", ptr %"R51_Float32"
   ; LDG.E.SYS R42, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3575" = load i32, ptr %"R6_Float32_PTR"
-  %".3576" = add i32 %".3575", 8
-  %"for_LDG.253" = inttoptr i32 %".3576" to ptr
-  %".3577" = load float, ptr %"for_LDG.253"
-  store float %".3577", ptr %"R42_Float32"
+  %".3829" = load ptr, ptr %"R6_Float32_PTR"
+  %".3830" = ptrtoint ptr %".3829" to i64
+  %".3831" = add i64 %".3830", 8
+  %"for_LDG.253" = inttoptr i64 %".3831" to ptr
+  %".3832" = load float, ptr %"for_LDG.253"
+  store float %".3832", ptr %"R42_Float32"
   ; LDG.E.SYS R47, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3580" = load i32, ptr %"R12_Float32_PTR"
-  %".3581" = add i32 %".3580", 8
-  %"for_LDG.254" = inttoptr i32 %".3581" to ptr
-  %".3582" = load float, ptr %"for_LDG.254"
-  store float %".3582", ptr %"R47_Float32"
+  %".3835" = load ptr, ptr %"R12_Float32_PTR"
+  %".3836" = ptrtoint ptr %".3835" to i64
+  %".3837" = add i64 %".3836", 8
+  %"for_LDG.254" = inttoptr i64 %".3837" to ptr
+  %".3838" = load float, ptr %"for_LDG.254"
+  store float %".3838", ptr %"R47_Float32"
   ; LDG.E.SYS R9, [R24+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3585" = load i32, ptr %"R24_Float32_PTR"
-  %".3586" = add i32 %".3585", 8
-  %"for_LDG.255" = inttoptr i32 %".3586" to ptr
-  %".3587" = load float, ptr %"for_LDG.255"
-  store float %".3587", ptr %"R9_Float32"
+  %".3841" = load ptr, ptr %"R24_Float32_PTR"
+  %".3842" = ptrtoint ptr %".3841" to i64
+  %".3843" = add i64 %".3842", 8
+  %"for_LDG.255" = inttoptr i64 %".3843" to ptr
+  %".3844" = load float, ptr %"for_LDG.255"
+  store float %".3844", ptr %"R9_Float32"
   ; LDG.E.SYS R4, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3590" = load i32, ptr %"R6_Float32_PTR"
-  %".3591" = add i32 %".3590", 12
-  %"for_LDG.256" = inttoptr i32 %".3591" to ptr
-  %".3592" = load float, ptr %"for_LDG.256"
-  store float %".3592", ptr %"R4_Float32"
+  %".3847" = load ptr, ptr %"R6_Float32_PTR"
+  %".3848" = ptrtoint ptr %".3847" to i64
+  %".3849" = add i64 %".3848", 12
+  %"for_LDG.256" = inttoptr i64 %".3849" to ptr
+  %".3850" = load float, ptr %"for_LDG.256"
+  store float %".3850", ptr %"R4_Float32"
   ; LDG.E.SYS R5, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".3595" = load i32, ptr %"R12_Float32_PTR"
-  %".3596" = add i32 %".3595", 12
-  %"for_LDG.257" = inttoptr i32 %".3596" to ptr
-  %".3597" = load float, ptr %"for_LDG.257"
-  store float %".3597", ptr %"R5_Float32"
+  %".3853" = load ptr, ptr %"R12_Float32_PTR"
+  %".3854" = ptrtoint ptr %".3853" to i64
+  %".3855" = add i64 %".3854", 12
+  %"for_LDG.257" = inttoptr i64 %".3855" to ptr
+  %".3856" = load float, ptr %"for_LDG.257"
+  store float %".3856", ptr %"R5_Float32"
   ; LDG.E.SYS R11, [R24+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Float32_PTR", ptr %"R24_Int32", i32 4, i1 0)
-  %".3600" = load i32, ptr %"R24_Float32_PTR"
-  %".3601" = add i32 %".3600", 12
-  %"for_LDG.258" = inttoptr i32 %".3601" to ptr
-  %".3602" = load float, ptr %"for_LDG.258"
-  store float %".3602", ptr %"R11_Float32"
+  %".3859" = load ptr, ptr %"R24_Float32_PTR"
+  %".3860" = ptrtoint ptr %".3859" to i64
+  %".3861" = add i64 %".3860", 12
+  %"for_LDG.258" = inttoptr i64 %".3861" to ptr
+  %".3862" = load float, ptr %"for_LDG.258"
+  store float %".3862", ptr %"R11_Float32"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".3605" = xor i1 1, 1
-  %".3606" = and i1 %".3605", 1
-  %".3607" = and i1 %".3606", 1
+  %".3865" = xor i1 1, 1
+  %".3866" = and i1 %".3865", 1
+  %".3867" = and i1 %".3866", 1
   ; IADD3 R22, R22, -0x8, RZ
-  %".3609" = load i32, ptr %"R22_Int32"
-  %"add.234" = add i32 %".3609", -8
+  %".3869" = load i32, ptr %"R22_Int32"
+  %"add.234" = add i32 %".3869", -8
   %"add.235" = add i32 %"add.234", 0
   store i32 %"add.235", ptr %"R22_Int32"
   ; IADD3 R23, R23, 0x8, RZ
-  %".3612" = load i32, ptr %"R23_Int32"
-  %"add.236" = add i32 %".3612", 8
+  %".3872" = load i32, ptr %"R23_Int32"
+  %"add.236" = add i32 %".3872", 8
   %"add.237" = add i32 %"add.236", 0
   store i32 %"add.237", ptr %"R23_Int32"
   ; FFMA R52, R52, R43, R44
-  %".3615" = load float, ptr %"R52_Float32"
-  %".3616" = load float, ptr %"R43_Float32"
-  %".3617" = load float, ptr %"R44_Float32"
-  %"fmul.201" = fmul float %".3615", %".3616"
-  %"fadd.176" = fadd float %"fmul.201", %".3617"
+  %".3875" = load float, ptr %"R52_Float32"
+  %".3876" = load float, ptr %"R43_Float32"
+  %".3877" = load float, ptr %"R44_Float32"
+  %"fmul.201" = fmul float %".3875", %".3876"
+  %"fadd.176" = fadd float %"fmul.201", %".3877"
   store float %"fadd.176", ptr %"R52_Float32"
   ; FFMA R38, R43, R38, R56
-  %".3620" = load float, ptr %"R43_Float32"
-  %".3621" = load float, ptr %"R38_Float32"
-  %".3622" = load float, ptr %"R56_Float32"
-  %"fmul.202" = fmul float %".3620", %".3621"
-  %"fadd.177" = fadd float %"fmul.202", %".3622"
+  %".3880" = load float, ptr %"R43_Float32"
+  %".3881" = load float, ptr %"R38_Float32"
+  %".3882" = load float, ptr %"R56_Float32"
+  %"fmul.202" = fmul float %".3880", %".3881"
+  %"fadd.177" = fadd float %"fmul.202", %".3882"
   store float %"fadd.177", ptr %"R38_Float32"
   ; FFMA R41, R41, R36, R52
-  %".3625" = load float, ptr %"R41_Float32"
-  %".3626" = load float, ptr %"R36_Float32"
-  %".3627" = load float, ptr %"R52_Float32"
-  %"fmul.203" = fmul float %".3625", %".3626"
-  %"fadd.178" = fadd float %"fmul.203", %".3627"
+  %".3885" = load float, ptr %"R41_Float32"
+  %".3886" = load float, ptr %"R36_Float32"
+  %".3887" = load float, ptr %"R52_Float32"
+  %"fmul.203" = fmul float %".3885", %".3886"
+  %"fadd.178" = fadd float %"fmul.203", %".3887"
   store float %"fadd.178", ptr %"R41_Float32"
   ; FFMA R38, R36, R39, R38
-  %".3630" = load float, ptr %"R36_Float32"
-  %".3631" = load float, ptr %"R39_Float32"
-  %".3632" = load float, ptr %"R38_Float32"
-  %"fmul.204" = fmul float %".3630", %".3631"
-  %"fadd.179" = fadd float %"fmul.204", %".3632"
+  %".3890" = load float, ptr %"R36_Float32"
+  %".3891" = load float, ptr %"R39_Float32"
+  %".3892" = load float, ptr %"R38_Float32"
+  %"fmul.204" = fmul float %".3890", %".3891"
+  %"fadd.179" = fadd float %"fmul.204", %".3892"
   store float %"fadd.179", ptr %"R38_Float32"
   ; FFMA R37, R37, R34, R41
-  %".3635" = load float, ptr %"R37_Float32"
-  %".3636" = load float, ptr %"R34_Float32"
-  %".3637" = load float, ptr %"R41_Float32"
-  %"fmul.205" = fmul float %".3635", %".3636"
-  %"fadd.180" = fadd float %"fmul.205", %".3637"
+  %".3895" = load float, ptr %"R37_Float32"
+  %".3896" = load float, ptr %"R34_Float32"
+  %".3897" = load float, ptr %"R41_Float32"
+  %"fmul.205" = fmul float %".3895", %".3896"
+  %"fadd.180" = fadd float %"fmul.205", %".3897"
   store float %"fadd.180", ptr %"R37_Float32"
   ; FFMA R35, R34, R35, R38
-  %".3640" = load float, ptr %"R34_Float32"
-  %".3641" = load float, ptr %"R35_Float32"
-  %".3642" = load float, ptr %"R38_Float32"
-  %"fmul.206" = fmul float %".3640", %".3641"
-  %"fadd.181" = fadd float %"fmul.206", %".3642"
+  %".3900" = load float, ptr %"R34_Float32"
+  %".3901" = load float, ptr %"R35_Float32"
+  %".3902" = load float, ptr %"R38_Float32"
+  %"fmul.206" = fmul float %".3900", %".3901"
+  %"fadd.181" = fadd float %"fmul.206", %".3902"
   store float %"fadd.181", ptr %"R35_Float32"
   ; FFMA R37, R45, R40, R37
-  %".3645" = load float, ptr %"R45_Float32"
-  %".3646" = load float, ptr %"R40_Float32"
-  %".3647" = load float, ptr %"R37_Float32"
-  %"fmul.207" = fmul float %".3645", %".3646"
-  %"fadd.182" = fadd float %"fmul.207", %".3647"
+  %".3905" = load float, ptr %"R45_Float32"
+  %".3906" = load float, ptr %"R40_Float32"
+  %".3907" = load float, ptr %"R37_Float32"
+  %"fmul.207" = fmul float %".3905", %".3906"
+  %"fadd.182" = fadd float %"fmul.207", %".3907"
   store float %"fadd.182", ptr %"R37_Float32"
   ; FFMA R35, R40, R59, R35
-  %".3650" = load float, ptr %"R40_Float32"
-  %".3651" = load float, ptr %"R59_Float32"
-  %".3652" = load float, ptr %"R35_Float32"
-  %"fmul.208" = fmul float %".3650", %".3651"
-  %"fadd.183" = fadd float %"fmul.208", %".3652"
+  %".3910" = load float, ptr %"R40_Float32"
+  %".3911" = load float, ptr %"R59_Float32"
+  %".3912" = load float, ptr %"R35_Float32"
+  %"fmul.208" = fmul float %".3910", %".3911"
+  %"fadd.183" = fadd float %"fmul.208", %".3912"
   store float %"fadd.183", ptr %"R35_Float32"
   ; FFMA R37, R57, R50, R37
-  %".3655" = load float, ptr %"R57_Float32"
-  %".3656" = load float, ptr %"R50_Float32"
-  %".3657" = load float, ptr %"R37_Float32"
-  %"fmul.209" = fmul float %".3655", %".3656"
-  %"fadd.184" = fadd float %"fmul.209", %".3657"
+  %".3915" = load float, ptr %"R57_Float32"
+  %".3916" = load float, ptr %"R50_Float32"
+  %".3917" = load float, ptr %"R37_Float32"
+  %"fmul.209" = fmul float %".3915", %".3916"
+  %"fadd.184" = fadd float %"fmul.209", %".3917"
   store float %"fadd.184", ptr %"R37_Float32"
   ; FFMA R35, R50, R55, R35
-  %".3660" = load float, ptr %"R50_Float32"
-  %".3661" = load float, ptr %"R55_Float32"
-  %".3662" = load float, ptr %"R35_Float32"
-  %"fmul.210" = fmul float %".3660", %".3661"
-  %"fadd.185" = fadd float %"fmul.210", %".3662"
+  %".3920" = load float, ptr %"R50_Float32"
+  %".3921" = load float, ptr %"R55_Float32"
+  %".3922" = load float, ptr %"R35_Float32"
+  %"fmul.210" = fmul float %".3920", %".3921"
+  %"fadd.185" = fadd float %"fmul.210", %".3922"
   store float %"fadd.185", ptr %"R35_Float32"
   ; FFMA R37, R53, R46, R37
-  %".3665" = load float, ptr %"R53_Float32"
-  %".3666" = load float, ptr %"R46_Float32"
-  %".3667" = load float, ptr %"R37_Float32"
-  %"fmul.211" = fmul float %".3665", %".3666"
-  %"fadd.186" = fadd float %"fmul.211", %".3667"
+  %".3925" = load float, ptr %"R53_Float32"
+  %".3926" = load float, ptr %"R46_Float32"
+  %".3927" = load float, ptr %"R37_Float32"
+  %"fmul.211" = fmul float %".3925", %".3926"
+  %"fadd.186" = fadd float %"fmul.211", %".3927"
   store float %"fadd.186", ptr %"R37_Float32"
   ; FFMA R35, R46, R51, R35
-  %".3670" = load float, ptr %"R46_Float32"
-  %".3671" = load float, ptr %"R51_Float32"
-  %".3672" = load float, ptr %"R35_Float32"
-  %"fmul.212" = fmul float %".3670", %".3671"
-  %"fadd.187" = fadd float %"fmul.212", %".3672"
+  %".3930" = load float, ptr %"R46_Float32"
+  %".3931" = load float, ptr %"R51_Float32"
+  %".3932" = load float, ptr %"R35_Float32"
+  %"fmul.212" = fmul float %".3930", %".3931"
+  %"fadd.187" = fadd float %"fmul.212", %".3932"
   store float %"fadd.187", ptr %"R35_Float32"
   ; FFMA R37, R47, R42, R37
-  %".3675" = load float, ptr %"R47_Float32"
-  %".3676" = load float, ptr %"R42_Float32"
-  %".3677" = load float, ptr %"R37_Float32"
-  %"fmul.213" = fmul float %".3675", %".3676"
-  %"fadd.188" = fadd float %"fmul.213", %".3677"
+  %".3935" = load float, ptr %"R47_Float32"
+  %".3936" = load float, ptr %"R42_Float32"
+  %".3937" = load float, ptr %"R37_Float32"
+  %"fmul.213" = fmul float %".3935", %".3936"
+  %"fadd.188" = fadd float %"fmul.213", %".3937"
   store float %"fadd.188", ptr %"R37_Float32"
   ; FFMA R9, R42, R9, R35
-  %".3680" = load float, ptr %"R42_Float32"
-  %".3681" = load float, ptr %"R9_Float32"
-  %".3682" = load float, ptr %"R35_Float32"
-  %"fmul.214" = fmul float %".3680", %".3681"
-  %"fadd.189" = fadd float %"fmul.214", %".3682"
+  %".3940" = load float, ptr %"R42_Float32"
+  %".3941" = load float, ptr %"R9_Float32"
+  %".3942" = load float, ptr %"R35_Float32"
+  %"fmul.214" = fmul float %".3940", %".3941"
+  %"fadd.189" = fadd float %"fmul.214", %".3942"
   store float %"fadd.189", ptr %"R9_Float32"
   ; FFMA R44, R5, R4, R37
-  %".3685" = load float, ptr %"R5_Float32"
-  %".3686" = load float, ptr %"R4_Float32"
-  %".3687" = load float, ptr %"R37_Float32"
-  %"fmul.215" = fmul float %".3685", %".3686"
-  %"fadd.190" = fadd float %"fmul.215", %".3687"
+  %".3945" = load float, ptr %"R5_Float32"
+  %".3946" = load float, ptr %"R4_Float32"
+  %".3947" = load float, ptr %"R37_Float32"
+  %"fmul.215" = fmul float %".3945", %".3946"
+  %"fadd.190" = fadd float %"fmul.215", %".3947"
   store float %"fadd.190", ptr %"R44_Float32"
   ; FFMA R56, R4, R11, R9
-  %".3690" = load float, ptr %"R4_Float32"
-  %".3691" = load float, ptr %"R11_Float32"
-  %".3692" = load float, ptr %"R9_Float32"
-  %"fmul.216" = fmul float %".3690", %".3691"
-  %"fadd.191" = fadd float %"fmul.216", %".3692"
+  %".3950" = load float, ptr %"R4_Float32"
+  %".3951" = load float, ptr %"R11_Float32"
+  %".3952" = load float, ptr %"R9_Float32"
+  %"fmul.216" = fmul float %".3950", %".3951"
+  %"fadd.191" = fadd float %"fmul.216", %".3952"
   store float %"fadd.191", ptr %"R56_Float32"
 .L_x_31:
   ; ISETP.NE.OR P0, PT, R22, RZ, P0
-  %".3695" = load i32, ptr %"R22_Int32"
-  %".3696" = load i1, ptr %"PT_Bool"
-  %"cmp.39" = icmp ne i32 %".3695", 0
-  %".3697" = or i1 %"cmp.39", %".3696"
+  %".3955" = load i32, ptr %"R22_Int32"
+  %".3956" = load i1, ptr %"PT_Bool"
+  %"cmp.39" = icmp ne i32 %".3955", 0
+  %".3957" = or i1 %"cmp.39", %".3956"
   ; @!P0 BRA `(.L_x_27)
-  %".3699" = load i1, ptr %"P0_Bool"
-  %".3700" = icmp eq i1 %".3699", 1
-  br i1 %".3700", label %".L_x_27", label %".L_x_28"
+  %".3959" = load i1, ptr %"P0_Bool"
+  %".3960" = icmp eq i1 %".3959", 1
+  br i1 %".3960", label %".L_x_27", label %".L_x_28"
 .L_x_28:
   ; IADD3 R5, R0, R23, RZ
-  %".3703" = load i32, ptr %"R0_Int32"
-  %".3704" = load i32, ptr %"R23_Int32"
-  %"add.238" = add i32 %".3703", %".3704"
+  %".3963" = load i32, ptr %"R0_Int32"
+  %".3964" = load i32, ptr %"R23_Int32"
+  %"add.238" = add i32 %".3963", %".3964"
   %"add.239" = add i32 %"add.238", 0
   store i32 %"add.239", ptr %"R5_Int32"
   ; MOV R6, 0x4
   store i32 4, ptr %"R6_Int32"
   ; LEA R11, R2.reuse, R5, 0x2
-  %".3709" = load i32, ptr %"R2_Int32"
-  %".3710" = load i32, ptr %"R5_Int32"
-  %"shl.20" = shl i32 %".3709", 2
-  %"add.240" = add i32 %"shl.20", %".3710"
+  %".3969" = load i32, ptr %"R2_Int32"
+  %".3970" = load i32, ptr %"R5_Int32"
+  %"shl.20" = shl i32 %".3969", 2
+  %"add.240" = add i32 %"shl.20", %".3970"
   store i32 %"add.240", ptr %"R11_Int32"
   ; IMAD R7, R2, 0x3, R5
-  %".3713" = load i32, ptr %"R2_Int32"
-  %".3714" = load i32, ptr %"R5_Int32"
-  %"mul.82" = mul i32 %".3713", 3
-  %"add.241" = add i32 %"mul.82", %".3714"
+  %".3973" = load i32, ptr %"R2_Int32"
+  %".3974" = load i32, ptr %"R5_Int32"
+  %"mul.82" = mul i32 %".3973", 3
+  %"add.241" = add i32 %"mul.82", %".3974"
   store i32 %"add.241", ptr %"R7_Int32"
   ; IMAD.WIDE R8, R23, R6, c[0x0][0x168]
-  %".3717" = load i32, ptr %"R23_Int32"
-  %".3718" = load i32, ptr %"R6_Int32"
-  %"mul.83" = mul i32 %".3717", %".3718"
+  %".3977" = load i32, ptr %"R23_Int32"
+  %".3978" = load i32, ptr %"R6_Int32"
+  %"mul.83" = mul i32 %".3977", %".3978"
   %"add.242" = add i32 %"mul.83", %"Arg_3"
   store i32 %"add.242", ptr %"R8_Int32"
   ; IMAD.WIDE R4, R7, R6, c[0x0][0x170]
-  %".3721" = load i32, ptr %"R7_Int32"
-  %".3722" = load i32, ptr %"R6_Int32"
-  %"mul.84" = mul i32 %".3721", %".3722"
+  %".3981" = load i32, ptr %"R7_Int32"
+  %".3982" = load i32, ptr %"R6_Int32"
+  %"mul.84" = mul i32 %".3981", %".3982"
   %"add.243" = add i32 %"mul.84", %"Arg_4"
   store i32 %"add.243", ptr %"R4_Int32"
   ; IMAD.WIDE R6, R11, R6, c[0x0][0x170]
-  %".3725" = load i32, ptr %"R11_Int32"
-  %".3726" = load i32, ptr %"R6_Int32"
-  %"mul.85" = mul i32 %".3725", %".3726"
+  %".3985" = load i32, ptr %"R11_Int32"
+  %".3986" = load i32, ptr %"R6_Int32"
+  %"mul.85" = mul i32 %".3985", %".3986"
   %"add.244" = add i32 %"mul.85", %"Arg_4"
   store i32 %"add.244", ptr %"R6_Int32"
   ; LDG.E.SYS R13, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3729" = load i32, ptr %"R8_Float32_PTR"
-  %".3730" = add i32 %".3729", 0
-  %"for_LDG.259" = inttoptr i32 %".3730" to ptr
-  %".3731" = load float, ptr %"for_LDG.259"
-  store float %".3731", ptr %"R13_Float32"
+  %".3989" = load ptr, ptr %"R8_Float32_PTR"
+  %".3990" = ptrtoint ptr %".3989" to i64
+  %".3991" = add i64 %".3990", 0
+  %"for_LDG.259" = inttoptr i64 %".3991" to ptr
+  %".3992" = load float, ptr %"for_LDG.259"
+  store float %".3992", ptr %"R13_Float32"
   ; LDG.E.SYS R11, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3734" = load i32, ptr %"R4_Float32_PTR"
-  %".3735" = add i32 %".3734", 0
-  %"for_LDG.260" = inttoptr i32 %".3735" to ptr
-  %".3736" = load float, ptr %"for_LDG.260"
-  store float %".3736", ptr %"R11_Float32"
+  %".3995" = load ptr, ptr %"R4_Float32_PTR"
+  %".3996" = ptrtoint ptr %".3995" to i64
+  %".3997" = add i64 %".3996", 0
+  %"for_LDG.260" = inttoptr i64 %".3997" to ptr
+  %".3998" = load float, ptr %"for_LDG.260"
+  store float %".3998", ptr %"R11_Float32"
   ; LDG.E.SYS R10, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3739" = load i32, ptr %"R6_Float32_PTR"
-  %".3740" = add i32 %".3739", 0
-  %"for_LDG.261" = inttoptr i32 %".3740" to ptr
-  %".3741" = load float, ptr %"for_LDG.261"
-  store float %".3741", ptr %"R10_Float32"
+  %".4001" = load ptr, ptr %"R6_Float32_PTR"
+  %".4002" = ptrtoint ptr %".4001" to i64
+  %".4003" = add i64 %".4002", 0
+  %"for_LDG.261" = inttoptr i64 %".4003" to ptr
+  %".4004" = load float, ptr %"for_LDG.261"
+  store float %".4004", ptr %"R10_Float32"
   ; LDG.E.SYS R25, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3744" = load i32, ptr %"R8_Float32_PTR"
-  %".3745" = add i32 %".3744", 4
-  %"for_LDG.262" = inttoptr i32 %".3745" to ptr
-  %".3746" = load float, ptr %"for_LDG.262"
-  store float %".3746", ptr %"R25_Float32"
+  %".4007" = load ptr, ptr %"R8_Float32_PTR"
+  %".4008" = ptrtoint ptr %".4007" to i64
+  %".4009" = add i64 %".4008", 4
+  %"for_LDG.262" = inttoptr i64 %".4009" to ptr
+  %".4010" = load float, ptr %"for_LDG.262"
+  store float %".4010", ptr %"R25_Float32"
   ; LDG.E.SYS R12, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3749" = load i32, ptr %"R4_Float32_PTR"
-  %".3750" = add i32 %".3749", 4
-  %"for_LDG.263" = inttoptr i32 %".3750" to ptr
-  %".3751" = load float, ptr %"for_LDG.263"
-  store float %".3751", ptr %"R12_Float32"
+  %".4013" = load ptr, ptr %"R4_Float32_PTR"
+  %".4014" = ptrtoint ptr %".4013" to i64
+  %".4015" = add i64 %".4014", 4
+  %"for_LDG.263" = inttoptr i64 %".4015" to ptr
+  %".4016" = load float, ptr %"for_LDG.263"
+  store float %".4016", ptr %"R12_Float32"
   ; LDG.E.SYS R24, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3754" = load i32, ptr %"R6_Float32_PTR"
-  %".3755" = add i32 %".3754", 4
-  %"for_LDG.264" = inttoptr i32 %".3755" to ptr
-  %".3756" = load float, ptr %"for_LDG.264"
-  store float %".3756", ptr %"R24_Float32"
+  %".4019" = load ptr, ptr %"R6_Float32_PTR"
+  %".4020" = ptrtoint ptr %".4019" to i64
+  %".4021" = add i64 %".4020", 4
+  %"for_LDG.264" = inttoptr i64 %".4021" to ptr
+  %".4022" = load float, ptr %"for_LDG.264"
+  store float %".4022", ptr %"R24_Float32"
   ; LDG.E.SYS R35, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3759" = load i32, ptr %"R8_Float32_PTR"
-  %".3760" = add i32 %".3759", 8
-  %"for_LDG.265" = inttoptr i32 %".3760" to ptr
-  %".3761" = load float, ptr %"for_LDG.265"
-  store float %".3761", ptr %"R35_Float32"
+  %".4025" = load ptr, ptr %"R8_Float32_PTR"
+  %".4026" = ptrtoint ptr %".4025" to i64
+  %".4027" = add i64 %".4026", 8
+  %"for_LDG.265" = inttoptr i64 %".4027" to ptr
+  %".4028" = load float, ptr %"for_LDG.265"
+  store float %".4028", ptr %"R35_Float32"
   ; LDG.E.SYS R34, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3764" = load i32, ptr %"R4_Float32_PTR"
-  %".3765" = add i32 %".3764", 8
-  %"for_LDG.266" = inttoptr i32 %".3765" to ptr
-  %".3766" = load float, ptr %"for_LDG.266"
-  store float %".3766", ptr %"R34_Float32"
+  %".4031" = load ptr, ptr %"R4_Float32_PTR"
+  %".4032" = ptrtoint ptr %".4031" to i64
+  %".4033" = add i64 %".4032", 8
+  %"for_LDG.266" = inttoptr i64 %".4033" to ptr
+  %".4034" = load float, ptr %"for_LDG.266"
+  store float %".4034", ptr %"R34_Float32"
   ; LDG.E.SYS R36, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3769" = load i32, ptr %"R6_Float32_PTR"
-  %".3770" = add i32 %".3769", 8
-  %"for_LDG.267" = inttoptr i32 %".3770" to ptr
-  %".3771" = load float, ptr %"for_LDG.267"
-  store float %".3771", ptr %"R36_Float32"
+  %".4037" = load ptr, ptr %"R6_Float32_PTR"
+  %".4038" = ptrtoint ptr %".4037" to i64
+  %".4039" = add i64 %".4038", 8
+  %"for_LDG.267" = inttoptr i64 %".4039" to ptr
+  %".4040" = load float, ptr %"for_LDG.267"
+  store float %".4040", ptr %"R36_Float32"
   ; LDG.E.SYS R37, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3774" = load i32, ptr %"R8_Float32_PTR"
-  %".3775" = add i32 %".3774", 12
-  %"for_LDG.268" = inttoptr i32 %".3775" to ptr
-  %".3776" = load float, ptr %"for_LDG.268"
-  store float %".3776", ptr %"R37_Float32"
+  %".4043" = load ptr, ptr %"R8_Float32_PTR"
+  %".4044" = ptrtoint ptr %".4043" to i64
+  %".4045" = add i64 %".4044", 12
+  %"for_LDG.268" = inttoptr i64 %".4045" to ptr
+  %".4046" = load float, ptr %"for_LDG.268"
+  store float %".4046", ptr %"R37_Float32"
   ; LDG.E.SYS R38, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3779" = load i32, ptr %"R4_Float32_PTR"
-  %".3780" = add i32 %".3779", 12
-  %"for_LDG.269" = inttoptr i32 %".3780" to ptr
-  %".3781" = load float, ptr %"for_LDG.269"
-  store float %".3781", ptr %"R38_Float32"
+  %".4049" = load ptr, ptr %"R4_Float32_PTR"
+  %".4050" = ptrtoint ptr %".4049" to i64
+  %".4051" = add i64 %".4050", 12
+  %"for_LDG.269" = inttoptr i64 %".4051" to ptr
+  %".4052" = load float, ptr %"for_LDG.269"
+  store float %".4052", ptr %"R38_Float32"
   ; LDG.E.SYS R39, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3784" = load i32, ptr %"R6_Float32_PTR"
-  %".3785" = add i32 %".3784", 12
-  %"for_LDG.270" = inttoptr i32 %".3785" to ptr
-  %".3786" = load float, ptr %"for_LDG.270"
-  store float %".3786", ptr %"R39_Float32"
+  %".4055" = load ptr, ptr %"R6_Float32_PTR"
+  %".4056" = ptrtoint ptr %".4055" to i64
+  %".4057" = add i64 %".4056", 12
+  %"for_LDG.270" = inttoptr i64 %".4057" to ptr
+  %".4058" = load float, ptr %"for_LDG.270"
+  store float %".4058", ptr %"R39_Float32"
   ; IADD3 R22, R22, -0x4, RZ
-  %".3789" = load i32, ptr %"R22_Int32"
-  %"add.245" = add i32 %".3789", -4
+  %".4061" = load i32, ptr %"R22_Int32"
+  %"add.245" = add i32 %".4061", -4
   %"add.246" = add i32 %"add.245", 0
   store i32 %"add.246", ptr %"R22_Int32"
   ; IADD3 R23, R23, 0x4, RZ
-  %".3792" = load i32, ptr %"R23_Int32"
-  %"add.247" = add i32 %".3792", 4
+  %".4064" = load i32, ptr %"R23_Int32"
+  %"add.247" = add i32 %".4064", 4
   %"add.248" = add i32 %"add.247", 0
   store i32 %"add.248", ptr %"R23_Int32"
   ; ISETP.NE.AND P0, PT, R22, RZ, PT
-  %".3795" = load i32, ptr %"R22_Int32"
-  %".3796" = load i1, ptr %"PT_Bool"
-  %"cmp.40" = icmp ne i32 %".3795", 0
-  %".3797" = and i1 %"cmp.40", %".3796"
+  %".4067" = load i32, ptr %"R22_Int32"
+  %".4068" = load i1, ptr %"PT_Bool"
+  %"cmp.40" = icmp ne i32 %".4067", 0
+  %".4069" = and i1 %"cmp.40", %".4068"
   ; FFMA R11, R11, R13, R44
-  %".3799" = load float, ptr %"R11_Float32"
-  %".3800" = load float, ptr %"R13_Float32"
-  %".3801" = load float, ptr %"R44_Float32"
-  %"fmul.217" = fmul float %".3799", %".3800"
-  %"fadd.192" = fadd float %"fmul.217", %".3801"
+  %".4071" = load float, ptr %"R11_Float32"
+  %".4072" = load float, ptr %"R13_Float32"
+  %".4073" = load float, ptr %"R44_Float32"
+  %"fmul.217" = fmul float %".4071", %".4072"
+  %"fadd.192" = fadd float %"fmul.217", %".4073"
   store float %"fadd.192", ptr %"R11_Float32"
   ; FFMA R10, R13, R10, R56
-  %".3804" = load float, ptr %"R13_Float32"
-  %".3805" = load float, ptr %"R10_Float32"
-  %".3806" = load float, ptr %"R56_Float32"
-  %"fmul.218" = fmul float %".3804", %".3805"
-  %"fadd.193" = fadd float %"fmul.218", %".3806"
+  %".4076" = load float, ptr %"R13_Float32"
+  %".4077" = load float, ptr %"R10_Float32"
+  %".4078" = load float, ptr %"R56_Float32"
+  %"fmul.218" = fmul float %".4076", %".4077"
+  %"fadd.193" = fadd float %"fmul.218", %".4078"
   store float %"fadd.193", ptr %"R10_Float32"
   ; FFMA R11, R12, R25, R11
-  %".3809" = load float, ptr %"R12_Float32"
-  %".3810" = load float, ptr %"R25_Float32"
-  %".3811" = load float, ptr %"R11_Float32"
-  %"fmul.219" = fmul float %".3809", %".3810"
-  %"fadd.194" = fadd float %"fmul.219", %".3811"
+  %".4081" = load float, ptr %"R12_Float32"
+  %".4082" = load float, ptr %"R25_Float32"
+  %".4083" = load float, ptr %"R11_Float32"
+  %"fmul.219" = fmul float %".4081", %".4082"
+  %"fadd.194" = fadd float %"fmul.219", %".4083"
   store float %"fadd.194", ptr %"R11_Float32"
   ; FFMA R10, R25, R24, R10
-  %".3814" = load float, ptr %"R25_Float32"
-  %".3815" = load float, ptr %"R24_Float32"
-  %".3816" = load float, ptr %"R10_Float32"
-  %"fmul.220" = fmul float %".3814", %".3815"
-  %"fadd.195" = fadd float %"fmul.220", %".3816"
+  %".4086" = load float, ptr %"R25_Float32"
+  %".4087" = load float, ptr %"R24_Float32"
+  %".4088" = load float, ptr %"R10_Float32"
+  %"fmul.220" = fmul float %".4086", %".4087"
+  %"fadd.195" = fadd float %"fmul.220", %".4088"
   store float %"fadd.195", ptr %"R10_Float32"
   ; FFMA R11, R34, R35, R11
-  %".3819" = load float, ptr %"R34_Float32"
-  %".3820" = load float, ptr %"R35_Float32"
-  %".3821" = load float, ptr %"R11_Float32"
-  %"fmul.221" = fmul float %".3819", %".3820"
-  %"fadd.196" = fadd float %"fmul.221", %".3821"
+  %".4091" = load float, ptr %"R34_Float32"
+  %".4092" = load float, ptr %"R35_Float32"
+  %".4093" = load float, ptr %"R11_Float32"
+  %"fmul.221" = fmul float %".4091", %".4092"
+  %"fadd.196" = fadd float %"fmul.221", %".4093"
   store float %"fadd.196", ptr %"R11_Float32"
   ; FFMA R10, R35, R36, R10
-  %".3824" = load float, ptr %"R35_Float32"
-  %".3825" = load float, ptr %"R36_Float32"
-  %".3826" = load float, ptr %"R10_Float32"
-  %"fmul.222" = fmul float %".3824", %".3825"
-  %"fadd.197" = fadd float %"fmul.222", %".3826"
+  %".4096" = load float, ptr %"R35_Float32"
+  %".4097" = load float, ptr %"R36_Float32"
+  %".4098" = load float, ptr %"R10_Float32"
+  %"fmul.222" = fmul float %".4096", %".4097"
+  %"fadd.197" = fadd float %"fmul.222", %".4098"
   store float %"fadd.197", ptr %"R10_Float32"
   ; FFMA R44, R38, R37, R11
-  %".3829" = load float, ptr %"R38_Float32"
-  %".3830" = load float, ptr %"R37_Float32"
-  %".3831" = load float, ptr %"R11_Float32"
-  %"fmul.223" = fmul float %".3829", %".3830"
-  %"fadd.198" = fadd float %"fmul.223", %".3831"
+  %".4101" = load float, ptr %"R38_Float32"
+  %".4102" = load float, ptr %"R37_Float32"
+  %".4103" = load float, ptr %"R11_Float32"
+  %"fmul.223" = fmul float %".4101", %".4102"
+  %"fadd.198" = fadd float %"fmul.223", %".4103"
   store float %"fadd.198", ptr %"R44_Float32"
   ; FFMA R56, R37, R39, R10
-  %".3834" = load float, ptr %"R37_Float32"
-  %".3835" = load float, ptr %"R39_Float32"
-  %".3836" = load float, ptr %"R10_Float32"
-  %"fmul.224" = fmul float %".3834", %".3835"
-  %"fadd.199" = fadd float %"fmul.224", %".3836"
+  %".4106" = load float, ptr %"R37_Float32"
+  %".4107" = load float, ptr %"R39_Float32"
+  %".4108" = load float, ptr %"R10_Float32"
+  %"fmul.224" = fmul float %".4106", %".4107"
+  %"fadd.199" = fadd float %"fmul.224", %".4108"
   store float %"fadd.199", ptr %"R56_Float32"
   ; @P0 BRA `(.L_x_28)
-  %".3839" = load i1, ptr %"P0_Bool"
-  %".3840" = icmp ne i1 %".3839", 1
-  br i1 %".3840", label %".L_x_28", label %".L_x_27"
+  %".4111" = load i1, ptr %"P0_Bool"
+  %".4112" = icmp ne i1 %".4111", 1
+  br i1 %".4112", label %".L_x_28", label %".L_x_27"
 .L_x_27:
   ; ISETP.NE.AND P0, PT, R48, RZ, PT
-  %".3843" = load i32, ptr %"R48_Int32"
-  %".3844" = load i1, ptr %"PT_Bool"
-  %"cmp.41" = icmp ne i32 %".3843", 0
-  %".3845" = and i1 %"cmp.41", %".3844"
+  %".4115" = load i32, ptr %"R48_Int32"
+  %".4116" = load i1, ptr %"PT_Bool"
+  %"cmp.41" = icmp ne i32 %".4115", 0
+  %".4117" = and i1 %"cmp.41", %".4116"
   ; @!P0 BRA `(.L_x_26)
-  %".3847" = load i1, ptr %"P0_Bool"
-  %".3848" = icmp eq i1 %".3847", 1
-  br i1 %".3848", label %".L_x_26", label %".L_x_27_split_0x3660"
+  %".4119" = load i1, ptr %"P0_Bool"
+  %".4120" = icmp eq i1 %".4119", 1
+  br i1 %".4120", label %".L_x_26", label %".L_x_27_split_0x3660"
 .L_x_27_split_0x3660:
   ; IADD3 R5, R0, R23, RZ
-  %".3851" = load i32, ptr %"R0_Int32"
-  %".3852" = load i32, ptr %"R23_Int32"
-  %"add.249" = add i32 %".3851", %".3852"
+  %".4123" = load i32, ptr %"R0_Int32"
+  %".4124" = load i32, ptr %"R23_Int32"
+  %"add.249" = add i32 %".4123", %".4124"
   %"add.250" = add i32 %"add.249", 0
   store i32 %"add.250", ptr %"R5_Int32"
   ; MOV R9, 0x4
   store i32 4, ptr %"R9_Int32"
   ; LEA R8, R2.reuse, R5, 0x2
-  %".3857" = load i32, ptr %"R2_Int32"
-  %".3858" = load i32, ptr %"R5_Int32"
-  %"shl.21" = shl i32 %".3857", 2
-  %"add.251" = add i32 %"shl.21", %".3858"
+  %".4129" = load i32, ptr %"R2_Int32"
+  %".4130" = load i32, ptr %"R5_Int32"
+  %"shl.21" = shl i32 %".4129", 2
+  %"add.251" = add i32 %"shl.21", %".4130"
   store i32 %"add.251", ptr %"R8_Int32"
   ; IMAD R6, R2, 0x3, R5
-  %".3861" = load i32, ptr %"R2_Int32"
-  %".3862" = load i32, ptr %"R5_Int32"
-  %"mul.86" = mul i32 %".3861", 3
-  %"add.252" = add i32 %"mul.86", %".3862"
+  %".4133" = load i32, ptr %"R2_Int32"
+  %".4134" = load i32, ptr %"R5_Int32"
+  %"mul.86" = mul i32 %".4133", 3
+  %"add.252" = add i32 %"mul.86", %".4134"
   store i32 %"add.252", ptr %"R6_Int32"
   ; IMAD.WIDE R4, R23, R9, c[0x0][0x168]
-  %".3865" = load i32, ptr %"R23_Int32"
-  %".3866" = load i32, ptr %"R9_Int32"
-  %"mul.87" = mul i32 %".3865", %".3866"
+  %".4137" = load i32, ptr %"R23_Int32"
+  %".4138" = load i32, ptr %"R9_Int32"
+  %"mul.87" = mul i32 %".4137", %".4138"
   %"add.253" = add i32 %"mul.87", %"Arg_3"
   store i32 %"add.253", ptr %"R4_Int32"
   ; IMAD.WIDE R6, R6, R9, c[0x0][0x170]
-  %".3869" = load i32, ptr %"R6_Int32"
-  %".3870" = load i32, ptr %"R9_Int32"
-  %"mul.88" = mul i32 %".3869", %".3870"
+  %".4141" = load i32, ptr %"R6_Int32"
+  %".4142" = load i32, ptr %"R9_Int32"
+  %"mul.88" = mul i32 %".4141", %".4142"
   %"add.254" = add i32 %"mul.88", %"Arg_4"
   store i32 %"add.254", ptr %"R6_Int32"
   ; IMAD.WIDE R8, R8, R9, c[0x0][0x170]
-  %".3873" = load i32, ptr %"R8_Int32"
-  %".3874" = load i32, ptr %"R9_Int32"
-  %"mul.89" = mul i32 %".3873", %".3874"
+  %".4145" = load i32, ptr %"R8_Int32"
+  %".4146" = load i32, ptr %"R9_Int32"
+  %"mul.89" = mul i32 %".4145", %".4146"
   %"add.255" = add i32 %"mul.89", %"Arg_4"
   store i32 %"add.255", ptr %"R8_Int32"
   ; LDG.E.SYS R13, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3877" = load i32, ptr %"R4_Float32_PTR"
-  %".3878" = add i32 %".3877", 0
-  %"for_LDG.271" = inttoptr i32 %".3878" to ptr
-  %".3879" = load float, ptr %"for_LDG.271"
-  store float %".3879", ptr %"R13_Float32"
+  %".4149" = load ptr, ptr %"R4_Float32_PTR"
+  %".4150" = ptrtoint ptr %".4149" to i64
+  %".4151" = add i64 %".4150", 0
+  %"for_LDG.271" = inttoptr i64 %".4151" to ptr
+  %".4152" = load float, ptr %"for_LDG.271"
+  store float %".4152", ptr %"R13_Float32"
   ; LDG.E.SYS R11, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3882" = load i32, ptr %"R6_Float32_PTR"
-  %".3883" = add i32 %".3882", 0
-  %"for_LDG.272" = inttoptr i32 %".3883" to ptr
-  %".3884" = load float, ptr %"for_LDG.272"
-  store float %".3884", ptr %"R11_Float32"
+  %".4155" = load ptr, ptr %"R6_Float32_PTR"
+  %".4156" = ptrtoint ptr %".4155" to i64
+  %".4157" = add i64 %".4156", 0
+  %"for_LDG.272" = inttoptr i64 %".4157" to ptr
+  %".4158" = load float, ptr %"for_LDG.272"
+  store float %".4158", ptr %"R11_Float32"
   ; LDG.E.SYS R10, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3887" = load i32, ptr %"R8_Float32_PTR"
-  %".3888" = add i32 %".3887", 0
-  %"for_LDG.273" = inttoptr i32 %".3888" to ptr
-  %".3889" = load float, ptr %"for_LDG.273"
-  store float %".3889", ptr %"R10_Float32"
+  %".4161" = load ptr, ptr %"R8_Float32_PTR"
+  %".4162" = ptrtoint ptr %".4161" to i64
+  %".4163" = add i64 %".4162", 0
+  %"for_LDG.273" = inttoptr i64 %".4163" to ptr
+  %".4164" = load float, ptr %"for_LDG.273"
+  store float %".4164", ptr %"R10_Float32"
   ; ISETP.NE.AND P0, PT, R48, 0x1, PT
-  %".3892" = load i32, ptr %"R48_Int32"
-  %".3893" = load i1, ptr %"PT_Bool"
-  %"cmp.42" = icmp ne i32 %".3892", 1
-  %".3894" = and i1 %"cmp.42", %".3893"
+  %".4167" = load i32, ptr %"R48_Int32"
+  %".4168" = load i1, ptr %"PT_Bool"
+  %"cmp.42" = icmp ne i32 %".4167", 1
+  %".4169" = and i1 %"cmp.42", %".4168"
   ; FFMA R44, R11, R13, R44
-  %".3896" = load float, ptr %"R11_Float32"
-  %".3897" = load float, ptr %"R13_Float32"
-  %".3898" = load float, ptr %"R44_Float32"
-  %"fmul.225" = fmul float %".3896", %".3897"
-  %"fadd.200" = fadd float %"fmul.225", %".3898"
+  %".4171" = load float, ptr %"R11_Float32"
+  %".4172" = load float, ptr %"R13_Float32"
+  %".4173" = load float, ptr %"R44_Float32"
+  %"fmul.225" = fmul float %".4171", %".4172"
+  %"fadd.200" = fadd float %"fmul.225", %".4173"
   store float %"fadd.200", ptr %"R44_Float32"
   ; FFMA R56, R13, R10, R56
-  %".3901" = load float, ptr %"R13_Float32"
-  %".3902" = load float, ptr %"R10_Float32"
-  %".3903" = load float, ptr %"R56_Float32"
-  %"fmul.226" = fmul float %".3901", %".3902"
-  %"fadd.201" = fadd float %"fmul.226", %".3903"
+  %".4176" = load float, ptr %"R13_Float32"
+  %".4177" = load float, ptr %"R10_Float32"
+  %".4178" = load float, ptr %"R56_Float32"
+  %"fmul.226" = fmul float %".4176", %".4177"
+  %"fadd.201" = fadd float %"fmul.226", %".4178"
   store float %"fadd.201", ptr %"R56_Float32"
   ; @!P0 BRA `(.L_x_26)
-  %".3906" = load i1, ptr %"P0_Bool"
-  %".3907" = icmp eq i1 %".3906", 1
-  br i1 %".3907", label %".L_x_26", label %".L_x_27_split_0x3740"
+  %".4181" = load i1, ptr %"P0_Bool"
+  %".4182" = icmp eq i1 %".4181", 1
+  br i1 %".4182", label %".L_x_26", label %".L_x_27_split_0x3740"
 .L_x_27_split_0x3740:
   ; ISETP.NE.AND P0, PT, R48, 0x2, PT
-  %".3910" = load i32, ptr %"R48_Int32"
-  %".3911" = load i1, ptr %"PT_Bool"
-  %"cmp.43" = icmp ne i32 %".3910", 2
-  %".3912" = and i1 %"cmp.43", %".3911"
+  %".4185" = load i32, ptr %"R48_Int32"
+  %".4186" = load i1, ptr %"PT_Bool"
+  %"cmp.43" = icmp ne i32 %".4185", 2
+  %".4187" = and i1 %"cmp.43", %".4186"
   ; LDG.E.SYS R11, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3914" = load i32, ptr %"R6_Float32_PTR"
-  %".3915" = add i32 %".3914", 4
-  %"for_LDG.274" = inttoptr i32 %".3915" to ptr
-  %".3916" = load float, ptr %"for_LDG.274"
-  store float %".3916", ptr %"R11_Float32"
+  %".4189" = load ptr, ptr %"R6_Float32_PTR"
+  %".4190" = ptrtoint ptr %".4189" to i64
+  %".4191" = add i64 %".4190", 4
+  %"for_LDG.274" = inttoptr i64 %".4191" to ptr
+  %".4192" = load float, ptr %"for_LDG.274"
+  store float %".4192", ptr %"R11_Float32"
   ; LDG.E.SYS R13, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3919" = load i32, ptr %"R4_Float32_PTR"
-  %".3920" = add i32 %".3919", 4
-  %"for_LDG.275" = inttoptr i32 %".3920" to ptr
-  %".3921" = load float, ptr %"for_LDG.275"
-  store float %".3921", ptr %"R13_Float32"
+  %".4195" = load ptr, ptr %"R4_Float32_PTR"
+  %".4196" = ptrtoint ptr %".4195" to i64
+  %".4197" = add i64 %".4196", 4
+  %"for_LDG.275" = inttoptr i64 %".4197" to ptr
+  %".4198" = load float, ptr %"for_LDG.275"
+  store float %".4198", ptr %"R13_Float32"
   ; LDG.E.SYS R10, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3924" = load i32, ptr %"R8_Float32_PTR"
-  %".3925" = add i32 %".3924", 4
-  %"for_LDG.276" = inttoptr i32 %".3925" to ptr
-  %".3926" = load float, ptr %"for_LDG.276"
-  store float %".3926", ptr %"R10_Float32"
+  %".4201" = load ptr, ptr %"R8_Float32_PTR"
+  %".4202" = ptrtoint ptr %".4201" to i64
+  %".4203" = add i64 %".4202", 4
+  %"for_LDG.276" = inttoptr i64 %".4203" to ptr
+  %".4204" = load float, ptr %"for_LDG.276"
+  store float %".4204", ptr %"R10_Float32"
   ; @P0 LDG.E.SYS R23, [R6+0x8]
-  %".3929" = load i1, ptr %"P0_Bool"
-  %".3930" = icmp ne i1 %".3929", 1
-  br i1 %".3930", label %".L_x_27_split_0x3740_conditionalExpr_0x3780", label %".L_x_27_split_0x3790"
+  %".4207" = load i1, ptr %"P0_Bool"
+  %".4208" = icmp ne i1 %".4207", 1
+  br i1 %".4208", label %".L_x_27_split_0x3740_conditionalExpr_0x3780", label %".L_x_27_split_0x3790"
 .L_x_27_split_0x3740_conditionalExpr_0x3780:
   ; LDG.E.SYS R23, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".3933" = load i32, ptr %"R6_Float32_PTR"
-  %".3934" = add i32 %".3933", 8
-  %"for_LDG.277" = inttoptr i32 %".3934" to ptr
-  %".3935" = load float, ptr %"for_LDG.277"
-  store float %".3935", ptr %"R23_Float32"
+  %".4211" = load ptr, ptr %"R6_Float32_PTR"
+  %".4212" = ptrtoint ptr %".4211" to i64
+  %".4213" = add i64 %".4212", 8
+  %"for_LDG.277" = inttoptr i64 %".4213" to ptr
+  %".4214" = load float, ptr %"for_LDG.277"
+  store float %".4214", ptr %"R23_Float32"
   ; BRA `(.L_x_27_split_0x3790)
   br label %".L_x_27_split_0x3790"
 .L_x_27_split_0x3790:
   ; @P0 LDG.E.SYS R25, [R4+0x8]
-  %".3940" = load i1, ptr %"P0_Bool"
-  %".3941" = icmp ne i1 %".3940", 1
-  br i1 %".3941", label %".L_x_27_split_0x3790_conditionalExpr_0x3790", label %".L_x_27_split_0x37a0"
+  %".4219" = load i1, ptr %"P0_Bool"
+  %".4220" = icmp ne i1 %".4219", 1
+  br i1 %".4220", label %".L_x_27_split_0x3790_conditionalExpr_0x3790", label %".L_x_27_split_0x37a0"
 .L_x_27_split_0x3790_conditionalExpr_0x3790:
   ; LDG.E.SYS R25, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".3944" = load i32, ptr %"R4_Float32_PTR"
-  %".3945" = add i32 %".3944", 8
-  %"for_LDG.278" = inttoptr i32 %".3945" to ptr
-  %".3946" = load float, ptr %"for_LDG.278"
-  store float %".3946", ptr %"R25_Float32"
+  %".4223" = load ptr, ptr %"R4_Float32_PTR"
+  %".4224" = ptrtoint ptr %".4223" to i64
+  %".4225" = add i64 %".4224", 8
+  %"for_LDG.278" = inttoptr i64 %".4225" to ptr
+  %".4226" = load float, ptr %"for_LDG.278"
+  store float %".4226", ptr %"R25_Float32"
   ; BRA `(.L_x_27_split_0x37a0)
   br label %".L_x_27_split_0x37a0"
 .L_x_27_split_0x37a0:
   ; @P0 LDG.E.SYS R12, [R8+0x8]
-  %".3951" = load i1, ptr %"P0_Bool"
-  %".3952" = icmp ne i1 %".3951", 1
-  br i1 %".3952", label %".L_x_27_split_0x37a0_conditionalExpr_0x37a0", label %".L_x_27_split_0x37b0"
+  %".4231" = load i1, ptr %"P0_Bool"
+  %".4232" = icmp ne i1 %".4231", 1
+  br i1 %".4232", label %".L_x_27_split_0x37a0_conditionalExpr_0x37a0", label %".L_x_27_split_0x37b0"
 .L_x_27_split_0x37a0_conditionalExpr_0x37a0:
   ; LDG.E.SYS R12, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".3955" = load i32, ptr %"R8_Float32_PTR"
-  %".3956" = add i32 %".3955", 8
-  %"for_LDG.279" = inttoptr i32 %".3956" to ptr
-  %".3957" = load float, ptr %"for_LDG.279"
-  store float %".3957", ptr %"R12_Float32"
+  %".4235" = load ptr, ptr %"R8_Float32_PTR"
+  %".4236" = ptrtoint ptr %".4235" to i64
+  %".4237" = add i64 %".4236", 8
+  %"for_LDG.279" = inttoptr i64 %".4237" to ptr
+  %".4238" = load float, ptr %"for_LDG.279"
+  store float %".4238", ptr %"R12_Float32"
   ; BRA `(.L_x_27_split_0x37b0)
   br label %".L_x_27_split_0x37b0"
 .L_x_27_split_0x37b0:
   ; FFMA R44, R11, R13, R44
-  %".3962" = load float, ptr %"R11_Float32"
-  %".3963" = load float, ptr %"R13_Float32"
-  %".3964" = load float, ptr %"R44_Float32"
-  %"fmul.227" = fmul float %".3962", %".3963"
-  %"fadd.202" = fadd float %"fmul.227", %".3964"
+  %".4243" = load float, ptr %"R11_Float32"
+  %".4244" = load float, ptr %"R13_Float32"
+  %".4245" = load float, ptr %"R44_Float32"
+  %"fmul.227" = fmul float %".4243", %".4244"
+  %"fadd.202" = fadd float %"fmul.227", %".4245"
   store float %"fadd.202", ptr %"R44_Float32"
   ; FFMA R56, R13, R10, R56
-  %".3967" = load float, ptr %"R13_Float32"
-  %".3968" = load float, ptr %"R10_Float32"
-  %".3969" = load float, ptr %"R56_Float32"
-  %"fmul.228" = fmul float %".3967", %".3968"
-  %"fadd.203" = fadd float %"fmul.228", %".3969"
+  %".4248" = load float, ptr %"R13_Float32"
+  %".4249" = load float, ptr %"R10_Float32"
+  %".4250" = load float, ptr %"R56_Float32"
+  %"fmul.228" = fmul float %".4248", %".4249"
+  %"fadd.203" = fadd float %"fmul.228", %".4250"
   store float %"fadd.203", ptr %"R56_Float32"
   ; @P0 FFMA R44, R23, R25, R44
-  %".3972" = load i1, ptr %"P0_Bool"
-  %".3973" = icmp ne i1 %".3972", 1
-  br i1 %".3973", label %".L_x_27_split_0x37b0_conditionalExpr_0x37d0", label %".L_x_27_split_0x37e0"
+  %".4253" = load i1, ptr %"P0_Bool"
+  %".4254" = icmp ne i1 %".4253", 1
+  br i1 %".4254", label %".L_x_27_split_0x37b0_conditionalExpr_0x37d0", label %".L_x_27_split_0x37e0"
 .L_x_27_split_0x37b0_conditionalExpr_0x37d0:
   ; FFMA R44, R23, R25, R44
-  %".3976" = load float, ptr %"R23_Float32"
-  %".3977" = load float, ptr %"R25_Float32"
-  %".3978" = load float, ptr %"R44_Float32"
-  %"fmul.229" = fmul float %".3976", %".3977"
-  %"fadd.204" = fadd float %"fmul.229", %".3978"
+  %".4257" = load float, ptr %"R23_Float32"
+  %".4258" = load float, ptr %"R25_Float32"
+  %".4259" = load float, ptr %"R44_Float32"
+  %"fmul.229" = fmul float %".4257", %".4258"
+  %"fadd.204" = fadd float %"fmul.229", %".4259"
   store float %"fadd.204", ptr %"R44_Float32"
   ; BRA `(.L_x_27_split_0x37e0)
   br label %".L_x_27_split_0x37e0"
 .L_x_27_split_0x37e0:
   ; @P0 FFMA R56, R25, R12, R56
-  %".3983" = load i1, ptr %"P0_Bool"
-  %".3984" = icmp ne i1 %".3983", 1
-  br i1 %".3984", label %".L_x_27_split_0x37e0_conditionalExpr_0x37e0", label %".L_x_26"
+  %".4264" = load i1, ptr %"P0_Bool"
+  %".4265" = icmp ne i1 %".4264", 1
+  br i1 %".4265", label %".L_x_27_split_0x37e0_conditionalExpr_0x37e0", label %".L_x_26"
 .L_x_27_split_0x37e0_conditionalExpr_0x37e0:
   ; FFMA R56, R25, R12, R56
-  %".3987" = load float, ptr %"R25_Float32"
-  %".3988" = load float, ptr %"R12_Float32"
-  %".3989" = load float, ptr %"R56_Float32"
-  %"fmul.230" = fmul float %".3987", %".3988"
-  %"fadd.205" = fadd float %"fmul.230", %".3989"
+  %".4268" = load float, ptr %"R25_Float32"
+  %".4269" = load float, ptr %"R12_Float32"
+  %".4270" = load float, ptr %"R56_Float32"
+  %"fmul.230" = fmul float %".4268", %".4269"
+  %"fadd.205" = fadd float %"fmul.230", %".4270"
   store float %"fadd.205", ptr %"R56_Float32"
   ; BRA `(.L_x_26)
   br label %".L_x_26"
 .L_x_26:
   ; LDG.E.SYS R5, [R26]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R26_Float32_PTR", ptr %"R26_Int32", i32 4, i1 0)
-  %".3994" = load i32, ptr %"R26_Float32_PTR"
-  %".3995" = add i32 %".3994", 0
-  %"for_LDG.280" = inttoptr i32 %".3995" to ptr
-  %".3996" = load float, ptr %"for_LDG.280"
-  store float %".3996", ptr %"R5_Float32"
+  %".4275" = load ptr, ptr %"R26_Float32_PTR"
+  %".4276" = ptrtoint ptr %".4275" to i64
+  %".4277" = add i64 %".4276", 0
+  %"for_LDG.280" = inttoptr i64 %".4277" to ptr
+  %".4278" = load float, ptr %"for_LDG.280"
+  store float %".4278", ptr %"R5_Float32"
   ; MOV R4, 0x3bbb989d
   store float 0x41cdddcc40000000, ptr %"R4_Float32"
   ; BMOV.32.CLEAR RZ, B0
@@ -5899,34 +6181,34 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float 0x41d0df0000000000, ptr %"R7_Float32"
   ; BSSY B0, `(.L_x_32)
   ; FADD R5, R5, R44
-  %".4005" = load float, ptr %"R5_Float32"
-  %".4006" = load float, ptr %"R44_Float32"
-  %"fadd.206" = fadd float %".4005", %".4006"
+  %".4287" = load float, ptr %"R5_Float32"
+  %".4288" = load float, ptr %"R44_Float32"
+  %"fadd.206" = fadd float %".4287", %".4288"
   store float %"fadd.206", ptr %"R5_Float32"
   ; FFMA.SAT R4, -R5, R4, 0.5
-  %".4009" = load float, ptr %"R5_Float32"
-  %".4010" = sub float              0x0, %".4009"
-  %".4011" = load float, ptr %"R4_Float32"
-  %"fmul.231" = fmul float %".4010", %".4011"
+  %".4291" = load float, ptr %"R5_Float32"
+  %".4292" = sub float              0x0, %".4291"
+  %".4293" = load float, ptr %"R4_Float32"
+  %"fmul.231" = fmul float %".4292", %".4293"
   %"fadd.207" = fadd float %"fmul.231", 0x3fe0000000000000
   store float %"fadd.207", ptr %"R4_Float32"
   ; FFMA.RM R4, R4, R7, 12582913
-  %".4014" = load float, ptr %"R4_Float32"
-  %".4015" = load float, ptr %"R7_Float32"
-  %"fmul.232" = fmul float %".4014", %".4015"
+  %".4296" = load float, ptr %"R4_Float32"
+  %".4297" = load float, ptr %"R7_Float32"
+  %"fmul.232" = fmul float %".4296", %".4297"
   %"fadd.208" = fadd float %"fmul.232", 0x4168000020000000
   store float %"fadd.208", ptr %"R4_Float32"
   ; FADD R6, R4.reuse, -12583039
-  %".4018" = load float, ptr %"R4_Float32"
-  %"fadd.209" = fadd float %".4018", 0xc168000fe0000000
+  %".4300" = load float, ptr %"R4_Float32"
+  %"fadd.209" = fadd float %".4300", 0xc168000fe0000000
   store float %"fadd.209", ptr %"R6_Float32"
   ; SHF.L.U32 R4, R4, 0x17, RZ
-  %".4021" = icmp ult i32 23, 32
-  %"SHF_min.4" = select  i1 %".4021", i32 23, i32 32
+  %".4303" = icmp ult i32 23, 32
+  %"SHF_min.4" = select  i1 %".4303", i32 23, i32 32
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Int32", ptr %"R4_Float32", i32 4, i1 0)
-  %".4022" = load i32, ptr %"R4_Int32"
+  %".4304" = load i32, ptr %"R4_Int32"
   %"zext.12" = zext i32 0 to i64
-  %"zext.13" = zext i32 %".4022" to i64
+  %"zext.13" = zext i32 %".4304" to i64
   %"zext.14" = zext i32 23 to i64
   %"shl.22" = shl i64 %"zext.12", 32
   %"or.4" = or i64 %"shl.22", %"zext.13"
@@ -5935,50 +6217,50 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"trunc32.4" = trunc i64 %"and.2" to i32
   store i32 %"trunc32.4", ptr %"R4_Int32"
   ; FFMA R6, -R5, 1.4426950216293334961, -R6
-  %".4025" = load float, ptr %"R5_Float32"
-  %".4026" = sub float              0x0, %".4025"
-  %".4027" = load float, ptr %"R6_Float32"
-  %".4028" = sub float              0x0, %".4027"
-  %"fmul.233" = fmul float %".4026", 0x3ff7154760000000
-  %"fadd.210" = fadd float %"fmul.233", %".4028"
+  %".4307" = load float, ptr %"R5_Float32"
+  %".4308" = sub float              0x0, %".4307"
+  %".4309" = load float, ptr %"R6_Float32"
+  %".4310" = sub float              0x0, %".4309"
+  %"fmul.233" = fmul float %".4308", 0x3ff7154760000000
+  %"fadd.210" = fadd float %"fmul.233", %".4310"
   store float %"fadd.210", ptr %"R6_Float32"
   ; FFMA R6, -R5, 1.925963033500011079e-08, R6
-  %".4031" = load float, ptr %"R5_Float32"
-  %".4032" = sub float              0x0, %".4031"
-  %".4033" = load float, ptr %"R6_Float32"
-  %"fmul.234" = fmul float %".4032", 0x3e54ae0c00000000
-  %"fadd.211" = fadd float %"fmul.234", %".4033"
+  %".4313" = load float, ptr %"R5_Float32"
+  %".4314" = sub float              0x0, %".4313"
+  %".4315" = load float, ptr %"R6_Float32"
+  %"fmul.234" = fmul float %".4314", 0x3e54ae0c00000000
+  %"fadd.211" = fadd float %"fmul.234", %".4315"
   store float %"fadd.211", ptr %"R6_Float32"
   ; MUFU.EX2 R5, R6
-  %".4036" = load float, ptr %"R6_Float32"
-  %"llvm_exp2_f32_result.3" = call float @"llvm.exp2.f32"(float %".4036")
+  %".4318" = load float, ptr %"R6_Float32"
+  %"llvm_exp2_f32_result.3" = call float @"llvm.exp2.f32"(float %".4318")
   store float %"llvm_exp2_f32_result.3", ptr %"R5_Float32"
   ; FFMA R24, R4, R5, 1
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32", ptr %"R4_Int32", i32 4, i1 0)
-  %".4039" = load float, ptr %"R4_Float32"
-  %".4040" = load float, ptr %"R5_Float32"
-  %"fmul.235" = fmul float %".4039", %".4040"
+  %".4321" = load float, ptr %"R4_Float32"
+  %".4322" = load float, ptr %"R5_Float32"
+  %"fmul.235" = fmul float %".4321", %".4322"
   %"fadd.212" = fadd float %"fmul.235", 0x3ff0000000000000
   store float %"fadd.212", ptr %"R24_Float32"
   ; IADD3 R4, R24, 0x1800000, RZ
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R24_Int32", ptr %"R24_Float32", i32 4, i1 0)
-  %".4043" = load i32, ptr %"R24_Int32"
-  %"add.256" = add i32 %".4043", 25165824
+  %".4325" = load i32, ptr %"R24_Int32"
+  %"add.256" = add i32 %".4325", 25165824
   %"add.257" = add i32 %"add.256", 0
   store i32 %"add.257", ptr %"R4_Int32"
   ; LOP3.LUT R4, R4, 0x7f800000, RZ, 0xc0, !PT
-  %".4046" = load i32, ptr %"R4_Int32"
-  %".4047" = and i32 %".4046", 2139095040
-  store i32 %".4047", ptr %"R4_Int32"
+  %".4328" = load i32, ptr %"R4_Int32"
+  %".4329" = and i32 %".4328", 2139095040
+  store i32 %".4329", ptr %"R4_Int32"
   ; ISETP.GT.U32.AND P0, PT, R4, 0x1ffffff, PT
-  %".4050" = load i32, ptr %"R4_Int32"
-  %".4051" = load i1, ptr %"PT_Bool"
-  %"cmp.44" = icmp sgt i32 %".4050", 33554431
-  %".4052" = and i1 %"cmp.44", %".4051"
+  %".4332" = load i32, ptr %"R4_Int32"
+  %".4333" = load i1, ptr %"PT_Bool"
+  %"cmp.44" = icmp sgt i32 %".4332", 33554431
+  %".4334" = and i1 %"cmp.44", %".4333"
   ; @P0 BRA `(.L_x_33)
-  %".4054" = load i1, ptr %"P0_Bool"
-  %".4055" = icmp ne i1 %".4054", 1
-  br i1 %".4055", label %".L_x_33", label %".L_x_26_split_0x3910"
+  %".4336" = load i1, ptr %"P0_Bool"
+  %".4337" = icmp ne i1 %".4336", 1
+  br i1 %".4337", label %".L_x_33", label %".L_x_26_split_0x3910"
 .L_x_26_split_0x3910:
   ; MOV R10, 0x3930
   store i32 14640, ptr %"R10_Int32"
@@ -5989,70 +6271,71 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   br label %".L_x_34"
 .L_x_33:
   ; MUFU.RCP R22, R24
-  %".4063" = load float, ptr %"R24_Float32"
-  %".4064" = fdiv float 0x3ff0000000000000, %".4063"
-  store float %".4064", ptr %"R22_Float32"
+  %".4345" = load float, ptr %"R24_Float32"
+  %".4346" = fdiv float 0x3ff0000000000000, %".4345"
+  store float %".4346", ptr %"R22_Float32"
   ; FFMA R4, R24, R22, -1
-  %".4067" = load float, ptr %"R24_Float32"
-  %".4068" = load float, ptr %"R22_Float32"
-  %"fmul.236" = fmul float %".4067", %".4068"
+  %".4349" = load float, ptr %"R24_Float32"
+  %".4350" = load float, ptr %"R22_Float32"
+  %"fmul.236" = fmul float %".4349", %".4350"
   %"fadd.213" = fadd float %"fmul.236", 0xbff0000000000000
   store float %"fadd.213", ptr %"R4_Float32"
   ; FADD.FTZ R5, -R4, -RZ
-  %".4071" = load float, ptr %"R4_Float32"
-  %".4072" = sub float              0x0, %".4071"
-  %"fadd.214" = fadd float %".4072",              0x0
+  %".4353" = load float, ptr %"R4_Float32"
+  %".4354" = sub float              0x0, %".4353"
+  %"fadd.214" = fadd float %".4354",              0x0
   store float %"fadd.214", ptr %"R5_Float32"
   ; FFMA R22, R22, R5, R22
-  %".4075" = load float, ptr %"R22_Float32"
-  %".4076" = load float, ptr %"R5_Float32"
-  %".4077" = load float, ptr %"R22_Float32"
-  %"fmul.237" = fmul float %".4075", %".4076"
-  %"fadd.215" = fadd float %"fmul.237", %".4077"
+  %".4357" = load float, ptr %"R22_Float32"
+  %".4358" = load float, ptr %"R5_Float32"
+  %".4359" = load float, ptr %"R22_Float32"
+  %"fmul.237" = fmul float %".4357", %".4358"
+  %"fadd.215" = fadd float %"fmul.237", %".4359"
   store float %"fadd.215", ptr %"R22_Float32"
 .L_x_34:
   ; BSYNC B0
 .L_x_32:
   ; LDG.E.SYS R5, [R32]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R32_Float32_PTR", ptr %"R32_Int32", i32 4, i1 0)
-  %".4081" = load i32, ptr %"R32_Float32_PTR"
-  %".4082" = add i32 %".4081", 0
-  %"for_LDG.281" = inttoptr i32 %".4082" to ptr
-  %".4083" = load float, ptr %"for_LDG.281"
-  store float %".4083", ptr %"R5_Float32"
+  %".4363" = load ptr, ptr %"R32_Float32_PTR"
+  %".4364" = ptrtoint ptr %".4363" to i64
+  %".4365" = add i64 %".4364", 0
+  %"for_LDG.281" = inttoptr i64 %".4365" to ptr
+  %".4366" = load float, ptr %"for_LDG.281"
+  store float %".4366", ptr %"R5_Float32"
   ; MOV R4, 0x3bbb989d
   store float 0x41cdddcc40000000, ptr %"R4_Float32"
   ; MOV R7, 0x437c0000
   store float 0x41d0df0000000000, ptr %"R7_Float32"
   ; FADD R5, R5, R56
-  %".4090" = load float, ptr %"R5_Float32"
-  %".4091" = load float, ptr %"R56_Float32"
-  %"fadd.216" = fadd float %".4090", %".4091"
+  %".4373" = load float, ptr %"R5_Float32"
+  %".4374" = load float, ptr %"R56_Float32"
+  %"fadd.216" = fadd float %".4373", %".4374"
   store float %"fadd.216", ptr %"R5_Float32"
   ; FFMA.SAT R4, -R5, R4, 0.5
-  %".4094" = load float, ptr %"R5_Float32"
-  %".4095" = sub float              0x0, %".4094"
-  %".4096" = load float, ptr %"R4_Float32"
-  %"fmul.238" = fmul float %".4095", %".4096"
+  %".4377" = load float, ptr %"R5_Float32"
+  %".4378" = sub float              0x0, %".4377"
+  %".4379" = load float, ptr %"R4_Float32"
+  %"fmul.238" = fmul float %".4378", %".4379"
   %"fadd.217" = fadd float %"fmul.238", 0x3fe0000000000000
   store float %"fadd.217", ptr %"R4_Float32"
   ; FFMA.RM R4, R4, R7, 12582913
-  %".4099" = load float, ptr %"R4_Float32"
-  %".4100" = load float, ptr %"R7_Float32"
-  %"fmul.239" = fmul float %".4099", %".4100"
+  %".4382" = load float, ptr %"R4_Float32"
+  %".4383" = load float, ptr %"R7_Float32"
+  %"fmul.239" = fmul float %".4382", %".4383"
   %"fadd.218" = fadd float %"fmul.239", 0x4168000020000000
   store float %"fadd.218", ptr %"R4_Float32"
   ; FADD R6, R4.reuse, -12583039
-  %".4103" = load float, ptr %"R4_Float32"
-  %"fadd.219" = fadd float %".4103", 0xc168000fe0000000
+  %".4386" = load float, ptr %"R4_Float32"
+  %"fadd.219" = fadd float %".4386", 0xc168000fe0000000
   store float %"fadd.219", ptr %"R6_Float32"
   ; SHF.L.U32 R23, R4, 0x17, RZ
-  %".4106" = icmp ult i32 23, 32
-  %"SHF_min.5" = select  i1 %".4106", i32 23, i32 32
+  %".4389" = icmp ult i32 23, 32
+  %"SHF_min.5" = select  i1 %".4389", i32 23, i32 32
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Int32", ptr %"R4_Float32", i32 4, i1 0)
-  %".4107" = load i32, ptr %"R4_Int32"
+  %".4390" = load i32, ptr %"R4_Int32"
   %"zext.15" = zext i32 0 to i64
-  %"zext.16" = zext i32 %".4107" to i64
+  %"zext.16" = zext i32 %".4390" to i64
   %"zext.17" = zext i32 23 to i64
   %"shl.24" = shl i64 %"zext.15", 32
   %"or.5" = or i64 %"shl.24", %"zext.16"
@@ -6061,1331 +6344,1394 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"trunc32.5" = trunc i64 %"and.3" to i32
   store i32 %"trunc32.5", ptr %"R23_Int32"
   ; FFMA R6, -R5, 1.4426950216293334961, -R6
-  %".4110" = load float, ptr %"R5_Float32"
-  %".4111" = sub float              0x0, %".4110"
-  %".4112" = load float, ptr %"R6_Float32"
-  %".4113" = sub float              0x0, %".4112"
-  %"fmul.240" = fmul float %".4111", 0x3ff7154760000000
-  %"fadd.220" = fadd float %"fmul.240", %".4113"
+  %".4393" = load float, ptr %"R5_Float32"
+  %".4394" = sub float              0x0, %".4393"
+  %".4395" = load float, ptr %"R6_Float32"
+  %".4396" = sub float              0x0, %".4395"
+  %"fmul.240" = fmul float %".4394", 0x3ff7154760000000
+  %"fadd.220" = fadd float %"fmul.240", %".4396"
   store float %"fadd.220", ptr %"R6_Float32"
   ; FFMA R6, -R5, 1.925963033500011079e-08, R6
-  %".4116" = load float, ptr %"R5_Float32"
-  %".4117" = sub float              0x0, %".4116"
-  %".4118" = load float, ptr %"R6_Float32"
-  %"fmul.241" = fmul float %".4117", 0x3e54ae0c00000000
-  %"fadd.221" = fadd float %"fmul.241", %".4118"
+  %".4399" = load float, ptr %"R5_Float32"
+  %".4400" = sub float              0x0, %".4399"
+  %".4401" = load float, ptr %"R6_Float32"
+  %"fmul.241" = fmul float %".4400", 0x3e54ae0c00000000
+  %"fadd.221" = fadd float %"fmul.241", %".4401"
   store float %"fadd.221", ptr %"R6_Float32"
   ; MUFU.EX2 R6, R6
-  %".4121" = load float, ptr %"R6_Float32"
-  %"llvm_exp2_f32_result.4" = call float @"llvm.exp2.f32"(float %".4121")
+  %".4404" = load float, ptr %"R6_Float32"
+  %"llvm_exp2_f32_result.4" = call float @"llvm.exp2.f32"(float %".4404")
   store float %"llvm_exp2_f32_result.4", ptr %"R6_Float32"
   ; FFMA R23, R23, R6, 1
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R23_Float32", ptr %"R23_Int32", i32 4, i1 0)
-  %".4124" = load float, ptr %"R23_Float32"
-  %".4125" = load float, ptr %"R6_Float32"
-  %"fmul.242" = fmul float %".4124", %".4125"
+  %".4407" = load float, ptr %"R23_Float32"
+  %".4408" = load float, ptr %"R6_Float32"
+  %"fmul.242" = fmul float %".4407", %".4408"
   %"fadd.222" = fadd float %"fmul.242", 0x3ff0000000000000
   store float %"fadd.222", ptr %"R23_Float32"
   ; @!P4 BRA `(.L_x_35)
-  %".4128" = load i1, ptr %"P4_Bool"
-  %".4129" = icmp eq i1 %".4128", 1
-  br i1 %".4129", label %".L_x_35", label %".L_x_32_split_0x3a60"
+  %".4411" = load i1, ptr %"P4_Bool"
+  %".4412" = icmp eq i1 %".4411", 1
+  br i1 %".4412", label %".L_x_35", label %".L_x_32_split_0x3a60"
 .L_x_32_split_0x3a60:
   ; ISETP.GE.U32.AND P0, PT, R18, 0x3, PT
-  %".4132" = load i32, ptr %"R18_Int32"
-  %".4133" = load i1, ptr %"PT_Bool"
-  %"cmp.45" = icmp sge i32 %".4132", 3
-  %".4134" = and i1 %"cmp.45", %".4133"
+  %".4415" = load i32, ptr %"R18_Int32"
+  %".4416" = load i1, ptr %"PT_Bool"
+  %"cmp.45" = icmp sge i32 %".4415", 3
+  %".4417" = and i1 %"cmp.45", %".4416"
   ; MOV R34, RZ
-  %".4136" = load i32, ptr %"RZ_Int32"
-  store i32 %".4136", ptr %"R34_Int32"
+  %".4419" = load i32, ptr %"RZ_Int32"
+  store i32 %".4419", ptr %"R34_Int32"
   ; @!P0 BRA `(.L_x_36)
-  %".4139" = load i1, ptr %"P0_Bool"
-  %".4140" = icmp eq i1 %".4139", 1
-  br i1 %".4140", label %".L_x_36", label %".L_x_32_split_0x3a90"
+  %".4422" = load i1, ptr %"P0_Bool"
+  %".4423" = icmp eq i1 %".4422", 1
+  br i1 %".4423", label %".L_x_36", label %".L_x_32_split_0x3a90"
 .L_x_32_split_0x3a90:
   ; ISETP.GT.AND P0, PT, R20, RZ, PT
-  %".4143" = load i32, ptr %"R20_Int32"
-  %".4144" = load i1, ptr %"PT_Bool"
-  %"cmp.46" = icmp sgt i32 %".4143", 0
-  %".4145" = and i1 %"cmp.46", %".4144"
+  %".4426" = load i32, ptr %"R20_Int32"
+  %".4427" = load i1, ptr %"PT_Bool"
+  %"cmp.46" = icmp sgt i32 %".4426", 0
+  %".4428" = and i1 %"cmp.46", %".4427"
   ; MOV R34, RZ
-  %".4147" = load i32, ptr %"RZ_Int32"
-  store i32 %".4147", ptr %"R34_Int32"
+  %".4430" = load i32, ptr %"RZ_Int32"
+  store i32 %".4430", ptr %"R34_Int32"
   ; MOV R35, R20
-  %".4150" = load i32, ptr %"R20_Int32"
-  store i32 %".4150", ptr %"R35_Int32"
+  %".4433" = load i32, ptr %"R20_Int32"
+  store i32 %".4433", ptr %"R35_Int32"
   ; @!P0 BRA `(.L_x_37)
-  %".4153" = load i1, ptr %"P0_Bool"
-  %".4154" = icmp eq i1 %".4153", 1
-  br i1 %".4154", label %".L_x_37", label %".L_x_32_split_0x3ad0"
+  %".4436" = load i1, ptr %"P0_Bool"
+  %".4437" = icmp eq i1 %".4436", 1
+  br i1 %".4437", label %".L_x_37", label %".L_x_32_split_0x3ad0"
 .L_x_32_split_0x3ad0:
   ; ISETP.GT.AND P1, PT, R35, 0xc, PT
-  %".4157" = load i32, ptr %"R35_Int32"
-  %".4158" = load i1, ptr %"PT_Bool"
-  %"cmp.47" = icmp sgt i32 %".4157", 12
-  %".4159" = and i1 %"cmp.47", %".4158"
+  %".4440" = load i32, ptr %"R35_Int32"
+  %".4441" = load i1, ptr %"PT_Bool"
+  %"cmp.47" = icmp sgt i32 %".4440", 12
+  %".4442" = and i1 %"cmp.47", %".4441"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
-  %".4161" = and i1 1, 1
-  %".4162" = or i1 %".4161", 1
+  %".4444" = and i1 1, 1
+  %".4445" = or i1 %".4444", 1
   ; @!P1 BRA `(.L_x_38)
-  %".4164" = load i1, ptr %"P1_Bool"
-  %".4165" = icmp eq i1 %".4164", 1
-  br i1 %".4165", label %".L_x_38", label %".L_x_32_split_0x3b00"
+  %".4447" = load i1, ptr %"P1_Bool"
+  %".4448" = icmp eq i1 %".4447", 1
+  br i1 %".4448", label %".L_x_38", label %".L_x_32_split_0x3b00"
 .L_x_32_split_0x3b00:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".4168" = xor i1 1, 1
-  %".4169" = and i1 %".4168", 1
-  %".4170" = and i1 %".4169", 1
+  %".4451" = xor i1 1, 1
+  %".4452" = and i1 %".4451", 1
+  %".4453" = and i1 %".4452", 1
 .L_x_39:
   ; MOV R41, 0x4
   store i32 4, ptr %"R41_Int32"
   ; IADD3 R10, R3, R34, RZ
-  %".4174" = load i32, ptr %"R3_Int32"
-  %".4175" = load i32, ptr %"R34_Int32"
-  %"add.258" = add i32 %".4174", %".4175"
+  %".4457" = load i32, ptr %"R3_Int32"
+  %".4458" = load i32, ptr %"R34_Int32"
+  %"add.258" = add i32 %".4457", %".4458"
   %"add.259" = add i32 %"add.258", 0
   store i32 %"add.259", ptr %"R10_Int32"
   ; IMAD.WIDE R12, R34, R41, c[0x0][0x168]
-  %".4178" = load i32, ptr %"R34_Int32"
-  %".4179" = load i32, ptr %"R41_Int32"
-  %"mul.90" = mul i32 %".4178", %".4179"
+  %".4461" = load i32, ptr %"R34_Int32"
+  %".4462" = load i32, ptr %"R41_Int32"
+  %"mul.90" = mul i32 %".4461", %".4462"
   %"add.260" = add i32 %"mul.90", %"Arg_3"
   store i32 %"add.260", ptr %"R12_Int32"
   ; IMAD.WIDE R10, R10, R41, c[0x0][0x170]
-  %".4182" = load i32, ptr %"R10_Int32"
-  %".4183" = load i32, ptr %"R41_Int32"
-  %"mul.91" = mul i32 %".4182", %".4183"
+  %".4465" = load i32, ptr %"R10_Int32"
+  %".4466" = load i32, ptr %"R41_Int32"
+  %"mul.91" = mul i32 %".4465", %".4466"
   %"add.261" = add i32 %"mul.91", %"Arg_4"
   store i32 %"add.261", ptr %"R10_Int32"
   ; IADD3 R4, R34, 0x4, RZ
-  %".4186" = load i32, ptr %"R34_Int32"
-  %"add.262" = add i32 %".4186", 4
+  %".4469" = load i32, ptr %"R34_Int32"
+  %"add.262" = add i32 %".4469", 4
   %"add.263" = add i32 %"add.262", 0
   store i32 %"add.263", ptr %"R4_Int32"
   ; LDG.E.SYS R25, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4189" = load i32, ptr %"R12_Float32_PTR"
-  %".4190" = add i32 %".4189", 0
-  %"for_LDG.282" = inttoptr i32 %".4190" to ptr
-  %".4191" = load float, ptr %"for_LDG.282"
-  store float %".4191", ptr %"R25_Float32"
+  %".4472" = load ptr, ptr %"R12_Float32_PTR"
+  %".4473" = ptrtoint ptr %".4472" to i64
+  %".4474" = add i64 %".4473", 0
+  %"for_LDG.282" = inttoptr i64 %".4474" to ptr
+  %".4475" = load float, ptr %"for_LDG.282"
+  store float %".4475", ptr %"R25_Float32"
   ; IADD3 R6, R3, R4, RZ
-  %".4194" = load i32, ptr %"R3_Int32"
-  %".4195" = load i32, ptr %"R4_Int32"
-  %"add.264" = add i32 %".4194", %".4195"
+  %".4478" = load i32, ptr %"R3_Int32"
+  %".4479" = load i32, ptr %"R4_Int32"
+  %"add.264" = add i32 %".4478", %".4479"
   %"add.265" = add i32 %"add.264", 0
   store i32 %"add.265", ptr %"R6_Int32"
   ; LDG.E.SYS R36, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4198" = load i32, ptr %"R10_Float32_PTR"
-  %".4199" = add i32 %".4198", 0
-  %"for_LDG.283" = inttoptr i32 %".4199" to ptr
-  %".4200" = load float, ptr %"for_LDG.283"
-  store float %".4200", ptr %"R36_Float32"
+  %".4482" = load ptr, ptr %"R10_Float32_PTR"
+  %".4483" = ptrtoint ptr %".4482" to i64
+  %".4484" = add i64 %".4483", 0
+  %"for_LDG.283" = inttoptr i64 %".4484" to ptr
+  %".4485" = load float, ptr %"for_LDG.283"
+  store float %".4485", ptr %"R36_Float32"
   ; LDG.E.SYS R37, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4203" = load i32, ptr %"R12_Float32_PTR"
-  %".4204" = add i32 %".4203", 4
-  %"for_LDG.284" = inttoptr i32 %".4204" to ptr
-  %".4205" = load float, ptr %"for_LDG.284"
-  store float %".4205", ptr %"R37_Float32"
+  %".4488" = load ptr, ptr %"R12_Float32_PTR"
+  %".4489" = ptrtoint ptr %".4488" to i64
+  %".4490" = add i64 %".4489", 4
+  %"for_LDG.284" = inttoptr i64 %".4490" to ptr
+  %".4491" = load float, ptr %"for_LDG.284"
+  store float %".4491", ptr %"R37_Float32"
   ; IMAD.WIDE R4, R4, R41, c[0x0][0x168]
-  %".4208" = load i32, ptr %"R4_Int32"
-  %".4209" = load i32, ptr %"R41_Int32"
-  %"mul.92" = mul i32 %".4208", %".4209"
+  %".4494" = load i32, ptr %"R4_Int32"
+  %".4495" = load i32, ptr %"R41_Int32"
+  %"mul.92" = mul i32 %".4494", %".4495"
   %"add.266" = add i32 %"mul.92", %"Arg_3"
   store i32 %"add.266", ptr %"R4_Int32"
   ; LDG.E.SYS R24, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4212" = load i32, ptr %"R10_Float32_PTR"
-  %".4213" = add i32 %".4212", 4
-  %"for_LDG.285" = inttoptr i32 %".4213" to ptr
-  %".4214" = load float, ptr %"for_LDG.285"
-  store float %".4214", ptr %"R24_Float32"
+  %".4498" = load ptr, ptr %"R10_Float32_PTR"
+  %".4499" = ptrtoint ptr %".4498" to i64
+  %".4500" = add i64 %".4499", 4
+  %"for_LDG.285" = inttoptr i64 %".4500" to ptr
+  %".4501" = load float, ptr %"for_LDG.285"
+  store float %".4501", ptr %"R24_Float32"
   ; LDG.E.SYS R39, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4217" = load i32, ptr %"R12_Float32_PTR"
-  %".4218" = add i32 %".4217", 8
-  %"for_LDG.286" = inttoptr i32 %".4218" to ptr
-  %".4219" = load float, ptr %"for_LDG.286"
-  store float %".4219", ptr %"R39_Float32"
+  %".4504" = load ptr, ptr %"R12_Float32_PTR"
+  %".4505" = ptrtoint ptr %".4504" to i64
+  %".4506" = add i64 %".4505", 8
+  %"for_LDG.286" = inttoptr i64 %".4506" to ptr
+  %".4507" = load float, ptr %"for_LDG.286"
+  store float %".4507", ptr %"R39_Float32"
   ; IMAD.WIDE R6, R6, R41, c[0x0][0x170]
-  %".4222" = load i32, ptr %"R6_Int32"
-  %".4223" = load i32, ptr %"R41_Int32"
-  %"mul.93" = mul i32 %".4222", %".4223"
+  %".4510" = load i32, ptr %"R6_Int32"
+  %".4511" = load i32, ptr %"R41_Int32"
+  %"mul.93" = mul i32 %".4510", %".4511"
   %"add.267" = add i32 %"mul.93", %"Arg_4"
   store i32 %"add.267", ptr %"R6_Int32"
   ; LDG.E.SYS R38, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4226" = load i32, ptr %"R10_Float32_PTR"
-  %".4227" = add i32 %".4226", 8
-  %"for_LDG.287" = inttoptr i32 %".4227" to ptr
-  %".4228" = load float, ptr %"for_LDG.287"
-  store float %".4228", ptr %"R38_Float32"
+  %".4514" = load ptr, ptr %"R10_Float32_PTR"
+  %".4515" = ptrtoint ptr %".4514" to i64
+  %".4516" = add i64 %".4515", 8
+  %"for_LDG.287" = inttoptr i64 %".4516" to ptr
+  %".4517" = load float, ptr %"for_LDG.287"
+  store float %".4517", ptr %"R38_Float32"
   ; LDG.E.SYS R43, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4231" = load i32, ptr %"R12_Float32_PTR"
-  %".4232" = add i32 %".4231", 12
-  %"for_LDG.288" = inttoptr i32 %".4232" to ptr
-  %".4233" = load float, ptr %"for_LDG.288"
-  store float %".4233", ptr %"R43_Float32"
+  %".4520" = load ptr, ptr %"R12_Float32_PTR"
+  %".4521" = ptrtoint ptr %".4520" to i64
+  %".4522" = add i64 %".4521", 12
+  %"for_LDG.288" = inttoptr i64 %".4522" to ptr
+  %".4523" = load float, ptr %"for_LDG.288"
+  store float %".4523", ptr %"R43_Float32"
   ; IADD3 R8, R34, 0x8, RZ
-  %".4236" = load i32, ptr %"R34_Int32"
-  %"add.268" = add i32 %".4236", 8
+  %".4526" = load i32, ptr %"R34_Int32"
+  %"add.268" = add i32 %".4526", 8
   %"add.269" = add i32 %"add.268", 0
   store i32 %"add.269", ptr %"R8_Int32"
   ; LDG.E.SYS R46, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4239" = load i32, ptr %"R10_Float32_PTR"
-  %".4240" = add i32 %".4239", 12
-  %"for_LDG.289" = inttoptr i32 %".4240" to ptr
-  %".4241" = load float, ptr %"for_LDG.289"
-  store float %".4241", ptr %"R46_Float32"
+  %".4529" = load ptr, ptr %"R10_Float32_PTR"
+  %".4530" = ptrtoint ptr %".4529" to i64
+  %".4531" = add i64 %".4530", 12
+  %"for_LDG.289" = inttoptr i64 %".4531" to ptr
+  %".4532" = load float, ptr %"for_LDG.289"
+  store float %".4532", ptr %"R46_Float32"
   ; LDG.E.SYS R51, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4244" = load i32, ptr %"R4_Float32_PTR"
-  %".4245" = add i32 %".4244", 0
-  %"for_LDG.290" = inttoptr i32 %".4245" to ptr
-  %".4246" = load float, ptr %"for_LDG.290"
-  store float %".4246", ptr %"R51_Float32"
+  %".4535" = load ptr, ptr %"R4_Float32_PTR"
+  %".4536" = ptrtoint ptr %".4535" to i64
+  %".4537" = add i64 %".4536", 0
+  %"for_LDG.290" = inttoptr i64 %".4537" to ptr
+  %".4538" = load float, ptr %"for_LDG.290"
+  store float %".4538", ptr %"R51_Float32"
   ; IADD3 R50, R3, R8, RZ
-  %".4249" = load i32, ptr %"R3_Int32"
-  %".4250" = load i32, ptr %"R8_Int32"
-  %"add.270" = add i32 %".4249", %".4250"
+  %".4541" = load i32, ptr %"R3_Int32"
+  %".4542" = load i32, ptr %"R8_Int32"
+  %"add.270" = add i32 %".4541", %".4542"
   %"add.271" = add i32 %"add.270", 0
   store i32 %"add.271", ptr %"R50_Int32"
   ; LDG.E.SYS R44, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4253" = load i32, ptr %"R6_Float32_PTR"
-  %".4254" = add i32 %".4253", 0
-  %"for_LDG.291" = inttoptr i32 %".4254" to ptr
-  %".4255" = load float, ptr %"for_LDG.291"
-  store float %".4255", ptr %"R44_Float32"
+  %".4545" = load ptr, ptr %"R6_Float32_PTR"
+  %".4546" = ptrtoint ptr %".4545" to i64
+  %".4547" = add i64 %".4546", 0
+  %"for_LDG.291" = inttoptr i64 %".4547" to ptr
+  %".4548" = load float, ptr %"for_LDG.291"
+  store float %".4548", ptr %"R44_Float32"
   ; LDG.E.SYS R47, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4258" = load i32, ptr %"R4_Float32_PTR"
-  %".4259" = add i32 %".4258", 4
-  %"for_LDG.292" = inttoptr i32 %".4259" to ptr
-  %".4260" = load float, ptr %"for_LDG.292"
-  store float %".4260", ptr %"R47_Float32"
+  %".4551" = load ptr, ptr %"R4_Float32_PTR"
+  %".4552" = ptrtoint ptr %".4551" to i64
+  %".4553" = add i64 %".4552", 4
+  %"for_LDG.292" = inttoptr i64 %".4553" to ptr
+  %".4554" = load float, ptr %"for_LDG.292"
+  store float %".4554", ptr %"R47_Float32"
   ; IMAD.WIDE R8, R8, R41, c[0x0][0x168]
-  %".4263" = load i32, ptr %"R8_Int32"
-  %".4264" = load i32, ptr %"R41_Int32"
-  %"mul.94" = mul i32 %".4263", %".4264"
+  %".4557" = load i32, ptr %"R8_Int32"
+  %".4558" = load i32, ptr %"R41_Int32"
+  %"mul.94" = mul i32 %".4557", %".4558"
   %"add.272" = add i32 %"mul.94", %"Arg_3"
   store i32 %"add.272", ptr %"R8_Int32"
   ; LDG.E.SYS R42, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4267" = load i32, ptr %"R6_Float32_PTR"
-  %".4268" = add i32 %".4267", 4
-  %"for_LDG.293" = inttoptr i32 %".4268" to ptr
-  %".4269" = load float, ptr %"for_LDG.293"
-  store float %".4269", ptr %"R42_Float32"
+  %".4561" = load ptr, ptr %"R6_Float32_PTR"
+  %".4562" = ptrtoint ptr %".4561" to i64
+  %".4563" = add i64 %".4562", 4
+  %"for_LDG.293" = inttoptr i64 %".4563" to ptr
+  %".4564" = load float, ptr %"for_LDG.293"
+  store float %".4564", ptr %"R42_Float32"
   ; LDG.E.SYS R45, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4272" = load i32, ptr %"R4_Float32_PTR"
-  %".4273" = add i32 %".4272", 8
-  %"for_LDG.294" = inttoptr i32 %".4273" to ptr
-  %".4274" = load float, ptr %"for_LDG.294"
-  store float %".4274", ptr %"R45_Float32"
+  %".4567" = load ptr, ptr %"R4_Float32_PTR"
+  %".4568" = ptrtoint ptr %".4567" to i64
+  %".4569" = add i64 %".4568", 8
+  %"for_LDG.294" = inttoptr i64 %".4569" to ptr
+  %".4570" = load float, ptr %"for_LDG.294"
+  store float %".4570", ptr %"R45_Float32"
   ; IMAD.WIDE R10, R50, R41, c[0x0][0x170]
-  %".4277" = load i32, ptr %"R50_Int32"
-  %".4278" = load i32, ptr %"R41_Int32"
-  %"mul.95" = mul i32 %".4277", %".4278"
+  %".4573" = load i32, ptr %"R50_Int32"
+  %".4574" = load i32, ptr %"R41_Int32"
+  %"mul.95" = mul i32 %".4573", %".4574"
   %"add.273" = add i32 %"mul.95", %"Arg_4"
   store i32 %"add.273", ptr %"R10_Int32"
   ; LDG.E.SYS R40, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4281" = load i32, ptr %"R6_Float32_PTR"
-  %".4282" = add i32 %".4281", 8
-  %"for_LDG.295" = inttoptr i32 %".4282" to ptr
-  %".4283" = load float, ptr %"for_LDG.295"
-  store float %".4283", ptr %"R40_Float32"
+  %".4577" = load ptr, ptr %"R6_Float32_PTR"
+  %".4578" = ptrtoint ptr %".4577" to i64
+  %".4579" = add i64 %".4578", 8
+  %"for_LDG.295" = inttoptr i64 %".4579" to ptr
+  %".4580" = load float, ptr %"for_LDG.295"
+  store float %".4580", ptr %"R40_Float32"
   ; LDG.E.SYS R53, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4286" = load i32, ptr %"R4_Float32_PTR"
-  %".4287" = add i32 %".4286", 12
-  %"for_LDG.296" = inttoptr i32 %".4287" to ptr
-  %".4288" = load float, ptr %"for_LDG.296"
-  store float %".4288", ptr %"R53_Float32"
+  %".4583" = load ptr, ptr %"R4_Float32_PTR"
+  %".4584" = ptrtoint ptr %".4583" to i64
+  %".4585" = add i64 %".4584", 12
+  %"for_LDG.296" = inttoptr i64 %".4585" to ptr
+  %".4586" = load float, ptr %"for_LDG.296"
+  store float %".4586", ptr %"R53_Float32"
   ; IADD3 R12, R34, 0xc, RZ
-  %".4291" = load i32, ptr %"R34_Int32"
-  %"add.274" = add i32 %".4291", 12
+  %".4589" = load i32, ptr %"R34_Int32"
+  %"add.274" = add i32 %".4589", 12
   %"add.275" = add i32 %"add.274", 0
   store i32 %"add.275", ptr %"R12_Int32"
   ; LDG.E.SYS R54, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4294" = load i32, ptr %"R6_Float32_PTR"
-  %".4295" = add i32 %".4294", 12
-  %"for_LDG.297" = inttoptr i32 %".4295" to ptr
-  %".4296" = load float, ptr %"for_LDG.297"
-  store float %".4296", ptr %"R54_Float32"
+  %".4592" = load ptr, ptr %"R6_Float32_PTR"
+  %".4593" = ptrtoint ptr %".4592" to i64
+  %".4594" = add i64 %".4593", 12
+  %"for_LDG.297" = inttoptr i64 %".4594" to ptr
+  %".4595" = load float, ptr %"for_LDG.297"
+  store float %".4595", ptr %"R54_Float32"
   ; LDG.E.SYS R59, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4299" = load i32, ptr %"R8_Float32_PTR"
-  %".4300" = add i32 %".4299", 0
-  %"for_LDG.298" = inttoptr i32 %".4300" to ptr
-  %".4301" = load float, ptr %"for_LDG.298"
-  store float %".4301", ptr %"R59_Float32"
+  %".4598" = load ptr, ptr %"R8_Float32_PTR"
+  %".4599" = ptrtoint ptr %".4598" to i64
+  %".4600" = add i64 %".4599", 0
+  %"for_LDG.298" = inttoptr i64 %".4600" to ptr
+  %".4601" = load float, ptr %"for_LDG.298"
+  store float %".4601", ptr %"R59_Float32"
   ; IADD3 R58, R3, R12, RZ
-  %".4304" = load i32, ptr %"R3_Int32"
-  %".4305" = load i32, ptr %"R12_Int32"
-  %"add.276" = add i32 %".4304", %".4305"
+  %".4604" = load i32, ptr %"R3_Int32"
+  %".4605" = load i32, ptr %"R12_Int32"
+  %"add.276" = add i32 %".4604", %".4605"
   %"add.277" = add i32 %"add.276", 0
   store i32 %"add.277", ptr %"R58_Int32"
   ; LDG.E.SYS R52, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4308" = load i32, ptr %"R10_Float32_PTR"
-  %".4309" = add i32 %".4308", 0
-  %"for_LDG.299" = inttoptr i32 %".4309" to ptr
-  %".4310" = load float, ptr %"for_LDG.299"
-  store float %".4310", ptr %"R52_Float32"
+  %".4608" = load ptr, ptr %"R10_Float32_PTR"
+  %".4609" = ptrtoint ptr %".4608" to i64
+  %".4610" = add i64 %".4609", 0
+  %"for_LDG.299" = inttoptr i64 %".4610" to ptr
+  %".4611" = load float, ptr %"for_LDG.299"
+  store float %".4611", ptr %"R52_Float32"
   ; LDG.E.SYS R57, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4313" = load i32, ptr %"R8_Float32_PTR"
-  %".4314" = add i32 %".4313", 4
-  %"for_LDG.300" = inttoptr i32 %".4314" to ptr
-  %".4315" = load float, ptr %"for_LDG.300"
-  store float %".4315", ptr %"R57_Float32"
+  %".4614" = load ptr, ptr %"R8_Float32_PTR"
+  %".4615" = ptrtoint ptr %".4614" to i64
+  %".4616" = add i64 %".4615", 4
+  %"for_LDG.300" = inttoptr i64 %".4616" to ptr
+  %".4617" = load float, ptr %"for_LDG.300"
+  store float %".4617", ptr %"R57_Float32"
   ; IMAD.WIDE R12, R12, R41, c[0x0][0x168]
-  %".4318" = load i32, ptr %"R12_Int32"
-  %".4319" = load i32, ptr %"R41_Int32"
-  %"mul.96" = mul i32 %".4318", %".4319"
+  %".4620" = load i32, ptr %"R12_Int32"
+  %".4621" = load i32, ptr %"R41_Int32"
+  %"mul.96" = mul i32 %".4620", %".4621"
   %"add.278" = add i32 %"mul.96", %"Arg_3"
   store i32 %"add.278", ptr %"R12_Int32"
   ; LDG.E.SYS R50, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4322" = load i32, ptr %"R10_Float32_PTR"
-  %".4323" = add i32 %".4322", 4
-  %"for_LDG.301" = inttoptr i32 %".4323" to ptr
-  %".4324" = load float, ptr %"for_LDG.301"
-  store float %".4324", ptr %"R50_Float32"
+  %".4624" = load ptr, ptr %"R10_Float32_PTR"
+  %".4625" = ptrtoint ptr %".4624" to i64
+  %".4626" = add i64 %".4625", 4
+  %"for_LDG.301" = inttoptr i64 %".4626" to ptr
+  %".4627" = load float, ptr %"for_LDG.301"
+  store float %".4627", ptr %"R50_Float32"
   ; LDG.E.SYS R55, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4327" = load i32, ptr %"R8_Float32_PTR"
-  %".4328" = add i32 %".4327", 8
-  %"for_LDG.302" = inttoptr i32 %".4328" to ptr
-  %".4329" = load float, ptr %"for_LDG.302"
-  store float %".4329", ptr %"R55_Float32"
+  %".4630" = load ptr, ptr %"R8_Float32_PTR"
+  %".4631" = ptrtoint ptr %".4630" to i64
+  %".4632" = add i64 %".4631", 8
+  %"for_LDG.302" = inttoptr i64 %".4632" to ptr
+  %".4633" = load float, ptr %"for_LDG.302"
+  store float %".4633", ptr %"R55_Float32"
   ; IMAD.WIDE R4, R58, R41, c[0x0][0x170]
-  %".4332" = load i32, ptr %"R58_Int32"
-  %".4333" = load i32, ptr %"R41_Int32"
-  %"mul.97" = mul i32 %".4332", %".4333"
+  %".4636" = load i32, ptr %"R58_Int32"
+  %".4637" = load i32, ptr %"R41_Int32"
+  %"mul.97" = mul i32 %".4636", %".4637"
   %"add.279" = add i32 %"mul.97", %"Arg_4"
   store i32 %"add.279", ptr %"R4_Int32"
   ; LDG.E.SYS R61, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4336" = load i32, ptr %"R8_Float32_PTR"
-  %".4337" = add i32 %".4336", 12
-  %"for_LDG.303" = inttoptr i32 %".4337" to ptr
-  %".4338" = load float, ptr %"for_LDG.303"
-  store float %".4338", ptr %"R61_Float32"
+  %".4640" = load ptr, ptr %"R8_Float32_PTR"
+  %".4641" = ptrtoint ptr %".4640" to i64
+  %".4642" = add i64 %".4641", 12
+  %"for_LDG.303" = inttoptr i64 %".4642" to ptr
+  %".4643" = load float, ptr %"for_LDG.303"
+  store float %".4643", ptr %"R61_Float32"
   ; LDG.E.SYS R56, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4341" = load i32, ptr %"R10_Float32_PTR"
-  %".4342" = add i32 %".4341", 8
-  %"for_LDG.304" = inttoptr i32 %".4342" to ptr
-  %".4343" = load float, ptr %"for_LDG.304"
-  store float %".4343", ptr %"R56_Float32"
+  %".4646" = load ptr, ptr %"R10_Float32_PTR"
+  %".4647" = ptrtoint ptr %".4646" to i64
+  %".4648" = add i64 %".4647", 8
+  %"for_LDG.304" = inttoptr i64 %".4648" to ptr
+  %".4649" = load float, ptr %"for_LDG.304"
+  store float %".4649", ptr %"R56_Float32"
   ; LDG.E.SYS R58, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4346" = load i32, ptr %"R10_Float32_PTR"
-  %".4347" = add i32 %".4346", 12
-  %"for_LDG.305" = inttoptr i32 %".4347" to ptr
-  %".4348" = load float, ptr %"for_LDG.305"
-  store float %".4348", ptr %"R58_Float32"
+  %".4652" = load ptr, ptr %"R10_Float32_PTR"
+  %".4653" = ptrtoint ptr %".4652" to i64
+  %".4654" = add i64 %".4653", 12
+  %"for_LDG.305" = inttoptr i64 %".4654" to ptr
+  %".4655" = load float, ptr %"for_LDG.305"
+  store float %".4655", ptr %"R58_Float32"
   ; LDG.E.SYS R6, [R12]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4351" = load i32, ptr %"R12_Float32_PTR"
-  %".4352" = add i32 %".4351", 0
-  %"for_LDG.306" = inttoptr i32 %".4352" to ptr
-  %".4353" = load float, ptr %"for_LDG.306"
-  store float %".4353", ptr %"R6_Float32"
+  %".4658" = load ptr, ptr %"R12_Float32_PTR"
+  %".4659" = ptrtoint ptr %".4658" to i64
+  %".4660" = add i64 %".4659", 0
+  %"for_LDG.306" = inttoptr i64 %".4660" to ptr
+  %".4661" = load float, ptr %"for_LDG.306"
+  store float %".4661", ptr %"R6_Float32"
   ; LDG.E.SYS R41, [R12+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4356" = load i32, ptr %"R12_Float32_PTR"
-  %".4357" = add i32 %".4356", 4
-  %"for_LDG.307" = inttoptr i32 %".4357" to ptr
-  %".4358" = load float, ptr %"for_LDG.307"
-  store float %".4358", ptr %"R41_Float32"
+  %".4664" = load ptr, ptr %"R12_Float32_PTR"
+  %".4665" = ptrtoint ptr %".4664" to i64
+  %".4666" = add i64 %".4665", 4
+  %"for_LDG.307" = inttoptr i64 %".4666" to ptr
+  %".4667" = load float, ptr %"for_LDG.307"
+  store float %".4667", ptr %"R41_Float32"
   ; LDG.E.SYS R10, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4361" = load i32, ptr %"R4_Float32_PTR"
-  %".4362" = add i32 %".4361", 0
-  %"for_LDG.308" = inttoptr i32 %".4362" to ptr
-  %".4363" = load float, ptr %"for_LDG.308"
-  store float %".4363", ptr %"R10_Float32"
+  %".4670" = load ptr, ptr %"R4_Float32_PTR"
+  %".4671" = ptrtoint ptr %".4670" to i64
+  %".4672" = add i64 %".4671", 0
+  %"for_LDG.308" = inttoptr i64 %".4672" to ptr
+  %".4673" = load float, ptr %"for_LDG.308"
+  store float %".4673", ptr %"R10_Float32"
   ; LDG.E.SYS R7, [R12+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4366" = load i32, ptr %"R12_Float32_PTR"
-  %".4367" = add i32 %".4366", 8
-  %"for_LDG.309" = inttoptr i32 %".4367" to ptr
-  %".4368" = load float, ptr %"for_LDG.309"
-  store float %".4368", ptr %"R7_Float32"
+  %".4676" = load ptr, ptr %"R12_Float32_PTR"
+  %".4677" = ptrtoint ptr %".4676" to i64
+  %".4678" = add i64 %".4677", 8
+  %"for_LDG.309" = inttoptr i64 %".4678" to ptr
+  %".4679" = load float, ptr %"for_LDG.309"
+  store float %".4679", ptr %"R7_Float32"
   ; LDG.E.SYS R9, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4371" = load i32, ptr %"R4_Float32_PTR"
-  %".4372" = add i32 %".4371", 4
-  %"for_LDG.310" = inttoptr i32 %".4372" to ptr
-  %".4373" = load float, ptr %"for_LDG.310"
-  store float %".4373", ptr %"R9_Float32"
+  %".4682" = load ptr, ptr %"R4_Float32_PTR"
+  %".4683" = ptrtoint ptr %".4682" to i64
+  %".4684" = add i64 %".4683", 4
+  %"for_LDG.310" = inttoptr i64 %".4684" to ptr
+  %".4685" = load float, ptr %"for_LDG.310"
+  store float %".4685", ptr %"R9_Float32"
   ; LDG.E.SYS R60, [R12+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R12_Float32_PTR", ptr %"R12_Int32", i32 4, i1 0)
-  %".4376" = load i32, ptr %"R12_Float32_PTR"
-  %".4377" = add i32 %".4376", 12
-  %"for_LDG.311" = inttoptr i32 %".4377" to ptr
-  %".4378" = load float, ptr %"for_LDG.311"
-  store float %".4378", ptr %"R60_Float32"
+  %".4688" = load ptr, ptr %"R12_Float32_PTR"
+  %".4689" = ptrtoint ptr %".4688" to i64
+  %".4690" = add i64 %".4689", 12
+  %"for_LDG.311" = inttoptr i64 %".4690" to ptr
+  %".4691" = load float, ptr %"for_LDG.311"
+  store float %".4691", ptr %"R60_Float32"
   ; LDG.E.SYS R8, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4381" = load i32, ptr %"R4_Float32_PTR"
-  %".4382" = add i32 %".4381", 8
-  %"for_LDG.312" = inttoptr i32 %".4382" to ptr
-  %".4383" = load float, ptr %"for_LDG.312"
-  store float %".4383", ptr %"R8_Float32"
+  %".4694" = load ptr, ptr %"R4_Float32_PTR"
+  %".4695" = ptrtoint ptr %".4694" to i64
+  %".4696" = add i64 %".4695", 8
+  %"for_LDG.312" = inttoptr i64 %".4696" to ptr
+  %".4697" = load float, ptr %"for_LDG.312"
+  store float %".4697", ptr %"R8_Float32"
   ; LDG.E.SYS R11, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4386" = load i32, ptr %"R4_Float32_PTR"
-  %".4387" = add i32 %".4386", 12
-  %"for_LDG.313" = inttoptr i32 %".4387" to ptr
-  %".4388" = load float, ptr %"for_LDG.313"
-  store float %".4388", ptr %"R11_Float32"
+  %".4700" = load ptr, ptr %"R4_Float32_PTR"
+  %".4701" = ptrtoint ptr %".4700" to i64
+  %".4702" = add i64 %".4701", 12
+  %"for_LDG.313" = inttoptr i64 %".4702" to ptr
+  %".4703" = load float, ptr %"for_LDG.313"
+  store float %".4703", ptr %"R11_Float32"
   ; IADD3 R35, R35, -0x10, RZ
-  %".4391" = load i32, ptr %"R35_Int32"
-  %"add.280" = add i32 %".4391", -16
+  %".4706" = load i32, ptr %"R35_Int32"
+  %"add.280" = add i32 %".4706", -16
   %"add.281" = add i32 %"add.280", 0
   store i32 %"add.281", ptr %"R35_Int32"
   ; ISETP.GT.AND P1, PT, R35, 0xc, PT
-  %".4394" = load i32, ptr %"R35_Int32"
-  %".4395" = load i1, ptr %"PT_Bool"
-  %"cmp.48" = icmp sgt i32 %".4394", 12
-  %".4396" = and i1 %"cmp.48", %".4395"
+  %".4709" = load i32, ptr %"R35_Int32"
+  %".4710" = load i1, ptr %"PT_Bool"
+  %"cmp.48" = icmp sgt i32 %".4709", 12
+  %".4711" = and i1 %"cmp.48", %".4710"
   ; IADD3 R34, R34, 0x10, RZ
-  %".4398" = load i32, ptr %"R34_Int32"
-  %"add.282" = add i32 %".4398", 16
+  %".4713" = load i32, ptr %"R34_Int32"
+  %"add.282" = add i32 %".4713", 16
   %"add.283" = add i32 %"add.282", 0
   store i32 %"add.283", ptr %"R34_Int32"
   ; FMUL R25, R25, R22
-  %".4401" = load float, ptr %"R25_Float32"
-  %".4402" = load float, ptr %"R22_Float32"
-  %"fmul.243" = fmul float %".4401", %".4402"
+  %".4716" = load float, ptr %"R25_Float32"
+  %".4717" = load float, ptr %"R22_Float32"
+  %"fmul.243" = fmul float %".4716", %".4717"
   store float %"fmul.243", ptr %"R25_Float32"
   ; FFMA R25, R25, R36, R21
-  %".4405" = load float, ptr %"R25_Float32"
-  %".4406" = load float, ptr %"R36_Float32"
-  %".4407" = load float, ptr %"R21_Float32"
-  %"fmul.244" = fmul float %".4405", %".4406"
-  %"fadd.223" = fadd float %"fmul.244", %".4407"
+  %".4720" = load float, ptr %"R25_Float32"
+  %".4721" = load float, ptr %"R36_Float32"
+  %".4722" = load float, ptr %"R21_Float32"
+  %"fmul.244" = fmul float %".4720", %".4721"
+  %"fadd.223" = fadd float %"fmul.244", %".4722"
   store float %"fadd.223", ptr %"R25_Float32"
   ; FMUL R37, R37, R22
-  %".4410" = load float, ptr %"R37_Float32"
-  %".4411" = load float, ptr %"R22_Float32"
-  %"fmul.245" = fmul float %".4410", %".4411"
+  %".4725" = load float, ptr %"R37_Float32"
+  %".4726" = load float, ptr %"R22_Float32"
+  %"fmul.245" = fmul float %".4725", %".4726"
   store float %"fmul.245", ptr %"R37_Float32"
   ; FFMA R25, R37, R24, R25
-  %".4414" = load float, ptr %"R37_Float32"
-  %".4415" = load float, ptr %"R24_Float32"
-  %".4416" = load float, ptr %"R25_Float32"
-  %"fmul.246" = fmul float %".4414", %".4415"
-  %"fadd.224" = fadd float %"fmul.246", %".4416"
+  %".4729" = load float, ptr %"R37_Float32"
+  %".4730" = load float, ptr %"R24_Float32"
+  %".4731" = load float, ptr %"R25_Float32"
+  %"fmul.246" = fmul float %".4729", %".4730"
+  %"fadd.224" = fadd float %"fmul.246", %".4731"
   store float %"fadd.224", ptr %"R25_Float32"
   ; FMUL R39, R39, R22
-  %".4419" = load float, ptr %"R39_Float32"
-  %".4420" = load float, ptr %"R22_Float32"
-  %"fmul.247" = fmul float %".4419", %".4420"
+  %".4734" = load float, ptr %"R39_Float32"
+  %".4735" = load float, ptr %"R22_Float32"
+  %"fmul.247" = fmul float %".4734", %".4735"
   store float %"fmul.247", ptr %"R39_Float32"
   ; FFMA R25, R39, R38, R25
-  %".4423" = load float, ptr %"R39_Float32"
-  %".4424" = load float, ptr %"R38_Float32"
-  %".4425" = load float, ptr %"R25_Float32"
-  %"fmul.248" = fmul float %".4423", %".4424"
-  %"fadd.225" = fadd float %"fmul.248", %".4425"
+  %".4738" = load float, ptr %"R39_Float32"
+  %".4739" = load float, ptr %"R38_Float32"
+  %".4740" = load float, ptr %"R25_Float32"
+  %"fmul.248" = fmul float %".4738", %".4739"
+  %"fadd.225" = fadd float %"fmul.248", %".4740"
   store float %"fadd.225", ptr %"R25_Float32"
   ; FMUL R43, R43, R22
-  %".4428" = load float, ptr %"R43_Float32"
-  %".4429" = load float, ptr %"R22_Float32"
-  %"fmul.249" = fmul float %".4428", %".4429"
+  %".4743" = load float, ptr %"R43_Float32"
+  %".4744" = load float, ptr %"R22_Float32"
+  %"fmul.249" = fmul float %".4743", %".4744"
   store float %"fmul.249", ptr %"R43_Float32"
   ; FFMA R25, R43, R46, R25
-  %".4432" = load float, ptr %"R43_Float32"
-  %".4433" = load float, ptr %"R46_Float32"
-  %".4434" = load float, ptr %"R25_Float32"
-  %"fmul.250" = fmul float %".4432", %".4433"
-  %"fadd.226" = fadd float %"fmul.250", %".4434"
+  %".4747" = load float, ptr %"R43_Float32"
+  %".4748" = load float, ptr %"R46_Float32"
+  %".4749" = load float, ptr %"R25_Float32"
+  %"fmul.250" = fmul float %".4747", %".4748"
+  %"fadd.226" = fadd float %"fmul.250", %".4749"
   store float %"fadd.226", ptr %"R25_Float32"
   ; FMUL R51, R51, R22
-  %".4437" = load float, ptr %"R51_Float32"
-  %".4438" = load float, ptr %"R22_Float32"
-  %"fmul.251" = fmul float %".4437", %".4438"
+  %".4752" = load float, ptr %"R51_Float32"
+  %".4753" = load float, ptr %"R22_Float32"
+  %"fmul.251" = fmul float %".4752", %".4753"
   store float %"fmul.251", ptr %"R51_Float32"
   ; FFMA R25, R51, R44, R25
-  %".4441" = load float, ptr %"R51_Float32"
-  %".4442" = load float, ptr %"R44_Float32"
-  %".4443" = load float, ptr %"R25_Float32"
-  %"fmul.252" = fmul float %".4441", %".4442"
-  %"fadd.227" = fadd float %"fmul.252", %".4443"
+  %".4756" = load float, ptr %"R51_Float32"
+  %".4757" = load float, ptr %"R44_Float32"
+  %".4758" = load float, ptr %"R25_Float32"
+  %"fmul.252" = fmul float %".4756", %".4757"
+  %"fadd.227" = fadd float %"fmul.252", %".4758"
   store float %"fadd.227", ptr %"R25_Float32"
   ; FMUL R47, R47, R22
-  %".4446" = load float, ptr %"R47_Float32"
-  %".4447" = load float, ptr %"R22_Float32"
-  %"fmul.253" = fmul float %".4446", %".4447"
+  %".4761" = load float, ptr %"R47_Float32"
+  %".4762" = load float, ptr %"R22_Float32"
+  %"fmul.253" = fmul float %".4761", %".4762"
   store float %"fmul.253", ptr %"R47_Float32"
   ; FFMA R25, R47, R42, R25
-  %".4450" = load float, ptr %"R47_Float32"
-  %".4451" = load float, ptr %"R42_Float32"
-  %".4452" = load float, ptr %"R25_Float32"
-  %"fmul.254" = fmul float %".4450", %".4451"
-  %"fadd.228" = fadd float %"fmul.254", %".4452"
+  %".4765" = load float, ptr %"R47_Float32"
+  %".4766" = load float, ptr %"R42_Float32"
+  %".4767" = load float, ptr %"R25_Float32"
+  %"fmul.254" = fmul float %".4765", %".4766"
+  %"fadd.228" = fadd float %"fmul.254", %".4767"
   store float %"fadd.228", ptr %"R25_Float32"
   ; FMUL R45, R45, R22
-  %".4455" = load float, ptr %"R45_Float32"
-  %".4456" = load float, ptr %"R22_Float32"
-  %"fmul.255" = fmul float %".4455", %".4456"
+  %".4770" = load float, ptr %"R45_Float32"
+  %".4771" = load float, ptr %"R22_Float32"
+  %"fmul.255" = fmul float %".4770", %".4771"
   store float %"fmul.255", ptr %"R45_Float32"
   ; FFMA R25, R45, R40, R25
-  %".4459" = load float, ptr %"R45_Float32"
-  %".4460" = load float, ptr %"R40_Float32"
-  %".4461" = load float, ptr %"R25_Float32"
-  %"fmul.256" = fmul float %".4459", %".4460"
-  %"fadd.229" = fadd float %"fmul.256", %".4461"
+  %".4774" = load float, ptr %"R45_Float32"
+  %".4775" = load float, ptr %"R40_Float32"
+  %".4776" = load float, ptr %"R25_Float32"
+  %"fmul.256" = fmul float %".4774", %".4775"
+  %"fadd.229" = fadd float %"fmul.256", %".4776"
   store float %"fadd.229", ptr %"R25_Float32"
   ; FMUL R53, R53, R22
-  %".4464" = load float, ptr %"R53_Float32"
-  %".4465" = load float, ptr %"R22_Float32"
-  %"fmul.257" = fmul float %".4464", %".4465"
+  %".4779" = load float, ptr %"R53_Float32"
+  %".4780" = load float, ptr %"R22_Float32"
+  %"fmul.257" = fmul float %".4779", %".4780"
   store float %"fmul.257", ptr %"R53_Float32"
   ; FFMA R25, R53, R54, R25
-  %".4468" = load float, ptr %"R53_Float32"
-  %".4469" = load float, ptr %"R54_Float32"
-  %".4470" = load float, ptr %"R25_Float32"
-  %"fmul.258" = fmul float %".4468", %".4469"
-  %"fadd.230" = fadd float %"fmul.258", %".4470"
+  %".4783" = load float, ptr %"R53_Float32"
+  %".4784" = load float, ptr %"R54_Float32"
+  %".4785" = load float, ptr %"R25_Float32"
+  %"fmul.258" = fmul float %".4783", %".4784"
+  %"fadd.230" = fadd float %"fmul.258", %".4785"
   store float %"fadd.230", ptr %"R25_Float32"
   ; FMUL R59, R59, R22
-  %".4473" = load float, ptr %"R59_Float32"
-  %".4474" = load float, ptr %"R22_Float32"
-  %"fmul.259" = fmul float %".4473", %".4474"
+  %".4788" = load float, ptr %"R59_Float32"
+  %".4789" = load float, ptr %"R22_Float32"
+  %"fmul.259" = fmul float %".4788", %".4789"
   store float %"fmul.259", ptr %"R59_Float32"
   ; FFMA R25, R59, R52, R25
-  %".4477" = load float, ptr %"R59_Float32"
-  %".4478" = load float, ptr %"R52_Float32"
-  %".4479" = load float, ptr %"R25_Float32"
-  %"fmul.260" = fmul float %".4477", %".4478"
-  %"fadd.231" = fadd float %"fmul.260", %".4479"
+  %".4792" = load float, ptr %"R59_Float32"
+  %".4793" = load float, ptr %"R52_Float32"
+  %".4794" = load float, ptr %"R25_Float32"
+  %"fmul.260" = fmul float %".4792", %".4793"
+  %"fadd.231" = fadd float %"fmul.260", %".4794"
   store float %"fadd.231", ptr %"R25_Float32"
   ; FMUL R57, R57, R22
-  %".4482" = load float, ptr %"R57_Float32"
-  %".4483" = load float, ptr %"R22_Float32"
-  %"fmul.261" = fmul float %".4482", %".4483"
+  %".4797" = load float, ptr %"R57_Float32"
+  %".4798" = load float, ptr %"R22_Float32"
+  %"fmul.261" = fmul float %".4797", %".4798"
   store float %"fmul.261", ptr %"R57_Float32"
   ; FFMA R25, R57, R50, R25
-  %".4486" = load float, ptr %"R57_Float32"
-  %".4487" = load float, ptr %"R50_Float32"
-  %".4488" = load float, ptr %"R25_Float32"
-  %"fmul.262" = fmul float %".4486", %".4487"
-  %"fadd.232" = fadd float %"fmul.262", %".4488"
+  %".4801" = load float, ptr %"R57_Float32"
+  %".4802" = load float, ptr %"R50_Float32"
+  %".4803" = load float, ptr %"R25_Float32"
+  %"fmul.262" = fmul float %".4801", %".4802"
+  %"fadd.232" = fadd float %"fmul.262", %".4803"
   store float %"fadd.232", ptr %"R25_Float32"
   ; FMUL R55, R55, R22.reuse
-  %".4491" = load float, ptr %"R55_Float32"
-  %".4492" = load float, ptr %"R22_Float32"
-  %"fmul.263" = fmul float %".4491", %".4492"
+  %".4806" = load float, ptr %"R55_Float32"
+  %".4807" = load float, ptr %"R22_Float32"
+  %"fmul.263" = fmul float %".4806", %".4807"
   store float %"fmul.263", ptr %"R55_Float32"
   ; FMUL R61, R61, R22
-  %".4495" = load float, ptr %"R61_Float32"
-  %".4496" = load float, ptr %"R22_Float32"
-  %"fmul.264" = fmul float %".4495", %".4496"
+  %".4810" = load float, ptr %"R61_Float32"
+  %".4811" = load float, ptr %"R22_Float32"
+  %"fmul.264" = fmul float %".4810", %".4811"
   store float %"fmul.264", ptr %"R61_Float32"
   ; FFMA R25, R55, R56, R25
-  %".4499" = load float, ptr %"R55_Float32"
-  %".4500" = load float, ptr %"R56_Float32"
-  %".4501" = load float, ptr %"R25_Float32"
-  %"fmul.265" = fmul float %".4499", %".4500"
-  %"fadd.233" = fadd float %"fmul.265", %".4501"
+  %".4814" = load float, ptr %"R55_Float32"
+  %".4815" = load float, ptr %"R56_Float32"
+  %".4816" = load float, ptr %"R25_Float32"
+  %"fmul.265" = fmul float %".4814", %".4815"
+  %"fadd.233" = fadd float %"fmul.265", %".4816"
   store float %"fadd.233", ptr %"R25_Float32"
   ; FFMA R25, R61, R58, R25
-  %".4504" = load float, ptr %"R61_Float32"
-  %".4505" = load float, ptr %"R58_Float32"
-  %".4506" = load float, ptr %"R25_Float32"
-  %"fmul.266" = fmul float %".4504", %".4505"
-  %"fadd.234" = fadd float %"fmul.266", %".4506"
+  %".4819" = load float, ptr %"R61_Float32"
+  %".4820" = load float, ptr %"R58_Float32"
+  %".4821" = load float, ptr %"R25_Float32"
+  %"fmul.266" = fmul float %".4819", %".4820"
+  %"fadd.234" = fadd float %"fmul.266", %".4821"
   store float %"fadd.234", ptr %"R25_Float32"
   ; FMUL R6, R6, R22.reuse
-  %".4509" = load float, ptr %"R6_Float32"
-  %".4510" = load float, ptr %"R22_Float32"
-  %"fmul.267" = fmul float %".4509", %".4510"
+  %".4824" = load float, ptr %"R6_Float32"
+  %".4825" = load float, ptr %"R22_Float32"
+  %"fmul.267" = fmul float %".4824", %".4825"
   store float %"fmul.267", ptr %"R6_Float32"
   ; FMUL R41, R41, R22
-  %".4513" = load float, ptr %"R41_Float32"
-  %".4514" = load float, ptr %"R22_Float32"
-  %"fmul.268" = fmul float %".4513", %".4514"
+  %".4828" = load float, ptr %"R41_Float32"
+  %".4829" = load float, ptr %"R22_Float32"
+  %"fmul.268" = fmul float %".4828", %".4829"
   store float %"fmul.268", ptr %"R41_Float32"
   ; FFMA R6, R6, R10, R25
-  %".4517" = load float, ptr %"R6_Float32"
-  %".4518" = load float, ptr %"R10_Float32"
-  %".4519" = load float, ptr %"R25_Float32"
-  %"fmul.269" = fmul float %".4517", %".4518"
-  %"fadd.235" = fadd float %"fmul.269", %".4519"
+  %".4832" = load float, ptr %"R6_Float32"
+  %".4833" = load float, ptr %"R10_Float32"
+  %".4834" = load float, ptr %"R25_Float32"
+  %"fmul.269" = fmul float %".4832", %".4833"
+  %"fadd.235" = fadd float %"fmul.269", %".4834"
   store float %"fadd.235", ptr %"R6_Float32"
   ; FMUL R7, R7, R22
-  %".4522" = load float, ptr %"R7_Float32"
-  %".4523" = load float, ptr %"R22_Float32"
-  %"fmul.270" = fmul float %".4522", %".4523"
+  %".4837" = load float, ptr %"R7_Float32"
+  %".4838" = load float, ptr %"R22_Float32"
+  %"fmul.270" = fmul float %".4837", %".4838"
   store float %"fmul.270", ptr %"R7_Float32"
   ; FFMA R9, R41, R9, R6
-  %".4526" = load float, ptr %"R41_Float32"
-  %".4527" = load float, ptr %"R9_Float32"
-  %".4528" = load float, ptr %"R6_Float32"
-  %"fmul.271" = fmul float %".4526", %".4527"
-  %"fadd.236" = fadd float %"fmul.271", %".4528"
+  %".4841" = load float, ptr %"R41_Float32"
+  %".4842" = load float, ptr %"R9_Float32"
+  %".4843" = load float, ptr %"R6_Float32"
+  %"fmul.271" = fmul float %".4841", %".4842"
+  %"fadd.236" = fadd float %"fmul.271", %".4843"
   store float %"fadd.236", ptr %"R9_Float32"
   ; FMUL R60, R60, R22
-  %".4531" = load float, ptr %"R60_Float32"
-  %".4532" = load float, ptr %"R22_Float32"
-  %"fmul.272" = fmul float %".4531", %".4532"
+  %".4846" = load float, ptr %"R60_Float32"
+  %".4847" = load float, ptr %"R22_Float32"
+  %"fmul.272" = fmul float %".4846", %".4847"
   store float %"fmul.272", ptr %"R60_Float32"
   ; FFMA R8, R7, R8, R9
-  %".4535" = load float, ptr %"R7_Float32"
-  %".4536" = load float, ptr %"R8_Float32"
-  %".4537" = load float, ptr %"R9_Float32"
-  %"fmul.273" = fmul float %".4535", %".4536"
-  %"fadd.237" = fadd float %"fmul.273", %".4537"
+  %".4850" = load float, ptr %"R7_Float32"
+  %".4851" = load float, ptr %"R8_Float32"
+  %".4852" = load float, ptr %"R9_Float32"
+  %"fmul.273" = fmul float %".4850", %".4851"
+  %"fadd.237" = fadd float %"fmul.273", %".4852"
   store float %"fadd.237", ptr %"R8_Float32"
   ; FFMA R21, R60, R11, R8
-  %".4540" = load float, ptr %"R60_Float32"
-  %".4541" = load float, ptr %"R11_Float32"
-  %".4542" = load float, ptr %"R8_Float32"
-  %"fmul.274" = fmul float %".4540", %".4541"
-  %"fadd.238" = fadd float %"fmul.274", %".4542"
+  %".4855" = load float, ptr %"R60_Float32"
+  %".4856" = load float, ptr %"R11_Float32"
+  %".4857" = load float, ptr %"R8_Float32"
+  %"fmul.274" = fmul float %".4855", %".4856"
+  %"fadd.238" = fadd float %"fmul.274", %".4857"
   store float %"fadd.238", ptr %"R21_Float32"
   ; @P1 BRA `(.L_x_39)
-  %".4545" = load i1, ptr %"P1_Bool"
-  %".4546" = icmp ne i1 %".4545", 1
-  br i1 %".4546", label %".L_x_39", label %".L_x_38"
+  %".4860" = load i1, ptr %"P1_Bool"
+  %".4861" = icmp ne i1 %".4860", 1
+  br i1 %".4861", label %".L_x_39", label %".L_x_38"
 .L_x_38:
   ; ISETP.GT.AND P1, PT, R35, 0x4, PT
-  %".4549" = load i32, ptr %"R35_Int32"
-  %".4550" = load i1, ptr %"PT_Bool"
-  %"cmp.49" = icmp sgt i32 %".4549", 4
-  %".4551" = and i1 %"cmp.49", %".4550"
+  %".4864" = load i32, ptr %"R35_Int32"
+  %".4865" = load i1, ptr %"PT_Bool"
+  %"cmp.49" = icmp sgt i32 %".4864", 4
+  %".4866" = and i1 %"cmp.49", %".4865"
   ; @!P1 BRA `(.L_x_40)
-  %".4553" = load i1, ptr %"P1_Bool"
-  %".4554" = icmp eq i1 %".4553", 1
-  br i1 %".4554", label %".L_x_40", label %".L_x_38_split_0x4070"
+  %".4868" = load i1, ptr %"P1_Bool"
+  %".4869" = icmp eq i1 %".4868", 1
+  br i1 %".4869", label %".L_x_40", label %".L_x_38_split_0x4070"
 .L_x_38_split_0x4070:
   ; MOV R11, 0x4
   store i32 4, ptr %"R11_Int32"
   ; IADD3 R6, R3, R34, RZ
-  %".4559" = load i32, ptr %"R3_Int32"
-  %".4560" = load i32, ptr %"R34_Int32"
-  %"add.284" = add i32 %".4559", %".4560"
+  %".4874" = load i32, ptr %"R3_Int32"
+  %".4875" = load i32, ptr %"R34_Int32"
+  %"add.284" = add i32 %".4874", %".4875"
   %"add.285" = add i32 %"add.284", 0
   store i32 %"add.285", ptr %"R6_Int32"
   ; IMAD.WIDE R8, R34, R11, c[0x0][0x168]
-  %".4563" = load i32, ptr %"R34_Int32"
-  %".4564" = load i32, ptr %"R11_Int32"
-  %"mul.98" = mul i32 %".4563", %".4564"
+  %".4878" = load i32, ptr %"R34_Int32"
+  %".4879" = load i32, ptr %"R11_Int32"
+  %"mul.98" = mul i32 %".4878", %".4879"
   %"add.286" = add i32 %"mul.98", %"Arg_3"
   store i32 %"add.286", ptr %"R8_Int32"
   ; IMAD.WIDE R6, R6, R11, c[0x0][0x170]
-  %".4567" = load i32, ptr %"R6_Int32"
-  %".4568" = load i32, ptr %"R11_Int32"
-  %"mul.99" = mul i32 %".4567", %".4568"
+  %".4882" = load i32, ptr %"R6_Int32"
+  %".4883" = load i32, ptr %"R11_Int32"
+  %"mul.99" = mul i32 %".4882", %".4883"
   %"add.287" = add i32 %"mul.99", %"Arg_4"
   store i32 %"add.287", ptr %"R6_Int32"
   ; IADD3 R4, R34, 0x4, RZ
-  %".4571" = load i32, ptr %"R34_Int32"
-  %"add.288" = add i32 %".4571", 4
+  %".4886" = load i32, ptr %"R34_Int32"
+  %"add.288" = add i32 %".4886", 4
   %"add.289" = add i32 %"add.288", 0
   store i32 %"add.289", ptr %"R4_Int32"
   ; LDG.E.SYS R13, [R8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4574" = load i32, ptr %"R8_Float32_PTR"
-  %".4575" = add i32 %".4574", 0
-  %"for_LDG.314" = inttoptr i32 %".4575" to ptr
-  %".4576" = load float, ptr %"for_LDG.314"
-  store float %".4576", ptr %"R13_Float32"
+  %".4889" = load ptr, ptr %"R8_Float32_PTR"
+  %".4890" = ptrtoint ptr %".4889" to i64
+  %".4891" = add i64 %".4890", 0
+  %"for_LDG.314" = inttoptr i64 %".4891" to ptr
+  %".4892" = load float, ptr %"for_LDG.314"
+  store float %".4892", ptr %"R13_Float32"
   ; IADD3 R10, R3, R4, RZ
-  %".4579" = load i32, ptr %"R3_Int32"
-  %".4580" = load i32, ptr %"R4_Int32"
-  %"add.290" = add i32 %".4579", %".4580"
+  %".4895" = load i32, ptr %"R3_Int32"
+  %".4896" = load i32, ptr %"R4_Int32"
+  %"add.290" = add i32 %".4895", %".4896"
   %"add.291" = add i32 %"add.290", 0
   store i32 %"add.291", ptr %"R10_Int32"
   ; LDG.E.SYS R12, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4583" = load i32, ptr %"R6_Float32_PTR"
-  %".4584" = add i32 %".4583", 0
-  %"for_LDG.315" = inttoptr i32 %".4584" to ptr
-  %".4585" = load float, ptr %"for_LDG.315"
-  store float %".4585", ptr %"R12_Float32"
+  %".4899" = load ptr, ptr %"R6_Float32_PTR"
+  %".4900" = ptrtoint ptr %".4899" to i64
+  %".4901" = add i64 %".4900", 0
+  %"for_LDG.315" = inttoptr i64 %".4901" to ptr
+  %".4902" = load float, ptr %"for_LDG.315"
+  store float %".4902", ptr %"R12_Float32"
   ; LDG.E.SYS R25, [R8+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4588" = load i32, ptr %"R8_Float32_PTR"
-  %".4589" = add i32 %".4588", 4
-  %"for_LDG.316" = inttoptr i32 %".4589" to ptr
-  %".4590" = load float, ptr %"for_LDG.316"
-  store float %".4590", ptr %"R25_Float32"
+  %".4905" = load ptr, ptr %"R8_Float32_PTR"
+  %".4906" = ptrtoint ptr %".4905" to i64
+  %".4907" = add i64 %".4906", 4
+  %"for_LDG.316" = inttoptr i64 %".4907" to ptr
+  %".4908" = load float, ptr %"for_LDG.316"
+  store float %".4908", ptr %"R25_Float32"
   ; IMAD.WIDE R4, R4, R11, c[0x0][0x168]
-  %".4593" = load i32, ptr %"R4_Int32"
-  %".4594" = load i32, ptr %"R11_Int32"
-  %"mul.100" = mul i32 %".4593", %".4594"
+  %".4911" = load i32, ptr %"R4_Int32"
+  %".4912" = load i32, ptr %"R11_Int32"
+  %"mul.100" = mul i32 %".4911", %".4912"
   %"add.292" = add i32 %"mul.100", %"Arg_3"
   store i32 %"add.292", ptr %"R4_Int32"
   ; LDG.E.SYS R24, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4597" = load i32, ptr %"R6_Float32_PTR"
-  %".4598" = add i32 %".4597", 4
-  %"for_LDG.317" = inttoptr i32 %".4598" to ptr
-  %".4599" = load float, ptr %"for_LDG.317"
-  store float %".4599", ptr %"R24_Float32"
+  %".4915" = load ptr, ptr %"R6_Float32_PTR"
+  %".4916" = ptrtoint ptr %".4915" to i64
+  %".4917" = add i64 %".4916", 4
+  %"for_LDG.317" = inttoptr i64 %".4917" to ptr
+  %".4918" = load float, ptr %"for_LDG.317"
+  store float %".4918", ptr %"R24_Float32"
   ; LDG.E.SYS R37, [R8+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4602" = load i32, ptr %"R8_Float32_PTR"
-  %".4603" = add i32 %".4602", 8
-  %"for_LDG.318" = inttoptr i32 %".4603" to ptr
-  %".4604" = load float, ptr %"for_LDG.318"
-  store float %".4604", ptr %"R37_Float32"
+  %".4921" = load ptr, ptr %"R8_Float32_PTR"
+  %".4922" = ptrtoint ptr %".4921" to i64
+  %".4923" = add i64 %".4922", 8
+  %"for_LDG.318" = inttoptr i64 %".4923" to ptr
+  %".4924" = load float, ptr %"for_LDG.318"
+  store float %".4924", ptr %"R37_Float32"
   ; IMAD.WIDE R10, R10, R11, c[0x0][0x170]
-  %".4607" = load i32, ptr %"R10_Int32"
-  %".4608" = load i32, ptr %"R11_Int32"
-  %"mul.101" = mul i32 %".4607", %".4608"
+  %".4927" = load i32, ptr %"R10_Int32"
+  %".4928" = load i32, ptr %"R11_Int32"
+  %"mul.101" = mul i32 %".4927", %".4928"
   %"add.293" = add i32 %"mul.101", %"Arg_4"
   store i32 %"add.293", ptr %"R10_Int32"
   ; LDG.E.SYS R36, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4611" = load i32, ptr %"R6_Float32_PTR"
-  %".4612" = add i32 %".4611", 8
-  %"for_LDG.319" = inttoptr i32 %".4612" to ptr
-  %".4613" = load float, ptr %"for_LDG.319"
-  store float %".4613", ptr %"R36_Float32"
+  %".4931" = load ptr, ptr %"R6_Float32_PTR"
+  %".4932" = ptrtoint ptr %".4931" to i64
+  %".4933" = add i64 %".4932", 8
+  %"for_LDG.319" = inttoptr i64 %".4933" to ptr
+  %".4934" = load float, ptr %"for_LDG.319"
+  store float %".4934", ptr %"R36_Float32"
   ; LDG.E.SYS R39, [R8+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R8_Float32_PTR", ptr %"R8_Int32", i32 4, i1 0)
-  %".4616" = load i32, ptr %"R8_Float32_PTR"
-  %".4617" = add i32 %".4616", 12
-  %"for_LDG.320" = inttoptr i32 %".4617" to ptr
-  %".4618" = load float, ptr %"for_LDG.320"
-  store float %".4618", ptr %"R39_Float32"
+  %".4937" = load ptr, ptr %"R8_Float32_PTR"
+  %".4938" = ptrtoint ptr %".4937" to i64
+  %".4939" = add i64 %".4938", 12
+  %"for_LDG.320" = inttoptr i64 %".4939" to ptr
+  %".4940" = load float, ptr %"for_LDG.320"
+  store float %".4940", ptr %"R39_Float32"
   ; LDG.E.SYS R38, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4621" = load i32, ptr %"R6_Float32_PTR"
-  %".4622" = add i32 %".4621", 12
-  %"for_LDG.321" = inttoptr i32 %".4622" to ptr
-  %".4623" = load float, ptr %"for_LDG.321"
-  store float %".4623", ptr %"R38_Float32"
+  %".4943" = load ptr, ptr %"R6_Float32_PTR"
+  %".4944" = ptrtoint ptr %".4943" to i64
+  %".4945" = add i64 %".4944", 12
+  %"for_LDG.321" = inttoptr i64 %".4945" to ptr
+  %".4946" = load float, ptr %"for_LDG.321"
+  store float %".4946", ptr %"R38_Float32"
   ; LDG.E.SYS R41, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4626" = load i32, ptr %"R4_Float32_PTR"
-  %".4627" = add i32 %".4626", 0
-  %"for_LDG.322" = inttoptr i32 %".4627" to ptr
-  %".4628" = load float, ptr %"for_LDG.322"
-  store float %".4628", ptr %"R41_Float32"
+  %".4949" = load ptr, ptr %"R4_Float32_PTR"
+  %".4950" = ptrtoint ptr %".4949" to i64
+  %".4951" = add i64 %".4950", 0
+  %"for_LDG.322" = inttoptr i64 %".4951" to ptr
+  %".4952" = load float, ptr %"for_LDG.322"
+  store float %".4952", ptr %"R41_Float32"
   ; LDG.E.SYS R40, [R10]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4631" = load i32, ptr %"R10_Float32_PTR"
-  %".4632" = add i32 %".4631", 0
-  %"for_LDG.323" = inttoptr i32 %".4632" to ptr
-  %".4633" = load float, ptr %"for_LDG.323"
-  store float %".4633", ptr %"R40_Float32"
+  %".4955" = load ptr, ptr %"R10_Float32_PTR"
+  %".4956" = ptrtoint ptr %".4955" to i64
+  %".4957" = add i64 %".4956", 0
+  %"for_LDG.323" = inttoptr i64 %".4957" to ptr
+  %".4958" = load float, ptr %"for_LDG.323"
+  store float %".4958", ptr %"R40_Float32"
   ; LDG.E.SYS R43, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4636" = load i32, ptr %"R4_Float32_PTR"
-  %".4637" = add i32 %".4636", 4
-  %"for_LDG.324" = inttoptr i32 %".4637" to ptr
-  %".4638" = load float, ptr %"for_LDG.324"
-  store float %".4638", ptr %"R43_Float32"
+  %".4961" = load ptr, ptr %"R4_Float32_PTR"
+  %".4962" = ptrtoint ptr %".4961" to i64
+  %".4963" = add i64 %".4962", 4
+  %"for_LDG.324" = inttoptr i64 %".4963" to ptr
+  %".4964" = load float, ptr %"for_LDG.324"
+  store float %".4964", ptr %"R43_Float32"
   ; LDG.E.SYS R42, [R10+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4641" = load i32, ptr %"R10_Float32_PTR"
-  %".4642" = add i32 %".4641", 4
-  %"for_LDG.325" = inttoptr i32 %".4642" to ptr
-  %".4643" = load float, ptr %"for_LDG.325"
-  store float %".4643", ptr %"R42_Float32"
+  %".4967" = load ptr, ptr %"R10_Float32_PTR"
+  %".4968" = ptrtoint ptr %".4967" to i64
+  %".4969" = add i64 %".4968", 4
+  %"for_LDG.325" = inttoptr i64 %".4969" to ptr
+  %".4970" = load float, ptr %"for_LDG.325"
+  store float %".4970", ptr %"R42_Float32"
   ; LDG.E.SYS R45, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4646" = load i32, ptr %"R4_Float32_PTR"
-  %".4647" = add i32 %".4646", 8
-  %"for_LDG.326" = inttoptr i32 %".4647" to ptr
-  %".4648" = load float, ptr %"for_LDG.326"
-  store float %".4648", ptr %"R45_Float32"
+  %".4973" = load ptr, ptr %"R4_Float32_PTR"
+  %".4974" = ptrtoint ptr %".4973" to i64
+  %".4975" = add i64 %".4974", 8
+  %"for_LDG.326" = inttoptr i64 %".4975" to ptr
+  %".4976" = load float, ptr %"for_LDG.326"
+  store float %".4976", ptr %"R45_Float32"
   ; LDG.E.SYS R47, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4651" = load i32, ptr %"R4_Float32_PTR"
-  %".4652" = add i32 %".4651", 12
-  %"for_LDG.327" = inttoptr i32 %".4652" to ptr
-  %".4653" = load float, ptr %"for_LDG.327"
-  store float %".4653", ptr %"R47_Float32"
+  %".4979" = load ptr, ptr %"R4_Float32_PTR"
+  %".4980" = ptrtoint ptr %".4979" to i64
+  %".4981" = add i64 %".4980", 12
+  %"for_LDG.327" = inttoptr i64 %".4981" to ptr
+  %".4982" = load float, ptr %"for_LDG.327"
+  store float %".4982", ptr %"R47_Float32"
   ; LDG.E.SYS R44, [R10+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4656" = load i32, ptr %"R10_Float32_PTR"
-  %".4657" = add i32 %".4656", 8
-  %"for_LDG.328" = inttoptr i32 %".4657" to ptr
-  %".4658" = load float, ptr %"for_LDG.328"
-  store float %".4658", ptr %"R44_Float32"
+  %".4985" = load ptr, ptr %"R10_Float32_PTR"
+  %".4986" = ptrtoint ptr %".4985" to i64
+  %".4987" = add i64 %".4986", 8
+  %"for_LDG.328" = inttoptr i64 %".4987" to ptr
+  %".4988" = load float, ptr %"for_LDG.328"
+  store float %".4988", ptr %"R44_Float32"
   ; LDG.E.SYS R46, [R10+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_Float32_PTR", ptr %"R10_Int32", i32 4, i1 0)
-  %".4661" = load i32, ptr %"R10_Float32_PTR"
-  %".4662" = add i32 %".4661", 12
-  %"for_LDG.329" = inttoptr i32 %".4662" to ptr
-  %".4663" = load float, ptr %"for_LDG.329"
-  store float %".4663", ptr %"R46_Float32"
+  %".4991" = load ptr, ptr %"R10_Float32_PTR"
+  %".4992" = ptrtoint ptr %".4991" to i64
+  %".4993" = add i64 %".4992", 12
+  %"for_LDG.329" = inttoptr i64 %".4993" to ptr
+  %".4994" = load float, ptr %"for_LDG.329"
+  store float %".4994", ptr %"R46_Float32"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
-  %".4666" = xor i1 1, 1
-  %".4667" = and i1 %".4666", 1
-  %".4668" = and i1 %".4667", 1
+  %".4997" = xor i1 1, 1
+  %".4998" = and i1 %".4997", 1
+  %".4999" = and i1 %".4998", 1
   ; IADD3 R35, R35, -0x8, RZ
-  %".4670" = load i32, ptr %"R35_Int32"
-  %"add.294" = add i32 %".4670", -8
+  %".5001" = load i32, ptr %"R35_Int32"
+  %"add.294" = add i32 %".5001", -8
   %"add.295" = add i32 %"add.294", 0
   store i32 %"add.295", ptr %"R35_Int32"
   ; IADD3 R34, R34, 0x8, RZ
-  %".4673" = load i32, ptr %"R34_Int32"
-  %"add.296" = add i32 %".4673", 8
+  %".5004" = load i32, ptr %"R34_Int32"
+  %"add.296" = add i32 %".5004", 8
   %"add.297" = add i32 %"add.296", 0
   store i32 %"add.297", ptr %"R34_Int32"
   ; FMUL R8, R13, R22
-  %".4676" = load float, ptr %"R13_Float32"
-  %".4677" = load float, ptr %"R22_Float32"
-  %"fmul.275" = fmul float %".4676", %".4677"
+  %".5007" = load float, ptr %"R13_Float32"
+  %".5008" = load float, ptr %"R22_Float32"
+  %"fmul.275" = fmul float %".5007", %".5008"
   store float %"fmul.275", ptr %"R8_Float32"
   ; FFMA R8, R8, R12, R21
-  %".4680" = load float, ptr %"R8_Float32"
-  %".4681" = load float, ptr %"R12_Float32"
-  %".4682" = load float, ptr %"R21_Float32"
-  %"fmul.276" = fmul float %".4680", %".4681"
-  %"fadd.239" = fadd float %"fmul.276", %".4682"
+  %".5011" = load float, ptr %"R8_Float32"
+  %".5012" = load float, ptr %"R12_Float32"
+  %".5013" = load float, ptr %"R21_Float32"
+  %"fmul.276" = fmul float %".5011", %".5012"
+  %"fadd.239" = fadd float %"fmul.276", %".5013"
   store float %"fadd.239", ptr %"R8_Float32"
   ; FMUL R25, R25, R22
-  %".4685" = load float, ptr %"R25_Float32"
-  %".4686" = load float, ptr %"R22_Float32"
-  %"fmul.277" = fmul float %".4685", %".4686"
+  %".5016" = load float, ptr %"R25_Float32"
+  %".5017" = load float, ptr %"R22_Float32"
+  %"fmul.277" = fmul float %".5016", %".5017"
   store float %"fmul.277", ptr %"R25_Float32"
   ; FFMA R8, R25, R24, R8
-  %".4689" = load float, ptr %"R25_Float32"
-  %".4690" = load float, ptr %"R24_Float32"
-  %".4691" = load float, ptr %"R8_Float32"
-  %"fmul.278" = fmul float %".4689", %".4690"
-  %"fadd.240" = fadd float %"fmul.278", %".4691"
+  %".5020" = load float, ptr %"R25_Float32"
+  %".5021" = load float, ptr %"R24_Float32"
+  %".5022" = load float, ptr %"R8_Float32"
+  %"fmul.278" = fmul float %".5020", %".5021"
+  %"fadd.240" = fadd float %"fmul.278", %".5022"
   store float %"fadd.240", ptr %"R8_Float32"
   ; FMUL R37, R37, R22
-  %".4694" = load float, ptr %"R37_Float32"
-  %".4695" = load float, ptr %"R22_Float32"
-  %"fmul.279" = fmul float %".4694", %".4695"
+  %".5025" = load float, ptr %"R37_Float32"
+  %".5026" = load float, ptr %"R22_Float32"
+  %"fmul.279" = fmul float %".5025", %".5026"
   store float %"fmul.279", ptr %"R37_Float32"
   ; FFMA R8, R37, R36, R8
-  %".4698" = load float, ptr %"R37_Float32"
-  %".4699" = load float, ptr %"R36_Float32"
-  %".4700" = load float, ptr %"R8_Float32"
-  %"fmul.280" = fmul float %".4698", %".4699"
-  %"fadd.241" = fadd float %"fmul.280", %".4700"
+  %".5029" = load float, ptr %"R37_Float32"
+  %".5030" = load float, ptr %"R36_Float32"
+  %".5031" = load float, ptr %"R8_Float32"
+  %"fmul.280" = fmul float %".5029", %".5030"
+  %"fadd.241" = fadd float %"fmul.280", %".5031"
   store float %"fadd.241", ptr %"R8_Float32"
   ; FMUL R39, R39, R22
-  %".4703" = load float, ptr %"R39_Float32"
-  %".4704" = load float, ptr %"R22_Float32"
-  %"fmul.281" = fmul float %".4703", %".4704"
+  %".5034" = load float, ptr %"R39_Float32"
+  %".5035" = load float, ptr %"R22_Float32"
+  %"fmul.281" = fmul float %".5034", %".5035"
   store float %"fmul.281", ptr %"R39_Float32"
   ; FFMA R8, R39, R38, R8
-  %".4707" = load float, ptr %"R39_Float32"
-  %".4708" = load float, ptr %"R38_Float32"
-  %".4709" = load float, ptr %"R8_Float32"
-  %"fmul.282" = fmul float %".4707", %".4708"
-  %"fadd.242" = fadd float %"fmul.282", %".4709"
+  %".5038" = load float, ptr %"R39_Float32"
+  %".5039" = load float, ptr %"R38_Float32"
+  %".5040" = load float, ptr %"R8_Float32"
+  %"fmul.282" = fmul float %".5038", %".5039"
+  %"fadd.242" = fadd float %"fmul.282", %".5040"
   store float %"fadd.242", ptr %"R8_Float32"
   ; FMUL R41, R41, R22
-  %".4712" = load float, ptr %"R41_Float32"
-  %".4713" = load float, ptr %"R22_Float32"
-  %"fmul.283" = fmul float %".4712", %".4713"
+  %".5043" = load float, ptr %"R41_Float32"
+  %".5044" = load float, ptr %"R22_Float32"
+  %"fmul.283" = fmul float %".5043", %".5044"
   store float %"fmul.283", ptr %"R41_Float32"
   ; FFMA R8, R41, R40, R8
-  %".4716" = load float, ptr %"R41_Float32"
-  %".4717" = load float, ptr %"R40_Float32"
-  %".4718" = load float, ptr %"R8_Float32"
-  %"fmul.284" = fmul float %".4716", %".4717"
-  %"fadd.243" = fadd float %"fmul.284", %".4718"
+  %".5047" = load float, ptr %"R41_Float32"
+  %".5048" = load float, ptr %"R40_Float32"
+  %".5049" = load float, ptr %"R8_Float32"
+  %"fmul.284" = fmul float %".5047", %".5048"
+  %"fadd.243" = fadd float %"fmul.284", %".5049"
   store float %"fadd.243", ptr %"R8_Float32"
   ; FMUL R43, R43, R22
-  %".4721" = load float, ptr %"R43_Float32"
-  %".4722" = load float, ptr %"R22_Float32"
-  %"fmul.285" = fmul float %".4721", %".4722"
+  %".5052" = load float, ptr %"R43_Float32"
+  %".5053" = load float, ptr %"R22_Float32"
+  %"fmul.285" = fmul float %".5052", %".5053"
   store float %"fmul.285", ptr %"R43_Float32"
   ; FFMA R8, R43, R42, R8
-  %".4725" = load float, ptr %"R43_Float32"
-  %".4726" = load float, ptr %"R42_Float32"
-  %".4727" = load float, ptr %"R8_Float32"
-  %"fmul.286" = fmul float %".4725", %".4726"
-  %"fadd.244" = fadd float %"fmul.286", %".4727"
+  %".5056" = load float, ptr %"R43_Float32"
+  %".5057" = load float, ptr %"R42_Float32"
+  %".5058" = load float, ptr %"R8_Float32"
+  %"fmul.286" = fmul float %".5056", %".5057"
+  %"fadd.244" = fadd float %"fmul.286", %".5058"
   store float %"fadd.244", ptr %"R8_Float32"
   ; FMUL R45, R45, R22.reuse
-  %".4730" = load float, ptr %"R45_Float32"
-  %".4731" = load float, ptr %"R22_Float32"
-  %"fmul.287" = fmul float %".4730", %".4731"
+  %".5061" = load float, ptr %"R45_Float32"
+  %".5062" = load float, ptr %"R22_Float32"
+  %"fmul.287" = fmul float %".5061", %".5062"
   store float %"fmul.287", ptr %"R45_Float32"
   ; FMUL R47, R47, R22
-  %".4734" = load float, ptr %"R47_Float32"
-  %".4735" = load float, ptr %"R22_Float32"
-  %"fmul.288" = fmul float %".4734", %".4735"
+  %".5065" = load float, ptr %"R47_Float32"
+  %".5066" = load float, ptr %"R22_Float32"
+  %"fmul.288" = fmul float %".5065", %".5066"
   store float %"fmul.288", ptr %"R47_Float32"
   ; FFMA R8, R45, R44, R8
-  %".4738" = load float, ptr %"R45_Float32"
-  %".4739" = load float, ptr %"R44_Float32"
-  %".4740" = load float, ptr %"R8_Float32"
-  %"fmul.289" = fmul float %".4738", %".4739"
-  %"fadd.245" = fadd float %"fmul.289", %".4740"
+  %".5069" = load float, ptr %"R45_Float32"
+  %".5070" = load float, ptr %"R44_Float32"
+  %".5071" = load float, ptr %"R8_Float32"
+  %"fmul.289" = fmul float %".5069", %".5070"
+  %"fadd.245" = fadd float %"fmul.289", %".5071"
   store float %"fadd.245", ptr %"R8_Float32"
   ; FFMA R21, R47, R46, R8
-  %".4743" = load float, ptr %"R47_Float32"
-  %".4744" = load float, ptr %"R46_Float32"
-  %".4745" = load float, ptr %"R8_Float32"
-  %"fmul.290" = fmul float %".4743", %".4744"
-  %"fadd.246" = fadd float %"fmul.290", %".4745"
+  %".5074" = load float, ptr %"R47_Float32"
+  %".5075" = load float, ptr %"R46_Float32"
+  %".5076" = load float, ptr %"R8_Float32"
+  %"fmul.290" = fmul float %".5074", %".5075"
+  %"fadd.246" = fadd float %"fmul.290", %".5076"
   store float %"fadd.246", ptr %"R21_Float32"
 .L_x_40:
   ; ISETP.NE.OR P0, PT, R35, RZ, P0
-  %".4748" = load i32, ptr %"R35_Int32"
-  %".4749" = load i1, ptr %"PT_Bool"
-  %"cmp.50" = icmp ne i32 %".4748", 0
-  %".4750" = or i1 %"cmp.50", %".4749"
+  %".5079" = load i32, ptr %"R35_Int32"
+  %".5080" = load i1, ptr %"PT_Bool"
+  %"cmp.50" = icmp ne i32 %".5079", 0
+  %".5081" = or i1 %"cmp.50", %".5080"
   ; @!P0 BRA `(.L_x_36)
-  %".4752" = load i1, ptr %"P0_Bool"
-  %".4753" = icmp eq i1 %".4752", 1
-  br i1 %".4753", label %".L_x_36", label %".L_x_37"
+  %".5083" = load i1, ptr %"P0_Bool"
+  %".5084" = icmp eq i1 %".5083", 1
+  br i1 %".5084", label %".L_x_36", label %".L_x_37"
 .L_x_37:
   ; MOV R7, 0x4
   store i32 4, ptr %"R7_Int32"
   ; IADD3 R6, R3, R34, RZ
-  %".4758" = load i32, ptr %"R3_Int32"
-  %".4759" = load i32, ptr %"R34_Int32"
-  %"add.298" = add i32 %".4758", %".4759"
+  %".5089" = load i32, ptr %"R3_Int32"
+  %".5090" = load i32, ptr %"R34_Int32"
+  %"add.298" = add i32 %".5089", %".5090"
   %"add.299" = add i32 %"add.298", 0
   store i32 %"add.299", ptr %"R6_Int32"
   ; IMAD.WIDE R4, R34, R7, c[0x0][0x168]
-  %".4762" = load i32, ptr %"R34_Int32"
-  %".4763" = load i32, ptr %"R7_Int32"
-  %"mul.102" = mul i32 %".4762", %".4763"
+  %".5093" = load i32, ptr %"R34_Int32"
+  %".5094" = load i32, ptr %"R7_Int32"
+  %"mul.102" = mul i32 %".5093", %".5094"
   %"add.300" = add i32 %"mul.102", %"Arg_3"
   store i32 %"add.300", ptr %"R4_Int32"
   ; IMAD.WIDE R6, R6, R7, c[0x0][0x170]
-  %".4766" = load i32, ptr %"R6_Int32"
-  %".4767" = load i32, ptr %"R7_Int32"
-  %"mul.103" = mul i32 %".4766", %".4767"
+  %".5097" = load i32, ptr %"R6_Int32"
+  %".5098" = load i32, ptr %"R7_Int32"
+  %"mul.103" = mul i32 %".5097", %".5098"
   %"add.301" = add i32 %"mul.103", %"Arg_4"
   store i32 %"add.301", ptr %"R6_Int32"
   ; LDG.E.SYS R9, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4770" = load i32, ptr %"R4_Float32_PTR"
-  %".4771" = add i32 %".4770", 0
-  %"for_LDG.330" = inttoptr i32 %".4771" to ptr
-  %".4772" = load float, ptr %"for_LDG.330"
-  store float %".4772", ptr %"R9_Float32"
+  %".5101" = load ptr, ptr %"R4_Float32_PTR"
+  %".5102" = ptrtoint ptr %".5101" to i64
+  %".5103" = add i64 %".5102", 0
+  %"for_LDG.330" = inttoptr i64 %".5103" to ptr
+  %".5104" = load float, ptr %"for_LDG.330"
+  store float %".5104", ptr %"R9_Float32"
   ; LDG.E.SYS R10, [R6]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4775" = load i32, ptr %"R6_Float32_PTR"
-  %".4776" = add i32 %".4775", 0
-  %"for_LDG.331" = inttoptr i32 %".4776" to ptr
-  %".4777" = load float, ptr %"for_LDG.331"
-  store float %".4777", ptr %"R10_Float32"
+  %".5107" = load ptr, ptr %"R6_Float32_PTR"
+  %".5108" = ptrtoint ptr %".5107" to i64
+  %".5109" = add i64 %".5108", 0
+  %"for_LDG.331" = inttoptr i64 %".5109" to ptr
+  %".5110" = load float, ptr %"for_LDG.331"
+  store float %".5110", ptr %"R10_Float32"
   ; LDG.E.SYS R11, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4780" = load i32, ptr %"R4_Float32_PTR"
-  %".4781" = add i32 %".4780", 4
-  %"for_LDG.332" = inttoptr i32 %".4781" to ptr
-  %".4782" = load float, ptr %"for_LDG.332"
-  store float %".4782", ptr %"R11_Float32"
+  %".5113" = load ptr, ptr %"R4_Float32_PTR"
+  %".5114" = ptrtoint ptr %".5113" to i64
+  %".5115" = add i64 %".5114", 4
+  %"for_LDG.332" = inttoptr i64 %".5115" to ptr
+  %".5116" = load float, ptr %"for_LDG.332"
+  store float %".5116", ptr %"R11_Float32"
   ; LDG.E.SYS R12, [R6+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4785" = load i32, ptr %"R6_Float32_PTR"
-  %".4786" = add i32 %".4785", 4
-  %"for_LDG.333" = inttoptr i32 %".4786" to ptr
-  %".4787" = load float, ptr %"for_LDG.333"
-  store float %".4787", ptr %"R12_Float32"
+  %".5119" = load ptr, ptr %"R6_Float32_PTR"
+  %".5120" = ptrtoint ptr %".5119" to i64
+  %".5121" = add i64 %".5120", 4
+  %"for_LDG.333" = inttoptr i64 %".5121" to ptr
+  %".5122" = load float, ptr %"for_LDG.333"
+  store float %".5122", ptr %"R12_Float32"
   ; LDG.E.SYS R13, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4790" = load i32, ptr %"R4_Float32_PTR"
-  %".4791" = add i32 %".4790", 8
-  %"for_LDG.334" = inttoptr i32 %".4791" to ptr
-  %".4792" = load float, ptr %"for_LDG.334"
-  store float %".4792", ptr %"R13_Float32"
+  %".5125" = load ptr, ptr %"R4_Float32_PTR"
+  %".5126" = ptrtoint ptr %".5125" to i64
+  %".5127" = add i64 %".5126", 8
+  %"for_LDG.334" = inttoptr i64 %".5127" to ptr
+  %".5128" = load float, ptr %"for_LDG.334"
+  store float %".5128", ptr %"R13_Float32"
   ; LDG.E.SYS R24, [R6+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4795" = load i32, ptr %"R6_Float32_PTR"
-  %".4796" = add i32 %".4795", 8
-  %"for_LDG.335" = inttoptr i32 %".4796" to ptr
-  %".4797" = load float, ptr %"for_LDG.335"
-  store float %".4797", ptr %"R24_Float32"
+  %".5131" = load ptr, ptr %"R6_Float32_PTR"
+  %".5132" = ptrtoint ptr %".5131" to i64
+  %".5133" = add i64 %".5132", 8
+  %"for_LDG.335" = inttoptr i64 %".5133" to ptr
+  %".5134" = load float, ptr %"for_LDG.335"
+  store float %".5134", ptr %"R24_Float32"
   ; LDG.E.SYS R25, [R4+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4800" = load i32, ptr %"R4_Float32_PTR"
-  %".4801" = add i32 %".4800", 12
-  %"for_LDG.336" = inttoptr i32 %".4801" to ptr
-  %".4802" = load float, ptr %"for_LDG.336"
-  store float %".4802", ptr %"R25_Float32"
+  %".5137" = load ptr, ptr %"R4_Float32_PTR"
+  %".5138" = ptrtoint ptr %".5137" to i64
+  %".5139" = add i64 %".5138", 12
+  %"for_LDG.336" = inttoptr i64 %".5139" to ptr
+  %".5140" = load float, ptr %"for_LDG.336"
+  store float %".5140", ptr %"R25_Float32"
   ; LDG.E.SYS R36, [R6+0xc]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R6_Float32_PTR", ptr %"R6_Int32", i32 4, i1 0)
-  %".4805" = load i32, ptr %"R6_Float32_PTR"
-  %".4806" = add i32 %".4805", 12
-  %"for_LDG.337" = inttoptr i32 %".4806" to ptr
-  %".4807" = load float, ptr %"for_LDG.337"
-  store float %".4807", ptr %"R36_Float32"
+  %".5143" = load ptr, ptr %"R6_Float32_PTR"
+  %".5144" = ptrtoint ptr %".5143" to i64
+  %".5145" = add i64 %".5144", 12
+  %"for_LDG.337" = inttoptr i64 %".5145" to ptr
+  %".5146" = load float, ptr %"for_LDG.337"
+  store float %".5146", ptr %"R36_Float32"
   ; IADD3 R35, R35, -0x4, RZ
-  %".4810" = load i32, ptr %"R35_Int32"
-  %"add.302" = add i32 %".4810", -4
+  %".5149" = load i32, ptr %"R35_Int32"
+  %"add.302" = add i32 %".5149", -4
   %"add.303" = add i32 %"add.302", 0
   store i32 %"add.303", ptr %"R35_Int32"
   ; IADD3 R34, R34, 0x4, RZ
-  %".4813" = load i32, ptr %"R34_Int32"
-  %"add.304" = add i32 %".4813", 4
+  %".5152" = load i32, ptr %"R34_Int32"
+  %"add.304" = add i32 %".5152", 4
   %"add.305" = add i32 %"add.304", 0
   store i32 %"add.305", ptr %"R34_Int32"
   ; ISETP.NE.AND P0, PT, R35, RZ, PT
-  %".4816" = load i32, ptr %"R35_Int32"
-  %".4817" = load i1, ptr %"PT_Bool"
-  %"cmp.51" = icmp ne i32 %".4816", 0
-  %".4818" = and i1 %"cmp.51", %".4817"
+  %".5155" = load i32, ptr %"R35_Int32"
+  %".5156" = load i1, ptr %"PT_Bool"
+  %"cmp.51" = icmp ne i32 %".5155", 0
+  %".5157" = and i1 %"cmp.51", %".5156"
   ; FMUL R8, R9, R22
-  %".4820" = load float, ptr %"R9_Float32"
-  %".4821" = load float, ptr %"R22_Float32"
-  %"fmul.291" = fmul float %".4820", %".4821"
+  %".5159" = load float, ptr %"R9_Float32"
+  %".5160" = load float, ptr %"R22_Float32"
+  %"fmul.291" = fmul float %".5159", %".5160"
   store float %"fmul.291", ptr %"R8_Float32"
   ; FFMA R8, R8, R10, R21
-  %".4824" = load float, ptr %"R8_Float32"
-  %".4825" = load float, ptr %"R10_Float32"
-  %".4826" = load float, ptr %"R21_Float32"
-  %"fmul.292" = fmul float %".4824", %".4825"
-  %"fadd.247" = fadd float %"fmul.292", %".4826"
+  %".5163" = load float, ptr %"R8_Float32"
+  %".5164" = load float, ptr %"R10_Float32"
+  %".5165" = load float, ptr %"R21_Float32"
+  %"fmul.292" = fmul float %".5163", %".5164"
+  %"fadd.247" = fadd float %"fmul.292", %".5165"
   store float %"fadd.247", ptr %"R8_Float32"
   ; FMUL R11, R11, R22
-  %".4829" = load float, ptr %"R11_Float32"
-  %".4830" = load float, ptr %"R22_Float32"
-  %"fmul.293" = fmul float %".4829", %".4830"
+  %".5168" = load float, ptr %"R11_Float32"
+  %".5169" = load float, ptr %"R22_Float32"
+  %"fmul.293" = fmul float %".5168", %".5169"
   store float %"fmul.293", ptr %"R11_Float32"
   ; FFMA R8, R11, R12, R8
-  %".4833" = load float, ptr %"R11_Float32"
-  %".4834" = load float, ptr %"R12_Float32"
-  %".4835" = load float, ptr %"R8_Float32"
-  %"fmul.294" = fmul float %".4833", %".4834"
-  %"fadd.248" = fadd float %"fmul.294", %".4835"
+  %".5172" = load float, ptr %"R11_Float32"
+  %".5173" = load float, ptr %"R12_Float32"
+  %".5174" = load float, ptr %"R8_Float32"
+  %"fmul.294" = fmul float %".5172", %".5173"
+  %"fadd.248" = fadd float %"fmul.294", %".5174"
   store float %"fadd.248", ptr %"R8_Float32"
   ; FMUL R13, R13, R22
-  %".4838" = load float, ptr %"R13_Float32"
-  %".4839" = load float, ptr %"R22_Float32"
-  %"fmul.295" = fmul float %".4838", %".4839"
+  %".5177" = load float, ptr %"R13_Float32"
+  %".5178" = load float, ptr %"R22_Float32"
+  %"fmul.295" = fmul float %".5177", %".5178"
   store float %"fmul.295", ptr %"R13_Float32"
   ; FFMA R8, R13, R24, R8
-  %".4842" = load float, ptr %"R13_Float32"
-  %".4843" = load float, ptr %"R24_Float32"
-  %".4844" = load float, ptr %"R8_Float32"
-  %"fmul.296" = fmul float %".4842", %".4843"
-  %"fadd.249" = fadd float %"fmul.296", %".4844"
+  %".5181" = load float, ptr %"R13_Float32"
+  %".5182" = load float, ptr %"R24_Float32"
+  %".5183" = load float, ptr %"R8_Float32"
+  %"fmul.296" = fmul float %".5181", %".5182"
+  %"fadd.249" = fadd float %"fmul.296", %".5183"
   store float %"fadd.249", ptr %"R8_Float32"
   ; FMUL R25, R25, R22
-  %".4847" = load float, ptr %"R25_Float32"
-  %".4848" = load float, ptr %"R22_Float32"
-  %"fmul.297" = fmul float %".4847", %".4848"
+  %".5186" = load float, ptr %"R25_Float32"
+  %".5187" = load float, ptr %"R22_Float32"
+  %"fmul.297" = fmul float %".5186", %".5187"
   store float %"fmul.297", ptr %"R25_Float32"
   ; FFMA R21, R25, R36, R8
-  %".4851" = load float, ptr %"R25_Float32"
-  %".4852" = load float, ptr %"R36_Float32"
-  %".4853" = load float, ptr %"R8_Float32"
-  %"fmul.298" = fmul float %".4851", %".4852"
-  %"fadd.250" = fadd float %"fmul.298", %".4853"
+  %".5190" = load float, ptr %"R25_Float32"
+  %".5191" = load float, ptr %"R36_Float32"
+  %".5192" = load float, ptr %"R8_Float32"
+  %"fmul.298" = fmul float %".5190", %".5191"
+  %"fadd.250" = fadd float %"fmul.298", %".5192"
   store float %"fadd.250", ptr %"R21_Float32"
   ; @P0 BRA `(.L_x_37)
-  %".4856" = load i1, ptr %"P0_Bool"
-  %".4857" = icmp ne i1 %".4856", 1
-  br i1 %".4857", label %".L_x_37", label %".L_x_36"
+  %".5195" = load i1, ptr %"P0_Bool"
+  %".5196" = icmp ne i1 %".5195", 1
+  br i1 %".5196", label %".L_x_37", label %".L_x_36"
 .L_x_36:
   ; ISETP.NE.AND P0, PT, R48, RZ, PT
-  %".4860" = load i32, ptr %"R48_Int32"
-  %".4861" = load i1, ptr %"PT_Bool"
-  %"cmp.52" = icmp ne i32 %".4860", 0
-  %".4862" = and i1 %"cmp.52", %".4861"
+  %".5199" = load i32, ptr %"R48_Int32"
+  %".5200" = load i1, ptr %"PT_Bool"
+  %"cmp.52" = icmp ne i32 %".5199", 0
+  %".5201" = and i1 %"cmp.52", %".5200"
   ; @!P0 BRA `(.L_x_35)
-  %".4864" = load i1, ptr %"P0_Bool"
-  %".4865" = icmp eq i1 %".4864", 1
-  br i1 %".4865", label %".L_x_35", label %".L_x_36_split_0x44e0"
+  %".5203" = load i1, ptr %"P0_Bool"
+  %".5204" = icmp eq i1 %".5203", 1
+  br i1 %".5204", label %".L_x_35", label %".L_x_36_split_0x44e0"
 .L_x_36_split_0x44e0:
   ; MOV R5, 0x4
   store i32 4, ptr %"R5_Int32"
   ; IADD3 R4, R3, R34, RZ
-  %".4870" = load i32, ptr %"R3_Int32"
-  %".4871" = load i32, ptr %"R34_Int32"
-  %"add.306" = add i32 %".4870", %".4871"
+  %".5209" = load i32, ptr %"R3_Int32"
+  %".5210" = load i32, ptr %"R34_Int32"
+  %"add.306" = add i32 %".5209", %".5210"
   %"add.307" = add i32 %"add.306", 0
   store i32 %"add.307", ptr %"R4_Int32"
   ; IMAD.WIDE R34, R34, R5, c[0x0][0x168]
-  %".4874" = load i32, ptr %"R34_Int32"
-  %".4875" = load i32, ptr %"R5_Int32"
-  %"mul.104" = mul i32 %".4874", %".4875"
+  %".5213" = load i32, ptr %"R34_Int32"
+  %".5214" = load i32, ptr %"R5_Int32"
+  %"mul.104" = mul i32 %".5213", %".5214"
   %"add.308" = add i32 %"mul.104", %"Arg_3"
   store i32 %"add.308", ptr %"R34_Int32"
   ; IMAD.WIDE R4, R4, R5, c[0x0][0x170]
-  %".4878" = load i32, ptr %"R4_Int32"
-  %".4879" = load i32, ptr %"R5_Int32"
-  %"mul.105" = mul i32 %".4878", %".4879"
+  %".5217" = load i32, ptr %"R4_Int32"
+  %".5218" = load i32, ptr %"R5_Int32"
+  %"mul.105" = mul i32 %".5217", %".5218"
   %"add.309" = add i32 %"mul.105", %"Arg_4"
   store i32 %"add.309", ptr %"R4_Int32"
   ; LDG.E.SYS R7, [R34]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".4882" = load i32, ptr %"R34_Float32_PTR"
-  %".4883" = add i32 %".4882", 0
-  %"for_LDG.338" = inttoptr i32 %".4883" to ptr
-  %".4884" = load float, ptr %"for_LDG.338"
-  store float %".4884", ptr %"R7_Float32"
+  %".5221" = load ptr, ptr %"R34_Float32_PTR"
+  %".5222" = ptrtoint ptr %".5221" to i64
+  %".5223" = add i64 %".5222", 0
+  %"for_LDG.338" = inttoptr i64 %".5223" to ptr
+  %".5224" = load float, ptr %"for_LDG.338"
+  store float %".5224", ptr %"R7_Float32"
   ; LDG.E.SYS R8, [R4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4887" = load i32, ptr %"R4_Float32_PTR"
-  %".4888" = add i32 %".4887", 0
-  %"for_LDG.339" = inttoptr i32 %".4888" to ptr
-  %".4889" = load float, ptr %"for_LDG.339"
-  store float %".4889", ptr %"R8_Float32"
+  %".5227" = load ptr, ptr %"R4_Float32_PTR"
+  %".5228" = ptrtoint ptr %".5227" to i64
+  %".5229" = add i64 %".5228", 0
+  %"for_LDG.339" = inttoptr i64 %".5229" to ptr
+  %".5230" = load float, ptr %"for_LDG.339"
+  store float %".5230", ptr %"R8_Float32"
   ; ISETP.NE.AND P0, PT, R48, 0x1, PT
-  %".4892" = load i32, ptr %"R48_Int32"
-  %".4893" = load i1, ptr %"PT_Bool"
-  %"cmp.53" = icmp ne i32 %".4892", 1
-  %".4894" = and i1 %"cmp.53", %".4893"
+  %".5233" = load i32, ptr %"R48_Int32"
+  %".5234" = load i1, ptr %"PT_Bool"
+  %"cmp.53" = icmp ne i32 %".5233", 1
+  %".5235" = and i1 %"cmp.53", %".5234"
   ; FMUL R6, R7, R22
-  %".4896" = load float, ptr %"R7_Float32"
-  %".4897" = load float, ptr %"R22_Float32"
-  %"fmul.299" = fmul float %".4896", %".4897"
+  %".5237" = load float, ptr %"R7_Float32"
+  %".5238" = load float, ptr %"R22_Float32"
+  %"fmul.299" = fmul float %".5237", %".5238"
   store float %"fmul.299", ptr %"R6_Float32"
   ; FFMA R21, R6, R8, R21
-  %".4900" = load float, ptr %"R6_Float32"
-  %".4901" = load float, ptr %"R8_Float32"
-  %".4902" = load float, ptr %"R21_Float32"
-  %"fmul.300" = fmul float %".4900", %".4901"
-  %"fadd.251" = fadd float %"fmul.300", %".4902"
+  %".5241" = load float, ptr %"R6_Float32"
+  %".5242" = load float, ptr %"R8_Float32"
+  %".5243" = load float, ptr %"R21_Float32"
+  %"fmul.300" = fmul float %".5241", %".5242"
+  %"fadd.251" = fadd float %"fmul.300", %".5243"
   store float %"fadd.251", ptr %"R21_Float32"
   ; @!P0 BRA `(.L_x_35)
-  %".4905" = load i1, ptr %"P0_Bool"
-  %".4906" = icmp eq i1 %".4905", 1
-  br i1 %".4906", label %".L_x_35", label %".L_x_36_split_0x4580"
+  %".5246" = load i1, ptr %"P0_Bool"
+  %".5247" = icmp eq i1 %".5246", 1
+  br i1 %".5247", label %".L_x_35", label %".L_x_36_split_0x4580"
 .L_x_36_split_0x4580:
   ; ISETP.NE.AND P0, PT, R48, 0x2, PT
-  %".4909" = load i32, ptr %"R48_Int32"
-  %".4910" = load i1, ptr %"PT_Bool"
-  %"cmp.54" = icmp ne i32 %".4909", 2
-  %".4911" = and i1 %"cmp.54", %".4910"
+  %".5250" = load i32, ptr %"R48_Int32"
+  %".5251" = load i1, ptr %"PT_Bool"
+  %"cmp.54" = icmp ne i32 %".5250", 2
+  %".5252" = and i1 %"cmp.54", %".5251"
   ; LDG.E.SYS R7, [R34+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".4913" = load i32, ptr %"R34_Float32_PTR"
-  %".4914" = add i32 %".4913", 4
-  %"for_LDG.340" = inttoptr i32 %".4914" to ptr
-  %".4915" = load float, ptr %"for_LDG.340"
-  store float %".4915", ptr %"R7_Float32"
+  %".5254" = load ptr, ptr %"R34_Float32_PTR"
+  %".5255" = ptrtoint ptr %".5254" to i64
+  %".5256" = add i64 %".5255", 4
+  %"for_LDG.340" = inttoptr i64 %".5256" to ptr
+  %".5257" = load float, ptr %"for_LDG.340"
+  store float %".5257", ptr %"R7_Float32"
   ; LDG.E.SYS R8, [R4+0x4]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4918" = load i32, ptr %"R4_Float32_PTR"
-  %".4919" = add i32 %".4918", 4
-  %"for_LDG.341" = inttoptr i32 %".4919" to ptr
-  %".4920" = load float, ptr %"for_LDG.341"
-  store float %".4920", ptr %"R8_Float32"
+  %".5260" = load ptr, ptr %"R4_Float32_PTR"
+  %".5261" = ptrtoint ptr %".5260" to i64
+  %".5262" = add i64 %".5261", 4
+  %"for_LDG.341" = inttoptr i64 %".5262" to ptr
+  %".5263" = load float, ptr %"for_LDG.341"
+  store float %".5263", ptr %"R8_Float32"
   ; @P0 LDG.E.SYS R9, [R34+0x8]
-  %".4923" = load i1, ptr %"P0_Bool"
-  %".4924" = icmp ne i1 %".4923", 1
-  br i1 %".4924", label %".L_x_36_split_0x4580_conditionalExpr_0x45b0", label %".L_x_36_split_0x45c0"
+  %".5266" = load i1, ptr %"P0_Bool"
+  %".5267" = icmp ne i1 %".5266", 1
+  br i1 %".5267", label %".L_x_36_split_0x4580_conditionalExpr_0x45b0", label %".L_x_36_split_0x45c0"
 .L_x_36_split_0x4580_conditionalExpr_0x45b0:
   ; LDG.E.SYS R9, [R34+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R34_Float32_PTR", ptr %"R34_Int32", i32 4, i1 0)
-  %".4927" = load i32, ptr %"R34_Float32_PTR"
-  %".4928" = add i32 %".4927", 8
-  %"for_LDG.342" = inttoptr i32 %".4928" to ptr
-  %".4929" = load float, ptr %"for_LDG.342"
-  store float %".4929", ptr %"R9_Float32"
+  %".5270" = load ptr, ptr %"R34_Float32_PTR"
+  %".5271" = ptrtoint ptr %".5270" to i64
+  %".5272" = add i64 %".5271", 8
+  %"for_LDG.342" = inttoptr i64 %".5272" to ptr
+  %".5273" = load float, ptr %"for_LDG.342"
+  store float %".5273", ptr %"R9_Float32"
   ; BRA `(.L_x_36_split_0x45c0)
   br label %".L_x_36_split_0x45c0"
 .L_x_36_split_0x45c0:
   ; @P0 LDG.E.SYS R10, [R4+0x8]
-  %".4934" = load i1, ptr %"P0_Bool"
-  %".4935" = icmp ne i1 %".4934", 1
-  br i1 %".4935", label %".L_x_36_split_0x45c0_conditionalExpr_0x45c0", label %".L_x_36_split_0x45d0"
+  %".5278" = load i1, ptr %"P0_Bool"
+  %".5279" = icmp ne i1 %".5278", 1
+  br i1 %".5279", label %".L_x_36_split_0x45c0_conditionalExpr_0x45c0", label %".L_x_36_split_0x45d0"
 .L_x_36_split_0x45c0_conditionalExpr_0x45c0:
   ; LDG.E.SYS R10, [R4+0x8]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R4_Float32_PTR", ptr %"R4_Int32", i32 4, i1 0)
-  %".4938" = load i32, ptr %"R4_Float32_PTR"
-  %".4939" = add i32 %".4938", 8
-  %"for_LDG.343" = inttoptr i32 %".4939" to ptr
-  %".4940" = load float, ptr %"for_LDG.343"
-  store float %".4940", ptr %"R10_Float32"
+  %".5282" = load ptr, ptr %"R4_Float32_PTR"
+  %".5283" = ptrtoint ptr %".5282" to i64
+  %".5284" = add i64 %".5283", 8
+  %"for_LDG.343" = inttoptr i64 %".5284" to ptr
+  %".5285" = load float, ptr %"for_LDG.343"
+  store float %".5285", ptr %"R10_Float32"
   ; BRA `(.L_x_36_split_0x45d0)
   br label %".L_x_36_split_0x45d0"
 .L_x_36_split_0x45d0:
   ; FMUL R6, R7, R22
-  %".4945" = load float, ptr %"R7_Float32"
-  %".4946" = load float, ptr %"R22_Float32"
-  %"fmul.301" = fmul float %".4945", %".4946"
+  %".5290" = load float, ptr %"R7_Float32"
+  %".5291" = load float, ptr %"R22_Float32"
+  %"fmul.301" = fmul float %".5290", %".5291"
   store float %"fmul.301", ptr %"R6_Float32"
   ; FFMA R21, R6, R8, R21
-  %".4949" = load float, ptr %"R6_Float32"
-  %".4950" = load float, ptr %"R8_Float32"
-  %".4951" = load float, ptr %"R21_Float32"
-  %"fmul.302" = fmul float %".4949", %".4950"
-  %"fadd.252" = fadd float %"fmul.302", %".4951"
+  %".5294" = load float, ptr %"R6_Float32"
+  %".5295" = load float, ptr %"R8_Float32"
+  %".5296" = load float, ptr %"R21_Float32"
+  %"fmul.302" = fmul float %".5294", %".5295"
+  %"fadd.252" = fadd float %"fmul.302", %".5296"
   store float %"fadd.252", ptr %"R21_Float32"
   ; @P0 FMUL R22, R9, R22
-  %".4954" = load i1, ptr %"P0_Bool"
-  %".4955" = icmp ne i1 %".4954", 1
-  br i1 %".4955", label %".L_x_36_split_0x45d0_conditionalExpr_0x45f0", label %".L_x_36_split_0x4600"
+  %".5299" = load i1, ptr %"P0_Bool"
+  %".5300" = icmp ne i1 %".5299", 1
+  br i1 %".5300", label %".L_x_36_split_0x45d0_conditionalExpr_0x45f0", label %".L_x_36_split_0x4600"
 .L_x_36_split_0x45d0_conditionalExpr_0x45f0:
   ; FMUL R22, R9, R22
-  %".4958" = load float, ptr %"R9_Float32"
-  %".4959" = load float, ptr %"R22_Float32"
-  %"fmul.303" = fmul float %".4958", %".4959"
+  %".5303" = load float, ptr %"R9_Float32"
+  %".5304" = load float, ptr %"R22_Float32"
+  %"fmul.303" = fmul float %".5303", %".5304"
   store float %"fmul.303", ptr %"R22_Float32"
   ; BRA `(.L_x_36_split_0x4600)
   br label %".L_x_36_split_0x4600"
 .L_x_36_split_0x4600:
   ; @P0 FFMA R21, R22, R10, R21
-  %".4964" = load i1, ptr %"P0_Bool"
-  %".4965" = icmp ne i1 %".4964", 1
-  br i1 %".4965", label %".L_x_36_split_0x4600_conditionalExpr_0x4600", label %".L_x_35"
+  %".5309" = load i1, ptr %"P0_Bool"
+  %".5310" = icmp ne i1 %".5309", 1
+  br i1 %".5310", label %".L_x_36_split_0x4600_conditionalExpr_0x4600", label %".L_x_35"
 .L_x_36_split_0x4600_conditionalExpr_0x4600:
   ; FFMA R21, R22, R10, R21
-  %".4968" = load float, ptr %"R22_Float32"
-  %".4969" = load float, ptr %"R10_Float32"
-  %".4970" = load float, ptr %"R21_Float32"
-  %"fmul.304" = fmul float %".4968", %".4969"
-  %"fadd.253" = fadd float %"fmul.304", %".4970"
+  %".5313" = load float, ptr %"R22_Float32"
+  %".5314" = load float, ptr %"R10_Float32"
+  %".5315" = load float, ptr %"R21_Float32"
+  %"fmul.304" = fmul float %".5313", %".5314"
+  %"fadd.253" = fadd float %"fmul.304", %".5315"
   store float %"fadd.253", ptr %"R21_Float32"
   ; BRA `(.L_x_35)
   br label %".L_x_35"
 .L_x_35:
   ; LDG.E.SYS R4, [R30]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R30_Float32_PTR", ptr %"R30_Int32", i32 4, i1 0)
-  %".4975" = load i32, ptr %"R30_Float32_PTR"
-  %".4976" = add i32 %".4975", 0
-  %"for_LDG.344" = inttoptr i32 %".4976" to ptr
-  %".4977" = load float, ptr %"for_LDG.344"
-  store float %".4977", ptr %"R4_Float32"
+  %".5320" = load ptr, ptr %"R30_Float32_PTR"
+  %".5321" = ptrtoint ptr %".5320" to i64
+  %".5322" = add i64 %".5321", 0
+  %"for_LDG.344" = inttoptr i64 %".5322" to ptr
+  %".5323" = load float, ptr %"for_LDG.344"
+  store float %".5323", ptr %"R4_Float32"
   ; BMOV.32.CLEAR RZ, B0
   ; BSSY B0, `(.L_x_41)
   ; FADD R21, R4, R21
-  %".4982" = load float, ptr %"R4_Float32"
-  %".4983" = load float, ptr %"R21_Float32"
-  %"fadd.254" = fadd float %".4982", %".4983"
+  %".5328" = load float, ptr %"R4_Float32"
+  %".5329" = load float, ptr %"R21_Float32"
+  %"fadd.254" = fadd float %".5328", %".5329"
   store float %"fadd.254", ptr %"R21_Float32"
   ; FSETP.GE.AND P0, PT, |R21|, 0.60000002384185791016, PT
-  %".4986" = load float, ptr %"R21_Float32"
-  %"llvm_fabs_result.3" = call float @"llvm.fabs"(float %".4986")
-  %".4987" = load i1, ptr %"PT_Bool"
+  %".5332" = load float, ptr %"R21_Float32"
+  %"llvm_fabs_result.3" = call float @"llvm.fabs"(float %".5332")
+  %".5333" = load i1, ptr %"PT_Bool"
   %"fcmp_unordered.2" = fcmp oge float %"llvm_fabs_result.3", 0x3fe3333340000000
-  %".4988" = and i1 %"fcmp_unordered.2", %".4987"
+  %".5334" = and i1 %"fcmp_unordered.2", %".5333"
   ; @!P0 BRA `(.L_x_42)
-  %".4990" = load i1, ptr %"P0_Bool"
-  %".4991" = icmp eq i1 %".4990", 1
-  br i1 %".4991", label %".L_x_42", label %".L_x_35_split_0x4670"
+  %".5336" = load i1, ptr %"P0_Bool"
+  %".5337" = icmp eq i1 %".5336", 1
+  br i1 %".5337", label %".L_x_42", label %".L_x_35_split_0x4670"
 .L_x_35_split_0x4670:
   ; FMUL R5, |R21|.reuse, 2.8853900432586669922
-  %".4994" = load float, ptr %"R21_Float32"
-  %"llvm_fabs_result.4" = call float @"llvm.fabs"(float %".4994")
+  %".5340" = load float, ptr %"R21_Float32"
+  %"llvm_fabs_result.4" = call float @"llvm.fabs"(float %".5340")
   %"fmul.305" = fmul float %"llvm_fabs_result.4", 0x4007154760000000
   store float %"fmul.305", ptr %"R5_Float32"
   ; MOV R7, 0x3f800000
   store float 0x41cfc00000000000, ptr %"R7_Float32"
   ; FSETP.GE.AND P0, PT, |R21|, 9.010913848876953125, PT
-  %".4999" = load float, ptr %"R21_Float32"
-  %"llvm_fabs_result.5" = call float @"llvm.fabs"(float %".4999")
-  %".5000" = load i1, ptr %"PT_Bool"
+  %".5345" = load float, ptr %"R21_Float32"
+  %"llvm_fabs_result.5" = call float @"llvm.fabs"(float %".5345")
+  %".5346" = load i1, ptr %"PT_Bool"
   %"fcmp_unordered.3" = fcmp oge float %"llvm_fabs_result.5", 0x4022059680000000
-  %".5001" = and i1 %"fcmp_unordered.3", %".5000"
+  %".5347" = and i1 %"fcmp_unordered.3", %".5346"
   ; MUFU.EX2 R5, R5
-  %".5003" = load float, ptr %"R5_Float32"
-  %"llvm_exp2_f32_result.5" = call float @"llvm.exp2.f32"(float %".5003")
+  %".5349" = load float, ptr %"R5_Float32"
+  %"llvm_exp2_f32_result.5" = call float @"llvm.exp2.f32"(float %".5349")
   store float %"llvm_exp2_f32_result.5", ptr %"R5_Float32"
   ; FADD R6, R5, 1
-  %".5006" = load float, ptr %"R5_Float32"
-  %"fadd.255" = fadd float %".5006", 0x3ff0000000000000
+  %".5352" = load float, ptr %"R5_Float32"
+  %"fadd.255" = fadd float %".5352", 0x3ff0000000000000
   store float %"fadd.255", ptr %"R6_Float32"
   ; MUFU.RCP R6, R6
-  %".5009" = load float, ptr %"R6_Float32"
-  %".5010" = fdiv float 0x3ff0000000000000, %".5009"
-  store float %".5010", ptr %"R6_Float32"
+  %".5355" = load float, ptr %"R6_Float32"
+  %".5356" = fdiv float 0x3ff0000000000000, %".5355"
+  store float %".5356", ptr %"R6_Float32"
   ; FFMA R4, R6, -2, R7
-  %".5013" = load float, ptr %"R6_Float32"
-  %".5014" = load float, ptr %"R7_Float32"
-  %"fmul.306" = fmul float %".5013", 0xc000000000000000
-  %"fadd.256" = fadd float %"fmul.306", %".5014"
+  %".5359" = load float, ptr %"R6_Float32"
+  %".5360" = load float, ptr %"R7_Float32"
+  %"fmul.306" = fmul float %".5359", 0xc000000000000000
+  %"fadd.256" = fadd float %"fmul.306", %".5360"
   store float %"fadd.256", ptr %"R4_Float32"
   ; FSEL R4, R4, 1, !P0
-  %".5017" = load float, ptr %"R4_Float32"
-  %".5018" = load i1, ptr %"P0_Bool"
-  %".5019" = icmp eq i1 %".5018", 1
-  %"fsel.1" = select  i1 %".5019", float %".5017", float 0x3ff0000000000000
+  %".5363" = load float, ptr %"R4_Float32"
+  %".5364" = load i1, ptr %"P0_Bool"
+  %".5365" = icmp eq i1 %".5364", 1
+  %"fsel.1" = select  i1 %".5365", float %".5363", float 0x3ff0000000000000
   store float %"fsel.1", ptr %"R4_Float32"
   ; LOP3.LUT R4, R4, 0x80000000, R21, 0xf8, !PT
-  %".5022" = load float, ptr %"R4_Float32"
-  %".5023" = load float, ptr %"R21_Float32"
-  %".5024" = or float %".5022", 0x41e0000000000000
-  %".5025" = or float %".5022", %".5023"
-  %".5026" = and float %".5024", %".5025"
-  store float %".5026", ptr %"R4_Float32"
+  %".5368" = load float, ptr %"R4_Float32"
+  %".5369" = load float, ptr %"R21_Float32"
+  %".5370" = or float %".5368", 0x41e0000000000000
+  %".5371" = or float %".5368", %".5369"
+  %".5372" = and float %".5370", %".5371"
+  store float %".5372", ptr %"R4_Float32"
   ; BRA `(.L_x_43)
   br label %".L_x_43"
 .L_x_42:
   ; MOV R5, 0x3c80f082
   store float 0x41ce407840000000, ptr %"R5_Float32"
   ; FMUL R4, R21, R21
-  %".5033" = load float, ptr %"R21_Float32"
-  %".5034" = load float, ptr %"R21_Float32"
-  %"fmul.307" = fmul float %".5033", %".5034"
+  %".5379" = load float, ptr %"R21_Float32"
+  %".5380" = load float, ptr %"R21_Float32"
+  %"fmul.307" = fmul float %".5379", %".5380"
   store float %"fmul.307", ptr %"R4_Float32"
   ; FFMA R5, R4, R5, -0.052303962409496307373
-  %".5037" = load float, ptr %"R4_Float32"
-  %".5038" = load float, ptr %"R5_Float32"
-  %"fmul.308" = fmul float %".5037", %".5038"
+  %".5383" = load float, ptr %"R4_Float32"
+  %".5384" = load float, ptr %"R5_Float32"
+  %"fmul.308" = fmul float %".5383", %".5384"
   %"fadd.257" = fadd float %"fmul.308", 0xbfaac795c0000000
   store float %"fadd.257", ptr %"R5_Float32"
   ; FFMA R5, R4, R5, 0.1331529766321182251
-  %".5041" = load float, ptr %"R4_Float32"
-  %".5042" = load float, ptr %"R5_Float32"
-  %"fmul.309" = fmul float %".5041", %".5042"
+  %".5387" = load float, ptr %"R4_Float32"
+  %".5388" = load float, ptr %"R5_Float32"
+  %"fmul.309" = fmul float %".5387", %".5388"
   %"fadd.258" = fadd float %"fmul.309", 0x3fc10b2820000000
   store float %"fadd.258", ptr %"R5_Float32"
   ; FFMA R5, R4, R5, -0.33332768082618713379
-  %".5045" = load float, ptr %"R4_Float32"
-  %".5046" = load float, ptr %"R5_Float32"
-  %"fmul.310" = fmul float %".5045", %".5046"
+  %".5391" = load float, ptr %"R4_Float32"
+  %".5392" = load float, ptr %"R5_Float32"
+  %"fmul.310" = fmul float %".5391", %".5392"
   %"fadd.259" = fadd float %"fmul.310", 0xbfd5553da0000000
   store float %"fadd.259", ptr %"R5_Float32"
   ; FFMA R4, R4, R5, RZ
-  %".5049" = load float, ptr %"R4_Float32"
-  %".5050" = load float, ptr %"R5_Float32"
-  %"fmul.311" = fmul float %".5049", %".5050"
+  %".5395" = load float, ptr %"R4_Float32"
+  %".5396" = load float, ptr %"R5_Float32"
+  %"fmul.311" = fmul float %".5395", %".5396"
   %"fadd.260" = fadd float %"fmul.311",              0x0
   store float %"fadd.260", ptr %"R4_Float32"
   ; FFMA R4, R21, R4, R21
-  %".5053" = load float, ptr %"R21_Float32"
-  %".5054" = load float, ptr %"R4_Float32"
-  %".5055" = load float, ptr %"R21_Float32"
-  %"fmul.312" = fmul float %".5053", %".5054"
-  %"fadd.261" = fadd float %"fmul.312", %".5055"
+  %".5399" = load float, ptr %"R21_Float32"
+  %".5400" = load float, ptr %"R4_Float32"
+  %".5401" = load float, ptr %"R21_Float32"
+  %"fmul.312" = fmul float %".5399", %".5400"
+  %"fadd.261" = fadd float %"fmul.312", %".5401"
   store float %"fadd.261", ptr %"R4_Float32"
 .L_x_43:
   ; BSYNC B0
 .L_x_41:
   ; IADD3 R5, R23, 0x1800000, RZ
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R23_Int32", ptr %"R23_Float32", i32 4, i1 0)
-  %".5059" = load i32, ptr %"R23_Int32"
-  %"add.310" = add i32 %".5059", 25165824
+  %".5405" = load i32, ptr %"R23_Int32"
+  %"add.310" = add i32 %".5405", 25165824
   %"add.311" = add i32 %"add.310", 0
   store i32 %"add.311", ptr %"R5_Int32"
   ; BMOV.32.CLEAR RZ, B0
   ; BSSY B0, `(.L_x_44)
   ; LOP3.LUT R5, R5, 0x7f800000, RZ, 0xc0, !PT
-  %".5064" = load i32, ptr %"R5_Int32"
-  %".5065" = and i32 %".5064", 2139095040
-  store i32 %".5065", ptr %"R5_Int32"
+  %".5410" = load i32, ptr %"R5_Int32"
+  %".5411" = and i32 %".5410", 2139095040
+  store i32 %".5411", ptr %"R5_Int32"
   ; ISETP.GT.U32.AND P0, PT, R5, 0x1ffffff, PT
-  %".5068" = load i32, ptr %"R5_Int32"
-  %".5069" = load i1, ptr %"PT_Bool"
-  %"cmp.55" = icmp sgt i32 %".5068", 33554431
-  %".5070" = and i1 %"cmp.55", %".5069"
+  %".5414" = load i32, ptr %"R5_Int32"
+  %".5415" = load i1, ptr %"PT_Bool"
+  %"cmp.55" = icmp sgt i32 %".5414", 33554431
+  %".5416" = and i1 %"cmp.55", %".5415"
   ; @P0 BRA `(.L_x_45)
-  %".5072" = load i1, ptr %"P0_Bool"
-  %".5073" = icmp ne i1 %".5072", 1
-  br i1 %".5073", label %".L_x_45", label %".L_x_41_split_0x47f0"
+  %".5418" = load i1, ptr %"P0_Bool"
+  %".5419" = icmp ne i1 %".5418", 1
+  br i1 %".5419", label %".L_x_45", label %".L_x_41_split_0x47f0"
 .L_x_41_split_0x47f0:
   ; MOV R24, R23
-  %".5076" = load float, ptr %"R23_Float32"
-  store float %".5076", ptr %"R24_Float32"
+  %".5422" = load float, ptr %"R23_Float32"
+  store float %".5422", ptr %"R24_Float32"
   ; MOV R10, 0x4820
   store i32 18464, ptr %"R10_Int32"
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R10_NOTYPE", ptr %"R10_Int32", i32 4, i1 0)
@@ -7393,71 +7739,73 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   %"call_rel.3" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; MOV R5, R22
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R22_Int32", ptr %"R22_Float32", i32 4, i1 0)
-  %".5082" = load i32, ptr %"R22_Int32"
-  store i32 %".5082", ptr %"R5_Int32"
+  %".5428" = load i32, ptr %"R22_Int32"
+  store i32 %".5428", ptr %"R5_Int32"
   ; BRA `(.L_x_46)
   br label %".L_x_46"
 .L_x_45:
   ; MUFU.RCP R6, R23
-  %".5087" = load float, ptr %"R23_Float32"
-  %".5088" = fdiv float 0x3ff0000000000000, %".5087"
-  store float %".5088", ptr %"R6_Float32"
+  %".5433" = load float, ptr %"R23_Float32"
+  %".5434" = fdiv float 0x3ff0000000000000, %".5433"
+  store float %".5434", ptr %"R6_Float32"
   ; FFMA R5, R23, R6, -1
-  %".5091" = load float, ptr %"R23_Float32"
-  %".5092" = load float, ptr %"R6_Float32"
-  %"fmul.313" = fmul float %".5091", %".5092"
+  %".5437" = load float, ptr %"R23_Float32"
+  %".5438" = load float, ptr %"R6_Float32"
+  %"fmul.313" = fmul float %".5437", %".5438"
   %"fadd.262" = fadd float %"fmul.313", 0xbff0000000000000
   store float %"fadd.262", ptr %"R5_Float32"
   ; FADD.FTZ R5, -R5, -RZ
-  %".5095" = load float, ptr %"R5_Float32"
-  %".5096" = sub float              0x0, %".5095"
-  %"fadd.263" = fadd float %".5096",              0x0
+  %".5441" = load float, ptr %"R5_Float32"
+  %".5442" = sub float              0x0, %".5441"
+  %"fadd.263" = fadd float %".5442",              0x0
   store float %"fadd.263", ptr %"R5_Float32"
   ; FFMA R5, R6, R5, R6
-  %".5099" = load float, ptr %"R6_Float32"
-  %".5100" = load float, ptr %"R5_Float32"
-  %".5101" = load float, ptr %"R6_Float32"
-  %"fmul.314" = fmul float %".5099", %".5100"
-  %"fadd.264" = fadd float %"fmul.314", %".5101"
+  %".5445" = load float, ptr %"R6_Float32"
+  %".5446" = load float, ptr %"R5_Float32"
+  %".5447" = load float, ptr %"R6_Float32"
+  %"fmul.314" = fmul float %".5445", %".5446"
+  %"fadd.264" = fadd float %"fmul.314", %".5447"
   store float %"fadd.264", ptr %"R5_Float32"
 .L_x_46:
   ; BSYNC B0
 .L_x_44:
   ; LDG.E.SYS R6, [R28]
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R28_Float32_PTR", ptr %"R28_Int32", i32 4, i1 0)
-  %".5105" = load i32, ptr %"R28_Float32_PTR"
-  %".5106" = add i32 %".5105", 0
-  %"for_LDG.345" = inttoptr i32 %".5106" to ptr
-  %".5107" = load float, ptr %"for_LDG.345"
-  store float %".5107", ptr %"R6_Float32"
+  %".5451" = load ptr, ptr %"R28_Float32_PTR"
+  %".5452" = ptrtoint ptr %".5451" to i64
+  %".5453" = add i64 %".5452", 0
+  %"for_LDG.345" = inttoptr i64 %".5453" to ptr
+  %".5454" = load float, ptr %"for_LDG.345"
+  store float %".5454", ptr %"R6_Float32"
   ; FADD R7, -R5, 1
-  %".5110" = load float, ptr %"R5_Float32"
-  %".5111" = sub float              0x0, %".5110"
-  %"fadd.265" = fadd float %".5111", 0x3ff0000000000000
+  %".5457" = load float, ptr %"R5_Float32"
+  %".5458" = sub float              0x0, %".5457"
+  %"fadd.265" = fadd float %".5458", 0x3ff0000000000000
   store float %"fadd.265", ptr %"R7_Float32"
   ; FMUL R6, R6, R5
-  %".5114" = load float, ptr %"R6_Float32"
-  %".5115" = load float, ptr %"R5_Float32"
-  %"fmul.315" = fmul float %".5114", %".5115"
+  %".5461" = load float, ptr %"R6_Float32"
+  %".5462" = load float, ptr %"R5_Float32"
+  %"fmul.315" = fmul float %".5461", %".5462"
   store float %"fmul.315", ptr %"R6_Float32"
   ; FFMA R7, R7, R4, R6
-  %".5118" = load float, ptr %"R7_Float32"
-  %".5119" = load float, ptr %"R4_Float32"
-  %".5120" = load float, ptr %"R6_Float32"
-  %"fmul.316" = fmul float %".5118", %".5119"
-  %"fadd.266" = fadd float %"fmul.316", %".5120"
+  %".5465" = load float, ptr %"R7_Float32"
+  %".5466" = load float, ptr %"R4_Float32"
+  %".5467" = load float, ptr %"R6_Float32"
+  %"fmul.316" = fmul float %".5465", %".5466"
+  %"fadd.266" = fadd float %"fmul.316", %".5467"
   store float %"fadd.266", ptr %"R7_Float32"
   ; STG.E.SYS [R28], R7
-  %".5123" = load float, ptr %"R7_Float32"
+  %".5470" = load float, ptr %"R7_Float32"
   call void @"llvm.memcpy.p0.p0.i32"(ptr %"R28_Float32_PTR", ptr %"R28_Int32", i32 4, i1 0)
-  %".5124" = load i32, ptr %"R28_Float32_PTR"
-  %".5125" = add i32 %".5124", 0
-  %"for_STG.1" = inttoptr i32 %".5125" to ptr
-  store float %".5123", ptr %"for_STG.1"
+  %".5471" = load ptr, ptr %"R28_Float32_PTR"
+  %".5472" = ptrtoint ptr %".5471" to i64
+  %".5473" = add i64 %".5472", 0
+  %"for_STG.1" = inttoptr i64 %".5473" to ptr
+  store float %".5470", ptr %"for_STG.1"
   ; @!P3 BRA `(.L_x_47)
-  %".5128" = load i1, ptr %"P3_Bool"
-  %".5129" = icmp eq i1 %".5128", 1
-  br i1 %".5129", label %".L_x_47", label %".L_x_44_split_0x48f0"
+  %".5476" = load i1, ptr %"P3_Bool"
+  %".5477" = icmp eq i1 %".5476", 1
+  br i1 %".5477", label %".L_x_47", label %".L_x_44_split_0x48f0"
 .L_x_44_split_0x48f0:
   ; EXIT
   br label %"ExitFunction"
