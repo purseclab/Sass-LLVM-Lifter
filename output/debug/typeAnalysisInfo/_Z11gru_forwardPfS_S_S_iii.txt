@@ -1295,6 +1295,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0380, R57)']
+defs_reaching: ['(0x0350, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R56, [R16] #############
 ####### R56 #######
@@ -1306,6 +1312,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0390, R56)']
+defs_reaching: ['(0x0360, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R58, [R20] #############
 ####### R58 #######
@@ -1317,6 +1329,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20] #######
+is_def: False
+is_use: False
+kill_set: ['(0x03a0, R58)']
+defs_reaching: ['(0x0370, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R38+0x4] #############
 ####### R24 #######
@@ -1328,6 +1346,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x03b0, R24)']
+defs_reaching: ['(0x0350, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R16+0x4] #############
 ####### R47 #######
@@ -1339,6 +1363,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x03c0, R47)']
+defs_reaching: ['(0x0360, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R49, [R20+0x4] #############
 ####### R49 #######
@@ -1350,6 +1380,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x03d0, R49)']
+defs_reaching: ['(0x0370, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R22, [R38+0x8] #############
 ####### R22 #######
@@ -1361,6 +1397,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x03e0, R22)']
+defs_reaching: ['(0x0350, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R43, [R16+0x8] #############
 ####### R43 #######
@@ -1372,6 +1414,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x03f0, R43)']
+defs_reaching: ['(0x0360, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R20+0x8] #############
 ####### R45 #######
@@ -1383,6 +1431,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0400, R45)']
+defs_reaching: ['(0x0370, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R15, [R38+0xc] #############
 ####### R15 #######
@@ -1394,6 +1448,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0410, R15)']
+defs_reaching: ['(0x0350, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R14, [R16+0xc] #############
 ####### R14 #######
@@ -1405,6 +1465,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0420, R14)']
+defs_reaching: ['(0x0360, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R13, [R20+0xc] #############
 ####### R13 #######
@@ -1416,6 +1482,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0430, R13)']
+defs_reaching: ['(0x0370, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R41, R11, 0x4, RZ #############
 ####### R41 #######
@@ -1616,6 +1688,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40] #######
+is_def: False
+is_use: False
+kill_set: ['(0x04b0, R12)']
+defs_reaching: ['(0x0470, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R34, R35, R18, c[0x0][0x168] #############
 ####### R34 #######
@@ -1654,6 +1732,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x04d0, R10)']
+defs_reaching: ['(0x0470, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R36, R37, R18, c[0x0][0x168] #############
 ####### R36 #######
@@ -1692,6 +1776,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x04f0, R16)']
+defs_reaching: ['(0x0470, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R17, [R40+0xc] #############
 ####### R17 #######
@@ -1703,6 +1793,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0500, R17)']
+defs_reaching: ['(0x0470, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R19, [R34] #############
 ####### R19 #######
@@ -1714,6 +1810,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0510, R19)']
+defs_reaching: ['(0x04c0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R20, [R34+0x4] #############
 ####### R20 #######
@@ -1725,6 +1827,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0520, R20)']
+defs_reaching: ['(0x04c0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R40, R51, R18, c[0x0][0x170] #############
 ####### R40 #######
@@ -1763,6 +1871,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0540, R51)']
+defs_reaching: ['(0x0490, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R21, [R34+0x8] #############
 ####### R21 #######
@@ -1774,6 +1888,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0550, R21)']
+defs_reaching: ['(0x04c0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R34+0xc] #############
 ####### R42 #######
@@ -1785,6 +1905,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0560, R42)']
+defs_reaching: ['(0x04c0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R44, [R36] #############
 ####### R44 #######
@@ -1796,6 +1922,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0570, R44)']
+defs_reaching: ['(0x04e0, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R46, [R36+0x4] #############
 ####### R46 #######
@@ -1807,6 +1939,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0580, R46)']
+defs_reaching: ['(0x04e0, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R35, R23, 0x8, RZ #############
 ####### R35 #######
@@ -1845,6 +1983,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x05a0, R48)']
+defs_reaching: ['(0x04e0, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R50, [R36+0xc] #############
 ####### R50 #######
@@ -1856,6 +2000,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x05b0, R50)']
+defs_reaching: ['(0x04e0, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R53, [R38+0x4] #############
 ####### R53 #######
@@ -1867,6 +2017,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x05c0, R53)']
+defs_reaching: ['(0x0490, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R59, [R40+0x4] #############
 ####### R59 #######
@@ -1878,6 +2034,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x05d0, R59)']
+defs_reaching: ['(0x0530, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R37, R25, 0x8, RZ #############
 ####### R37 #######
@@ -1943,6 +2105,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0600, R55)']
+defs_reaching: ['(0x0490, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R36, R37, R18, c[0x0][0x170] #############
 ####### R36 #######
@@ -1981,6 +2149,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0620, R61)']
+defs_reaching: ['(0x0530, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R60, [R38+0xc] #############
 ####### R60 #######
@@ -1992,6 +2166,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R38+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0630, R60)']
+defs_reaching: ['(0x0490, R38)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R23, R23, 0xc, RZ #############
 ####### R23 #######
@@ -2057,6 +2237,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0660, R39)']
+defs_reaching: ['(0x05f0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R34+0x8] #############
 ####### R38 #######
@@ -2068,6 +2254,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0670, R38)']
+defs_reaching: ['(0x05f0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R56, R56, R57, R52 #############
 ####### R56 #######
@@ -2112,6 +2304,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0690, R52)']
+defs_reaching: ['(0x0530, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R58, R57, R58, R54 #############
 ####### R58 #######
@@ -2156,6 +2354,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R40] #######
+is_def: False
+is_use: False
+kill_set: ['(0x06b0, R57)']
+defs_reaching: ['(0x0530, R40)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R54, [R34] #############
 ####### R54 #######
@@ -2167,6 +2371,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34] #######
+is_def: False
+is_use: False
+kill_set: ['(0x06c0, R54)']
+defs_reaching: ['(0x05f0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R56, R47, R24, R56 #############
 ####### R56 #######
@@ -2211,6 +2421,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x06e0, R47)']
+defs_reaching: ['(0x05f0, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R58, R24, R49, R58 #############
 ####### R58 #######
@@ -2255,6 +2471,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0700, R41)']
+defs_reaching: ['(0x0610, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R36+0x8] #############
 ####### R40 #######
@@ -2266,6 +2488,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0710, R40)']
+defs_reaching: ['(0x0610, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R49, R43, R22, R56 #############
 ####### R49 #######
@@ -2310,6 +2538,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0730, R56)']
+defs_reaching: ['(0x0610, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R24, R25, R18, c[0x0][0x170] #############
 ####### R24 #######
@@ -2348,6 +2582,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0750, R43)']
+defs_reaching: ['(0x0610, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R58, R22, R45, R58 #############
 ####### R58 #######
@@ -2419,6 +2659,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0780, R18)']
+defs_reaching: ['(0x0740, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R14, R14, R15, R49 #############
 ####### R14 #######
@@ -2463,6 +2709,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x07a0, R49)']
+defs_reaching: ['(0x0740, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R58, R15, R13, R58 #############
 ####### R58 #######
@@ -2507,6 +2759,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22] #######
+is_def: False
+is_use: False
+kill_set: ['(0x07c0, R35)']
+defs_reaching: ['(0x0770, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R15, [R22+0x4] #############
 ####### R15 #######
@@ -2518,6 +2776,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x07d0, R15)']
+defs_reaching: ['(0x0770, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R13, [R22+0x8] #############
 ####### R13 #######
@@ -2529,6 +2793,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x07e0, R13)']
+defs_reaching: ['(0x0770, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R24+0x8] #############
 ####### R37 #######
@@ -2540,6 +2810,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x07f0, R37)']
+defs_reaching: ['(0x0740, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R22+0xc] #############
 ####### R45 #######
@@ -2551,6 +2827,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0800, R45)']
+defs_reaching: ['(0x0770, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R34, [R24+0xc] #############
 ####### R34 #######
@@ -2562,6 +2844,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0810, R34)']
+defs_reaching: ['(0x0740, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R14, R51, R12, R14 #############
 ####### R14 #######
@@ -3773,6 +4061,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0aa0, R39)']
+defs_reaching: ['(0x0a50, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R12, R12, R17.reuse, c[0x0][0x168] #############
 ####### R12 #######
@@ -3811,6 +4105,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0ac0, R37)']
+defs_reaching: ['(0x0a80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R36, [R20] #############
 ####### R36 #######
@@ -3822,6 +4122,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0ad0, R36)']
+defs_reaching: ['(0x0a90, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R14, R15, R17, c[0x0][0x170] #############
 ####### R14 #######
@@ -3860,6 +4166,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0af0, R34)']
+defs_reaching: ['(0x0a50, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R22+0x4] #############
 ####### R38 #######
@@ -3871,6 +4183,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b00, R38)']
+defs_reaching: ['(0x0a80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R35, [R20+0x4] #############
 ####### R35 #######
@@ -3882,6 +4200,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b10, R35)']
+defs_reaching: ['(0x0a90, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R16, R16, R17, c[0x0][0x170] #############
 ####### R16 #######
@@ -3920,6 +4244,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b30, R24)']
+defs_reaching: ['(0x0a50, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R22+0x8] #############
 ####### R40 #######
@@ -3931,6 +4261,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b40, R40)']
+defs_reaching: ['(0x0a80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R20+0x8] #############
 ####### R41 #######
@@ -3942,6 +4278,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b50, R41)']
+defs_reaching: ['(0x0a90, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R44, [R18+0xc] #############
 ####### R44 #######
@@ -3953,6 +4295,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b60, R44)']
+defs_reaching: ['(0x0a50, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R22+0xc] #############
 ####### R42 #######
@@ -3964,6 +4312,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b70, R42)']
+defs_reaching: ['(0x0a80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R43, [R20+0xc] #############
 ####### R43 #######
@@ -3975,6 +4329,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R20+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b80, R43)']
+defs_reaching: ['(0x0a90, R20)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R48, [R12] #############
 ####### R48 #######
@@ -3986,6 +4346,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0b90, R48)']
+defs_reaching: ['(0x0ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R46, [R14] #############
 ####### R46 #######
@@ -3997,6 +4363,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0ba0, R46)']
+defs_reaching: ['(0x0ae0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R16] #############
 ####### R45 #######
@@ -4008,6 +4380,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0bb0, R45)']
+defs_reaching: ['(0x0b20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R56, [R12+0x4] #############
 ####### R56 #######
@@ -4019,6 +4397,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0bc0, R56)']
+defs_reaching: ['(0x0ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R50, [R14+0x4] #############
 ####### R50 #######
@@ -4030,6 +4414,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0bd0, R50)']
+defs_reaching: ['(0x0ae0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R16+0x4] #############
 ####### R47 #######
@@ -4041,6 +4431,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0be0, R47)']
+defs_reaching: ['(0x0b20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R12+0x8] #############
 ####### R10 #######
@@ -4052,6 +4448,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0bf0, R10)']
+defs_reaching: ['(0x0ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R25, [R14+0x8] #############
 ####### R25 #######
@@ -4063,6 +4465,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0c00, R25)']
+defs_reaching: ['(0x0ae0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R19, [R16+0x8] #############
 ####### R19 #######
@@ -4074,6 +4482,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0c10, R19)']
+defs_reaching: ['(0x0b20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R18, [R12+0xc] #############
 ####### R18 #######
@@ -4085,6 +4499,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0c20, R18)']
+defs_reaching: ['(0x0ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R20, [R14+0xc] #############
 ####### R20 #######
@@ -4096,6 +4516,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0c30, R20)']
+defs_reaching: ['(0x0ae0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R21, [R16+0xc] #############
 ####### R21 #######
@@ -4107,6 +4533,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0c40, R21)']
+defs_reaching: ['(0x0b20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 #############
 ####### P0 #######
@@ -4978,6 +5410,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e10, R21)']
+defs_reaching: ['(0x0de0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R19, [R14] #############
 ####### R19 #######
@@ -4989,6 +5427,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e20, R19)']
+defs_reaching: ['(0x0df0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R16] #############
 ####### R10 #######
@@ -5000,6 +5444,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e30, R10)']
+defs_reaching: ['(0x0e00, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R23, [R12+0x4] #############
 ####### R23 #######
@@ -5011,6 +5461,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e40, R23)']
+defs_reaching: ['(0x0de0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R18, [R14+0x4] #############
 ####### R18 #######
@@ -5022,6 +5478,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e50, R18)']
+defs_reaching: ['(0x0df0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R20, [R16+0x4] #############
 ####### R20 #######
@@ -5033,6 +5495,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e60, R20)']
+defs_reaching: ['(0x0e00, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R35, [R12+0x8] #############
 ####### R35 #######
@@ -5044,6 +5512,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e70, R35)']
+defs_reaching: ['(0x0de0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R25, [R14+0x8] #############
 ####### R25 #######
@@ -5055,6 +5529,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e80, R25)']
+defs_reaching: ['(0x0df0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R22, [R16+0x8] #############
 ####### R22 #######
@@ -5066,6 +5546,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0e90, R22)']
+defs_reaching: ['(0x0e00, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R12+0xc] #############
 ####### R39 #######
@@ -5077,6 +5563,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0ea0, R39)']
+defs_reaching: ['(0x0de0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R14+0xc] #############
 ####### R37 #######
@@ -5088,6 +5580,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0eb0, R37)']
+defs_reaching: ['(0x0df0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R16+0xc] #############
 ####### R24 #######
@@ -5099,6 +5597,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0ec0, R24)']
+defs_reaching: ['(0x0e00, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R9, R9, -0x4, RZ #############
 ####### R9 #######
@@ -5713,6 +6217,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1020, R17)']
+defs_reaching: ['(0x0ff0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R9, [R12] #############
 ####### R9 #######
@@ -5724,6 +6234,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1030, R9)']
+defs_reaching: ['(0x1000, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R16, [R14] #############
 ####### R16 #######
@@ -5735,6 +6251,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1040, R16)']
+defs_reaching: ['(0x1010, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# ISETP.NE.AND P0, PT, R4, 0x1, PT #############
 ####### P0 #######
@@ -5894,6 +6416,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10a0, R9)']
+defs_reaching: ['(0x1000, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R17, [R10+0x4] #############
 ####### R17 #######
@@ -5905,6 +6433,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10b0, R17)']
+defs_reaching: ['(0x0ff0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R16, [R14+0x4] #############
 ####### R16 #######
@@ -5916,6 +6450,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10c0, R16)']
+defs_reaching: ['(0x1010, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# @P0 LDG.E.SYS R19, [R12+0x8] #############
 ####### R19 #######
@@ -5927,6 +6467,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10d0, R19)']
+defs_reaching: ['(0x1000, R12)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -5947,6 +6493,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10d0, R19)']
+defs_reaching: ['(0x1000, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_2_split_0x10e0) #############
 ####### `(.L_x_2_split_0x10e0) #######
@@ -5962,6 +6514,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10e0, R21)']
+defs_reaching: ['(0x0ff0, R10)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -5982,6 +6540,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10e0, R21)']
+defs_reaching: ['(0x0ff0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_2_split_0x10f0) #############
 ####### `(.L_x_2_split_0x10f0) #######
@@ -5997,6 +6561,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10f0, R18)']
+defs_reaching: ['(0x1010, R14)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -6017,6 +6587,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x10f0, R18)']
+defs_reaching: ['(0x1010, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_2_split_0x1100) #############
 ####### `(.L_x_2_split_0x1100) #######
@@ -6256,6 +6832,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R26] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1140, R9)']
+defs_reaching: ['(0x00d0, R26)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# MOV R10, 0x3bbb989d #############
 ####### R10 #######
@@ -6781,6 +7363,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R32] #######
+is_def: False
+is_use: False
+kill_set: ['(0x12f0, R11)']
+defs_reaching: ['(0x0150, R32)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# MOV R10, 0x3bbb989d #############
 ####### R10 #######
@@ -7497,6 +8085,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x14e0, R24)']
+defs_reaching: ['(0x14b0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R14, R3, R18, RZ #############
 ####### R14 #######
@@ -7541,6 +8135,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1500, R21)']
+defs_reaching: ['(0x14c0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R36, [R12+0x4] #############
 ####### R36 #######
@@ -7552,6 +8152,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1510, R36)']
+defs_reaching: ['(0x14b0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R18, R18, R49, c[0x0][0x168] #############
 ####### R18 #######
@@ -7590,6 +8196,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1530, R25)']
+defs_reaching: ['(0x14c0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R46, [R12+0x8] #############
 ####### R46 #######
@@ -7601,6 +8213,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1540, R46)']
+defs_reaching: ['(0x14b0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R14, R14, R49, c[0x0][0x170] #############
 ####### R14 #######
@@ -7639,6 +8257,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1560, R34)']
+defs_reaching: ['(0x14c0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R44, [R12+0xc] #############
 ####### R44 #######
@@ -7650,6 +8274,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1570, R44)']
+defs_reaching: ['(0x14b0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R10, R22, 0x8, RZ #############
 ####### R10 #######
@@ -7688,6 +8318,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1590, R41)']
+defs_reaching: ['(0x14c0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R18] #############
 ####### R42 #######
@@ -7699,6 +8335,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18] #######
+is_def: False
+is_use: False
+kill_set: ['(0x15a0, R42)']
+defs_reaching: ['(0x1520, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R50, R3, R10, RZ #############
 ####### R50 #######
@@ -7743,6 +8385,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14] #######
+is_def: False
+is_use: False
+kill_set: ['(0x15c0, R39)']
+defs_reaching: ['(0x1550, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R18+0x4] #############
 ####### R40 #######
@@ -7754,6 +8402,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x15d0, R40)']
+defs_reaching: ['(0x1520, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R10, R10, R49, c[0x0][0x168] #############
 ####### R10 #######
@@ -7792,6 +8446,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x15f0, R37)']
+defs_reaching: ['(0x1550, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R18+0x8] #############
 ####### R38 #######
@@ -7803,6 +8463,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1600, R38)']
+defs_reaching: ['(0x1520, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R12, R50, R49, c[0x0][0x170] #############
 ####### R12 #######
@@ -7841,6 +8507,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1620, R35)']
+defs_reaching: ['(0x1550, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R48, [R18+0xc] #############
 ####### R48 #######
@@ -7852,6 +8524,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R18+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1630, R48)']
+defs_reaching: ['(0x1520, R18)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R16, R22, 0xc, RZ #############
 ####### R16 #######
@@ -7890,6 +8568,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1650, R47)']
+defs_reaching: ['(0x1550, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R54, [R10] #############
 ####### R54 #######
@@ -7901,6 +8585,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1660, R54)']
+defs_reaching: ['(0x15e0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R58, R3, R16, RZ #############
 ####### R58 #######
@@ -7945,6 +8635,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1680, R45)']
+defs_reaching: ['(0x1610, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R52, [R10+0x4] #############
 ####### R52 #######
@@ -7956,6 +8652,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1690, R52)']
+defs_reaching: ['(0x15e0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R16, R16, R49, c[0x0][0x168] #############
 ####### R16 #######
@@ -7994,6 +8696,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x16b0, R43)']
+defs_reaching: ['(0x1610, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R50, [R10+0x8] #############
 ####### R50 #######
@@ -8005,6 +8713,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x16c0, R50)']
+defs_reaching: ['(0x15e0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R14, R58, R49, c[0x0][0x170] #############
 ####### R14 #######
@@ -8043,6 +8757,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x16e0, R18)']
+defs_reaching: ['(0x1610, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R56, [R10+0xc] #############
 ####### R56 #######
@@ -8054,6 +8774,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x16f0, R56)']
+defs_reaching: ['(0x15e0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R55, [R12+0xc] #############
 ####### R55 #######
@@ -8065,6 +8791,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1700, R55)']
+defs_reaching: ['(0x1610, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R51, [R16] #############
 ####### R51 #######
@@ -8076,6 +8808,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1710, R51)']
+defs_reaching: ['(0x16a0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R53, [R14] #############
 ####### R53 #######
@@ -8087,6 +8825,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1720, R53)']
+defs_reaching: ['(0x16d0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R60, [R16+0x4] #############
 ####### R60 #######
@@ -8098,6 +8842,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1730, R60)']
+defs_reaching: ['(0x16a0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R49, [R14+0x4] #############
 ####### R49 #######
@@ -8109,6 +8859,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1740, R49)']
+defs_reaching: ['(0x16d0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R58, [R16+0x8] #############
 ####### R58 #######
@@ -8120,6 +8876,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1750, R58)']
+defs_reaching: ['(0x16a0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R19, [R14+0x8] #############
 ####### R19 #######
@@ -8131,6 +8893,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1760, R19)']
+defs_reaching: ['(0x16d0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R57, [R16+0xc] #############
 ####### R57 #######
@@ -8142,6 +8910,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1770, R57)']
+defs_reaching: ['(0x16a0, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R59, [R14+0xc] #############
 ####### R59 #######
@@ -8153,6 +8927,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1780, R59)']
+defs_reaching: ['(0x16d0, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R23, R23, -0x10, RZ #############
 ####### R23 #######
@@ -9365,6 +10145,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1a40, R18)']
+defs_reaching: ['(0x1a10, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R12, R3, R10, RZ #############
 ####### R12 #######
@@ -9409,6 +10195,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1a60, R19)']
+defs_reaching: ['(0x1a20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R14+0x4] #############
 ####### R24 #######
@@ -9420,6 +10212,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1a70, R24)']
+defs_reaching: ['(0x1a10, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R10, R10, R13, c[0x0][0x168] #############
 ####### R10 #######
@@ -9458,6 +10256,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1a90, R21)']
+defs_reaching: ['(0x1a20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R34, [R14+0x8] #############
 ####### R34 #######
@@ -9469,6 +10273,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1aa0, R34)']
+defs_reaching: ['(0x1a10, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R12, R12, R13, c[0x0][0x170] #############
 ####### R12 #######
@@ -9507,6 +10317,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1ac0, R25)']
+defs_reaching: ['(0x1a20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R36, [R14+0xc] #############
 ####### R36 #######
@@ -9518,6 +10334,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R14+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1ad0, R36)']
+defs_reaching: ['(0x1a10, R14)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R35, [R16+0xc] #############
 ####### R35 #######
@@ -9529,6 +10351,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R16+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1ae0, R35)']
+defs_reaching: ['(0x1a20, R16)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R10] #############
 ####### R38 #######
@@ -9540,6 +10368,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1af0, R38)']
+defs_reaching: ['(0x1a80, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R12] #############
 ####### R37 #######
@@ -9551,6 +10385,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b00, R37)']
+defs_reaching: ['(0x1ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R10+0x4] #############
 ####### R40 #######
@@ -9562,6 +10402,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b10, R40)']
+defs_reaching: ['(0x1a80, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R12+0x4] #############
 ####### R39 #######
@@ -9573,6 +10419,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b20, R39)']
+defs_reaching: ['(0x1ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R10+0x8] #############
 ####### R42 #######
@@ -9584,6 +10436,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b30, R42)']
+defs_reaching: ['(0x1a80, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R44, [R10+0xc] #############
 ####### R44 #######
@@ -9595,6 +10453,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b40, R44)']
+defs_reaching: ['(0x1a80, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R12+0x8] #############
 ####### R41 #######
@@ -9606,6 +10470,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b50, R41)']
+defs_reaching: ['(0x1ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R43, [R12+0xc] #############
 ####### R43 #######
@@ -9617,6 +10487,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1b60, R43)']
+defs_reaching: ['(0x1ab0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 #############
 ####### P0 #######
@@ -10343,6 +11219,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d00, R14)']
+defs_reaching: ['(0x1ce0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R16, [R12] #############
 ####### R16 #######
@@ -10354,6 +11236,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d10, R16)']
+defs_reaching: ['(0x1cf0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R18, [R10+0x4] #############
 ####### R18 #######
@@ -10365,6 +11253,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d20, R18)']
+defs_reaching: ['(0x1ce0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R17, [R12+0x4] #############
 ####### R17 #######
@@ -10376,6 +11270,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d30, R17)']
+defs_reaching: ['(0x1cf0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R10+0x8] #############
 ####### R24 #######
@@ -10387,6 +11287,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d40, R24)']
+defs_reaching: ['(0x1ce0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R19, [R12+0x8] #############
 ####### R19 #######
@@ -10398,6 +11304,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d50, R19)']
+defs_reaching: ['(0x1cf0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R34, [R10+0xc] #############
 ####### R34 #######
@@ -10409,6 +11321,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d60, R34)']
+defs_reaching: ['(0x1ce0, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R21, [R12+0xc] #############
 ####### R21 #######
@@ -10420,6 +11338,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1d70, R21)']
+defs_reaching: ['(0x1cf0, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R23, R23, -0x4, RZ #############
 ####### R23 #######
@@ -10921,6 +11845,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1ea0, R12)']
+defs_reaching: ['(0x1e80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R14, [R10] #############
 ####### R14 #######
@@ -10932,6 +11862,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1eb0, R14)']
+defs_reaching: ['(0x1e90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# ISETP.NE.AND P0, PT, R4, 0x1, PT #############
 ####### P0 #######
@@ -11083,6 +12019,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f10, R12)']
+defs_reaching: ['(0x1e80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R14, [R10+0x4] #############
 ####### R14 #######
@@ -11094,6 +12036,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f20, R14)']
+defs_reaching: ['(0x1e90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# @P0 LDG.E.SYS R16, [R22+0x8] #############
 ####### R16 #######
@@ -11105,6 +12053,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R22+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f30, R16)']
+defs_reaching: ['(0x1e80, R22)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -11125,6 +12079,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R22+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f30, R16)']
+defs_reaching: ['(0x1e80, R22)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_11_split_0x1f40) #############
 ####### `(.L_x_11_split_0x1f40) #######
@@ -11140,6 +12100,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f40, R15)']
+defs_reaching: ['(0x1e90, R10)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -11160,6 +12126,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f40, R15)']
+defs_reaching: ['(0x1e90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_11_split_0x1f50) #############
 ####### `(.L_x_11_split_0x1f50) #######
@@ -11375,6 +12347,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R30] #######
+is_def: False
+is_use: False
+kill_set: ['(0x1f90, R9)']
+defs_reaching: ['(0x0120, R30)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BMOV.32.CLEAR RZ, B0 #############
 ####### RZ #######
@@ -12161,6 +13139,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R28] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2210, R11)']
+defs_reaching: ['(0x0100, R28)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FADD R10, -R8, 1 #############
 ####### R10 #######
@@ -12241,6 +13225,12 @@ Typedesc: Float32
 
 ############# STG.E.SYS [R28], R9 #############
 ####### [R28] #######
+is_def: False
+is_use: False
+kill_set: []
+defs_reaching: ['(0x0100, R28)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ####### R9 #######
 is_def: False
@@ -13151,6 +14141,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x24c0, R35)']
+defs_reaching: ['(0x2460, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R10] #############
 ####### R24 #######
@@ -13162,6 +14158,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x24d0, R24)']
+defs_reaching: ['(0x2480, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R8] #############
 ####### R37 #######
@@ -13173,6 +14175,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x24e0, R37)']
+defs_reaching: ['(0x2490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R34, [R6] #############
 ####### R34 #######
@@ -13184,6 +14192,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x24f0, R34)']
+defs_reaching: ['(0x24a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R36, [R4+0x4] #############
 ####### R36 #######
@@ -13195,6 +14209,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2500, R36)']
+defs_reaching: ['(0x2460, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R10+0x4] #############
 ####### R38 #######
@@ -13206,6 +14226,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2510, R38)']
+defs_reaching: ['(0x2480, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R8+0x4] #############
 ####### R39 #######
@@ -13217,6 +14243,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2520, R39)']
+defs_reaching: ['(0x2490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R6+0x4] #############
 ####### R41 #######
@@ -13228,6 +14260,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2530, R41)']
+defs_reaching: ['(0x24a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R10+0x8] #############
 ####### R42 #######
@@ -13239,6 +14277,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2540, R42)']
+defs_reaching: ['(0x2480, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R4+0x8] #############
 ####### R40 #######
@@ -13250,6 +14294,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2550, R40)']
+defs_reaching: ['(0x2460, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R43, [R8+0x8] #############
 ####### R43 #######
@@ -13261,6 +14311,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2560, R43)']
+defs_reaching: ['(0x2490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R6+0x8] #############
 ####### R45 #######
@@ -13272,6 +14328,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2570, R45)']
+defs_reaching: ['(0x24a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R10+0xc] #############
 ####### R47 #######
@@ -13283,6 +14345,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2580, R47)']
+defs_reaching: ['(0x2480, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R46, [R4+0xc] #############
 ####### R46 #######
@@ -13294,6 +14362,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2590, R46)']
+defs_reaching: ['(0x2460, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R50, [R8+0xc] #############
 ####### R50 #######
@@ -13305,6 +14379,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x25a0, R50)']
+defs_reaching: ['(0x2490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R51, [R6+0xc] #############
 ####### R51 #######
@@ -13316,6 +14396,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x25b0, R51)']
+defs_reaching: ['(0x24a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R12, R12, -0x4, RZ #############
 ####### R12 #######
@@ -14115,6 +15201,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2780, R13)']
+defs_reaching: ['(0x2720, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R12, [R6] #############
 ####### R12 #######
@@ -14126,6 +15218,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2790, R12)']
+defs_reaching: ['(0x2740, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R23, [R8] #############
 ####### R23 #######
@@ -14137,6 +15235,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x27a0, R23)']
+defs_reaching: ['(0x2750, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R22, [R10] #############
 ####### R22 #######
@@ -14148,6 +15252,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x27b0, R22)']
+defs_reaching: ['(0x2760, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# ISETP.NE.AND P0, PT, R15, 0x1, PT #############
 ####### P0 #######
@@ -14340,6 +15450,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2820, R13)']
+defs_reaching: ['(0x2720, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R12, [R6+0x4] #############
 ####### R12 #######
@@ -14351,6 +15467,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2830, R12)']
+defs_reaching: ['(0x2740, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R23, [R8+0x4] #############
 ####### R23 #######
@@ -14362,6 +15484,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2840, R23)']
+defs_reaching: ['(0x2750, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R22, [R10+0x4] #############
 ####### R22 #######
@@ -14373,6 +15501,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2850, R22)']
+defs_reaching: ['(0x2760, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# @P0 LDG.E.SYS R25, [R4+0x8] #############
 ####### R25 #######
@@ -14384,6 +15518,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2860, R25)']
+defs_reaching: ['(0x2720, R4)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -14404,6 +15544,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2860, R25)']
+defs_reaching: ['(0x2720, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_23_split_0x2870) #############
 ####### `(.L_x_23_split_0x2870) #######
@@ -14419,6 +15565,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2870, R24)']
+defs_reaching: ['(0x2740, R6)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -14439,6 +15591,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2870, R24)']
+defs_reaching: ['(0x2740, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_23_split_0x2880) #############
 ####### `(.L_x_23_split_0x2880) #######
@@ -14454,6 +15612,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2880, R35)']
+defs_reaching: ['(0x2750, R8)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -14474,6 +15638,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2880, R35)']
+defs_reaching: ['(0x2750, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_23_split_0x2890) #############
 ####### `(.L_x_23_split_0x2890) #######
@@ -14489,6 +15659,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2890, R34)']
+defs_reaching: ['(0x2760, R10)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -14509,6 +15685,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2890, R34)']
+defs_reaching: ['(0x2760, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_23_split_0x28a0) #############
 ####### `(.L_x_23_split_0x28a0) #######
@@ -15340,6 +16522,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2a30, R39)']
+defs_reaching: ['(0x2a00, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R8] #############
 ####### R41 #######
@@ -15351,6 +16539,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2a40, R41)']
+defs_reaching: ['(0x2a10, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R12] #############
 ####### R40 #######
@@ -15362,6 +16556,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2a50, R40)']
+defs_reaching: ['(0x2a20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R52, [R36+0x4] #############
 ####### R52 #######
@@ -15373,6 +16573,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2a60, R52)']
+defs_reaching: ['(0x2a00, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R53, [R8+0x4] #############
 ####### R53 #######
@@ -15384,6 +16590,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2a70, R53)']
+defs_reaching: ['(0x2a10, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R55, [R12+0x4] #############
 ####### R55 #######
@@ -15395,6 +16607,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2a80, R55)']
+defs_reaching: ['(0x2a20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R11, R23, 0x4, RZ #############
 ####### R11 #######
@@ -15433,6 +16651,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2aa0, R50)']
+defs_reaching: ['(0x2a00, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R7, R35, 0x4, RZ #############
 ####### R7 #######
@@ -15471,6 +16695,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ac0, R43)']
+defs_reaching: ['(0x2a10, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R5, R25, 0x4, RZ #############
 ####### R5 #######
@@ -15509,6 +16739,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ae0, R51)']
+defs_reaching: ['(0x2a20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R36+0xc] #############
 ####### R47 #######
@@ -15520,6 +16756,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R36+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2af0, R47)']
+defs_reaching: ['(0x2a00, R36)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R54, [R8+0xc] #############
 ####### R54 #######
@@ -15531,6 +16773,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b00, R54)']
+defs_reaching: ['(0x2a10, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R58, [R12+0xc] #############
 ####### R58 #######
@@ -15542,6 +16790,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b10, R58)']
+defs_reaching: ['(0x2a20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R10, R11, R24, c[0x0][0x168] #############
 ####### R10 #######
@@ -15634,6 +16888,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b50, R46)']
+defs_reaching: ['(0x2b20, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R6] #############
 ####### R42 #######
@@ -15645,6 +16905,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b60, R42)']
+defs_reaching: ['(0x2b30, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R4] #############
 ####### R45 #######
@@ -15656,6 +16922,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b70, R45)']
+defs_reaching: ['(0x2b40, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R34, [R10+0x4] #############
 ####### R34 #######
@@ -15667,6 +16939,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b80, R34)']
+defs_reaching: ['(0x2b20, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R6+0x4] #############
 ####### R37 #######
@@ -15678,6 +16956,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2b90, R37)']
+defs_reaching: ['(0x2b30, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R9, R23, 0x8, RZ #############
 ####### R9 #######
@@ -15716,6 +17000,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2bb0, R36)']
+defs_reaching: ['(0x2b20, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R8, R9, R24, c[0x0][0x168] #############
 ####### R8 #######
@@ -15754,6 +17044,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2bd0, R38)']
+defs_reaching: ['(0x2b20, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R13, R23, 0xc, RZ #############
 ####### R13 #######
@@ -15879,6 +17175,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2c20, R41)']
+defs_reaching: ['(0x2bc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R56, R39, R40, R56 #############
 ####### R56 #######
@@ -15923,6 +17225,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2c40, R40)']
+defs_reaching: ['(0x2bc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R8+0x8] #############
 ####### R39 #######
@@ -15934,6 +17242,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2c50, R39)']
+defs_reaching: ['(0x2bc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R57, R53, R52, R57 #############
 ####### R57 #######
@@ -15978,6 +17292,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2c70, R44)']
+defs_reaching: ['(0x2bc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R59, R52, R55, R56 #############
 ####### R59 #######
@@ -16022,6 +17342,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2c90, R55)']
+defs_reaching: ['(0x2c00, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R53, [R12+0x4] #############
 ####### R53 #######
@@ -16033,6 +17359,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ca0, R53)']
+defs_reaching: ['(0x2c00, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R43, R43, R50, R57 #############
 ####### R43 #######
@@ -16104,6 +17436,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2cd0, R52)']
+defs_reaching: ['(0x2c00, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R51, R50, R51, R59 #############
 ####### R51 #######
@@ -16175,6 +17513,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2d00, R59)']
+defs_reaching: ['(0x2b40, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R61, R54, R47, R43 #############
 ####### R61 #######
@@ -16219,6 +17563,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2d20, R50)']
+defs_reaching: ['(0x2cc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R58, R47, R58, R51 #############
 ####### R58 #######
@@ -16263,6 +17613,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2d40, R43)']
+defs_reaching: ['(0x2b30, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R4+0x4] #############
 ####### R47 #######
@@ -16274,6 +17630,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2d50, R47)']
+defs_reaching: ['(0x2b40, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R10, R57, R24, c[0x0][0x170] #############
 ####### R10 #######
@@ -16312,6 +17674,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2d70, R51)']
+defs_reaching: ['(0x2b40, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R57, [R6+0xc] #############
 ####### R57 #######
@@ -16323,6 +17691,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2d80, R57)']
+defs_reaching: ['(0x2b30, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R42, R42, R46, R61 #############
 ####### R42 #######
@@ -16394,6 +17768,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2db0, R56)']
+defs_reaching: ['(0x2c00, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R45, R46, R45, R58 #############
 ####### R45 #######
@@ -16438,6 +17818,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2dd0, R46)']
+defs_reaching: ['(0x2d60, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R61, [R8+0x4] #############
 ####### R61 #######
@@ -16449,6 +17835,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2de0, R61)']
+defs_reaching: ['(0x2cc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R13, R35, 0xc, RZ #############
 ####### R13 #######
@@ -16487,6 +17879,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e00, R35)']
+defs_reaching: ['(0x2d60, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R12, R13, R24.reuse, c[0x0][0x170] #############
 ####### R12 #######
@@ -16525,6 +17923,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e20, R6)']
+defs_reaching: ['(0x2cc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R24, R25, R24, c[0x0][0x170] #############
 ####### R24 #######
@@ -16563,6 +17967,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e40, R4)']
+defs_reaching: ['(0x2d60, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R5, [R8+0xc] #############
 ####### R5 #######
@@ -16574,6 +17984,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e50, R5)']
+defs_reaching: ['(0x2cc0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R60, [R10+0xc] #############
 ####### R60 #######
@@ -16585,6 +18001,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e60, R60)']
+defs_reaching: ['(0x2d60, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R58, [R12] #############
 ####### R58 #######
@@ -16596,6 +18018,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e70, R58)']
+defs_reaching: ['(0x2e10, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R54, [R12+0x4] #############
 ####### R54 #######
@@ -16607,6 +18035,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2e80, R54)']
+defs_reaching: ['(0x2e10, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FFMA R10, R37, R34, R42 #############
 ####### R10 #######
@@ -16651,6 +18085,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ea0, R37)']
+defs_reaching: ['(0x2e30, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R24+0x4] #############
 ####### R42 #######
@@ -16662,6 +18102,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2eb0, R42)']
+defs_reaching: ['(0x2e30, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R7, [R12+0x8] #############
 ####### R7 #######
@@ -16673,6 +18119,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ec0, R7)']
+defs_reaching: ['(0x2e10, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R9, [R24+0x8] #############
 ####### R9 #######
@@ -16684,6 +18136,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ed0, R9)']
+defs_reaching: ['(0x2e30, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R8, [R24+0xc] #############
 ####### R8 #######
@@ -16695,6 +18153,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ee0, R8)']
+defs_reaching: ['(0x2e30, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R13, [R12+0xc] #############
 ####### R13 #######
@@ -16706,6 +18170,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x2ef0, R13)']
+defs_reaching: ['(0x2e10, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R22, R22, -0x10, RZ #############
 ####### R22 #######
@@ -17818,6 +19288,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3150, R43)']
+defs_reaching: ['(0x3100, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R6, R6, R25.reuse, c[0x0][0x168] #############
 ####### R6 #######
@@ -17856,6 +19332,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3170, R52)']
+defs_reaching: ['(0x3120, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R10] #############
 ####### R38 #######
@@ -17867,6 +19349,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3180, R38)']
+defs_reaching: ['(0x3140, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R12, R12, R25, c[0x0][0x170] #############
 ####### R12 #######
@@ -17905,6 +19393,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x31a0, R36)']
+defs_reaching: ['(0x3100, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R4+0x4] #############
 ####### R41 #######
@@ -17916,6 +19410,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x31b0, R41)']
+defs_reaching: ['(0x3120, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R10+0x4] #############
 ####### R39 #######
@@ -17927,6 +19427,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x31c0, R39)']
+defs_reaching: ['(0x3140, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R24, R24, R25, c[0x0][0x170] #############
 ####### R24 #######
@@ -17965,6 +19471,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x31e0, R34)']
+defs_reaching: ['(0x3100, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R4+0x8] #############
 ####### R37 #######
@@ -17976,6 +19488,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x31f0, R37)']
+defs_reaching: ['(0x3120, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R35, [R10+0x8] #############
 ####### R35 #######
@@ -17987,6 +19505,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3200, R35)']
+defs_reaching: ['(0x3140, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R8+0xc] #############
 ####### R40 #######
@@ -17998,6 +19522,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3210, R40)']
+defs_reaching: ['(0x3100, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R4+0xc] #############
 ####### R45 #######
@@ -18009,6 +19539,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3220, R45)']
+defs_reaching: ['(0x3120, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R59, [R10+0xc] #############
 ####### R59 #######
@@ -18020,6 +19556,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3230, R59)']
+defs_reaching: ['(0x3140, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R50, [R6] #############
 ####### R50 #######
@@ -18031,6 +19573,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3240, R50)']
+defs_reaching: ['(0x3160, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R57, [R12] #############
 ####### R57 #######
@@ -18042,6 +19590,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3250, R57)']
+defs_reaching: ['(0x3190, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R55, [R24] #############
 ####### R55 #######
@@ -18053,6 +19607,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3260, R55)']
+defs_reaching: ['(0x31d0, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R46, [R6+0x4] #############
 ####### R46 #######
@@ -18064,6 +19624,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3270, R46)']
+defs_reaching: ['(0x3160, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R53, [R12+0x4] #############
 ####### R53 #######
@@ -18075,6 +19641,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3280, R53)']
+defs_reaching: ['(0x3190, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R51, [R24+0x4] #############
 ####### R51 #######
@@ -18086,6 +19658,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3290, R51)']
+defs_reaching: ['(0x31d0, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R6+0x8] #############
 ####### R42 #######
@@ -18097,6 +19675,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x32a0, R42)']
+defs_reaching: ['(0x3160, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R12+0x8] #############
 ####### R47 #######
@@ -18108,6 +19692,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x32b0, R47)']
+defs_reaching: ['(0x3190, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R9, [R24+0x8] #############
 ####### R9 #######
@@ -18119,6 +19709,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x32c0, R9)']
+defs_reaching: ['(0x31d0, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R4, [R6+0xc] #############
 ####### R4 #######
@@ -18130,6 +19726,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x32d0, R4)']
+defs_reaching: ['(0x3160, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R5, [R12+0xc] #############
 ####### R5 #######
@@ -18141,6 +19743,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x32e0, R5)']
+defs_reaching: ['(0x3190, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R11, [R24+0xc] #############
 ####### R11 #######
@@ -18152,6 +19760,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R24+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x32f0, R11)']
+defs_reaching: ['(0x31d0, R24)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 #############
 ####### P0 #######
@@ -19023,6 +20637,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x34c0, R13)']
+defs_reaching: ['(0x3490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R11, [R4] #############
 ####### R11 #######
@@ -19034,6 +20654,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x34d0, R11)']
+defs_reaching: ['(0x34a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R6] #############
 ####### R10 #######
@@ -19045,6 +20671,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x34e0, R10)']
+defs_reaching: ['(0x34b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R25, [R8+0x4] #############
 ####### R25 #######
@@ -19056,6 +20688,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x34f0, R25)']
+defs_reaching: ['(0x3490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R12, [R4+0x4] #############
 ####### R12 #######
@@ -19067,6 +20705,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3500, R12)']
+defs_reaching: ['(0x34a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R6+0x4] #############
 ####### R24 #######
@@ -19078,6 +20722,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3510, R24)']
+defs_reaching: ['(0x34b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R35, [R8+0x8] #############
 ####### R35 #######
@@ -19089,6 +20739,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3520, R35)']
+defs_reaching: ['(0x3490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R34, [R4+0x8] #############
 ####### R34 #######
@@ -19100,6 +20756,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3530, R34)']
+defs_reaching: ['(0x34a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R36, [R6+0x8] #############
 ####### R36 #######
@@ -19111,6 +20773,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3540, R36)']
+defs_reaching: ['(0x34b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R8+0xc] #############
 ####### R37 #######
@@ -19122,6 +20790,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3550, R37)']
+defs_reaching: ['(0x3490, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R4+0xc] #############
 ####### R38 #######
@@ -19133,6 +20807,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3560, R38)']
+defs_reaching: ['(0x34a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R6+0xc] #############
 ####### R39 #######
@@ -19144,6 +20824,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3570, R39)']
+defs_reaching: ['(0x34b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R22, R22, -0x4, RZ #############
 ####### R22 #######
@@ -19758,6 +21444,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x36d0, R13)']
+defs_reaching: ['(0x36a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R11, [R6] #############
 ####### R11 #######
@@ -19769,6 +21461,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x36e0, R11)']
+defs_reaching: ['(0x36b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R8] #############
 ####### R10 #######
@@ -19780,6 +21478,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x36f0, R10)']
+defs_reaching: ['(0x36c0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# ISETP.NE.AND P0, PT, R48, 0x1, PT #############
 ####### P0 #######
@@ -19939,6 +21643,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3750, R11)']
+defs_reaching: ['(0x36b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R13, [R4+0x4] #############
 ####### R13 #######
@@ -19950,6 +21660,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3760, R13)']
+defs_reaching: ['(0x36a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R8+0x4] #############
 ####### R10 #######
@@ -19961,6 +21677,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3770, R10)']
+defs_reaching: ['(0x36c0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# @P0 LDG.E.SYS R23, [R6+0x8] #############
 ####### R23 #######
@@ -19972,6 +21694,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3780, R23)']
+defs_reaching: ['(0x36b0, R6)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -19992,6 +21720,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3780, R23)']
+defs_reaching: ['(0x36b0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_27_split_0x3790) #############
 ####### `(.L_x_27_split_0x3790) #######
@@ -20007,6 +21741,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3790, R25)']
+defs_reaching: ['(0x36a0, R4)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -20027,6 +21767,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3790, R25)']
+defs_reaching: ['(0x36a0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_27_split_0x37a0) #############
 ####### `(.L_x_27_split_0x37a0) #######
@@ -20042,6 +21788,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x37a0, R12)']
+defs_reaching: ['(0x36c0, R8)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -20062,6 +21814,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x37a0, R12)']
+defs_reaching: ['(0x36c0, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_27_split_0x37b0) #############
 ####### `(.L_x_27_split_0x37b0) #######
@@ -20301,6 +22059,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R26] #######
+is_def: False
+is_use: False
+kill_set: ['(0x37f0, R5)']
+defs_reaching: ['(0x00d0, R26)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# MOV R4, 0x3bbb989d #############
 ####### R4 #######
@@ -20809,6 +22573,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R32] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3990, R5)']
+defs_reaching: ['(0x0150, R32)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# MOV R4, 0x3bbb989d #############
 ####### R4 #######
@@ -21491,6 +23261,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3b60, R25)']
+defs_reaching: ['(0x3b30, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R6, R3, R4, RZ #############
 ####### R6 #######
@@ -21535,6 +23311,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3b80, R36)']
+defs_reaching: ['(0x3b40, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R12+0x4] #############
 ####### R37 #######
@@ -21546,6 +23328,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3b90, R37)']
+defs_reaching: ['(0x3b30, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R4, R4, R41, c[0x0][0x168] #############
 ####### R4 #######
@@ -21584,6 +23372,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3bb0, R24)']
+defs_reaching: ['(0x3b40, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R12+0x8] #############
 ####### R39 #######
@@ -21595,6 +23389,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3bc0, R39)']
+defs_reaching: ['(0x3b30, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R6, R6, R41, c[0x0][0x170] #############
 ####### R6 #######
@@ -21633,6 +23433,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3be0, R38)']
+defs_reaching: ['(0x3b40, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R43, [R12+0xc] #############
 ####### R43 #######
@@ -21644,6 +23450,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3bf0, R43)']
+defs_reaching: ['(0x3b30, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R8, R34, 0x8, RZ #############
 ####### R8 #######
@@ -21682,6 +23494,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3c10, R46)']
+defs_reaching: ['(0x3b40, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R51, [R4] #############
 ####### R51 #######
@@ -21693,6 +23511,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3c20, R51)']
+defs_reaching: ['(0x3ba0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R50, R3, R8, RZ #############
 ####### R50 #######
@@ -21737,6 +23561,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3c40, R44)']
+defs_reaching: ['(0x3bd0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R4+0x4] #############
 ####### R47 #######
@@ -21748,6 +23578,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3c50, R47)']
+defs_reaching: ['(0x3ba0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R8, R8, R41, c[0x0][0x168] #############
 ####### R8 #######
@@ -21786,6 +23622,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3c70, R42)']
+defs_reaching: ['(0x3bd0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R4+0x8] #############
 ####### R45 #######
@@ -21797,6 +23639,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3c80, R45)']
+defs_reaching: ['(0x3ba0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R10, R50, R41, c[0x0][0x170] #############
 ####### R10 #######
@@ -21835,6 +23683,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3ca0, R40)']
+defs_reaching: ['(0x3bd0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R53, [R4+0xc] #############
 ####### R53 #######
@@ -21846,6 +23700,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3cb0, R53)']
+defs_reaching: ['(0x3ba0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R12, R34, 0xc, RZ #############
 ####### R12 #######
@@ -21884,6 +23744,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3cd0, R54)']
+defs_reaching: ['(0x3bd0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R59, [R8] #############
 ####### R59 #######
@@ -21895,6 +23761,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3ce0, R59)']
+defs_reaching: ['(0x3c60, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R58, R3, R12, RZ #############
 ####### R58 #######
@@ -21939,6 +23811,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d00, R52)']
+defs_reaching: ['(0x3c90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R57, [R8+0x4] #############
 ####### R57 #######
@@ -21950,6 +23828,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d10, R57)']
+defs_reaching: ['(0x3c60, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R12, R12, R41, c[0x0][0x168] #############
 ####### R12 #######
@@ -21988,6 +23872,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d30, R50)']
+defs_reaching: ['(0x3c90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R55, [R8+0x8] #############
 ####### R55 #######
@@ -21999,6 +23889,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d40, R55)']
+defs_reaching: ['(0x3c60, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R4, R58, R41, c[0x0][0x170] #############
 ####### R4 #######
@@ -22037,6 +23933,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d60, R61)']
+defs_reaching: ['(0x3c60, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R56, [R10+0x8] #############
 ####### R56 #######
@@ -22048,6 +23950,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d70, R56)']
+defs_reaching: ['(0x3c90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R58, [R10+0xc] #############
 ####### R58 #######
@@ -22059,6 +23967,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d80, R58)']
+defs_reaching: ['(0x3c90, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R6, [R12] #############
 ####### R6 #######
@@ -22070,6 +23984,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3d90, R6)']
+defs_reaching: ['(0x3d20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R12+0x4] #############
 ####### R41 #######
@@ -22081,6 +24001,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3da0, R41)']
+defs_reaching: ['(0x3d20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R4] #############
 ####### R10 #######
@@ -22092,6 +24018,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3db0, R10)']
+defs_reaching: ['(0x3d50, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R7, [R12+0x8] #############
 ####### R7 #######
@@ -22103,6 +24035,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3dc0, R7)']
+defs_reaching: ['(0x3d20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R9, [R4+0x4] #############
 ####### R9 #######
@@ -22114,6 +24052,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3dd0, R9)']
+defs_reaching: ['(0x3d50, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R60, [R12+0xc] #############
 ####### R60 #######
@@ -22125,6 +24069,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R12+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3de0, R60)']
+defs_reaching: ['(0x3d20, R12)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R8, [R4+0x8] #############
 ####### R8 #######
@@ -22136,6 +24086,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3df0, R8)']
+defs_reaching: ['(0x3d50, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R11, [R4+0xc] #############
 ####### R11 #######
@@ -22147,6 +24103,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x3e00, R11)']
+defs_reaching: ['(0x3d50, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R35, R35, -0x10, RZ #############
 ####### R35 #######
@@ -23359,6 +25321,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x40c0, R13)']
+defs_reaching: ['(0x4090, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R10, R3, R4, RZ #############
 ####### R10 #######
@@ -23403,6 +25371,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x40e0, R12)']
+defs_reaching: ['(0x40a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R25, [R8+0x4] #############
 ####### R25 #######
@@ -23414,6 +25388,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x40f0, R25)']
+defs_reaching: ['(0x4090, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R4, R4, R11, c[0x0][0x168] #############
 ####### R4 #######
@@ -23452,6 +25432,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4110, R24)']
+defs_reaching: ['(0x40a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R37, [R8+0x8] #############
 ####### R37 #######
@@ -23463,6 +25449,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4120, R37)']
+defs_reaching: ['(0x4090, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R10, R10, R11, c[0x0][0x170] #############
 ####### R10 #######
@@ -23501,6 +25493,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4140, R36)']
+defs_reaching: ['(0x40a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R39, [R8+0xc] #############
 ####### R39 #######
@@ -23512,6 +25510,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R8+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4150, R39)']
+defs_reaching: ['(0x4090, R8)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R38, [R6+0xc] #############
 ####### R38 #######
@@ -23523,6 +25527,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4160, R38)']
+defs_reaching: ['(0x40a0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R41, [R4] #############
 ####### R41 #######
@@ -23534,6 +25544,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4170, R41)']
+defs_reaching: ['(0x4100, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R40, [R10] #############
 ####### R40 #######
@@ -23545,6 +25561,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4180, R40)']
+defs_reaching: ['(0x4130, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R43, [R4+0x4] #############
 ####### R43 #######
@@ -23556,6 +25578,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4190, R43)']
+defs_reaching: ['(0x4100, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R42, [R10+0x4] #############
 ####### R42 #######
@@ -23567,6 +25595,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x41a0, R42)']
+defs_reaching: ['(0x4130, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R45, [R4+0x8] #############
 ####### R45 #######
@@ -23578,6 +25612,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x41b0, R45)']
+defs_reaching: ['(0x4100, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R47, [R4+0xc] #############
 ####### R47 #######
@@ -23589,6 +25629,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x41c0, R47)']
+defs_reaching: ['(0x4100, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R44, [R10+0x8] #############
 ####### R44 #######
@@ -23600,6 +25646,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x41d0, R44)']
+defs_reaching: ['(0x4130, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R46, [R10+0xc] #############
 ####### R46 #######
@@ -23611,6 +25663,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R10+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x41e0, R46)']
+defs_reaching: ['(0x4130, R10)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 #############
 ####### P0 #######
@@ -24337,6 +26395,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4380, R9)']
+defs_reaching: ['(0x4360, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R10, [R6] #############
 ####### R10 #######
@@ -24348,6 +26412,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4390, R10)']
+defs_reaching: ['(0x4370, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R11, [R4+0x4] #############
 ####### R11 #######
@@ -24359,6 +26429,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x43a0, R11)']
+defs_reaching: ['(0x4360, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R12, [R6+0x4] #############
 ####### R12 #######
@@ -24370,6 +26446,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x43b0, R12)']
+defs_reaching: ['(0x4370, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R13, [R4+0x8] #############
 ####### R13 #######
@@ -24381,6 +26463,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x43c0, R13)']
+defs_reaching: ['(0x4360, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R24, [R6+0x8] #############
 ####### R24 #######
@@ -24392,6 +26480,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x43d0, R24)']
+defs_reaching: ['(0x4370, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R25, [R4+0xc] #############
 ####### R25 #######
@@ -24403,6 +26497,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x43e0, R25)']
+defs_reaching: ['(0x4360, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R36, [R6+0xc] #############
 ####### R36 #######
@@ -24414,6 +26514,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R6+0xc] #######
+is_def: False
+is_use: False
+kill_set: ['(0x43f0, R36)']
+defs_reaching: ['(0x4370, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IADD3 R35, R35, -0x4, RZ #############
 ####### R35 #######
@@ -24915,6 +27021,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4520, R7)']
+defs_reaching: ['(0x4500, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R8, [R4] #############
 ####### R8 #######
@@ -24926,6 +27038,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4530, R8)']
+defs_reaching: ['(0x4510, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# ISETP.NE.AND P0, PT, R48, 0x1, PT #############
 ####### P0 #######
@@ -25077,6 +27195,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4590, R7)']
+defs_reaching: ['(0x4500, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R8, [R4+0x4] #############
 ####### R8 #######
@@ -25088,6 +27212,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x45a0, R8)']
+defs_reaching: ['(0x4510, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# @P0 LDG.E.SYS R9, [R34+0x8] #############
 ####### R9 #######
@@ -25099,6 +27229,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R34+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x45b0, R9)']
+defs_reaching: ['(0x4500, R34)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -25119,6 +27255,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R34+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x45b0, R9)']
+defs_reaching: ['(0x4500, R34)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_36_split_0x45c0) #############
 ####### `(.L_x_36_split_0x45c0) #######
@@ -25134,6 +27276,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x45c0, R10)']
+defs_reaching: ['(0x4510, R4)']
+reaches_next: False
+Typedesc: NOTYPE
 
 ####### P0 #######
 is_def: False
@@ -25154,6 +27302,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R4+0x8] #######
+is_def: False
+is_use: False
+kill_set: ['(0x45c0, R10)']
+defs_reaching: ['(0x4510, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_36_split_0x45d0) #############
 ####### `(.L_x_36_split_0x45d0) #######
@@ -25369,6 +27523,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R30] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4610, R4)']
+defs_reaching: ['(0x0120, R30)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# BMOV.32.CLEAR RZ, B0 #############
 ####### RZ #######
@@ -26155,6 +28315,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R28] #######
+is_def: False
+is_use: False
+kill_set: ['(0x4890, R6)']
+defs_reaching: ['(0x0100, R28)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# FADD R7, -R5, 1 #############
 ####### R7 #######
@@ -26235,6 +28401,12 @@ Typedesc: Float32
 
 ############# STG.E.SYS [R28], R7 #############
 ####### [R28] #######
+is_def: False
+is_use: False
+kill_set: []
+defs_reaching: ['(0x0100, R28)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ####### R7 #######
 is_def: False

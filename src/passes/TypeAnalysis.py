@@ -96,7 +96,7 @@ class TypeAnalysis:
                 typeAnalysisInfo += f"############# {inst} #############\n"
                 for op in inst.operands:
                     typeAnalysisInfo += f"####### {op} #######\n"
-                    if (op.isReg or op.isPReg) and op.reg:
+                    if (op.isReg or op.isPReg or op.isPtr) and op.reg:
                         info = self.get_use_def_info(inst, op)
                         for key, val  in  info.items():
                             if key in ("defs_reaching", "kill_set"):
@@ -231,7 +231,7 @@ class TypeAnalysis:
         return TypeDesc
         
     def PartialSolveType(self, inst):
-        if len([op for op in inst.operands if op.getTypeDesc() == "NOTYPE"]) == 0:
+        if len([op for op in inst.operands if op.getTypeDesc() in ("NOTYPE", "NOTYPE_PTR")]) == 0:
             return False
         
         if inst.opcode in ("MOV", "UMOV"):
@@ -429,7 +429,7 @@ class TypeAnalysis:
         # else:
         #     assert operand.is_def ^ operand.is_use # cannot both be true/false
 
-        if (operand.isReg or operand.isPReg) and operand.reg:
+        if (operand.isReg or operand.isPReg or operand.isPtr) and operand.reg:
             # Get definitions reaching this instruction
             reaching_defs = self.reaching_defs.get_reaching_definitions_before(inst)
             # Filter for this operand's register
