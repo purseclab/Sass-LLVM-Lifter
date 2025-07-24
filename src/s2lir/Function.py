@@ -6,6 +6,8 @@ import typing
 if typing.TYPE_CHECKING:
     from main import LLVMModule
     from s2lir.Operand import Operand
+    from s2lir.Instruction import Instruction
+    from passes import TypeAnalysis
 
 
 class Function:
@@ -31,13 +33,16 @@ class Function:
         # BB.label such as .L_x_3; creates a mapping to the block itself
         self.labels2block : dict[str, BasicBlock] = {BB.label: BB for BB in self.blocks} # e.g. '.text._Z11gru_forwardPfS_S_S_iii': <s2lir.Basicblock.BasicBlock object at 0x79115787c8e0>
         
+        
+        # self.sassAddr2block: dict[str, BasicBlock] = {BB.instructions[0].addr: BB for BB in self.blocks} # first instruction's addr to BB, e.g. "0x0000" to <s2lir.Basicblock.BasicBlock object>
+        
         # SASS addr (such as 0x47f0) to the first LLVM instruction inside a BB that implements that specific SASS instruction (there's usually more than one line of LLVM instruction for a given SASS instruction)
         # dont confuse Instruction.py with LLVM instruction (generated via IRBuilder)
         # IGNORE ABOVE
         
         # SASS addr (such as 0x47f0) to Instruction Object
         # TODO handle cases where Instruction Object is redefined
-        self.sassAddr2Inst = {}
+        self.sassAddr2Inst: dict[int, Instruction] = {}
 
         ################################################################
         self.ArgMap : dict[int, Operand]= {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
@@ -45,6 +50,8 @@ class Function:
         self.ArgIdxes = []
         # All the Arguments
         self.Args : Operand = []
+        
+        self.typeAnalysis: TypeAnalysis = None
     
     def parse(self):
         # Parse all the BasicBlocks
@@ -105,6 +112,7 @@ class Function:
                 new_BB.label = new_BB.label + "_split_" + str(sublist[0].addr)
                 split_blocks.append(new_BB)
                 self.labels2block[new_BB.label] = new_BB
+                
                 # dprint(len(sublist))
                 # dprint(new_BB.label)
                 # dprint(new_BB.addr)

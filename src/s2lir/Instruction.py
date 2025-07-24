@@ -147,7 +147,8 @@ class Instruction:
         
         # BB already undergo splitting inside Function.py before lifting process
         
-        self.BB.func.sassAddr2Inst[self.addr] = self
+        # changed to int so that we dont have to deal with differences such as 0x1 vs 0x001
+        self.BB.func.sassAddr2Inst[int(self.addr, 16)] = self
         
         # generate_ir_comment(IRBuilder, self.dump_text())
         
@@ -1095,19 +1096,37 @@ class Instruction:
             return
 
         if self.opcode == "RET":
-            # TODO Implement this later
+            # TODO ret doesnt need to be handled for now. See https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1753385146834629
             # TODO right now we're assuming that it's only being used to return to the address below a CALL instruction
             # therefore, the instruction we're returning to would be the first instruction in a BB
-            # assuming that the register is storing the SASS addr to return to
+            # we'll use info from reaching def analysis to determine the addr to jump to, the address shld be at the beginning of a basic block
             assert len(self.operands) == 2
-            assert self.operands[0].isReg
-            # but i cant do branch to the BB... because the RET is a register so need to be read dynamically and i cant set a branch rn at lifter stage
-            # we might need to implement a giant table
+            assert self.operands[0].isReg or self.operands[0].isConst
+            # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
             
-            # SOLUTION: we'll have to propagate the constant return address value down to the ret instruction so that we can do unconditional branch to the basic block, the address shld be at the beginning of a basic block
+            
+            retAddrOp = self.operands[0]
             return
             
-            print(self)
+            if retAddrOp.isConst:
+                retAddr = retAddrOp.Value
+            elif retAddrOp.isReg:
+                assert retAddrOp in self.BB.func.typeAnalysis.ud_chain
+                assert len(self.BB.func.typeAnalysis.ud_chain[retAddrOp]) == 1
+                retAddrValOp = list(self.BB.func.typeAnalysis.ud_chain[retAddrOp])[0]
+                assert retAddrValOp.isConst
+                
+                # Now we need to get the adjacent register
+                # retAddrValOp.
+                
+                retAddrValOp
+                pass
+            retAddr = 0x0000
+            ret_to_inst: Instruction = self.BB.func.sassAddr2Inst[retAddr]
+            assert ret_to_inst.BB.instructions[0] == ret_to_inst
+            IRBuilder.branch(ret_to_inst.BB)
+            
+            return
         
         print("\nInstruction: ", self)
         raise NotImplementedError
