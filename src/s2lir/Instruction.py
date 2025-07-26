@@ -218,13 +218,15 @@ class Instruction:
             return
 
         if self.opcode == "LDG":
+            # Load from Global Memory
+            # e.g.: LDG.E.SYS R57, [R38]
             ResOp = self.operands[0]
             PtrOp = self.operands[1]
             if ResOp.isReg and PtrOp.isPtr:
                 IRResOp = IRRegs[ResOp.getIRRegName()]
                 IRPtrOp = IRRegs[PtrOp.getIRRegName()]
                 
-                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, PtrOp, IRResOp.type.pointee)
+                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, IRResOp.type.pointee)
 
                 # IRVal = IRBuilder.load(IRPtrOp)
                 # IRBuilder.store(IRVal, IRResOp)
@@ -234,6 +236,8 @@ class Instruction:
             return
 
         if self.opcode == "STG":
+            # Store to global Memory
+            # e.g.: STG.E.SYS [R28], R7
             ResOp = self.operands[0]
             ValOp = self.operands[1]
             if ValOp.isReg and ResOp.isPtr:

@@ -100,11 +100,11 @@ class Operand:
         self.is_use = None
         self.is_def = None
 
-    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PtrOp, PinterType):
+    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PinterType):
 
         # Fetch Value from IRPtrOp
         # PtrAddr = IRBuilder.load(IRPtrOp)
-        PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
+        PtrAddr = self.IRReg_Load(IRRegs, IRBuilder)
         
         PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
         PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
@@ -131,7 +131,7 @@ class Operand:
         PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
         # Convert address to pointer type
-        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(IRVal.type), "for_STG")
+        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(), "for_STG")
 
         # Handle absolute or negative value
         if self.ptr_abs or self.ptr_neg:
@@ -202,21 +202,79 @@ class Operand:
 
     def IRReg_Load(self, IRRegs, IRBuilder):
         IRVal = None
-        if self.isReg or self.isPtr: 
+        if self.isReg or self.isPtr:
             # note: [R38] isPtr, but not isReg.
             curRegName = self.getCurRegName()
             # assert curRegName != ""
             if curRegName == "":
                 curRegName = self.getIRRegName()
-            IRReg = IRRegs[curRegName]
+            
+            copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
+            isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
+            IRRegNew = IRRegs[self.getIRRegName()]
+            IRReg = IRRegs[curRegName] # AllocaInst is also a ptr
+            
             # we cant just use IRBuilder.load because there might be type difference
             if curRegName != self.getIRRegName():
-                IRRegNew = IRRegs[self.getIRRegName()]
                 # note: it seems like allocainstr is a pointertype since we previously are able to call builder.load on it, to be confirmed later
-                copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
-                isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
                 IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
+                # print(IRRegNew.type)
+                # print(IRReg.type)
+                # print(type(IRRegNew.type)) # llvmlite.ir.types._TypedPointerType
+                # print(type(IRReg.type)) # llvmlite.ir.types._TypedPointerType
+                # # memcpy wont allow it if one of the type(.type) is PointerType and the other is _TypedPointerType, which means one is opaque pointer and the other isnt; dont know if it allows two opaque pointer; besides, IRBuilder.load wont allow opaque pointer and will complain "Load lacks type"
+                # print(IRRegNew.type.pointee)
+                # print(IRReg.type.pointee)
+                # print(curRegName, self.getIRRegName())
+                # if "NOTYPE" not in curRegName and "NOTYPE" not in self.getIRRegName():
+                #     exit(1)
                 IRReg = IRRegNew
+            
+            if self.isPtr:
+                # we need to load the adjacent register, then r6.Val << 32 | r5.Val
+                match = re.search(r"^(U?R)(\d+)$", self.getRegName())
+                if match:
+                    adjRegName = match.group(1)
+                    adjRegNumber = int(match.group(2)) + 1
+                    adjRegName = adjRegName + str(adjRegNumber)
+                    adjIRRegName = self._getCurIRRegName(adjRegName)
+                    
+                    if adjIRRegName == "":
+                        zero_IRReg = IRBuilder.alloca(llvmir.IntType(32), 1, "tmp_0") # i64* instead of ptr
+                        IRBuilder.store(llvmir.Constant(llvmir.IntType(32), 0), zero_IRReg)
+                        zero_IRReg = IRBuilder.bitcast(zero_IRReg, llvmir.PointerType()) # cast from i32* to ptr
+                        # TODO store 0x0 into adj register
+                        
+                        adjIRReg = zero_IRReg
+                    else:
+                        adjIRReg = IRRegs[adjIRRegName]
+                        print(adjRegName, adjIRRegName, str(adjIRReg.type))
+                        if str(adjIRReg.type) == "ptr":
+                            print("BRUH")
+                        assert str(adjIRReg.type) != "ptr"
+                        tmpPtr_IRReg = IRBuilder.alloca(llvmir.PointerType(), 1, "tmpPtr")
+                        IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [tmpPtr_IRReg, adjIRReg, copylen, isvolatile], name="llvm_memcpy_i32")
+                        adjIRReg = IRBuilder.bitcast(tmpPtr_IRReg, llvmir.PointerType()) # cast from ptr* to ptr
+                    
+                    PtrAddr = IRBuilder.ptrtoint(IRReg, llvmir.IntType(64))
+                    PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), 0x4))
+                    PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(), "for_STG")
+                    IRReg = PtrAddr
+            
+                    print("1", adjIRReg.type is IRReg.type) # could be false even if str of the .type is the same, because there's also .type.pointee (which tells you what the pointer points under the hood), mainly is actually because TypedPointer vs Pointer
+                    print("2", adjIRReg.type is IRBuilder.bitcast(IRReg, llvmir.IntType(32).as_pointer()).type)
+                    print("3", adjIRReg.type)
+                    print("4", IRReg.type)
+                    print("5", adjIRReg.type.pointee)
+                    print("6", type(adjIRReg.type))
+                    print("7", type(IRReg.type))
+                    print("cast from typed pointer to opaque pointer attempt. doesnt work.", type(IRBuilder.bitcast(adjIRReg, llvmir.PointerType()).type))
+                    print("cast from opqaue pointer to typed pointer attempt. doesnt work.", type(IRBuilder.bitcast(IRReg, llvmir.IntType(32).as_pointer()).type))
+                    print(type(IRBuilder.bitcast(IRBuilder.load(IRReg, typ=llvmir.IntType(32)), llvmir.PointerType()).type))
+                    print(IRReg.type.pointee)
+                    IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRReg, adjIRReg, copylen, isvolatile], name="llvm_memcpy_i32")
+                else:
+                    raise InvalidSyntaxException
             
             IRVal = IRBuilder.load(IRReg) # TODO: Confirm if this changes data layout
         return IRVal
@@ -436,10 +494,16 @@ class Operand:
         return self.reg
     
     def getCurRegName(self):
-        return self.ins.BB.func.IRRegs_cur_status[self.getRegName()]
+        return self._getCurIRRegName(self.getRegName())
+    
+    def _getCurIRRegName(self, reg):
+        return self.ins.BB.func.IRRegs_cur_status[reg]
     
     def setCurRegName(self, curRegName):
-        self.ins.BB.func.IRRegs_cur_status[self.getRegName()] = curRegName
+        self._setCurIRRegName(self.getRegName(), curRegName)
+
+    def _setCurIRRegName(self, reg, curRegName):
+        self.ins.BB.func.IRRegs_cur_status[reg] = curRegName
     
     def is_use_disqualifier(self):
         if self.isConst:
