@@ -221,6 +221,7 @@ class Operand:
                     adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext") # TODO might not work as expected for ptr or float
                     adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
                     IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
+                    IRVal = IRBuilder.inttoptr(IRVal, llvmir.PointerType())
                 else:
                     raise InvalidSyntaxException
         return IRVal
