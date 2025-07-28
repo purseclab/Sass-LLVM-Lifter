@@ -232,16 +232,12 @@ class Function:
                 # Alloc the variable for registers
                 for Reg in Regs:
                     Operand = Regs[Reg]
-                    RegName = Operand.getIRRegName()
-                    assert RegName == Reg
-                    IRReg = Builder.alloca(Operand.getIRType(), 1, RegName)
-                    # Register the IR registers
-                    IRRegs[RegName] = IRReg
-                    
-                    # Create entry in IRRegs_cur_status
-                    RegName_without_type = RegName.split("_")[0]
-                    if RegName_without_type not in self.IRRegs_cur_status:
-                        self.IRRegs_cur_status[RegName_without_type] = ""
+                    RegName = Operand.getRegName()
+                    assert RegName in Reg
+                    if RegName not in IRRegs:
+                        IRReg = Builder.alloca(llvmir.IntType(1) if "P" in RegName else llvmir.IntType(32), 1, RegName)
+                        # Register the IR registers
+                        IRRegs[RegName] = IRReg
 
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock)
 

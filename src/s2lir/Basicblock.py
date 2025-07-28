@@ -60,7 +60,8 @@ class BasicBlock:
                 elif Inst.isConditionExpr():
 
                     P = Inst.operands[-1]
-                    PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
+                    # PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
+                    PredReg = IRRegs[P.getRegName()]
                     # Fetch the content from PredReg
                     PredReg = IRBuilder.inttoptr(PredReg, llvmir.PointerType(llvmir.IntType(1)))
                     PredReg = IRBuilder.load(PredReg)

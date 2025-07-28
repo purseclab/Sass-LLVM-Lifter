@@ -187,7 +187,7 @@ class Operand:
                 return llvmir.Constant(llvmir.IntType(1), 1)
             if self.reg == "UPT":
                 return llvmir.Constant(llvmir.IntType(1), 1)
-            IRVal = IRRegs[self.getIRRegName()]
+            IRVal = IRRegs[self.getRegName()]
             IRVal = IRBuilder.load(IRVal)
 
             if self.preg_not:
@@ -203,33 +203,7 @@ class Operand:
     def IRReg_Load(self, IRRegs, IRBuilder):
         IRVal = None
         if self.isReg or self.isPtr:
-            # note: [R38] isPtr, but not isReg.
-            curRegName = self.getCurRegName()
-            # assert curRegName != ""
-            if curRegName == "":
-                curRegName = self.getIRRegName()
-            
-            copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
-            isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
-            IRRegNew = IRRegs[self.getIRRegName()]
-            IRReg = IRRegs[curRegName] # AllocaInst is also a ptr
-            
-            # we cant just use IRBuilder.load because there might be type difference
-            if curRegName != self.getIRRegName():
-                # note: it seems like allocainstr is a pointertype since we previously are able to call builder.load on it, to be confirmed later
-                IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
-                # print(IRRegNew.type)
-                # print(IRReg.type)
-                # print(type(IRRegNew.type)) # llvmlite.ir.types._TypedPointerType
-                # print(type(IRReg.type)) # llvmlite.ir.types._TypedPointerType
-                # # memcpy wont allow it if one of the type(.type) is PointerType and the other is _TypedPointerType, which means one is opaque pointer and the other isnt; dont know if it allows two opaque pointer; besides, IRBuilder.load wont allow opaque pointer and will complain "Load lacks type"
-                # print(IRRegNew.type.pointee)
-                # print(IRReg.type.pointee)
-                # print(curRegName, self.getIRRegName())
-                # if "NOTYPE" not in curRegName and "NOTYPE" not in self.getIRRegName():
-                #     exit(1)
-                IRReg = IRRegNew
-            IRVal = IRBuilder.load(IRReg) # TODO: Confirm if this changes data layout
+            IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
             if self.isPtr:
                 # we need to load the adjacent register, then r6.Val << 32 | r5.Val
                 match = re.search(r"^(U?R)(\d+)$", self.getRegName())
@@ -237,54 +211,32 @@ class Operand:
                     adjRegName = match.group(1)
                     adjRegNumber = int(match.group(2)) + 1
                     adjRegName = adjRegName + str(adjRegNumber)
-                    adjIRRegName = self._getCurIRRegName(adjRegName)
                     
                     IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
-                    
-                    if adjIRRegName == "":
-                        adjIRVal = llvmir.Constant(llvmir.IntType(64), 0)
-                        adjIRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
+                    if adjRegName in IRRegs:
+                        adjIRReg = IRRegs[adjRegName]
+                        adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32) if self.isPtr else self.getIRType())
                     else:
-                        adjIRReg = IRRegs[adjIRRegName]
-                        adjIRVal = IRBuilder.load(adjIRReg, typ=self.getIRType())
-                        adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext") # TODO might not work as expected for ptr or float
-                        adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
-                    
+                        adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                    adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext") # TODO might not work as expected for ptr or float
+                    adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
                     IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
-                    
                 else:
                     raise InvalidSyntaxException
         return IRVal
     
     def IRReg_Store(self, IRRegs, IRBuilder, storeVal):
         if self.isReg:
-            storeValTypeDesc = None
-            if storeVal.type == llvmir.IntType(32):
-                storeValTypeDesc = "Int32"
-            elif storeVal.type == llvmir.FloatType():
-                storeValTypeDesc = "Float32"
-            curRegName = self.getOtherIRRegName(storeValTypeDesc)
-            if curRegName not in IRRegs:
-                IRRegs[curRegName] = IRBuilder.alloca(storeVal.type, 1, curRegName)
-            IRReg = IRRegs[curRegName]
+            IRReg = IRRegs[self.getRegName()]
+            if storeVal.type != llvmir.IntType(32):
+                if storeVal.type == llvmir.FloatType():
+                    IRReg = IRBuilder.bitcast(IRReg, llvmir.FloatType().as_pointer())
+                else:
+                    raise Exception
+            
             # prevRegName = self.getCurRegName()
             IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
-            
-            if curRegName != self.getIRRegName():
-                curRegName = self.getIRRegName()
-                IRRegNew = IRRegs[curRegName]
-                copylen = llvmir.Constant(llvmir.IntType(32), 4) # in bytes
-                isvolatile = llvmir.Constant(llvmir.IntType(1), 0)
-                IRBuilder.call(llvm_memcpy_i32(self.ins.llvm_module), [IRRegNew, IRReg, copylen, isvolatile], name="llvm_memcpy_i32")
-            
-            # if curRegName != self.getCurRegName() and self.getCurRegName() != "":
-            #     print(curRegName, self.getCurRegName(), "---")
-            #     self.setCurRegName(curRegName)
-            #     print(self.ins.BB.func.IRRegs_cur_status)
-            #     exit(1)
-            
-            self.setCurRegName(curRegName)
-            return self.getCurRegName() == curRegName
+            return True
         return False
     
     def parse(self):
