@@ -232,14 +232,20 @@ class Operand:
         return IRVal
     
     def IRReg_Store(self, IRRegs, IRBuilder, storeVal):
-        if self.isReg:
+        if self.isReg or self.isPReg:
             IRReg = IRRegs[self.getRegName()]
-            if storeVal.type != llvmir.IntType(32):
-                if storeVal.type == llvmir.FloatType():
-                    IRReg = IRBuilder.bitcast(IRReg, llvmir.FloatType().as_pointer())
-                else:
-                    raise Exception
-            
+            if self.isReg:
+                if storeVal.type != llvmir.IntType(32):
+                    if storeVal.type == llvmir.FloatType():
+                        IRReg = IRBuilder.bitcast(IRReg, llvmir.FloatType().as_pointer())
+                    else:
+                        raise Exception
+            elif self.isPReg:
+                if storeVal.type != llvmir.IntType(1):
+                    if storeVal.type == llvmir.IntType(32):
+                        storeVal = IRBuilder.trunc(storeVal, llvmir.IntType(1))
+                    else:
+                        raise Exception
             # prevRegName = self.getCurRegName()
             IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
             return True
