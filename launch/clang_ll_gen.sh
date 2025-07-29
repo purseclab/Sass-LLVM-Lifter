@@ -28,7 +28,7 @@ LLVM_OUTPUT_BASE=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
 if [[ "$LLVM_OUTPUT_BASE" == *.ll ]]; then
     # Replace .ll with _clang.ll
     LLVM_OUTPUT="${LLVM_OUTPUT_BASE%.ll}_clang.ll"
-    LLC_OUTPUT="${LLVM_OUTPUT_BASE%.ll}_llc.ptx"
+    LLC_OUTPUT="${LLVM_OUTPUT_BASE%.ll}_clang_llc.ptx"
 else
     echo "Error: output_file does not end in .ll: $LLVM_OUTPUT_BASE"
     exit 1
