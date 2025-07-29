@@ -35,7 +35,7 @@ class BasicBlock:
             Inst.getRegs(Regs)
 
 
-    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], IRFunc: llvmir.values.Function, ExitBlock: llvmir.values.Block):
+    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], IRFunc: llvmir.values.Function, ExitBlock: llvmir.values.Block, nextBlock: "BasicBlock"):
         dprint("^"*100)
         dprint(self.addr)
         dprint(self.label)
@@ -104,3 +104,11 @@ class BasicBlock:
                     assert False, "Branch should be the last instruction in the block"
                 else:
                     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
+                    if i == len(self.instructions) - 1:
+                        assert not (Inst.isBranch() or Inst.isConditionExpr())
+                        # LLVM IR is okay with fallthrough from one label to the next label, but llc would require you to have a "br label %.L_x_..." instruction, otherwise it'd complain that "error: expected instruction opcode"
+                        if not IRBuilder.block.is_terminated:
+                            assert nextBlock is not None
+                            nextIRBlock: llvmir.values.Block = BlockMap[nextBlock]
+                            # for reasons currently unknown to me, there's some blocks that's already linked to Exitblock and so is already "terminated"
+                            IRBuilder.branch(nextIRBlock)

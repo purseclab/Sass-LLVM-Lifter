@@ -219,7 +219,7 @@ class Function:
         # EntryBuilder = llvmir.IRBuilder(EntryBlock)
 
         IsEntry = True
-        for BB in self.blocks:
+        for i, BB in enumerate(self.blocks):
             # Get basic block
             IRBlock = self.BlockMap[BB]
 
@@ -239,6 +239,7 @@ class Function:
                         # Register the IR registers
                         IRRegs[RegName] = IRReg
 
-            BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock)
+            nextBlock = None if i == len(self.blocks) - 1 else self.blocks[i+1]
+            BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock, nextBlock)
 
             IsEntry = False
