@@ -140,7 +140,7 @@ class Operand:
         # Store value to PtrAddr
         IRBuilder.store(IRVal, PtrAddr)
     
-    def IR_FetchValue(self, IRBuilder, IRRegs, IRArgs):
+    def IR_FetchValue(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument]):
         if self.llvm_module is None:
             self.llvm_module = self.ins.llvm_module
             assert self.llvm_module is not None
@@ -170,7 +170,12 @@ class Operand:
                 else:
                     raise InvalidSyntaxException
             if self.reg_neg:
-                IRVal = IRBuilder.neg(IRVal)
+                if isinstance(self.getIRType(), llvmir.FloatType):
+                    IRVal = IRBuilder.fneg(IRVal)
+                elif isinstance(self.getIRType(), llvmir.IntType):
+                    IRVal = IRBuilder.neg(IRVal)
+                else:
+                    raise InvalidSyntaxException
 
             return IRVal
         

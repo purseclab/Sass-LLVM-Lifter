@@ -17,6 +17,9 @@ class CFG:
                 (3) Conditional Execution, e.g., @P1 FMNMX R11, R11, R4, !PT
                 (4) Normal instructions, e.g. MOV R2, 0x4
         '''
+        
+        # TODO check if there's pred/succ connection between gru's func and the internal func. This would probably just affect the reachingdefinition analysis and type analysis, so not fixing atm
+        
         # Handle (1), (2) and (4)
         BBs = self.func.blocks
         for BB_i in range(len(BBs)):

@@ -2724,7 +2724,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.62", ptr %".1705"
   ; FFMA.SAT R10, -R9, R10, 0.5
   %".1708" = load float, ptr %"R9"
-  %".1709" = sub float              0x0, %".1708"
+  %".1709" = fneg float %".1708"
   %".1710" = load float, ptr %"R10"
   %"fmul.62" = fmul float %".1709", %".1710"
   %"fadd.63" = fadd float %"fmul.62", 0x3fe0000000000000
@@ -2757,16 +2757,16 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 %"trunc32", ptr %"R10"
   ; FFMA R12, -R9, 1.4426950216293334961, -R12
   %".1727" = load float, ptr %"R9"
-  %".1728" = sub float              0x0, %".1727"
+  %".1728" = fneg float %".1727"
   %".1729" = load float, ptr %"R12"
-  %".1730" = sub float              0x0, %".1729"
+  %".1730" = fneg float %".1729"
   %"fmul.64" = fmul float %".1728", 0x3ff7154760000000
   %"fadd.66" = fadd float %"fmul.64", %".1730"
   %".1731" = bitcast ptr %"R12" to ptr
   store float %"fadd.66", ptr %".1731"
   ; FFMA R12, -R9, 1.925963033500011079e-08, R12
   %".1734" = load float, ptr %"R9"
-  %".1735" = sub float              0x0, %".1734"
+  %".1735" = fneg float %".1734"
   %".1736" = load float, ptr %"R12"
   %"fmul.65" = fmul float %".1735", 0x3e54ae0c00000000
   %"fadd.67" = fadd float %"fmul.65", %".1736"
@@ -2827,7 +2827,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.69", ptr %".1779"
   ; FADD.FTZ R10, -R10, -RZ
   %".1782" = load float, ptr %"R10"
-  %".1783" = sub float              0x0, %".1782"
+  %".1783" = fneg float %".1782"
   %"fadd.70" = fadd float %".1783",              0x0
   %".1784" = bitcast ptr %"R10" to ptr
   store float %"fadd.70", ptr %".1784"
@@ -2872,7 +2872,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.72", ptr %".1813"
   ; FFMA.SAT R10, -R11, R10, 0.5
   %".1816" = load float, ptr %"R11"
-  %".1817" = sub float              0x0, %".1816"
+  %".1817" = fneg float %".1816"
   %".1818" = load float, ptr %"R10"
   %"fmul.69" = fmul float %".1817", %".1818"
   %"fadd.73" = fadd float %"fmul.69", 0x3fe0000000000000
@@ -2905,16 +2905,16 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 %"trunc32.1", ptr %"R20"
   ; FFMA R12, -R11, 1.4426950216293334961, -R12
   %".1835" = load float, ptr %"R11"
-  %".1836" = sub float              0x0, %".1835"
+  %".1836" = fneg float %".1835"
   %".1837" = load float, ptr %"R12"
-  %".1838" = sub float              0x0, %".1837"
+  %".1838" = fneg float %".1837"
   %"fmul.71" = fmul float %".1836", 0x3ff7154760000000
   %"fadd.76" = fadd float %"fmul.71", %".1838"
   %".1839" = bitcast ptr %"R12" to ptr
   store float %"fadd.76", ptr %".1839"
   ; FFMA R12, -R11, 1.925963033500011079e-08, R12
   %".1842" = load float, ptr %"R11"
-  %".1843" = sub float              0x0, %".1842"
+  %".1843" = fneg float %".1842"
   %".1844" = load float, ptr %"R12"
   %"fmul.72" = fmul float %".1843", 0x3e54ae0c00000000
   %"fadd.77" = fadd float %"fmul.72", %".1844"
@@ -4786,7 +4786,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.118", ptr %".3165"
   ; FADD.FTZ R8, -R8, -RZ
   %".3168" = load float, ptr %"R8"
-  %".3169" = sub float              0x0, %".3168"
+  %".3169" = fneg float %".3168"
   %"fadd.119" = fadd float %".3169",              0x0
   %".3170" = bitcast ptr %"R8" to ptr
   store float %"fadd.119", ptr %".3170"
@@ -4818,7 +4818,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %".3186", ptr %".3187"
   ; FADD R10, -R8, 1
   %".3190" = load float, ptr %"R8"
-  %".3191" = sub float              0x0, %".3190"
+  %".3191" = fneg float %".3190"
   %"fadd.121" = fadd float %".3191", 0x3ff0000000000000
   %".3192" = bitcast ptr %"R10" to ptr
   store float %"fadd.121", ptr %".3192"
@@ -8064,7 +8064,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.206", ptr %".5413"
   ; FFMA.SAT R4, -R5, R4, 0.5
   %".5416" = load float, ptr %"R5"
-  %".5417" = sub float              0x0, %".5416"
+  %".5417" = fneg float %".5416"
   %".5418" = load float, ptr %"R4"
   %"fmul.231" = fmul float %".5417", %".5418"
   %"fadd.207" = fadd float %"fmul.231", 0x3fe0000000000000
@@ -8097,16 +8097,16 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 %"trunc32.4", ptr %"R4"
   ; FFMA R6, -R5, 1.4426950216293334961, -R6
   %".5435" = load float, ptr %"R5"
-  %".5436" = sub float              0x0, %".5435"
+  %".5436" = fneg float %".5435"
   %".5437" = load float, ptr %"R6"
-  %".5438" = sub float              0x0, %".5437"
+  %".5438" = fneg float %".5437"
   %"fmul.233" = fmul float %".5436", 0x3ff7154760000000
   %"fadd.210" = fadd float %"fmul.233", %".5438"
   %".5439" = bitcast ptr %"R6" to ptr
   store float %"fadd.210", ptr %".5439"
   ; FFMA R6, -R5, 1.925963033500011079e-08, R6
   %".5442" = load float, ptr %"R5"
-  %".5443" = sub float              0x0, %".5442"
+  %".5443" = fneg float %".5442"
   %".5444" = load float, ptr %"R6"
   %"fmul.234" = fmul float %".5443", 0x3e54ae0c00000000
   %"fadd.211" = fadd float %"fmul.234", %".5444"
@@ -8164,7 +8164,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.213", ptr %".5484"
   ; FADD.FTZ R5, -R4, -RZ
   %".5487" = load float, ptr %"R4"
-  %".5488" = sub float              0x0, %".5487"
+  %".5488" = fneg float %".5487"
   %"fadd.214" = fadd float %".5488",              0x0
   %".5489" = bitcast ptr %"R5" to ptr
   store float %"fadd.214", ptr %".5489"
@@ -8209,7 +8209,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.216", ptr %".5518"
   ; FFMA.SAT R4, -R5, R4, 0.5
   %".5521" = load float, ptr %"R5"
-  %".5522" = sub float              0x0, %".5521"
+  %".5522" = fneg float %".5521"
   %".5523" = load float, ptr %"R4"
   %"fmul.238" = fmul float %".5522", %".5523"
   %"fadd.217" = fadd float %"fmul.238", 0x3fe0000000000000
@@ -8242,16 +8242,16 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i32 %"trunc32.5", ptr %"R23"
   ; FFMA R6, -R5, 1.4426950216293334961, -R6
   %".5540" = load float, ptr %"R5"
-  %".5541" = sub float              0x0, %".5540"
+  %".5541" = fneg float %".5540"
   %".5542" = load float, ptr %"R6"
-  %".5543" = sub float              0x0, %".5542"
+  %".5543" = fneg float %".5542"
   %"fmul.240" = fmul float %".5541", 0x3ff7154760000000
   %"fadd.220" = fadd float %"fmul.240", %".5543"
   %".5544" = bitcast ptr %"R6" to ptr
   store float %"fadd.220", ptr %".5544"
   ; FFMA R6, -R5, 1.925963033500011079e-08, R6
   %".5547" = load float, ptr %"R5"
-  %".5548" = sub float              0x0, %".5547"
+  %".5548" = fneg float %".5547"
   %".5549" = load float, ptr %"R6"
   %"fmul.241" = fmul float %".5548", 0x3e54ae0c00000000
   %"fadd.221" = fadd float %"fmul.241", %".5549"
@@ -10115,7 +10115,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %"fadd.262", ptr %".6862"
   ; FADD.FTZ R5, -R5, -RZ
   %".6865" = load float, ptr %"R5"
-  %".6866" = sub float              0x0, %".6865"
+  %".6866" = fneg float %".6865"
   %"fadd.263" = fadd float %".6866",              0x0
   %".6867" = bitcast ptr %"R5" to ptr
   store float %"fadd.263", ptr %".6867"
@@ -10147,7 +10147,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store float %".6883", ptr %".6884"
   ; FADD R7, -R5, 1
   %".6887" = load float, ptr %"R5"
-  %".6888" = sub float              0x0, %".6887"
+  %".6888" = fneg float %".6887"
   %"fadd.265" = fadd float %".6888", 0x3ff0000000000000
   %".6889" = bitcast ptr %"R7" to ptr
   store float %"fadd.265", ptr %".6889"
@@ -10313,7 +10313,7 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0:
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0_conditionalExpr_0x49c0:
   ; FADD.FTZ R22, -R22, -RZ
   %".76" = load float, ptr %"R22"
-  %".77" = sub float              0x0, %".76"
+  %".77" = fneg float %".76"
   %"fadd.2" = fadd float %".77",              0x0
   %".78" = bitcast ptr %"R22" to ptr
   store float %"fadd.2", ptr %".78"
@@ -10407,7 +10407,7 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
   store float %"fadd.5", ptr %".141"
   ; FADD.FTZ R13, -R13, -RZ
   %".144" = load float, ptr %"R13"
-  %".145" = sub float              0x0, %".144"
+  %".145" = fneg float %".144"
   %"fadd.6" = fadd float %".145",              0x0
   %".146" = bitcast ptr %"R13" to ptr
   store float %"fadd.6", ptr %".146"
