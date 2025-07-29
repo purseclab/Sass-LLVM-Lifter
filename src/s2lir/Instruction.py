@@ -921,9 +921,12 @@ class Instruction:
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             assert ResOp.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
-            
+            float_to_int_needed = False
             if self.modifiers[0] == "RCP": # Reciprocal
-                tmp = IRBuilder.fdiv(llvmir.Constant(ResOp.getIRType(), 1), IRValOp)
+                if ValOp.getIRType() == llvmir.IntType(32):
+                    IRValOp = IRBuilder.sitofp(IRValOp, llvmir.FloatType(), name="sint_to_f32")
+                    float_to_int_needed = True
+                tmp = IRBuilder.fdiv(llvmir.Constant(llvmir.FloatType(), 1), IRValOp)
             elif self.modifiers[0] == "EX2": # Exponent base-2
                 # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opMUFU.htm
                 # TODO: there's some small precision issue, as noted here: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750988222773009
@@ -950,6 +953,8 @@ class Instruction:
                 raise NotImplementedError
 
             # IRBuilder.store(tmp, IRResOp)
+            if float_to_int_needed:
+                tmp = IRBuilder.fptosi(tmp, llvmir.IntType(32))
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
         

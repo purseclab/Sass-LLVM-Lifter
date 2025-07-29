@@ -10277,80 +10277,82 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4990:
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x4990_conditionalExpr_0x4990:
   ; MUFU.RCP R11, R24
   %".44" = load i32, ptr %"R24"
-  %".45" = fdiv i32 1, %".44"
-  store i32 %".45", ptr %"R11"
+  %"sint_to_f32" = sitofp i32 %".44" to float
+  %".45" = fdiv float 0x3ff0000000000000, %"sint_to_f32"
+  %".46" = fptosi float %".45" to i32
+  store i32 %".46", ptr %"R11"
   ; BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0)
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0:
   ; @P0 MUFU.RCP R13, R12
-  %".50" = load i1, ptr %"P0"
-  %".51" = icmp ne i1 %".50", 1
-  br i1 %".51", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0_conditionalExpr_0x49a0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0"
+  %".51" = load i1, ptr %"P0"
+  %".52" = icmp ne i1 %".51", 1
+  br i1 %".52", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0_conditionalExpr_0x49a0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49a0_conditionalExpr_0x49a0:
   ; MUFU.RCP R13, R12
-  %".54" = load float, ptr %"R12"
-  %".55" = fdiv float 0x3ff0000000000000, %".54"
-  %".56" = bitcast ptr %"R13" to ptr
-  store float %".55", ptr %".56"
+  %".55" = load float, ptr %"R12"
+  %".56" = fdiv float 0x3ff0000000000000, %".55"
+  %".57" = bitcast ptr %"R13" to ptr
+  store float %".56", ptr %".57"
   ; BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0)
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0:
   ; @P0 FFMA R22, R12, R13, -1
-  %".61" = load i1, ptr %"P0"
-  %".62" = icmp ne i1 %".61", 1
-  br i1 %".62", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0_conditionalExpr_0x49b0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0"
+  %".62" = load i1, ptr %"P0"
+  %".63" = icmp ne i1 %".62", 1
+  br i1 %".63", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0_conditionalExpr_0x49b0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49b0_conditionalExpr_0x49b0:
   ; FFMA R22, R12, R13, -1
-  %".65" = load float, ptr %"R12"
-  %".66" = load float, ptr %"R13"
-  %"fmul.1" = fmul float %".65", %".66"
+  %".66" = load float, ptr %"R12"
+  %".67" = load float, ptr %"R13"
+  %"fmul.1" = fmul float %".66", %".67"
   %"fadd.1" = fadd float %"fmul.1", 0xbff0000000000000
-  %".67" = bitcast ptr %"R22" to ptr
-  store float %"fadd.1", ptr %".67"
+  %".68" = bitcast ptr %"R22" to ptr
+  store float %"fadd.1", ptr %".68"
   ; BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0)
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0:
   ; @P0 FADD.FTZ R22, -R22, -RZ
-  %".72" = load i1, ptr %"P0"
-  %".73" = icmp ne i1 %".72", 1
-  br i1 %".73", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0_conditionalExpr_0x49c0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0"
+  %".73" = load i1, ptr %"P0"
+  %".74" = icmp ne i1 %".73", 1
+  br i1 %".74", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0_conditionalExpr_0x49c0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49c0_conditionalExpr_0x49c0:
   ; FADD.FTZ R22, -R22, -RZ
-  %".76" = load float, ptr %"R22"
-  %".77" = fneg float %".76"
-  %"fadd.2" = fadd float %".77",              0x0
-  %".78" = bitcast ptr %"R22" to ptr
-  store float %"fadd.2", ptr %".78"
+  %".77" = load float, ptr %"R22"
+  %".78" = fneg float %".77"
+  %"fadd.2" = fadd float %".78",              0x0
+  %".79" = bitcast ptr %"R22" to ptr
+  store float %"fadd.2", ptr %".79"
   ; BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0)
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0:
   ; @P0 FFMA R22, R13, R22, R13
-  %".83" = load i1, ptr %"P0"
-  %".84" = icmp ne i1 %".83", 1
-  br i1 %".84", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0_conditionalExpr_0x49d0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0"
+  %".84" = load i1, ptr %"P0"
+  %".85" = icmp ne i1 %".84", 1
+  br i1 %".85", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0_conditionalExpr_0x49d0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49d0_conditionalExpr_0x49d0:
   ; FFMA R22, R13, R22, R13
-  %".87" = load float, ptr %"R13"
-  %".88" = load float, ptr %"R22"
-  %".89" = load float, ptr %"R13"
-  %"fmul.2" = fmul float %".87", %".88"
-  %"fadd.3" = fadd float %"fmul.2", %".89"
-  %".90" = bitcast ptr %"R22" to ptr
-  store float %"fadd.3", ptr %".90"
+  %".88" = load float, ptr %"R13"
+  %".89" = load float, ptr %"R22"
+  %".90" = load float, ptr %"R13"
+  %"fmul.2" = fmul float %".88", %".89"
+  %"fadd.3" = fadd float %"fmul.2", %".90"
+  %".91" = bitcast ptr %"R22" to ptr
+  store float %"fadd.3", ptr %".91"
   ; BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0)
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0:
   ; @P0 FFMA R11, R22, 1.84467440737095516160e+19, RZ
-  %".95" = load i1, ptr %"P0"
-  %".96" = icmp ne i1 %".95", 1
-  br i1 %".96", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0_conditionalExpr_0x49e0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0"
+  %".96" = load i1, ptr %"P0"
+  %".97" = icmp ne i1 %".96", 1
+  br i1 %".97", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0_conditionalExpr_0x49e0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49e0_conditionalExpr_0x49e0:
   ; FFMA R11, R22, 1.84467440737095516160e+19, RZ
-  %".99" = load float, ptr %"R22"
-  %"fmul.3" = fmul float %".99", 0x43f0000000000000
+  %".100" = load float, ptr %"R22"
+  %"fmul.3" = fmul float %".100", 0x43f0000000000000
   %"fadd.4" = fadd float %"fmul.3",              0x0
-  %".100" = bitcast ptr %"R11" to ptr
-  store float %"fadd.4", ptr %".100"
+  %".101" = bitcast ptr %"R11" to ptr
+  store float %"fadd.4", ptr %".101"
   ; BRA `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0)
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0"
 $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
@@ -10358,39 +10360,39 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
   br label %".L_x_50"
 .L_x_49:
   ; IADD3 R34, R25, -0xfd, RZ
-  %".107" = load i32, ptr %"R25"
-  %"add" = add i32 %".107", -253
+  %".108" = load i32, ptr %"R25"
+  %"add" = add i32 %".108", -253
   %"add.1" = add i32 %"add", 0
   store i32 %"add.1", ptr %"R34"
   ; ISETP.GT.U32.AND P0, PT, R34, 0x1, PT
-  %".110" = load i32, ptr %"R34"
-  %".111" = load i1, ptr %"PT"
-  %"cmp.2" = icmp sgt i32 %".110", 1
-  %".112" = and i1 %"cmp.2", %".111"
+  %".111" = load i32, ptr %"R34"
+  %".112" = load i1, ptr %"PT"
+  %"cmp.2" = icmp sgt i32 %".111", 1
+  %".113" = and i1 %"cmp.2", %".112"
   ; @P0 BRA `(.L_x_51)
-  %".114" = load i1, ptr %"P0"
-  %".115" = icmp ne i1 %".114", 1
-  br i1 %".115", label %".L_x_51", label %".L_x_49_split_0x4a30"
+  %".115" = load i1, ptr %"P0"
+  %".116" = icmp ne i1 %".115", 1
+  br i1 %".116", label %".L_x_51", label %".L_x_49_split_0x4a30"
 .L_x_49_split_0x4a30:
   ; LOP3.LUT R11, R24, 0x7fffff, RZ, 0xc0, !PT
-  %".118" = load i32, ptr %"R24"
-  %".119" = and i32 %".118", 8388607
-  store i32 %".119", ptr %"R11"
+  %".119" = load i32, ptr %"R24"
+  %".120" = and i32 %".119", 8388607
+  store i32 %".120", ptr %"R11"
   ; MOV R23, 0x3
   store i32 3, ptr %"R23"
   ; LOP3.LUT R11, R11, 0x3f800000, RZ, 0xfc, !PT
-  %".124" = load i32, ptr %"R11"
-  %".125" = or i32 %".124", 1065353216
-  store i32 %".125", ptr %"R11"
+  %".125" = load i32, ptr %"R11"
+  %".126" = or i32 %".125", 1065353216
+  store i32 %".126", ptr %"R11"
   ; SHF.L.U32 R23, R23, R34, RZ
-  %".128" = load i32, ptr %"R34"
-  %".129" = icmp ult i32 %".128", 32
-  %"SHF_min.3" = select  i1 %".129", i32 %".128", i32 32
-  %".130" = load i32, ptr %"R23"
-  %".131" = load i32, ptr %"R34"
+  %".129" = load i32, ptr %"R34"
+  %".130" = icmp ult i32 %".129", 32
+  %"SHF_min.3" = select  i1 %".130", i32 %".129", i32 32
+  %".131" = load i32, ptr %"R23"
+  %".132" = load i32, ptr %"R34"
   %"zext.9" = zext i32 0 to i64
-  %"zext.10" = zext i32 %".130" to i64
-  %"zext.11" = zext i32 %".131" to i64
+  %"zext.10" = zext i32 %".131" to i64
+  %"zext.11" = zext i32 %".132" to i64
   %"shl.5" = shl i64 %"zext.9", 32
   %"or.3" = or i64 %"shl.5", %"zext.10"
   %"shl.6" = shl i64 %"or.3", %"zext.11"
@@ -10398,79 +10400,79 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
   %"trunc32.3" = trunc i64 %"and.2" to i32
   store i32 %"trunc32.3", ptr %"R23"
   ; MUFU.RCP R12, R11
-  %".134" = load float, ptr %"R11"
-  %".135" = fdiv float 0x3ff0000000000000, %".134"
-  %".136" = bitcast ptr %"R12" to ptr
-  store float %".135", ptr %".136"
+  %".135" = load float, ptr %"R11"
+  %".136" = fdiv float 0x3ff0000000000000, %".135"
+  %".137" = bitcast ptr %"R12" to ptr
+  store float %".136", ptr %".137"
   ; FFMA R13, R11, R12, -1
-  %".139" = load float, ptr %"R11"
-  %".140" = load float, ptr %"R12"
-  %"fmul.4" = fmul float %".139", %".140"
+  %".140" = load float, ptr %"R11"
+  %".141" = load float, ptr %"R12"
+  %"fmul.4" = fmul float %".140", %".141"
   %"fadd.5" = fadd float %"fmul.4", 0xbff0000000000000
-  %".141" = bitcast ptr %"R13" to ptr
-  store float %"fadd.5", ptr %".141"
+  %".142" = bitcast ptr %"R13" to ptr
+  store float %"fadd.5", ptr %".142"
   ; FADD.FTZ R13, -R13, -RZ
-  %".144" = load float, ptr %"R13"
-  %".145" = fneg float %".144"
-  %"fadd.6" = fadd float %".145",              0x0
-  %".146" = bitcast ptr %"R13" to ptr
-  store float %"fadd.6", ptr %".146"
+  %".145" = load float, ptr %"R13"
+  %".146" = fneg float %".145"
+  %"fadd.6" = fadd float %".146",              0x0
+  %".147" = bitcast ptr %"R13" to ptr
+  store float %"fadd.6", ptr %".147"
   ; FFMA.RM R22, R12.reuse, R13.reuse, R12.reuse
-  %".149" = load float, ptr %"R12"
-  %".150" = load float, ptr %"R13"
-  %".151" = load float, ptr %"R12"
-  %"fmul.5" = fmul float %".149", %".150"
-  %"fadd.7" = fadd float %"fmul.5", %".151"
-  %".152" = bitcast ptr %"R22" to ptr
-  store float %"fadd.7", ptr %".152"
+  %".150" = load float, ptr %"R12"
+  %".151" = load float, ptr %"R13"
+  %".152" = load float, ptr %"R12"
+  %"fmul.5" = fmul float %".150", %".151"
+  %"fadd.7" = fadd float %"fmul.5", %".152"
+  %".153" = bitcast ptr %"R22" to ptr
+  store float %"fadd.7", ptr %".153"
   ; FFMA.RP R13, R12, R13, R12
-  %".155" = load float, ptr %"R12"
-  %".156" = load float, ptr %"R13"
-  %".157" = load float, ptr %"R12"
-  %"fmul.6" = fmul float %".155", %".156"
-  %"fadd.8" = fadd float %"fmul.6", %".157"
-  %".158" = bitcast ptr %"R13" to ptr
-  store float %"fadd.8", ptr %".158"
+  %".156" = load float, ptr %"R12"
+  %".157" = load float, ptr %"R13"
+  %".158" = load float, ptr %"R12"
+  %"fmul.6" = fmul float %".156", %".157"
+  %"fadd.8" = fadd float %"fmul.6", %".158"
+  %".159" = bitcast ptr %"R13" to ptr
+  store float %"fadd.8", ptr %".159"
   ; LOP3.LUT R12, R22.reuse, 0x7fffff, RZ, 0xc0, !PT
-  %".161" = load float, ptr %"R22"
-  %".162" = bitcast float %".161" to i32
-  %".163" = and i32 %".162", 8388607
-  store i32 %".163", ptr %"R12"
+  %".162" = load float, ptr %"R22"
+  %".163" = bitcast float %".162" to i32
+  %".164" = and i32 %".163", 8388607
+  store i32 %".164", ptr %"R12"
   ; FSETP.NEU.FTZ.AND P0, PT, R22, R13, PT
-  %".166" = load float, ptr %"R22"
-  %".167" = load float, ptr %"R13"
-  %".168" = load i1, ptr %"PT"
-  %"fcmp_ordered" = fcmp une float %".166", %".167"
-  %".169" = and i1 %"fcmp_ordered", %".168"
+  %".167" = load float, ptr %"R22"
+  %".168" = load float, ptr %"R13"
+  %".169" = load i1, ptr %"PT"
+  %"fcmp_ordered" = fcmp une float %".167", %".168"
+  %".170" = and i1 %"fcmp_ordered", %".169"
   ; LOP3.LUT R12, R12, 0x800000, RZ, 0xfc, !PT
-  %".171" = load i32, ptr %"R12"
-  %".172" = or i32 %".171", 8388608
-  store i32 %".172", ptr %"R12"
+  %".172" = load i32, ptr %"R12"
+  %".173" = or i32 %".172", 8388608
+  store i32 %".173", ptr %"R12"
   ; SEL R13, RZ, 0xffffffff, !P0
-  %".175" = load i1, ptr %"P0"
-  %".176" = icmp eq i1 %".175", 1
-  %"sel" = select  i1 %".176", i32 0, i32 4294967295
+  %".176" = load i1, ptr %"P0"
+  %".177" = icmp eq i1 %".176", 1
+  %"sel" = select  i1 %".177", i32 0, i32 4294967295
   store i32 %"sel", ptr %"R13"
   ; LOP3.LUT R23, R23, R12, RZ, 0xc0, !PT
-  %".179" = load i32, ptr %"R23"
-  %".180" = load i32, ptr %"R12"
-  %".181" = and i32 %".179", %".180"
-  store i32 %".181", ptr %"R23"
+  %".180" = load i32, ptr %"R23"
+  %".181" = load i32, ptr %"R12"
+  %".182" = and i32 %".180", %".181"
+  store i32 %".182", ptr %"R23"
   ; IADD3 R13, -R13, RZ, RZ
-  %".184" = load i32, ptr %"R13"
-  %".185" = sub i32 0, %".184"
-  %"add.2" = add i32 %".185", 0
+  %".185" = load i32, ptr %"R13"
+  %".186" = sub i32 0, %".185"
+  %"add.2" = add i32 %".186", 0
   %"add.3" = add i32 %"add.2", 0
   store i32 %"add.3", ptr %"R13"
   ; SHF.R.U32.HI R23, RZ, R34.reuse, R23
-  %".188" = load i32, ptr %"R34"
-  %".189" = icmp ult i32 %".188", 32
-  %"SHF_min.4" = select  i1 %".189", i32 %".188", i32 32
-  %".190" = load i32, ptr %"R23"
-  %".191" = load i32, ptr %"R34"
-  %"zext.12" = zext i32 %".190" to i64
+  %".189" = load i32, ptr %"R34"
+  %".190" = icmp ult i32 %".189", 32
+  %"SHF_min.4" = select  i1 %".190", i32 %".189", i32 32
+  %".191" = load i32, ptr %"R23"
+  %".192" = load i32, ptr %"R34"
+  %"zext.12" = zext i32 %".191" to i64
   %"zext.13" = zext i32 0 to i64
-  %"zext.14" = zext i32 %".191" to i64
+  %"zext.14" = zext i32 %".192" to i64
   %"shl.7" = shl i64 %"zext.12", 32
   %"or.4" = or i64 %"shl.7", %"zext.13"
   %"lshr.2" = lshr i64 %"or.4", %"zext.14"
@@ -10478,56 +10480,56 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
   %"trunc32.4" = trunc i64 %"lshr.3" to i32
   store i32 %"trunc32.4", ptr %"R23"
   ; LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT
-  %".194" = load i32, ptr %"R13"
-  %".195" = load i32, ptr %"R34"
-  %".196" = load i32, ptr %"R12"
-  %"LOP3_result" = call i32 @"custom_lop3"(i32 %".196", i32 0, i32 %".194", i32 %".195")
+  %".195" = load i32, ptr %"R13"
+  %".196" = load i32, ptr %"R34"
+  %".197" = load i32, ptr %"R12"
+  %"LOP3_result" = call i32 @"custom_lop3"(i32 %".197", i32 0, i32 %".195", i32 %".196")
   ; LOP3.LUT P0, RZ, R23.reuse, 0x1, RZ, 0xc0, !PT
-  %".198" = load i32, ptr %"R23"
-  %"LOP3_result.1" = call i32 @"custom_lop3"(i32 0, i32 0, i32 %".198", i32 1)
+  %".199" = load i32, ptr %"R23"
+  %"LOP3_result.1" = call i32 @"custom_lop3"(i32 0, i32 0, i32 %".199", i32 1)
   ; LOP3.LUT P2, RZ, R23, 0x2, RZ, 0xc0, !PT
-  %".200" = load i32, ptr %"R23"
-  %"LOP3_result.2" = call i32 @"custom_lop3"(i32 0, i32 0, i32 %".200", i32 2)
+  %".201" = load i32, ptr %"R23"
+  %"LOP3_result.2" = call i32 @"custom_lop3"(i32 0, i32 0, i32 %".201", i32 2)
   ; PLOP3.LUT P0, PT, P0, P1, P2, 0xe0, 0x0
-  %".202" = load i1, ptr %"P0"
-  %".203" = sub i1 0, %".202"
-  %".204" = load i1, ptr %"P1"
-  %".205" = sub i1 0, %".204"
-  %".206" = or i1 %".203", %".205"
-  %".207" = and i1 %".206", 1
+  %".203" = load i1, ptr %"P0"
+  %".204" = sub i1 0, %".203"
+  %".205" = load i1, ptr %"P1"
+  %".206" = sub i1 0, %".205"
+  %".207" = or i1 %".204", %".206"
+  %".208" = and i1 %".207", 1
   ; LOP3.LUT P1, RZ, R24, 0x7fffff, RZ, 0xc0, !PT
-  %".209" = load i32, ptr %"R24"
-  %"LOP3_result.3" = call i32 @"custom_lop3"(i32 0, i32 0, i32 %".209", i32 8388607)
+  %".210" = load i32, ptr %"R24"
+  %"LOP3_result.3" = call i32 @"custom_lop3"(i32 0, i32 0, i32 %".210", i32 8388607)
   ; SEL R11, RZ, 0x1, !P0
-  %".211" = load i1, ptr %"P0"
-  %".212" = icmp eq i1 %".211", 1
-  %"sel.1" = select  i1 %".212", i32 0, i32 1
+  %".212" = load i1, ptr %"P0"
+  %".213" = icmp eq i1 %".212", 1
+  %"sel.1" = select  i1 %".213", i32 0, i32 1
   store i32 %"sel.1", ptr %"R11"
   ; IADD3 R11, -R11, RZ, RZ
-  %".215" = load i32, ptr %"R11"
-  %".216" = sub i32 0, %".215"
-  %"add.4" = add i32 %".216", 0
+  %".216" = load i32, ptr %"R11"
+  %".217" = sub i32 0, %".216"
+  %"add.4" = add i32 %".217", 0
   %"add.5" = add i32 %"add.4", 0
   store i32 %"add.5", ptr %"R11"
   ; ISETP.GE.AND P0, PT, R11, RZ, PT
-  %".219" = load i32, ptr %"R11"
-  %".220" = load i1, ptr %"PT"
-  %"cmp.3" = icmp sge i32 %".219", 0
-  %".221" = and i1 %"cmp.3", %".220"
+  %".220" = load i32, ptr %"R11"
+  %".221" = load i1, ptr %"PT"
+  %"cmp.3" = icmp sge i32 %".220", 0
+  %".222" = and i1 %"cmp.3", %".221"
   ; IADD3 R11, R25, -0xfc, RZ
-  %".223" = load i32, ptr %"R25"
-  %"add.6" = add i32 %".223", -252
+  %".224" = load i32, ptr %"R25"
+  %"add.6" = add i32 %".224", -252
   %"add.7" = add i32 %"add.6", 0
   store i32 %"add.7", ptr %"R11"
   ; SHF.R.U32.HI R11, RZ, R11, R12
-  %".226" = load i32, ptr %"R11"
-  %".227" = icmp ult i32 %".226", 32
-  %"SHF_min.5" = select  i1 %".227", i32 %".226", i32 32
-  %".228" = load i32, ptr %"R12"
-  %".229" = load i32, ptr %"R11"
-  %"zext.15" = zext i32 %".228" to i64
+  %".227" = load i32, ptr %"R11"
+  %".228" = icmp ult i32 %".227", 32
+  %"SHF_min.5" = select  i1 %".228", i32 %".227", i32 32
+  %".229" = load i32, ptr %"R12"
+  %".230" = load i32, ptr %"R11"
+  %"zext.15" = zext i32 %".229" to i64
   %"zext.16" = zext i32 0 to i64
-  %"zext.17" = zext i32 %".229" to i64
+  %"zext.17" = zext i32 %".230" to i64
   %"shl.8" = shl i64 %"zext.15", 32
   %"or.5" = or i64 %"shl.8", %"zext.16"
   %"lshr.4" = lshr i64 %"or.5", %"zext.17"
@@ -10535,29 +10537,29 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
   %"trunc32.5" = trunc i64 %"lshr.5" to i32
   store i32 %"trunc32.5", ptr %"R11"
   ; @!P0 IADD3 R11, R11, 0x1, RZ
-  %".232" = load i1, ptr %"P0"
-  %".233" = icmp eq i1 %".232", 1
-  br i1 %".233", label %".L_x_49_split_0x4a30_conditionalExpr_0x4bd0", label %".L_x_49_split_0x4be0"
+  %".233" = load i1, ptr %"P0"
+  %".234" = icmp eq i1 %".233", 1
+  br i1 %".234", label %".L_x_49_split_0x4a30_conditionalExpr_0x4bd0", label %".L_x_49_split_0x4be0"
 .L_x_49_split_0x4a30_conditionalExpr_0x4bd0:
   ; IADD3 R11, R11, 0x1, RZ
-  %".236" = load i32, ptr %"R11"
-  %"add.8" = add i32 %".236", 1
+  %".237" = load i32, ptr %"R11"
+  %"add.8" = add i32 %".237", 1
   %"add.9" = add i32 %"add.8", 0
   store i32 %"add.9", ptr %"R11"
   ; BRA `(.L_x_49_split_0x4be0)
   br label %".L_x_49_split_0x4be0"
 .L_x_49_split_0x4be0:
   ; @!P1 SHF.L.U32 R11, R11, 0x1, RZ
-  %".241" = load i1, ptr %"P1"
-  %".242" = icmp eq i1 %".241", 1
-  br i1 %".242", label %".L_x_49_split_0x4be0_conditionalExpr_0x4be0", label %".L_x_49_split_0x4bf0"
+  %".242" = load i1, ptr %"P1"
+  %".243" = icmp eq i1 %".242", 1
+  br i1 %".243", label %".L_x_49_split_0x4be0_conditionalExpr_0x4be0", label %".L_x_49_split_0x4bf0"
 .L_x_49_split_0x4be0_conditionalExpr_0x4be0:
   ; SHF.L.U32 R11, R11, 0x1, RZ
-  %".245" = icmp ult i32 1, 32
-  %"SHF_min.6" = select  i1 %".245", i32 1, i32 32
-  %".246" = load i32, ptr %"R11"
+  %".246" = icmp ult i32 1, 32
+  %"SHF_min.6" = select  i1 %".246", i32 1, i32 32
+  %".247" = load i32, ptr %"R11"
   %"zext.18" = zext i32 0 to i64
-  %"zext.19" = zext i32 %".246" to i64
+  %"zext.19" = zext i32 %".247" to i64
   %"zext.20" = zext i32 1 to i64
   %"shl.9" = shl i64 %"zext.18", 32
   %"or.6" = or i64 %"shl.9", %"zext.19"
@@ -10569,27 +10571,29 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x49f0:
   br label %".L_x_49_split_0x4bf0"
 .L_x_49_split_0x4bf0:
   ; LOP3.LUT R11, R11, 0x80000000, R24, 0xf8, !PT
-  %".251" = load i32, ptr %"R11"
-  %".252" = load i32, ptr %"R24"
-  %".253" = or i32 %".251", 2147483648
-  %".254" = or i32 %".251", %".252"
-  %".255" = and i32 %".253", %".254"
-  store i32 %".255", ptr %"R11"
+  %".252" = load i32, ptr %"R11"
+  %".253" = load i32, ptr %"R24"
+  %".254" = or i32 %".252", 2147483648
+  %".255" = or i32 %".252", %".253"
+  %".256" = and i32 %".254", %".255"
+  store i32 %".256", ptr %"R11"
   ; BRA `(.L_x_50)
   br label %".L_x_50"
 .L_x_51:
   ; MUFU.RCP R11, R24
-  %".260" = load i32, ptr %"R24"
-  %".261" = fdiv i32 1, %".260"
-  store i32 %".261", ptr %"R11"
+  %".261" = load i32, ptr %"R24"
+  %"sint_to_f32.1" = sitofp i32 %".261" to float
+  %".262" = fdiv float 0x3ff0000000000000, %"sint_to_f32.1"
+  %".263" = fptosi float %".262" to i32
+  store i32 %".263", ptr %"R11"
   br label %".L_x_50"
 .L_x_50:
   ; BSYNC B1
   br label %".L_x_48"
 .L_x_48:
   ; MOV R22, R11
-  %".267" = load i32, ptr %"R11"
-  store i32 %".267", ptr %"R22"
+  %".269" = load i32, ptr %"R11"
+  store i32 %".269", ptr %"R22"
   ; MOV R11, 0x0
   store i32 0, ptr %"R11"
   ; RET.REL.NODEC R10, `(_Z11gru_forwardPfS_S_S_iii)
