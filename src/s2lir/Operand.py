@@ -456,3 +456,12 @@ class Operand:
         if not self.isReg and not self.isPReg:
             return False
         return True
+    
+    def get_bit_width(self):
+        IRType = self.getIRType()
+        if IRType in (llvmir.IntType(32), llvmir.FloatType()):
+            return 32
+        elif IRType in [llvmir.IntType(1)]:
+            return 1
+        else:
+            raise InvalidSyntaxException

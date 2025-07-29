@@ -730,6 +730,19 @@ class Instruction:
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            
+            valOps = [ValOp1, ValOp2, ValOp3]
+            if not all(isinstance(v.getIRType(), llvmir.IntType) for v in valOps):
+                if not all(w == 32 for w in [valOp.get_bit_width() for valOp in valOps]):
+                    print(self)
+                    raise Exception
+                else:
+                    if any(v.getIRType() != llvmir.IntType(32) for v in valOps):
+                        IRValOp1, IRValOp2, IRValOp3 = bitcast_all_to_type(IRBuilder, llvmir.IntType(32), IRValOp1, IRValOp2, IRValOp3)
+
+            # if not all(w == 32 for w in [IRValOp1.type.width, IRValOp2.type.width, IRValOp3.type.width]):
+            
             # IRImmLut = llvmir.Constant(llvmir.IntType(32), immLut.Value)
             IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
@@ -767,7 +780,6 @@ class Instruction:
                 elif immLut.Value == 0x33: # ~B
                     tmp = IRBuilder.xor(IRValOp2, llvmir.Constant(llvmir.IntType(32), -1)) # ~B
                 elif immLut.Value == 0xC0:  # A & B
-                    IRValOp1, IRValOp2 = bitcast_all_to_type(IRBuilder, ResOp.getIRType(), IRValOp1, IRValOp2)
                     tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
                 elif immLut.Value == 0x8: # (~A) & B & C
                     tmp = IRBuilder.xor(IRValOp1, llvmir.Constant(llvmir.IntType(32), -1)) # ~A
@@ -811,6 +823,19 @@ class Instruction:
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            # ---- Copied from LOP3
+            valOps = [ValOp1, ValOp2, ValOp3]
+            if not all(isinstance(v.getIRType(), llvmir.IntType) for v in valOps):
+                if not all(w == 32 for w in [valOp.get_bit_width() for valOp in valOps]):
+                    print(self)
+                    raise Exception
+                else:
+                    if any(v.getIRType() != llvmir.IntType(32) for v in valOps):
+                        IRValOp1, IRValOp2, IRValOp3 = bitcast_all_to_type(IRBuilder, llvmir.IntType(32), IRValOp1, IRValOp2, IRValOp3)
+            # ---- Copied from LOP3
+            
+            
             # IRImmLut = llvmir.Constant(llvmir.IntType(32), immLut.Value)
             # IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
