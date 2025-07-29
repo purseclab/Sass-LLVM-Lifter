@@ -19,10 +19,10 @@ class LLVMModule:
     # def __init__(self, name, parser):
     def __init__(self, name, functions):
         self.name = name
-        self.functions : typing.List[Function.Function] = functions
+        self.functions : dict[str, Function.Function] = {func.name: func for func in functions} # func_name -> function obj # TODO: I dont think it's an issue rn that the functions are unordered, but maybe it would be an issue in the future
         self.llvm_module = None
 
-        for func in self.functions:
+        for _, func in self.functions.items():
             func.module = self
 
     def addPseudoFunctions(self, llvm_module):
@@ -32,11 +32,11 @@ class LLVMModule:
         self.GetThreadIdx = IRFunc
     
     def parse(self):
-        for func in self.functions:
+        for _, func in self.functions.items():
             func.parse()
     
     def analysisAndTransform(self):
-        for func in self.functions:
+        for _, func in self.functions.items():
             CreateCFG.CFG(func)
             # CreateCFG might split blocks too, so typeanalysis cannot happen before it
             func.typeAnalysis = TypeAnalysis.TypeAnalysis(func)
@@ -55,7 +55,17 @@ class LLVMModule:
         # create custom functions (that might be referenced by the lifter)
         custom_func.lop3(llvm_module)
         
-        for func in self.functions:
+        
+        internal_func: list[Function.Function] = []
+        
+        for _, func in self.functions.items():
+            if func.internal_func:
+                # we will postpone lifting this because we need to determine which function it belongs to so that we can perform shallow copy of registers
+                internal_func.append(func)
+                continue
+            func.lift(llvm_module)
+            
+        for func in internal_func:
             func.lift(llvm_module)
 
         return llvm_module

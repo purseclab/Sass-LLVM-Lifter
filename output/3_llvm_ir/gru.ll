@@ -10195,20 +10195,7 @@ declare float @"llvm.exp2.f32"(float %".1")
 define float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
 {
 Entry_$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath:
-  %"R11" = alloca i32, i32 1
-  %"R24" = alloca i32, i32 1
-  %"RZ" = alloca i32, i32 1
-  %"R25" = alloca i32, i32 1
-  %"P0" = alloca i1, i32 1
-  %"PT" = alloca i1, i32 1
-  %"R12" = alloca i32, i32 1
-  %"R13" = alloca i32, i32 1
-  %"R22" = alloca i32, i32 1
-  %"R34" = alloca i32, i32 1
-  %"R23" = alloca i32, i32 1
-  %"P1" = alloca i1, i32 1
   %"P2" = alloca i1, i32 1
-  %"R10" = alloca i32, i32 1
   ; SHF.L.U32 R11, R24, 0x1, RZ
   %".4" = icmp ult i32 1, 32
   %"SHF_min" = select  i1 %".4", i32 1, i32 32

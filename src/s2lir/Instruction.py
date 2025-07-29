@@ -1038,6 +1038,12 @@ class Instruction:
                         function = existing_fn
                     else:
                         function = llvmir.Function(self.llvm_module, function_type, name=function_name)
+                    
+                    if function_name in self.BB.func.module.functions:
+                        functionObj = self.BB.func.module.functions[function_name]
+                        assert functionObj.parent_func is None or functionObj.parent_func == self.BB.func
+                        functionObj.parent_func = self.BB.func
+                    
                     IRBuilder.call(function, [], name="call_rel")
                 else:
                     raise NotImplementedError

@@ -22,7 +22,8 @@ class Function:
         self.size = function_dict[".size"]
         self.weak = function_dict[".weak"]
         self.other = function_dict[".other"]
-        self.internal_func : bool = function_dict["internal_func"]
+        self.internal_func: bool = function_dict["internal_func"]
+        self.parent_func: Function | None =  None  # for internal func
         # self.name = name
         self.blocks : typing.List[BasicBlock] = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
         
@@ -52,6 +53,8 @@ class Function:
         self.Args : Operand = []
         
         self.typeAnalysis: TypeAnalysis = None
+        
+        self.IRRegs: dict[str, llvmir.AllocaInstr] = {}
     
     def parse(self):
         # Parse all the BasicBlocks
@@ -211,7 +214,7 @@ class Function:
         ExitIRBuilder.ret_void()
 
         # Collect registers' name with type information
-        IRRegs = {} # e.g. IRRegs["R39_NOTYPE"]
+        IRRegs = self.IRRegs # e.g. IRRegs["R39_NOTYPE"]
         Regs = self.getRegs() # => self.Regs
         dprint(Regs)
 
@@ -229,6 +232,14 @@ class Function:
             Builder: llvmir.IRBuilder = llvmir.IRBuilder(IRBlock)
 
             if IsEntry:
+                if self.internal_func:
+                    assert self.parent_func is not None
+                    assert isinstance(self.parent_func, Function)
+                    # we're only entering here after IRRegs for the parent function has been establish
+                    # this way we can perform a shallow copy of the registers, meaning that the values of the registers will be shared between the two functions (bidirectional - if you write in internal func to R14, R14 will have the same value in parent func when you return to it). This way we also dont need to perform analysis to determine which registers are the arguments and return value, and based on emphirical observation, it doesnt seem like Nvidia would reset the registers when entering an internal function
+                    self.IRRegs = self.parent_func.IRRegs
+                    IRRegs = self.IRRegs
+                    
                 # Alloc the variable for registers
                 for Reg in Regs:
                     Operand = Regs[Reg]
