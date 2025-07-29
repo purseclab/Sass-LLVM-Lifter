@@ -2806,7 +2806,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   ; MOV R10, 0x1280
   store i32 4736, ptr %"R10"
   ; CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
-  %"call_rel" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
+  call void @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; MOV R9, R22
   %".1767" = load i32, ptr %"R22"
   store i32 %".1767", ptr %"R9"
@@ -4767,7 +4767,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   ; MOV R10, 0x21a0
   store i32 8608, ptr %"R10"
   ; CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
-  %"call_rel.1" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
+  call void @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; MOV R8, R22
   %".3155" = load i32, ptr %"R22"
   store i32 %".3155", ptr %"R8"
@@ -8148,7 +8148,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   ; MOV R10, 0x3930
   store i32 14640, ptr %"R10"
   ; CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
-  %"call_rel.2" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
+  call void @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; BRA `(.L_x_34)
   br label %".L_x_34"
 .L_x_33:
@@ -10098,7 +10098,7 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   ; MOV R10, 0x4820
   store i32 18464, ptr %"R10"
   ; CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
-  %"call_rel.3" = call float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
+  call void @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
   ; MOV R5, R22
   %".6854" = load i32, ptr %"R22"
   store i32 %".6854", ptr %"R5"
@@ -10196,7 +10196,7 @@ declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
 
 declare float @"llvm.exp2.f32"(float %".1")
 
-define float @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
+define void @"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath"()
 {
 Entry_$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath:
   %"P2" = alloca i1, i32 1

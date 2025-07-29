@@ -1055,10 +1055,11 @@ class Instruction:
                     return_type = match.group(2)
                     
                     # syntax inspired from llvm_exp2_f32, not necessarily correct
-                    if return_type == "f32":
-                        function_type = llvmir.FunctionType(llvmir.FloatType(), [])
-                    else:
-                        raise NotImplementedError
+                    # if return_type == "f32":
+                    #     function_type = llvmir.FunctionType(llvmir.FloatType(), [])
+                    # else:
+                    #     raise NotImplementedError
+                    function_type = llvmir.FunctionType(llvmir.VoidType(), [])
                     
                     existing_fn = self.llvm_module.globals.get(function_name, None)
                     
