@@ -27,6 +27,8 @@ class Function:
         # self.name = name
         self.blocks : typing.List[BasicBlock] = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
         
+        self.returnBB : None | BasicBlock = None
+        
         self.IRRegs_cur_status: dict[str, str] = {} # tells us which register_type was last loaded value, e.g. R24: R24_Float32 means that the last store operation is done to R24_Float32 and it therefore holds the most up-to-date content for register R24
 
         # All the Labels
@@ -233,6 +235,8 @@ class Function:
 
             if IsEntry:
                 if self.internal_func:
+                    assert False # NOTE: irrelevant now
+                    
                     assert self.parent_func is not None
                     assert isinstance(self.parent_func, Function)
                     # we're only entering here after IRRegs for the parent function has been establish

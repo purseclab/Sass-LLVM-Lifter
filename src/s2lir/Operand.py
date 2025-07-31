@@ -471,3 +471,14 @@ class Operand:
             return 1
         else:
             raise InvalidSyntaxException
+        
+    def get_call_func_name_type(self):
+        if self.ins.opcode == "CALL" and str(self)[0] == "`":
+            pattern = r'^`\((.*?_(f\d+)[^)]*)\)$'
+            match = re.match(pattern, str(self))
+            if not match:
+                raise InvalidSyntaxException
+            function_name = match.group(1)
+            return_type = match.group(2)
+            
+            return function_name, return_type

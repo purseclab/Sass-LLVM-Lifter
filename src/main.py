@@ -37,9 +37,16 @@ class LLVMModule:
     
     def analysisAndTransform(self):
         for _, func in self.functions.items():
+            self.internal_functions = {func: self.functions[func] for func in self.functions if self.functions[func].internal_func}
+            self.regular_functions = {func: self.functions[func] for func in self.functions if not self.functions[func].internal_func}
+        
+        for _, func in self.internal_functions.items():
+            # process the internal functions first as they'll be integrated into regular functions
             CreateCFG.CFG(func)
-            # CreateCFG might split blocks too, so typeanalysis cannot happen before it
-            func.typeAnalysis = TypeAnalysis.TypeAnalysis(func)
+        
+        for _, func in self.regular_functions.items():    
+            CreateCFG.CFG(func)
+        
             # visualizer: InstructionVisualizer = InstructionVisualizer(typeAnalysis)
             # visualizer.visualize(f"{func.name}.html")
             
@@ -105,6 +112,13 @@ if __name__=="__main__":
     myModule = LLVMModule("PerSecModule", functions)
     myModule.parse()
     myModule.analysisAndTransform()
+    
+    
+    myModule.functions = myModule.regular_functions
+    
+    # CreateCFG might split blocks too, so typeanalysis cannot happen before it
+    for _, func in myModule.functions.items():
+        func.typeAnalysis = TypeAnalysis.TypeAnalysis(func)
 
     llvm_module = myModule.lift()
     # print(llvm_module)

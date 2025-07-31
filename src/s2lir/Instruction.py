@@ -28,7 +28,7 @@ class Instruction:
             self.operands.append(Operand(self.condition_expr[1:], self))
 
         # Initialized via parsing
-        self.branch_target = None
+        self.branch_target : str = None
 
         self.BB: 'BasicBlock' = BB
         config_path = current_dir / "../.." / "launch" / "config.json"
@@ -37,6 +37,9 @@ class Instruction:
             self.config = json.load(file)
         
         self.llvm_module = None
+        
+        self.disabled = False
+        
 
     def parse(self):
         for ope in self.operands:
@@ -151,6 +154,9 @@ class Instruction:
         self.BB.func.sassAddr2Inst[int(self.addr, 16)] = self
         
         # generate_ir_comment(IRBuilder, self.dump_text())
+        
+        if self.disabled:
+            return
         
         if self.opcode == "EXIT":
             if not IRBuilder.block.is_terminated:
@@ -1073,6 +1079,7 @@ class Instruction:
                     if function_name in self.BB.func.module.functions:
                         functionObj = self.BB.func.module.functions[function_name]
                         assert functionObj.parent_func is None or functionObj.parent_func == self.BB.func
+                        assert False # NOTE: .parent_func is irrelevant now
                         functionObj.parent_func = self.BB.func
                     
                     IRBuilder.call(function, [], name="call_rel")
@@ -1147,6 +1154,11 @@ class Instruction:
             assert len(self.operands) == 2
             assert self.operands[0].isReg or self.operands[0].isConst
             # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
+            
+            if self.branch_target is not None:
+                targetBB = self.func.labels2block[self.branch_target]
+                IRBuilder.branch(targetBB)
+                return
             
             
             retAddrOp = self.operands[0]
