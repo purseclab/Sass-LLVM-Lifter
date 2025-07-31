@@ -28,7 +28,7 @@ class Instruction:
             self.operands.append(Operand(self.condition_expr[1:], self))
 
         # Initialized via parsing
-        self.branch_target : str = None
+        self.branch_target : BasicBlock = None
 
         self.BB: 'BasicBlock' = BB
         config_path = current_dir / "../.." / "launch" / "config.json"
@@ -47,7 +47,7 @@ class Instruction:
         
         if self.opcode == "BRA":
             assert len(self.operands) <= 2
-            self.branch_target = self.operands[0].branch_label
+            self.branch_target = self.BB.func.labels2block[self.operands[0].branch_label]
 
         # self.dump()
 
@@ -119,7 +119,7 @@ class Instruction:
         for ope in self.operands:
             text += ope.dump_text()
         if self.branch_target:
-            text += f"Branch Target:  {self.branch_target}"
+            text += f"Branch Target:  {self.branch_target.label}"
         text += "\n"
         
         return text
@@ -1156,8 +1156,8 @@ class Instruction:
             # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
             
             if self.branch_target is not None:
-                targetBB = self.func.labels2block[self.branch_target]
-                IRBuilder.branch(targetBB)
+                targetBB = self.branch_target
+                IRBuilder.branch(BlockMap[targetBB])
                 return
             
             

@@ -44,7 +44,7 @@ class Function:
         # IGNORE ABOVE
         
         # SASS addr (such as 0x47f0) to Instruction Object
-        # TODO handle cases where Instruction Object is redefined
+        # TODO handle cases where Instruction Object is redefined, and also it might not be unique, esp after deepcopy
         self.sassAddr2Inst: dict[int, Instruction] = {}
 
         ################################################################
@@ -57,6 +57,8 @@ class Function:
         self.typeAnalysis: TypeAnalysis = None
         
         self.IRRegs: dict[str, llvmir.AllocaInstr] = {}
+        
+        self.rev = 0
     
     def parse(self):
         # Parse all the BasicBlocks
@@ -169,7 +171,31 @@ class Function:
             
             IsEntry = False
 
-
+    def duplicate(self):
+        # must only call duplicate on the original Function, not a duplicated one, or the self.rev would be inaccurate
+        
+        original_names = [b.label for b in self.blocks]
+        original_labels2block = self.labels2block
+        self.labels2block = {}
+        self.rev += 1
+        
+        for b in self.blocks:
+            original_names.append(b.label)
+            self.labels2block[b.updateName(self.rev)] = b
+        
+        # note: deepcopy will preserve the relative references, so even though each BB are duplicated, the mapping in labels2block should still be valid in the new function, i.e. it would map to the new sets of BasicBlocks instead of creating yet another set of basicblocks just within the labels2block
+        newFunc = copy.deepcopy(self)
+        
+        # setup label2block again (we cannot set this up before the deepcopy or the mapping would be wrong)
+        self.labels2block = original_labels2block
+        # restore BB names
+        for b in self.blocks:
+            b.updateName(None)
+        
+        return newFunc
+            
+        
+            
     def lift(self, llvm_module : llvmir.Module):
 
         # Collect all Args

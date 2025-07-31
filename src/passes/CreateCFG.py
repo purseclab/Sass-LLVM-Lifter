@@ -41,14 +41,14 @@ class CFG:
             # Case (1)
             if final_inst.isBranch() and not final_inst.isConditionExpr():
                 # Unconditional Branch
-                targetBB = self.func.labels2block[final_inst.branch_target]
+                targetBB = final_inst.branch_target
                 BB.succs.append(targetBB)
                 targetBB.preds.append(BB)
             
             # Case (2)
             if final_inst.isBranch() and final_inst.isConditionExpr():
                 # Conditional Branch
-                targetBB = self.func.labels2block[final_inst.branch_target]
+                targetBB = final_inst.branch_target
                 BB.succs.append(targetBB)
                 targetBB.preds.append(BB)
 
@@ -72,7 +72,7 @@ class CFG:
                         assert ins.branch_target is None
                         assert ins == BB.instructions[-1]
                         # point all the RET instructions to the next Exit BB
-                        ins.branch_target = self.return_point.label
+                        ins.branch_target = self.return_point
                         BB.succs.append(self.return_point)
                         self.return_point.preds.append(BB)
                         if self.func.returnBB is None:
@@ -89,12 +89,13 @@ class CFG:
                     
                     internal_func = self.func.module.internal_functions[internal_func_name]
                     
+                    
                     # we'll need to completely clone the BB blocks, instructions, and operands so that it doesnt affect reaching def analysis later (as well as other quirks)
                     # one of the implication is that we'll have ins.addr that doesnt make sense
-                    internal_func_new : Function = copy.deepcopy(internal_func)
-                    BBs_new = internal_func_new.blocks
+                    internal_func_new : Function = internal_func.duplicate()
                     returnBlock = internal_func_new.returnBB
                     entryBlock = internal_func_new.blocks[0]
+                    BBs_new = internal_func_new.blocks + [returnBlock]
 
                     # step 1: we need to split the basic block and insert the BBs of the internal function
                     
@@ -144,19 +145,24 @@ class CFG:
                         postCALL_BB.succs = BB.succs
                         
                         for succ in BB.succs:
-                            succ_preds_len = succ.preds
+                            succ_preds_len = len(succ.preds)
                             succ.preds = [p for p in succ.preds if p != BB] + [postCALL_BB]
                             assert succ_preds_len == len(succ.preds)
                         
                         
                         CALL_BB.preds = BB.preds
                         CALL_BB.succs = [entryBlock]
-                        entryBlock.preds = CALL_BB
+                        entryBlock.preds = [CALL_BB]
                         returnBlock.succs = [postCALL_BB]
                         BBs[BB_i] = CALL_BB
                         BBs[BB_i+1:BB_i+1] = [postCALL_BB]
                     
+                    for b in BBs_new:
+                        b.func = self.func
+                        self.func.labels2block[b.label] = b
+                    
                     BBs[BB_i + 1:BB_i + 1] = BBs_new
+                    self.func.blocks = BBs
                     
                     # step 2: add preds and succs to the entry and exit block of the internal function, as well as the surrounding BBs of the current function
                     # step 3: disable the CALL instruction
@@ -167,8 +173,9 @@ class CFG:
                     
                     # TODO make sure that the BBs are added to the correct position for each cases, and they're splitted correctly with correct preds and succs?
                     # also need to make sure things like the RET branching are correct for each instance of the interal func invocation?
-                    
-                    
+                
+                    continue
+            BB_i += 1
                     
                     
                     
@@ -187,10 +194,14 @@ class CFG:
         new_BBs = []
         for BB_i in range(len(BBs)):
             BB = BBs[BB_i]
-            assert len(BB.instructions) > 0
-            final_inst = BB.instructions[-1]
+            
 
             new_BBs.append(BB)
+            
+            if len(BB.instructions) == 0:
+                continue
+            
+            final_inst = BB.instructions[-1]
 
             if not final_inst.isBranch() and final_inst.isConditionExpr():
                 # Create conditional BB

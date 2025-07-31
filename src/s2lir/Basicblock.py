@@ -1,3 +1,4 @@
+import re
 from s2lir.Instruction import Instruction, Operand
 from utils import *
 from llvmlite import ir as llvmir
@@ -34,6 +35,28 @@ class BasicBlock:
         for Inst in self.instructions:
             Inst.getRegs(Regs)
 
+    def updateName(self, rev):
+        pattern = r"^(.*?)(\.\.\.\d+)?$"
+        if match := re.search(pattern, self.label):
+            name = match.group(1)
+            num = match.group(2)
+            if num:
+                # num = int(num[3:])
+                # assert int(num) == rev - 1
+                assert rev is None
+                self.label = name
+                return self.label
+            
+            self.label = name + "..." + str(rev)
+            return self.label
+            
+        else:
+            print(self.label)
+            print(match)
+            raise InvalidSyntaxException
+            
+        return None
+        
 
     def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], IRFunc: llvmir.values.Function, ExitBlock: llvmir.values.Block, nextBlock: "BasicBlock"):
         dprint("^"*100)
@@ -53,7 +76,7 @@ class BasicBlock:
             if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):
                 if Inst.isBranch() and not Inst.isConditionExpr():
                     # Unconditional Branch
-                    targetBB = self.func.labels2block[Inst.branch_target]
+                    targetBB = Inst.branch_target
                     dprint(Inst.addr)
                     dprint(targetBB.label)
                     IRBuilder.branch(BlockMap[targetBB])
@@ -74,7 +97,8 @@ class BasicBlock:
 
                     # Conditional Branch
                     if Inst.isBranch():
-                        targetBB = self.func.labels2block[Inst.branch_target]
+                        print(self.func.labels2block.keys())
+                        targetBB = Inst.branch_target
 
                         # If self BB is the last one, jump to ExitBlock, else jump to NextBB
                         if self == self.func.blocks[-1]:
