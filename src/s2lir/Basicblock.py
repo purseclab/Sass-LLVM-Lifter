@@ -69,6 +69,13 @@ class BasicBlock:
         dprint([ x.isConditionExpr() for x in self.instructions])
         dprint("^"*100)
 
+        if len(self.instructions) == 0:
+            if not IRBuilder.block.is_terminated:
+                assert nextBlock is not None
+                nextIRBlock: llvmir.values.Block = BlockMap[nextBlock]
+                # for reasons currently unknown to me, there's some blocks that's already linked to Exitblock and so is already "terminated"
+                IRBuilder.branch(nextIRBlock)
+        
         for i in range(len(self.instructions)):
             # After creating CFG, all the branches or conditional branches will only be the final one
             Inst = self.instructions[i]
