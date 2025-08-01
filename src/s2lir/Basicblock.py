@@ -104,7 +104,6 @@ class BasicBlock:
 
                     # Conditional Branch
                     if Inst.isBranch():
-                        print(self.func.labels2block.keys())
                         targetBB = Inst.branch_target
 
                         # If self BB is the last one, jump to ExitBlock, else jump to NextBB
