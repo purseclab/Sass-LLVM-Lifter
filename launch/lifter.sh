@@ -25,3 +25,7 @@ LLVM_OUTPUT=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
 LLC_OUTPUT="${LLVM_OUTPUT%.ll}_lifted_llc.ptx"
 
 llc-20 -march=nvptx64 -mcpu=sm_70 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$SCRIPT_DIR/../output/4_ptx/${LLC_OUTPUT}"
+# -debug-pass=Structure
+
+# opt-20 -passes="simplifycfg,mem2reg,dce,loop-load-elim,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$SCRIPT_DIR/../output/4_ptx/output.ll"
+# opt-20 -passes="default<O1>" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$SCRIPT_DIR/../output/4_ptx/output.ll"

@@ -154,6 +154,12 @@ reaches_next: True
 Typedesc: Float32
 
 ####### [R2] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0080, R2)']
+defs_reaching: ['(0x0070, R2)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R4, R4, R5, c[0x0][0x168] #############
 ####### R4 #######
@@ -217,6 +223,12 @@ Typedesc: Bool
 
 ############# STG.E.SYS [R4], R7 #############
 ####### [R4] #######
+is_def: False
+is_use: False
+kill_set: []
+defs_reaching: ['(0x0090, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
 
 ####### R7 #######
 is_def: False
@@ -243,7 +255,7 @@ There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates d
 ##### Type: Float32 #####
 Operand: R2; Instruction Addr: 0x00a0
 
-##### Type: Float32_PTR #####
+##### Type: NOTYPE_PTR #####
 Operand: R2; Instruction Addr: 0x0080
 
 ****************************************

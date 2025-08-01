@@ -14,6 +14,9 @@ import re
 
 current_dir = Path(__file__).parent
 
+SM_75_UReg_Set = [f"UR{i}" for i in range(128)]
+SM_75_UReg_Set.append(f"URZ")
+
 class Instruction:
     def __init__(self, inst_dict, BB):
         self.addr = inst_dict["addr"]
@@ -570,7 +573,7 @@ class Instruction:
             # https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
             tmp = IRBuilder.select(IRPreg, min, max, "fmnmx_final")
             # IRBuilder.store(tmp, IRResOp)
-            R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
