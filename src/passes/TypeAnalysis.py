@@ -5,12 +5,14 @@ import typing
 from passes.ReachingDefinitionsAnalysis import ReachingDefinitionsAnalysis
 from pathlib import Path
 import json
+from llvmlite import ir as llvmir
 
 class TypeAnalysis:
     
     def __init__(self, func):
         self.func : Function.Function  = func
-        
+        self.func_args = []
+        self._set_func_args()
         for BB in self.func.blocks:
             for inst in BB.instructions:
                 # is_use and is_def need to be set before ReachingDefinitionsAnalysis
@@ -33,6 +35,27 @@ class TypeAnalysis:
         
         self.__apply()
         
+    def _set_func_args(self):
+        func_name, args = parse_function_signature(demangle_symbol(self.func.name))
+        assert func_name != self.func.name and func_name in self.func.name
+        assert self.func_args == []
+        for arg in args:
+            isPtr = False
+            if arg[-1] == "*":
+                isPtr = True
+                arg = arg[:-1]
+            if arg == "float":
+                if isPtr:
+                    self.func_args.append(llvmir.FloatType().as_pointer())
+                else:
+                    self.func_args.append(llvmir.FloatType())
+            elif arg == "int":
+                if isPtr:
+                    self.func_args.append(llvmir.IntType(32).as_pointer())
+                else:
+                    self.func_args.append(llvmir.IntType(32))
+            else:
+                raise InvalidSyntaxException
         
     def __apply(self):
 

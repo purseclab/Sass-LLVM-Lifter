@@ -1,3 +1,6 @@
+import subprocess
+import re
+
 DEBUG=True
 # DEBUG=False
 
@@ -39,3 +42,52 @@ class InvalidTypeException(Exception):
 
 class InvalidSyntaxException(Exception):
     pass
+
+def demangle_symbol(symbol: str, tool: str = "llvm-cxxfilt-20") -> str:
+    result = subprocess.run([tool, symbol], capture_output=True, text=True)
+    if result.returncode != 0 or symbol == result.stdout.strip():
+        raise RuntimeError(f"Demangler failed: {result.stderr}")
+    return result.stdout.strip()
+
+def parse_function_signature(demangled: str) -> tuple[str, list[str]]:
+    """
+    Extract function name and argument types from a demangled signature.
+    Example: 'gru_forward(float*, float*, float*, float*, int, int, int)'
+    """
+    pattern = r'^(?P<name>[\w]+)\((?P<args>.*)\)$'
+    match = re.match(pattern, demangled)
+    if not match:
+        raise ValueError(f"Could not parse function signature for demanged name {demangled}")
+
+    func_name = match.group("name")
+    args_str = match.group("args")
+
+    # Handle empty argument list
+    if not args_str.strip():
+        args = []
+    else:
+        # Split by commas, respecting potential template commas or nested parens
+        args = split_arguments(args_str)
+
+    return func_name, args
+
+def split_arguments(arg_str: str):
+    args = []
+    depth = 0
+    current = []
+
+    for ch in arg_str:
+        if ch == ',' and depth == 0:
+            args.append(''.join(current).strip())
+            current = []
+        else:
+            if ch in '<({[':
+                depth += 1
+            elif ch in '>)}]':
+                depth -= 1
+            current.append(ch)
+
+    if current:
+        args.append(''.join(current).strip())
+
+    return args
