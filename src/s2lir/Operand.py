@@ -81,6 +81,7 @@ class Operand:
 
         # Type Description
         self.typeDesc = "NOTYPE"
+        self.typeDesc_confirmed: bool = False
         self.IRType = None
         self.IRRegName = None
 

@@ -24,6 +24,21 @@ class TypeAnalysis:
             self.config = json.load(file)
         
         self.conflicting_types = {"def_to_use": {}, "use_to_def": {}}
+        
+        self.confident_types: set[Operand.Operand] = set() # operands whose types are finalized
+    
+    def op_freeze_type(self, op: Operand.Operand):
+        self.confident_types.add(op)
+        op.typeDesc_confirmed = True
+
+    def op_add_type(self, op: Operand.Operand, typeDesc: str, inst=None):
+        if not op.typeDesc_confirmed:
+            op.setTypeDesc(typeDesc)
+            self.type_map[(op.ins, op.reg)] = typeDesc
+            if inst is not None:
+                assert inst == op.ins
+            return True
+        return False
     
     def begin(self):
         for BB in self.func.blocks:
@@ -77,14 +92,18 @@ class TypeAnalysis:
                     elif TypeDesc == llvmir.FloatType().as_pointer():
                         # TODO confirm, has isPtr already been set, is this the right way..
                         TypeDesc = "Float32" # should it be Float32* ?
-                        
+                        # implication: a constant ptr?
+                        arg_Op.isPtr = True
+                    elif TypeDesc == llvmir.IntType(32).as_pointer():
+                        # TODO confirm, has isPtr already been set, is this the right way..
+                        TypeDesc = "Int32" # should it be Float32* ?
                         # implication: a constant ptr?
                         arg_Op.isPtr = True
                     else:
                         raise InvalidSyntaxException
                     assert arg_Op.isConstMem and arg_Op.isArg
-                    arg_Op.setTypeDesc(TypeDesc)
-                    self.type_map[(arg_Op.ins, arg_Op.reg)] = TypeDesc
+                    self.op_add_type(arg_Op, TypeDesc)
+                    self.op_freeze_type(arg_Op)
                 else:
                     raise InvalidSyntaxException
     
@@ -113,7 +132,8 @@ class TypeAnalysis:
                 # Set Predicate TypeDesc
                 for Op in inst.operands:
                     if Op.isPReg:
-                        Op.setTypeDesc("Bool")
+                        self.op_add_type(Op, "Bool")
+                        self.op_freeze_type(Op)
                         continue
                 if self.DirectlySolveType(inst) is None:
                     self.PartialSolveType(inst)
@@ -216,18 +236,15 @@ class TypeAnalysis:
         if TypeDesc is not None:
             for i, operand in enumerate(inst.operands):
                 if not operand.isPReg: # PReg for @P0 would be the last operand
-                    operand.setTypeDesc(TypeDesc)
-                    self.type_map[(inst, operand.reg)] = TypeDesc
+                    self.op_add_type(operand, TypeDesc, inst)
 
             return TypeDesc
         
         #### Batch 2
         if inst.opcode == "FMNMX":
             for i in range(3):
-                inst.operands[i].setTypeDesc("Float32")
-                self.type_map[(inst, inst.operands[i].reg)] = "Float32"
-            inst.operands[3].setTypeDesc("Bool")
-            self.type_map[(inst, inst.operands[3].reg)] = "Bool"
+                self.op_add_type(inst.operands[i], "Float32", inst)
+            self.op_add_type(inst.operands[3], "Bool", inst)
             
             return "Float32"
 
@@ -237,16 +254,11 @@ class TypeAnalysis:
                 TypeDesc = "Int32"
             elif inst.opcode == "FSETP":
                 TypeDesc = "Float32"
-            inst.operands[0].setTypeDesc("Bool")
-            self.type_map[(inst, inst.operands[0].reg)] = "Bool"
-            inst.operands[1].setTypeDesc("Bool")
-            self.type_map[(inst, inst.operands[1].reg)] = "Bool"
-            inst.operands[2].setTypeDesc(TypeDesc)
-            self.type_map[(inst, inst.operands[2].reg)] = TypeDesc
-            inst.operands[3].setTypeDesc(TypeDesc)
-            self.type_map[(inst, inst.operands[3].reg)] = TypeDesc
-            inst.operands[4].setTypeDesc("Bool")
-            self.type_map[(inst, inst.operands[4].reg)] = "Bool"
+            self.op_add_type(inst.operands[0], "Bool", inst)
+            self.op_add_type(inst.operands[1], "Bool", inst)
+            self.op_add_type(inst.operands[2], TypeDesc, inst)
+            self.op_add_type(inst.operands[3], TypeDesc, inst)
+            self.op_add_type(inst.operands[4], "Bool", inst)
             
             return TypeDesc
 
@@ -255,30 +267,22 @@ class TypeAnalysis:
                 TypeDesc = "Int32"
             elif inst.opcode == "FSEL":
                 TypeDesc = "Float32"
-            inst.operands[0].setTypeDesc(TypeDesc)
-            self.type_map[(inst, inst.operands[0].reg)] = TypeDesc
-            inst.operands[1].setTypeDesc(TypeDesc)
-            self.type_map[(inst, inst.operands[1].reg)] = TypeDesc
-            inst.operands[2].setTypeDesc(TypeDesc)
-            self.type_map[(inst, inst.operands[2].reg)] = TypeDesc
-            inst.operands[3].setTypeDesc("Bool")
-            self.type_map[(inst, inst.operands[3].reg)] = "Bool"
+            
+            self.op_add_type(inst.operands[0], TypeDesc, inst)
+            self.op_add_type(inst.operands[1], TypeDesc, inst)
+            self.op_add_type(inst.operands[2], TypeDesc, inst)
+            self.op_add_type(inst.operands[3], "Bool", inst)
             
             return TypeDesc
         
         if inst.opcode == "I2F":
-            inst.operands[0].setTypeDesc("Float32")
-            self.type_map[(inst, inst.operands[0].reg)] = "Float32"
-            inst.operands[1].setTypeDesc("Int32")
-            self.type_map[(inst, inst.operands[1].reg)] = "Int32"
-            
+            self.op_add_type(inst.operands[0], "Float32", inst)
+            self.op_add_type(inst.operands[1], "Int32", inst)
             return "Float32"
         
         if inst.opcode == "F2I":
-            inst.operands[0].setTypeDesc("Int32")
-            self.type_map[(inst, inst.operands[0].reg)] = "Int32"
-            inst.operands[1].setTypeDesc("Float32")
-            self.type_map[(inst, inst.operands[1].reg)] = "Float32"
+            self.op_add_type(inst.operands[0], "Int32", inst)
+            self.op_add_type(inst.operands[1], "Float32", inst)
             
             return "Int32"
         
@@ -297,13 +301,12 @@ class TypeAnalysis:
                 assert op0TypeDesc == op1TypeDesc
                 return False
             elif op0TypeDesc != "NOTYPE" or op1TypeDesc != "NOTYPE":
+                change = False
                 if op0TypeDesc != "NOTYPE":
-                    op1.setTypeDesc(op0TypeDesc)
-                    self.type_map[(inst, op1.reg)] = op0TypeDesc
+                    change = self.op_add_type(op1, op0TypeDesc, inst)
                 elif op1TypeDesc != "NOTYPE":
-                    op0.setTypeDesc(op1TypeDesc)
-                    self.type_map[(inst, op0.reg)] = op1TypeDesc
-                return True
+                    change = self.op_add_type(op0, op1TypeDesc, inst)
+                return change
         
         if inst.opcode in ("ULOP3", "LOP3"):
             changed = False
@@ -312,9 +315,7 @@ class TypeAnalysis:
             if op4TypeDesc != "NOTYPE":
                 assert op4TypeDesc == "Int32"
             else:
-                op4.setTypeDesc("Int32")
-                self.type_map[(inst, op4.reg)] = "Int32"
-                changed = True
+                changed = self.op_add_type(op4, "Int32", inst)
             
             operands = [inst.operands[0], inst.operands[1], inst.operands[2], inst.operands[3]]
 
@@ -334,8 +335,7 @@ class TypeAnalysis:
                     for i, (op, t) in enumerate(zip(operands, type_descs)):
                         if t == "NOTYPE":
                             # Set the missing type to the majority type
-                            op.setTypeDesc(most_common_type)
-            
+                            changed |= self.op_add_type(op, most_common_type, inst)
             
             return changed
                     
@@ -346,9 +346,7 @@ class TypeAnalysis:
             if TypeDescOp1 is None or TypeDescOp1 == "NOTYPE":
                 # at least designate this operand as a PTR so that we can treat it as a PTR later on
                 TypeDescOp1 = "NOTYPE_PTR" # 64 bit
-                inst.operands[1].setTypeDesc(TypeDescOp1)
-                self.type_map[(inst, inst.operands[1].reg)] = TypeDescOp1
-                changes = True
+                changes = self.op_add_type(inst.operands[1], TypeDescOp1, inst)
                 
             TypeDescOp0 = inst.operands[0].getTypeDesc()
             
@@ -358,18 +356,14 @@ class TypeAnalysis:
                     return changes
                 
                 # propagate type from op0 to op1
-                inst.operands[1].setTypeDesc(TypeDescOp0 + "_PTR")
-                self.type_map[(inst, inst.operands[1].reg)] = TypeDescOp0 + "_PTR"
-                changes = True
+                changes = self.op_add_type(inst.operands[1], TypeDescOp0 + "_PTR", inst)
                 return changes
             
             if TypeDescOp1 != "NOTYPE" and TypeDescOp1 != "NOTYPE_PTR":
                 # propagate type from op1 to op0
                 assert '_PTR' in TypeDescOp1
                 TypeDescOp0 = TypeDescOp1.replace('_PTR', "")
-                inst.operands[0].setTypeDesc(TypeDescOp0)
-                self.type_map[(inst, inst.operands[0].reg)] = TypeDescOp0
-                changes = True
+                changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
                 return changes
             else:
                 return changes
@@ -384,9 +378,7 @@ class TypeAnalysis:
             if TypeDescOp0 is None or TypeDescOp0 == "NOTYPE":
                 # at least designate this operand as a PTR so that we can treat it as a PTR later on
                 TypeDescOp0 = "NOTYPE_PTR" # 64 bit
-                inst.operands[0].setTypeDesc(TypeDescOp0)
-                self.type_map[(inst, inst.operands[0].reg)] = TypeDescOp0
-                changes = True
+                changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
             
             TypeDescOp1 = inst.operands[1].getTypeDesc()
             
@@ -397,18 +389,14 @@ class TypeAnalysis:
                 
                 # propagate type from op1 to op0
                 TypeDescOp0 = TypeDescOp1 + "_PTR"
-                inst.operands[0].setTypeDesc(TypeDescOp0)
-                self.type_map[(inst, inst.operands[0].reg)] = TypeDescOp0
-                changes = True
+                changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
                 return changes
             
             if TypeDescOp0 != "NOTYPE" and TypeDescOp0 != "NOTYPE_PTR":
                 # propagate type from op0 to op1
                 assert '_PTR' in TypeDescOp0
                 TypeDescOp1 = TypeDescOp0.replace('_PTR', "")
-                inst.operands[1].setTypeDesc(TypeDescOp1)
-                self.type_map[(inst, inst.operands[1].reg)] = TypeDescOp1
-                changes = True
+                changes = self.op_add_type(inst.operands[1], TypeDescOp1, inst)
                 return changes
             else:
                 return changes    
@@ -416,11 +404,10 @@ class TypeAnalysis:
         elif inst.opcode == "IADD":
             TypeDesc = inst.operands[0].getTypeDesc()
             if TypeDesc != None and TypeDesc != "NOTYPE":
-                inst.operands[1].setTypeDesc("Int32")
-                self.type_map[(inst, inst.operands[1].reg)] = "Int32"
-                inst.operands[2].setTypeDesc(TypeDesc)
-                self.type_map[(inst, inst.operands[2].reg)] = TypeDesc
-                return True
+                changes = False
+                changes |= self.op_add_type(inst.operands[1], "Int32", inst)
+                changes |= self.op_add_type(inst.operands[2], TypeDesc, inst)
+                return changes
             else:
                 return False
         return False
@@ -454,9 +441,7 @@ class TypeAnalysis:
                             self.conflicting_types["def_to_use"][Op] = type_dict
                     elif len(type_dict) == 1 and Op.getTypeDesc() == "NOTYPE":
                         new_type = list(type_dict)[0]
-                        Op.setTypeDesc(new_type)
-                        self.type_map[(inst, Op.reg)] = new_type
-                        changed = True
+                        changed = self.op_add_type(Op, new_type, inst)
                 
                     # use->def
                     useOp = Op
@@ -475,8 +460,7 @@ class TypeAnalysis:
                                         conflict = True
                                     type_dict[defOpType] = type_dict.get(defOpType, set()) | {(defOp, str(defOp), str(defOp.ins.addr))}
                                 else:
-                                    defOp.setTypeDesc(useOpType)
-                                    changed = True
+                                    changed = self.op_add_type(defOp, useOpType, inst)
                             if conflict:
                                 
                                 # merge type_dict if this specific Operand has been here before so that we dont get a bunch of duplicates
