@@ -48,11 +48,11 @@ class Function:
         self.sassAddr2Inst: dict[int, Instruction] = {}
 
         ################################################################
-        self.ArgMap : dict[int, Operand]= {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
+        self.ArgMap : dict[int, set[Operand]]= {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
         self.BlockMap = {} # key: LLVMModule's BB, value: llvmlite's BB
         self.ArgIdxes = []
         # All the Arguments
-        self.Args : Operand = []
+        self.Args : list[set[Operand]] = [] # self.Args[0] refers to all the operands corresponding to the 1st parameter
         
         self.typeAnalysis: TypeAnalysis = None
         
@@ -142,9 +142,9 @@ class Function:
 
         # TODO: Now we treat everything in the c[0x] as argument, including blockDim, JP Wan 2025-02-24
         # Collect the keys
-        for Offset, Operand in SortedArgs.items():
+        for Offset, Operands in SortedArgs.items():
             self.ArgIdxes.append(Offset)
-            self.Args.append(Operand)
+            self.Args.append(Operands)
 
     # Get the registers used in this function
     def getRegs(self):
@@ -198,14 +198,13 @@ class Function:
             
     def lift(self, llvm_module : llvmir.Module):
 
-        # Collect all Args
-        self.getArgs()
         IRArgs = {}
         ArgTypes = []
         # Get the types of the Arguments
         for Arg in self.Args:
-            ArgTypes.append(Arg.getIRType())
+            ArgTypes.append(list(Arg)[0].getIRType())
 
+        # need to fix self.getArgs/self.Args/.ArgMap/registerarg
         FuncTy = llvmir.FunctionType(llvmir.VoidType(), ArgTypes)
         
         

@@ -13,15 +13,7 @@ class TypeAnalysis:
         self.func : Function.Function  = func
         self.func_args = []
         self._set_func_args()
-        for BB in self.func.blocks:
-            for inst in BB.instructions:
-                # is_use and is_def need to be set before ReachingDefinitionsAnalysis
-                self.assign_use_def(inst)
-
-        self.reaching_defs = ReachingDefinitionsAnalysis(func)
         self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
-        
-        self.ud_chain = self.get_UD_chain()
         
         current_dir = Path(__file__).parent
         self.project_root = (current_dir / "../..").resolve()
@@ -32,6 +24,19 @@ class TypeAnalysis:
             self.config = json.load(file)
         
         self.conflicting_types = {"def_to_use": {}, "use_to_def": {}}
+    
+    def begin(self):
+        for BB in self.func.blocks:
+            for inst in BB.instructions:
+                # is_use and is_def need to be set before ReachingDefinitionsAnalysis
+                self.assign_use_def(inst)
+
+        self.reaching_defs = ReachingDefinitionsAnalysis(self.func)
+        
+        self.ud_chain = self.get_UD_chain()
+        
+        self.func.getArgs()
+        self.set_func_args_type()
         
         self.__apply()
         
@@ -56,7 +61,33 @@ class TypeAnalysis:
                     self.func_args.append(llvmir.IntType(32))
             else:
                 raise InvalidSyntaxException
-        
+    
+    def set_func_args_type(self):
+        assert len(self.func.Args) == len(self.func_args)
+        for i, arg_Ops in enumerate(self.func.Args):
+            for arg_Op in arg_Ops:
+                argCurType = arg_Op.getTypeDesc()
+                
+                if argCurType == "NOTYPE":
+                    TypeDesc = self.func_args[i]
+                    if TypeDesc == llvmir.IntType(32):
+                        TypeDesc = "Int32"
+                    elif TypeDesc == llvmir.FloatType():
+                        TypeDesc = "Float32"
+                    elif TypeDesc == llvmir.FloatType().as_pointer():
+                        # TODO confirm, has isPtr already been set, is this the right way..
+                        TypeDesc = "Float32" # should it be Float32* ?
+                        
+                        # implication: a constant ptr?
+                        arg_Op.isPtr = True
+                    else:
+                        raise InvalidSyntaxException
+                    assert arg_Op.isConstMem and arg_Op.isArg
+                    arg_Op.setTypeDesc(TypeDesc)
+                    self.type_map[(arg_Op.ins, arg_Op.reg)] = TypeDesc
+                else:
+                    raise InvalidSyntaxException
+    
     def __apply(self):
 
         # Set RZ, URZ, PZ to 0

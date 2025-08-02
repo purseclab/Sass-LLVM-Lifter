@@ -63,6 +63,7 @@ class Operand:
 
         # Argument from Constant Memory
         self.isArg = False
+        self.isConstMem = False
         self.offset_in_const_mem  = 0
         self.arg_neg = False
         self.arg_abs = False
@@ -179,7 +180,9 @@ class Operand:
 
             return IRVal
         
-        elif self.isArg:
+        elif self.isConstMem:
+            if self.offset_in_const_mem not in IRArgs:
+                IRArgs[self.offset_in_const_mem] = llvmir.Constant(llvmir.IntType(32), 0)
             IRVal = IRArgs[self.offset_in_const_mem]
             if self.arg_abs:
                 raise NotImplementedError
@@ -267,7 +270,7 @@ class Operand:
 
         # c[0x][]: Here we need to parse the content between []
         if content.find("c[0x0]") != -1: 
-            self.isArg = True
+            self.isConstMem = True
             self.offset_in_const_mem = int(content.split("c[0x0][0x")[1].split("]")[0], 16)
             if content.startswith("-"):
                 self.arg_neg = True
@@ -275,7 +278,10 @@ class Operand:
             if content.startswith("|"):
                 assert content.endswith("|")
                 self.arg_abs = True
-            self.RegisterArg(self.offset_in_const_mem, self)
+            
+            if self.offset_in_const_mem >= 0x160:
+                self.isArg = True
+                self.RegisterArg(self.offset_in_const_mem, self)
             return
         
         # [R1 + 0x2] = > R1 + 0x2
@@ -381,7 +387,11 @@ class Operand:
     
     # Register argument with offset
     def RegisterArg(self, Offset, arg):
-        self.ins.BB.func.ArgMap[Offset] = arg
+        if Offset not in self.ins.BB.func.ArgMap:
+            self.ins.BB.func.ArgMap[Offset] = {arg}
+        else:
+            self.ins.BB.func.ArgMap[Offset].add(arg)
+        
         # self.ArgMap[Offset] = Arg
     
     # Set the type description for operand

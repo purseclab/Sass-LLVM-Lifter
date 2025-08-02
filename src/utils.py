@@ -1,5 +1,6 @@
 import subprocess
 import re
+import shutil
 
 DEBUG=True
 # DEBUG=False
@@ -43,7 +44,11 @@ class InvalidTypeException(Exception):
 class InvalidSyntaxException(Exception):
     pass
 
-def demangle_symbol(symbol: str, tool: str = "llvm-cxxfilt-20") -> str:
+def demangle_symbol(symbol: str, tool: str = None) -> str:
+    if tool is None: 
+        tool = "llvm-cxxfilt-20"
+        if not shutil.which(tool):
+            tool = "llvm-cxxfilt"
     result = subprocess.run([tool, symbol], capture_output=True, text=True)
     if result.returncode != 0 or symbol == result.stdout.strip():
         raise RuntimeError(f"Demangler failed: {result.stderr}")

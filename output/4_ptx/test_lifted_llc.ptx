@@ -539,9 +539,7 @@ $L__BB2_22:                             // %exit
 	.param .b32 _Z8fc_layerPfS_S_S_ii_param_2,
 	.param .b32 _Z8fc_layerPfS_S_S_ii_param_3,
 	.param .b32 _Z8fc_layerPfS_S_S_ii_param_4,
-	.param .b32 _Z8fc_layerPfS_S_S_ii_param_5,
-	.param .b32 _Z8fc_layerPfS_S_S_ii_param_6,
-	.param .b32 _Z8fc_layerPfS_S_S_ii_param_7
+	.param .b32 _Z8fc_layerPfS_S_S_ii_param_5
 )                                       // @_Z8fc_layerPfS_S_S_ii
 {
 	.reg .b32 	%r<3>;
@@ -564,79 +562,70 @@ $L__BB2_22:                             // %exit
 	.param .b32 _Z10max_pool2dPfS_iii_param_1,
 	.param .b32 _Z10max_pool2dPfS_iii_param_2,
 	.param .b32 _Z10max_pool2dPfS_iii_param_3,
-	.param .b32 _Z10max_pool2dPfS_iii_param_4,
-	.param .b32 _Z10max_pool2dPfS_iii_param_5,
-	.param .b32 _Z10max_pool2dPfS_iii_param_6,
-	.param .b32 _Z10max_pool2dPfS_iii_param_7
+	.param .b32 _Z10max_pool2dPfS_iii_param_4
 )                                       // @_Z10max_pool2dPfS_iii
 {
 	.reg .pred 	%p<6>;
-	.reg .b32 	%r<46>;
+	.reg .b32 	%r<40>;
 	.reg .f32 	%f<14>;
 	.reg .b64 	%rd<14>;
 
 // %bb.0:                               // %Entry_.text._Z10max_pool2dPfS_iii
-	ld.param.u32 	%r22, [_Z10max_pool2dPfS_iii_param_6];
-	ld.param.u32 	%r21, [_Z10max_pool2dPfS_iii_param_5];
-	ld.param.u32 	%r20, [_Z10max_pool2dPfS_iii_param_3];
-	ld.param.u32 	%r19, [_Z10max_pool2dPfS_iii_param_1];
-	ld.param.u32 	%r23, [_Z10max_pool2dPfS_iii_param_0];
-	mov.u32 	%r2, %ctaid.y;
-	mov.u32 	%r3, %ctaid.z;
-	mov.u32 	%r31, %ctaid.x;
+	ld.param.u32 	%r19, [_Z10max_pool2dPfS_iii_param_3];
+	ld.param.u32 	%r18, [_Z10max_pool2dPfS_iii_param_2];
+	ld.param.u32 	%r17, [_Z10max_pool2dPfS_iii_param_0];
+	mov.u32 	%r2, %ctaid.z;
 	{ // callseq 1, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
 	thread_idx, 
 	(
 	);
-	ld.param.b32 	%r33, [retval0];
+	ld.param.b32 	%r28, [retval0];
 	} // callseq 1
-	mad.lo.s32 	%r5, %r31, %r23, %r33;
 	{ // callseq 2, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
 	thread_idx, 
 	(
 	);
-	ld.param.b32 	%r34, [retval0];
+	ld.param.b32 	%r29, [retval0];
 	} // callseq 2
-	mad.lo.s32 	%r36, %r2, %r19, %r34;
-	mul.lo.s32 	%r9, %r3, %r21;
-	mad.lo.s32 	%r37, %r36, %r22, %r9;
-	mul.lo.s32 	%r38, %r37, %r21;
-	mad.lo.s32 	%r39, %r5, %r22, %r38;
-	shl.b32 	%r40, %r39, 2;
-	add.s32 	%r44, %r20, %r40;
-	shl.b32 	%r11, %r21, 4;
-	shl.b32 	%r12, %r21, 2;
-	mul.lo.s32 	%r13, %r21, 12;
-	shl.b32 	%r14, %r21, 3;
+	mul.lo.s32 	%r7, %r2, %r18;
+	mad.lo.s32 	%r31, %r29, %r19, %r7;
+	mul.lo.s32 	%r32, %r31, %r18;
+	mad.lo.s32 	%r33, %r28, %r19, %r32;
+	shl.b32 	%r34, %r33, 2;
+	add.s32 	%r38, %r17, %r34;
+	shl.b32 	%r9, %r18, 4;
+	shl.b32 	%r10, %r18, 2;
+	mul.lo.s32 	%r11, %r18, 12;
+	shl.b32 	%r12, %r18, 3;
 	mov.f32 	%f13, 0fFF800000;
-	cvt.u64.u32 	%rd2, %r9;
+	cvt.u64.u32 	%rd2, %r7;
 	shl.b64 	%rd3, %rd2, 32;
-	cvt.u64.u32 	%rd6, %r33;
+	cvt.u64.u32 	%rd6, %r28;
 	shl.b64 	%rd7, %rd6, 32;
-	cvt.u64.u32 	%rd10, %r34;
+	cvt.u64.u32 	%rd10, %r29;
 	shl.b64 	%rd11, %rd10, 32;
-                                        // implicit-def: %r45
+                                        // implicit-def: %r39
 $L__BB4_1:                              // %.L_x_10
                                         // =>This Inner Loop Header: Depth=1
-	add.s32 	%r41, %r12, %r44;
-	cvt.u64.u32 	%rd1, %r44;
+	add.s32 	%r35, %r10, %r38;
+	cvt.u64.u32 	%rd1, %r38;
 	or.b64  	%rd4, %rd3, %rd1;
 	ld.f32 	%f6, [%rd4];
-	add.s32 	%r42, %r14, %r44;
-	cvt.u64.u32 	%rd5, %r41;
+	add.s32 	%r36, %r12, %r38;
+	cvt.u64.u32 	%rd5, %r35;
 	or.b64  	%rd8, %rd7, %rd5;
 	ld.f32 	%f7, [%rd8];
-	add.s32 	%r43, %r13, %r44;
-	cvt.u64.u32 	%rd9, %r42;
+	add.s32 	%r37, %r11, %r38;
+	cvt.u64.u32 	%rd9, %r36;
 	or.b64  	%rd12, %rd11, %rd9;
 	ld.f32 	%f8, [%rd12];
-	cvt.u64.u32 	%rd13, %r43;
+	cvt.u64.u32 	%rd13, %r37;
 	ld.f32 	%f9, [%rd13];
-	add.s32 	%r45, %r45, 4;
+	add.s32 	%r39, %r39, 4;
 	setp.lt.f32 	%p2, %f6, %f13;
 	selp.f32 	%f10, %f6, %f13, %p2;
 	setp.lt.f32 	%p3, %f10, %f7;
@@ -645,7 +634,7 @@ $L__BB4_1:                              // %.L_x_10
 	selp.f32 	%f12, %f11, %f8, %p4;
 	setp.lt.f32 	%p5, %f12, %f9;
 	selp.f32 	%f13, %f12, %f9, %p5;
-	add.s32 	%r44, %r44, %r11;
+	add.s32 	%r38, %r38, %r9;
 	bra.uni 	$L__BB4_1;
                                         // -- End function
 }
@@ -653,9 +642,7 @@ $L__BB4_1:                              // %.L_x_10
 .visible .func _Z4reluPfS_i(
 	.param .b32 _Z4reluPfS_i_param_0,
 	.param .b32 _Z4reluPfS_i_param_1,
-	.param .b32 _Z4reluPfS_i_param_2,
-	.param .b32 _Z4reluPfS_i_param_3,
-	.param .b32 _Z4reluPfS_i_param_4
+	.param .b32 _Z4reluPfS_i_param_2
 )                                       // @_Z4reluPfS_i
 {
 	.reg .b32 	%r<3>;
@@ -680,10 +667,7 @@ $L__BB4_1:                              // %.L_x_10
 	.param .b32 _Z6conv2dPfS_S_iiii_param_3,
 	.param .b32 _Z6conv2dPfS_S_iiii_param_4,
 	.param .b32 _Z6conv2dPfS_S_iiii_param_5,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_6,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_7,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_8,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_9
+	.param .b32 _Z6conv2dPfS_S_iiii_param_6
 )                                       // @_Z6conv2dPfS_S_iiii
 {
 	.reg .pred 	%p<2>;
@@ -692,7 +676,7 @@ $L__BB4_1:                              // %.L_x_10
 	.reg .b64 	%rd<9>;
 
 // %bb.0:                               // %Entry_.text._Z6conv2dPfS_S_iiii
-	ld.param.u32 	%r14, [_Z6conv2dPfS_S_iiii_param_3];
+	ld.param.u32 	%r14, [_Z6conv2dPfS_S_iiii_param_0];
 	{ // callseq 4, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
@@ -701,6 +685,7 @@ $L__BB4_1:                              // %.L_x_10
 	);
 	ld.param.b32 	%r17, [retval0];
 	} // callseq 4
+	ld.param.u32 	%r30, [_Z6conv2dPfS_S_iiii_param_1];
 	{ // callseq 5, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
@@ -709,8 +694,7 @@ $L__BB4_1:                              // %.L_x_10
 	);
 	ld.param.b32 	%r19, [retval0];
 	} // callseq 5
-	ld.param.u32 	%r30, [_Z6conv2dPfS_S_iiii_param_4];
-	ld.param.u32 	%r21, [_Z6conv2dPfS_S_iiii_param_6];
+	ld.param.u32 	%r21, [_Z6conv2dPfS_S_iiii_param_3];
 	shl.b32 	%r1, %r21, 4;
 	shl.b32 	%r22, %r21, 2;
 	add.s32 	%r2, %r14, %r22;

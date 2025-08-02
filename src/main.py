@@ -110,6 +110,11 @@ if __name__=="__main__":
     dprint(functions)
 
     myModule = LLVMModule("PerSecModule", functions)
+    
+    for _, func in myModule.functions.items():
+        # used by registerArg + set types for constants from parameters
+        func.typeAnalysis = TypeAnalysis.TypeAnalysis(func)
+    
     myModule.parse()
     myModule.analysisAndTransform()
     
@@ -118,7 +123,7 @@ if __name__=="__main__":
     
     # CreateCFG might split blocks too, so typeanalysis cannot happen before it
     for _, func in myModule.functions.items():
-        func.typeAnalysis = TypeAnalysis.TypeAnalysis(func)
+        func.typeAnalysis.begin()
 
     llvm_module = myModule.lift()
     # print(llvm_module)

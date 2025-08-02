@@ -73,8 +73,8 @@ class Instruction:
     def getRegs(self, Regs : dict[str, Operand]):
         # Collect registers used in instructions (In Reg, PReg and Ptr)
         for Operand in self.operands:
-            if Operand.isReg or Operand.isPReg or Operand.isPtr:
-                Regs[Operand.getIRRegName()] = Operand
+            if (Operand.isReg or Operand.isPReg or Operand.isPtr) and not Operand.isConstMem:
+                Regs[Operand.getIRRegName()] = Operand # this naming with getIRRegName is obsolete, but rn i dont think it serves an important role other than the Regs[Reg]
 
     # JP: Now, only update Reg Type
     # Check and update the use operand's type from the givenn operand
@@ -214,9 +214,11 @@ class Instruction:
                 tmp = llvmir.Constant(ResOp.getIRType(), ValOp.Value)
                 # IRBuilder.store(tmp, IRResOp)
                 ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
-            elif ResOp.isReg and ValOp.isArg:
+            elif ResOp.isReg and ValOp.isConstMem:
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # Find IR from IRArgs
+                if ValOp.offset_in_const_mem not in IRArgs:
+                    IRArgs[ValOp.offset_in_const_mem] = llvmir.Constant(llvmir.IntType(32), 0)
                 IRValOp = IRArgs[ValOp.offset_in_const_mem]
 
                 # IRBuilder.store(IRValOp, IRResOp)

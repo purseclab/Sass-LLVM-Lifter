@@ -239,7 +239,7 @@ is_use: True
 kill_set: ['(0x00b0, R4)']
 defs_reaching: ['(0x0060, R4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3 #######
 
