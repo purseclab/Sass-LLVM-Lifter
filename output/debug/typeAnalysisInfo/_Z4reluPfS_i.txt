@@ -9,6 +9,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### c[0x0][0x28] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0000, R1)']
+defs_reaching: []
+reaches_next: False
+Typedesc: NOTYPE
 
 ############# S2R R4, SR_CTAID.X #############
 ####### R4 #######
@@ -50,6 +56,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x0] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0030, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### R3 #######
 is_def: False
@@ -85,6 +97,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x170] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### PT #######
 is_def: False
@@ -143,6 +161,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x160] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# LDG.E.SYS R2, [R2] #############
 ####### R2 #######
@@ -187,6 +211,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x168] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0090, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# FMNMX R7, RZ, R2, !PT #############
 ####### R7 #######

@@ -9,6 +9,12 @@ reaches_next: True
 Typedesc: NOTYPE
 
 ####### c[0x0][0x28] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0000, R1)']
+defs_reaching: []
+reaches_next: False
+Typedesc: NOTYPE
 
 ############# S2R R0, SR_CTAID.X #############
 ####### R0 #######
@@ -50,6 +56,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x0] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0030, R0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### R3 #######
 is_def: False
@@ -85,6 +97,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x184] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### PT #######
 is_def: False
@@ -116,6 +134,12 @@ reaches_next: True
 Typedesc: Int32
 
 ####### c[0x0][0x180] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0060, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# IMAD.MOV.U32 R7, RZ, RZ, RZ #############
 ####### R7 #######
@@ -360,6 +384,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x180] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0100, R6)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### RZ #######
 is_def: False
@@ -387,6 +417,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x180] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0110, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### RZ #######
 is_def: False
@@ -406,6 +442,12 @@ reaches_next: True
 Typedesc: Int32
 
 ####### c[0x0][0x160] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0120, UR4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Float32
 
 ############# IMAD.MOV.U32 R3, RZ, RZ, 0x4 #############
 ####### R3 #######
@@ -518,6 +560,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x168] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0160, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# MOV R5, RZ #############
 ####### R5 #######
@@ -3598,6 +3646,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x180] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0910, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ####### R5 #######
 is_def: False
@@ -3633,6 +3687,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x168] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0920, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# IMAD.WIDE R8, R5, R8, c[0x0][0x160] #############
 ####### R8 #######
@@ -3660,6 +3720,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x160] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0930, R8)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# MOV R6, R2 #############
 ####### R6 #######
@@ -4064,6 +4130,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x170] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0a10, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# LDG.E.SYS R2, [R2] #############
 ####### R2 #######
@@ -4108,6 +4180,12 @@ reaches_next: False
 Typedesc: Int32
 
 ####### c[0x0][0x178] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0a30, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
 
 ############# FADD R7, R2, R7 #############
 ####### R7 #######

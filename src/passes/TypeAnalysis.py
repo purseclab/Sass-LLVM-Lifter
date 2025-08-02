@@ -150,7 +150,7 @@ class TypeAnalysis:
                 typeAnalysisInfo += f"############# {inst} #############\n"
                 for op in inst.operands:
                     typeAnalysisInfo += f"####### {op} #######\n"
-                    if (op.isReg or op.isPReg or op.isPtr) and op.reg:
+                    if (op.isReg or op.isPReg or op.isPtr or op.isConstMem):
                         info = self.get_use_def_info(inst, op)
                         for key, val  in  info.items():
                             if key in ("defs_reaching", "kill_set"):
@@ -531,6 +531,8 @@ class TypeAnalysis:
             if operand.is_def:
                 defs_after = self.reaching_defs.get_reaching_definitions_after(inst)
                 info["reaches_next"] = (inst, operand.reg) in defs_after
+        elif operand.isConstMem:
+            pass
         else:
             raise Exception
         
