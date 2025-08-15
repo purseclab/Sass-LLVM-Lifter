@@ -288,7 +288,7 @@ class Function:
                     # we're just preallocating all registers because there might be situations like IMAD.WIDE that'll same to adj registers, and if only allocate it when it happens, it'll cause "Instruction does not dominate all uses!"
                     
                     if Reg not in IRRegs:
-                        IRReg = Builder.alloca(llvmir.IntType(1) if "P" in RegName else llvmir.IntType(32), 1, RegName)
+                        IRReg = Builder.alloca(llvmir.IntType(1) if "P" in Reg else llvmir.IntType(32), 1, Reg)
                         # Register the IR registers
                         IRRegs[Reg] = IRReg
                 
