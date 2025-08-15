@@ -491,10 +491,17 @@ class Operand:
     def getRegName(self):
         return self.reg
     
+    def getRegPrefix(self):
+        pattern = r"^(U?R)\d+$"
+        match = re.match(pattern, self.reg)
+        if match:
+            return match.group(1)
+        return None
+
     def getRegNum(self):
         assert self.reg
         # TODO there's other types of reg, like UR
-        pattern = r"^R(\d+)$"
+        pattern = r"^U?R(\d+)$"
         match = re.match(pattern, self.reg)
         if match:
             return int(match.group(1))
@@ -502,7 +509,7 @@ class Operand:
     
     def getAdjRegName(self):
         # TODO there's other types of reg, like UR
-        return "R" + str(self.getRegNum() + 1)
+        return self.getRegPrefix() + str(self.getRegNum() + 1)
     
     def getCurRegName(self):
         return self._getCurIRRegName(self.getRegName())
