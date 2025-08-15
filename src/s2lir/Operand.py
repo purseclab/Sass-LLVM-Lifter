@@ -65,6 +65,7 @@ class Operand:
         self.isArg = False
         self.ArgID = None
         self.isConstMem = False
+        self.const_mem_pre_offset = 0 # c[self.const_mem_pre_offset][self.offset_in_const_mem]
         self.offset_in_const_mem  = 0
         self.arg_neg = False
         self.arg_abs = False
@@ -183,9 +184,21 @@ class Operand:
             return IRVal
         
         elif self.isConstMem:
-            if self.offset_in_const_mem not in IRArgs:
-                IRArgs[self.offset_in_const_mem] = llvmir.Constant(llvmir.IntType(32), 0)
-            IRVal = IRArgs[self.offset_in_const_mem]
+            if self.isArg:
+                IRVal = self.IRReg_Load(IRRegs, IRBuilder)
+            else:
+                assert self.offset_in_const_mem not in IRArgs
+                assert self.const_mem_pre_offset == 0
+                if self.offset_in_const_mem == 0:
+                    # c[0x0][0x0]
+                    # https://llvm.org/docs/NVPTXUsage.html#overview
+                    # based on table here + reading SASS generated and comparing to src code
+                    
+                    # c[0x0][0x0] is blockdim.x
+                    IRVal = IRBuilder.call(nvvm_blockdim_x(self.llvm_module), [], name="nvvm_blockdim_x")
+                else:
+                    print(self.offset_in_const_mem)
+                    raise InvalidSyntaxException
             if self.arg_abs:
                 raise NotImplementedError
             if self.arg_neg:
@@ -557,6 +570,7 @@ class Operand:
             return function_name, return_type
 
     def getArgVal(self):
+        # could prob use IRArgs[self.offset_in_const_mem]
         if self.isArg:
             assert self.ArgID is not None
             # returns the Arg Value

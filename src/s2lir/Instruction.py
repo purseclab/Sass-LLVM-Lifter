@@ -276,6 +276,7 @@ class Instruction:
             
             for mod in self.modifiers:
                 if mod == "WIDE":
+                    # implemented according to https://cbr.stanford.edu/seminarTalks/slides_20230526_niall_emmart.pptx
                     settings["wide"] = True
                     continue
                     
