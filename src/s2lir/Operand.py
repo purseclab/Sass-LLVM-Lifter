@@ -63,6 +63,7 @@ class Operand:
 
         # Argument from Constant Memory
         self.isArg = False
+        self.ArgID = None
         self.isConstMem = False
         self.offset_in_const_mem  = 0
         self.arg_neg = False
@@ -212,7 +213,21 @@ class Operand:
     def IRReg_Load(self, IRRegs, IRBuilder):
         IRVal = None
         if self.isReg or self.isPtr:
-            IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
+            if self.isReg:
+                assert self.reg
+            
+            if self.reg:
+                IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
+            elif self.isArg and self.isConstMem:
+                # we need to dynamically get their value and treat it as a pointer, then need to handle how to retrieve the values
+                # IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID] this gives us a ptr, we can probaby just get the value from here, but that might also mean we need to associate all mentions of the constant value e.g. c[0x0][0x160] to this ptr
+                
+                IRVal = self.getArgPtr() # need to pass IRArgs here
+                # but then here we dont need to load the adjacent register since the whole thing is already a ptr, so need to opt out of the process below
+                return IRVal
+            else:
+                print(self.ins, self)
+                raise InvalidSyntaxException
             if self.isPtr:
                 # we need to load the adjacent register, then r6.Val << 32 | r5.Val
                 match = re.search(r"^(U?R)(\d+)$", self.getRegName())
@@ -493,3 +508,10 @@ class Operand:
             return_type = match.group(2)
             
             return function_name, return_type
+
+    def getArgPtr(self):
+        if self.isArg:
+            assert self.ArgID is not None
+            return self.ins.BB.func.IRArgs[self.ins.BB.func.ArgIdxes[self.ArgID]]
+        else:
+            raise InvalidSyntaxException

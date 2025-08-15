@@ -59,6 +59,8 @@ class Function:
         self.IRRegs: dict[str, llvmir.AllocaInstr] = {}
         
         self.rev = 0
+        
+        self.IRArgs = None
     
     def parse(self):
         # Parse all the BasicBlocks
@@ -199,6 +201,7 @@ class Function:
     def lift(self, llvm_module : llvmir.Module):
 
         IRArgs = {}
+        self.IRArgs = IRArgs
         ArgTypes = []
         # Get the types of the Arguments
         for Arg in self.Args:
@@ -226,7 +229,8 @@ class Function:
         for Arg in self.Args:
             # Store the Argument into ArgIdxes
             IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID]
-
+            for a in Arg:
+                a.ArgID = ArgID
             # Increment argument ID
             ArgID = ArgID + 1
 

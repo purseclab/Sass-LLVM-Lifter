@@ -694,16 +694,16 @@ class Instruction:
         if self.opcode == "ULDC":
             # TODO: 64 bit not implemented
             ResOp = self.operands[0]
-            ValOp = self.operands[1]
+            PtrOp = self.operands[1]
 
-            IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-
+            IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
+            
             assert ResOp.isReg
             assert ResOp.reg in SM_75_UReg_Set
             # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # IRBuilder.store(IRValOp, IRResOp)
-            ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
             return
         
 
