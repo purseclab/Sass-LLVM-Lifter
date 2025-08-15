@@ -602,8 +602,9 @@ Entry_.text._Z11gru_forwardPfS_S_S_iii:
   store i1 %".21", ptr %"P0"
   ; IMAD R14, R14, c[0x0][0x0], R3
   %".24" = load i32, ptr %"R14"
+  %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".25" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".24", 0
+  %"mul" = mul i32 %".24", %"nvvm_blockdim_x"
   %"add" = add i32 %"mul", %".25"
   store i32 %"add", ptr %"R14"
   ; ISETP.GE.OR P0, PT, R14, c[0x0][0x184], !P0
@@ -13343,6 +13344,8 @@ ExitFunction:
 }
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
+
+declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
 
 declare float @"llvm.exp2.f32"(float %".1")
 
