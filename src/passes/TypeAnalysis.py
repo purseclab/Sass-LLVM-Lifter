@@ -36,6 +36,7 @@ class TypeAnalysis:
             op.setTypeDesc(typeDesc)
             self.type_map[(op.ins, op.reg)] = typeDesc
             if inst is not None:
+                # print(inst, op.ins)
                 assert inst == op.ins
             return True
         return False
@@ -91,12 +92,12 @@ class TypeAnalysis:
                         TypeDesc = "Float32"
                     elif TypeDesc == llvmir.FloatType().as_pointer():
                         # TODO confirm, has isPtr already been set, is this the right way..
-                        TypeDesc = "Float32" # should it be Float32* ?
+                        TypeDesc = "Float32_PTR" # should it be Float32* ?
                         # implication: a constant ptr?
                         arg_Op.isPtr = True
                     elif TypeDesc == llvmir.IntType(32).as_pointer():
                         # TODO confirm, has isPtr already been set, is this the right way..
-                        TypeDesc = "Int32" # should it be Float32* ?
+                        TypeDesc = "Int32_PTR" # should it be Float32* ?
                         # implication: a constant ptr?
                         arg_Op.isPtr = True
                     else:
@@ -460,7 +461,7 @@ class TypeAnalysis:
                                         conflict = True
                                     type_dict[defOpType] = type_dict.get(defOpType, set()) | {(defOp, str(defOp), str(defOp.ins.addr))}
                                 else:
-                                    changed = self.op_add_type(defOp, useOpType, inst)
+                                    changed = self.op_add_type(defOp, useOpType)
                             if conflict:
                                 
                                 # merge type_dict if this specific Operand has been here before so that we dont get a bunch of duplicates

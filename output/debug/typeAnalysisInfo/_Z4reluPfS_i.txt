@@ -166,7 +166,7 @@ is_use: False
 kill_set: ['(0x0070, R2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R2, [R2] #############
 ####### R2 #######
@@ -216,7 +216,7 @@ is_use: False
 kill_set: ['(0x0090, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# FMNMX R7, RZ, R2, !PT #############
 ####### R7 #######

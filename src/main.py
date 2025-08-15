@@ -13,6 +13,8 @@ import os
 from pathlib import Path
 import typing
 
+from s2lir.intrinsics import *
+
 current_dir = Path(__file__).parent
 
 class LLVMModule:
@@ -27,9 +29,11 @@ class LLVMModule:
 
     def addPseudoFunctions(self, llvm_module):
         # Create thread idx function
+        self.GetThreadIdx = nvvm_threadidx_x(llvm_module)
         FuncTy = llvmir.FunctionType(llvmir.IntType(32), [])
         IRFunc = llvmir.Function(llvm_module, FuncTy, "thread_idx")
         self.GetThreadIdx = IRFunc
+
     
     def parse(self):
         for _, func in self.functions.items():

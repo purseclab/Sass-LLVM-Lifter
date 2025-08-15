@@ -1885,7 +1885,7 @@ is_use: False
 kill_set: ['(0x03a0, R2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R4, R23.reuse, 0x4, R2 #############
 ####### R4 #######
@@ -2455,7 +2455,7 @@ is_use: False
 kill_set: ['(0x0500, R2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R2, [R2] #############
 ####### R2 #######
@@ -2826,7 +2826,7 @@ is_use: False
 kill_set: ['(0x05a0, R2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# @P1 IMAD.WIDE R4, R4, R7, c[0x0][0x160] #############
 ####### R4 #######
@@ -2859,7 +2859,7 @@ is_use: False
 kill_set: ['(0x05b0, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ####### P1 #######
 is_def: False
@@ -2901,7 +2901,7 @@ is_use: False
 kill_set: ['(0x05b0, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_9_split_0x05c0) #############
 ####### `(.L_x_9_split_0x05c0) #######
@@ -3287,7 +3287,7 @@ is_use: False
 kill_set: ['(0x0660, R2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# STG.E.SYS [R2], R11 #############
 ####### [R2] #######
@@ -3415,20 +3415,20 @@ Operand: R4; Instruction Addr: 0x05d0
 ****************************************
 
 ##### Type: Float32 #####
-Operand: R4; Instruction Addr: 0x05f0
-
-##### Type: NOTYPE_PTR #####
-Operand: R4; Instruction Addr: 0x05d0
-
-****************************************
-
-##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x0490
 Operand: R11; Instruction Addr: 0x0530
 Operand: R11; Instruction Addr: 0x05f0
 
 ##### Type: Int32 #####
 Operand: R11; Instruction Addr: 0x02f0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R4; Instruction Addr: 0x05f0
+
+##### Type: Float32_PTR #####
+Operand: R4; Instruction Addr: 0x05d0
 
 ****************************************
 

@@ -26,7 +26,7 @@ SM_75_Predicate_Reg_Set.append(f"UPT")
 
 
 # Thread Indexing
-SM_75_SepcialReg = ["SR_TID.X", "SR_TID.Y", "SR_TID.Z", "SR_CTAID.X", "SR_CTAID.Y", "SR_CTAID.Z"]
+SM_75_SpecialReg = ["SR_TID.X", "SR_TID.Y", "SR_TID.Z", "SR_CTAID.X", "SR_CTAID.Y", "SR_CTAID.Z"]
 
 COnSTANT_MEMORY="c[0x0]"
 
@@ -333,7 +333,7 @@ class Operand:
             return
         
         # Special Registers
-        if content in SM_75_SepcialReg:
+        if content in SM_75_SpecialReg:
             self.SReg = True
             self.reg = content
             return

@@ -1100,7 +1100,7 @@ is_use: False
 kill_set: ['(0x0290, R6)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# MOV R23, R6 #############
 ####### R23 #######
@@ -1151,7 +1151,7 @@ is_use: False
 kill_set: ['(0x02b0, R14)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# MOV R31, c[0x0][0x178] #############
 ####### R31 #######
@@ -1956,7 +1956,7 @@ is_use: False
 kill_set: ['(0x04a0, R16)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# IMAD.WIDE R6, R6, R19, c[0x0][0x160] #############
 ####### R6 #######
@@ -1989,7 +1989,7 @@ is_use: False
 kill_set: ['(0x04b0, R6)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# LDG.E.SYS R13, [R16] #############
 ####### R13 #######
@@ -2394,7 +2394,7 @@ is_use: False
 kill_set: ['(0x0570, R6)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# @P2 IMAD.WIDE R14, R14, R19, c[0x0][0x160] #############
 ####### R14 #######
@@ -2427,7 +2427,7 @@ is_use: False
 kill_set: ['(0x0580, R14)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ####### P2 #######
 is_def: False
@@ -2469,7 +2469,7 @@ is_use: False
 kill_set: ['(0x0580, R14)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# BRA `(.L_x_16_split_0x0590) #############
 ####### `(.L_x_16_split_0x0590) #######
@@ -2925,7 +2925,7 @@ is_use: False
 kill_set: ['(0x0660, R2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: Int32
+Typedesc: Float32_PTR
 
 ############# STG.E.SYS [R2], R12 #############
 ####### [R2] #######
@@ -3015,20 +3015,21 @@ Operand: R14; Instruction Addr: 0x05b0
 ****************************************
 
 ##### Type: Float32 #####
-Operand: R14; Instruction Addr: 0x05d0
-
-##### Type: NOTYPE_PTR #####
-Operand: R14; Instruction Addr: 0x05b0
-
-****************************************
-
-##### Type: Float32 #####
+Operand: R12; Instruction Addr: 0x0160
 Operand: R12; Instruction Addr: 0x0420
 Operand: R12; Instruction Addr: 0x04f0
 Operand: R12; Instruction Addr: 0x05d0
 
 ##### Type: Int32 #####
 Operand: R12; Instruction Addr: 0x00f0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R14; Instruction Addr: 0x05d0
+
+##### Type: Float32_PTR #####
+Operand: R14; Instruction Addr: 0x05b0
 
 ****************************************
 
