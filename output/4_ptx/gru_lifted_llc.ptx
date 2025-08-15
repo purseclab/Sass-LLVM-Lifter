@@ -543,18 +543,13 @@ $L__BB2_22:                             // %exit
 	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_6
 )                                       // @_Z11gru_forwardPfS_S_S_iii
 {
-	.local .align 4 .b8 	__local_depot3[12];
-	.reg .b64 	%SP;
-	.reg .b64 	%SPL;
-	.reg .b32 	%r<26>;
+	.reg .b32 	%r<25>;
 	.reg .f32 	%f<48>;
-	.reg .b64 	%rd<33>;
+	.reg .b64 	%rd<17>;
 
 // %bb.0:                               // %Entry_.text._Z11gru_forwardPfS_S_S_iii
-	mov.u64 	%SPL, __local_depot3;
 	ld.param.u64 	%rd3, [_Z11gru_forwardPfS_S_S_iii_param_2];
 	ld.param.u64 	%rd2, [_Z11gru_forwardPfS_S_S_iii_param_0];
-	ld.param.u64 	%rd4, [_Z11gru_forwardPfS_S_S_iii_param_1];
 	{ // callseq 0, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
@@ -563,72 +558,56 @@ $L__BB2_22:                             // %exit
 	);
 	ld.param.b32 	%r13, [retval0];
 	} // callseq 0
-	ld.param.u64 	%rd5, [_Z11gru_forwardPfS_S_S_iii_param_3];
-	mul.wide.u32 	%rd6, %r13, 4;
 	ld.param.u32 	%r15, [_Z11gru_forwardPfS_S_S_iii_param_4];
 	ld.param.u32 	%r16, [_Z11gru_forwardPfS_S_S_iii_param_5];
-	add.s64 	%rd7, %rd6, %rd5;
-	shr.u64 	%rd8, %rd7, 32;
-	add.u64 	%rd10, %SPL, 0;
-	st.local.u32 	[%rd10], %rd8;
 	shl.b32 	%r17, %r16, 1;
-	add.s32 	%r18, %r17, %r13;
-	add.s64 	%rd11, %rd6, %rd4;
-	shr.u64 	%rd12, %rd11, 32;
-	add.u64 	%rd14, %SPL, 4;
-	st.local.u32 	[%rd14], %rd12;
-	mul.wide.u32 	%rd15, %r18, 4;
-	add.s64 	%rd16, %rd15, %rd5;
-	shr.u64 	%rd17, %rd16, 32;
-	add.u64 	%rd19, %SPL, 8;
-	st.local.u32 	[%rd19], %rd17;
 	cvt.u64.u32 	%rd1, %r16;
-	bfe.s64 	%rd20, %rd1, 31, 1;
-	and.b32  	%r25, %r15, -4;
+	bfe.s64 	%rd4, %rd1, 31, 1;
+	and.b32  	%r24, %r15, -4;
 	mul.lo.s32 	%r2, %r13, %r15;
 	add.s32 	%r3, %r2, %r17;
-	shl.b64 	%rd21, %rd20, 32;
-	or.b64  	%rd22, %rd21, %rd1;
-	shr.u64 	%rd23, %rd22, 30;
-	cvt.u32.u64 	%r4, %rd23;
-	mov.b32 	%r23, 0;
+	shl.b64 	%rd5, %rd4, 32;
+	or.b64  	%rd6, %rd5, %rd1;
+	shr.u64 	%rd7, %rd6, 30;
+	cvt.u32.u64 	%r4, %rd7;
+	mov.b32 	%r22, 0;
                                         // implicit-def: %f45
-                                        // implicit-def: %r24
+                                        // implicit-def: %r23
                                         // implicit-def: %f46
                                         // implicit-def: %f47
 $L__BB3_1:                              // %.L_x_24
                                         // =>This Inner Loop Header: Depth=1
-	add.s32 	%r19, %r2, %r24;
-	mul.wide.u32 	%rd24, %r19, 4;
-	add.s64 	%rd25, %rd24, %rd3;
-	{ .reg .b32 tmp; mov.b64 {tmp, %r20}, %rd25; }
-	add.s32 	%r21, %r3, %r24;
-	mul.wide.u32 	%rd26, %r23, 4;
-	add.s64 	%rd27, %rd26, %rd2;
-	mul.wide.u32 	%rd28, %r21, 4;
-	add.s64 	%rd29, %rd28, %rd3;
-	add.s32 	%r22, %r20, %r4;
-	ld.f32 	%f8, [%rd25];
-	ld.f32 	%f9, [%rd27];
-	cvt.u64.u32 	%rd30, %r22;
-	shl.b64 	%rd31, %rd30, 32;
-	or.b64  	%rd32, %rd31, %rd1;
-	ld.f32 	%f10, [%rd32];
-	ld.f32 	%f11, [%rd29];
-	ld.f32 	%f12, [%rd25+4];
-	ld.f32 	%f13, [%rd27+4];
-	ld.f32 	%f14, [%rd32+4];
-	ld.f32 	%f15, [%rd29+4];
-	ld.f32 	%f16, [%rd27+8];
-	ld.f32 	%f17, [%rd25+8];
-	ld.f32 	%f18, [%rd32+8];
-	ld.f32 	%f19, [%rd29+8];
-	ld.f32 	%f20, [%rd27+12];
-	ld.f32 	%f21, [%rd25+12];
-	ld.f32 	%f22, [%rd32+12];
-	ld.f32 	%f23, [%rd29+12];
-	add.s32 	%r25, %r25, -4;
-	add.s32 	%r24, %r24, 4;
+	add.s32 	%r18, %r2, %r23;
+	mul.wide.u32 	%rd8, %r18, 4;
+	add.s64 	%rd9, %rd8, %rd3;
+	{ .reg .b32 tmp; mov.b64 {tmp, %r19}, %rd9; }
+	add.s32 	%r20, %r3, %r23;
+	mul.wide.u32 	%rd10, %r22, 4;
+	add.s64 	%rd11, %rd10, %rd2;
+	mul.wide.u32 	%rd12, %r20, 4;
+	add.s64 	%rd13, %rd12, %rd3;
+	add.s32 	%r21, %r19, %r4;
+	ld.f32 	%f8, [%rd9];
+	ld.f32 	%f9, [%rd11];
+	cvt.u64.u32 	%rd14, %r21;
+	shl.b64 	%rd15, %rd14, 32;
+	or.b64  	%rd16, %rd15, %rd1;
+	ld.f32 	%f10, [%rd16];
+	ld.f32 	%f11, [%rd13];
+	ld.f32 	%f12, [%rd9+4];
+	ld.f32 	%f13, [%rd11+4];
+	ld.f32 	%f14, [%rd16+4];
+	ld.f32 	%f15, [%rd13+4];
+	ld.f32 	%f16, [%rd11+8];
+	ld.f32 	%f17, [%rd9+8];
+	ld.f32 	%f18, [%rd16+8];
+	ld.f32 	%f19, [%rd13+8];
+	ld.f32 	%f20, [%rd11+12];
+	ld.f32 	%f21, [%rd9+12];
+	ld.f32 	%f22, [%rd16+12];
+	ld.f32 	%f23, [%rd13+12];
+	add.s32 	%r24, %r24, -4;
+	add.s32 	%r23, %r23, 4;
 	mul.rn.f32 	%f24, %f8, %f9;
 	add.rn.f32 	%f25, %f24, %f47;
 	mul.rn.f32 	%f26, %f9, %f10;
@@ -653,7 +632,7 @@ $L__BB3_1:                              // %.L_x_24
 	add.rn.f32 	%f45, %f43, %f39;
 	mul.rn.f32 	%f44, %f20, %f23;
 	add.rn.f32 	%f46, %f44, %f41;
-	add.s32 	%r23, %r23, 4;
+	add.s32 	%r22, %r22, 4;
 	bra.uni 	$L__BB3_1;
                                         // -- End function
 }
