@@ -269,6 +269,16 @@ class Instruction:
             ValOp2 = self.operands[2]
             ValOp3 = self.operands[3]
             # IRBuilder.comment("IMAD Instruction")
+            
+            settings = {
+                "wide": False
+            }
+            
+            for mod in self.modifiers:
+                if mod == "WIDE":
+                    settings["wide"] = True
+                    continue
+                    
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -276,8 +286,19 @@ class Instruction:
 
             assert ValOp1.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
-
-            tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul")
+            if settings["wide"]:
+                # zero extend op1 and op2 into 64 bit so that the result of mul is 64 bit
+                IRValOp1 = IRBuilder.zext(IRValOp1, llvmir.IntType(64), name="zext")
+                IRValOp2 = IRBuilder.zext(IRValOp2, llvmir.IntType(64), name="zext")
+            tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul") 
+            if settings["wide"]:
+                # assert isinstance(IRValOp3.type, llvmir.PointerType) or IRValOp3.type.width == 64
+                if isinstance(IRValOp3.type, llvmir.PointerType):
+                    IRValOp3 = IRBuilder.ptrtoint(IRValOp3, llvmir.IntType(64))
+                elif IRValOp3.type == llvmir.IntType(32):
+                    IRValOp3 = IRBuilder.zext(IRValOp3, llvmir.IntType(64), name="zext")
+                else:
+                    raise InvalidSyntaxException
             tmp = IRBuilder.add(tmp, IRValOp3, "add")
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)

@@ -250,7 +250,25 @@ class Operand:
                     raise InvalidSyntaxException
         return IRVal
     
-    def IRReg_Store(self, IRRegs, IRBuilder, storeVal):
+    def IRReg_Store(self, IRRegs, IRBuilder:llvmir.IRBuilder, storeVal, wide_mode=False):
+        if not isinstance(storeVal.type, llvmir.FloatType):
+            if isinstance(storeVal.type, llvmir.PointerType) or storeVal.type.width == 64:
+                assert self.isReg
+                wide_mode = True
+        if wide_mode:
+            assert not self.isPReg
+            # we need to split the storeVal into high and lower 32 bits
+            if isinstance(storeVal.type, llvmir.PointerType):
+                storeVal = IRBuilder.ptrtoint(storeVal, llvmir.IntType(64))
+            low_mask = (1 << 32) - 1
+            high_mask = low_mask << 32
+            IR_high_mask = llvmir.Constant(llvmir.IntType(64), high_mask)
+            storeVal_high = IRBuilder.and_(storeVal, IR_high_mask)
+            storeVal_high = IRBuilder.lshr(storeVal_high, llvmir.Constant(llvmir.IntType(64), 32))
+            storeVal_high = IRBuilder.trunc(storeVal_high, llvmir.IntType(32), "trunc32")
+            storeVal_low = IRBuilder.trunc(storeVal, llvmir.IntType(32), "trunc32")
+            storeVal = storeVal_low
+
         if self.isReg or self.isPReg:
             IRReg = IRRegs[self.getRegName()]
             if self.isReg:
@@ -267,6 +285,16 @@ class Operand:
                         raise Exception
             # prevRegName = self.getCurRegName()
             IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
+            
+            if wide_mode:
+                # store high 32 at adjacent register
+                adjRegName = self.getAdjRegName()
+                if adjRegName not in IRRegs:
+                    IRReg = IRBuilder.alloca(llvmir.IntType(32), 1, adjRegName)
+                    IRRegs[adjRegName] = IRReg
+                else:
+                    IRReg = IRRegs[adjRegName]
+                IRBuilder.store(storeVal_high, IRReg)
             return True
         return False
     
@@ -459,6 +487,19 @@ class Operand:
     
     def getRegName(self):
         return self.reg
+    
+    def getRegNum(self):
+        assert self.reg
+        # TODO there's other types of reg, like UR
+        pattern = r"^R(\d+)$"
+        match = re.match(pattern, self.reg)
+        if match:
+            return int(match.group(1))
+        return None
+    
+    def getAdjRegName(self):
+        # TODO there's other types of reg, like UR
+        return "R" + str(self.getRegNum() + 1)
     
     def getCurRegName(self):
         return self._getCurIRRegName(self.getRegName())

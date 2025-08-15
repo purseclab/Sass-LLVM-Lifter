@@ -534,88 +534,101 @@ $L__BB2_22:                             // %exit
 }
 	// .globl	_Z11gru_forwardPfS_S_S_iii // -- Begin function _Z11gru_forwardPfS_S_S_iii
 .visible .func _Z11gru_forwardPfS_S_S_iii(
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_0,
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_1,
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_2,
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_3,
+	.param .b64 _Z11gru_forwardPfS_S_S_iii_param_0,
+	.param .b64 _Z11gru_forwardPfS_S_S_iii_param_1,
+	.param .b64 _Z11gru_forwardPfS_S_S_iii_param_2,
+	.param .b64 _Z11gru_forwardPfS_S_S_iii_param_3,
 	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_4,
 	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_5,
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_6,
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_7,
-	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_8
+	.param .b32 _Z11gru_forwardPfS_S_S_iii_param_6
 )                                       // @_Z11gru_forwardPfS_S_S_iii
 {
-	.reg .b32 	%r<30>;
+	.local .align 4 .b8 	__local_depot3[12];
+	.reg .b64 	%SP;
+	.reg .b64 	%SPL;
+	.reg .b32 	%r<26>;
 	.reg .f32 	%f<48>;
-	.reg .b64 	%rd<19>;
+	.reg .b64 	%rd<33>;
 
 // %bb.0:                               // %Entry_.text._Z11gru_forwardPfS_S_S_iii
-	ld.param.u32 	%r12, [_Z11gru_forwardPfS_S_S_iii_param_7];
-	ld.param.u32 	%r11, [_Z11gru_forwardPfS_S_S_iii_param_4];
-	ld.param.u32 	%r10, [_Z11gru_forwardPfS_S_S_iii_param_2];
-	ld.param.u32 	%r15, [_Z11gru_forwardPfS_S_S_iii_param_0];
-	mov.u32 	%r16, %ctaid.x;
+	mov.u64 	%SPL, __local_depot3;
+	ld.param.u64 	%rd3, [_Z11gru_forwardPfS_S_S_iii_param_2];
+	ld.param.u64 	%rd2, [_Z11gru_forwardPfS_S_S_iii_param_0];
+	ld.param.u64 	%rd4, [_Z11gru_forwardPfS_S_S_iii_param_1];
 	{ // callseq 0, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
 	thread_idx, 
 	(
 	);
-	ld.param.b32 	%r17, [retval0];
+	ld.param.b32 	%r13, [retval0];
 	} // callseq 0
-	mad.lo.s32 	%r19, %r16, %r15, %r17;
-	ld.param.u32 	%r20, [_Z11gru_forwardPfS_S_S_iii_param_6];
-	cvt.u64.u32 	%rd1, %r12;
-	bfe.s64 	%rd2, %rd1, 31, 1;
-	and.b32  	%r29, %r20, -4;
-	mul.lo.s32 	%r21, %r20, %r19;
-	shl.b32 	%r22, %r21, 2;
-	add.s32 	%r2, %r11, %r22;
-	shl.b64 	%rd3, %rd2, 32;
-	or.b64  	%rd4, %rd3, %rd1;
-	shr.u64 	%rd5, %rd4, 30;
-	cvt.u32.u64 	%r3, %rd5;
-	mov.b32 	%r27, 0;
-	add.s32 	%r26, %r12, %r3;
-	shl.b64 	%rd8, %rd1, 32;
-	cvt.u64.u32 	%rd11, %r26;
-	shl.b64 	%rd12, %rd11, 32;
-	or.b64  	%rd13, %rd12, %rd1;
-	ld.f32 	%f10, [%rd13];
-	ld.f32 	%f14, [%rd13+4];
-	ld.f32 	%f18, [%rd13+8];
-	ld.f32 	%f22, [%rd13+12];
+	ld.param.u64 	%rd5, [_Z11gru_forwardPfS_S_S_iii_param_3];
+	mul.wide.u32 	%rd6, %r13, 4;
+	ld.param.u32 	%r15, [_Z11gru_forwardPfS_S_S_iii_param_4];
+	ld.param.u32 	%r16, [_Z11gru_forwardPfS_S_S_iii_param_5];
+	add.s64 	%rd7, %rd6, %rd5;
+	shr.u64 	%rd8, %rd7, 32;
+	add.u64 	%rd10, %SPL, 0;
+	st.local.u32 	[%rd10], %rd8;
+	shl.b32 	%r17, %r16, 1;
+	add.s32 	%r18, %r17, %r13;
+	add.s64 	%rd11, %rd6, %rd4;
+	shr.u64 	%rd12, %rd11, 32;
+	add.u64 	%rd14, %SPL, 4;
+	st.local.u32 	[%rd14], %rd12;
+	mul.wide.u32 	%rd15, %r18, 4;
+	add.s64 	%rd16, %rd15, %rd5;
+	shr.u64 	%rd17, %rd16, 32;
+	add.u64 	%rd19, %SPL, 8;
+	st.local.u32 	[%rd19], %rd17;
+	cvt.u64.u32 	%rd1, %r16;
+	bfe.s64 	%rd20, %rd1, 31, 1;
+	and.b32  	%r25, %r15, -4;
+	mul.lo.s32 	%r2, %r13, %r15;
+	add.s32 	%r3, %r2, %r17;
+	shl.b64 	%rd21, %rd20, 32;
+	or.b64  	%rd22, %rd21, %rd1;
+	shr.u64 	%rd23, %rd22, 30;
+	cvt.u32.u64 	%r4, %rd23;
+	mov.b32 	%r23, 0;
                                         // implicit-def: %f45
-                                        // implicit-def: %r28
+                                        // implicit-def: %r24
                                         // implicit-def: %f46
                                         // implicit-def: %f47
 $L__BB3_1:                              // %.L_x_24
                                         // =>This Inner Loop Header: Depth=1
-	add.s32 	%r23, %r2, %r27;
-	add.s32 	%r24, %r10, %r27;
-	add.s32 	%r25, %r11, %r27;
-	cvt.u64.u32 	%rd6, %r23;
-	or.b64  	%rd9, %rd8, %rd6;
-	ld.f32 	%f8, [%rd9];
-	cvt.u64.u32 	%rd10, %r24;
-	ld.f32 	%f9, [%rd10];
-	cvt.u64.u32 	%rd14, %r25;
-	or.b64  	%rd15, %rd14, 17179869184;
-	ld.f32 	%f11, [%rd15];
-	ld.f32 	%f12, [%rd9+4];
-	ld.f32 	%f13, [%rd10+4];
-	add.s64 	%rd16, %rd14, 17179869188;
-	ld.f32 	%f15, [%rd16];
-	ld.f32 	%f16, [%rd10+8];
-	ld.f32 	%f17, [%rd9+8];
-	add.s64 	%rd17, %rd14, 17179869192;
-	ld.f32 	%f19, [%rd17];
-	ld.f32 	%f20, [%rd10+12];
-	ld.f32 	%f21, [%rd9+12];
-	add.s64 	%rd18, %rd14, 17179869196;
-	ld.f32 	%f23, [%rd18];
-	add.s32 	%r29, %r29, -4;
-	add.s32 	%r28, %r28, 4;
+	add.s32 	%r19, %r2, %r24;
+	mul.wide.u32 	%rd24, %r19, 4;
+	add.s64 	%rd25, %rd24, %rd3;
+	{ .reg .b32 tmp; mov.b64 {tmp, %r20}, %rd25; }
+	add.s32 	%r21, %r3, %r24;
+	mul.wide.u32 	%rd26, %r23, 4;
+	add.s64 	%rd27, %rd26, %rd2;
+	mul.wide.u32 	%rd28, %r21, 4;
+	add.s64 	%rd29, %rd28, %rd3;
+	add.s32 	%r22, %r20, %r4;
+	ld.f32 	%f8, [%rd25];
+	ld.f32 	%f9, [%rd27];
+	cvt.u64.u32 	%rd30, %r22;
+	shl.b64 	%rd31, %rd30, 32;
+	or.b64  	%rd32, %rd31, %rd1;
+	ld.f32 	%f10, [%rd32];
+	ld.f32 	%f11, [%rd29];
+	ld.f32 	%f12, [%rd25+4];
+	ld.f32 	%f13, [%rd27+4];
+	ld.f32 	%f14, [%rd32+4];
+	ld.f32 	%f15, [%rd29+4];
+	ld.f32 	%f16, [%rd27+8];
+	ld.f32 	%f17, [%rd25+8];
+	ld.f32 	%f18, [%rd32+8];
+	ld.f32 	%f19, [%rd29+8];
+	ld.f32 	%f20, [%rd27+12];
+	ld.f32 	%f21, [%rd25+12];
+	ld.f32 	%f22, [%rd32+12];
+	ld.f32 	%f23, [%rd29+12];
+	add.s32 	%r25, %r25, -4;
+	add.s32 	%r24, %r24, 4;
 	mul.rn.f32 	%f24, %f8, %f9;
 	add.rn.f32 	%f25, %f24, %f47;
 	mul.rn.f32 	%f26, %f9, %f10;
@@ -640,7 +653,7 @@ $L__BB3_1:                              // %.L_x_24
 	add.rn.f32 	%f45, %f43, %f39;
 	mul.rn.f32 	%f44, %f20, %f23;
 	add.rn.f32 	%f46, %f44, %f41;
-	add.s32 	%r27, %r27, 16;
+	add.s32 	%r23, %r23, 4;
 	bra.uni 	$L__BB3_1;
                                         // -- End function
 }
