@@ -715,10 +715,10 @@ class Instruction:
         if self.opcode == "ULDC":
             # TODO: 64 bit not implemented
             ResOp = self.operands[0]
-            PtrOp = self.operands[1]
+            ValOp = self.operands[1]
 
-            IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
-            
+            # IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
+            IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder) # note that the constant might be any length, usually depending on the type of the arg, e.g. i1 for bool, 64 bit for pointer etc
             assert ResOp.isReg
             assert ResOp.reg in SM_75_UReg_Set
             # IRResOp = IRRegs[ResOp.getIRRegName()]

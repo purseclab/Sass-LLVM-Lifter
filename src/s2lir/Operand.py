@@ -223,7 +223,7 @@ class Operand:
                 
                 # NOTE: isPtr means that the target is a pointer themselves. Const memory from arg is pointer by a pointer, but they might not be isPtr == True
                 
-                IRVal = self.getArgPtr()
+                IRVal = self.getArgVal()
                 # but then here we dont need to load the adjacent register since the whole thing is already a ptr, so need to opt out of the process below
                 return IRVal
             else:
@@ -553,9 +553,10 @@ class Operand:
             
             return function_name, return_type
 
-    def getArgPtr(self):
+    def getArgVal(self):
         if self.isArg:
             assert self.ArgID is not None
+            # returns the Arg Value
             return self.ins.BB.func.IRArgs[self.ins.BB.func.ArgIdxes[self.ArgID]]
         else:
             raise InvalidSyntaxException
