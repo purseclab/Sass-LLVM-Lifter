@@ -57,6 +57,9 @@ class TypeAnalysis:
         self.__apply()
         
     def _set_func_args(self):
+        if self.func.internal_func:
+            return
+        
         func_name, args = parse_function_signature(demangle_symbol(self.func.name))
         assert func_name != self.func.name and func_name in self.func.name
         assert self.func_args == []
@@ -79,6 +82,8 @@ class TypeAnalysis:
                 raise InvalidSyntaxException
     
     def set_func_args_type(self):
+        if self.func.internal_func:
+            return
         assert len(self.func.Args) == len(self.func_args)
         for i, arg_Ops in enumerate(self.func.Args):
             for arg_Op in arg_Ops:

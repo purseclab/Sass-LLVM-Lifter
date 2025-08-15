@@ -222,7 +222,7 @@ class Operand:
                 # we need to dynamically get their value and treat it as a pointer, then need to handle how to retrieve the values
                 # IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID] this gives us a ptr, we can probaby just get the value from here, but that might also mean we need to associate all mentions of the constant value e.g. c[0x0][0x160] to this ptr
                 
-                IRVal = self.getArgPtr() # need to pass IRArgs here
+                IRVal = self.getArgPtr()
                 # but then here we dont need to load the adjacent register since the whole thing is already a ptr, so need to opt out of the process below
                 return IRVal
             else:
