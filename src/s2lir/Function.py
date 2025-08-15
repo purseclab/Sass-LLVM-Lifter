@@ -8,6 +8,7 @@ if typing.TYPE_CHECKING:
     from s2lir.Operand import Operand
     from s2lir.Instruction import Instruction
     from passes import TypeAnalysis
+from s2lir.constants import *
 
 
 class Function:
@@ -282,7 +283,15 @@ class Function:
                         IRReg = Builder.alloca(llvmir.IntType(1) if "P" in RegName else llvmir.IntType(32), 1, RegName)
                         # Register the IR registers
                         IRRegs[RegName] = IRReg
-
+                
+                for Reg in SM_75_Reg_Set + SM_75_UReg_Set:
+                    # we're just preallocating all registers because there might be situations like IMAD.WIDE that'll same to adj registers, and if only allocate it when it happens, it'll cause "Instruction does not dominate all uses!"
+                    
+                    if Reg not in IRRegs:
+                        IRReg = Builder.alloca(llvmir.IntType(1) if "P" in RegName else llvmir.IntType(32), 1, RegName)
+                        # Register the IR registers
+                        IRRegs[Reg] = IRReg
+                
             nextBlock = None if i == len(self.blocks) - 1 else self.blocks[i+1]
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock, nextBlock)
 

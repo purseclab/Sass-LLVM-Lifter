@@ -292,11 +292,7 @@ class Operand:
             if wide_mode:
                 # store high 32 at adjacent register
                 adjRegName = self.getAdjRegName()
-                if adjRegName not in IRRegs:
-                    IRReg = IRBuilder.alloca(llvmir.IntType(32), 1, adjRegName)
-                    IRRegs[adjRegName] = IRReg
-                else:
-                    IRReg = IRRegs[adjRegName]
+                IRReg = IRRegs[adjRegName]
                 IRBuilder.store(storeVal_high, IRReg)
             return True
         return False
