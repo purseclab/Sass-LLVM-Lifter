@@ -196,6 +196,14 @@ class Operand:
                     
                     # c[0x0][0x0] is blockdim.x
                     IRVal = IRBuilder.call(nvvm_blockdim_x(self.llvm_module), [], name="nvvm_blockdim_x")
+                elif self.offset_in_const_mem == 0x28:
+                    # https://stackoverflow.com/questions/77889199/why-there-is-an-unused-data-move-in-the-beginning-of-cuda-kernel
+                    # TODO this is subject to change across different SM version
+                    # ignore processing
+                    IRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                elif self.offset_in_const_mem == 0x4:
+                    # c[0x0][0x4] shld be blockDim.y
+                    IRVal = IRBuilder.call(nvvm_blockdim_y(self.llvm_module), [], name="nvvm_blockdim_y")
                 else:
                     print(self.offset_in_const_mem)
                     raise InvalidSyntaxException

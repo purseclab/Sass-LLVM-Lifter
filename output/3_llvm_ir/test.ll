@@ -594,8 +594,9 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   store i32 %"ThreadIdx", ptr %"R3"
   ; IMAD R0, R0, c[0x0][0x0], R3
   %".16" = load i32, ptr %"R0"
+  %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".17" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".16", 0
+  %"mul" = mul i32 %".16", %"nvvm_blockdim_x"
   %"add" = add i32 %"mul", %".17"
   store i32 %"add", ptr %"R0"
   ; ISETP.GE.AND P0, PT, R0, c[0x0][0x184], PT
@@ -2134,6 +2135,8 @@ ExitFunction:
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
 
+declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
+
 define void @"_Z10max_pool2dPfS_iii"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4")
 {
 Entry_.text._Z10max_pool2dPfS_iii:
@@ -2670,8 +2673,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   store i1 %".111", ptr %"P0"
   ; IMAD R0, R2, c[0x0][0x0], R5
   %".114" = load i32, ptr %"R2"
+  %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".115" = load i32, ptr %"R5"
-  %"mul.8" = mul i32 %".114", 0
+  %"mul.8" = mul i32 %".114", %"nvvm_blockdim_x"
   %"add.14" = add i32 %"mul.8", %".115"
   store i32 %"add.14", ptr %"R0"
   ; S2R R7, SR_TID.Y
@@ -2727,8 +2731,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
 .text._Z10max_pool2dPfS_iii_split_0x0200:
   ; IMAD R10, R10, c[0x0][0x4], R7
   %".155" = load i32, ptr %"R10"
+  %"nvvm_blockdim_y" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.y"()
   %".156" = load i32, ptr %"R7"
-  %"mul.11" = mul i32 %".155", 0
+  %"mul.11" = mul i32 %".155", %"nvvm_blockdim_y"
   %"add.19" = add i32 %"mul.11", %".156"
   store i32 %"add.19", ptr %"R10"
   ; ISETP.GE.AND P0, PT, R0, R21, PT
@@ -3332,6 +3337,8 @@ declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.y"()
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.z"()
 
+declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.y"()
+
 define void @"_Z4reluPfS_i"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2")
 {
 Entry_.text._Z4reluPfS_i:
@@ -3733,8 +3740,9 @@ Entry_.text._Z4reluPfS_i:
   store i32 %"ThreadIdx", ptr %"R3"
   ; IMAD R4, R4, c[0x0][0x0], R3
   %".13" = load i32, ptr %"R4"
+  %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".14" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".13", 0
+  %"mul" = mul i32 %".13", %"nvvm_blockdim_x"
   %"add" = add i32 %"mul", %".14"
   store i32 %"add", ptr %"R4"
   ; ISETP.GE.AND P0, PT, R4, c[0x0][0x170], PT
@@ -4249,8 +4257,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   store i32 %"nvvm_ctaid_z", ptr %"R0"
   ; IMAD R3, R3, c[0x0][0x4], R4
   %".30" = load i32, ptr %"R3"
+  %"nvvm_blockdim_y" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.y"()
   %".31" = load i32, ptr %"R4"
-  %"mul" = mul i32 %".30", 0
+  %"mul" = mul i32 %".30", %"nvvm_blockdim_y"
   %"add.2" = add i32 %"mul", %".31"
   store i32 %"add.2", ptr %"R3"
   ; ISETP.GT.AND P0, PT, R3, UR5, PT
@@ -4262,8 +4271,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   store i1 %".37", ptr %"P0"
   ; IMAD R2, R2, c[0x0][0x0], R5
   %".40" = load i32, ptr %"R2"
+  %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".41" = load i32, ptr %"R5"
-  %"mul.1" = mul i32 %".40", 0
+  %"mul.1" = mul i32 %".40", %"nvvm_blockdim_x"
   %"add.3" = add i32 %"mul.1", %".41"
   store i32 %"add.3", ptr %"R2"
   ; ISETP.GT.OR P0, PT, R2, UR5, P0

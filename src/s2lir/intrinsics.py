@@ -109,6 +109,14 @@ def nvvm_blockdim_x(module):
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
 
+def nvvm_blockdim_y(module):
+    
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.ntid.y"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
 def llvm_memcpy_i32(module):
     # https://llvm.org/docs/LangRef.html#id2252
     

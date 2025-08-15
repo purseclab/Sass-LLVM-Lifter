@@ -566,42 +566,48 @@ $L__BB2_22:                             // %exit
 )                                       // @_Z10max_pool2dPfS_iii
 {
 	.reg .pred 	%p<6>;
-	.reg .b32 	%r<31>;
+	.reg .b32 	%r<37>;
 	.reg .f32 	%f<14>;
 	.reg .b64 	%rd<11>;
 
 // %bb.0:                               // %Entry_.text._Z10max_pool2dPfS_iii
-	ld.param.u32 	%r14, [_Z10max_pool2dPfS_iii_param_3];
-	ld.param.u32 	%r13, [_Z10max_pool2dPfS_iii_param_2];
-	mov.u32 	%r2, %ctaid.z;
+	ld.param.u32 	%r15, [_Z10max_pool2dPfS_iii_param_3];
+	ld.param.u32 	%r14, [_Z10max_pool2dPfS_iii_param_2];
+	mov.u32 	%r2, %ctaid.y;
+	mov.u32 	%r3, %ctaid.z;
+	mov.u32 	%r23, %ctaid.x;
 	{ // callseq 1, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
 	thread_idx, 
 	(
 	);
-	ld.param.b32 	%r23, [retval0];
+	ld.param.b32 	%r25, [retval0];
 	} // callseq 1
+	mov.u32 	%r27, %ntid.x;
+	mad.lo.s32 	%r4, %r23, %r27, %r25;
 	{ // callseq 2, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
 	thread_idx, 
 	(
 	);
-	ld.param.b32 	%r24, [retval0];
+	ld.param.b32 	%r28, [retval0];
 	} // callseq 2
 	ld.param.u64 	%rd1, [_Z10max_pool2dPfS_iii_param_0];
-	mul.lo.s32 	%r26, %r2, %r13;
-	mad.lo.s32 	%r27, %r24, %r14, %r26;
-	mul.lo.s32 	%r28, %r27, %r13;
-	mad.lo.s32 	%r29, %r23, %r14, %r28;
-	shl.b32 	%r8, %r13, 2;
+	mov.u32 	%r30, %ntid.y;
+	mad.lo.s32 	%r31, %r2, %r30, %r28;
+	mul.lo.s32 	%r32, %r3, %r14;
+	mad.lo.s32 	%r33, %r31, %r15, %r32;
+	mul.lo.s32 	%r34, %r33, %r14;
+	mad.lo.s32 	%r35, %r4, %r15, %r34;
+	shl.b32 	%r9, %r14, 2;
 	mov.f32 	%f13, 0fFF800000;
-	mul.wide.u32 	%rd4, %r13, 4;
-                                        // implicit-def: %r30
+	mul.wide.u32 	%rd4, %r14, 4;
+                                        // implicit-def: %r36
 $L__BB4_1:                              // %.L_x_10
                                         // =>This Inner Loop Header: Depth=1
-	mul.wide.u32 	%rd2, %r29, 4;
+	mul.wide.u32 	%rd2, %r35, 4;
 	add.s64 	%rd3, %rd2, %rd1;
 	and.b64  	%rd5, %rd3, 4294967295;
 	add.s64 	%rd6, %rd4, %rd5;
@@ -613,7 +619,7 @@ $L__BB4_1:                              // %.L_x_10
 	add.s64 	%rd10, %rd4, %rd9;
 	ld.f32 	%f8, [%rd8];
 	ld.f32 	%f9, [%rd10];
-	add.s32 	%r30, %r30, 4;
+	add.s32 	%r36, %r36, 4;
 	setp.lt.f32 	%p2, %f6, %f13;
 	selp.f32 	%f10, %f6, %f13, %p2;
 	setp.lt.f32 	%p3, %f10, %f7;
@@ -622,7 +628,7 @@ $L__BB4_1:                              // %.L_x_10
 	selp.f32 	%f12, %f11, %f8, %p4;
 	setp.lt.f32 	%p5, %f12, %f9;
 	selp.f32 	%f13, %f12, %f9, %p5;
-	add.s32 	%r29, %r29, %r8;
+	add.s32 	%r35, %r35, %r9;
 	bra.uni 	$L__BB4_1;
                                         // -- End function
 }
@@ -666,6 +672,7 @@ $L__BB4_1:                              // %.L_x_10
 // %bb.0:                               // %Entry_.text._Z6conv2dPfS_S_iiii
 	ld.param.u32 	%r12, [_Z6conv2dPfS_S_iiii_param_3];
 	ld.param.u64 	%rd1, [_Z6conv2dPfS_S_iiii_param_0];
+	ld.param.u64 	%rd2, [_Z6conv2dPfS_S_iiii_param_1];
 	{ // callseq 4, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
@@ -674,7 +681,6 @@ $L__BB4_1:                              // %.L_x_10
 	);
 	ld.param.b32 	%r14, [retval0];
 	} // callseq 4
-	ld.param.u64 	%rd2, [_Z6conv2dPfS_S_iiii_param_1];
 	{ // callseq 5, 0
 	.param .b32 retval0;
 	call.uni (retval0), 
