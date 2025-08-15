@@ -212,15 +212,16 @@ class Operand:
 
     def IRReg_Load(self, IRRegs, IRBuilder):
         IRVal = None
-        if self.isReg or self.isPtr:
+        if self.isReg or self.isArg or self.isPtr:
             if self.isReg:
                 assert self.reg
-            
             if self.reg:
                 IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
             elif self.isArg and self.isConstMem:
                 # we need to dynamically get their value and treat it as a pointer, then need to handle how to retrieve the values
                 # IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID] this gives us a ptr, we can probaby just get the value from here, but that might also mean we need to associate all mentions of the constant value e.g. c[0x0][0x160] to this ptr
+                
+                # NOTE: isPtr means that the target is a pointer themselves. Const memory from arg is pointer by a pointer, but they might not be isPtr == True
                 
                 IRVal = self.getArgPtr()
                 # but then here we dont need to load the adjacent register since the whole thing is already a ptr, so need to opt out of the process below
@@ -248,6 +249,8 @@ class Operand:
                     IRVal = IRBuilder.inttoptr(IRVal, llvmir.PointerType())
                 else:
                     raise InvalidSyntaxException
+        else:
+            raise InvalidSyntaxException
         return IRVal
     
     def IRReg_Store(self, IRRegs, IRBuilder:llvmir.IRBuilder, storeVal, wide_mode=False):
