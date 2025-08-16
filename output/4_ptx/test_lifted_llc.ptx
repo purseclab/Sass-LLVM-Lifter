@@ -575,15 +575,15 @@ $L__BB2_22:                             // %exit
 	add.s32 	%r61, %r54, -1;
 	and.b32  	%r2, %r54, 3;
 	setp.gt.s32 	%p3, %r61, 2;
-                                        // implicit-def: %r85
-                                        // implicit-def: %f134
+	mov.f32 	%f134, 0f00000000;
+	mov.b32 	%r85, 0;
 	@%p3 bra 	$L__BB3_10;
 // %bb.3:                               // %.text._Z8fc_layerPfS_S_S_ii_split_0x0100
-	sub.s32 	%r74, %r54, %r2;
+	sub.s32 	%r3, %r54, %r2;
 	mul.lo.s32 	%r62, %r1, %r54;
 	{ .reg .b32 tmp; mov.b64 {tmp, %r77}, %rd1; }
-	cvt.u32.u64 	%r73, %rd1;
-	setp.gt.s32 	%p4, %r74, 0;
+	cvt.u32.u64 	%r75, %rd1;
+	setp.gt.s32 	%p4, %r3, 0;
 	mul.wide.u32 	%rd5, %r62, 4;
 	add.s64 	%rd6, %rd5, %rd2;
 	{ .reg .b32 tmp; mov.b64 {tmp, %r83}, %rd6; }
@@ -591,9 +591,9 @@ $L__BB2_22:                             // %exit
 	@%p4 bra 	$L__BB3_8;
 	bra.uni 	$L__BB3_4;
 $L__BB3_8:                              // %.L_x_2.preheader
-	add.s32 	%r79, %r74, -4;
-                                        // implicit-def: %r85
-                                        // implicit-def: %f134
+	add.s32 	%r79, %r3, -4;
+	mov.f32 	%f134, 0f00000000;
+	mov.b32 	%r85, 0;
 $L__BB3_9:                              // %.L_x_2
                                         // =>This Inner Loop Header: Depth=1
 	cvt.u64.u32 	%rd23, %r76;
@@ -601,7 +601,7 @@ $L__BB3_9:                              // %.L_x_2
 	shl.b64 	%rd25, %rd24, 32;
 	or.b64  	%rd26, %rd25, %rd23;
 	ld.f32 	%f109, [%rd26];
-	cvt.u64.u32 	%rd27, %r73;
+	cvt.u64.u32 	%rd27, %r75;
 	cvt.u64.u32 	%rd28, %r77;
 	shl.b64 	%rd29, %rd28, 32;
 	or.b64  	%rd30, %rd29, %rd27;
@@ -612,40 +612,40 @@ $L__BB3_9:                              // %.L_x_2
 	ld.f32 	%f114, [%rd30+8];
 	ld.f32 	%f115, [%rd26+12];
 	ld.f32 	%f116, [%rd30+12];
-	add.s32 	%r32, %r73, 16;
-	setp.lt.u32 	%p10, %r32, %r73;
+	add.s32 	%r32, %r75, 16;
+	setp.lt.u32 	%p10, %r32, %r75;
 	add.s32 	%r85, %r85, 4;
-	selp.u32 	%r68, 1, 0, %p10;
-	add.s32 	%r77, %r77, %r68;
+	selp.u32 	%r69, 1, 0, %p10;
+	add.s32 	%r77, %r77, %r69;
 	mul.rn.f32 	%f117, %f109, %f110;
 	add.rn.f32 	%f118, %f117, %f134;
 	add.s32 	%r35, %r76, 16;
 	setp.lt.u32 	%p11, %r35, %r76;
 	mul.rn.f32 	%f119, %f111, %f112;
 	add.rn.f32 	%f120, %f119, %f118;
-	selp.u32 	%r69, 1, 0, %p11;
-	add.s32 	%r83, %r83, %r69;
+	selp.u32 	%r70, 1, 0, %p11;
+	add.s32 	%r83, %r83, %r70;
 	mul.rn.f32 	%f121, %f113, %f114;
 	add.rn.f32 	%f122, %f121, %f120;
 	mul.rn.f32 	%f123, %f115, %f116;
 	add.rn.f32 	%f134, %f123, %f122;
 	setp.eq.s32 	%p12, %r79, 0;
 	add.s32 	%r79, %r79, -4;
-	mov.u32 	%r73, %r32;
+	mov.u32 	%r75, %r32;
 	mov.u32 	%r76, %r35;
 	@%p12 bra 	$L__BB3_9;
 	bra.uni 	$L__BB3_10;
 $L__BB3_4:                              // %.text._Z8fc_layerPfS_S_S_ii_split_0x0190
+	mov.f32 	%f134, 0f00000000;
+	mov.b32 	%r74, 0;
 	cvt.u64.u32 	%rd8, %r83;
 	shl.b64 	%rd9, %rd8, 32;
-                                        // implicit-def: %r85
-                                        // implicit-def: %f134
 $L__BB3_5:                              // %.L_x_4
                                         // =>This Inner Loop Header: Depth=1
 	cvt.u64.u32 	%rd7, %r76;
 	or.b64  	%rd10, %rd9, %rd7;
 	ld.f32 	%f14, [%rd10];
-	cvt.u64.u32 	%rd11, %r73;
+	cvt.u64.u32 	%rd11, %r75;
 	cvt.u64.u32 	%rd12, %r77;
 	shl.b64 	%rd13, %rd12, 32;
 	or.b64  	%rd14, %rd13, %rd11;
@@ -680,12 +680,12 @@ $L__BB3_5:                              // %.L_x_4
 	ld.f32 	%f43, [%rd14+56];
 	ld.f32 	%f44, [%rd10+60];
 	ld.f32 	%f45, [%rd14+60];
+	add.s32 	%r12, %r75, 64;
+	setp.lt.u32 	%p5, %r12, %r75;
 	add.s32 	%r74, %r74, -16;
-	add.s32 	%r14, %r73, 64;
-	setp.lt.u32 	%p5, %r14, %r73;
-	add.s32 	%r85, %r85, 16;
-	selp.u32 	%r64, 1, 0, %p5;
-	add.s32 	%r77, %r77, %r64;
+	add.s32 	%r64, %r74, %r3;
+	selp.u32 	%r65, 1, 0, %p5;
+	add.s32 	%r77, %r77, %r65;
 	add.s32 	%r76, %r76, 64;
 	mul.rn.f32 	%f46, %f14, %f15;
 	add.rn.f32 	%f47, %f46, %f134;
@@ -719,17 +719,19 @@ $L__BB3_5:                              // %.L_x_4
 	add.rn.f32 	%f75, %f74, %f73;
 	mul.rn.f32 	%f76, %f44, %f45;
 	add.rn.f32 	%f134, %f76, %f75;
-	setp.lt.s32 	%p6, %r74, 13;
-	mov.u32 	%r73, %r14;
+	setp.lt.s32 	%p6, %r64, 13;
+	mov.u32 	%r75, %r12;
 	@%p6 bra 	$L__BB3_5;
-// %bb.6:                               // %.L_x_3
-	setp.gt.s32 	%p7, %r74, 4;
+// %bb.6:                               // %.L_x_3.loopexit
+	add.s32 	%r16, %r3, %r74;
+	neg.s32 	%r85, %r74;
+	setp.gt.s32 	%p7, %r16, 4;
 	@%p7 bra 	$L__BB3_10;
 // %bb.7:                               // %.L_x_3_split_0x0570
 	cvt.u64.u32 	%rd15, %r76;
 	or.b64  	%rd18, %rd9, %rd15;
 	ld.f32 	%f77, [%rd18];
-	cvt.u64.u32 	%rd19, %r14;
+	cvt.u64.u32 	%rd19, %r12;
 	cvt.u64.u32 	%rd20, %r77;
 	shl.b64 	%rd21, %rd20, 32;
 	or.b64  	%rd22, %rd21, %rd19;
@@ -769,8 +771,8 @@ $L__BB3_10:                             // %.L_x_1
 	setp.ne.s32 	%p13, %r2, 0;
 	@%p13 bra 	$L__BB3_13;
 // %bb.11:                              // %.L_x_1_split_0x0900
-	mad.lo.s32 	%r70, %r1, %r54, %r85;
-	mul.wide.u32 	%rd31, %r70, 4;
+	mad.lo.s32 	%r71, %r1, %r54, %r85;
+	mul.wide.u32 	%rd31, %r71, 4;
 	add.s64 	%rd32, %rd31, %rd2;
 	{ .reg .b32 tmp; mov.b64 {tmp, %r90}, %rd32; }
 	cvt.u32.u64 	%r89, %rd32;
@@ -797,10 +799,10 @@ $L__BB3_12:                             // %.L_x_6
 	setp.lt.u32 	%p15, %r50, %r89;
 	add.s32 	%r51, %r88, 4;
 	setp.lt.u32 	%p16, %r51, %r88;
-	selp.u32 	%r71, 1, 0, %p15;
-	add.s32 	%r90, %r90, %r71;
-	selp.u32 	%r72, 1, 0, %p16;
-	add.s32 	%r87, %r87, %r72;
+	selp.u32 	%r72, 1, 0, %p15;
+	add.s32 	%r90, %r90, %r72;
+	selp.u32 	%r73, 1, 0, %p16;
+	add.s32 	%r87, %r87, %r73;
 	mul.rn.f32 	%f126, %f125, %f124;
 	add.rn.f32 	%f134, %f126, %f134;
 	mov.u32 	%r86, %r49;
@@ -915,11 +917,12 @@ $L__BB4_9:                              // %.text._Z10max_pool2dPfS_iii_split_0x
 	shl.b32 	%r25, %r37, 2;
 	and.b32  	%r52, %r38, -4;
 	add.s32 	%r26, %r52, -4;
-	mov.b32 	%r64, 0;
+	mov.b32 	%r50, 0;
 	mov.f32 	%f22, 0fFF800000;
 	setp.gt.s32 	%p6, %r20, 2;
 	setp.ne.s32 	%p12, %r22, 0;
 	mul.wide.u32 	%rd5, %r37, 4;
+	mov.u32 	%r64, %r50;
 	bra.uni 	$L__BB4_10;
 $L__BB4_13:                             // %.L_x_9
                                         //   in Loop: Header=BB4_10 Depth=1
@@ -935,12 +938,12 @@ $L__BB4_15:                             // %.L_x_11
 $L__BB4_10:                             // %.L_x_12
                                         // =>This Loop Header: Depth=1
                                         //     Child Loop BB4_12 Depth 2
-                                        // implicit-def: %r67
+	mov.u32 	%r67, %r50;
 	@%p6 bra 	$L__BB4_13;
 // %bb.11:                              // %.L_x_12_split_0x0360
                                         //   in Loop: Header=BB4_10 Depth=1
+	mov.b32 	%r66, 0;
 	mov.u32 	%r65, %r63;
-                                        // implicit-def: %r66
 $L__BB4_12:                             // %.L_x_10
                                         //   Parent Loop BB4_10 Depth=1
                                         // =>  This Inner Loop Header: Depth=2
@@ -1041,9 +1044,9 @@ $L__BB5_2:                              // %ExitFunction
 	.reg .b64 	%rd<25>;
 
 // %bb.0:                               // %Entry_.text._Z6conv2dPfS_S_iiii
-	ld.param.u32 	%r34, [_Z6conv2dPfS_S_iiii_param_5];
-	ld.param.u32 	%r33, [_Z6conv2dPfS_S_iiii_param_4];
-	ld.param.u32 	%r32, [_Z6conv2dPfS_S_iiii_param_3];
+	ld.param.u32 	%r35, [_Z6conv2dPfS_S_iiii_param_5];
+	ld.param.u32 	%r34, [_Z6conv2dPfS_S_iiii_param_4];
+	ld.param.u32 	%r33, [_Z6conv2dPfS_S_iiii_param_3];
 	ld.param.u64 	%rd3, [_Z6conv2dPfS_S_iiii_param_2];
 	ld.param.u64 	%rd2, [_Z6conv2dPfS_S_iiii_param_1];
 	ld.param.u64 	%rd1, [_Z6conv2dPfS_S_iiii_param_0];
@@ -1070,34 +1073,35 @@ $L__BB5_2:                              // %ExitFunction
 	mad.lo.s32 	%r2, %r37, %r43, %r38;
 	mov.u32 	%r44, %ntid.x;
 	mad.lo.s32 	%r3, %r40, %r44, %r41;
-	add.s32 	%r4, %r33, -1;
-	and.b32  	%r5, %r33, 3;
-	mul.lo.s32 	%r6, %r32, %r32;
-	shl.b32 	%r7, %r32, 2;
-	and.b32  	%r45, %r33, -4;
-	add.s32 	%r8, %r45, -4;
-	mov.b32 	%r55, 0;
+	add.s32 	%r4, %r34, -1;
+	and.b32  	%r5, %r34, 3;
+	mad.lo.s32 	%r54, %r33, %r2, %r3;
+	mul.lo.s32 	%r7, %r33, %r33;
+	shl.b32 	%r8, %r33, 2;
+	and.b32  	%r45, %r34, -4;
+	add.s32 	%r9, %r45, -4;
+	mov.f32 	%f30, 0f00000000;
+	mov.b32 	%r36, 0;
 	setp.gt.s32 	%p1, %r4, 2;
 	setp.ne.s32 	%p4, %r5, 0;
-	mul.wide.u32 	%rd8, %r32, 4;
-                                        // implicit-def: %r54
-                                        // implicit-def: %f30
+	mul.wide.u32 	%rd8, %r33, 4;
+	mov.u32 	%r55, %r36;
 	bra.uni 	$L__BB6_1;
 $L__BB6_8:                              // %.L_x_18_split_0x0610
                                         //   in Loop: Header=BB6_1 Depth=1
-	add.s32 	%r54, %r54, %r6;
-	setp.ge.s32 	%p6, %r55, %r34;
+	add.s32 	%r54, %r54, %r7;
+	setp.ge.s32 	%p6, %r55, %r35;
 	@%p6 bra 	$L__BB6_1;
 	bra.uni 	$L__BB6_9;
 $L__BB6_1:                              // %.L_x_20
                                         // =>This Loop Header: Depth=1
                                         //     Child Loop BB6_2 Depth 2
                                         //       Child Loop BB6_4 Depth 3
-	mad.lo.s32 	%r11, %r55, %r32, %r2;
-	mad.lo.s32 	%r12, %r1, %r34, %r55;
+	mad.lo.s32 	%r12, %r55, %r33, %r2;
+	mad.lo.s32 	%r13, %r1, %r35, %r55;
 	add.s32 	%r55, %r55, 1;
 	mov.u32 	%r56, %r54;
-                                        // implicit-def: %r57
+	mov.u32 	%r57, %r36;
 	bra.uni 	$L__BB6_2;
 $L__BB6_5:                              // %.L_x_16
                                         //   in Loop: Header=BB6_2 Depth=2
@@ -1107,25 +1111,25 @@ $L__BB6_7:                              // %.L_x_18
                                         //   in Loop: Header=BB6_2 Depth=2
 	add.s32 	%r57, %r57, 1;
 	add.s32 	%r56, %r56, 1;
-	setp.ge.s32 	%p5, %r57, %r33;
+	setp.ge.s32 	%p5, %r57, %r34;
 	@%p5 bra 	$L__BB6_2;
 	bra.uni 	$L__BB6_8;
 $L__BB6_2:                              // %.L_x_19
                                         //   Parent Loop BB6_1 Depth=1
                                         // =>  This Loop Header: Depth=2
                                         //       Child Loop BB6_4 Depth 3
-	mad.lo.s32 	%r48, %r12, %r33, %r57;
-	mul.lo.s32 	%r16, %r48, %r33;
-                                        // implicit-def: %r62
+	mad.lo.s32 	%r48, %r13, %r34, %r57;
+	mul.lo.s32 	%r17, %r48, %r34;
+	mov.b32 	%r62, 0;
 	@%p1 bra 	$L__BB6_5;
 // %bb.3:                               // %.L_x_19_split_0x0260
                                         //   in Loop: Header=BB6_2 Depth=2
-	mul.wide.u32 	%rd4, %r16, 4;
+	mul.wide.u32 	%rd4, %r17, 4;
 	add.s64 	%rd5, %rd4, %rd2;
 	{ .reg .b32 tmp; mov.b64 {tmp, %r61}, %rd5; }
 	cvt.u32.u64 	%r59, %rd5;
+	mov.b32 	%r60, 0;
 	mov.u32 	%r58, %r56;
-                                        // implicit-def: %r60
 $L__BB6_4:                              // %.L_x_17
                                         //   Parent Loop BB6_1 Depth=1
                                         //     Parent Loop BB6_2 Depth=2
@@ -1155,26 +1159,26 @@ $L__BB6_4:                              // %.L_x_17
 	add.rn.f32 	%f18, %f17, %f30;
 	mul.rn.f32 	%f19, %f12, %f11;
 	add.rn.f32 	%f20, %f19, %f18;
-	add.s32 	%r24, %r59, 16;
-	setp.lt.u32 	%p2, %r24, %r59;
+	add.s32 	%r25, %r59, 16;
+	setp.lt.u32 	%p2, %r25, %r59;
 	mul.rn.f32 	%f21, %f14, %f13;
 	add.rn.f32 	%f22, %f21, %f20;
 	selp.u32 	%r50, 1, 0, %p2;
 	add.s32 	%r61, %r61, %r50;
 	mul.rn.f32 	%f23, %f16, %f15;
 	add.rn.f32 	%f30, %f23, %f22;
-	setp.eq.s32 	%p3, %r8, %r60;
-	add.s32 	%r58, %r58, %r7;
-	mov.u32 	%r59, %r24;
+	setp.eq.s32 	%p3, %r9, %r60;
+	add.s32 	%r58, %r58, %r8;
+	mov.u32 	%r59, %r25;
 	mov.u32 	%r60, %r62;
 	@%p3 bra 	$L__BB6_4;
 	bra.uni 	$L__BB6_5;
 $L__BB6_6:                              // %.L_x_16_split_0x0460
                                         //   in Loop: Header=BB6_2 Depth=2
-	add.s32 	%r28, %r3, %r57;
-	add.s32 	%r51, %r11, %r62;
-	add.s32 	%r52, %r16, %r62;
-	mad.lo.s32 	%r53, %r51, %r32, %r28;
+	add.s32 	%r29, %r3, %r57;
+	add.s32 	%r51, %r12, %r62;
+	add.s32 	%r52, %r17, %r62;
+	mad.lo.s32 	%r53, %r51, %r33, %r29;
 	mul.wide.u32 	%rd19, %r52, 4;
 	add.s64 	%rd20, %rd19, %rd2;
 	mul.wide.u32 	%rd21, %r53, 4;

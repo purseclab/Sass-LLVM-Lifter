@@ -292,7 +292,17 @@ class Function:
                         # Register the IR registers
                         IRRegs[Reg] = IRReg
                 
-                Builder.store(llvmir.Constant(llvmir.IntType(1), 1), IRRegs["PT"])
+                # Populate values for "constant" registers
+                if "PT" in IRRegs:
+                    Builder.store(llvmir.Constant(llvmir.IntType(1), 1), IRRegs["PT"])
+                if "UPT" in IRRegs:
+                    Builder.store(llvmir.Constant(llvmir.IntType(1), 1), IRRegs["UPT"])
+                if "RZ" in IRRegs:
+                    Builder.store(llvmir.Constant(llvmir.IntType(32), 0), IRRegs["RZ"])
+                if "URZ" in IRRegs:
+                    Builder.store(llvmir.Constant(llvmir.IntType(32), 0), IRRegs["URZ"])
+                    
+                
                 
             nextBlock = None if i == len(self.blocks) - 1 else self.blocks[i+1]
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock, nextBlock)
