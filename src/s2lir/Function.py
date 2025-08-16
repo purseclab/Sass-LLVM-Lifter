@@ -292,6 +292,8 @@ class Function:
                         # Register the IR registers
                         IRRegs[Reg] = IRReg
                 
+                Builder.store(llvmir.Constant(llvmir.IntType(1), 1), IRRegs["PT"])
+                
             nextBlock = None if i == len(self.blocks) - 1 else self.blocks[i+1]
             BB.lift(Builder, IRRegs, IRArgs, self.BlockMap, IRFunc, ExitBlock, nextBlock)
 
