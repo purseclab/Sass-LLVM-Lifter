@@ -1,0 +1,64 @@
+device: 0
+tests:
+  - name: relu_sweep_example
+    ptx_file: ../output/4_ptx/test_clang_llc.ptx
+    function: _Z4reluPfS_i
+    # block.x can be a single value or omitted (grid auto computed)
+    block: { x: 128 }
+    # args order must match kernel signature
+    args:
+      - name: input
+        type: float*
+        size: 1024      # base size; can be overridden by sweep
+        init: random
+        rng_seed: 42
+        range: [-10.0, 10.0]
+      - name: output
+        type: float*
+        size: 1024
+        init: zeros
+      - name: size
+        type: int
+        value: 1024
+    verification:
+      mode: host_reference
+      function: relu
+      tolerance:
+        abs: 1e-6
+        rel: 1e-6
+    # Sweep fields: will be expanded into multiple tests. Keys are:
+    # - sizes (overrides args[].size and size scalar if present)
+    # - block_x (overrides block.x)
+    # - rng_seed (overrides args[].rng_seed for the arg named 'input')
+    # Cartesian product parameter sweep
+    sweep:
+      sizes: [1024, 8192]
+      block_x: [64, 256]
+      rng_seed: [123, 999]
+
+  - name: relu_benchmark_example
+    ptx_file: ../output/4_ptx/test_clang_llc.ptx
+    function: _Z4reluPfS_i
+    block: { x: 256 }
+    args:
+      - name: input
+        type: float*
+        size: 4096
+        init: random
+        rng_seed: 777
+        range: [-20.0, 20.0]
+      - name: output
+        type: float*
+        size: 4096
+        init: zeros
+      - name: size
+        type: int
+        value: 4096
+    verification:
+      mode: benchmark_ptx
+      tolerance:
+        abs: 1e-5
+        rel: 1e-6
+      benchmark:
+        ptx_file: ../output/4_ptx/test_clang_llc.ptx
+        function: _Z4reluPfS_i
