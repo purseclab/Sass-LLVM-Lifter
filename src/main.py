@@ -30,9 +30,9 @@ class LLVMModule:
     def addPseudoFunctions(self, llvm_module):
         # Create thread idx function
         self.GetThreadIdx = nvvm_threadidx_x(llvm_module)
-        FuncTy = llvmir.FunctionType(llvmir.IntType(32), [])
-        IRFunc = llvmir.Function(llvm_module, FuncTy, "thread_idx")
-        self.GetThreadIdx = IRFunc
+        # FuncTy = llvmir.FunctionType(llvmir.IntType(32), [])
+        # IRFunc = llvmir.Function(llvm_module, FuncTy, "thread_idx")
+        # self.GetThreadIdx = IRFunc
 
     
     def parse(self):

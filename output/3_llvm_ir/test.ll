@@ -4,8 +4,6 @@ target datalayout = ""
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
 
-declare i32 @"thread_idx"()
-
 define i32 @"custom_lop3"(i32 %".1", i32 %".2", i32 %".3", i32 %".4")
 {
 entry:
@@ -594,7 +592,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
   store i32 %"nvvm_ctaid_x", ptr %"R0"
   ; S2R R3, SR_TID.X
-  %"ThreadIdx" = call i32 @"thread_idx"()
+  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"ThreadIdx", ptr %"R3"
   ; IMAD R0, R0, c[0x0][0x0], R3
   %".20" = load i32, ptr %"R0"
@@ -2622,7 +2620,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"add.7" = add i32 %"mul.5", 0
   store i32 %"add.7", ptr %"R3"
   ; S2R R5, SR_TID.X
-  %"ThreadIdx" = call i32 @"thread_idx"()
+  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"ThreadIdx", ptr %"R5"
   ; IMAD.MOV R0, RZ, RZ, -R3
   %".77" = load i32, ptr %"R3"
@@ -2687,7 +2685,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"add.14" = add i32 %"mul.8", %".119"
   store i32 %"add.14", ptr %"R0"
   ; S2R R7, SR_TID.Y
-  %"ThreadIdx.1" = call i32 @"thread_idx"()
+  %"ThreadIdx.1" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"ThreadIdx.1", ptr %"R7"
   ; ISETP.NE.AND P2, PT, RZ, c[0x0][0x174], PT
   %".124" = load i1, ptr %"PT"
@@ -3747,7 +3745,7 @@ Entry_.text._Z4reluPfS_i:
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
   store i32 %"nvvm_ctaid_x", ptr %"R4"
   ; S2R R3, SR_TID.X
-  %"ThreadIdx" = call i32 @"thread_idx"()
+  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"ThreadIdx", ptr %"R3"
   ; IMAD R4, R4, c[0x0][0x0], R3
   %".16" = load i32, ptr %"R4"
@@ -4258,13 +4256,13 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"add.1" = add i32 %"add", 0
   store i32 %"add.1", ptr %"UR5"
   ; S2R R4, SR_TID.Y
-  %"ThreadIdx" = call i32 @"thread_idx"()
+  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"ThreadIdx", ptr %"R4"
   ; S2R R2, SR_CTAID.X
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
   store i32 %"nvvm_ctaid_x", ptr %"R2"
   ; S2R R5, SR_TID.X
-  %"ThreadIdx.1" = call i32 @"thread_idx"()
+  %"ThreadIdx.1" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"ThreadIdx.1", ptr %"R5"
   ; S2R R0, SR_CTAID.Z
   %"nvvm_ctaid_z" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.z"()
