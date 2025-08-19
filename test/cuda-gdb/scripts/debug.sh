@@ -25,3 +25,5 @@ fi
 cuda-gdb ./test_exec \
     -ex "set breakpoint pending on" \
     -ex "b $KERNEL_NAME"
+
+rm test_exec
