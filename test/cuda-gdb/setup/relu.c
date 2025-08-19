@@ -51,6 +51,6 @@ void launch_kernel(CUfunction kernel_func, CUdeviceptr d_input, CUdeviceptr d_ou
         0,                 // shared memory
         0,                 // stream
         args,
-        nullptr
+        NULL
     ));
 }
