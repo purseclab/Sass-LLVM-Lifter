@@ -23,4 +23,4 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
     chmod +x /usr/local/bin/yq
 
 # CMD ["sh", "-c", "ls -al && pwd && tree /app && nvcc --version && cuobjdump --version"]
-CMD ["sh", "-c", "./debug.sh"]
+CMD ["sh", "-c", "./scripts/debug.sh"]
