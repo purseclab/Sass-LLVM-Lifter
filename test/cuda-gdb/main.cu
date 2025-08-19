@@ -19,6 +19,7 @@ extern "C" {
     void prepare_input(float** h_input, float** h_output, int* size, size_t* bytes);
     void print_output(float* h_output, int size);
     void cleanup_host(float* h_input, float* h_output);
+    void launch_kernel(CUfunction kernel_func, CUdeviceptr d_input, CUdeviceptr d_output, int size);
 }
 
 int main() {
@@ -73,22 +74,8 @@ int main() {
     // Copy input to device
     CHECK_CU(cuMemcpyHtoD(d_input, h_input, bytes));
 
-    // Kernel launch configuration (assuming 1D grid/block for simplicity)
-    int threads = 256;
-    int blocks = (size + threads - 1) / threads;
-
-    void *args[] = { &d_input, &d_output, &size };
-
-    // Launch kernel
-    CHECK_CU(cuLaunchKernel(
-        kernel_func,
-        blocks, 1, 1,      // grid
-        threads, 1, 1,     // block
-        0,                 // shared memory
-        0,                 // stream
-        args,
-        nullptr
-    ));
+    // Launch kernel using the setup function
+    launch_kernel(kernel_func, d_input, d_output, size);
 
     // Wait for kernel to finish
     CHECK_CU(cuCtxSynchronize());
