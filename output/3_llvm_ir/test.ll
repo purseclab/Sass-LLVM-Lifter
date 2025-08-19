@@ -187,7 +187,7 @@ block_0xf8:
   br label %"exit"
 }
 
-define void @"_Z8fc_layerPfS_S_S_ii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", ptr %"Arg_3", i32 %"Arg_4", i32 %"Arg_5")
+define ptx_kernel void @"_Z8fc_layerPfS_S_S_ii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", ptr %"Arg_3", i32 %"Arg_4", i32 %"Arg_5")
 {
 Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"R1" = alloca i32, i32 1
@@ -2139,7 +2139,7 @@ declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
 
-define void @"_Z10max_pool2dPfS_iii"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4")
+define ptx_kernel void @"_Z10max_pool2dPfS_iii"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4")
 {
 Entry_.text._Z10max_pool2dPfS_iii:
   %"R1" = alloca i32, i32 1
@@ -3345,7 +3345,7 @@ declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.z"()
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.y"()
 
-define void @"_Z4reluPfS_i"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2")
+define ptx_kernel void @"_Z4reluPfS_i"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2")
 {
 Entry_.text._Z4reluPfS_i:
   %"R1" = alloca i32, i32 1
@@ -3843,7 +3843,7 @@ ExitFunction:
   ret void
 }
 
-define void @"_Z6conv2dPfS_S_iiii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6")
+define ptx_kernel void @"_Z6conv2dPfS_S_iiii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", i32 %"Arg_3", i32 %"Arg_4", i32 %"Arg_5", i32 %"Arg_6")
 {
 Entry_.text._Z6conv2dPfS_S_iiii:
   %"R1" = alloca i32, i32 1

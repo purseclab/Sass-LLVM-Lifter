@@ -530,13 +530,13 @@ $L__BB2_22:                             // %exit
                                         // -- End function
 }
 	// .globl	_Z8fc_layerPfS_S_S_ii   // -- Begin function _Z8fc_layerPfS_S_S_ii
-.visible .func _Z8fc_layerPfS_S_S_ii(
-	.param .b64 _Z8fc_layerPfS_S_S_ii_param_0,
-	.param .b64 _Z8fc_layerPfS_S_S_ii_param_1,
-	.param .b64 _Z8fc_layerPfS_S_S_ii_param_2,
-	.param .b64 _Z8fc_layerPfS_S_S_ii_param_3,
-	.param .b32 _Z8fc_layerPfS_S_S_ii_param_4,
-	.param .b32 _Z8fc_layerPfS_S_S_ii_param_5
+.visible .entry _Z8fc_layerPfS_S_S_ii(
+	.param .u64 .ptr .align 1 _Z8fc_layerPfS_S_S_ii_param_0,
+	.param .u64 .ptr .align 1 _Z8fc_layerPfS_S_S_ii_param_1,
+	.param .u64 .ptr .align 1 _Z8fc_layerPfS_S_S_ii_param_2,
+	.param .u64 .ptr .align 1 _Z8fc_layerPfS_S_S_ii_param_3,
+	.param .u32 _Z8fc_layerPfS_S_S_ii_param_4,
+	.param .u32 _Z8fc_layerPfS_S_S_ii_param_5
 )                                       // @_Z8fc_layerPfS_S_S_ii
 {
 	.reg .pred 	%p<17>;
@@ -811,12 +811,12 @@ $L__BB3_14:                             // %ExitFunction
                                         // -- End function
 }
 	// .globl	_Z10max_pool2dPfS_iii   // -- Begin function _Z10max_pool2dPfS_iii
-.visible .func _Z10max_pool2dPfS_iii(
-	.param .b64 _Z10max_pool2dPfS_iii_param_0,
-	.param .b64 _Z10max_pool2dPfS_iii_param_1,
-	.param .b32 _Z10max_pool2dPfS_iii_param_2,
-	.param .b32 _Z10max_pool2dPfS_iii_param_3,
-	.param .b32 _Z10max_pool2dPfS_iii_param_4
+.visible .entry _Z10max_pool2dPfS_iii(
+	.param .u64 .ptr .align 1 _Z10max_pool2dPfS_iii_param_0,
+	.param .u64 .ptr .align 1 _Z10max_pool2dPfS_iii_param_1,
+	.param .u32 _Z10max_pool2dPfS_iii_param_2,
+	.param .u32 _Z10max_pool2dPfS_iii_param_3,
+	.param .u32 _Z10max_pool2dPfS_iii_param_4
 )                                       // @_Z10max_pool2dPfS_iii
 {
 	.reg .pred 	%p<15>;
@@ -962,10 +962,10 @@ $L__BB4_14:                             // %.L_x_9_split_0x04d0
                                         // -- End function
 }
 	// .globl	_Z4reluPfS_i            // -- Begin function _Z4reluPfS_i
-.visible .func _Z4reluPfS_i(
-	.param .b64 _Z4reluPfS_i_param_0,
-	.param .b64 _Z4reluPfS_i_param_1,
-	.param .b32 _Z4reluPfS_i_param_2
+.visible .entry _Z4reluPfS_i(
+	.param .u64 .ptr .align 1 _Z4reluPfS_i_param_0,
+	.param .u64 .ptr .align 1 _Z4reluPfS_i_param_1,
+	.param .u32 _Z4reluPfS_i_param_2
 )                                       // @_Z4reluPfS_i
 {
 	.reg .pred 	%p<3>;
@@ -996,14 +996,14 @@ $L__BB5_2:                              // %ExitFunction
                                         // -- End function
 }
 	// .globl	_Z6conv2dPfS_S_iiii     // -- Begin function _Z6conv2dPfS_S_iiii
-.visible .func _Z6conv2dPfS_S_iiii(
-	.param .b64 _Z6conv2dPfS_S_iiii_param_0,
-	.param .b64 _Z6conv2dPfS_S_iiii_param_1,
-	.param .b64 _Z6conv2dPfS_S_iiii_param_2,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_3,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_4,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_5,
-	.param .b32 _Z6conv2dPfS_S_iiii_param_6
+.visible .entry _Z6conv2dPfS_S_iiii(
+	.param .u64 .ptr .align 1 _Z6conv2dPfS_S_iiii_param_0,
+	.param .u64 .ptr .align 1 _Z6conv2dPfS_S_iiii_param_1,
+	.param .u64 .ptr .align 1 _Z6conv2dPfS_S_iiii_param_2,
+	.param .u32 _Z6conv2dPfS_S_iiii_param_3,
+	.param .u32 _Z6conv2dPfS_S_iiii_param_4,
+	.param .u32 _Z6conv2dPfS_S_iiii_param_5,
+	.param .u32 _Z6conv2dPfS_S_iiii_param_6
 )                                       // @_Z6conv2dPfS_S_iiii
 {
 	.reg .pred 	%p<7>;
