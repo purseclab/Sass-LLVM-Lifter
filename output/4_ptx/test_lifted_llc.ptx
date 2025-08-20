@@ -890,7 +890,7 @@ $L__BB4_2:                              // %.text._Z10max_pool2dPfS_iii_split_0x
 	add.s64 	%rd4, %rd3, %rd1;
 	ld.f32 	%f1, [%rd4];
 	add.s64 	%rd5, %rd3, %rd2;
-	setp.gt.f32 	%p2, %f1, 0f00000000;
+	setp.lt.f32 	%p2, %f1, 0f00000000;
 	selp.f32 	%f2, 0f00000000, %f1, %p2;
 	st.f32 	[%rd5], %f2;
 $L__BB5_2:                              // %ExitFunction

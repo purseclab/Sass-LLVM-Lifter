@@ -215,14 +215,16 @@ class Operand:
 
         elif self.isPReg:
             if self.reg == "PT":
-                return llvmir.Constant(llvmir.IntType(1), 1)
-            if self.reg == "UPT":
-                return llvmir.Constant(llvmir.IntType(1), 1)
-            IRVal = IRRegs[self.getRegName()]
-            IRVal = IRBuilder.load(IRVal)
+                # NOTE: it could be !PT
+                IRVal = llvmir.Constant(llvmir.IntType(1), 1)
+            elif self.reg == "UPT":
+                IRVal = llvmir.Constant(llvmir.IntType(1), 1)
+            else:
+                IRVal = IRRegs[self.getRegName()]
+                IRVal = IRBuilder.load(IRVal)
 
             if self.preg_not:
-                IRVal = IRBuilder.neg(IRVal)    
+                IRVal = IRBuilder.not_(IRVal)
             return IRVal
         
         elif self.isConst:
