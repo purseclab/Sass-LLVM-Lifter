@@ -6,6 +6,7 @@ import itertools
 from dataclasses import dataclass
 from typing import Any, Dict, List, Tuple, Optional
 import datetime
+import colorama
 
 import pycuda.driver as drv
 import pycuda.autoinit  # safe: creates initial context on default device; we'll still create contexts per device if needed
@@ -309,7 +310,7 @@ class PTXTestRunner:
             #     print("---------------")
             #     print(h_output)
             #     print("---------------")
-            #     print(diffs)
+            #     print(ref_out)
             # exit(1)
             mask = almost_equal_elemwise(ref_out, h_output, tol.abs, tol.rel)
             num_failed = int(np.count_nonzero(~mask))
@@ -378,6 +379,14 @@ class PTXTestRunner:
             if out_arr is None or bm_arr is None:
                 raise RuntimeError("benchmark comparison expects 'output' arg")
             diffs = np.abs(bm_arr - out_arr)
+            # with np.printoptions(threshold=np.inf, precision=6, suppress=True):
+            #     print(outputs.get("input"))
+            #     print("---------------")
+            #     print(bm_arr)
+            #     print("---------------")
+            #     print(out_arr)
+            # exit(1)
+            
             max_abs = float(diffs.max())
             mean_abs = float(diffs.mean())
             mask = almost_equal_elemwise(bm_arr, out_arr, tol.abs, tol.rel)
