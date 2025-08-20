@@ -1,3 +1,4 @@
+// main.cu (generic driver with setup abstraction)
 #include <cstdio>
 #include <cstdlib>
 #include <cuda.h>
@@ -14,12 +15,24 @@
     } \
 } while(0)
 
-// Declarations for external functions from the setup C file
+// Unified interface that every setup.c must provide
 extern "C" {
-    void prepare_input(float** h_input, float** h_output, int* size, size_t* bytes);
-    void print_output(float* h_output, int size);
-    void cleanup_host(float* h_input, float* h_output);
-    void launch_kernel(CUfunction kernel_func, CUdeviceptr d_input, CUdeviceptr d_output, int size);
+    // Allocates and prepares host inputs/outputs
+    void prepare_input(void** h_inputs, int* num_inputs,
+                       void** h_outputs, int* num_outputs,
+                       size_t** input_sizes, size_t** output_sizes);
+
+    // Prints a subset of output for debugging
+    void print_output(void** h_outputs, int num_outputs, size_t* output_sizes);
+
+    // Frees host memory
+    void cleanup_host(void** h_inputs, int num_inputs,
+                      void** h_outputs, int num_outputs);
+
+    // Launches kernel with its own launch config
+    void launch_kernel(CUfunction kernel_func,
+                       CUdeviceptr* d_inputs, int num_inputs,
+                       CUdeviceptr* d_outputs, int num_outputs);
 }
 
 int main() {
@@ -43,57 +56,60 @@ int main() {
         return 1;
     }
 
-    // Prepare host input/output using the linked setup function
-    float *h_input, *h_output;
-    int size;
-    size_t bytes;
-    prepare_input(&h_input, &h_output, &size, &bytes);
+    // Host buffers (abstracted arrays of pointers + sizes)
+    void* h_inputs[8];   int num_inputs = 0;   size_t* input_sizes = nullptr;
+    void* h_outputs[8];  int num_outputs = 0;  size_t* output_sizes = nullptr;
+
+    // Prepare input/output (kernel-specific implementation)
+    prepare_input(h_inputs, &num_inputs,
+                  h_outputs, &num_outputs,
+                  &input_sizes, &output_sizes);
 
     // Initialize CUDA driver
     CHECK_CU(cuInit(0));
-
     CUdevice dev;
     CHECK_CU(cuDeviceGet(&dev, 0));
-
     CUcontext ctx;
     CHECK_CU(cuCtxCreate(&ctx, 0, dev));
 
-    // Load PTX module from config
+    // Load PTX module and kernel
     CUmodule module;
     CHECK_CU(cuModuleLoad(&module, ptx_file.c_str()));
-
-    // Get kernel function handle from config
     CUfunction kernel_func;
     CHECK_CU(cuModuleGetFunction(&kernel_func, module, kernel_name.c_str()));
 
-    // Allocate device memory
-    CUdeviceptr d_input, d_output;
-    CHECK_CU(cuMemAlloc(&d_input, bytes));
-    CHECK_CU(cuMemAlloc(&d_output, bytes));
+    // Allocate device memory for all inputs/outputs
+    CUdeviceptr d_inputs[8];
+    CUdeviceptr d_outputs[8];
+    for (int i = 0; i < num_inputs; i++) {
+        CHECK_CU(cuMemAlloc(&d_inputs[i], input_sizes[i]));
+        CHECK_CU(cuMemcpyHtoD(d_inputs[i], h_inputs[i], input_sizes[i]));
+    }
+    for (int i = 0; i < num_outputs; i++) {
+        CHECK_CU(cuMemAlloc(&d_outputs[i], output_sizes[i]));
+    }
 
-    // Copy input to device
-    CHECK_CU(cuMemcpyHtoD(d_input, h_input, bytes));
-
-    // Launch kernel using the setup function
-    launch_kernel(kernel_func, d_input, d_output, size);
-
-    // Wait for kernel to finish
+    // Launch kernel (delegated to setup)
+    launch_kernel(kernel_func, d_inputs, num_inputs, d_outputs, num_outputs);
     CHECK_CU(cuCtxSynchronize());
 
-    // Copy result back
-    CHECK_CU(cuMemcpyDtoH(h_output, d_output, bytes));
+    // Copy results back
+    for (int i = 0; i < num_outputs; i++) {
+        CHECK_CU(cuMemcpyDtoH(h_outputs[i], d_outputs[i], output_sizes[i]));
+    }
 
-    // Print output using the linked setup function
-    print_output(h_output, size);
+    // Print kernel-specific output
+    print_output(h_outputs, num_outputs, output_sizes);
 
-    // Cleanup device
-    CHECK_CU(cuMemFree(d_input));
-    CHECK_CU(cuMemFree(d_output));
+    // Free device memory
+    for (int i = 0; i < num_inputs; i++) CHECK_CU(cuMemFree(d_inputs[i]));
+    for (int i = 0; i < num_outputs; i++) CHECK_CU(cuMemFree(d_outputs[i]));
+
     CHECK_CU(cuModuleUnload(module));
     CHECK_CU(cuCtxDestroy(ctx));
 
-    // Cleanup host using the linked setup function
-    cleanup_host(h_input, h_output);
+    // Free host memory
+    cleanup_host(h_inputs, num_inputs, h_outputs, num_outputs);
 
     return 0;
 }
