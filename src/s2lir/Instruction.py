@@ -68,7 +68,7 @@ class Instruction:
         if (op == "GE"):
             return ">="
 
-        return None
+        raise InvalidSyntaxException
     
     def getRegs(self, Regs : dict[str, Operand]):
         # Collect registers used in instructions (In Reg, PReg and Ptr)

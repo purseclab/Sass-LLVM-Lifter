@@ -405,7 +405,7 @@ class Operand:
         if (content.startswith("!") and content[1:] in SM_75_Predicate_Reg_Set) or content in SM_75_Predicate_Reg_Set:
             self.isPReg = True
             self.reg = content[1:] if content.startswith("!") else content
-            self.preg_not = False if content.startswith("!") else True
+            self.preg_not = True if content.startswith("!") else False
             return
 
         # Common Registers R2 
