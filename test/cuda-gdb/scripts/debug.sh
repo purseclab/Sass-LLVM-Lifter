@@ -2,6 +2,13 @@
 
 set -e
 
+cleanup() {
+    echo "Cleaning up..."
+    rm test_exec
+}
+
+trap cleanup EXIT
+
 CONFIG="config.yaml"
 
 # Extract input_file from YAML
@@ -22,8 +29,13 @@ else
     echo "Compilation failed."
 fi
 
+
+# Pre-screening with compute-sanitizer
+compute-sanitizer ./test_exec
+
+
 cuda-gdb ./test_exec \
     -ex "set breakpoint pending on" \
     -ex "b $KERNEL_NAME"
 
-rm test_exec
+# rm test_exec
