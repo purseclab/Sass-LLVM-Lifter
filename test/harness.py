@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, List, Tuple, Optional
 import datetime
 import colorama
+import host_reference
 
 import pycuda.driver as drv
 import pycuda.autoinit  # safe: creates initial context on default device; we'll still create contexts per device if needed
@@ -299,7 +300,7 @@ class PTXTestRunner:
             function = verification.get("function", "relu")
             
             if function == "relu":
-                ref_out = np.maximum(0.0, h_input)  # ReLU host reference
+                ref_out = host_reference.relu(h_input)
             else:
                 raise NotImplementedError
             diffs = np.abs(ref_out - h_output)
