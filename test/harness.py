@@ -216,11 +216,12 @@ class PTXTestRunner:
         Also includes original host_buffers (inputs) under their names (copied).
         """
         out = {}
+        func_results = []
         di = 0
-        for a in arg_descs:
+        for i, a in enumerate(arg_descs):
             typ = a["type"]
             if typ.endswith("*"):
-                name = a["name"]
+                name = f"arg_{i}_{a['name']}"
                 size = int(a["size"])
                 base = typ[:-1].strip()
                 if base == "float":
@@ -228,13 +229,15 @@ class PTXTestRunner:
                     dptr = device_args[di]
                     drv.memcpy_dtoh(arr, dptr)
                     out[name] = arr
+                    if a.get("output", False):
+                        func_results.append(arr)
+                    
+                else:
+                    raise NotImplementedError
                 di += 1
             else:
                 di += 1
-        # include host-copies of inputs (for reproducibility)
-        for k,v in host_buffers.items():
-            out[f"host_{k}"] = v.copy()
-        return out
+        return out, func_results
 
     def run_kernel_and_time(self, module, func_name: str, device_args: List[Any], grid: Dict[str,int], block: Dict[str,int]) -> float:
         func = module.get_function(func_name)
@@ -286,20 +289,23 @@ class PTXTestRunner:
 
         elapsed_ms = self.run_kernel_and_time(module, func_name, device_args, grid_cfg, block_cfg)
 
-        outputs = self.readback_outputs(arg_descs, device_args, host_inputs)
+        outputs, func_results = self.readback_outputs(arg_descs, device_args, host_inputs)
 
         mode = verification.get("mode", "host_reference")
         # ========= host reference mode =========
         if mode == "host_reference":
-            # assume argument names 'input' and 'output' exist
-            h_input = outputs.get("input") # or outputs.get("host_input")
-            h_output = outputs.get("output")
-            if h_input is None or h_output is None:
-                raise RuntimeError("host_reference expects args named 'input' and 'output' in test config")
             
             function = verification.get("function", "relu")
             
             if function == "relu":
+                h_input = outputs.get("arg_0_input") # or outputs.get("host_input")
+                h_output = outputs.get("arg_1_output")
+                print(func_results)
+                assert len(func_results) == 1
+                print(h_output)
+                assert np.array_equal(func_results[0], h_output)
+                if h_input is None or h_output is None:
+                    raise RuntimeError("host_reference expects args named 'input' and 'output' in test config")
                 ref_out = host_reference.relu(h_input)
             else:
                 raise NotImplementedError
@@ -364,35 +370,43 @@ class PTXTestRunner:
             # readback outputs from benchmark (same logic)
             bm_outs = {}
             di = 0
-            for a in arg_descs:
+            bm_arr = []
+            for i, a in enumerate(arg_descs):
                 if a["type"].endswith("*"):
-                    name = a["name"]
+                    name = f"arg_{i}_{a['name']}"
                     size = int(a["size"])
                     arr = np.empty(size, dtype=np.float32)
                     drv.memcpy_dtoh(arr, bm_device_args[di])
                     bm_outs[name] = arr
+                    if a.get("output", False):
+                        bm_arr.append(arr)
+                    
                     di += 1
                 else:
                     di += 1
             # compare output arrays between module run (outputs) and benchmark (bm_outs)
-            out_arr = outputs.get("output")
-            bm_arr = bm_outs.get("output")
-            if out_arr is None or bm_arr is None:
-                raise RuntimeError("benchmark comparison expects 'output' arg")
-            diffs = np.abs(bm_arr - out_arr)
-            # with np.printoptions(threshold=np.inf, precision=6, suppress=True):
-            #     print(outputs.get("input"))
-            #     print("---------------")
-            #     print(bm_arr)
-            #     print("---------------")
-            #     print(out_arr)
-            # exit(1)
+            out_arr = func_results
             
-            max_abs = float(diffs.max())
-            mean_abs = float(diffs.mean())
-            mask = almost_equal_elemwise(bm_arr, out_arr, tol.abs, tol.rel)
-            num_failed = int(np.count_nonzero(~mask))
-            passed = num_failed == 0
+            if out_arr is None or bm_arr is None or len(out_arr) == 0 or len(bm_arr) == 0:
+                raise RuntimeError("benchmark comparison expects 'output' arg")
+            
+            assert len(out_arr) == len(bm_arr)
+            passed = True
+            for idx in range(len(out_arr)):
+                diffs = np.abs(bm_arr[idx] - out_arr[idx])
+                # with np.printoptions(threshold=np.inf, precision=6, suppress=True):
+                #     print(outputs.get("input"))
+                #     print("---------------")
+                #     print(bm_arr)
+                #     print("---------------")
+                #     print(out_arr)
+                # exit(1)
+                
+                max_abs = float(diffs.max())
+                mean_abs = float(diffs.mean())
+                mask = almost_equal_elemwise(bm_arr[idx], out_arr[idx], tol.abs, tol.rel)
+                num_failed = int(np.count_nonzero(~mask))
+                passed = passed and num_failed == 0
             if not passed and save_on_fail:
                 meta = {"test_cfg": test_cfg, "elapsed_ms": elapsed_ms, "benchmark_elapsed_ms": bm_elapsed}
                 try:

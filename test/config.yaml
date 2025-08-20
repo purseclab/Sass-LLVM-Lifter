@@ -17,6 +17,7 @@ tests:
         type: float*
         size: 1024
         init: zeros
+        output: true
       - name: size
         type: int
         value: 1024
@@ -51,6 +52,7 @@ tests:
         type: float*
         size: 4096
         init: zeros
+        output: true
       - name: size
         type: int
         value: 4096
