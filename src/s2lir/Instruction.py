@@ -271,7 +271,8 @@ class Instruction:
             # IRBuilder.comment("IMAD Instruction")
             
             settings = {
-                "wide": False
+                "wide": False,
+                "mov": False
             }
             
             for mod in self.modifiers:
@@ -279,6 +280,17 @@ class Instruction:
                     # implemented according to https://cbr.stanford.edu/seminarTalks/slides_20230526_niall_emmart.pptx
                     settings["wide"] = True
                     continue
+                elif mod == "MOV" or mod == "IADD":
+                    # just compiler informing the reader that IMAD is essentially performing MOV/IADD
+                    # https://stackoverflow.com/questions/59777333/combined-format-of-sass-instructions
+                    continue
+                elif mod == "U32" or mod == "X" or mod == "HI":
+                    # TODO handle these
+                    continue
+                else:
+                    print(self)
+                    print("Not implemented Mod:", mod)
+                    raise NotImplementedError
                     
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
