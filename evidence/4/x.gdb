@@ -146,4 +146,63 @@ p $P2
 # P2 is reseted to 0 after the operation. R4 = R4 + 0x40 + RZ
 
 
+delete
+
+python
+set_breakpoints_at_instructions(
+    function_name="fc_layer",
+    instruction_pattern=r"\sIADD3.*P.*, R.*",  # Regex pattern for MUFU instructions
+)
+end
+r
+
+# -- Test IADD3 R4, P2, R4, 0x40, RZ
+x/i $pc
+p $P2
+p $R4
+
+# 4294967295-4*16+1 , where 4294967295 is the maximium unsigned 32 bit int
+set $R4 = 4294967232
+p $R4
+ni
+p $R4
+p $P2
+
+# $22 = 1
+# $23 = -819956736
+# $24 = -64
+
+# $25 = 0
+# $26 = 1
+
+# we successfully set P2 to 1! (previously it's always set to 0), this shows that it's probably an overflow bit. we also noted that signed 32 bit int max doesnt cause P2 to be set to 1, as shown below:
+
+delete
+
+python
+set_breakpoints_at_instructions(
+    function_name="fc_layer",
+    instruction_pattern=r"\sIADD3.*P.*, R.*",  # Regex pattern for MUFU instructions
+)
+end
+r
+
+# -- Test IADD3 R4, P2, R4, 0x40, RZ
+x/i $pc
+p $P2
+p $R4
+# 2147483647-4*16+1 , where 2147483647 is the maximium signed 32 bit int
+set $R4 = 2147483584
+p $R4
+ni
+p $R4
+p $P2
+
+# $27 = 1
+# $28 = -819956736
+# $29 = 2147483584
+
+# $30 = -2147483648
+# $31 = 0
+
 q
