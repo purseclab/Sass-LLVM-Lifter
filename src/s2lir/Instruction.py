@@ -1081,8 +1081,8 @@ class Instruction:
             assert ResOp.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
             if len(self.operands) == 4:
-                sum = IRBuilder.sum(IRValOp1, IRValOp2)
-                sum = IRBuilder.sum(sum, IRValOp3)
+                sum = IRBuilder.add(IRValOp1, IRValOp2)
+                sum = IRBuilder.add(sum, IRValOp3)
                 ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
             elif len(self.operands) == 5:
                 # NOTE: we're using uadd overflow because based on emphirical experiment, iadd's overflowpred is only set when it's during unsigned overflow and not signed overflow
