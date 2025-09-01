@@ -1,0 +1,218 @@
+Script started on 2025-09-01 05:35:34+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="123" LINES="45"]
+NVIDIA (R) CUDA Debugger
+CUDA Toolkit 12.1 release
+Portions Copyright (C) 2007-2023 NVIDIA Corporation
+[35;1mGNU gdb (GDB) 12.1[m
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-pc-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from [32mtest[m...
+Breakpoint 1 at [34m0xc4a0[m: file [32minput/test.cu[m, line 90.
+warning: Error disabling address space randomization: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "[32m/usr/lib/x86_64-linux-gnu/libthread_db.so.1[m".
+[New Thread 0x7a40faf18000 (LWP 54)]
+[New Thread 0x7a40f9bff000 (LWP 55)]
+[Detaching after fork from child process 56]
+[New Thread 0x7a40f3fff000 (LWP 63)]
+[New Thread 0x7a40f2654000 (LWP 64)]
+Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
+=> 0x00007a40e3a42200 <+0>:	MOV R1, c[0x0][0x28] 
+   0x00007a40e3a42210 <+16>:	S2R R0, SR_CTAID.X 
+   0x00007a40e3a42220 <+32>:	S2R R3, SR_TID.X 
+   0x00007a40e3a42230 <+48>:	IMAD R0, R0, c[0x0][0x0], R3 
+   0x00007a40e3a42240 <+64>:	ISETP.GE.AND P0, PT, R0, c[0x0][0x184], PT 
+   0x00007a40e3a42250 <+80>:	@P0 EXIT 
+   0x00007a40e3a42260 <+96>:	MOV R4, c[0x0][0x180] 
+   0x00007a40e3a42270 <+112>:	IMAD.MOV.U32 R7, RZ, RZ, RZ 
+   0x00007a40e3a42280 <+128>:	ISETP.GE.AND P0, PT, R4, 0x1, PT 
+   0x00007a40e3a42290 <+144>:	@!P0 BRA 0xa00 
+   0x00007a40e3a422a0 <+160>:	IADD3 R2, R4.reuse, -0x1, RZ 
+   0x00007a40e3a422b0 <+176>:	LOP3.LUT R4, R4, 0x3, RZ, 0xc0, !PT 
+   0x00007a40e3a422c0 <+192>:	ISETP.GE.U32.AND P0, PT, R2, 0x3, PT 
+   0x00007a40e3a422d0 <+208>:	MOV R7, RZ 
+   0x00007a40e3a422e0 <+224>:	MOV R5, RZ 
+   0x00007a40e3a422f0 <+240>:	@!P0 BRA 0x8e0 
+   0x00007a40e3a42300 <+256>:	IADD3 R6, -R4, c[0x0][0x180], RZ 
+   0x00007a40e3a42310 <+272>:	IMAD R2, R0, c[0x0][0x180], RZ 
+   0x00007a40e3a42320 <+288>:	ULDC.64 UR4, c[0x0][0x160] 
+   0x00007a40e3a42330 <+304>:	IMAD.MOV.U32 R3, RZ, RZ, 0x4 
+   0x00007a40e3a42340 <+320>:	ISETP.GT.AND P0, PT, R6, RZ, PT 
+   0x00007a40e3a42350 <+336>:	MOV R7, RZ 
+   0x00007a40e3a42360 <+352>:	IMAD.WIDE R2, R2, R3, c[0x0][0x168] 
+   0x00007a40e3a42370 <+368>:	MOV R5, RZ 
+   0x00007a40e3a42380 <+384>:	@!P0 BRA 0x780 
+   0x00007a40e3a42390 <+400>:	ISETP.GT.AND P1, PT, R6, 0xc, PT 
+   0x00007a40e3a423a0 <+416>:	PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0 
+   0x00007a40e3a423b0 <+432>:	@!P1 BRA 0x550 
+   0x00007a40e3a423c0 <+448>:	PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 
+   0x00007a40e3a423d0 <+464>:	LDG.E.SYS R8, [R2] 
+   0x00007a40e3a423e0 <+480>:	LDG.E.SYS R9, [UR4] 
+   0x00007a40e3a423f0 <+496>:	LDG.E.SYS R11, [R2+0x4] 
+   0x00007a40e3a42400 <+512>:	LDG.E.SYS R10, [UR4+0x4] 
+   0x00007a40e3a42410 <+528>:	LDG.E.SYS R13, [R2+0x8] 
+   0x00007a40e3a42420 <+544>:	LDG.E.SYS R12, [UR4+0x8] 
+   0x00007a40e3a42430 <+560>:	LDG.E.SYS R15, [R2+0xc] 
+   0x00007a40e3a42440 <+576>:	LDG.E.SYS R14, [UR4+0xc] 
+   0x00007a40e3a42450 <+592>:	LDG.E.SYS R17, [R2+0x10] 
+   0x00007a40e3a42460 <+608>:	LDG.E.SYS R16, [UR4+0x10] 
+   0x00007a40e3a42470 <+624>:	LDG.E.SYS R19, [R2+0x14] 
+   0x00007a40e3a42480 <+640>:	LDG.E.SYS R18, [UR4+0x14] 
+   0x00007a40e3a42490 <+656>:	LDG.E.SYS R21, [R2+0x18] 
+   0x00007a40e3a424a0 <+672>:	LDG.E.SYS R20, [UR4+0x18] 
+   0x00007a40e3a424b0 <+688>:	LDG.E.SYS R23, [R2+0x1c] 
+   0x00007a40e3a424c0 <+704>:	LDG.E.SYS R22, [UR4+0x1c] 
+   0x00007a40e3a424d0 <+720>:	LDG.E.SYS R25, [R2+0x20] 
+   0x00007a40e3a424e0 <+736>:	LDG.E.SYS R24, [UR4+0x20] 
+   0x00007a40e3a424f0 <+752>:	LDG.E.SYS R27, [R2+0x24] 
+   0x00007a40e3a42500 <+768>:	LDG.E.SYS R26, [UR4+0x24] 
+   0x00007a40e3a42510 <+784>:	LDG.E.SYS R29, [R2+0x28] 
+   0x00007a40e3a42520 <+800>:	LDG.E.SYS R28, [UR4+0x28] 
+   0x00007a40e3a42530 <+816>:	LDG.E.SYS R31, [R2+0x2c] 
+   0x00007a40e3a42540 <+832>:	LDG.E.SYS R30, [UR4+0x2c] 
+   0x00007a40e3a42550 <+848>:	LDG.E.SYS R33, [R2+0x30] 
+   0x00007a40e3a42560 <+864>:	LDG.E.SYS R32, [UR4+0x30] 
+   0x00007a40e3a42570 <+880>:	LDG.E.SYS R35, [R2+0x34] 
+   0x00007a40e3a42580 <+896>:	LDG.E.SYS R34, [UR4+0x34] 
+   0x00007a40e3a42590 <+912>:	LDG.E.SYS R37, [R2+0x38] 
+   0x00007a40e3a425a0 <+928>:	LDG.E.SYS R36, [UR4+0x38] 
+   0x00007a40e3a425b0 <+944>:	LDG.E.SYS R39, [R2+0x3c] 
+   0x00007a40e3a425c0 <+960>:	LDG.E.SYS R38, [UR4+0x3c] 
+   0x00007a40e3a425d0 <+976>:	IADD3 R6, R6, -0x10, RZ 
+   0x00007a40e3a425e0 <+992>:	UIADD3 UR4, UP0, UR4, 0x40, URZ 
+   0x00007a40e3a425f0 <+1008>:	IADD3 R5, R5, 0x10, RZ 
+   0x00007a40e3a42600 <+1024>:	ISETP.GT.AND P1, PT, R6, 0xc, PT 
+   0x00007a40e3a42610 <+1040>:	UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT 
+   0x00007a40e3a42620 <+1056>:	IADD3 R2, P2, R2, 0x40, RZ 
+   0x00007a40e3a42630 <+1072>:	IMAD.X R3, RZ, RZ, R3, P2 
+   0x00007a40e3a42640 <+1088>:	FFMA R8, R8, R9, R7 
+   0x00007a40e3a42650 <+1104>:	FFMA R8, R11, R10, R8 
+   0x00007a40e3a42660 <+1120>:	FFMA R8, R13, R12, R8 
+   0x00007a40e3a42670 <+1136>:	FFMA R8, R15, R14, R8 
+   0x00007a40e3a42680 <+1152>:	FFMA R8, R17, R16, R8 
+   0x00007a40e3a42690 <+1168>:	FFMA R8, R19, R18, R8 
+   0x00007a40e3a426a0 <+1184>:	FFMA R8, R21, R20, R8 
+   0x00007a40e3a426b0 <+1200>:	FFMA R8, R23, R22, R8 
+   0x00007a40e3a426c0 <+1216>:	FFMA R8, R25, R24, R8 
+   0x00007a40e3a426d0 <+1232>:	FFMA R8, R27, R26, R8 
+   0x00007a40e3a426e0 <+1248>:	FFMA R8, R29, R28, R8 
+   0x00007a40e3a426f0 <+1264>:	FFMA R8, R31, R30, R8 
+   0x00007a40e3a42700 <+1280>:	FFMA R8, R33, R32, R8 
+   0x00007a40e3a42710 <+1296>:	FFMA R8, R35, R34, R8 
+   0x00007a40e3a42720 <+1312>:	FFMA R8, R37, R36, R8 
+   0x00007a40e3a42730 <+1328>:	FFMA R7, R39, R38, R8 
+   0x00007a40e3a42740 <+1344>:	@P1 BRA 0x1d0 
+   0x00007a40e3a42750 <+1360>:	ISETP.GT.AND P1, PT, R6, 0x4, PT 
+   0x00007a40e3a42760 <+1376>:	@!P1 BRA 0x760 
+   0x00007a40e3a42770 <+1392>:	LDG.E.SYS R8, [R2] 
+   0x00007a40e3a42780 <+1408>:	LDG.E.SYS R9, [UR4] 
+   0x00007a40e3a42790 <+1424>:	LDG.E.SYS R11, [R2+0x4] 
+   0x00007a40e3a427a0 <+1440>:	LDG.E.SYS R10, [UR4+0x4] 
+   0x00007a40e3a427b0 <+1456>:	LDG.E.SYS R13, [R2+0x8] 
+   0x00007a40e3a427c0 <+1472>:	LDG.E.SYS R12, [UR4+0x8] 
+   0x00007a40e3a427d0 <+1488>:	LDG.E.SYS R15, [R2+0xc] 
+   0x00007a40e3a427e0 <+1504>:	LDG.E.SYS R14, [UR4+0xc] 
+   0x00007a40e3a427f0 <+1520>:	LDG.E.SYS R17, [R2+0x10] 
+   0x00007a40e3a42800 <+1536>:	LDG.E.SYS R16, [UR4+0x10] 
+   0x00007a40e3a42810 <+1552>:	LDG.E.SYS R19, [R2+0x14] 
+   0x00007a40e3a42820 <+1568>:	LDG.E.SYS R18, [UR4+0x14] 
+   0x00007a40e3a42830 <+1584>:	LDG.E.SYS R21, [R2+0x18] 
+   0x00007a40e3a42840 <+1600>:	LDG.E.SYS R20, [UR4+0x18] 
+   0x00007a40e3a42850 <+1616>:	LDG.E.SYS R23, [R2+0x1c] 
+   0x00007a40e3a42860 <+1632>:	LDG.E.SYS R22, [UR4+0x1c] 
+   0x00007a40e3a42870 <+1648>:	UIADD3 UR4, UP0, UR4, 0x20, URZ 
+   0x00007a40e3a42880 <+1664>:	PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 
+   0x00007a40e3a42890 <+1680>:	IADD3 R5, R5, 0x8, RZ 
+   0x00007a40e3a428a0 <+1696>:	UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT 
+   0x00007a40e3a428b0 <+1712>:	IADD3 R2, P1, R2, 0x20, RZ 
+   0x00007a40e3a428c0 <+1728>:	IADD3 R6, R6, -0x8, RZ 
+   0x00007a40e3a428d0 <+1744>:	IADD3.X R3, RZ, R3, RZ, P1, !PT 
+   0x00007a40e3a428e0 <+1760>:	FFMA R8, R8, R9, R7 
+   0x00007a40e3a428f0 <+1776>:	FFMA R8, R11, R10, R8 
+   0x00007a40e3a42900 <+1792>:	FFMA R8, R13, R12, R8 
+   0x00007a40e3a42910 <+1808>:	FFMA R8, R15, R14, R8 
+   0x00007a40e3a42920 <+1824>:	FFMA R8, R17, R16, R8 
+   0x00007a40e3a42930 <+1840>:	FFMA R8, R19, R18, R8 
+   0x00007a40e3a42940 <+1856>:	FFMA R8, R21, R20, R8 
+   0x00007a40e3a42950 <+1872>:	FFMA R7, R23, R22, R8 
+   0x00007a40e3a42960 <+1888>:	ISETP.NE.OR P0, PT, R6, RZ, P0 
+   0x00007a40e3a42970 <+1904>:	@!P0 BRA 0x8e0 
+   0x00007a40e3a42980 <+1920>:	LDG.E.SYS R8, [R2] 
+   0x00007a40e3a42990 <+1936>:	LDG.E.SYS R9, [UR4] 
+   0x00007a40e3a429a0 <+1952>:	LDG.E.SYS R11, [R2+0x4] 
+   0x00007a40e3a429b0 <+1968>:	LDG.E.SYS R10, [UR4+0x4] 
+   0x00007a40e3a429c0 <+1984>:	LDG.E.SYS R13, [R2+0x8] 
+   0x00007a40e3a429d0 <+2000>:	LDG.E.SYS R12, [UR4+0x8] 
+   0x00007a40e3a429e0 <+2016>:	LDG.E.SYS R15, [R2+0xc] 
+   0x00007a40e3a429f0 <+2032>:	LDG.E.SYS R14, [UR4+0xc] 
+   0x00007a40e3a42a00 <+2048>:	IADD3 R6, R6, -0x4, RZ 
+   0x00007a40e3a42a10 <+2064>:	UIADD3 UR4, UP0, UR4, 0x10, URZ 
+   0x00007a40e3a42a20 <+2080>:	IADD3 R5, R5, 0x4, RZ 
+   0x00007a40e3a42a30 <+2096>:	ISETP.NE.AND P0, PT, R6, RZ, PT 
+   0x00007a40e3a42a40 <+2112>:	UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT 
+   0x00007a40e3a42a50 <+2128>:	FFMA R8, R8, R9, R7 
+   0x00007a40e3a42a60 <+2144>:	IADD3 R9, P1, R2, 0x10, RZ 
+   0x00007a40e3a42a70 <+2160>:	IMAD.MOV.U32 R2, RZ, RZ, R9 
+   0x00007a40e3a42a80 <+2176>:	FFMA R8, R11, R10, R8 
+   0x00007a40e3a42a90 <+2192>:	IADD3.X R10, RZ, R3, RZ, P1, !PT 
+   0x00007a40e3a42aa0 <+2208>:	MOV R3, R10 
+   0x00007a40e3a42ab0 <+2224>:	FFMA R8, R13, R12, R8 
+   0x00007a40e3a42ac0 <+2240>:	FFMA R7, R15, R14, R8 
+   0x00007a40e3a42ad0 <+2256>:	@P0 BRA 0x780 
+   0x00007a40e3a42ae0 <+2272>:	ISETP.NE.AND P0, PT, R4, RZ, PT 
+   0x00007a40e3a42af0 <+2288>:	@!P0 BRA 0xa00 
+   0x00007a40e3a42b00 <+2304>:	MOV R8, 0x4 
+   0x00007a40e3a42b10 <+2320>:	IMAD R2, R0, c[0x0][0x180], R5 
+   0x00007a40e3a42b20 <+2336>:	IMAD.WIDE R2, R2, R8, c[0x0][0x168] 
+   0x00007a40e3a42b30 <+2352>:	IMAD.WIDE R8, R5, R8, c[0x0][0x160] 
+   0x00007a40e3a42b40 <+2368>:	MOV R6, R2 
+   0x00007a40e3a42b50 <+2384>:	IMAD.MOV.U32 R2, RZ, RZ, R6 
+   0x00007a40e3a42b60 <+2400>:	LDG.E.SYS R5, [R8] 
+   0x00007a40e3a42b70 <+2416>:	LDG.E.SYS R2, [R2] 
+   0x00007a40e3a42b80 <+2432>:	IADD3 R4, R4, -0x1, RZ 
+   0x00007a40e3a42b90 <+2448>:	ISETP.NE.AND P0, PT, R4, RZ, PT 
+   0x00007a40e3a42ba0 <+2464>:	IADD3 R6, P1, R6, 0x4, RZ 
+   0x00007a40e3a42bb0 <+2480>:	IADD3 R8, P2, R8, 0x4, RZ 
+   0x00007a40e3a42bc0 <+2496>:	IADD3.X R3, RZ, R3, RZ, P1, !PT 
+   0x00007a40e3a42bd0 <+2512>:	IADD3.X R9, RZ, R9, RZ, P2, !PT 
+   0x00007a40e3a42be0 <+2528>:	FFMA R7, R2, R5, R7 
+   0x00007a40e3a42bf0 <+2544>:	@P0 BRA 0x950 
+   0x00007a40e3a42c00 <+2560>:	MOV R5, 0x4 
+   0x00007a40e3a42c10 <+2576>:	IMAD.WIDE R2, R0, R5, c[0x0][0x170] 
+   0x00007a40e3a42c20 <+2592>:	LDG.E.SYS R2, [R2] 
+   0x00007a40e3a42c30 <+2608>:	IMAD.WIDE R4, R0, R5, c[0x0][0x178] 
+   0x00007a40e3a42c40 <+2624>:	FADD R7, R2, R7 
+   0x00007a40e3a42c50 <+2640>:	STG.E.SYS [R4], R7 
+   0x00007a40e3a42c60 <+2656>:	EXIT 
+   0x00007a40e3a42c70 <+2672>:	BRA 0xa70
+End of assembler dump.
+
+Breakpoint 2 at [34m0x7a40e3a425e0[m
+Breakpoint 3 at [34m0x7a40e3a42610[m
+Breakpoint 4 at [34m0x7a40e3a42870[m
+Breakpoint 5 at [34m0x7a40e3a428a0[m
+Breakpoint 6 at [34m0x7a40e3a42a10[m
+Breakpoint 7 at [34m0x7a40e3a42a40[m
+Set 6 breakpoints for '\sUIADD3' instructions.
+Sanity check FAILED: No '\sUIADD3' at offset 1200[Switching focus to CUDA kernel 0, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
+
+Thread 1 "test" hit Breakpoint 2, [34m0x00007a40e3a425e0[m in [33mfc_layer(float*, float*, float*, float*, int, int)[m<<<(1,1,1),(256,1,1)>>> ()
+warning: Breakpoint 2 is disabled because device address may change on the next run.
+warning: Breakpoint 3 is disabled because device address may change on the next run.
+warning: Breakpoint 4 is disabled because device address may change on the next run.
+warning: Breakpoint 5 is disabled because device address may change on the next run.
+warning: Breakpoint 6 is disabled because device address may change on the next run.
+warning: Breakpoint 7 is disabled because device address may change on the next run.
+
+Script done on 2025-09-01 05:35:35+00:00 [COMMAND_EXIT_CODE="0"]

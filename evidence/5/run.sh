@@ -23,4 +23,4 @@ cd evidence/5
 # cuda-gdb -x x.gdb test
 
 
-cuda-gdb -x x.gdb test
+script -q -c "cuda-gdb -x x.gdb test" -O output.txt
