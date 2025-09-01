@@ -192,4 +192,56 @@ p $UP0
 # $28 = 19
 # $29 = 1
 
+
+c
+
+x/i $pc
+
+# -- Test 	UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT
+
+p (unsigned int) $UR5
+p $UP0
+ni
+p (unsigned int) $UR5
+p $UP0
+
+# $30 = 30983
+# $31 = 1
+
+# $32 = 30984
+# $33 = 1
+
+# Interestingly, if we do "c" here, it'll throw "CUDA Exception: Warp Misaligned Address; The exception was triggered at PC 0x718ef5a423e0; Thread 1 "test" received signal CUDA_EXCEPTION_6, Warp Misaligned Address."
+
+delete
+
+python
+set_breakpoints_at_instructions(
+    function_name="fc_layer",
+    instruction_pattern=r"\sUIADD3",  # Regex pattern for MUFU instructions
+    sanity_offset=992  # Optional offset for sanity check
+)
+end
+r
+c
+
+x/i $pc
+
+# -- Test 	UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT
+
+p (unsigned int) $UR5
+p $UP0
+set $UP0 = 0
+p $UP0
+ni
+p (unsigned int) $UR5
+p $UP0
+
+# $34 = 32184
+# $35 = 0
+# $36 = 0
+
+# $37 = 32184
+# $38 = 0
+
 q
