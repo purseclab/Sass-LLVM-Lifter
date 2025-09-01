@@ -1,4 +1,4 @@
-Script started on 2025-08-31 22:29:52-04:00 [TERM="xterm-256color" TTY="/dev/pts/21" COLUMNS="123" LINES="45"]
+Script started on 2025-09-01 12:49:56-04:00 [TERM="xterm-256color" TTY="/dev/pts/21" COLUMNS="123" LINES="45"]
 NVIDIA (R) CUDA Debugger
 11.5 release
 Portions Copyright (C) 2007-2021 NVIDIA Corporation
@@ -21,11 +21,11 @@ Reading symbols from [32mtest[m...
 Breakpoint 1 at [34m0xc4a0[m: file [32minput/test.cu[m, line 90.
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 3832965)]
-[New Thread 0x7fffef3ff000 (LWP 3832966)]
-[Detaching after fork from child process 3832967]
-[New Thread 0x7fffed9dd000 (LWP 3832977)]
-[New Thread 0x7fffed1dc000 (LWP 3832978)]
+[New Thread 0x7ffff4bff000 (LWP 3883602)]
+[New Thread 0x7fffef3ff000 (LWP 3883603)]
+[Detaching after fork from child process 3883604]
+[New Thread 0x7fffed9dd000 (LWP 3883614)]
+[New Thread 0x7fffed1dc000 (LWP 3883615)]
 Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 => 0x00007fffdb26b800 <+0>:	MOV R1, c[0x0][0x28] 
    0x00007fffdb26b810 <+16>:	S2R R0, SR_CTAID.X 
@@ -214,27 +214,93 @@ Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 End of assembler dump.
 
 Breakpoint 2 at [34m0x7fffdb26b8b0[m
+Instruction at 0x7fffdb26b8b0:
+   0x7fffdb26b8b0 <_Z8fc_layerPfS_S_S_ii+176>:	IADD3 R2, R6.reuse, -0x1, RZ 
+
 Breakpoint 3 at [34m0x7fffdb26b910[m
+Instruction at 0x7fffdb26b910:
+   0x7fffdb26b910 <_Z8fc_layerPfS_S_S_ii+272>:	IADD3 R9, -R6, c[0x0][0x180], RZ 
+
 Breakpoint 4 at [34m0x7fffdb26bc40[m
+Instruction at 0x7fffdb26bc40:
+   0x7fffdb26bc40 <_Z8fc_layerPfS_S_S_ii+1088>:	IADD3 R9, R9, -0x10, RZ 
+
 Breakpoint 5 at [34m0x7fffdb26bc50[m
+Instruction at 0x7fffdb26bc50:
+   0x7fffdb26bc50 <_Z8fc_layerPfS_S_S_ii+1104>:	IADD3 R7, R7, 0x10, RZ 
+
 Breakpoint 6 at [34m0x7fffdb26bc80[m
+Instruction at 0x7fffdb26bc80:
+   0x7fffdb26bc80 <_Z8fc_layerPfS_S_S_ii+1152>:	IADD3 R4, P2, R4, 0x40, RZ 
+
 Breakpoint 7 at [34m0x7fffdb26bca0[m
+Instruction at 0x7fffdb26bca0:
+   0x7fffdb26bca0 <_Z8fc_layerPfS_S_S_ii+1184>:	IADD3 R2, P3, R2, 0x40, RZ 
+
 Breakpoint 8 at [34m0x7fffdb26bcb0[m
+Instruction at 0x7fffdb26bcb0:
+   0x7fffdb26bcb0 <_Z8fc_layerPfS_S_S_ii+1200>:	IADD3.X R5, RZ, R5, RZ, P2, !PT 
+
 Breakpoint 9 at [34m0x7fffdb26bea0[m
+Instruction at 0x7fffdb26bea0:
+   0x7fffdb26bea0 <_Z8fc_layerPfS_S_S_ii+1696>:	IADD3 R7, R7, 0x8, RZ 
+
 Breakpoint 10 at [34m0x7fffdb26beb0[m
+Instruction at 0x7fffdb26beb0:
+   0x7fffdb26beb0 <_Z8fc_layerPfS_S_S_ii+1712>:	IADD3 R9, R9, -0x8, RZ 
+
 Breakpoint 11 at [34m0x7fffdb26bec0[m
+Instruction at 0x7fffdb26bec0:
+   0x7fffdb26bec0 <_Z8fc_layerPfS_S_S_ii+1728>:	IADD3 R4, P1, R4, 0x20, RZ 
+
 Breakpoint 12 at [34m0x7fffdb26bed0[m
+Instruction at 0x7fffdb26bed0:
+   0x7fffdb26bed0 <_Z8fc_layerPfS_S_S_ii+1744>:	IADD3 R2, P2, R2, 0x20, RZ 
+
 Breakpoint 13 at [34m0x7fffdb26bee0[m
+Instruction at 0x7fffdb26bee0:
+   0x7fffdb26bee0 <_Z8fc_layerPfS_S_S_ii+1760>:	IADD3.X R5, RZ, R5, RZ, P1, !PT 
+
 Breakpoint 14 at [34m0x7fffdb26c020[m
+Instruction at 0x7fffdb26c020:
+   0x7fffdb26c020 <_Z8fc_layerPfS_S_S_ii+2080>:	IADD3 R9, R9, -0x4, RZ 
+
 Breakpoint 15 at [34m0x7fffdb26c030[m
+Instruction at 0x7fffdb26c030:
+   0x7fffdb26c030 <_Z8fc_layerPfS_S_S_ii+2096>:	IADD3 R7, R7, 0x4, RZ 
+
 Breakpoint 16 at [34m0x7fffdb26c060[m
+Instruction at 0x7fffdb26c060:
+   0x7fffdb26c060 <_Z8fc_layerPfS_S_S_ii+2144>:	IADD3 R11, P2, R2, 0x10, RZ 
+
 Breakpoint 17 at [34m0x7fffdb26c090[m
+Instruction at 0x7fffdb26c090:
+   0x7fffdb26c090 <_Z8fc_layerPfS_S_S_ii+2192>:	IADD3 R13, P1, R4, 0x10, RZ 
+
 Breakpoint 18 at [34m0x7fffdb26c0a0[m
+Instruction at 0x7fffdb26c0a0:
+   0x7fffdb26c0a0 <_Z8fc_layerPfS_S_S_ii+2208>:	IADD3.X R12, RZ, R3, RZ, P2, !PT 
+
 Breakpoint 19 at [34m0x7fffdb26c0d0[m
+Instruction at 0x7fffdb26c0d0:
+   0x7fffdb26c0d0 <_Z8fc_layerPfS_S_S_ii+2256>:	IADD3.X R14, RZ, R5, RZ, P1, !PT 
+
 Breakpoint 20 at [34m0x7fffdb26c1e0[m
+Instruction at 0x7fffdb26c1e0:
+   0x7fffdb26c1e0 <_Z8fc_layerPfS_S_S_ii+2528>:	IADD3 R6, R6, -0x1, RZ 
+
 Breakpoint 21 at [34m0x7fffdb26c1f0[m
+Instruction at 0x7fffdb26c1f0:
+   0x7fffdb26c1f0 <_Z8fc_layerPfS_S_S_ii+2544>:	IADD3 R7, P2, R7, 0x4, RZ 
+
 Breakpoint 22 at [34m0x7fffdb26c210[m
+Instruction at 0x7fffdb26c210:
+   0x7fffdb26c210 <_Z8fc_layerPfS_S_S_ii+2576>:	IADD3 R2, P1, R2, 0x4, RZ 
+
 Breakpoint 23 at [34m0x7fffdb26c220[m
+Instruction at 0x7fffdb26c220:
+   0x7fffdb26c220 <_Z8fc_layerPfS_S_S_ii+2592>:	IADD3.X R5, RZ, R5, RZ, P2, !PT 
+
 Set 22 breakpoints for '\sIADD3' instructions.
 Sanity check PASSED: Found '\sIADD3' at offset 1200[Switching focus to CUDA kernel 0, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
@@ -251,11 +317,11 @@ $2 = 660
 Breakpoint 24 at [34m0x5555555604a0[m: fc_layer. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 3832985)]
-[New Thread 0x7fffef3ff000 (LWP 3832986)]
-[Detaching after fork from child process 3832987]
-[New Thread 0x7fffed9dd000 (LWP 3832997)]
-[New Thread 0x7fffed1dc000 (LWP 3832998)]
+[New Thread 0x7ffff4bff000 (LWP 3883622)]
+[New Thread 0x7fffef3ff000 (LWP 3883623)]
+[Detaching after fork from child process 3883624]
+[New Thread 0x7fffed9dd000 (LWP 3883634)]
+[New Thread 0x7fffed1dc000 (LWP 3883635)]
 Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 => 0x00007fffdb26b800 <+0>:	MOV R1, c[0x0][0x28] 
    0x00007fffdb26b810 <+16>:	S2R R0, SR_CTAID.X 
@@ -444,27 +510,93 @@ Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 End of assembler dump.
 
 Breakpoint 25 at [34m0x7fffdb26b8b0[m
+Instruction at 0x7fffdb26b8b0:
+   0x7fffdb26b8b0 <_Z8fc_layerPfS_S_S_ii+176>:	IADD3 R2, R6.reuse, -0x1, RZ 
+
 Breakpoint 26 at [34m0x7fffdb26b910[m
+Instruction at 0x7fffdb26b910:
+   0x7fffdb26b910 <_Z8fc_layerPfS_S_S_ii+272>:	IADD3 R9, -R6, c[0x0][0x180], RZ 
+
 Breakpoint 27 at [34m0x7fffdb26bc40[m
+Instruction at 0x7fffdb26bc40:
+   0x7fffdb26bc40 <_Z8fc_layerPfS_S_S_ii+1088>:	IADD3 R9, R9, -0x10, RZ 
+
 Breakpoint 28 at [34m0x7fffdb26bc50[m
+Instruction at 0x7fffdb26bc50:
+   0x7fffdb26bc50 <_Z8fc_layerPfS_S_S_ii+1104>:	IADD3 R7, R7, 0x10, RZ 
+
 Breakpoint 29 at [34m0x7fffdb26bc80[m
+Instruction at 0x7fffdb26bc80:
+   0x7fffdb26bc80 <_Z8fc_layerPfS_S_S_ii+1152>:	IADD3 R4, P2, R4, 0x40, RZ 
+
 Breakpoint 30 at [34m0x7fffdb26bca0[m
+Instruction at 0x7fffdb26bca0:
+   0x7fffdb26bca0 <_Z8fc_layerPfS_S_S_ii+1184>:	IADD3 R2, P3, R2, 0x40, RZ 
+
 Breakpoint 31 at [34m0x7fffdb26bcb0[m
+Instruction at 0x7fffdb26bcb0:
+   0x7fffdb26bcb0 <_Z8fc_layerPfS_S_S_ii+1200>:	IADD3.X R5, RZ, R5, RZ, P2, !PT 
+
 Breakpoint 32 at [34m0x7fffdb26bea0[m
+Instruction at 0x7fffdb26bea0:
+   0x7fffdb26bea0 <_Z8fc_layerPfS_S_S_ii+1696>:	IADD3 R7, R7, 0x8, RZ 
+
 Breakpoint 33 at [34m0x7fffdb26beb0[m
+Instruction at 0x7fffdb26beb0:
+   0x7fffdb26beb0 <_Z8fc_layerPfS_S_S_ii+1712>:	IADD3 R9, R9, -0x8, RZ 
+
 Breakpoint 34 at [34m0x7fffdb26bec0[m
+Instruction at 0x7fffdb26bec0:
+   0x7fffdb26bec0 <_Z8fc_layerPfS_S_S_ii+1728>:	IADD3 R4, P1, R4, 0x20, RZ 
+
 Breakpoint 35 at [34m0x7fffdb26bed0[m
+Instruction at 0x7fffdb26bed0:
+   0x7fffdb26bed0 <_Z8fc_layerPfS_S_S_ii+1744>:	IADD3 R2, P2, R2, 0x20, RZ 
+
 Breakpoint 36 at [34m0x7fffdb26bee0[m
+Instruction at 0x7fffdb26bee0:
+   0x7fffdb26bee0 <_Z8fc_layerPfS_S_S_ii+1760>:	IADD3.X R5, RZ, R5, RZ, P1, !PT 
+
 Breakpoint 37 at [34m0x7fffdb26c020[m
+Instruction at 0x7fffdb26c020:
+   0x7fffdb26c020 <_Z8fc_layerPfS_S_S_ii+2080>:	IADD3 R9, R9, -0x4, RZ 
+
 Breakpoint 38 at [34m0x7fffdb26c030[m
+Instruction at 0x7fffdb26c030:
+   0x7fffdb26c030 <_Z8fc_layerPfS_S_S_ii+2096>:	IADD3 R7, R7, 0x4, RZ 
+
 Breakpoint 39 at [34m0x7fffdb26c060[m
+Instruction at 0x7fffdb26c060:
+   0x7fffdb26c060 <_Z8fc_layerPfS_S_S_ii+2144>:	IADD3 R11, P2, R2, 0x10, RZ 
+
 Breakpoint 40 at [34m0x7fffdb26c090[m
+Instruction at 0x7fffdb26c090:
+   0x7fffdb26c090 <_Z8fc_layerPfS_S_S_ii+2192>:	IADD3 R13, P1, R4, 0x10, RZ 
+
 Breakpoint 41 at [34m0x7fffdb26c0a0[m
+Instruction at 0x7fffdb26c0a0:
+   0x7fffdb26c0a0 <_Z8fc_layerPfS_S_S_ii+2208>:	IADD3.X R12, RZ, R3, RZ, P2, !PT 
+
 Breakpoint 42 at [34m0x7fffdb26c0d0[m
+Instruction at 0x7fffdb26c0d0:
+   0x7fffdb26c0d0 <_Z8fc_layerPfS_S_S_ii+2256>:	IADD3.X R14, RZ, R5, RZ, P1, !PT 
+
 Breakpoint 43 at [34m0x7fffdb26c1e0[m
+Instruction at 0x7fffdb26c1e0:
+   0x7fffdb26c1e0 <_Z8fc_layerPfS_S_S_ii+2528>:	IADD3 R6, R6, -0x1, RZ 
+
 Breakpoint 44 at [34m0x7fffdb26c1f0[m
+Instruction at 0x7fffdb26c1f0:
+   0x7fffdb26c1f0 <_Z8fc_layerPfS_S_S_ii+2544>:	IADD3 R7, P2, R7, 0x4, RZ 
+
 Breakpoint 45 at [34m0x7fffdb26c210[m
+Instruction at 0x7fffdb26c210:
+   0x7fffdb26c210 <_Z8fc_layerPfS_S_S_ii+2576>:	IADD3 R2, P1, R2, 0x4, RZ 
+
 Breakpoint 46 at [34m0x7fffdb26c220[m
+Instruction at 0x7fffdb26c220:
+   0x7fffdb26c220 <_Z8fc_layerPfS_S_S_ii+2592>:	IADD3.X R5, RZ, R5, RZ, P2, !PT 
+
 Set 22 breakpoints for '\sIADD3' instructions.
 Sanity check PASSED: Found '\sIADD3' at offset 1200[Switching focus to CUDA kernel 1, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
@@ -491,11 +623,11 @@ Thread 1 "test" hit Breakpoint 31, [34m0x00007fffdb26bcb0[m in [33mfc_layer(f
 Breakpoint 47 at [34m0x5555555604a0[m: fc_layer. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 3833005)]
-[New Thread 0x7fffef3ff000 (LWP 3833006)]
-[Detaching after fork from child process 3833007]
-[New Thread 0x7fffed9dd000 (LWP 3833017)]
-[New Thread 0x7fffed1dc000 (LWP 3833018)]
+[New Thread 0x7ffff4bff000 (LWP 3883642)]
+[New Thread 0x7fffef3ff000 (LWP 3883643)]
+[Detaching after fork from child process 3883644]
+[New Thread 0x7fffed9dd000 (LWP 3883654)]
+[New Thread 0x7fffed1dc000 (LWP 3883655)]
 Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 => 0x00007fffdb26b800 <+0>:	MOV R1, c[0x0][0x28] 
    0x00007fffdb26b810 <+16>:	S2R R0, SR_CTAID.X 
@@ -684,10 +816,25 @@ Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 End of assembler dump.
 
 Breakpoint 48 at [34m0x7fffdb26bcb0[m
+Instruction at 0x7fffdb26bcb0:
+   0x7fffdb26bcb0 <_Z8fc_layerPfS_S_S_ii+1200>:	IADD3.X R5, RZ, R5, RZ, P2, !PT 
+
 Breakpoint 49 at [34m0x7fffdb26bee0[m
+Instruction at 0x7fffdb26bee0:
+   0x7fffdb26bee0 <_Z8fc_layerPfS_S_S_ii+1760>:	IADD3.X R5, RZ, R5, RZ, P1, !PT 
+
 Breakpoint 50 at [34m0x7fffdb26c0a0[m
+Instruction at 0x7fffdb26c0a0:
+   0x7fffdb26c0a0 <_Z8fc_layerPfS_S_S_ii+2208>:	IADD3.X R12, RZ, R3, RZ, P2, !PT 
+
 Breakpoint 51 at [34m0x7fffdb26c0d0[m
+Instruction at 0x7fffdb26c0d0:
+   0x7fffdb26c0d0 <_Z8fc_layerPfS_S_S_ii+2256>:	IADD3.X R14, RZ, R5, RZ, P1, !PT 
+
 Breakpoint 52 at [34m0x7fffdb26c220[m
+Instruction at 0x7fffdb26c220:
+   0x7fffdb26c220 <_Z8fc_layerPfS_S_S_ii+2592>:	IADD3.X R5, RZ, R5, RZ, P2, !PT 
+
 Set 5 breakpoints for '\sIADD3.X' instructions.
 Sanity check PASSED: Found '\sIADD3.X' at offset 1200[Switching focus to CUDA kernel 2, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
@@ -712,11 +859,11 @@ $17 = 32768
 Breakpoint 53 at [34m0x5555555604a0[m: fc_layer. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 3833025)]
-[New Thread 0x7fffef3ff000 (LWP 3833026)]
-[Detaching after fork from child process 3833027]
-[New Thread 0x7fffed9dd000 (LWP 3833037)]
-[New Thread 0x7fffed1dc000 (LWP 3833038)]
+[New Thread 0x7ffff4bff000 (LWP 3883662)]
+[New Thread 0x7fffef3ff000 (LWP 3883663)]
+[Detaching after fork from child process 3883664]
+[New Thread 0x7fffed9dd000 (LWP 3883674)]
+[New Thread 0x7fffed1dc000 (LWP 3883675)]
 Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 => 0x00007fffdb26b800 <+0>:	MOV R1, c[0x0][0x28] 
    0x00007fffdb26b810 <+16>:	S2R R0, SR_CTAID.X 
@@ -905,13 +1052,37 @@ Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 End of assembler dump.
 
 Breakpoint 54 at [34m0x7fffdb26bc80[m
+Instruction at 0x7fffdb26bc80:
+   0x7fffdb26bc80 <_Z8fc_layerPfS_S_S_ii+1152>:	IADD3 R4, P2, R4, 0x40, RZ 
+
 Breakpoint 55 at [34m0x7fffdb26bca0[m
+Instruction at 0x7fffdb26bca0:
+   0x7fffdb26bca0 <_Z8fc_layerPfS_S_S_ii+1184>:	IADD3 R2, P3, R2, 0x40, RZ 
+
 Breakpoint 56 at [34m0x7fffdb26bec0[m
+Instruction at 0x7fffdb26bec0:
+   0x7fffdb26bec0 <_Z8fc_layerPfS_S_S_ii+1728>:	IADD3 R4, P1, R4, 0x20, RZ 
+
 Breakpoint 57 at [34m0x7fffdb26bed0[m
+Instruction at 0x7fffdb26bed0:
+   0x7fffdb26bed0 <_Z8fc_layerPfS_S_S_ii+1744>:	IADD3 R2, P2, R2, 0x20, RZ 
+
 Breakpoint 58 at [34m0x7fffdb26c060[m
+Instruction at 0x7fffdb26c060:
+   0x7fffdb26c060 <_Z8fc_layerPfS_S_S_ii+2144>:	IADD3 R11, P2, R2, 0x10, RZ 
+
 Breakpoint 59 at [34m0x7fffdb26c090[m
+Instruction at 0x7fffdb26c090:
+   0x7fffdb26c090 <_Z8fc_layerPfS_S_S_ii+2192>:	IADD3 R13, P1, R4, 0x10, RZ 
+
 Breakpoint 60 at [34m0x7fffdb26c1f0[m
+Instruction at 0x7fffdb26c1f0:
+   0x7fffdb26c1f0 <_Z8fc_layerPfS_S_S_ii+2544>:	IADD3 R7, P2, R7, 0x4, RZ 
+
 Breakpoint 61 at [34m0x7fffdb26c210[m
+Instruction at 0x7fffdb26c210:
+   0x7fffdb26c210 <_Z8fc_layerPfS_S_S_ii+2576>:	IADD3 R2, P1, R2, 0x4, RZ 
+
 Set 8 breakpoints for '\sIADD3.*P.*, R.*' instructions.
 [Switching focus to CUDA kernel 3, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
@@ -925,11 +1096,11 @@ $21 = 0
 Breakpoint 62 at [34m0x5555555604a0[m: fc_layer. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 3833045)]
-[New Thread 0x7fffef3ff000 (LWP 3833046)]
-[Detaching after fork from child process 3833047]
-[New Thread 0x7fffed9dd000 (LWP 3833057)]
-[New Thread 0x7fffed1dc000 (LWP 3833058)]
+[New Thread 0x7ffff4bff000 (LWP 3883682)]
+[New Thread 0x7fffef3ff000 (LWP 3883683)]
+[Detaching after fork from child process 3883684]
+[New Thread 0x7fffed9dd000 (LWP 3883694)]
+[New Thread 0x7fffed1dc000 (LWP 3883695)]
 Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 => 0x00007fffdb26b800 <+0>:	MOV R1, c[0x0][0x28] 
    0x00007fffdb26b810 <+16>:	S2R R0, SR_CTAID.X 
@@ -1118,13 +1289,37 @@ Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 End of assembler dump.
 
 Breakpoint 63 at [34m0x7fffdb26bc80[m
+Instruction at 0x7fffdb26bc80:
+   0x7fffdb26bc80 <_Z8fc_layerPfS_S_S_ii+1152>:	IADD3 R4, P2, R4, 0x40, RZ 
+
 Breakpoint 64 at [34m0x7fffdb26bca0[m
+Instruction at 0x7fffdb26bca0:
+   0x7fffdb26bca0 <_Z8fc_layerPfS_S_S_ii+1184>:	IADD3 R2, P3, R2, 0x40, RZ 
+
 Breakpoint 65 at [34m0x7fffdb26bec0[m
+Instruction at 0x7fffdb26bec0:
+   0x7fffdb26bec0 <_Z8fc_layerPfS_S_S_ii+1728>:	IADD3 R4, P1, R4, 0x20, RZ 
+
 Breakpoint 66 at [34m0x7fffdb26bed0[m
+Instruction at 0x7fffdb26bed0:
+   0x7fffdb26bed0 <_Z8fc_layerPfS_S_S_ii+1744>:	IADD3 R2, P2, R2, 0x20, RZ 
+
 Breakpoint 67 at [34m0x7fffdb26c060[m
+Instruction at 0x7fffdb26c060:
+   0x7fffdb26c060 <_Z8fc_layerPfS_S_S_ii+2144>:	IADD3 R11, P2, R2, 0x10, RZ 
+
 Breakpoint 68 at [34m0x7fffdb26c090[m
+Instruction at 0x7fffdb26c090:
+   0x7fffdb26c090 <_Z8fc_layerPfS_S_S_ii+2192>:	IADD3 R13, P1, R4, 0x10, RZ 
+
 Breakpoint 69 at [34m0x7fffdb26c1f0[m
+Instruction at 0x7fffdb26c1f0:
+   0x7fffdb26c1f0 <_Z8fc_layerPfS_S_S_ii+2544>:	IADD3 R7, P2, R7, 0x4, RZ 
+
 Breakpoint 70 at [34m0x7fffdb26c210[m
+Instruction at 0x7fffdb26c210:
+   0x7fffdb26c210 <_Z8fc_layerPfS_S_S_ii+2576>:	IADD3 R2, P1, R2, 0x4, RZ 
+
 Set 8 breakpoints for '\sIADD3.*P.*, R.*' instructions.
 [Switching focus to CUDA kernel 4, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
@@ -1139,11 +1334,11 @@ $26 = 1
 Breakpoint 71 at [34m0x5555555604a0[m: fc_layer. (2 locations)
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "[32m/lib/x86_64-linux-gnu/libthread_db.so.1[m".
-[New Thread 0x7ffff4bff000 (LWP 3833065)]
-[New Thread 0x7fffef3ff000 (LWP 3833066)]
-[Detaching after fork from child process 3833067]
-[New Thread 0x7fffed9dd000 (LWP 3833077)]
-[New Thread 0x7fffed1dc000 (LWP 3833078)]
+[New Thread 0x7ffff4bff000 (LWP 3883702)]
+[New Thread 0x7fffef3ff000 (LWP 3883703)]
+[Detaching after fork from child process 3883704]
+[New Thread 0x7fffed9dd000 (LWP 3883714)]
+[New Thread 0x7fffed1dc000 (LWP 3883715)]
 Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 => 0x00007fffdb26b800 <+0>:	MOV R1, c[0x0][0x28] 
    0x00007fffdb26b810 <+16>:	S2R R0, SR_CTAID.X 
@@ -1332,13 +1527,37 @@ Dump of assembler code for function _Z8fc_layerPfS_S_S_ii:
 End of assembler dump.
 
 Breakpoint 72 at [34m0x7fffdb26bc80[m
+Instruction at 0x7fffdb26bc80:
+   0x7fffdb26bc80 <_Z8fc_layerPfS_S_S_ii+1152>:	IADD3 R4, P2, R4, 0x40, RZ 
+
 Breakpoint 73 at [34m0x7fffdb26bca0[m
+Instruction at 0x7fffdb26bca0:
+   0x7fffdb26bca0 <_Z8fc_layerPfS_S_S_ii+1184>:	IADD3 R2, P3, R2, 0x40, RZ 
+
 Breakpoint 74 at [34m0x7fffdb26bec0[m
+Instruction at 0x7fffdb26bec0:
+   0x7fffdb26bec0 <_Z8fc_layerPfS_S_S_ii+1728>:	IADD3 R4, P1, R4, 0x20, RZ 
+
 Breakpoint 75 at [34m0x7fffdb26bed0[m
+Instruction at 0x7fffdb26bed0:
+   0x7fffdb26bed0 <_Z8fc_layerPfS_S_S_ii+1744>:	IADD3 R2, P2, R2, 0x20, RZ 
+
 Breakpoint 76 at [34m0x7fffdb26c060[m
+Instruction at 0x7fffdb26c060:
+   0x7fffdb26c060 <_Z8fc_layerPfS_S_S_ii+2144>:	IADD3 R11, P2, R2, 0x10, RZ 
+
 Breakpoint 77 at [34m0x7fffdb26c090[m
+Instruction at 0x7fffdb26c090:
+   0x7fffdb26c090 <_Z8fc_layerPfS_S_S_ii+2192>:	IADD3 R13, P1, R4, 0x10, RZ 
+
 Breakpoint 78 at [34m0x7fffdb26c1f0[m
+Instruction at 0x7fffdb26c1f0:
+   0x7fffdb26c1f0 <_Z8fc_layerPfS_S_S_ii+2544>:	IADD3 R7, P2, R7, 0x4, RZ 
+
 Breakpoint 79 at [34m0x7fffdb26c210[m
+Instruction at 0x7fffdb26c210:
+   0x7fffdb26c210 <_Z8fc_layerPfS_S_S_ii+2576>:	IADD3 R2, P1, R2, 0x4, RZ 
+
 Set 8 breakpoints for '\sIADD3.*P.*, R.*' instructions.
 [Switching focus to CUDA kernel 5, grid 4, block (0,0,0), thread (0,0,0), device 0, sm 0, warp 0, lane 0]
 
@@ -1359,4 +1578,4 @@ warning: Breakpoint 77 is disabled because device address may change on the next
 warning: Breakpoint 78 is disabled because device address may change on the next run.
 warning: Breakpoint 79 is disabled because device address may change on the next run.
 
-Script done on 2025-08-31 22:29:55-04:00 [COMMAND_EXIT_CODE="0"]
+Script done on 2025-09-01 12:50:00-04:00 [COMMAND_EXIT_CODE="0"]
