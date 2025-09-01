@@ -49,6 +49,8 @@ def set_breakpoints_at_instructions(function_name, instruction_pattern, sanity_o
                 # Set breakpoints
                 for addr in target_addresses:
                     gdb.Breakpoint(f"*{hex(addr)}")
+                    instruction = gdb.execute(f"x/i {hex(addr)}", to_string=True)
+                    print(f"Instruction at {hex(addr)}:\n{instruction}")
                 
                 gdb.write(f"Set {len(target_addresses)} breakpoints for '{self.instruction_pattern}' instructions.\n")
                 

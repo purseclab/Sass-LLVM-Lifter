@@ -1,6 +1,6 @@
 set pagination off
 set confirm off
-source set_shf_breakpoint.py
+source ../lib/set_shf_breakpoint.py
 
 python
 set_breakpoints_at_instructions(
@@ -10,6 +10,5 @@ set_breakpoints_at_instructions(
 )
 end
 r
-
 
 q
