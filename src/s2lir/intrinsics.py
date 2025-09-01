@@ -125,3 +125,10 @@ def llvm_memcpy_i32(module):
     intrinsic_type = ir.FunctionType(ir.VoidType(), [ir.PointerType(), ir.PointerType(), ir.IntType(32), ir.IntType(1)])
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_uadd_with_overflow(module, size=32):
+    intrinsic_name = f"llvm.uadd.with.overflow.i{size}"
+    
+    intrinsic_type = ir.FunctionType(ir.LiteralStructType([ir.IntType(size), ir.IntType(1)]), [ir.IntType(size), ir.IntType(size)])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)

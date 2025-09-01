@@ -176,6 +176,9 @@ class Instruction:
         if self.opcode == "S2R":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ResOp.isReg and ValOp.SReg:
                 # TODO: Fix it later;
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
@@ -201,6 +204,9 @@ class Instruction:
         if self.opcode == "MOV" or self.opcode == "UMOV":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ResOp.isReg and ValOp.isReg:
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # IRValOp = IRRegs[ValOp.getIRRegName()]
@@ -233,6 +239,9 @@ class Instruction:
             # e.g.: LDG.E.SYS R57, [R38]
             ResOp = self.operands[0]
             PtrOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ResOp.isReg and PtrOp.isPtr:
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 IRResOp = IRRegs[ResOp.getRegName()]
@@ -252,6 +261,9 @@ class Instruction:
             # e.g.: STG.E.SYS [R28], R7
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ValOp.isReg and ResOp.isPtr:
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # IRValOp = IRRegs[ValOp.getIRRegName()]
@@ -270,9 +282,12 @@ class Instruction:
             ValOp3 = self.operands[3]
             # IRBuilder.comment("IMAD Instruction")
             
+            assert len(self.operands) == 4
+            
             settings = {
                 "wide": False,
-                "mov": False
+                "mov": False,
+                "iadd": False,
             }
             
             for mod in self.modifiers:
@@ -283,6 +298,12 @@ class Instruction:
                 elif mod == "MOV" or mod == "IADD":
                     # just compiler informing the reader that IMAD is essentially performing MOV/IADD
                     # https://stackoverflow.com/questions/59777333/combined-format-of-sass-instructions
+                    
+                    if mod == "MOV":
+                        settings["mov"] = True
+                    elif mod == "IADD":
+                        settings["iadd"] = True
+
                     continue
                 elif mod == "U32" or mod == "X" or mod == "HI":
                     # TODO handle these
@@ -325,6 +346,8 @@ class Instruction:
             ValOp1 = self.operands[2]
             ValOp2 = self.operands[3]
             PReg2 = self.operands[4]
+            
+            assert len(self.operands) == 5
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -584,6 +607,8 @@ class Instruction:
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             PReg = self.operands[3]
+            
+            assert len(self.operands) == 4
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -618,6 +643,8 @@ class Instruction:
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             ValOp3 = self.operands[3]
+            
+            assert len(self.operands) == 4
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -665,6 +692,8 @@ class Instruction:
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
+            
+            assert len(self.operands) == 3
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -685,6 +714,8 @@ class Instruction:
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             shift = self.operands[3]
+            
+            assert len(self.operands) == 4
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -708,6 +739,8 @@ class Instruction:
         if self.opcode == "IABS":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
@@ -729,6 +762,8 @@ class Instruction:
             # TODO: 64 bit not implemented
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             # IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
             IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder) # note that the constant might be any length, usually depending on the type of the arg, e.g. i1 for bool, 64 bit for pointer etc
@@ -771,6 +806,8 @@ class Instruction:
             immLut = self.operands[4]
             # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
             PReg = self.operands[5]
+            
+            assert len(self.operands) == 6
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -864,6 +901,7 @@ class Instruction:
             ValOp3 = self.operands[3]
             immLut = self.operands[5]
             assert immLut.isConst
+            assert len(self.operands) == 6
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -929,6 +967,8 @@ class Instruction:
         if self.opcode == "I2F":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
@@ -944,6 +984,8 @@ class Instruction:
         if self.opcode == "F2I":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
@@ -959,6 +1001,8 @@ class Instruction:
         if self.opcode == "MUFU": # Multi-Function Unit
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
             
             if ValOp.getTypeDesc() == "NOTYPE": # TODO tmp solution
                 ValOp.setTypeDesc(ResOp.getTypeDesc())
@@ -1005,61 +1049,73 @@ class Instruction:
         
         if self.opcode == "IADD3" or self.opcode == "UIADD3" :
             ResOp = self.operands[0]
-
-            if len(self.modifiers) > 0 and self.modifiers[0] == "X":         
+            assert len(self.operands) in (4,5,6)
+            
+            if len(self.operands) == 4:
+                assert len(self.modifiers) == 0
+                assert not self.operands[1].isPReg
                 ValOp1 = self.operands[1]
                 ValOp2 = self.operands[2]
                 ValOp3 = self.operands[3]
+            elif len(self.operands) == 5:
+                assert len(self.modifiers) == 0
+                assert self.operands[1].isPReg
+                
+                ValOp1 = self.operands[2]
+                ValOp2 = self.operands[3]
+                ValOp3 = self.operands[4]
+                OverflowPreg = self.operands[1]
+            elif len(self.operands) == 6:
+                assert len(self.modifiers) > 0 and self.modifiers[0] == "X"
+                ValOp1 = self.operands[1]
+                ValOp2 = self.operands[2]
+                ValOp3 = self.operands[3]
+                # TODO not entirely sure what these pred are, but they're probably either carry or overflow bits
+                PregOp1 = self.operands[4]
+                PregOp2 = self.operands[5]
 
-                Preg = self.operands[4]
+            IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
+            IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
-                IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRPreg = Preg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            assert ResOp.isReg
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
+            if len(self.operands) == 4:
+                sum = IRBuilder.sum(IRValOp1, IRValOp2)
+                sum = IRBuilder.sum(sum, IRValOp3)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
+            elif len(self.operands) == 5:
+                # NOTE: we're using uadd overflow because based on emphirical experiment, iadd's overflowpred is only set when it's during unsigned overflow and not signed overflow
+                # the fundamental binary addition process itself is the same for both signed and unsigned numbers
+                tmp1 = IRBuilder.call(llvm_uadd_with_overflow(llvm_module), [IRValOp1, IRValOp2])
+                sum1 = IRBuilder.extract_value(tmp1, 0)
+                overflow_1 = IRBuilder.extract_value(tmp1, 1)
+                
+                tmp2 = IRBuilder.call(llvm_uadd_with_overflow(llvm_module), [sum1, IRValOp3])
+                sum = IRBuilder.extract_value(tmp2, 0)
+                overflow = IRBuilder.extract_value(tmp2, 1)
+                overflow = IRBuilder.or_(overflow_1, overflow)
+                
+                # IRBuilder.store(sum, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
+                OverflowPreg.IRReg_Store(IRRegs, IRBuilder, overflow)
+
+            elif len(self.operands) == 6:
+                IRPreg1 = PregOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRPreg2 = PregOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                
                 # cast IRPreg to 32 bit
-                IRPreg = IRBuilder.zext(IRPreg, llvmir.IntType(32))
+                IRPreg1 = IRBuilder.zext(IRPreg1, llvmir.IntType(32))
+                IRPreg2 = IRBuilder.zext(IRPreg2, llvmir.IntType(32))
 
                 sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
                 sum = IRBuilder.add(sum, IRValOp3, "add")
-                sum = IRBuilder.add(sum, IRPreg, "add")
+                sum = IRBuilder.add(sum, IRPreg1, "add")
+                sum = IRBuilder.add(sum, IRPreg2, "add")
 
-                assert ResOp.isReg
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # IRBuilder.store(sum, IRResOp)
                 ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
-
-            else:
-                # Currrently, just drop the Carry;
-                if self.operands[1].isReg:
-                    ValOp1 = self.operands[1]
-                    ValOp2 = self.operands[2]
-                    ValOp3 = self.operands[3]
-                elif self.operands[1].isPReg:
-                    ValOp1 = self.operands[2]
-                    ValOp2 = self.operands[3]
-                    ValOp3 = self.operands[4]
-
-
-                IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
-                IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-
-                assert ResOp.isReg
-                # IRResOp = IRRegs[ResOp.getIRRegName()]
-
-                sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
-                sum = IRBuilder.add(sum, IRValOp3, "add")
-                # IRBuilder.store(sum, IRResOp)
-                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
-
-                if self.operands[1].isPReg:
-                    # TODO: Make sure Using comparation is correct; 
-                    carry = IRBuilder.icmp_unsigned('<', sum, IRValOp1, name="carry")
-                    Preg = self.operands[1]
-                    # IRPreg = IRRegs[Preg.getIRRegName()]
-                    # IRBuilder.store(carry, IRPreg)
-                    Preg.IRReg_Store(IRRegs, IRBuilder, carry)
             
             return
         
@@ -1074,6 +1130,9 @@ class Instruction:
                 "rel": None,
                 "noinc": None
             }
+            
+            assert len(self.operands) == 1
+            
             for mod in self.modifiers:
                 if mod == "REL":
                     settings["rel"] = True
@@ -1165,6 +1224,8 @@ class Instruction:
             R_a = self.operands[1] # select wheb True
             S_b = self.operands[2] # select wheb False
             P_reg = self.operands[3] # predicate
+            
+            assert len(self.operands) == 4
             
             IRValOp1 = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = S_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
