@@ -1073,6 +1073,8 @@ class Instruction:
                 # TODO not entirely sure what these pred are, but they're probably either carry or overflow bits
                 PregOp1 = self.operands[4]
                 PregOp2 = self.operands[5]
+                assert PregOp1.isPReg
+                assert PregOp2.isPReg
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -1111,6 +1113,7 @@ class Instruction:
                 sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
                 sum = IRBuilder.add(sum, IRValOp3, "add")
                 sum = IRBuilder.add(sum, IRPreg1, "add")
+                # TODO not entirely sure the role of this last preg
                 sum = IRBuilder.add(sum, IRPreg2, "add")
 
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
