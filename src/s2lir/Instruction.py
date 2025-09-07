@@ -282,12 +282,13 @@ class Instruction:
             ValOp3 = self.operands[3]
             # IRBuilder.comment("IMAD Instruction")
             
-            assert len(self.operands) == 4
+            # print(self)
             
             settings = {
                 "wide": False,
                 "mov": False,
                 "iadd": False,
+                "x": False
             }
             
             for mod in self.modifiers:
@@ -305,7 +306,9 @@ class Instruction:
                         settings["iadd"] = True
 
                     continue
-                elif mod == "U32" or mod == "X" or mod == "HI":
+                elif mod == "X":
+                    settings["x"] = True
+                elif mod == "U32" or mod == "HI":
                     # TODO handle these
                     continue
                 else:
@@ -317,6 +320,13 @@ class Instruction:
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            if settings["x"]:
+                assert len(self.operands) == 5
+                ValOp4 = self.operands[4]
+                IRValOp4 = ValOp4.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            else:
+                assert len(self.operands) == 4
 
             assert ValOp1.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
@@ -334,6 +344,13 @@ class Instruction:
                 else:
                     raise InvalidSyntaxException
             tmp = IRBuilder.add(tmp, IRValOp3, "add")
+            
+            if settings["x"]:
+                assert ValOp4.get_bit_width() == 1
+                
+                IRValOp4 = IRBuilder.zext(IRValOp4, llvmir.IntType(32), name="zext")
+                tmp = IRBuilder.add(tmp, IRValOp4, "add")
+            
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
@@ -901,7 +918,8 @@ class Instruction:
             ValOp3 = self.operands[3]
             immLut = self.operands[5]
             assert immLut.isConst
-            assert len(self.operands) == 6
+            # todo figure out op[4] and op[6]. op[4] is prob a negation of the result, or a negation of each inputs
+            assert len(self.operands) == 7
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -1089,6 +1107,7 @@ class Instruction:
             elif len(self.operands) == 5:
                 # NOTE: we're using uadd overflow because based on emphirical experiment, iadd's overflowpred is only set when it's during unsigned overflow and not signed overflow
                 # the fundamental binary addition process itself is the same for both signed and unsigned numbers
+                llvm_module = self.llvm_module
                 tmp1 = IRBuilder.call(llvm_uadd_with_overflow(llvm_module), [IRValOp1, IRValOp2])
                 sum1 = IRBuilder.extract_value(tmp1, 0)
                 overflow_1 = IRBuilder.extract_value(tmp1, 1)
