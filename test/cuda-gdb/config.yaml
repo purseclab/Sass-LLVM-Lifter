@@ -1,3 +1,3 @@
 ptx_file: test_lifted_llc.ptx
-kernel_name: _Z4reluPfS_i
-input_file: relu.c
+kernel_name: _Z8fc_layerPfS_S_S_ii
+input_file: fc_layer.c

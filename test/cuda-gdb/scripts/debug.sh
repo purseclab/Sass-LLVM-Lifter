@@ -30,12 +30,12 @@ else
 fi
 
 
-# Pre-screening with compute-sanitizer
-compute-sanitizer ./test_exec
 
 
 cuda-gdb ./test_exec \
     -ex "set breakpoint pending on" \
     -ex "b $KERNEL_NAME"
 
+# Pre-screening with compute-sanitizer
+compute-sanitizer ./test_exec
 # rm test_exec
