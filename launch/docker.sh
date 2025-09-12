@@ -16,4 +16,6 @@ docker run -v "$(pwd):/app" --name my-clang-llgen clang-llgen:latest
 docker rm -f my-sass-lifter || true
 
 docker build -t sass-lifter:latest -f Dockerfile .
-docker run -v "$(pwd):/app" -p 127.0.0.1:8000:8000 --name my-sass-lifter sass-lifter:latest
+docker run -v "$(pwd):/app" \
+    -p 127.0.0.1:8000:8000 \
+    --name my-sass-lifter sass-lifter:latest

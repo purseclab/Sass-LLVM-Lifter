@@ -13,4 +13,5 @@ docker build -t $NAME:latest -f Dockerfile .
 docker run --gpus all -it \
     -v "$(pwd):/app" \
     -v "$(pwd)/../../output/4_ptx:/ptx" \
+    --privileged \
     --name my-$NAME $NAME:latest
