@@ -1,3 +1,4 @@
+import re
 from s2lir.Instruction import Instruction, Operand
 from utils import *
 from llvmlite import ir as llvmir
@@ -34,8 +35,30 @@ class BasicBlock:
         for Inst in self.instructions:
             Inst.getRegs(Regs)
 
+    def updateName(self, rev):
+        pattern = r"^(.*?)(\.\.\.\d+)?$"
+        if match := re.search(pattern, self.label):
+            name = match.group(1)
+            num = match.group(2)
+            if num:
+                # num = int(num[3:])
+                # assert int(num) == rev - 1
+                assert rev is None
+                self.label = name
+                return self.label
+            
+            self.label = name + "..." + str(rev)
+            return self.label
+            
+        else:
+            print(self.label)
+            print(match)
+            raise InvalidSyntaxException
+            
+        return None
+        
 
-    def lift(self, IRBuilder, IRRegs, IRArgs, BlockMap, IRFunc, ExitBlock):
+    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], IRFunc: llvmir.values.Function, ExitBlock: llvmir.values.Block, nextBlock: "BasicBlock"):
         dprint("^"*100)
         dprint(self.addr)
         dprint(self.label)
@@ -46,6 +69,13 @@ class BasicBlock:
         dprint([ x.isConditionExpr() for x in self.instructions])
         dprint("^"*100)
 
+        if len(self.instructions) == 0:
+            if not IRBuilder.block.is_terminated:
+                assert nextBlock is not None
+                nextIRBlock: llvmir.values.Block = BlockMap[nextBlock]
+                # for reasons currently unknown to me, there's some blocks that's already linked to Exitblock and so is already "terminated"
+                IRBuilder.branch(nextIRBlock)
+        
         for i in range(len(self.instructions)):
             # After creating CFG, all the branches or conditional branches will only be the final one
             Inst = self.instructions[i]
@@ -53,14 +83,15 @@ class BasicBlock:
             if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):
                 if Inst.isBranch() and not Inst.isConditionExpr():
                     # Unconditional Branch
-                    targetBB = self.func.labels2block[Inst.branch_target]
+                    targetBB = Inst.branch_target
                     dprint(Inst.addr)
                     dprint(targetBB.label)
                     IRBuilder.branch(BlockMap[targetBB])
                 elif Inst.isConditionExpr():
 
                     P = Inst.operands[-1]
-                    PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
+                    # PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
+                    PredReg = IRRegs[P.getRegName()]
                     # Fetch the content from PredReg
                     PredReg = IRBuilder.inttoptr(PredReg, llvmir.PointerType(llvmir.IntType(1)))
                     PredReg = IRBuilder.load(PredReg)
@@ -73,7 +104,7 @@ class BasicBlock:
 
                     # Conditional Branch
                     if Inst.isBranch():
-                        targetBB = self.func.labels2block[Inst.branch_target]
+                        targetBB = Inst.branch_target
 
                         # If self BB is the last one, jump to ExitBlock, else jump to NextBB
                         if self == self.func.blocks[-1]:
@@ -103,3 +134,11 @@ class BasicBlock:
                     assert False, "Branch should be the last instruction in the block"
                 else:
                     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
+                    if i == len(self.instructions) - 1:
+                        assert not (Inst.isBranch() or Inst.isConditionExpr())
+                        # LLVM IR is okay with fallthrough from one label to the next label, but llc would require you to have a "br label %.L_x_..." instruction, otherwise it'd complain that "error: expected instruction opcode"
+                        if not IRBuilder.block.is_terminated:
+                            assert nextBlock is not None
+                            nextIRBlock: llvmir.values.Block = BlockMap[nextBlock]
+                            # for reasons currently unknown to me, there's some blocks that's already linked to Exitblock and so is already "terminated"
+                            IRBuilder.branch(nextIRBlock)

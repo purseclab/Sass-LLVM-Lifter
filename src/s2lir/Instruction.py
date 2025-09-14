@@ -14,6 +14,9 @@ import re
 
 current_dir = Path(__file__).parent
 
+SM_75_UReg_Set = [f"UR{i}" for i in range(128)]
+SM_75_UReg_Set.append(f"URZ")
+
 class Instruction:
     def __init__(self, inst_dict, BB):
         self.addr = inst_dict["addr"]
@@ -28,7 +31,7 @@ class Instruction:
             self.operands.append(Operand(self.condition_expr[1:], self))
 
         # Initialized via parsing
-        self.branch_target = None
+        self.branch_target : BasicBlock = None
 
         self.BB: 'BasicBlock' = BB
         config_path = current_dir / "../.." / "launch" / "config.json"
@@ -37,6 +40,9 @@ class Instruction:
             self.config = json.load(file)
         
         self.llvm_module = None
+        
+        self.disabled = False
+        
 
     def parse(self):
         for ope in self.operands:
@@ -44,7 +50,7 @@ class Instruction:
         
         if self.opcode == "BRA":
             assert len(self.operands) <= 2
-            self.branch_target = self.operands[0].branch_label
+            self.branch_target = self.BB.func.labels2block[self.operands[0].branch_label]
 
         # self.dump()
 
@@ -62,30 +68,17 @@ class Instruction:
         if (op == "GE"):
             return ">="
 
-        return None
+        raise InvalidSyntaxException
     
     def getRegs(self, Regs : dict[str, Operand]):
         # Collect registers used in instructions (In Reg, PReg and Ptr)
         for Operand in self.operands:
-            if Operand.isReg or Operand.isPReg or Operand.isPtr:
-                Regs[Operand.getIRRegName()] = Operand
-        
-    
-    # Get def operand
-    def GetDef(self):
-        return self.operands[0]
-
-    # Get use operand
-    def GetUses(self):
-        Uses = []
-        for i in range(1, len(self.operands)):
-            Uses.append(self.operands[i])
-
-        return Uses
+            if (Operand.isReg or Operand.isPReg or Operand.isPtr) and not Operand.isConstMem:
+                Regs[Operand.getIRRegName()] = Operand # this naming with getIRRegName is obsolete, but rn i dont think it serves an important role other than the Regs[Reg]
 
     # JP: Now, only update Reg Type
     # Check and update the use operand's type from the givenn operand
-    def CheckAndUpdateUseType(self, Def):
+    def CheckAndUpdateUseType(self, Def: Operand):
         for i in range(1, len(self.operands)):
             CurrOperand = self.operands[i]
             if  CurrOperand.isReg and Def.isReg and CurrOperand.reg == Def.reg:
@@ -95,7 +88,7 @@ class Instruction:
         return False
     
     # Check and update the def operand's type from the given operands
-    def CheckAndUpdateDefType(self, Uses):
+    def CheckAndUpdateDefType(self, Uses: typing.List[Operand]):
         Def = self.operands[0]
         for i in range(len(Uses)):
             CurrUse = Uses[i]
@@ -129,7 +122,7 @@ class Instruction:
         for ope in self.operands:
             text += ope.dump_text()
         if self.branch_target:
-            text += f"Branch Target:  {self.branch_target}"
+            text += f"Branch Target:  {self.branch_target.label}"
         text += "\n"
         
         return text
@@ -152,7 +145,7 @@ class Instruction:
         else:
             return f"{new_opcode} {', '.join(operands)}"
 
-    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock):
+    def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], ExitBlock: llvmir.values.Block):
         if self.llvm_module is None:
             # note we cannot setup self.llvm_module in init because llvmir.module is not created until the lift() in main.py
             self.llvm_module = self.BB.func.module.llvm_module
@@ -160,9 +153,13 @@ class Instruction:
         
         # BB already undergo splitting inside Function.py before lifting process
         
-        self.BB.func.sassAddr2Inst[self.addr] = self
+        # changed to int so that we dont have to deal with differences such as 0x1 vs 0x001
+        self.BB.func.sassAddr2Inst[int(self.addr, 16)] = self
         
         # generate_ir_comment(IRBuilder, self.dump_text())
+        
+        if self.disabled:
+            return
         
         if self.opcode == "EXIT":
             if not IRBuilder.block.is_terminated:
@@ -179,13 +176,27 @@ class Instruction:
         if self.opcode == "S2R":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ResOp.isReg and ValOp.SReg:
                 # TODO: Fix it later;
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-                # Call thread idx operation
-                IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
+                
+                if str(ValOp) == "SR_CTAID.X":
+                    IRVal = IRBuilder.call(nvvm_ctaid_x(self.llvm_module), [], name="nvvm_ctaid_x")
+                elif str(ValOp) == "SR_CTAID.Y":
+                    IRVal = IRBuilder.call(nvvm_ctaid_y(self.llvm_module), [], name="nvvm_ctaid_y")
+                elif str(ValOp) == "SR_CTAID.Z":
+                    IRVal = IRBuilder.call(nvvm_ctaid_z(self.llvm_module), [], name="nvvm_ctaid_z")
+                else:
+                    # TODO: Fix later, e.g. S2R R3, SR_TID.X
+                    # Call thread idx operation
+                    IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
+                    
                 # Store the result
-                IRBuilder.store(IRVal, IRResOp)
+                # IRBuilder.store(IRVal, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
             else:
                 raise InvalidSyntaxException
             return
@@ -193,51 +204,73 @@ class Instruction:
         if self.opcode == "MOV" or self.opcode == "UMOV":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ResOp.isReg and ValOp.isReg:
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-                IRValOp = IRRegs[ValOp.getIRRegName()]
-                IRVal = IRBuilder.load(IRValOp)
-                IRBuilder.store(IRVal, IRResOp)
-                # IRBuilder.store(IRValOp, IRResOp)
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
+                # IRValOp = IRRegs[ValOp.getIRRegName()]
+                # IRVal = IRBuilder.load(IRValOp)
+                IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
+                # IRBuilder.store(IRVal, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
+                # old: # IRBuilder.store(IRValOp, IRResOp)
             elif ResOp.isReg and ValOp.isConst:
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-                tmp = llvmir.Constant(IRResOp.type.pointee, ValOp.Value)
-                IRBuilder.store(tmp, IRResOp)
-            elif ResOp.isReg and ValOp.isArg:
-                IRResOp = IRRegs[ResOp.getIRRegName()]
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
+                tmp = llvmir.Constant(ResOp.getIRType(), ValOp.Value)
+                # IRBuilder.store(tmp, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
+            elif ResOp.isReg and ValOp.isConstMem:
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # Find IR from IRArgs
+                if ValOp.offset_in_const_mem not in IRArgs:
+                    IRArgs[ValOp.offset_in_const_mem] = llvmir.Constant(llvmir.IntType(32), 0)
                 IRValOp = IRArgs[ValOp.offset_in_const_mem]
 
-                IRBuilder.store(IRValOp, IRResOp)
+                # IRBuilder.store(IRValOp, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
                 # IRBuilder.store(IRArgs[ValOp.offset_in_const_mem], IRResOp)
             else:
                 raise InvalidSyntaxException
             return
 
         if self.opcode == "LDG":
+            # Load from Global Memory
+            # e.g.: LDG.E.SYS R57, [R38]
             ResOp = self.operands[0]
             PtrOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
             if ResOp.isReg and PtrOp.isPtr:
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-                IRPtrOp = IRRegs[PtrOp.getIRRegName()]
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
+                IRResOp = IRRegs[ResOp.getRegName()]
+                # IRPtrOp = IRRegs[PtrOp.getIRRegName()]
                 
-                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRPtrOp, IRResOp.type.pointee)
+                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
 
                 # IRVal = IRBuilder.load(IRPtrOp)
-                IRBuilder.store(IRVal, IRResOp)
+                # IRBuilder.store(IRVal, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
             else:
                 raise InvalidSyntaxException
             return
 
         if self.opcode == "STG":
-            ResOp = self.operands[1]
-            PtrOp = self.operands[0]
-            if ResOp.isReg and PtrOp.isPtr:
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-                IRPtrOp = IRRegs[PtrOp.getIRRegName()]
-                IRVal = IRBuilder.load(IRResOp)
+            # Store to global Memory
+            # e.g.: STG.E.SYS [R28], R7
+            ResOp = self.operands[0]
+            ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
+            if ValOp.isReg and ResOp.isPtr:
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
+                # IRValOp = IRRegs[ValOp.getIRRegName()]
+                # IRVal = IRBuilder.load(IRValOp)
+                IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
 
-                PtrOp.IR_ValueToPointer(IRBuilder, IRPtrOp, IRVal)
+                ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal)
             else:
                 raise InvalidSyntaxException
             return
@@ -248,17 +281,78 @@ class Instruction:
             ValOp2 = self.operands[2]
             ValOp3 = self.operands[3]
             # IRBuilder.comment("IMAD Instruction")
+            
+            # print(self)
+            
+            settings = {
+                "wide": False,
+                "mov": False,
+                "iadd": False,
+                "x": False
+            }
+            
+            for mod in self.modifiers:
+                if mod == "WIDE":
+                    # implemented according to https://cbr.stanford.edu/seminarTalks/slides_20230526_niall_emmart.pptx
+                    settings["wide"] = True
+                    continue
+                elif mod == "MOV" or mod == "IADD":
+                    # just compiler informing the reader that IMAD is essentially performing MOV/IADD
+                    # https://stackoverflow.com/questions/59777333/combined-format-of-sass-instructions
+                    
+                    if mod == "MOV":
+                        settings["mov"] = True
+                    elif mod == "IADD":
+                        settings["iadd"] = True
+
+                    continue
+                elif mod == "X":
+                    settings["x"] = True
+                elif mod == "U32" or mod == "HI":
+                    # TODO handle these
+                    continue
+                else:
+                    print(self)
+                    print("Not implemented Mod:", mod)
+                    raise NotImplementedError
+                    
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            if settings["x"]:
+                assert len(self.operands) == 5
+                ValOp4 = self.operands[4]
+                IRValOp4 = ValOp4.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            else:
+                assert len(self.operands) == 4
 
             assert ValOp1.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
-
-            tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul")
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
+            if settings["wide"]:
+                # zero extend op1 and op2 into 64 bit so that the result of mul is 64 bit
+                IRValOp1 = IRBuilder.zext(IRValOp1, llvmir.IntType(64), name="zext")
+                IRValOp2 = IRBuilder.zext(IRValOp2, llvmir.IntType(64), name="zext")
+            tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul") 
+            if settings["wide"]:
+                # assert isinstance(IRValOp3.type, llvmir.PointerType) or IRValOp3.type.width == 64
+                if isinstance(IRValOp3.type, llvmir.PointerType):
+                    IRValOp3 = IRBuilder.ptrtoint(IRValOp3, llvmir.IntType(64))
+                elif IRValOp3.type == llvmir.IntType(32):
+                    IRValOp3 = IRBuilder.zext(IRValOp3, llvmir.IntType(64), name="zext")
+                else:
+                    raise InvalidSyntaxException
             tmp = IRBuilder.add(tmp, IRValOp3, "add")
-            IRBuilder.store(tmp, IRResOp)
+            
+            if settings["x"]:
+                assert ValOp4.get_bit_width() == 1
+                
+                IRValOp4 = IRBuilder.zext(IRValOp4, llvmir.IntType(32), name="zext")
+                tmp = IRBuilder.add(tmp, IRValOp4, "add")
+            
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -269,6 +363,8 @@ class Instruction:
             ValOp1 = self.operands[2]
             ValOp2 = self.operands[3]
             PReg2 = self.operands[4]
+            
+            assert len(self.operands) == 5
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -284,8 +380,9 @@ class Instruction:
             assert ResOp.isPReg and PReg1.isPReg and PReg2.isPReg
         
 
-            IRResOp = IRRegs[ResOp.getIRRegName()]
-            IRPReg1 = IRRegs[PReg1.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRPReg1 = IRRegs[PReg1.getIRRegName()]
+            IRPReg1 = IRRegs[PReg1.getRegName()]
             # IRPReg2 = IRRegs[PReg2.getIRRegName()]
 
             IRPreg1Val = IRBuilder.load(IRPReg1)
@@ -361,7 +458,8 @@ class Instruction:
             else:
                 raise NotImplementedError
         
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -430,7 +528,7 @@ class Instruction:
             else:
                 raise NotImplementedError
             
-            IRResOp_Rd = IRRegs[R_dest.getIRRegName()]
+            # IRResOp_Rd = IRRegs[R_dest.getIRRegName()]
             IRValOp_Rc = R_c.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp_Ra = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp_Rb = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)    
@@ -517,7 +615,8 @@ class Instruction:
                 print(f"settings[\"dir\"] = {settings['dir']}")
                 raise InvalidSyntaxException
             
-            IRBuilder.store(tmp, IRResOp_Rd)
+            # IRBuilder.store(tmp, IRResOp_Rd)
+            R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
         if self.opcode == "FMNMX":
@@ -525,13 +624,15 @@ class Instruction:
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             PReg = self.operands[3]
+            
+            assert len(self.operands) == 4
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg and PReg.isPReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # TODO: use _ordered or unordered?
             min = IRBuilder.select(
@@ -549,7 +650,8 @@ class Instruction:
 
             # https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
             tmp = IRBuilder.select(IRPreg, min, max, "fmnmx_final")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -558,18 +660,25 @@ class Instruction:
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             ValOp3 = self.operands[3]
+            
+            assert len(self.operands) == 4
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
             
             if not self.config["allow_temp_behavior"]:
                 assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
-                assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType)) 
+                assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType))
+                IRValOp_list = [IRValOp1, IRValOp2, IRValOp3]
+                if any(isinstance(IRVal.type, llvmir.DoubleType) for IRVal in IRValOp_list):
+                    # Promote all float operands to double
+                    IRValOp_list = [IRBuilder.fpext(IRVal, llvmir.DoubleType()) if IRVal.type == llvmir.FloatType() else IRVal for IRVal in IRValOp_list]
+                    IRValOp1, IRValOp2, IRValOp3 = IRValOp_list
                 
             else:
                 assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
@@ -591,7 +700,8 @@ class Instruction:
             
 
             tmp = IRBuilder.fadd(tmp, IRValOp3, "fadd")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -599,15 +709,18 @@ class Instruction:
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
+            
+            assert len(self.operands) == 3
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -618,13 +731,15 @@ class Instruction:
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             shift = self.operands[3]
+            
+            assert len(self.operands) == 4
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRShift = shift.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # using promote_integer_list to prevent issue with "LEA R8, P0, R25, R4, 0x2", P0 is i1, need to extend them otherwise there'd be issue mixing different inttype
             
@@ -632,7 +747,8 @@ class Instruction:
             
             tmp = IRBuilder.shl(IRValOp1, IRShift, "shl")
             tmp = IRBuilder.add(tmp, IRValOp2, "add")
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -640,11 +756,13 @@ class Instruction:
         if self.opcode == "IABS":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             tmp = IRBuilder.select(
                 IRBuilder.icmp_signed('>=', IRValOp, llvmir.Constant(IRValOp.type, 0)),
@@ -652,7 +770,8 @@ class Instruction:
                 IRBuilder.neg(IRValOp),
                 "iabs"
             )
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
             return
         
@@ -660,14 +779,17 @@ class Instruction:
             # TODO: 64 bit not implemented
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
-            IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-
+            # IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
+            IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder) # note that the constant might be any length, usually depending on the type of the arg, e.g. i1 for bool, 64 bit for pointer etc
             assert ResOp.isReg
             assert ResOp.reg in SM_75_UReg_Set
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
-            IRBuilder.store(IRValOp, IRResOp)
+            # IRBuilder.store(IRValOp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, IRVal)
             return
         
 
@@ -701,10 +823,25 @@ class Instruction:
             immLut = self.operands[4]
             # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
             PReg = self.operands[5]
+            
+            assert len(self.operands) == 6
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            
+            valOps = [ValOp1, ValOp2, ValOp3]
+            if not all(isinstance(v.getIRType(), llvmir.IntType) for v in valOps):
+                if not all(w == 32 for w in [valOp.get_bit_width() for valOp in valOps]):
+                    print(self)
+                    raise Exception
+                else:
+                    if any(v.getIRType() != llvmir.IntType(32) for v in valOps):
+                        IRValOp1, IRValOp2, IRValOp3 = bitcast_all_to_type(IRBuilder, llvmir.IntType(32), IRValOp1, IRValOp2, IRValOp3)
+
+            # if not all(w == 32 for w in [IRValOp1.type.width, IRValOp2.type.width, IRValOp3.type.width]):
+            
             # IRImmLut = llvmir.Constant(llvmir.IntType(32), immLut.Value)
             IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
@@ -764,10 +901,12 @@ class Instruction:
                     raise NotImplementedError
             
             if self.config["allow_temp_behavior"]:
-                if str(IRRegs[ResOp.getIRRegName()].type) == "i1*":
+                # if str(IRRegs[ResOp.getIRRegName()].type) == "i1*":
+                if str(IRRegs[ResOp.getRegName()].type) == "i1*":
                     tmp = IRBuilder.trunc(tmp, llvmir.IntType(1), "trunc1")
             
-            IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
+            # IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
 
@@ -779,10 +918,25 @@ class Instruction:
             ValOp3 = self.operands[3]
             immLut = self.operands[5]
             assert immLut.isConst
+            # todo figure out op[4] and op[6]. op[4] is prob a negation of the result, or a negation of each inputs
+            assert len(self.operands) == 7
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            
+            # ---- Copied from LOP3
+            valOps = [ValOp1, ValOp2, ValOp3]
+            if not all(isinstance(v.getIRType(), llvmir.IntType) for v in valOps):
+                if not all(w == 32 for w in [valOp.get_bit_width() for valOp in valOps]):
+                    print(self)
+                    raise Exception
+                else:
+                    if any(v.getIRType() != llvmir.IntType(32) for v in valOps):
+                        IRValOp1, IRValOp2, IRValOp3 = bitcast_all_to_type(IRBuilder, llvmir.IntType(32), IRValOp1, IRValOp2, IRValOp3)
+            # ---- Copied from LOP3
+            
+            
             # IRImmLut = llvmir.Constant(llvmir.IntType(32), immLut.Value)
             # IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
@@ -831,40 +985,55 @@ class Instruction:
         if self.opcode == "I2F":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
-            tmp = IRBuilder.sitofp(IRValOp, IRResOp.type.pointee)
-            IRBuilder.store(tmp, IRResOp)
+            # tmp = IRBuilder.sitofp(IRValOp, IRResOp.type.pointee)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
 
             return
         
         if self.opcode == "F2I":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
 
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
-            tmp = IRBuilder.fptosi(IRValOp, IRResOp.type.pointee)
-            IRBuilder.store(tmp, IRResOp)
+            # tmp = IRBuilder.fptosi(IRValOp, IRResOp.type.pointee)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
 
             return
 
         if self.opcode == "MUFU": # Multi-Function Unit
             ResOp = self.operands[0]
             ValOp = self.operands[1]
+            
+            assert len(self.operands) == 2
+            
+            if ValOp.getTypeDesc() == "NOTYPE": # TODO tmp solution
+                ValOp.setTypeDesc(ResOp.getTypeDesc())
+            
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
-            
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
+            float_to_int_needed = False
             if self.modifiers[0] == "RCP": # Reciprocal
-                tmp = IRBuilder.fdiv(llvmir.Constant(IRResOp.type.pointee, 1), IRValOp)
+                if ValOp.getIRType() == llvmir.IntType(32):
+                    IRValOp = IRBuilder.sitofp(IRValOp, llvmir.FloatType(), name="sint_to_f32")
+                    float_to_int_needed = True
+                tmp = IRBuilder.fdiv(llvmir.Constant(llvmir.FloatType(), 1), IRValOp)
             elif self.modifiers[0] == "EX2": # Exponent base-2
                 # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opMUFU.htm
                 # TODO: there's some small precision issue, as noted here: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750988222773009
@@ -873,7 +1042,7 @@ class Instruction:
                 
                 if not self.config["allow_temp_behavior"]:
                     assert isinstance(IRValOp.type, (llvmir.FloatType)) 
-                    assert isinstance(IRResOp.type, (llvmir.FloatType)) 
+                    assert ResOp.getIRType() == llvmir.FloatType()
                 else:
                     if isinstance(IRValOp.type, llvmir.IntType):
                         IRValOp = IRBuilder.sitofp(IRValOp, llvmir.FloatType(), name="sint_to_f32")
@@ -890,63 +1059,85 @@ class Instruction:
                 print(self.modifiers[0])
                 raise NotImplementedError
 
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            if float_to_int_needed:
+                tmp = IRBuilder.fptosi(tmp, llvmir.IntType(32))
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
         
         if self.opcode == "IADD3" or self.opcode == "UIADD3" :
             ResOp = self.operands[0]
-
-            if len(self.modifiers) > 0 and self.modifiers[0] == "X":         
+            assert len(self.operands) in (4,5,6)
+            
+            if len(self.operands) == 4:
+                assert len(self.modifiers) == 0
+                assert not self.operands[1].isPReg
                 ValOp1 = self.operands[1]
                 ValOp2 = self.operands[2]
                 ValOp3 = self.operands[3]
+            elif len(self.operands) == 5:
+                assert len(self.modifiers) == 0
+                assert self.operands[1].isPReg
+                
+                ValOp1 = self.operands[2]
+                ValOp2 = self.operands[3]
+                ValOp3 = self.operands[4]
+                OverflowPreg = self.operands[1]
+            elif len(self.operands) == 6:
+                assert len(self.modifiers) > 0 and self.modifiers[0] == "X"
+                ValOp1 = self.operands[1]
+                ValOp2 = self.operands[2]
+                ValOp3 = self.operands[3]
+                # TODO not entirely sure what these pred are, but they're probably either carry or overflow bits
+                PregOp1 = self.operands[4]
+                PregOp2 = self.operands[5]
+                assert PregOp1.isPReg
+                assert PregOp2.isPReg
 
-                Preg = self.operands[4]
+            IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
+            IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
-                IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRPreg = Preg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            assert ResOp.isReg
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
+            if len(self.operands) == 4:
+                sum = IRBuilder.add(IRValOp1, IRValOp2)
+                sum = IRBuilder.add(sum, IRValOp3)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
+            elif len(self.operands) == 5:
+                # NOTE: we're using uadd overflow because based on emphirical experiment, iadd's overflowpred is only set when it's during unsigned overflow and not signed overflow
+                # the fundamental binary addition process itself is the same for both signed and unsigned numbers
+                llvm_module = self.llvm_module
+                tmp1 = IRBuilder.call(llvm_uadd_with_overflow(llvm_module), [IRValOp1, IRValOp2])
+                sum1 = IRBuilder.extract_value(tmp1, 0)
+                overflow_1 = IRBuilder.extract_value(tmp1, 1)
+                
+                tmp2 = IRBuilder.call(llvm_uadd_with_overflow(llvm_module), [sum1, IRValOp3])
+                sum = IRBuilder.extract_value(tmp2, 0)
+                overflow = IRBuilder.extract_value(tmp2, 1)
+                overflow = IRBuilder.or_(overflow_1, overflow)
+                
+                # IRBuilder.store(sum, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
+                OverflowPreg.IRReg_Store(IRRegs, IRBuilder, overflow)
+
+            elif len(self.operands) == 6:
+                IRPreg1 = PregOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                IRPreg2 = PregOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                
                 # cast IRPreg to 32 bit
-                IRPreg = IRBuilder.zext(IRPreg, llvmir.IntType(32))
+                IRPreg1 = IRBuilder.zext(IRPreg1, llvmir.IntType(32))
+                IRPreg2 = IRBuilder.zext(IRPreg2, llvmir.IntType(32))
 
                 sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
                 sum = IRBuilder.add(sum, IRValOp3, "add")
-                sum = IRBuilder.add(sum, IRPreg, "add")
+                sum = IRBuilder.add(sum, IRPreg1, "add")
+                # TODO not entirely sure the role of this last preg
+                sum = IRBuilder.add(sum, IRPreg2, "add")
 
-                assert ResOp.isReg
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-                IRBuilder.store(sum, IRResOp)
-
-            else:
-                # Currrently, just drop the Carry;
-                if self.operands[1].isReg:
-                    ValOp1 = self.operands[1]
-                    ValOp2 = self.operands[2]
-                    ValOp3 = self.operands[3]
-                elif self.operands[1].isPReg:
-                    ValOp1 = self.operands[2]
-                    ValOp2 = self.operands[3]
-                    ValOp3 = self.operands[4]
-
-
-                IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)  
-                IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-
-                assert ResOp.isReg
-                IRResOp = IRRegs[ResOp.getIRRegName()]
-
-                sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
-                sum = IRBuilder.add(sum, IRValOp3, "add")
-                IRBuilder.store(sum, IRResOp)
-
-                if self.operands[1].isPReg:
-                    # TODO: Make sure Using comparation is correct; 
-                    carry = IRBuilder.icmp_unsigned('<', sum, IRValOp1, name="carry")
-                    Preg = self.operands[1]
-                    IRPreg = IRRegs[Preg.getIRRegName()]
-                    IRBuilder.store(carry, IRPreg)
+                # IRResOp = IRRegs[ResOp.getIRRegName()]
+                # IRBuilder.store(sum, IRResOp)
+                ResOp.IRReg_Store(IRRegs, IRBuilder, sum)
             
             return
         
@@ -961,6 +1152,9 @@ class Instruction:
                 "rel": None,
                 "noinc": None
             }
+            
+            assert len(self.operands) == 1
+            
             for mod in self.modifiers:
                 if mod == "REL":
                     settings["rel"] = True
@@ -987,10 +1181,11 @@ class Instruction:
                     return_type = match.group(2)
                     
                     # syntax inspired from llvm_exp2_f32, not necessarily correct
-                    if return_type == "f32":
-                        function_type = llvmir.FunctionType(llvmir.FloatType(), [])
-                    else:
-                        raise NotImplementedError
+                    # if return_type == "f32":
+                    #     function_type = llvmir.FunctionType(llvmir.FloatType(), [])
+                    # else:
+                    #     raise NotImplementedError
+                    function_type = llvmir.FunctionType(llvmir.VoidType(), [])
                     
                     existing_fn = self.llvm_module.globals.get(function_name, None)
                     
@@ -1000,6 +1195,13 @@ class Instruction:
                         function = existing_fn
                     else:
                         function = llvmir.Function(self.llvm_module, function_type, name=function_name)
+                    
+                    if function_name in self.BB.func.module.functions:
+                        functionObj = self.BB.func.module.functions[function_name]
+                        assert functionObj.parent_func is None or functionObj.parent_func == self.BB.func
+                        assert False # NOTE: .parent_func is irrelevant now
+                        functionObj.parent_func = self.BB.func
+                    
                     IRBuilder.call(function, [], name="call_rel")
                 else:
                     raise NotImplementedError
@@ -1021,7 +1223,7 @@ class Instruction:
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
-            IRResOp = IRRegs[ResOp.getIRRegName()]
+            # IRResOp = IRRegs[ResOp.getIRRegName()]
             
             
             if not self.config["allow_temp_behavior"]:
@@ -1033,7 +1235,8 @@ class Instruction:
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
                 
             tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
                 
 
             return
@@ -1044,13 +1247,15 @@ class Instruction:
             S_b = self.operands[2] # select wheb False
             P_reg = self.operands[3] # predicate
             
+            assert len(self.operands) == 4
+            
             IRValOp1 = R_a.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = S_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRPreg = P_reg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
             assert R_dest.isReg and P_reg.isPReg
             assert str(IRPreg.type) == 'i1'
-            IRResOp = IRRegs[R_dest.getIRRegName()]
+            # IRResOp = IRRegs[R_dest.getIRRegName()]
             
             tmp = IRBuilder.select(
                 IRBuilder.icmp_signed('==', IRPreg, llvmir.Constant(IRPreg.type, 1)), # predicate register are stricly i1, even when doing FSEL. FSEL just means that IRValOp1 and IRValOp2 are floats (bytes will be interpreted as float)
@@ -1059,24 +1264,66 @@ class Instruction:
                 self.opcode.lower()
             )
 
-            IRBuilder.store(tmp, IRResOp)
+            # IRBuilder.store(tmp, IRResOp)
+            R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
         if self.opcode == "RET":
-            # TODO Implement this later
+            # TODO ret doesnt need to be handled for now. See https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1753385146834629
             # TODO right now we're assuming that it's only being used to return to the address below a CALL instruction
             # therefore, the instruction we're returning to would be the first instruction in a BB
-            # assuming that the register is storing the SASS addr to return to
+            # we'll use info from reaching def analysis to determine the addr to jump to, the address shld be at the beginning of a basic block
             assert len(self.operands) == 2
-            assert self.operands[0].isReg
-            # but i cant do branch to the BB... because the RET is a register so need to be read dynamically and i cant set a branch rn at lifter stage
-            # we might need to implement a giant table
+            assert self.operands[0].isReg or self.operands[0].isConst
+            # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
             
-            # SOLUTION: we'll have to propagate the constant return address value down to the ret instruction so that we can do unconditional branch to the basic block, the address shld be at the beginning of a basic block
+            if self.branch_target is not None:
+                targetBB = self.branch_target
+                IRBuilder.branch(BlockMap[targetBB])
+                return
+            
+            
+            retAddrOp = self.operands[0]
             return
             
-            print(self)
+            if retAddrOp.isConst:
+                retAddr = retAddrOp.Value
+            elif retAddrOp.isReg:
+                assert retAddrOp in self.BB.func.typeAnalysis.ud_chain
+                assert len(self.BB.func.typeAnalysis.ud_chain[retAddrOp]) == 1
+                retAddrValOp = list(self.BB.func.typeAnalysis.ud_chain[retAddrOp])[0]
+                assert retAddrValOp.isConst
+                
+                # Now we need to get the adjacent register
+                # retAddrValOp.
+                
+                retAddrValOp
+                pass
+            retAddr = 0x0000
+            ret_to_inst: Instruction = self.BB.func.sassAddr2Inst[retAddr]
+            assert ret_to_inst.BB.instructions[0] == ret_to_inst
+            IRBuilder.branch(ret_to_inst.BB)
+            
+            return
         
         print("\nInstruction: ", self)
         raise NotImplementedError
 
+
+    ############ Type/Liveness Analysis ############
+    
+    def get_defs(self):
+        """Return list of operands defined by this instruction."""
+        return [op for op in self.operands if op.is_def]
+
+    def get_uses(self):
+        """Return list of operands used by this instruction."""
+        return [op for op in self.operands if op.is_use]
+    
+    def get_kill_set(self):
+        """Return set of registers defined (killed) by this instruction."""
+        # TODO handle 64 bit (need to add both registers [there'd be one implicit register] into kill set)
+        return {op.reg for op in self._get_kill_set()}
+    
+    def _get_kill_set(self):
+        return {op for op in self.get_defs() if op.isReg or op.isPReg}

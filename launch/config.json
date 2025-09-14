@@ -1,11 +1,12 @@
 {
     "lifter": {
-        "input_file": "gru.sass",
-        "output_file": "gru.ll"
+        "input_file": "test_code.sass",
+        "output_file": "test.ll"
     },
     "cu2sass": {
-        "cuda_file": "gru.cu",
-        "select_cubin": "gru.2.sm_75.cubin"
+        "cuda_file": "test.cu",
+        "select_cubin": "test.2.sm_75.cubin"
     },
-    "allow_temp_behavior": true
+    "allow_temp_behavior": false,
+    "allow_incomplete_type_analysis": false
 }

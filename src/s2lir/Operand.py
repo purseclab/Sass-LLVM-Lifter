@@ -3,6 +3,10 @@ from utils import *
 from llvmlite import ir as llvmir
 from s2lir.intrinsics import *
 import re
+import typing
+
+if typing.TYPE_CHECKING:
+    from s2lir.Instruction import Instruction
 
 # Append R0 to R255
 SM_75_Reg_Set =  [f"R{i}" for i in range(256)]
@@ -22,7 +26,7 @@ SM_75_Predicate_Reg_Set.append(f"UPT")
 
 
 # Thread Indexing
-SM_75_SepcialReg = ["SR_TID.X", "SR_TID.Y", "SR_TID.Z", "SR_CTAID.X", "SR_CTAID.Y", "SR_CTAID.Z"]
+SM_75_SpecialReg = ["SR_TID.X", "SR_TID.Y", "SR_TID.Z", "SR_CTAID.X", "SR_CTAID.Y", "SR_CTAID.Z"]
 
 COnSTANT_MEMORY="c[0x0]"
 
@@ -59,6 +63,9 @@ class Operand:
 
         # Argument from Constant Memory
         self.isArg = False
+        self.ArgID = None
+        self.isConstMem = False
+        self.const_mem_pre_offset = 0 # c[self.const_mem_pre_offset][self.offset_in_const_mem]
         self.offset_in_const_mem  = 0
         self.arg_neg = False
         self.arg_abs = False
@@ -76,26 +83,35 @@ class Operand:
 
         # Type Description
         self.typeDesc = "NOTYPE"
+        self.typeDesc_confirmed: bool = False
         self.IRType = None
         self.IRRegName = None
 
         # Father Pointer
-        self.ins = ins
+        self.ins: Instruction = ins
         
         
         self.llvm_module = None
-        
         
         config_path = current_dir / "../.." / "launch" / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
+            
+            
+        ############ Type/Liveness Analysis ############
+        
+        self.is_use = None
+        self.is_def = None
 
-    def IR_ValueFromPointer(self, IRBuilder, IRPtrOp, PinterType):
+    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PinterType):
 
         # Fetch Value from IRPtrOp
-        PtrAddr = IRBuilder.load(IRPtrOp)
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(32), self.ptr_offset))
+        # PtrAddr = IRBuilder.load(IRPtrOp)
+        PtrAddr = self.IRReg_Load(IRRegs, IRBuilder)
+        
+        PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
+        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
         # Fetch value from PtrAddr e.g.,[R2]
         PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(PinterType), "for_LDG")
@@ -110,13 +126,16 @@ class Operand:
 
         return IRVal
     
-    def IR_ValueToPointer(self, IRBuilder, IRPtrOp, IRVal):
+    def IR_ValueToPointer(self, IRBuilder, IRRegs, PtrOp, IRVal):
         # Fetch address from IRPtrOp
-        PtrAddr = IRBuilder.load(IRPtrOp)
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(32), self.ptr_offset))
+        # PtrAddr = IRBuilder.load(IRPtrOp)
+        PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
+        
+        PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
+        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
         # Convert address to pointer type
-        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(IRVal.type), "for_STG")
+        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(), "for_STG")
 
         # Handle absolute or negative value
         if self.ptr_abs or self.ptr_neg:
@@ -125,19 +144,26 @@ class Operand:
         # Store value to PtrAddr
         IRBuilder.store(IRVal, PtrAddr)
     
-    def IR_FetchValue(self, IRBuilder, IRRegs, IRArgs):
+    def IR_FetchValue(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument]):
         if self.llvm_module is None:
             self.llvm_module = self.ins.llvm_module
             assert self.llvm_module is not None
         
         # TODO: assume that normal operand other than LDG and STG is not pointers. Check it later.
         if self.isReg:
-            if self.reg == "RZ":
-                return llvmir.Constant(llvmir.IntType(32), 0)
-            if self.reg == "URZ":
-                return llvmir.Constant(llvmir.IntType(32), 0)
-            IRVal = IRRegs[self.getIRRegName()]
-            IRVal = IRBuilder.load(IRVal)
+            if self.reg in ("RZ", "URZ"):
+                if self.getTypeDesc() == "Float32":
+                    return llvmir.Constant(llvmir.FloatType(), 0)
+                elif self.getTypeDesc() == "Int32":
+                    return llvmir.Constant(llvmir.IntType(32), 0)
+                elif self.getTypeDesc() == "NOTYPE":
+                    return llvmir.Constant(llvmir.IntType(32), 0)
+                raise Exception(f"Invalid TypeDesc: {self.getTypeDesc()}")
+
+            # IRVal = IRRegs[self.getIRRegName()]
+            # IRVal = IRBuilder.load(IRVal)
+            
+            IRVal = self.IRReg_Load(IRRegs, IRBuilder)
             
             if self.reg_abs:
                 if isinstance(self.getIRType(), llvmir.FloatType):
@@ -148,12 +174,39 @@ class Operand:
                 else:
                     raise InvalidSyntaxException
             if self.reg_neg:
-                IRVal = IRBuilder.neg(IRVal)
+                if isinstance(self.getIRType(), llvmir.FloatType):
+                    IRVal = IRBuilder.fneg(IRVal)
+                elif isinstance(self.getIRType(), llvmir.IntType):
+                    IRVal = IRBuilder.neg(IRVal)
+                else:
+                    raise InvalidSyntaxException
 
             return IRVal
         
-        elif self.isArg:
-            IRVal = IRArgs[self.offset_in_const_mem]
+        elif self.isConstMem:
+            if self.isArg:
+                IRVal = self.IRReg_Load(IRRegs, IRBuilder)
+            else:
+                assert self.offset_in_const_mem not in IRArgs
+                assert self.const_mem_pre_offset == 0
+                if self.offset_in_const_mem == 0:
+                    # c[0x0][0x0]
+                    # https://llvm.org/docs/NVPTXUsage.html#overview
+                    # based on table here + reading SASS generated and comparing to src code
+                    
+                    # c[0x0][0x0] is blockdim.x
+                    IRVal = IRBuilder.call(nvvm_blockdim_x(self.llvm_module), [], name="nvvm_blockdim_x")
+                elif self.offset_in_const_mem == 0x28:
+                    # https://stackoverflow.com/questions/77889199/why-there-is-an-unused-data-move-in-the-beginning-of-cuda-kernel
+                    # TODO this is subject to change across different SM version
+                    # ignore processing
+                    IRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                elif self.offset_in_const_mem == 0x4:
+                    # c[0x0][0x4] shld be blockDim.y
+                    IRVal = IRBuilder.call(nvvm_blockdim_y(self.llvm_module), [], name="nvvm_blockdim_y")
+                else:
+                    print(self.offset_in_const_mem)
+                    raise InvalidSyntaxException
             if self.arg_abs:
                 raise NotImplementedError
             if self.arg_neg:
@@ -162,14 +215,16 @@ class Operand:
 
         elif self.isPReg:
             if self.reg == "PT":
-                return llvmir.Constant(llvmir.IntType(1), 1)
-            if self.reg == "UPT":
-                return llvmir.Constant(llvmir.IntType(1), 1)
-            IRVal = IRRegs[self.getIRRegName()]
-            IRVal = IRBuilder.load(IRVal)
+                # NOTE: it could be !PT
+                IRVal = llvmir.Constant(llvmir.IntType(1), 1)
+            elif self.reg == "UPT":
+                IRVal = llvmir.Constant(llvmir.IntType(1), 1)
+            else:
+                IRVal = IRRegs[self.getRegName()]
+                IRVal = IRBuilder.load(IRVal)
 
             if self.preg_not:
-                IRVal = IRBuilder.neg(IRVal)    
+                IRVal = IRBuilder.not_(IRVal)
             return IRVal
         
         elif self.isConst:
@@ -178,6 +233,100 @@ class Operand:
         print(f"Unknown Operand {self}")
         raise NotImplementedError
 
+    def IRReg_Load(self, IRRegs, IRBuilder):
+        IRVal = None
+        if self.isReg or self.isArg or self.isPtr:
+            if self.isReg:
+                assert self.reg
+            if self.reg:
+                IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
+                
+                
+                # TODO: test - place barriers to prevent load reordering
+                # asm_ty = llvmir.FunctionType(llvmir.VoidType(), [])
+                # inline_asm = llvmir.InlineAsm(asm_ty, "", "~{memory}", side_effect=True)
+                # IRBuilder.call(inline_asm, [])
+                
+            elif self.isArg and self.isConstMem:
+                # we need to dynamically get their value and treat it as a pointer, then need to handle how to retrieve the values
+                # IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID] this gives us a ptr, we can probaby just get the value from here, but that might also mean we need to associate all mentions of the constant value e.g. c[0x0][0x160] to this ptr
+                
+                # NOTE: isPtr means that the target is a pointer themselves. Const memory from arg is pointer by a pointer, but they might not be isPtr == True
+                
+                IRVal = self.getArgVal()
+                # but then here we dont need to load the adjacent register since the whole thing is already a ptr, so need to opt out of the process below
+                return IRVal
+            else:
+                print(self.ins, self)
+                raise InvalidSyntaxException
+            if self.isPtr:
+                # we need to load the adjacent register, then r6.Val << 32 | r5.Val
+                match = re.search(r"^(U?R)(\d+)$", self.getRegName())
+                if match:
+                    adjRegName = match.group(1)
+                    adjRegNumber = int(match.group(2)) + 1
+                    adjRegName = adjRegName + str(adjRegNumber)
+                    
+                    IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
+                    if adjRegName in IRRegs:
+                        adjIRReg = IRRegs[adjRegName]
+                        adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32) if self.isPtr else self.getIRType())
+                    else:
+                        adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                    adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext") # TODO might not work as expected for ptr or float
+                    adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
+                    IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
+                    IRVal = IRBuilder.inttoptr(IRVal, llvmir.PointerType())
+                else:
+                    raise InvalidSyntaxException
+        else:
+            raise InvalidSyntaxException
+        return IRVal
+    
+    def IRReg_Store(self, IRRegs, IRBuilder:llvmir.IRBuilder, storeVal, wide_mode=False):
+        if not isinstance(storeVal.type, llvmir.FloatType):
+            if isinstance(storeVal.type, llvmir.PointerType) or storeVal.type.width == 64:
+                assert self.isReg
+                wide_mode = True
+        if wide_mode:
+            assert not self.isPReg
+            # we need to split the storeVal into high and lower 32 bits
+            if isinstance(storeVal.type, llvmir.PointerType):
+                storeVal = IRBuilder.ptrtoint(storeVal, llvmir.IntType(64))
+            low_mask = (1 << 32) - 1
+            high_mask = low_mask << 32
+            IR_high_mask = llvmir.Constant(llvmir.IntType(64), high_mask)
+            storeVal_high = IRBuilder.and_(storeVal, IR_high_mask)
+            storeVal_high = IRBuilder.lshr(storeVal_high, llvmir.Constant(llvmir.IntType(64), 32))
+            storeVal_high = IRBuilder.trunc(storeVal_high, llvmir.IntType(32), "trunc32")
+            storeVal_low = IRBuilder.trunc(storeVal, llvmir.IntType(32), "trunc32")
+            storeVal = storeVal_low
+
+        if self.isReg or self.isPReg:
+            IRReg = IRRegs[self.getRegName()]
+            if self.isReg:
+                if storeVal.type != llvmir.IntType(32):
+                    if storeVal.type == llvmir.FloatType():
+                        IRReg = IRBuilder.bitcast(IRReg, llvmir.FloatType().as_pointer())
+                    else:
+                        raise Exception
+            elif self.isPReg:
+                if storeVal.type != llvmir.IntType(1):
+                    if storeVal.type == llvmir.IntType(32):
+                        storeVal = IRBuilder.trunc(storeVal, llvmir.IntType(1))
+                    else:
+                        raise Exception
+            # prevRegName = self.getCurRegName()
+            IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
+            
+            if wide_mode:
+                # store high 32 at adjacent register
+                adjRegName = self.getAdjRegName()
+                IRReg = IRRegs[adjRegName]
+                IRBuilder.store(storeVal_high, IRReg)
+            return True
+        return False
+    
     def parse(self):
         content = self.OriginalContent # an element from ["Basicblocks"]["instructions"][.]["content"][1], e.g. an element from ["Basicblocks"]["instructions"][.]["content"][1][0] == "R1" for test_code.json
         # dprint("Operand Content", content)
@@ -194,7 +343,7 @@ class Operand:
 
         # c[0x][]: Here we need to parse the content between []
         if content.find("c[0x0]") != -1: 
-            self.isArg = True
+            self.isConstMem = True
             self.offset_in_const_mem = int(content.split("c[0x0][0x")[1].split("]")[0], 16)
             if content.startswith("-"):
                 self.arg_neg = True
@@ -202,7 +351,10 @@ class Operand:
             if content.startswith("|"):
                 assert content.endswith("|")
                 self.arg_abs = True
-            self.RegisterArg(self.offset_in_const_mem, self)
+            
+            if self.offset_in_const_mem >= 0x160:
+                self.isArg = True
+                self.RegisterArg(self.offset_in_const_mem, self)
             return
         
         # [R1 + 0x2] = > R1 + 0x2
@@ -238,7 +390,7 @@ class Operand:
             self.Value = float(content)
             
             if not self.config["allow_temp_behavior"]:
-                self.IRType = llvmir.DoubleType() # needed otherwise IRFetchValue wont create the correct type of constant
+                self.IRType = llvmir.FloatType() # needed otherwise IRFetchValue wont create the correct type of constant
             # TODO: differentiate between float32 and 64 (doubletype)
             # self.typeDesc = "Float32"
             return
@@ -253,7 +405,7 @@ class Operand:
             return
         
         # Special Registers
-        if content in SM_75_SepcialReg:
+        if content in SM_75_SpecialReg:
             self.SReg = True
             self.reg = content
             return
@@ -262,7 +414,7 @@ class Operand:
         if (content.startswith("!") and content[1:] in SM_75_Predicate_Reg_Set) or content in SM_75_Predicate_Reg_Set:
             self.isPReg = True
             self.reg = content[1:] if content.startswith("!") else content
-            self.preg_not = False if content.startswith("!") else True
+            self.preg_not = True if content.startswith("!") else False
             return
 
         # Common Registers R2 
@@ -308,12 +460,20 @@ class Operand:
     
     # Register argument with offset
     def RegisterArg(self, Offset, arg):
-        self.ins.BB.func.ArgMap[Offset] = arg
+        if Offset not in self.ins.BB.func.ArgMap:
+            self.ins.BB.func.ArgMap[Offset] = {arg}
+        else:
+            self.ins.BB.func.ArgMap[Offset].add(arg)
+        
         # self.ArgMap[Offset] = Arg
     
     # Set the type description for operand
     def setTypeDesc(self, Type):
         self.typeDesc = Type
+        if self.IRRegName != None:
+            # Reset the name to incorporate the new type
+            self.IRRegName = None
+            self.getIRRegName()
 
     # Get the type description
     def getTypeDesc(self):
@@ -327,6 +487,10 @@ class Operand:
                 self.IRType = llvmir.FloatType()
             elif self.typeDesc == "Bool":
                 self.IRType = llvmir.IntType(1)
+            elif self.typeDesc == "Void":
+                self.IRType = llvmir.VoidType()
+            elif "_PTR" in self.typeDesc:
+                self.IRType = llvmir.PointerType()
             else:
                 return llvmir.IntType(32)
 
@@ -346,3 +510,87 @@ class Operand:
 
         return self.IRRegName
     
+    def getOtherIRRegName(self, targetType):
+        assert targetType in ("Float32", "Int32")
+        return self.reg + "_" + targetType
+    
+    def getRegName(self):
+        return self.reg
+    
+    def getRegPrefix(self):
+        pattern = r"^(U?R)\d+$"
+        match = re.match(pattern, self.reg)
+        if match:
+            return match.group(1)
+        return None
+
+    def getRegNum(self):
+        assert self.reg
+        # TODO there's other types of reg, like UR
+        pattern = r"^U?R(\d+)$"
+        match = re.match(pattern, self.reg)
+        if match:
+            return int(match.group(1))
+        return None
+    
+    def getAdjRegName(self):
+        # TODO there's other types of reg, like UR
+        return self.getRegPrefix() + str(self.getRegNum() + 1)
+    
+    def getCurRegName(self):
+        return self._getCurIRRegName(self.getRegName())
+    
+    def _getCurIRRegName(self, reg):
+        if reg in self.ins.BB.func.IRRegs_cur_status:
+            return self.ins.BB.func.IRRegs_cur_status[reg]
+        else:
+            return ""
+    
+    def setCurRegName(self, curRegName):
+        self._setCurIRRegName(self.getRegName(), curRegName)
+
+    def _setCurIRRegName(self, reg, curRegName):
+        self.ins.BB.func.IRRegs_cur_status[reg] = curRegName
+    
+    def is_use_disqualifier(self):
+        if self.isConst:
+            return False
+        if not self.isReg and not self.isPReg:
+            return False
+        return True
+    
+    def is_def_disqualifier(self):
+        if self.isConst:
+            return False
+        if not self.isReg and not self.isPReg:
+            return False
+        return True
+    
+    def get_bit_width(self):
+        IRType = self.getIRType()
+        if IRType in (llvmir.IntType(32), llvmir.FloatType()):
+            return 32
+        elif IRType in [llvmir.IntType(1)]:
+            return 1
+        else:
+            raise InvalidSyntaxException
+        
+    def get_call_func_name_type(self):
+        if self.ins.opcode == "CALL" and str(self)[0] == "`":
+            pattern = r'^`\((.*?_(f\d+)[^)]*)\)$'
+            match = re.match(pattern, str(self))
+            if not match:
+                raise InvalidSyntaxException
+            function_name = match.group(1)
+            return_type = match.group(2)
+            
+            return function_name, return_type
+
+    def getArgVal(self):
+        # could prob use IRArgs[self.offset_in_const_mem]
+        if self.isArg:
+            assert self.ArgID is not None
+            # returns the Arg Value
+            return self.ins.BB.func.IRArgs[self.ins.BB.func.ArgIdxes[self.ArgID]]
+        else:
+            raise InvalidSyntaxException

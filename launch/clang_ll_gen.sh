@@ -28,6 +28,7 @@ LLVM_OUTPUT_BASE=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
 if [[ "$LLVM_OUTPUT_BASE" == *.ll ]]; then
     # Replace .ll with _clang.ll
     LLVM_OUTPUT="${LLVM_OUTPUT_BASE%.ll}_clang.ll"
+    LLC_OUTPUT="${LLVM_OUTPUT_BASE%.ll}_clang_llc.ptx"
 else
     echo "Error: output_file does not end in .ll: $LLVM_OUTPUT_BASE"
     exit 1
@@ -46,3 +47,6 @@ else
     echo "Error: Compilation failed."
     exit 1
 fi
+
+# llc's (llvm) version has to match the clang version used
+llc-20 -march=nvptx64 -mcpu=sm_70 ../output/3_llvm_ir/${LLVM_OUTPUT} -o ../output/4_ptx/${LLC_OUTPUT}

@@ -13,6 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
     && apt-get clean
 
+
+RUN apt-get install -y --no-install-recommends \
+    python3-dev \
+    graphviz \
+    graphviz-dev \
+    && apt-get clean
 # Set working directory, files will be copied here inside the docker container
 WORKDIR /app
 
@@ -25,6 +31,28 @@ RUN pip install --no-cache-dir -r requirements.txt
 # No longer need to copy the source code because we're mounting with -v
 
 # note: RUN is for building the image, CMD is for running the container, there can only be one CMD instruction in a Dockerfile
+
+RUN apt-get install -y --no-install-recommends \
+    jq \
+    wget \
+    && apt-get clean
+
+##### Copied from llvm_gen.dockerfile
+
+# Install newer version of clang (apt for ubuntu 22.04 only have clang 14, but clang 14 only support up to CUDA 11.5)
+# based on https://ubuntuhandbook.org/index.php/2023/09/how-to-install-clang-17-or-16-in-ubuntu-22-04-20-04/
+RUN wget https://apt.llvm.org/llvm.sh
+RUN chmod u+x llvm.sh
+
+# lsb_release, software-properties-common, gnupg are used by llvm.sh
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    lsb-release \
+    software-properties-common \
+    gnupg \
+    && apt-get clean
+
+# assumes clang 20.1.7
+RUN ./llvm.sh 20
 
 # CMD ["sh", "-c", "ls -al && pwd && tree /app && nvcc --version && cuobjdump --version"]
 CMD ["sh", "-c", "cd launch && ./lifter.sh"]
