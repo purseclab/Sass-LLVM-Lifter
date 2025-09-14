@@ -240,6 +240,13 @@ class Operand:
                 assert self.reg
             if self.reg:
                 IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
+                
+                
+                # TODO: test - place barriers to prevent load reordering
+                # asm_ty = llvmir.FunctionType(llvmir.VoidType(), [])
+                # inline_asm = llvmir.InlineAsm(asm_ty, "", "~{memory}", side_effect=True)
+                # IRBuilder.call(inline_asm, [])
+                
             elif self.isArg and self.isConstMem:
                 # we need to dynamically get their value and treat it as a pointer, then need to handle how to retrieve the values
                 # IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID] this gives us a ptr, we can probaby just get the value from here, but that might also mean we need to associate all mentions of the constant value e.g. c[0x0][0x160] to this ptr

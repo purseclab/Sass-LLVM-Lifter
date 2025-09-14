@@ -39,6 +39,10 @@ fi
 cuda-gdb ./test_exec \
     -ex "set breakpoint pending on" \
     -ex "b $KERNEL_NAME"
+    # -ex "set \$break_addr = \"0x00007fffdb26c2a0\"" \
+    # -ex "set \$reg_lo = \"R4\"" \
+    # -ex "set \$reg_hi = \"R5\"" \
+    # -ex "source scripts/gdb_print_at_bp.gdb"
 
 # Pre-screening with compute-sanitizer
 compute-sanitizer ./test_exec
