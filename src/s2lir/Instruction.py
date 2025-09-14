@@ -359,7 +359,7 @@ class Instruction:
         if self.opcode == "ISETP" or self.opcode == "FSETP":
             # https://stackoverflow.com/questions/19357452/cuda-assembly-instructions
             ResOp = self.operands[0]
-            PReg1 = self.operands[1]
+            PReg1 = self.operands[1] # result 2 (Pv): https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opISETP.htm
             ValOp1 = self.operands[2]
             ValOp2 = self.operands[3]
             PReg2 = self.operands[4]
@@ -383,10 +383,10 @@ class Instruction:
             # IRResOp = IRRegs[ResOp.getIRRegName()]
             # IRPReg1 = IRRegs[PReg1.getIRRegName()]
             IRPReg1 = IRRegs[PReg1.getRegName()]
-            # IRPReg2 = IRRegs[PReg2.getIRRegName()]
+            IRPReg2 = IRRegs[PReg2.getRegName()]
 
-            IRPreg1Val = IRBuilder.load(IRPReg1)
-            # IRPreg2Val = IRBuilder.load(IRPReg2)
+            # IRPreg1Val = IRBuilder.load(IRPReg1)
+            IRPreg2Val = IRBuilder.load(IRPReg2)
             
             
             
@@ -439,6 +439,7 @@ class Instruction:
 
             if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
                 tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
+                tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             elif self.opcode == 'FSETP':
                 if not settings["ordered"]:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
@@ -448,19 +449,24 @@ class Instruction:
                     tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
                 else:
                     tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
+                    tmp2 = IRBuilder.fadd(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             else:
                 raise InvalidSyntaxException
-
+            
             if settings["boolean_op"] == "AND":
-                tmp = IRBuilder.and_(tmp, IRPreg1Val)
+                tmp = IRBuilder.and_(tmp, IRPreg2Val)
+                tmp2 = IRBuilder.and_(tmp2, IRPreg2Val)
             elif settings["boolean_op"] == "OR":
-                tmp = IRBuilder.or_(tmp, IRPreg1Val)
+                tmp = IRBuilder.or_(tmp, IRPreg2Val)
+                tmp2 = IRBuilder.or_(tmp2, IRPreg2Val)
             else:
                 raise NotImplementedError
         
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
-
+            
+            if PReg1.reg != "PT":
+                PReg1.IRReg_Store(IRRegs, IRBuilder, tmp2)
             return
         
         if self.opcode == "SHF":
