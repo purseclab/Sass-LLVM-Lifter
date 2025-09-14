@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <cuda.h>
 
+#define INPUT_SIZE 8
+#define OUTPUT_SIZE 1
+#define THREADS 1 // number of threads needed is dependent on the output_size. Every thread will go through each element in the input
+
 #define CHECK_CU(err) do { \
     CUresult res = (err); \
     if (res != CUDA_SUCCESS) { \
@@ -17,8 +21,8 @@
 void prepare_input(void** h_inputs, int* num_inputs,
                    void** h_outputs, int* num_outputs,
                    size_t** input_sizes, size_t** output_sizes) {
-    int input_size = 16;
-    int output_size = 8;
+    int input_size = INPUT_SIZE;
+    int output_size = OUTPUT_SIZE;
 
     size_t input_bytes   = input_size * sizeof(float);
     size_t weight_bytes  = input_size * output_size * sizeof(float);
@@ -79,10 +83,10 @@ void cleanup_host(void** h_inputs, int num_inputs,
 void launch_kernel(CUfunction kernel_func,
                    CUdeviceptr* d_inputs, int num_inputs,
                    CUdeviceptr* d_outputs, int num_outputs) {
-    int input_size = 16;
-    int output_size = 8;
+    int input_size = INPUT_SIZE;
+    int output_size = OUTPUT_SIZE;
 
-    int threads = 128;
+    int threads = THREADS;
     int blocks = (output_size + threads - 1) / threads;
 
     void* args[] = {

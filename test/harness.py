@@ -246,6 +246,9 @@ class PTXTestRunner:
         bx = (block.get("x",1) or 1); by = (block.get("y",1) or 1); bz = (block.get("z",1) or 1)
         start = time.time()
         # PyCUDA accepts DeviceAllocation objects and numpy scalars directly
+        # if "fc_layer" in func_name:
+        #     print(device_args,(bx,by,bz), (gx,gy,gz) )
+            
         func(*device_args, block=(bx,by,bz), grid=(gx,gy,gz))
         drv.Context.synchronize()
         end = time.time()
@@ -300,9 +303,7 @@ class PTXTestRunner:
             if function == "relu":
                 h_input = outputs.get("arg_0_input") # or outputs.get("host_input")
                 h_output = outputs.get("arg_1_output")
-                print(func_results)
                 assert len(func_results) == 1
-                print(h_output)
                 assert np.array_equal(func_results[0], h_output)
                 if h_input is None or h_output is None:
                     raise RuntimeError("host_reference expects args named 'input' and 'output' in test config")
@@ -329,7 +330,7 @@ class PTXTestRunner:
                     print(f"[golden] saved failing case to: {saved}")
                 except Exception as e:
                     print(f"Failed saving golden case: {e}")
-            return TestResult(name=name, passed=passed, max_abs_error=max_abs, mean_abs_error=mean_abs, num_failed=num_failed, elapsed_ms=elapsed_ms, details={"size": len(h_output)})
+            return TestResult(name=name, passed=passed, max_abs_error=max_abs, mean_abs_error=mean_abs, num_failed=num_failed, elapsed_ms=elapsed_ms, details={"size": len(h_output), "grid_cfg": grid_cfg, "block_cfg": block_cfg})
         # ========= benchmark_ptx mode =========
         elif mode == "benchmark_ptx":
             bm = verification.get("benchmark")
@@ -414,6 +415,6 @@ class PTXTestRunner:
                     print(f"[golden] saved failing benchmark case to: {saved}")
                 except Exception as e:
                     print(f"Failed saving golden case: {e}")
-            return TestResult(name=name, passed=passed, max_abs_error=max_abs, mean_abs_error=mean_abs, num_failed=num_failed, elapsed_ms=elapsed_ms, details={"size": len(out_arr), "benchmark_ms": bm_elapsed})
+            return TestResult(name=name, passed=passed, max_abs_error=max_abs, mean_abs_error=mean_abs, num_failed=num_failed, elapsed_ms=elapsed_ms, details={"size": len(out_arr), "benchmark_ms": bm_elapsed, "grid_cfg": grid_cfg, "block_cfg": block_cfg})
         else:
             raise RuntimeError(f"Unknown verification mode: {mode}")
