@@ -449,10 +449,10 @@ class Instruction:
                     tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
                 else:
                     tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
-                    tmp2 = IRBuilder.fadd(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
+                tmp2 = IRBuilder.fadd(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             else:
                 raise InvalidSyntaxException
-            
+            tmp2 = IRBuilder.neg(tmp2)
             if settings["boolean_op"] == "AND":
                 tmp = IRBuilder.and_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.and_(tmp2, IRPreg2Val)
