@@ -452,7 +452,7 @@ class Instruction:
                 tmp2 = IRBuilder.fadd(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             else:
                 raise InvalidSyntaxException
-            tmp2 = IRBuilder.neg(tmp2)
+            tmp2 = IRBuilder.not_(tmp2)
             if settings["boolean_op"] == "AND":
                 tmp = IRBuilder.and_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.and_(tmp2, IRPreg2Val)

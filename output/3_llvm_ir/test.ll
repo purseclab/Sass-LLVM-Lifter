@@ -606,7 +606,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".25" = load i1, ptr %"PT"
   %"cmp" = icmp sge i32 %".24", %"Arg_5"
   %".26" = add i1 %"cmp", 0
-  %".27" = sub i1 0, %".26"
+  %".27" = xor i1 %".26", -1
   %".28" = and i1 %"cmp", %".25"
   %".29" = and i1 %".27", %".25"
   store i1 %".28", ptr %"P0"
@@ -629,7 +629,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".43" = load i1, ptr %"PT"
   %"cmp.1" = icmp sge i32 %".42", 1
   %".44" = add i1 %"cmp.1", 0
-  %".45" = sub i1 0, %".44"
+  %".45" = xor i1 %".44", -1
   %".46" = and i1 %"cmp.1", %".43"
   %".47" = and i1 %".45", %".43"
   store i1 %".46", ptr %"P0"
@@ -653,7 +653,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".65" = load i1, ptr %"PT"
   %"cmp.2" = icmp sge i32 %".64", 3
   %".66" = add i1 %"cmp.2", 0
-  %".67" = sub i1 0, %".66"
+  %".67" = xor i1 %".66", -1
   %".68" = and i1 %"cmp.2", %".65"
   %".69" = and i1 %".67", %".65"
   store i1 %".68", ptr %"P0"
@@ -697,7 +697,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".101" = load i1, ptr %"PT"
   %"cmp.3" = icmp sgt i32 %".100", 0
   %".102" = add i1 %"cmp.3", 0
-  %".103" = sub i1 0, %".102"
+  %".103" = xor i1 %".102", -1
   %".104" = and i1 %"cmp.3", %".101"
   %".105" = and i1 %".103", %".101"
   store i1 %".104", ptr %"P0"
@@ -732,7 +732,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".128" = load i1, ptr %"PT"
   %"cmp.4" = icmp sgt i32 %".127", 12
   %".129" = add i1 %"cmp.4", 0
-  %".130" = sub i1 0, %".129"
+  %".130" = xor i1 %".129", -1
   %".131" = and i1 %"cmp.4", %".128"
   %".132" = and i1 %".130", %".128"
   store i1 %".131", ptr %"P1"
@@ -1224,7 +1224,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".457" = load i1, ptr %"PT"
   %"cmp.5" = icmp sgt i32 %".456", 12
   %".458" = add i1 %"cmp.5", 0
-  %".459" = sub i1 0, %".458"
+  %".459" = xor i1 %".458", -1
   %".460" = and i1 %"cmp.5", %".457"
   %".461" = and i1 %".459", %".457"
   store i1 %".460", ptr %"P1"
@@ -1396,7 +1396,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".587" = load i1, ptr %"PT"
   %"cmp.6" = icmp sgt i32 %".586", 4
   %".588" = add i1 %"cmp.6", 0
-  %".589" = sub i1 0, %".588"
+  %".589" = xor i1 %".588", -1
   %".590" = and i1 %"cmp.6", %".587"
   %".591" = and i1 %".589", %".587"
   store i1 %".590", ptr %"P1"
@@ -1758,7 +1758,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".842" = load i1, ptr %"P0"
   %"cmp.7" = icmp ne i32 %".841", 0
   %".843" = add i1 %"cmp.7", 0
-  %".844" = sub i1 0, %".843"
+  %".844" = xor i1 %".843", -1
   %".845" = or i1 %"cmp.7", %".842"
   %".846" = or i1 %".844", %".842"
   store i1 %".845", ptr %"P0"
@@ -1905,7 +1905,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".947" = load i1, ptr %"PT"
   %"cmp.8" = icmp ne i32 %".946", 0
   %".948" = add i1 %"cmp.8", 0
-  %".949" = sub i1 0, %".948"
+  %".949" = xor i1 %".948", -1
   %".950" = and i1 %"cmp.8", %".947"
   %".951" = and i1 %".949", %".947"
   store i1 %".950", ptr %"P0"
@@ -1992,7 +1992,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".1014" = load i1, ptr %"PT"
   %"cmp.9" = icmp ne i32 %".1013", 0
   %".1015" = add i1 %"cmp.9", 0
-  %".1016" = sub i1 0, %".1015"
+  %".1016" = xor i1 %".1015", -1
   %".1017" = and i1 %"cmp.9", %".1014"
   %".1018" = and i1 %".1016", %".1014"
   store i1 %".1017", ptr %"P0"
@@ -2085,7 +2085,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".1078" = load i1, ptr %"PT"
   %"cmp.10" = icmp ne i32 %".1077", 0
   %".1079" = add i1 %"cmp.10", 0
-  %".1080" = sub i1 0, %".1079"
+  %".1080" = xor i1 %".1079", -1
   %".1081" = and i1 %"cmp.10", %".1078"
   %".1082" = and i1 %".1080", %".1078"
   store i1 %".1081", ptr %"P0"
@@ -2653,7 +2653,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".35" = load i1, ptr %"PT"
   %"cmp" = icmp sle i32 0, %".34"
   %".36" = add i1 %"cmp", 0
-  %".37" = sub i1 0, %".36"
+  %".37" = xor i1 %".36", -1
   %".38" = and i1 %"cmp", %".35"
   %".39" = and i1 %".37", %".35"
   store i1 %".38", ptr %"P1"
@@ -2730,7 +2730,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".94" = load i1, ptr %"PT"
   %"cmp.1" = icmp sgt i32 %".92", %".93"
   %".95" = add i1 %"cmp.1", 0
-  %".96" = sub i1 0, %".95"
+  %".96" = xor i1 %".95", -1
   %".97" = and i1 %"cmp.1", %".94"
   %".98" = and i1 %".96", %".94"
   store i1 %".97", ptr %"P2"
@@ -2768,7 +2768,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".127" = load i1, ptr %"PT"
   %"cmp.2" = icmp sge i32 %".125", %".126"
   %".128" = add i1 %"cmp.2", 0
-  %".129" = sub i1 0, %".128"
+  %".129" = xor i1 %".128", -1
   %".130" = and i1 %"cmp.2", %".127"
   %".131" = and i1 %".129", %".127"
   store i1 %".130", ptr %"P0"
@@ -2786,7 +2786,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".140" = load i1, ptr %"PT"
   %"cmp.3" = icmp ne i32 0, %"Arg_3"
   %".141" = add i1 %"cmp.3", 0
-  %".142" = sub i1 0, %".141"
+  %".142" = xor i1 %".141", -1
   %".143" = and i1 %"cmp.3", %".140"
   %".144" = and i1 %".142", %".140"
   store i1 %".143", ptr %"P2"
@@ -2847,7 +2847,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".187" = load i1, ptr %"PT"
   %"cmp.4" = icmp sge i32 %".185", %".186"
   %".188" = add i1 %"cmp.4", 0
-  %".189" = sub i1 0, %".188"
+  %".189" = xor i1 %".188", -1
   %".190" = and i1 %"cmp.4", %".187"
   %".191" = and i1 %".189", %".187"
   store i1 %".190", ptr %"P0"
@@ -2857,7 +2857,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".196" = load i1, ptr %"P0"
   %"cmp.5" = icmp sge i32 %".194", %".195"
   %".197" = add i1 %"cmp.5", 0
-  %".198" = sub i1 0, %".197"
+  %".198" = xor i1 %".197", -1
   %".199" = or i1 %"cmp.5", %".196"
   %".200" = or i1 %".198", %".196"
   store i1 %".199", ptr %"P0"
@@ -2866,7 +2866,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".204" = load i1, ptr %"P0"
   %"cmp.6" = icmp sge i32 %".203", %"Arg_4"
   %".205" = add i1 %"cmp.6", 0
-  %".206" = sub i1 0, %".205"
+  %".206" = xor i1 %".205", -1
   %".207" = or i1 %"cmp.6", %".204"
   %".208" = or i1 %".206", %".204"
   store i1 %".207", ptr %"P0"
@@ -2889,7 +2889,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".222" = load i1, ptr %"PT"
   %"cmp.7" = icmp sge i32 %".221", 1
   %".223" = add i1 %"cmp.7", 0
-  %".224" = sub i1 0, %".223"
+  %".224" = xor i1 %".223", -1
   %".225" = and i1 %"cmp.7", %".222"
   %".226" = and i1 %".224", %".222"
   store i1 %".225", ptr %"P0"
@@ -2929,7 +2929,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".254" = load i1, ptr %"PT"
   %"cmp.8" = icmp sge i32 %".253", 3
   %".255" = add i1 %"cmp.8", 0
-  %".256" = sub i1 0, %".255"
+  %".256" = xor i1 %".255", -1
   %".257" = and i1 %"cmp.8", %".254"
   %".258" = and i1 %".256", %".254"
   store i1 %".257", ptr %"P0"
@@ -2963,7 +2963,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".280" = load i1, ptr %"PT"
   %"cmp.9" = icmp ne i32 %".279", 0
   %".281" = add i1 %"cmp.9", 0
-  %".282" = sub i1 0, %".281"
+  %".282" = xor i1 %".281", -1
   %".283" = and i1 %"cmp.9", %".280"
   %".284" = and i1 %".282", %".280"
   store i1 %".283", ptr %"P2"
@@ -3117,7 +3117,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".380" = load i1, ptr %"PT"
   %"cmp.10" = icmp ne i32 %".379", 0
   %".381" = add i1 %"cmp.10", 0
-  %".382" = sub i1 0, %".381"
+  %".382" = xor i1 %".381", -1
   %".383" = and i1 %"cmp.10", %".380"
   %".384" = and i1 %".382", %".380"
   store i1 %".383", ptr %"P1"
@@ -3234,7 +3234,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".465" = load i1, ptr %"PT"
   %"cmp.11" = icmp ne i32 %".464", 1
   %".466" = add i1 %"cmp.11", 0
-  %".467" = sub i1 0, %".466"
+  %".467" = xor i1 %".466", -1
   %".468" = and i1 %"cmp.11", %".465"
   %".469" = and i1 %".467", %".465"
   store i1 %".468", ptr %"P1"
@@ -3259,7 +3259,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".485" = load i1, ptr %"PT"
   %"cmp.12" = icmp ne i32 %".484", 2
   %".486" = add i1 %"cmp.12", 0
-  %".487" = sub i1 0, %".486"
+  %".487" = xor i1 %".486", -1
   %".488" = and i1 %"cmp.12", %".485"
   %".489" = and i1 %".487", %".485"
   store i1 %".488", ptr %"P1"
@@ -3413,7 +3413,7 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".596" = load i1, ptr %"PT"
   %"cmp.13" = icmp sge i32 %".595", %"Arg_3"
   %".597" = add i1 %"cmp.13", 0
-  %".598" = sub i1 0, %".597"
+  %".598" = xor i1 %".597", -1
   %".599" = and i1 %"cmp.13", %".596"
   %".600" = and i1 %".598", %".596"
   store i1 %".599", ptr %"P1"
@@ -3896,7 +3896,7 @@ Entry_.text._Z4reluPfS_i:
   %".21" = load i1, ptr %"PT"
   %"cmp" = icmp sge i32 %".20", %"Arg_2"
   %".22" = add i1 %"cmp", 0
-  %".23" = sub i1 0, %".22"
+  %".23" = xor i1 %".22", -1
   %".24" = and i1 %"cmp", %".21"
   %".25" = and i1 %".23", %".21"
   store i1 %".24", ptr %"P0"
@@ -4421,7 +4421,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".41" = load i1, ptr %"PT"
   %"cmp" = icmp sgt i32 %".39", %".40"
   %".42" = add i1 %"cmp", 0
-  %".43" = sub i1 0, %".42"
+  %".43" = xor i1 %".42", -1
   %".44" = and i1 %"cmp", %".41"
   %".45" = and i1 %".43", %".41"
   store i1 %".44", ptr %"P0"
@@ -4438,7 +4438,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".54" = load i1, ptr %"P0"
   %"cmp.1" = icmp sgt i32 %".52", %".53"
   %".55" = add i1 %"cmp.1", 0
-  %".56" = sub i1 0, %".55"
+  %".56" = xor i1 %".55", -1
   %".57" = or i1 %"cmp.1", %".54"
   %".58" = or i1 %".56", %".54"
   store i1 %".57", ptr %"P0"
@@ -4447,7 +4447,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".62" = load i1, ptr %"P0"
   %"cmp.2" = icmp sge i32 %".61", %"Arg_6"
   %".63" = add i1 %"cmp.2", 0
-  %".64" = sub i1 0, %".63"
+  %".64" = xor i1 %".63", -1
   %".65" = or i1 %"cmp.2", %".62"
   %".66" = or i1 %".64", %".62"
   store i1 %".65", ptr %"P0"
@@ -4470,7 +4470,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".80" = load i1, ptr %"PT"
   %"cmp.3" = icmp sle i32 %".79", %"Arg_4"
   %".81" = add i1 %"cmp.3", 0
-  %".82" = sub i1 0, %".81"
+  %".82" = xor i1 %".81", -1
   %".83" = and i1 %"cmp.3", %".80"
   %".84" = and i1 %".82", %".80"
   store i1 %".83", ptr %"P0"
@@ -4479,7 +4479,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".88" = load i1, ptr %"P0"
   %"cmp.4" = icmp sgt i32 %".87", %"Arg_5"
   %".89" = add i1 %"cmp.4", 0
-  %".90" = sub i1 0, %".89"
+  %".90" = xor i1 %".89", -1
   %".91" = or i1 %"cmp.4", %".88"
   %".92" = or i1 %".90", %".88"
   store i1 %".91", ptr %"P0"
@@ -4518,7 +4518,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".121" = load i1, ptr %"PT"
   %"cmp.5" = icmp sge i32 %".120", 3
   %".122" = add i1 %"cmp.5", 0
-  %".123" = sub i1 0, %".122"
+  %".123" = xor i1 %".122", -1
   %".124" = and i1 %"cmp.5", %".121"
   %".125" = and i1 %".123", %".121"
   store i1 %".124", ptr %"P0"
@@ -4561,7 +4561,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".156" = load i1, ptr %"PT"
   %"cmp.6" = icmp sge i32 %".155", %"Arg_5"
   %".157" = add i1 %"cmp.6", 0
-  %".158" = sub i1 0, %".157"
+  %".158" = xor i1 %".157", -1
   %".159" = and i1 %"cmp.6", %".156"
   %".160" = and i1 %".158", %".156"
   store i1 %".159", ptr %"P1"
@@ -4581,7 +4581,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".172" = load i1, ptr %"PT"
   %"cmp.7" = icmp ne i32 %".171", 0
   %".173" = add i1 %"cmp.7", 0
-  %".174" = sub i1 0, %".173"
+  %".174" = xor i1 %".173", -1
   %".175" = and i1 %"cmp.7", %".172"
   %".176" = and i1 %".174", %".172"
   store i1 %".175", ptr %"P3"
@@ -4830,7 +4830,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".335" = load i1, ptr %"PT"
   %"cmp.8" = icmp ne i32 %".334", 0
   %".336" = add i1 %"cmp.8", 0
-  %".337" = sub i1 0, %".336"
+  %".337" = xor i1 %".336", -1
   %".338" = and i1 %"cmp.8", %".335"
   %".339" = and i1 %".337", %".335"
   store i1 %".338", ptr %"P2"
@@ -4977,7 +4977,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".443" = load i1, ptr %"PT"
   %"cmp.9" = icmp ne i32 %".442", 1
   %".444" = add i1 %"cmp.9", 0
-  %".445" = sub i1 0, %".444"
+  %".445" = xor i1 %".444", -1
   %".446" = and i1 %"cmp.9", %".443"
   %".447" = and i1 %".445", %".443"
   store i1 %".446", ptr %"P2"
@@ -4999,7 +4999,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".461" = load i1, ptr %"PT"
   %"cmp.10" = icmp ne i32 %".460", 2
   %".462" = add i1 %"cmp.10", 0
-  %".463" = sub i1 0, %".462"
+  %".463" = xor i1 %".462", -1
   %".464" = and i1 %"cmp.10", %".461"
   %".465" = and i1 %".463", %".461"
   store i1 %".464", ptr %"P2"
@@ -5183,7 +5183,7 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".592" = load i1, ptr %"PT"
   %"cmp.11" = icmp sge i32 %".591", %"Arg_4"
   %".593" = add i1 %"cmp.11", 0
-  %".594" = sub i1 0, %".593"
+  %".594" = xor i1 %".593", -1
   %".595" = and i1 %"cmp.11", %".592"
   %".596" = and i1 %".594", %".592"
   store i1 %".595", ptr %"P2"
