@@ -151,7 +151,7 @@ $L__BB0_8:                              // %default
 	bra.uni 	$L__BB0_22;
 $L__BB0_9:                              // %block_0x80
 	and.b32  	%r31, %r15, %r16;
-	or.b32  	%r33, %r31, %r17;
+	and.b32  	%r33, %r31, %r17;
 	bra.uni 	$L__BB0_22;
 $L__BB0_11:                             // %block_0x40
 	and.b32  	%r28, %r15, %r16;
@@ -325,7 +325,7 @@ $L__BB1_8:                              // %default
 	bra.uni 	$L__BB1_22;
 $L__BB1_9:                              // %block_0x80
 	and.b32  	%r31, %r15, %r16;
-	or.b32  	%r33, %r31, %r17;
+	and.b32  	%r33, %r31, %r17;
 	bra.uni 	$L__BB1_22;
 $L__BB1_11:                             // %block_0x40
 	and.b32  	%r28, %r15, %r16;
@@ -499,7 +499,7 @@ $L__BB2_8:                              // %default
 	bra.uni 	$L__BB2_22;
 $L__BB2_9:                              // %block_0x80
 	and.b32  	%r31, %r15, %r16;
-	or.b32  	%r33, %r31, %r17;
+	and.b32  	%r33, %r31, %r17;
 	bra.uni 	$L__BB2_22;
 $L__BB2_11:                             // %block_0x40
 	and.b32  	%r28, %r15, %r16;

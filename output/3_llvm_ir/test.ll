@@ -15,7 +15,7 @@ default:
   br label %"exit"
 block_0x80:
   %".7" = and i32 %".2", %".3"
-  %".8" = or i32 %".7", %".4"
+  %".8" = and i32 %".7", %".4"
   br label %"exit"
 block_0x0:
   br label %"exit"
@@ -76,7 +76,7 @@ default:
   br label %"exit"
 block_0x80:
   %".7" = and i32 %".2", %".3"
-  %".8" = or i32 %".7", %".4"
+  %".8" = and i32 %".7", %".4"
   br label %"exit"
 block_0x0:
   br label %"exit"
@@ -137,7 +137,7 @@ default:
   br label %"exit"
 block_0x80:
   %".7" = and i32 %".2", %".3"
-  %".8" = or i32 %".7", %".4"
+  %".8" = and i32 %".7", %".4"
   br label %"exit"
 block_0x0:
   br label %"exit"
@@ -738,7 +738,7 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   store i1 %".131", ptr %"P1"
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
   %".135" = and i1 1, 1
-  %".136" = or i1 %".135", 1
+  %".136" = and i1 %".135", 1
   ; @!P1 BRA `(.L_x_3)
   %".138" = load i1, ptr %"P1"
   %".139" = icmp ne i1 %".138", 1

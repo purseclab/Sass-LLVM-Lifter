@@ -866,7 +866,7 @@ class Instruction:
                 # https://zhuanlan.zhihu.com/p/712356884
                 if immLut.Value == 0x80: # A & B & C
                     tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-                    tmp = IRBuilder.or_(tmp, IRValOp3)
+                    tmp = IRBuilder.and_(tmp, IRValOp3)
                 elif immLut.Value == 0x0: # 0
                     tmp = llvmir.Constant(llvmir.IntType(32), 0)
                 elif immLut.Value == 0x40: # A & B & ~C
@@ -949,7 +949,7 @@ class Instruction:
             # https://zhuanlan.zhihu.com/p/712356884
             if immLut.Value == 0x80: # A & B & C
                 tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-                tmp = IRBuilder.or_(tmp, IRValOp3)
+                tmp = IRBuilder.and_(tmp, IRValOp3)
             elif immLut.Value == 0x0: # 0
                 tmp = llvmir.Constant(llvmir.IntType(1), 0)
             elif immLut.Value == 0x40: # A & B & ~C

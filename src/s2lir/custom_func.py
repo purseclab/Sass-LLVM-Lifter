@@ -9,7 +9,7 @@ def lop3(IRModule):
     def func_80(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # A & B & C
         tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-        tmp = IRBuilder.or_(tmp, IRValOp3)
+        tmp = IRBuilder.and_(tmp, IRValOp3)
         return tmp
     def func_0(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # 0
