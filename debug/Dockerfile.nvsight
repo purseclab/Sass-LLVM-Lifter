@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3.11 \
+    python3.10-dev \
     python3-pip \
     build-essential \
     tree \
@@ -63,7 +63,7 @@ WORKDIR /app
 # COPY ../requirements.txt .
 COPY --from=root requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 
 # Create SSH directory
@@ -116,6 +116,48 @@ RUN echo 'export PATH=/usr/local/cuda/bin:$PATH' >> /home/dockeruser/.bashrc
 RUN apt-get update && apt-get install -y --no-install-recommends \
     nvidia-utils-550 \
     && apt-get clean
+
+# Install nsight compute
+# https://developer.nvidia.com/blog/using-nsight-compute-in-containers/
+
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     cuda-nsight-compute-12-5 \
+#     && apt-get clean
+
+# Install dependencies needed to run test/cuda-gdb
+RUN apt-get install -y --no-install-recommends \
+    jq \
+    wget \
+    libyaml-cpp-dev \
+    && apt-get clean
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libopengl0 \
+    libegl1 \
+    libegl1-mesa \
+    libgles2 \
+    libgl1-mesa-glx \
+    libglu1-mesa \
+    mesa-utils \
+    libx11-6 \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
+    libxi6
+RUN apt-get install -y --no-install-recommends \
+    libxcb1 \
+    libxkbcommon0 \
+    libxkbcommon-x11-0 \
+    libxcb-cursor0 \
+    libxcb-render-util0 \
+    libxcb-icccm4 \
+    libxcb-image0 \
+    libxcb-keysyms1 \
+    libxcb-randr0 \
+    libxcb-xinerama0 \
+    x11-utils \
+    xauth \
+    fontconfig
 
 # Start SSH service
 # -D: sshd will not detach and does not become a daemon.  This allows easy monitoring of sshd.

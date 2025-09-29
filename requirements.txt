@@ -2,7 +2,6 @@ colorama==0.4.6
 llvmlite==0.44.0
 pyvis==0.3.2
 networkx==3.4.2
-pygraphviz==1.11
 pytest==8.4.1
 pycuda==2025.1.1
 matplotlib==3.10.5
