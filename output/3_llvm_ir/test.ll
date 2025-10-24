@@ -592,8 +592,8 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
   store i32 %"nvvm_ctaid_x", ptr %"R0"
   ; S2R R3, SR_TID.X
-  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
-  store i32 %"ThreadIdx", ptr %"R3"
+  %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
+  store i32 %"nvvm_threadidx_x", ptr %"R3"
   ; IMAD R0, R0, c[0x0][0x0], R3
   %".20" = load i32, ptr %"R0"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
@@ -2709,8 +2709,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"add.5" = add i32 %"mul.5", 0
   store i32 %"add.5", ptr %"R3"
   ; S2R R5, SR_TID.X
-  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
-  store i32 %"ThreadIdx", ptr %"R5"
+  %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
+  store i32 %"nvvm_threadidx_x", ptr %"R5"
   ; IMAD.MOV R0, RZ, RZ, -R3
   %".83" = load i32, ptr %"R3"
   %".84" = sub i32 0, %".83"
@@ -2780,8 +2780,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"add.8" = add i32 %"mul.8", %".135"
   store i32 %"add.8", ptr %"R0"
   ; S2R R7, SR_TID.Y
-  %"ThreadIdx.1" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
-  store i32 %"ThreadIdx.1", ptr %"R7"
+  %"nvvm_threadidx_y" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.y"()
+  store i32 %"nvvm_threadidx_y", ptr %"R7"
   ; ISETP.NE.AND P2, PT, RZ, c[0x0][0x174], PT
   %".140" = load i1, ptr %"PT"
   %"cmp.3" = icmp ne i32 0, %"Arg_3"
@@ -3480,6 +3480,8 @@ declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.y"()
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.z"()
 
+declare i32 @"llvm.nvvm.read.ptx.sreg.tid.y"()
+
 declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.y"()
 
 define ptx_kernel void @"_Z4reluPfS_i"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2")
@@ -3882,8 +3884,8 @@ Entry_.text._Z4reluPfS_i:
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
   store i32 %"nvvm_ctaid_x", ptr %"R4"
   ; S2R R3, SR_TID.X
-  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
-  store i32 %"ThreadIdx", ptr %"R3"
+  %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
+  store i32 %"nvvm_threadidx_x", ptr %"R3"
   ; IMAD R4, R4, c[0x0][0x0], R3
   %".16" = load i32, ptr %"R4"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
@@ -4397,14 +4399,14 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".24" = add i32 %".23", 0
   store i32 %".24", ptr %"UR5"
   ; S2R R4, SR_TID.Y
-  %"ThreadIdx" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
-  store i32 %"ThreadIdx", ptr %"R4"
+  %"nvvm_threadidx_y" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.y"()
+  store i32 %"nvvm_threadidx_y", ptr %"R4"
   ; S2R R2, SR_CTAID.X
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
   store i32 %"nvvm_ctaid_x", ptr %"R2"
   ; S2R R5, SR_TID.X
-  %"ThreadIdx.1" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
-  store i32 %"ThreadIdx.1", ptr %"R5"
+  %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
+  store i32 %"nvvm_threadidx_x", ptr %"R5"
   ; S2R R0, SR_CTAID.Z
   %"nvvm_ctaid_z" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.z"()
   store i32 %"nvvm_ctaid_z", ptr %"R0"
