@@ -165,4 +165,7 @@ RUN apt-get install -y --no-install-recommends \
 # CMD ["/bin/bash", "-c", "cat /etc/ssh/sshd_config"]
 # CMD ["/usr/sbin/sshd", "-D", "-e"]
 
+RUN wget -O warp.deb "https://app.warp.dev/download?package=deb" \
+    && apt-get install -y ./warp.deb
+
 CMD ["/bin/bash", "-c", "/usr/sbin/sshd -D"]
