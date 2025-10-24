@@ -101,6 +101,22 @@ def nvvm_threadidx_x(module):
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
 
+def nvvm_threadidx_y(module):
+    
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.tid.y"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def nvvm_threadidx_z(module):
+    
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.tid.z"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
 def nvvm_blockdim_x(module):
     
     intrinsic_name = "llvm.nvvm.read.ptx.sreg.ntid.x"

@@ -189,10 +189,14 @@ class Instruction:
                     IRVal = IRBuilder.call(nvvm_ctaid_y(self.llvm_module), [], name="nvvm_ctaid_y")
                 elif str(ValOp) == "SR_CTAID.Z":
                     IRVal = IRBuilder.call(nvvm_ctaid_z(self.llvm_module), [], name="nvvm_ctaid_z")
+                elif str(ValOp) == "SR_TID.X":
+                    IRVal = IRBuilder.call(nvvm_threadidx_x(self.llvm_module), [], name="nvvm_threadidx_x")
+                elif str(ValOp) == "SR_TID.Y":
+                    IRVal = IRBuilder.call(nvvm_threadidx_y(self.llvm_module), [], name="nvvm_threadidx_y")
+                elif str(ValOp) == "SR_TID.X":
+                    IRVal = IRBuilder.call(nvvm_threadidx_z(self.llvm_module), [], name="nvvm_threadidx_z")
                 else:
-                    # TODO: Fix later, e.g. S2R R3, SR_TID.X
-                    # Call thread idx operation
-                    IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
+                    assert False
                     
                 # Store the result
                 # IRBuilder.store(IRVal, IRResOp)
