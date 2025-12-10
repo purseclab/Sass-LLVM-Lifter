@@ -637,13 +637,14 @@ class Instruction:
             R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
-        if self.opcode == "FMNMX":
+        if self.opcode == "IMNMX" or self.opcode == "FMNMX":
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             PReg = self.operands[3]
             
             assert len(self.operands) == 4
+            assert len(self.modifiers) == 0
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -653,21 +654,33 @@ class Instruction:
             # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # TODO: use _ordered or unordered?
+            
+            lt_cmp = None
+            gt_cmp = None
+            
+            if self.opcode == "FMNMX":
+                lt_cmp = IRBuilder.fcmp_ordered('<', IRValOp1, IRValOp2)
+                gt_cmp = IRBuilder.fcmp_ordered('>', IRValOp1, IRValOp2)
+            elif self.opcode == "IMNMX":
+                # TODO: assumed to be signed
+                lt_cmp = IRBuilder.icmp_signed("<", IRValOp1, IRValOp2)
+                gt_cmp = IRBuilder.icmp_signed(">", IRValOp1, IRValOp2)
+            
             min = IRBuilder.select(
-                IRBuilder.fcmp_ordered('<', IRValOp1, IRValOp2),
+                lt_cmp,
                 IRValOp1,
                 IRValOp2,
-                "fmnmx_min"
+                "mnmx_min"
             )
             max = IRBuilder.select(
-                IRBuilder.fcmp_ordered('>', IRValOp1, IRValOp2),
+                gt_cmp,
                 IRValOp1,
                 IRValOp2,
-                "fmnmx_max"
+                "mnmx_max"
             )
 
             # https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
-            tmp = IRBuilder.select(IRPreg, min, max, "fmnmx_final")
+            tmp = IRBuilder.select(IRPreg, min, max, "mnmx_final")
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
