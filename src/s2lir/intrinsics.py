@@ -148,3 +148,10 @@ def llvm_uadd_with_overflow(module, size=32):
     intrinsic_type = ir.FunctionType(ir.LiteralStructType([ir.IntType(size), ir.IntType(1)]), [ir.IntType(size), ir.IntType(size)])
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def nvvm_barrier0(module):
+    intrinsic_name = f"llvm.nvvm.barrier0"
+    
+    intrinsic_type = ir.FunctionType(ir.VoidType(), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)

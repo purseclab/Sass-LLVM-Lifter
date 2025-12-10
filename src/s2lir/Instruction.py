@@ -172,6 +172,14 @@ class Instruction:
         # BRA is Handled in the BasicBlock.py
         if self.opcode == "BRA":
             raise InvalidSyntaxException
+        
+        if self.opcode == "BAR":
+            assert len(self.modifiers) == 1
+            if self.modifiers[0] == "SYNC":
+                IRBuilder.call(nvvm_barrier0(self.llvm_module), [], name="nvvm_barrier0")
+            else:
+                raise NotImplementedError
+            return
 
         if self.opcode == "S2R":
             ResOp = self.operands[0]
