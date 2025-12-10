@@ -187,20 +187,20 @@ block_0xf8:
   br label %"exit"
 }
 
-define ptx_kernel void @"_Z15globalMemKernelPKiPii"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2")
+define ptx_kernel void @"_Z14localMemKernelPii"(ptr %"Arg_0", i32 %"Arg_1")
 {
-Entry_.text._Z15globalMemKernelPKiPii:
+Entry_.text._Z14localMemKernelPii:
   %"R1" = alloca i32, i32 1
-  %"R4" = alloca i32, i32 1
+  %"R2" = alloca i32, i32 1
   %"R3" = alloca i32, i32 1
   %"P0" = alloca i1, i32 1
   %"PT" = alloca i1, i32 1
   %"R5" = alloca i32, i32 1
-  %"R2" = alloca i32, i32 1
-  %"R7" = alloca i32, i32 1
   %"RZ" = alloca i32, i32 1
   %"R0" = alloca i32, i32 1
+  %"R4" = alloca i32, i32 1
   %"R6" = alloca i32, i32 1
+  %"R7" = alloca i32, i32 1
   %"R8" = alloca i32, i32 1
   %"R9" = alloca i32, i32 1
   %"R10" = alloca i32, i32 1
@@ -583,97 +583,70 @@ Entry_.text._Z15globalMemKernelPKiPii:
   store i32 0, ptr %"URZ"
   ; MOV R1, c[0x0][0x28]
   store i32 0, ptr %"R1"
-  ; S2R R4, SR_CTAID.X
+  ; S2R R2, SR_CTAID.X
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
-  store i32 %"nvvm_ctaid_x", ptr %"R4"
+  store i32 %"nvvm_ctaid_x", ptr %"R2"
   ; S2R R3, SR_TID.X
   %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"nvvm_threadidx_x", ptr %"R3"
-  ; IMAD R4, R4, c[0x0][0x0], R3
-  %".16" = load i32, ptr %"R4"
+  ; IMAD R2, R2, c[0x0][0x0], R3
+  %".15" = load i32, ptr %"R2"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
-  %".17" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".16", %"nvvm_blockdim_x"
-  %"add" = add i32 %"mul", %".17"
-  store i32 %"add", ptr %"R4"
-  ; ISETP.GE.AND P0, PT, R4, c[0x0][0x170], PT
-  %".20" = load i32, ptr %"R4"
-  %".21" = load i1, ptr %"PT"
-  %"cmp" = icmp sge i32 %".20", %"Arg_2"
-  %".22" = add i1 %"cmp", 0
-  %".23" = xor i1 %".22", -1
-  %".24" = and i1 %"cmp", %".21"
-  %".25" = and i1 %".23", %".21"
-  store i1 %".24", ptr %"P0"
+  %".16" = load i32, ptr %"R3"
+  %"mul" = mul i32 %".15", %"nvvm_blockdim_x"
+  %"add" = add i32 %"mul", %".16"
+  store i32 %"add", ptr %"R2"
+  ; ISETP.GE.AND P0, PT, R2, c[0x0][0x168], PT
+  %".19" = load i32, ptr %"R2"
+  %".20" = load i1, ptr %"PT"
+  %"cmp" = icmp sge i32 %".19", %"Arg_1"
+  %".21" = add i1 %"cmp", 0
+  %".22" = xor i1 %".21", -1
+  %".23" = and i1 %"cmp", %".20"
+  %".24" = and i1 %".22", %".20"
+  store i1 %".23", ptr %"P0"
   ; @P0 EXIT
-  %".28" = load i1, ptr %"P0"
-  %".29" = icmp eq i1 %".28", 1
-  br i1 %".29", label %".text._Z15globalMemKernelPKiPii_conditionalExpr_0x0050", label %".text._Z15globalMemKernelPKiPii_split_0x0060"
-.text._Z15globalMemKernelPKiPii_conditionalExpr_0x0050:
+  %".27" = load i1, ptr %"P0"
+  %".28" = icmp eq i1 %".27", 1
+  br i1 %".28", label %".text._Z14localMemKernelPii_conditionalExpr_0x0050", label %".text._Z14localMemKernelPii_split_0x0060"
+.text._Z14localMemKernelPii_conditionalExpr_0x0050:
   ; EXIT
   br label %"ExitFunction"
-.text._Z15globalMemKernelPKiPii_split_0x0060:
-  ; MOV R5, 0x4
-  store i32 4, ptr %"R5"
-  ; IMAD.WIDE R2, R4, R5, c[0x0][0x160]
-  %".36" = load i32, ptr %"R4"
-  %".37" = load i32, ptr %"R5"
-  %"zext" = zext i32 %".36" to i64
-  %"zext.1" = zext i32 %".37" to i64
+.text._Z14localMemKernelPii_split_0x0060:
+  ; MOV R3, 0x4
+  store i32 4, ptr %"R3"
+  ; IADD3 R5, R2, 0x1, RZ
+  %".35" = load i32, ptr %"R2"
+  %".36" = add i32 %".35", 1
+  %".37" = add i32 %".36", 0
+  store i32 %".37", ptr %"R5"
+  ; IMAD.WIDE R2, R2, R3, c[0x0][0x160]
+  %".40" = load i32, ptr %"R2"
+  %".41" = load i32, ptr %"R3"
+  %"zext" = zext i32 %".40" to i64
+  %"zext.1" = zext i32 %".41" to i64
   %"mul.1" = mul i64 %"zext", %"zext.1"
-  %".38" = ptrtoint ptr %"Arg_0" to i64
-  %"add.1" = add i64 %"mul.1", %".38"
-  %".39" = and i64 %"add.1", 18446744069414584320
-  %".40" = lshr i64 %".39", 32
-  %"trunc32" = trunc i64 %".40" to i32
+  %".42" = ptrtoint ptr %"Arg_0" to i64
+  %"add.1" = add i64 %"mul.1", %".42"
+  %".43" = and i64 %"add.1", 18446744069414584320
+  %".44" = lshr i64 %".43", 32
+  %"trunc32" = trunc i64 %".44" to i32
   %"trunc32.1" = trunc i64 %"add.1" to i32
   store i32 %"trunc32.1", ptr %"R2"
   store i32 %"trunc32", ptr %"R3"
-  ; LDG.E.SYS R2, [R2]
-  %".44" = load i32, ptr %"R2"
-  %"zext.2" = zext i32 %".44" to i64
-  %".45" = load i32, ptr %"R3"
-  %"zext.3" = zext i32 %".45" to i64
+  ; STG.E.SYS [R2], R5
+  %".48" = load i32, ptr %"R5"
+  %".49" = load i32, ptr %"R2"
+  %"zext.2" = zext i32 %".49" to i64
+  %".50" = load i32, ptr %"R3"
+  %"zext.3" = zext i32 %".50" to i64
   %"shl" = shl i64 %"zext.3", 32
   %"or" = or i64 %"shl", %"zext.2"
-  %".46" = inttoptr i64 %"or" to ptr
-  %".47" = ptrtoint ptr %".46" to i64
-  %".48" = add i64 %".47", 0
-  %"for_LDG" = inttoptr i64 %".48" to ptr
-  %".49" = load i32, ptr %"for_LDG"
-  store i32 %".49", ptr %"R2"
-  ; IMAD.WIDE R4, R4, R5, c[0x0][0x168]
-  %".52" = load i32, ptr %"R4"
-  %".53" = load i32, ptr %"R5"
-  %"zext.4" = zext i32 %".52" to i64
-  %"zext.5" = zext i32 %".53" to i64
-  %"mul.2" = mul i64 %"zext.4", %"zext.5"
-  %".54" = ptrtoint ptr %"Arg_1" to i64
-  %"add.2" = add i64 %"mul.2", %".54"
-  %".55" = and i64 %"add.2", 18446744069414584320
-  %".56" = lshr i64 %".55", 32
-  %"trunc32.2" = trunc i64 %".56" to i32
-  %"trunc32.3" = trunc i64 %"add.2" to i32
-  store i32 %"trunc32.3", ptr %"R4"
-  store i32 %"trunc32.2", ptr %"R5"
-  ; IADD3 R7, R2, 0x1, RZ
-  %".60" = load i32, ptr %"R2"
-  %".61" = add i32 %".60", 1
-  %".62" = add i32 %".61", 0
-  store i32 %".62", ptr %"R7"
-  ; STG.E.SYS [R4], R7
-  %".65" = load i32, ptr %"R7"
-  %".66" = load i32, ptr %"R4"
-  %"zext.6" = zext i32 %".66" to i64
-  %".67" = load i32, ptr %"R5"
-  %"zext.7" = zext i32 %".67" to i64
-  %"shl.1" = shl i64 %"zext.7", 32
-  %"or.1" = or i64 %"shl.1", %"zext.6"
-  %".68" = inttoptr i64 %"or.1" to ptr
-  %".69" = ptrtoint ptr %".68" to i64
-  %".70" = add i64 %".69", 0
-  %"for_STG" = inttoptr i64 %".70" to ptr
-  store i32 %".65", ptr %"for_STG"
+  %".51" = inttoptr i64 %"or" to ptr
+  %".52" = ptrtoint ptr %".51" to i64
+  %".53" = add i64 %".52", 0
+  %"for_STG" = inttoptr i64 %".53" to ptr
+  store i32 %".48", ptr %"for_STG"
   ; EXIT
   br label %"ExitFunction"
 .L_x_0:
