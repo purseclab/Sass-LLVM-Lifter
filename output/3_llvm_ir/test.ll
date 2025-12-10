@@ -3132,45 +3132,45 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".392" = load float, ptr %"R11"
   %".393" = xor i1 1, -1
   %".394" = fcmp olt float %".391", %".392"
-  %"fmnmx_min" = select  i1 %".394", float %".391", float %".392"
   %".395" = fcmp ogt float %".391", %".392"
-  %"fmnmx_max" = select  i1 %".395", float %".391", float %".392"
-  %"fmnmx_final" = select  i1 %".393", float %"fmnmx_min", float %"fmnmx_max"
+  %"mnmx_min" = select  i1 %".394", float %".391", float %".392"
+  %"mnmx_max" = select  i1 %".395", float %".391", float %".392"
+  %"mnmx_final" = select  i1 %".393", float %"mnmx_min", float %"mnmx_max"
   %".396" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final", ptr %".396"
+  store float %"mnmx_final", ptr %".396"
   ; FMNMX R11, R11, R4, !PT
   %".399" = load float, ptr %"R11"
   %".400" = load float, ptr %"R4"
   %".401" = xor i1 1, -1
   %".402" = fcmp olt float %".399", %".400"
-  %"fmnmx_min.1" = select  i1 %".402", float %".399", float %".400"
   %".403" = fcmp ogt float %".399", %".400"
-  %"fmnmx_max.1" = select  i1 %".403", float %".399", float %".400"
-  %"fmnmx_final.1" = select  i1 %".401", float %"fmnmx_min.1", float %"fmnmx_max.1"
+  %"mnmx_min.1" = select  i1 %".402", float %".399", float %".400"
+  %"mnmx_max.1" = select  i1 %".403", float %".399", float %".400"
+  %"mnmx_final.1" = select  i1 %".401", float %"mnmx_min.1", float %"mnmx_max.1"
   %".404" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final.1", ptr %".404"
+  store float %"mnmx_final.1", ptr %".404"
   ; FMNMX R11, R11, R6, !PT
   %".407" = load float, ptr %"R11"
   %".408" = load float, ptr %"R6"
   %".409" = xor i1 1, -1
   %".410" = fcmp olt float %".407", %".408"
-  %"fmnmx_min.2" = select  i1 %".410", float %".407", float %".408"
   %".411" = fcmp ogt float %".407", %".408"
-  %"fmnmx_max.2" = select  i1 %".411", float %".407", float %".408"
-  %"fmnmx_final.2" = select  i1 %".409", float %"fmnmx_min.2", float %"fmnmx_max.2"
+  %"mnmx_min.2" = select  i1 %".410", float %".407", float %".408"
+  %"mnmx_max.2" = select  i1 %".411", float %".407", float %".408"
+  %"mnmx_final.2" = select  i1 %".409", float %"mnmx_min.2", float %"mnmx_max.2"
   %".412" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final.2", ptr %".412"
+  store float %"mnmx_final.2", ptr %".412"
   ; FMNMX R11, R11, R8, !PT
   %".415" = load float, ptr %"R11"
   %".416" = load float, ptr %"R8"
   %".417" = xor i1 1, -1
   %".418" = fcmp olt float %".415", %".416"
-  %"fmnmx_min.3" = select  i1 %".418", float %".415", float %".416"
   %".419" = fcmp ogt float %".415", %".416"
-  %"fmnmx_max.3" = select  i1 %".419", float %".415", float %".416"
-  %"fmnmx_final.3" = select  i1 %".417", float %"fmnmx_min.3", float %"fmnmx_max.3"
+  %"mnmx_min.3" = select  i1 %".418", float %".415", float %".416"
+  %"mnmx_max.3" = select  i1 %".419", float %".415", float %".416"
+  %"mnmx_final.3" = select  i1 %".417", float %"mnmx_min.3", float %"mnmx_max.3"
   %".420" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final.3", ptr %".420"
+  store float %"mnmx_final.3", ptr %".420"
   ; @P1 BRA `(.L_x_10)
   %".423" = load i1, ptr %"P1"
   %".424" = icmp eq i1 %".423", 1
@@ -3243,12 +3243,12 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".473" = load float, ptr %"R2"
   %".474" = xor i1 1, -1
   %".475" = fcmp olt float %".472", %".473"
-  %"fmnmx_min.4" = select  i1 %".475", float %".472", float %".473"
   %".476" = fcmp ogt float %".472", %".473"
-  %"fmnmx_max.4" = select  i1 %".476", float %".472", float %".473"
-  %"fmnmx_final.4" = select  i1 %".474", float %"fmnmx_min.4", float %"fmnmx_max.4"
+  %"mnmx_min.4" = select  i1 %".475", float %".472", float %".473"
+  %"mnmx_max.4" = select  i1 %".476", float %".472", float %".473"
+  %"mnmx_final.4" = select  i1 %".474", float %"mnmx_min.4", float %"mnmx_max.4"
   %".477" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final.4", ptr %".477"
+  store float %"mnmx_final.4", ptr %".477"
   ; @!P1 BRA `(.L_x_11)
   %".480" = load i1, ptr %"P1"
   %".481" = icmp ne i1 %".480", 1
@@ -3378,12 +3378,12 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".569" = load float, ptr %"R2"
   %".570" = xor i1 1, -1
   %".571" = fcmp olt float %".568", %".569"
-  %"fmnmx_min.5" = select  i1 %".571", float %".568", float %".569"
   %".572" = fcmp ogt float %".568", %".569"
-  %"fmnmx_max.5" = select  i1 %".572", float %".568", float %".569"
-  %"fmnmx_final.5" = select  i1 %".570", float %"fmnmx_min.5", float %"fmnmx_max.5"
+  %"mnmx_min.5" = select  i1 %".571", float %".568", float %".569"
+  %"mnmx_max.5" = select  i1 %".572", float %".568", float %".569"
+  %"mnmx_final.5" = select  i1 %".570", float %"mnmx_min.5", float %"mnmx_max.5"
   %".573" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final.5", ptr %".573"
+  store float %"mnmx_final.5", ptr %".573"
   ; @P1 FMNMX R11, R11, R4, !PT
   %".576" = load i1, ptr %"P1"
   %".577" = icmp eq i1 %".576", 1
@@ -3394,12 +3394,12 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".581" = load float, ptr %"R4"
   %".582" = xor i1 1, -1
   %".583" = fcmp olt float %".580", %".581"
-  %"fmnmx_min.6" = select  i1 %".583", float %".580", float %".581"
   %".584" = fcmp ogt float %".580", %".581"
-  %"fmnmx_max.6" = select  i1 %".584", float %".580", float %".581"
-  %"fmnmx_final.6" = select  i1 %".582", float %"fmnmx_min.6", float %"fmnmx_max.6"
+  %"mnmx_min.6" = select  i1 %".583", float %".580", float %".581"
+  %"mnmx_max.6" = select  i1 %".584", float %".580", float %".581"
+  %"mnmx_final.6" = select  i1 %".582", float %"mnmx_min.6", float %"mnmx_max.6"
   %".585" = bitcast ptr %"R11" to ptr
-  store float %"fmnmx_final.6", ptr %".585"
+  store float %"mnmx_final.6", ptr %".585"
   ; BRA `(.L_x_11)
   br label %".L_x_11"
 .L_x_11:
@@ -3958,12 +3958,12 @@ Entry_.text._Z4reluPfS_i:
   %".61" = load float, ptr %"R2"
   %".62" = xor i1 1, -1
   %".63" = fcmp olt float              0x0, %".61"
-  %"fmnmx_min" = select  i1 %".63", float              0x0, float %".61"
   %".64" = fcmp ogt float              0x0, %".61"
-  %"fmnmx_max" = select  i1 %".64", float              0x0, float %".61"
-  %"fmnmx_final" = select  i1 %".62", float %"fmnmx_min", float %"fmnmx_max"
+  %"mnmx_min" = select  i1 %".63", float              0x0, float %".61"
+  %"mnmx_max" = select  i1 %".64", float              0x0, float %".61"
+  %"mnmx_final" = select  i1 %".62", float %"mnmx_min", float %"mnmx_max"
   %".65" = bitcast ptr %"R7" to ptr
-  store float %"fmnmx_final", ptr %".65"
+  store float %"mnmx_final", ptr %".65"
   ; STG.E.SYS [R4], R7
   %".68" = load float, ptr %"R7"
   %".69" = load i32, ptr %"R4"
