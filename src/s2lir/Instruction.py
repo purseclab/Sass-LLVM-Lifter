@@ -715,7 +715,7 @@ class Instruction:
 
             return
         
-        if self.opcode == "FADD":
+        if self.opcode == "IADD" or self.opcode == "FADD":
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
@@ -727,8 +727,11 @@ class Instruction:
 
             assert ResOp.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
-
-            tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
+            
+            if self.opcode == "IADD":
+                tmp = IRBuilder.add(IRValOp1, IRValOp2, "add")
+            elif self.opcode == "FADD":
+                tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
@@ -1009,6 +1012,14 @@ class Instruction:
 
             return
         
+        if self.opcode == "I2I":
+            assert len(self.modifiers) == 0
+            return
+
+        if self.opcode == "F2F":
+            assert len(self.modifiers) == 0
+            return
+        
         if self.opcode == "F2I":
             ResOp = self.operands[0]
             ValOp = self.operands[1]
@@ -1221,7 +1232,7 @@ class Instruction:
             
             return
         
-        if self.opcode == "FMUL":
+        if self.opcode == "IMUL" or self.opcode == "FMUL":
             assert len(self.modifiers) == 0
             assert len(self.operands) == 3
             
@@ -1243,15 +1254,18 @@ class Instruction:
             else:
                 assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
-                
-            tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
+            
+            if self.opcode == "IMUL":
+                tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul")
+            elif self.opcode == "FMUL":
+                tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
                 
 
             return
         
-        if self.opcode == "SEL" or self.opcode == "FSEL":
+        if self.opcode == "SEL" or self.opcode == "FSEL" or self.opcode == "USEL":
             R_dest = self.operands[0]
             R_a = self.operands[1] # select wheb True
             S_b = self.operands[2] # select wheb False
