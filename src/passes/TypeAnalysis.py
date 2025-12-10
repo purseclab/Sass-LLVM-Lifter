@@ -68,6 +68,9 @@ class TypeAnalysis:
             if arg[-1] == "*":
                 isPtr = True
                 arg = arg[:-1]
+            if "const" in arg:
+                arg = arg.replace("const", "")
+            arg = arg.strip()
             if arg == "float":
                 if isPtr:
                     self.func_args.append(llvmir.FloatType().as_pointer())

@@ -22,9 +22,6 @@ export LLVMLITE_ENABLE_OPAQUE_POINTERS=1
 
 
 
-# compile ptx into cubin, and then open the file in Nsight
-# https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
-nvcc -cubin -g -G -arch=sm_75  $LLC_OUTPUT_FULLDIR -o "$CUBIN_OUTPUT_DIR/$CUBIN_OUTPUT_NAME"
 
 python3 main.py
 
@@ -39,6 +36,9 @@ fi
 
 
 llc-20 -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$LLC_OUTPUT_FULLDIR"
+# compile ptx into cubin, and then open the file in Nsight
+# https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
+nvcc -cubin -g -G -arch=sm_75  $LLC_OUTPUT_FULLDIR -o "$CUBIN_OUTPUT_DIR/$CUBIN_OUTPUT_NAME"
 
 
 # -debug-pass=Structure

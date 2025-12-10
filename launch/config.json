@@ -1,11 +1,11 @@
 {
     "lifter": {
-        "input_file": "test_code.sass",
-        "output_file": "test.ll"
+        "input_file": "mem_ops.sass",
+        "output_file": "mem_ops.ll"
     },
     "cu2sass": {
-        "cuda_file": "test.cu",
-        "select_cubin": "test.2.sm_75.cubin"
+        "cuda_file": "mem_ops.cu",
+        "select_cubin": "mem_ops.sm_75.cubin"
     },
     "allow_temp_behavior": false,
     "allow_incomplete_type_analysis": false
