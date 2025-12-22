@@ -557,3 +557,35 @@ $L__BB3_2:                              // %ExitFunction
 	ret;
                                         // -- End function
 }
+	// .globl	_Z15globalMemKernelPKiPii // -- Begin function _Z15globalMemKernelPKiPii
+.visible .entry _Z15globalMemKernelPKiPii(
+	.param .u64 .ptr .align 1 _Z15globalMemKernelPKiPii_param_0,
+	.param .u64 .ptr .align 1 _Z15globalMemKernelPKiPii_param_1,
+	.param .u32 _Z15globalMemKernelPKiPii_param_2
+)                                       // @_Z15globalMemKernelPKiPii
+{
+	.reg .pred 	%p<2>;
+	.reg .b32 	%r<8>;
+	.reg .b64 	%rd<6>;
+
+// %bb.0:                               // %Entry_.text._Z15globalMemKernelPKiPii
+	mov.u32 	%r2, %ctaid.x;
+	ld.param.u32 	%r3, [_Z15globalMemKernelPKiPii_param_2];
+	mov.u32 	%r4, %tid.x;
+	mov.u32 	%r5, %ntid.x;
+	mad.lo.s32 	%r1, %r2, %r5, %r4;
+	setp.ge.s32 	%p1, %r1, %r3;
+	@%p1 bra 	$L__BB4_2;
+// %bb.1:                               // %.text._Z15globalMemKernelPKiPii_split_0x0060
+	ld.param.u64 	%rd2, [_Z15globalMemKernelPKiPii_param_1];
+	ld.param.u64 	%rd1, [_Z15globalMemKernelPKiPii_param_0];
+	mul.wide.u32 	%rd3, %r1, 4;
+	add.s64 	%rd4, %rd3, %rd1;
+	ld.u32 	%r6, [%rd4];
+	add.s64 	%rd5, %rd3, %rd2;
+	add.s32 	%r7, %r6, 1;
+	st.u32 	[%rd5], %r7;
+$L__BB4_2:                              // %ExitFunction
+	ret;
+                                        // -- End function
+}

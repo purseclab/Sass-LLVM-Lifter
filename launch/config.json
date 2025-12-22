@@ -5,7 +5,7 @@
     },
     "cu2sass": {
         "cuda_file": "mem_ops.cu",
-        "select_cubin": "mem_ops.sm_75.cubin"
+        "select_cubin": "mem_ops.2.sm_75.cubin"
     },
     "allow_temp_behavior": false,
     "allow_incomplete_type_analysis": false
