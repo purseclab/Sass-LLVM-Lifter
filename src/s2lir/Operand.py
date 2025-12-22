@@ -144,9 +144,11 @@ class Operand:
         # Determine element type for the pointer. If an explicit `elem_type`
         # was provided use it; otherwise derive from `IRVal`.
         if elem_type is None:
+            # If we're storing a pointer value, use its pointer type as the
+            # element type so the stored value and the pointer element match.
+            # TODO check correctness of elem_type implmentation
             if isinstance(IRVal.type, llvmir.PointerType):
-                # store of a pointer value -> model as 64-bit integer element
-                elem_type = llvmir.IntType(64)
+                elem_type = IRVal.type
             else:
                 elem_type = IRVal.type
 
