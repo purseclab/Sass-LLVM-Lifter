@@ -3,6 +3,7 @@ from utils import *
 from llvmlite import ir as llvmir
 from s2lir.intrinsics import *
 import re
+import math
 import typing
 
 if typing.TYPE_CHECKING:
@@ -103,6 +104,8 @@ class Operand:
         
         self.is_use = None
         self.is_def = None
+        # Swizzle modifier, e.g. .X4
+        self.swizzle: int | None = None
 
     def IR_ValueFromPointer(self, IRBuilder, IRRegs, PinterType):
 
@@ -181,6 +184,17 @@ class Operand:
                 else:
                     raise InvalidSyntaxException
 
+            # Apply swizzle modifier if present (e.g., .X4 == multiply by 4)
+            if self.swizzle is not None:
+                # only support integer swizzle application for now
+                if isinstance(self.getIRType(), llvmir.IntType):
+                    # swizzle is a power of two (X2, X4, ...)
+                    if self.swizzle <= 0 or (self.swizzle & (self.swizzle - 1)) != 0: # second cond checks if its power of two
+                        raise InvalidSyntaxException
+                    shift_amt = int(math.log2(self.swizzle))
+                    IRVal = IRBuilder.shl(IRVal, llvmir.Constant(llvmir.IntType(32), shift_amt), name="swzl_shl")
+                else:
+                    raise NotImplementedError("Swizzle on non-integer IR type not supported")
             return IRVal
         
         elif self.isConstMem:
@@ -333,6 +347,13 @@ class Operand:
 
         # Don't handle .reuse optimization
         content =  content.replace(".reuse", "")
+
+        # Extract swizzle modifier like .X4 and remove from content for further parsing
+        swz_match = re.search(r"\.X(\d+)", content)
+        if swz_match:
+            self.swizzle = int(swz_match.group(1))
+            # strip the swizzle token from the content so later parsing is simpler
+            content = content.replace(f".X{self.swizzle}", "")
 
         # Branch Label:  @!P1 BRA `(.L_x_12) ;
         if content.startswith("`"):
