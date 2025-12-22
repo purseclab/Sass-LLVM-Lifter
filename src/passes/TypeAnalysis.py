@@ -167,7 +167,7 @@ class TypeAnalysis:
             for BB in self.func.blocks:
                 for inst in BB.instructions:
                     for Op in inst.operands:
-                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "ULOP3", "LDG", "BSSY", "CALL", "BSYNC", "RET", "ULDC", "STG", "STS"] + ["BRA"]:
+                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "ULOP3", "LDG", "LDS", "BSSY", "CALL", "BSYNC", "RET", "ULDC", "STG", "STS", "BAR"] + ["BRA"]:
                             print(f"Unsolvable type for operand {Op} in instruction {inst}")
                             raise InvalidTypeException("Type analysis incomplete")
 
@@ -198,7 +198,14 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
+        if inst.opcode == "BAR":
+            # BAR is a synchronization, does not define or use general registers
+            for operand in inst.operands:
+                operand.is_def = False
+                operand.is_use = False
+            return
+
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "LDS", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     # first operand of this instruction is a def
@@ -350,7 +357,7 @@ class TypeAnalysis:
             
             return changed
                     
-        if inst.opcode == "LDG":
+        if inst.opcode in ("LDG", "LDS"):
             changes = False
             TypeDescOp1 = inst.operands[1].getTypeDesc()
             

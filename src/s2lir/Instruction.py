@@ -251,7 +251,7 @@ class Instruction:
                 raise InvalidSyntaxException
             return
 
-        if self.opcode == "LDG":
+        if self.opcode == "LDG" or self.opcode == "LDS" or self.opcode == "LDL":
             # Load from Global Memory
             # e.g.: LDG.E.SYS R57, [R38]
             ResOp = self.operands[0]
@@ -264,7 +264,14 @@ class Instruction:
                 IRResOp = IRRegs[ResOp.getRegName()]
                 # IRPtrOp = IRRegs[PtrOp.getIRRegName()]
                 
-                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType(), addr_space=ADDRSPACE_GLOBAL)
+                if self.opcode == "LDG":
+                    addr_space = ADDRSPACE_GLOBAL
+                elif self.opcode == "LDS":
+                    addr_space = ADDRSPACE_SHARED
+                elif self.opcode == "LDL":
+                    addr_space = ADDRSPACE_LOCAL
+                
+                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType(), addr_space=addr_space)
 
                 # IRVal = IRBuilder.load(IRPtrOp)
                 # IRBuilder.store(IRVal, IRResOp)
