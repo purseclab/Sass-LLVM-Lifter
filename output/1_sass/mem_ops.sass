@@ -8,7 +8,7 @@
 	.align	128
         .global         _Z14localMemKernelPii
         .type           _Z14localMemKernelPii,@function
-        .size           _Z14localMemKernelPii,(.L_x_2 - _Z14localMemKernelPii)
+        .size           _Z14localMemKernelPii,(.L_x_5 - _Z14localMemKernelPii)
         .other          _Z14localMemKernelPii,@"STO_CUDA_ENTRY STV_DEFAULT"
 _Z14localMemKernelPii:
 .text._Z14localMemKernelPii:
@@ -29,7 +29,48 @@ _Z14localMemKernelPii:
         /*00d0*/                   NOP;
         /*00e0*/                   NOP;
         /*00f0*/                   NOP;
+.L_x_5:
+
+
+//--------------------- .text._Z15sharedMemKernelPKiPii --------------------------
+	.section	.text._Z15sharedMemKernelPKiPii,"ax",@progbits
+	.sectionflags	@"SHF_BARRIERS=1"
+	.sectioninfo	@"SHI_REGISTERS=8"
+	.align	128
+        .global         _Z15sharedMemKernelPKiPii
+        .type           _Z15sharedMemKernelPKiPii,@function
+        .size           _Z15sharedMemKernelPKiPii,(.L_x_6 - _Z15sharedMemKernelPKiPii)
+        .other          _Z15sharedMemKernelPKiPii,@"STO_CUDA_ENTRY STV_DEFAULT"
+_Z15sharedMemKernelPKiPii:
+.text._Z15sharedMemKernelPKiPii:
+        /*0000*/                   MOV R1, c[0x0][0x28] ;
+        /*0010*/                   S2R R0, SR_CTAID.X ;
+        /*0020*/                   BMOV.32.CLEAR RZ, B0 ;
+        /*0030*/                   BSSY B0, `(.L_x_1) ;
+        /*0040*/                   S2R R5, SR_TID.X ;
+        /*0050*/                   IMAD R0, R0, c[0x0][0x0], R5 ;
+        /*0060*/                   ISETP.GE.AND P0, PT, R0, c[0x0][0x170], PT ;
+        /*0070*/               @P0 BRA `(.L_x_2) ;
+        /*0080*/                   MOV R3, 0x4 ;
+        /*0090*/                   IMAD.WIDE R2, R0, R3, c[0x0][0x160] ;
+        /*00a0*/                   LDG.E.SYS R2, [R2] ;
+        /*00b0*/                   IADD3 R4, R2, 0x1, RZ ;
+        /*00c0*/                   STS [R5.X4], R4 ;
 .L_x_2:
+        /*00d0*/                   BSYNC B0 ;
+.L_x_1:
+        /*00e0*/                   BAR.SYNC 0x0 ;
+        /*00f0*/               @P0 EXIT ;
+        /*0100*/                   LDS.U R5, [R5.X4] ;
+        /*0110*/                   MOV R3, 0x4 ;
+        /*0120*/                   IMAD.WIDE R2, R0, R3, c[0x0][0x168] ;
+        /*0130*/                   STG.E.SYS [R2], R5 ;
+        /*0140*/                   EXIT ;
+.L_x_3:
+        /*0150*/                   BRA `(.L_x_3);
+        /*0160*/                   NOP;
+        /*0170*/                   NOP;
+.L_x_6:
 
 
 //--------------------- .text._Z15globalMemKernelPKiPii --------------------------
@@ -38,7 +79,7 @@ _Z14localMemKernelPii:
 	.align	128
         .global         _Z15globalMemKernelPKiPii
         .type           _Z15globalMemKernelPKiPii,@function
-        .size           _Z15globalMemKernelPKiPii,(.L_x_3 - _Z15globalMemKernelPKiPii)
+        .size           _Z15globalMemKernelPKiPii,(.L_x_7 - _Z15globalMemKernelPKiPii)
         .other          _Z15globalMemKernelPKiPii,@"STO_CUDA_ENTRY STV_DEFAULT"
 _Z15globalMemKernelPKiPii:
 .text._Z15globalMemKernelPKiPii:
@@ -55,8 +96,8 @@ _Z15globalMemKernelPKiPii:
         /*00a0*/                   IADD3 R7, R2, 0x1, RZ ;
         /*00b0*/                   STG.E.SYS [R4], R7 ;
         /*00c0*/                   EXIT ;
-.L_x_1:
-        /*00d0*/                   BRA `(.L_x_1);
+.L_x_4:
+        /*00d0*/                   BRA `(.L_x_4);
         /*00e0*/                   NOP;
         /*00f0*/                   NOP;
-.L_x_3:
+.L_x_7:

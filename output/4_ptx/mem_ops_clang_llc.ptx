@@ -10,6 +10,7 @@
 .global .align 1 .b8 blockIdx[1];
 .global .align 1 .b8 blockDim[1];
 .global .align 1 .b8 threadIdx[1];
+// _ZZ15sharedMemKernelPKiPiiE5sdata has been demoted
                                         // @_Z15globalMemKernelPKiPii
 .visible .entry _Z15globalMemKernelPKiPii(
 	.param .u64 .ptr .align 1 _Z15globalMemKernelPKiPii_param_0,
@@ -63,13 +64,91 @@ $L__BB0_2:
 	ret;
                                         // -- End function
 }
+	// .globl	_Z15sharedMemKernelPKiPii // -- Begin function _Z15sharedMemKernelPKiPii
+.visible .entry _Z15sharedMemKernelPKiPii(
+	.param .u64 .ptr .align 1 _Z15sharedMemKernelPKiPii_param_0,
+	.param .u64 .ptr .align 1 _Z15sharedMemKernelPKiPii_param_1,
+	.param .u32 _Z15sharedMemKernelPKiPii_param_2
+)                                       // @_Z15sharedMemKernelPKiPii
+{
+	.local .align 8 .b8 	__local_depot1[32];
+	.reg .b64 	%SP;
+	.reg .b64 	%SPL;
+	.reg .pred 	%p<3>;
+	.reg .b32 	%r<14>;
+	.reg .b64 	%rd<25>;
+	// demoted variable
+	.shared .align 4 .b8 _ZZ15sharedMemKernelPKiPiiE5sdata[1024];
+// %bb.0:
+	mov.u64 	%SPL, __local_depot1;
+	cvta.local.u64 	%SP, %SPL;
+	ld.param.u32 	%r1, [_Z15sharedMemKernelPKiPii_param_2];
+	ld.param.u64 	%rd2, [_Z15sharedMemKernelPKiPii_param_1];
+	ld.param.u64 	%rd1, [_Z15sharedMemKernelPKiPii_param_0];
+	cvta.to.global.u64 	%rd3, %rd2;
+	cvta.global.u64 	%rd4, %rd3;
+	cvta.to.global.u64 	%rd5, %rd1;
+	cvta.global.u64 	%rd6, %rd5;
+	st.u64 	[%SP], %rd6;
+	st.u64 	[%SP+8], %rd4;
+	st.u32 	[%SP+16], %r1;
+	mov.u32 	%r2, %ctaid.x;
+	mov.u32 	%r3, %ntid.x;
+	mul.lo.s32 	%r4, %r2, %r3;
+	mov.u32 	%r5, %tid.x;
+	add.s32 	%r6, %r4, %r5;
+	st.u32 	[%SP+20], %r6;
+	st.u32 	[%SP+24], %r5;
+	ld.u32 	%r7, [%SP+20];
+	ld.u32 	%r8, [%SP+16];
+	setp.ge.s32 	%p1, %r7, %r8;
+	@%p1 bra 	$L__BB1_2;
+	bra.uni 	$L__BB1_1;
+$L__BB1_1:
+	ld.u64 	%rd7, [%SP];
+	ld.s32 	%rd8, [%SP+20];
+	shl.b64 	%rd9, %rd8, 2;
+	add.s64 	%rd10, %rd7, %rd9;
+	ld.u32 	%r9, [%rd10];
+	add.s32 	%r10, %r9, 1;
+	ld.s32 	%rd11, [%SP+24];
+	shl.b64 	%rd12, %rd11, 2;
+	mov.u64 	%rd13, _ZZ15sharedMemKernelPKiPiiE5sdata;
+	cvta.shared.u64 	%rd14, %rd13;
+	add.s64 	%rd15, %rd14, %rd12;
+	st.u32 	[%rd15], %r10;
+	bra.uni 	$L__BB1_2;
+$L__BB1_2:
+	bar.sync 	0;
+	ld.u32 	%r11, [%SP+20];
+	ld.u32 	%r12, [%SP+16];
+	setp.ge.s32 	%p2, %r11, %r12;
+	@%p2 bra 	$L__BB1_4;
+	bra.uni 	$L__BB1_3;
+$L__BB1_3:
+	ld.s32 	%rd16, [%SP+24];
+	shl.b64 	%rd17, %rd16, 2;
+	mov.u64 	%rd18, _ZZ15sharedMemKernelPKiPiiE5sdata;
+	cvta.shared.u64 	%rd19, %rd18;
+	add.s64 	%rd20, %rd19, %rd17;
+	ld.u32 	%r13, [%rd20];
+	ld.u64 	%rd21, [%SP+8];
+	ld.s32 	%rd22, [%SP+20];
+	shl.b64 	%rd23, %rd22, 2;
+	add.s64 	%rd24, %rd21, %rd23;
+	st.u32 	[%rd24], %r13;
+	bra.uni 	$L__BB1_4;
+$L__BB1_4:
+	ret;
+                                        // -- End function
+}
 	// .globl	_Z14localMemKernelPii   // -- Begin function _Z14localMemKernelPii
 .visible .entry _Z14localMemKernelPii(
 	.param .u64 .ptr .align 1 _Z14localMemKernelPii_param_0,
 	.param .u32 _Z14localMemKernelPii_param_1
 )                                       // @_Z14localMemKernelPii
 {
-	.local .align 8 .b8 	__local_depot1[32];
+	.local .align 8 .b8 	__local_depot2[32];
 	.reg .b64 	%SP;
 	.reg .b64 	%SPL;
 	.reg .pred 	%p<2>;
@@ -77,7 +156,7 @@ $L__BB0_2:
 	.reg .b64 	%rd<8>;
 
 // %bb.0:
-	mov.u64 	%SPL, __local_depot1;
+	mov.u64 	%SPL, __local_depot2;
 	cvta.local.u64 	%SP, %SPL;
 	ld.param.u32 	%r1, [_Z14localMemKernelPii_param_1];
 	ld.param.u64 	%rd1, [_Z14localMemKernelPii_param_0];
@@ -94,11 +173,11 @@ $L__BB0_2:
 	ld.u32 	%r7, [%SP+12];
 	ld.u32 	%r8, [%SP+8];
 	setp.lt.s32 	%p1, %r7, %r8;
-	@%p1 bra 	$L__BB1_2;
-	bra.uni 	$L__BB1_1;
-$L__BB1_1:
-	bra.uni 	$L__BB1_3;
-$L__BB1_2:
+	@%p1 bra 	$L__BB2_2;
+	bra.uni 	$L__BB2_1;
+$L__BB2_1:
+	bra.uni 	$L__BB2_3;
+$L__BB2_2:
 	ld.u32 	%r9, [%SP+12];
 	st.u32 	[%SP+16], %r9;
 	ld.u32 	%r10, [%SP+16];
@@ -112,8 +191,8 @@ $L__BB1_2:
 	shl.b64 	%rd6, %rd5, 2;
 	add.s64 	%rd7, %rd4, %rd6;
 	st.u32 	[%rd7], %r13;
-	bra.uni 	$L__BB1_3;
-$L__BB1_3:
+	bra.uni 	$L__BB2_3;
+$L__BB2_3:
 	ret;
                                         // -- End function
 }

@@ -18,27 +18,27 @@ __global__ void globalMemKernel(const int* a,
 ////////////////////////////////////////////////////////////
 // 2. Shared memory kernel
 ////////////////////////////////////////////////////////////
-// __global__ void sharedMemKernel(const int* in,
-//                                 int* out,
-//                                 int n) {
-//     // for each block 
-//     __shared__ int sdata[256];   // assume blockDim.x <= 256
+__global__ void sharedMemKernel(const int* in,
+                                int* out,
+                                int n) {
+    // for each block 
+    __shared__ int sdata[256];   // assume blockDim.x <= 256
 
-//     int global_idx = blockIdx.x * blockDim.x + threadIdx.x;
-//     int local_idx  = threadIdx.x;
+    int global_idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int local_idx  = threadIdx.x;
 
-//     if (global_idx < n) {
-//         // global → shared
-//         sdata[local_idx] = in[global_idx] + 1;
-//     }
+    if (global_idx < n) {
+        // global → shared
+        sdata[local_idx] = in[global_idx] + 1;
+    }
 
-//     __syncthreads();
+    __syncthreads();
 
-//     if (global_idx < n) {
-//         // read from shared and write to global
-//         out[global_idx] = sdata[local_idx];
-//     }
-// }
+    if (global_idx < n) {
+        // read from shared and write to global
+        out[global_idx] = sdata[local_idx];
+    }
+}
 
 ////////////////////////////////////////////////////////////
 // 3. Local memory kernel
