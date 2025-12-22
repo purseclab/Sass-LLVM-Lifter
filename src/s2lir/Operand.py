@@ -107,7 +107,7 @@ class Operand:
         # Swizzle modifier, e.g. .X4
         self.swizzle: int | None = None
 
-    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PinterType):
+    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PinterType, addr_space: int | None = None):
 
         # Fetch Value from IRPtrOp
         # PtrAddr = IRBuilder.load(IRPtrOp)
@@ -117,7 +117,11 @@ class Operand:
         PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
         # Fetch value from PtrAddr e.g.,[R2]
-        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(PinterType), "for_LDG")
+        if addr_space is None:
+            ptr_ty = llvmir.PointerType(PinterType)
+        else:
+            ptr_ty = llvmir.PointerType(PinterType, addr_space)
+        PtrAddr = IRBuilder.inttoptr(PtrAddr, ptr_ty, "for_LDG")
         IRVal = IRBuilder.load(PtrAddr)
 
         # Change it to Absolute value
@@ -129,7 +133,7 @@ class Operand:
 
         return IRVal
     
-    def IR_ValueToPointer(self, IRBuilder, IRRegs, PtrOp, IRVal):
+    def IR_ValueToPointer(self, IRBuilder, IRRegs, PtrOp, IRVal, addr_space: int | None = None, elem_type=None):
         # Fetch address from IRPtrOp
         # PtrAddr = IRBuilder.load(IRPtrOp)
         PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
@@ -137,8 +141,22 @@ class Operand:
         PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
         PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
-        # Convert address to pointer type
-        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(), "for_STG")
+        # Determine element type for the pointer. If an explicit `elem_type`
+        # was provided use it; otherwise derive from `IRVal`.
+        if elem_type is None:
+            if isinstance(IRVal.type, llvmir.PointerType):
+                # store of a pointer value -> model as 64-bit integer element
+                elem_type = llvmir.IntType(64)
+            else:
+                elem_type = IRVal.type
+
+        # Convert address to pointer type with optional address space
+        if addr_space is None:
+            ptr_ty = llvmir.PointerType(elem_type)
+        else:
+            ptr_ty = llvmir.PointerType(elem_type, addr_space)
+
+        PtrAddr = IRBuilder.inttoptr(PtrAddr, ptr_ty, "for_STG")
 
         # Handle absolute or negative value
         if self.ptr_abs or self.ptr_neg:

@@ -17,6 +17,11 @@ current_dir = Path(__file__).parent
 SM_75_UReg_Set = [f"UR{i}" for i in range(128)]
 SM_75_UReg_Set.append(f"URZ")
 
+# LLVM address space map used by the lifter (adjust if necessary)
+ADDRSPACE_GLOBAL = 1
+ADDRSPACE_SHARED = 3
+ADDRSPACE_LOCAL = 5
+
 class Instruction:
     def __init__(self, inst_dict, BB):
         self.addr = inst_dict["addr"]
@@ -259,7 +264,7 @@ class Instruction:
                 IRResOp = IRRegs[ResOp.getRegName()]
                 # IRPtrOp = IRRegs[PtrOp.getIRRegName()]
                 
-                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
+                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType(), addr_space=ADDRSPACE_GLOBAL)
 
                 # IRVal = IRBuilder.load(IRPtrOp)
                 # IRBuilder.store(IRVal, IRResOp)
@@ -268,8 +273,8 @@ class Instruction:
                 raise InvalidSyntaxException
             return
 
-        if self.opcode == "STG":
-            # Store to global Memory
+        if self.opcode == "STG" or self.opcode == "STL" or self.opcode == "STS":
+            # Store to global, local, or shared Memory
             # e.g.: STG.E.SYS [R28], R7
             ResOp = self.operands[0]
             ValOp = self.operands[1]
@@ -281,8 +286,18 @@ class Instruction:
                 # IRValOp = IRRegs[ValOp.getIRRegName()]
                 # IRVal = IRBuilder.load(IRValOp)
                 IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
+                
+                # select address space based on opcode
+                if self.opcode == "STL":
+                    addr_space = ADDRSPACE_LOCAL
+                elif self.opcode == "STG":
+                    addr_space = ADDRSPACE_GLOBAL
+                elif self.opcode == "STS":
+                    addr_space = ADDRSPACE_SHARED
+                else:
+                    raise InvalidSyntaxException
 
-                ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal)
+                ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal, addr_space=addr_space)
             else:
                 raise InvalidSyntaxException
             return

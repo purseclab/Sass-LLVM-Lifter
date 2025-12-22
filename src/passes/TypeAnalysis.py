@@ -167,7 +167,7 @@ class TypeAnalysis:
             for BB in self.func.blocks:
                 for inst in BB.instructions:
                     for Op in inst.operands:
-                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "ULOP3", "LDG", "BSSY", "CALL", "BSYNC", "RET", "ULDC", "STG"] + ["BRA"]:
+                        if Op.getTypeDesc() == "NOTYPE" and inst.opcode not in ["BMOV", "MOV", "MUFU", "LOP3", "PLOP3", "ULOP3", "LDG", "BSSY", "CALL", "BSYNC", "RET", "ULDC", "STG", "STS"] + ["BRA"]:
                             print(f"Unsolvable type for operand {Op} in instruction {inst}")
                             raise InvalidTypeException("Type analysis incomplete")
 
@@ -198,12 +198,14 @@ class TypeAnalysis:
             f.write(typeAnalysisInfo)
     
     def assign_use_def(self, inst: Instruction):
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "STG", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
+                    # first operand of this instruction is a def
                     operand.is_def = operand.is_def_disqualifier()
                     operand.is_use = False
                 else:
+                    # all other operands are a use
                     operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
                     
@@ -379,28 +381,27 @@ class TypeAnalysis:
         
         # TODO propagate for ULDG
         
-        elif inst.opcode == "STG":
-            
+        elif inst.opcode in ("STG", "STS"):
             changes = False
             TypeDescOp0 = inst.operands[0].getTypeDesc()
-            
+
             if TypeDescOp0 is None or TypeDescOp0 == "NOTYPE":
                 # at least designate this operand as a PTR so that we can treat it as a PTR later on
                 TypeDescOp0 = "NOTYPE_PTR" # 64 bit
                 changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
-            
+
             TypeDescOp1 = inst.operands[1].getTypeDesc()
-            
-            if TypeDescOp1 != None and TypeDescOp1 != "NOTYPE":
+
+            if TypeDescOp1 is not None and TypeDescOp1 != "NOTYPE":
                 if TypeDescOp0 != "NOTYPE_PTR":
                     assert TypeDescOp1 + "_PTR" == TypeDescOp0
                     return changes
-                
+
                 # propagate type from op1 to op0
                 TypeDescOp0 = TypeDescOp1 + "_PTR"
                 changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
                 return changes
-            
+
             if TypeDescOp0 != "NOTYPE" and TypeDescOp0 != "NOTYPE_PTR":
                 # propagate type from op0 to op1
                 assert '_PTR' in TypeDescOp0
@@ -408,7 +409,7 @@ class TypeAnalysis:
                 changes = self.op_add_type(inst.operands[1], TypeDescOp1, inst)
                 return changes
             else:
-                return changes    
+                return changes
 
         elif inst.opcode == "IADD":
             TypeDesc = inst.operands[0].getTypeDesc()
