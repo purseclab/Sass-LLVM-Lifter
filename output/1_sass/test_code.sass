@@ -4,7 +4,7 @@
 
 //--------------------- .text._Z15fc_layer_simplePfS_S_S_ii --------------------------
 	.section	.text._Z15fc_layer_simplePfS_S_S_ii,"ax",@progbits
-	.sectioninfo	@"SHI_REGISTERS=12"
+	.sectioninfo	@"SHI_REGISTERS=16"
 	.align	128
         .global         _Z15fc_layer_simplePfS_S_S_ii
         .type           _Z15fc_layer_simplePfS_S_S_ii,@function
@@ -18,25 +18,33 @@ _Z15fc_layer_simplePfS_S_S_ii:
         /*0030*/                   IMAD R6, R6, c[0x0][0x0], R3 ;
         /*0040*/                   ISETP.GE.AND P0, PT, R6, c[0x0][0x184], PT ;
         /*0050*/               @P0 EXIT ;
-        /*0060*/                   MOV R9, 0x4 ;
+        /*0060*/                   MOV R13, 0x4 ;
         /*0070*/                   IMAD R2, R6, c[0x0][0x180], RZ ;
         /*0080*/                   ULDC.64 UR4, c[0x0][0x160] ;
         /*0090*/                   LDG.E.SYS R7, [UR4] ;
-        /*00a0*/                   IMAD.WIDE R2, R2, R9, c[0x0][0x168] ;
-        /*00b0*/                   IMAD.WIDE R4, R6, R9, c[0x0][0x170] ;
-        /*00c0*/                   LDG.E.SYS R2, [R2] ;
-        /*00d0*/                   LDG.E.SYS R5, [R4] ;
-        /*00e0*/                   FFMA R0, R2, R7, RZ ;
-        /*00f0*/                   IMAD.WIDE R6, R6, R9, c[0x0][0x178] ;
-        /*0100*/                   FADD R9, R0, R5 ;
-        /*0110*/                   STG.E.SYS [R6], R9 ;
-        /*0120*/                   EXIT ;
+        /*00a0*/                   IMAD.WIDE R2, R2, R13, c[0x0][0x168] ;
+        /*00b0*/                   LDG.E.SYS R8, [UR4+0x4] ;
+        /*00c0*/                   IMAD.WIDE R4, R6, R13, c[0x0][0x170] ;
+        /*00d0*/                   LDG.E.SYS R10, [UR4+0x8] ;
+        /*00e0*/                   LDG.E.SYS R0, [R2] ;
+        /*00f0*/                   LDG.E.SYS R9, [R2+0x4] ;
+        /*0100*/                   LDG.E.SYS R11, [R2+0x8] ;
+        /*0110*/                   LDG.E.SYS R5, [R4] ;
+        /*0120*/                   FFMA R0, R0, R7, RZ ;
+        /*0130*/                   FFMA R0, R9, R8, R0 ;
+        /*0140*/                   FFMA R0, R11, R10, R0 ;
+        /*0150*/                   IMAD.WIDE R6, R6, R13, c[0x0][0x178] ;
+        /*0160*/                   FADD R9, R0, R5 ;
+        /*0170*/                   STG.E.SYS [R6], R9 ;
+        /*0180*/                   EXIT ;
 .L_x_0:
-        /*0130*/                   BRA `(.L_x_0);
-        /*0140*/                   NOP;
-        /*0150*/                   NOP;
-        /*0160*/                   NOP;
-        /*0170*/                   NOP;
+        /*0190*/                   BRA `(.L_x_0);
+        /*01a0*/                   NOP;
+        /*01b0*/                   NOP;
+        /*01c0*/                   NOP;
+        /*01d0*/                   NOP;
+        /*01e0*/                   NOP;
+        /*01f0*/                   NOP;
 .L_x_23:
 
 

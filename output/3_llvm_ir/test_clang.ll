@@ -543,7 +543,7 @@ define dso_local ptx_kernel void @_Z15fc_layer_simplePfS_S_S_ii(ptr noundef %0, 
   br i1 %23, label %24, label %25
 
 24:                                               ; preds = %6
-  br label %55
+  br label %93
 
 25:                                               ; preds = %6
   store float 0.000000e+00, ptr %14, align 4
@@ -566,23 +566,65 @@ define dso_local ptx_kernel void @_Z15fc_layer_simplePfS_S_S_ii(ptr noundef %0, 
   %41 = load float, ptr %14, align 4
   %42 = fadd contract float %41, %40
   store float %42, ptr %14, align 4
-  %43 = load ptr, ptr %9, align 8
-  %44 = load i32, ptr %13, align 4
-  %45 = sext i32 %44 to i64
-  %46 = getelementptr inbounds float, ptr %43, i64 %45
-  %47 = load float, ptr %46, align 4
-  %48 = load float, ptr %14, align 4
-  %49 = fadd contract float %48, %47
-  store float %49, ptr %14, align 4
-  %50 = load float, ptr %14, align 4
-  %51 = load ptr, ptr %10, align 8
-  %52 = load i32, ptr %13, align 4
-  %53 = sext i32 %52 to i64
-  %54 = getelementptr inbounds float, ptr %51, i64 %53
-  store float %50, ptr %54, align 4
-  br label %55
+  %43 = load i32, ptr %15, align 4
+  %44 = add nsw i32 %43, 1
+  store i32 %44, ptr %15, align 4
+  %45 = load ptr, ptr %7, align 8
+  %46 = load i32, ptr %15, align 4
+  %47 = sext i32 %46 to i64
+  %48 = getelementptr inbounds float, ptr %45, i64 %47
+  %49 = load float, ptr %48, align 4
+  %50 = load ptr, ptr %8, align 8
+  %51 = load i32, ptr %13, align 4
+  %52 = load i32, ptr %11, align 4
+  %53 = mul nsw i32 %51, %52
+  %54 = load i32, ptr %15, align 4
+  %55 = add nsw i32 %53, %54
+  %56 = sext i32 %55 to i64
+  %57 = getelementptr inbounds float, ptr %50, i64 %56
+  %58 = load float, ptr %57, align 4
+  %59 = fmul contract float %49, %58
+  %60 = load float, ptr %14, align 4
+  %61 = fadd contract float %60, %59
+  store float %61, ptr %14, align 4
+  %62 = load i32, ptr %15, align 4
+  %63 = add nsw i32 %62, 1
+  store i32 %63, ptr %15, align 4
+  %64 = load ptr, ptr %7, align 8
+  %65 = load i32, ptr %15, align 4
+  %66 = sext i32 %65 to i64
+  %67 = getelementptr inbounds float, ptr %64, i64 %66
+  %68 = load float, ptr %67, align 4
+  %69 = load ptr, ptr %8, align 8
+  %70 = load i32, ptr %13, align 4
+  %71 = load i32, ptr %11, align 4
+  %72 = mul nsw i32 %70, %71
+  %73 = load i32, ptr %15, align 4
+  %74 = add nsw i32 %72, %73
+  %75 = sext i32 %74 to i64
+  %76 = getelementptr inbounds float, ptr %69, i64 %75
+  %77 = load float, ptr %76, align 4
+  %78 = fmul contract float %68, %77
+  %79 = load float, ptr %14, align 4
+  %80 = fadd contract float %79, %78
+  store float %80, ptr %14, align 4
+  %81 = load ptr, ptr %9, align 8
+  %82 = load i32, ptr %13, align 4
+  %83 = sext i32 %82 to i64
+  %84 = getelementptr inbounds float, ptr %81, i64 %83
+  %85 = load float, ptr %84, align 4
+  %86 = load float, ptr %14, align 4
+  %87 = fadd contract float %86, %85
+  store float %87, ptr %14, align 4
+  %88 = load float, ptr %14, align 4
+  %89 = load ptr, ptr %10, align 8
+  %90 = load i32, ptr %13, align 4
+  %91 = sext i32 %90 to i64
+  %92 = getelementptr inbounds float, ptr %89, i64 %91
+  store float %88, ptr %92, align 4
+  br label %93
 
-55:                                               ; preds = %25, %24
+93:                                               ; preds = %25, %24
   ret void
 }
 

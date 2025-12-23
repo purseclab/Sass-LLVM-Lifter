@@ -3,7 +3,7 @@
         ".function_name": "_Z15fc_layer_simplePfS_S_S_ii",
         ".section": ".text._Z15fc_layer_simplePfS_S_S_ii,\"ax\",@progbits",
         ".sectionflags": null,
-        ".sectioninfo": "@\"SHI_REGISTERS=12\"",
+        ".sectioninfo": "@\"SHI_REGISTERS=16\"",
         ".align": "128",
         ".global": "_Z15fc_layer_simplePfS_S_S_ii",
         ".type": "_Z15fc_layer_simplePfS_S_S_ii,@function",
@@ -102,7 +102,7 @@
                                 "MOV"
                             ],
                             [
-                                "R9",
+                                "R13",
                                 "0x4"
                             ],
                             ""
@@ -162,7 +162,7 @@
                             [
                                 "R2",
                                 "R2",
-                                "R9",
+                                "R13",
                                 "c[0x0][0x168]"
                             ],
                             ""
@@ -172,14 +172,13 @@
                         "addr": "0x00b0",
                         "content": [
                             [
-                                "IMAD",
-                                "WIDE"
+                                "LDG",
+                                "E",
+                                "SYS"
                             ],
                             [
-                                "R4",
-                                "R6",
-                                "R9",
-                                "c[0x0][0x170]"
+                                "R8",
+                                "[UR4+0x4]"
                             ],
                             ""
                         ]
@@ -188,19 +187,80 @@
                         "addr": "0x00c0",
                         "content": [
                             [
-                                "LDG",
-                                "E",
-                                "SYS"
+                                "IMAD",
+                                "WIDE"
                             ],
                             [
-                                "R2",
-                                "[R2]"
+                                "R4",
+                                "R6",
+                                "R13",
+                                "c[0x0][0x170]"
                             ],
                             ""
                         ]
                     },
                     {
                         "addr": "0x00d0",
+                        "content": [
+                            [
+                                "LDG",
+                                "E",
+                                "SYS"
+                            ],
+                            [
+                                "R10",
+                                "[UR4+0x8]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00e0",
+                        "content": [
+                            [
+                                "LDG",
+                                "E",
+                                "SYS"
+                            ],
+                            [
+                                "R0",
+                                "[R2]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x00f0",
+                        "content": [
+                            [
+                                "LDG",
+                                "E",
+                                "SYS"
+                            ],
+                            [
+                                "R9",
+                                "[R2+0x4]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0100",
+                        "content": [
+                            [
+                                "LDG",
+                                "E",
+                                "SYS"
+                            ],
+                            [
+                                "R11",
+                                "[R2+0x8]"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0110",
                         "content": [
                             [
                                 "LDG",
@@ -215,14 +275,14 @@
                         ]
                     },
                     {
-                        "addr": "0x00e0",
+                        "addr": "0x0120",
                         "content": [
                             [
                                 "FFMA"
                             ],
                             [
                                 "R0",
-                                "R2",
+                                "R0",
                                 "R7",
                                 "RZ"
                             ],
@@ -230,7 +290,37 @@
                         ]
                     },
                     {
-                        "addr": "0x00f0",
+                        "addr": "0x0130",
+                        "content": [
+                            [
+                                "FFMA"
+                            ],
+                            [
+                                "R0",
+                                "R9",
+                                "R8",
+                                "R0"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0140",
+                        "content": [
+                            [
+                                "FFMA"
+                            ],
+                            [
+                                "R0",
+                                "R11",
+                                "R10",
+                                "R0"
+                            ],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x0150",
                         "content": [
                             [
                                 "IMAD",
@@ -239,14 +329,14 @@
                             [
                                 "R6",
                                 "R6",
-                                "R9",
+                                "R13",
                                 "c[0x0][0x178]"
                             ],
                             ""
                         ]
                     },
                     {
-                        "addr": "0x0100",
+                        "addr": "0x0160",
                         "content": [
                             [
                                 "FADD"
@@ -260,7 +350,7 @@
                         ]
                     },
                     {
-                        "addr": "0x0110",
+                        "addr": "0x0170",
                         "content": [
                             [
                                 "STG",
@@ -275,7 +365,7 @@
                         ]
                     },
                     {
-                        "addr": "0x0120",
+                        "addr": "0x0180",
                         "content": [
                             [
                                 "EXIT"
@@ -290,7 +380,7 @@
                 "label": ".L_x_0",
                 "instructions": [
                     {
-                        "addr": "0x0130",
+                        "addr": "0x0190",
                         "content": [
                             [
                                 "BRA"
@@ -302,7 +392,7 @@
                         ]
                     },
                     {
-                        "addr": "0x0140",
+                        "addr": "0x01a0",
                         "content": [
                             [
                                 "NOP"
@@ -312,7 +402,7 @@
                         ]
                     },
                     {
-                        "addr": "0x0150",
+                        "addr": "0x01b0",
                         "content": [
                             [
                                 "NOP"
@@ -322,7 +412,7 @@
                         ]
                     },
                     {
-                        "addr": "0x0160",
+                        "addr": "0x01c0",
                         "content": [
                             [
                                 "NOP"
@@ -332,7 +422,27 @@
                         ]
                     },
                     {
-                        "addr": "0x0170",
+                        "addr": "0x01d0",
+                        "content": [
+                            [
+                                "NOP"
+                            ],
+                            [],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x01e0",
+                        "content": [
+                            [
+                                "NOP"
+                            ],
+                            [],
+                            ""
+                        ]
+                    },
+                    {
+                        "addr": "0x01f0",
                         "content": [
                             [
                                 "NOP"
