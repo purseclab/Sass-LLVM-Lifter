@@ -7,6 +7,73 @@ from pathlib import Path
 import json
 from llvmlite import ir as llvmir
 
+from enum import Enum
+
+class DataType(str, Enum):
+    NOTYPE      = "NOTYPE"
+    BOOL        = "Bool"
+    INT32       = "Int32"
+    FLOAT32     = "Float32"
+    VOID        = "Void"
+    
+    # Pointers
+    INT32_PTR   = "Int32_PTR"
+    FLOAT32_PTR = "Float32_PTR"
+    VOID_PTR    = "Void_PTR"
+    NOTYPE_PTR  = "NOTYPE_PTR"
+    
+    # No nested pointers!
+
+    @classmethod
+    def from_str(cls, label):
+        """Safe converter that handles raw strings from legacy code."""
+        if not isinstance(label, str):
+            return cls.NOTYPE
+        try:
+            return cls(label)
+        except ValueError:
+            pass
+        # Handle nested pointers (e.g., "Int32_PTR_PTR" -> "Int32_PTR")
+        if "_PTR" in label:
+            # TODO, tmp behavior
+            # Find the base type (everything before the first _PTR)
+            # and append a single _PTR suffix.
+            base_part = label.split("_PTR")[0]
+            normalized_ptr = f"{base_part}_PTR"
+            
+            try:
+                return cls(normalized_ptr)
+            except ValueError:
+                return cls.NOTYPE
+        return cls.NOTYPE
+
+        
+
+    @property
+    def is_ptr(self):
+        return self in (DataType.INT32_PTR, DataType.FLOAT32_PTR, DataType.VOID_PTR, DataType.NOTYPE_PTR)
+
+    def as_ptr(self):
+        """Returns the pointer version of this type, or None if not allowed."""
+        mapping = {
+            DataType.INT32: DataType.INT32_PTR,
+            DataType.FLOAT32: DataType.FLOAT32_PTR,
+            DataType.VOID: DataType.VOID_PTR,
+            DataType.NOTYPE: DataType.NOTYPE_PTR,
+        }
+        # If I am already a pointer, I cannot become a double pointer
+        return mapping.get(self, None)
+
+    def dereference(self):
+        """Returns the value version of this pointer, or None if not a pointer."""
+        mapping = {
+            DataType.INT32_PTR: DataType.INT32,
+            DataType.FLOAT32_PTR: DataType.FLOAT32,
+            DataType.VOID_PTR: DataType.VOID,
+            DataType.NOTYPE_PTR: DataType.NOTYPE,
+        }
+        return mapping.get(self, None)
+
 class TypeAnalysis:
     
     def __init__(self, func):
@@ -31,14 +98,26 @@ class TypeAnalysis:
         self.confident_types.add(op)
         op.typeDesc_confirmed = True
 
-    def op_add_type(self, op: Operand.Operand, typeDesc: str, inst=None):
-        if not op.typeDesc_confirmed:
-            op.setTypeDesc(typeDesc)
-            self.type_map[(op.ins, op.reg)] = typeDesc
+    def op_add_type(self, op: Operand.Operand, type_input: str | DataType, inst=None, forced=False):
+        if isinstance(type_input, DataType):
+            new_type = type_input
+        else:
+            new_type = DataType.from_str(type_input)
+        
+        if new_type == DataType.NOTYPE:
+            return False
+        
+        current_type_str = op.getTypeDesc()
+        if op.typeDesc_confirmed and not forced:
+            return False
+        
+        if current_type_str == "NOTYPE" or (current_type_str != new_type.value):
+            op.setTypeDesc(new_type.value)
+            self.type_map[(op.ins, op.reg)] = new_type.value
             if inst is not None:
-                # print(inst, op.ins)
                 assert inst == op.ins
             return True
+
         return False
     
     def begin(self):
@@ -307,126 +386,156 @@ class TypeAnalysis:
         return TypeDesc
         
     def PartialSolveType(self, inst):
-        if len([op for op in inst.operands if op.getTypeDesc() in ("NOTYPE", "NOTYPE_PTR")]) == 0:
+        """
+        Iteratively solves types for instructions where the type is not immediately obvious
+        but can be inferred from neighbors (e.g., MOV, Load/Store, Bitwise logic).
+        """
+        
+        # Quick check: If all operands already have types, nothing to solve.
+        # We use DataType.from_str to safely check even if types are currently strings.
+        if all(DataType.from_str(op.getTypeDesc()) not in (DataType.NOTYPE, DataType.NOTYPE_PTR) for op in inst.operands):
             return False
-        
+
+        # =========================================================
+        # Case 1: MOV / UMOV (Type Propagation)
+        # Logic: If A = B, then Type(A) == Type(B).
+        # =========================================================
         if inst.opcode in ("MOV", "UMOV"):
-            op0 = inst.operands[0]
-            op1 = inst.operands[1]
-            op0TypeDesc = op0.getTypeDesc()
-            op1TypeDesc = op1.getTypeDesc()
-            if op0TypeDesc != "NOTYPE" and op1TypeDesc != "NOTYPE":
-                assert op0TypeDesc == op1TypeDesc
-                return False
-            elif op0TypeDesc != "NOTYPE" or op1TypeDesc != "NOTYPE":
-                change = False
-                if op0TypeDesc != "NOTYPE":
-                    change = self.op_add_type(op1, op0TypeDesc, inst)
-                elif op1TypeDesc != "NOTYPE":
-                    change = self.op_add_type(op0, op1TypeDesc, inst)
-                return change
-        
-        if inst.opcode in ("ULOP3", "LOP3"):
-            changed = False
-            op4 = inst.operands[4]
-            op4TypeDesc = op4.getTypeDesc()
-            if op4TypeDesc != "NOTYPE":
-                assert op4TypeDesc == "Int32"
-            else:
-                changed = self.op_add_type(op4, "Int32", inst)
+            op0 = inst.operands[0] # Dest
+            op1 = inst.operands[1] # Src
             
-            operands = [inst.operands[0], inst.operands[1], inst.operands[2], inst.operands[3]]
+            type0 = DataType.from_str(op0.getTypeDesc())
+            type1 = DataType.from_str(op1.getTypeDesc())
 
-            # Get type descriptions for all 4 operands
-            type_descs = [op.getTypeDesc() for op in operands]
+            # If we know Dest but not Src -> Propagate to Src
+            if type0 != DataType.NOTYPE and type1 == DataType.NOTYPE:
+                return self.op_add_type(op1, type0, inst)
+            
+            # If we know Src but not Dest -> Propagate to Dest
+            elif type1 != DataType.NOTYPE and type0 == DataType.NOTYPE:
+                return self.op_add_type(op0, type1, inst)
+                
+            # Both known: Consistency check (optional)
+            if type0 != DataType.NOTYPE and type1 != DataType.NOTYPE:
+                if type0 != type1:
+                    # TODO: conflict
+                    pass
+                return False
 
-            # Count all defined types (i.e., not "NOTYPE")
-            defined_types = [t for t in type_descs if t != "NOTYPE"]
-            type_counter = Counter(defined_types)
+        # =========================================================
+        # Case 2: ULOP3 / LOP3 (Bitwise Logic)
+        # Corrected: Op 0 is the Destination (Output). Ops 1, 2, 3 are Sources.
+        # =========================================================
+        elif inst.opcode in ("ULOP3", "LOP3"):
+            changed = False
+            
+            # 1. Gather the relevant register operands (Dest + 3 Sources)
+            # LOP3 format is typically: Dest, Src1, Src2, Src3, ImmLUT
+            # We care about the first 4 operands.
+            relevant_ops = inst.operands[:4]
+            
+            # 2. Check current types
+            current_types = [DataType.from_str(op.getTypeDesc()) for op in relevant_ops]
+            known_types = [t for t in current_types if t != DataType.NOTYPE]
+            
+            # 3. Logic: LOP3 is inherently a bitwise integer operation.
+            # If we know *any* operand is Int32, or if we default bitwise ops to Int32,
+            # we should propagate this to the output (Op 0) and inputs.
+            
+            target_type = DataType.NOTYPE
+            
+            # Heuristic A: If any operand is already confirmed as Int32, use that.
+            if DataType.INT32 in known_types:
+                target_type = DataType.INT32
+            
+            # Heuristic B: Voting (in case mixed types appear, though unlikely for LOP3)
+            elif known_types:
+                from collections import Counter
+                most_common, count = Counter(known_types).most_common(1)[0]
+                if count >= 1: # Even 1 known type is enough hint for LOP3
+                    target_type = most_common
+            
+            # Heuristic C: Strong Default. LOP3 is almost always Int32.
+            # If completely unknown, we can optimistically assume Int32.
+            else:
+                target_type = DataType.INT32
 
-            # Find the most common defined type, and how often it appears
-            if type_counter:
-                most_common_type, count = type_counter.most_common(1)[0]
+            # 4. Apply the resolved type to all register operands (Dest and Srcs)
+            if target_type != DataType.NOTYPE:
+                for op in relevant_ops:
+                    if DataType.from_str(op.getTypeDesc()) == DataType.NOTYPE:
+                        changed |= self.op_add_type(op, target_type, inst)
+                            
+            return changed
 
-                # Only act if 3 or more operands have the same non-NOTYPE type
-                if count >= 3:
-                    for i, (op, t) in enumerate(zip(operands, type_descs)):
-                        if t == "NOTYPE":
-                            # Set the missing type to the majority type
-                            changed |= self.op_add_type(op, most_common_type, inst)
+        # =========================================================
+        # Case 3: Memory Access (LDG, LDS, STG, STS)
+        # Logic: Enforce strict Ptr <-> Value relationships.
+        # =========================================================
+        elif inst.opcode in ("LDG", "LDS", "STG", "STS"):
+            changed = False
+            
+            # Identify roles based on opcode
+            if inst.opcode in ("LDG", "LDS"):
+                # Load: Val = MEM[Addr]
+                val_op, addr_op = inst.operands[0], inst.operands[1]
+            else: # STG, STS
+                # Store: MEM[Addr] = Val
+                addr_op, val_op = inst.operands[0], inst.operands[1]
+
+            type_val = DataType.from_str(val_op.getTypeDesc())
+            type_addr = DataType.from_str(addr_op.getTypeDesc())
+
+            # 3A: Infer Address from Value
+            # We know we are loading/storing an Int32 -> Address must be Int32_PTR
+            if type_val != DataType.NOTYPE and (type_addr == DataType.NOTYPE or type_addr == DataType.NOTYPE_PTR):
+                required_ptr = type_val.as_ptr()
+                if required_ptr:
+                    changed |= self.op_add_type(addr_op, required_ptr, inst)
+                else:
+                    # Edge case: Trying to load a type that cannot be pointed to?
+                    pass
+
+            # 3B: Infer Value from Address
+            # We know address is Int32_PTR -> Value must be Int32
+            elif type_addr != DataType.NOTYPE and type_addr != DataType.NOTYPE_PTR and type_val == DataType.NOTYPE:
+                deref_type = type_addr.dereference()
+                if deref_type:
+                    changed |= self.op_add_type(val_op, deref_type, inst)
+                else:
+                    # Edge case: Address is not a valid pointer type?
+                    pass
+
+            # 3C: Address Propagation (Ptr -> Ptr)
+            # If the address is NOTYPE, but we treat it as a generic pointer temporarily
+            # This handles cases where we don't know the data type yet, but we know it's a pointer.
+            if type_addr == DataType.NOTYPE:
+                type_addr = DataType.NOTYPE_PTR
+                changed |= self.op_add_type(addr_op, type_addr, inst)
+
+            return changed
+
+        # =========================================================
+        # Case 4: Integer Arithmetic (IADD)
+        # Logic: Integer Add implies Int32
+        # =========================================================
+        elif inst.opcode == "IADD":
+            # IADD Dest, Src1, Src2
+            # If any operand is known, we might enforce others.
+            # Usually IADD is strictly Int32.
+            
+            changed = False
+            # Check if any operand suggests this is valid
+            types = [DataType.from_str(op.getTypeDesc()) for op in inst.operands]
+            
+            # If we know at least one is Int32, or if we strictly enforce IADD = Int32:
+            if any(t == DataType.INT32 for t in types) or True: # Assuming IADD is always Int32
+                for op in inst.operands[:3]: # Usually 3 operands
+                     if DataType.from_str(op.getTypeDesc()) == DataType.NOTYPE:
+                         changed |= self.op_add_type(op, DataType.INT32, inst)
             
             return changed
-                    
-        if inst.opcode in ("LDG", "LDS"):
-            changes = False
-            TypeDescOp1 = inst.operands[1].getTypeDesc()
-            
-            if TypeDescOp1 is None or TypeDescOp1 == "NOTYPE":
-                # at least designate this operand as a PTR so that we can treat it as a PTR later on
-                TypeDescOp1 = "NOTYPE_PTR" # 64 bit
-                changes = self.op_add_type(inst.operands[1], TypeDescOp1, inst)
-                
-            TypeDescOp0 = inst.operands[0].getTypeDesc()
-            
-            if TypeDescOp0 != None and TypeDescOp0 != "NOTYPE":
-                if TypeDescOp1 != "NOTYPE_PTR":
-                    assert TypeDescOp0 + "_PTR" == TypeDescOp1
-                    return changes
-                
-                # propagate type from op0 to op1
-                changes = self.op_add_type(inst.operands[1], TypeDescOp0 + "_PTR", inst)
-                return changes
-            
-            if TypeDescOp1 != "NOTYPE" and TypeDescOp1 != "NOTYPE_PTR":
-                # propagate type from op1 to op0
-                assert '_PTR' in TypeDescOp1
-                TypeDescOp0 = TypeDescOp1.replace('_PTR', "")
-                changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
-                return changes
-            else:
-                return changes
-        
-        # TODO propagate for ULDG
-        
-        elif inst.opcode in ("STG", "STS"):
-            changes = False
-            TypeDescOp0 = inst.operands[0].getTypeDesc()
 
-            if TypeDescOp0 is None or TypeDescOp0 == "NOTYPE":
-                # at least designate this operand as a PTR so that we can treat it as a PTR later on
-                TypeDescOp0 = "NOTYPE_PTR" # 64 bit
-                changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
-
-            TypeDescOp1 = inst.operands[1].getTypeDesc()
-
-            if TypeDescOp1 is not None and TypeDescOp1 != "NOTYPE":
-                if TypeDescOp0 != "NOTYPE_PTR":
-                    assert TypeDescOp1 + "_PTR" == TypeDescOp0
-                    return changes
-
-                # propagate type from op1 to op0
-                TypeDescOp0 = TypeDescOp1 + "_PTR"
-                changes = self.op_add_type(inst.operands[0], TypeDescOp0, inst)
-                return changes
-
-            if TypeDescOp0 != "NOTYPE" and TypeDescOp0 != "NOTYPE_PTR":
-                # propagate type from op0 to op1
-                assert '_PTR' in TypeDescOp0
-                TypeDescOp1 = TypeDescOp0.replace('_PTR', "")
-                changes = self.op_add_type(inst.operands[1], TypeDescOp1, inst)
-                return changes
-            else:
-                return changes
-
-        elif inst.opcode == "IADD":
-            TypeDesc = inst.operands[0].getTypeDesc()
-            if TypeDesc != None and TypeDesc != "NOTYPE":
-                changes = False
-                changes |= self.op_add_type(inst.operands[1], "Int32", inst)
-                changes |= self.op_add_type(inst.operands[2], TypeDesc, inst)
-                return changes
-            else:
-                return False
         return False
 
     def propagate_types(self, inst: Instruction):
