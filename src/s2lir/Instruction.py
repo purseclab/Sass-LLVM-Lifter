@@ -287,12 +287,20 @@ class Instruction:
             ValOp = self.operands[1]
             
             assert len(self.operands) == 2
+            # assert len(self.modifiers) == 0
             
             if ValOp.isReg and ResOp.isPtr:
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # IRValOp = IRRegs[ValOp.getIRRegName()]
                 # IRVal = IRBuilder.load(IRValOp)
-                IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
+                LoadDataType = None
+                if isinstance(ValOp.getIRType(), llvmir.PointerType):
+                    # TODO: tmp
+                    if len(self.modifiers) > 0 and self.modifiers[0] == "E":
+                        LoadDataType = llvmir.IntType(32)
+                        IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder, LoadDataType=LoadDataType)
+                else:
+                    IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
                 
                 # select address space based on opcode
                 if self.opcode == "STL":
@@ -303,8 +311,10 @@ class Instruction:
                     addr_space = ADDRSPACE_SHARED
                 else:
                     raise InvalidSyntaxException
-
-                ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal, addr_space=addr_space)
+                if LoadDataType is not None:
+                    ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal, addr_space=addr_space, elem_type=LoadDataType)
+                else:
+                    ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal, addr_space=addr_space)
             else:
                 raise InvalidSyntaxException
             return
