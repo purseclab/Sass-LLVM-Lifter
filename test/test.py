@@ -11,6 +11,9 @@ import colorama
 # Initialize colorama
 colorama.init()
 
+import os
+import subprocess
+
 from typing import Union, List
 
 def print_boxed_text(text: Union[str, List[str]], color: str = None) -> None:
@@ -51,6 +54,23 @@ parser.add_argument("--config", "-c", default="config.yaml")
 parser.add_argument("--out", "-o", default="results.json")
 parser.add_argument("--plot", action="store_true")
 args = parser.parse_args()
+
+
+# Resolve the launch directory relative to this file and run docker.sh
+script_dir = os.path.dirname(os.path.abspath(__file__))
+launch_dir = os.path.normpath(os.path.join(script_dir, "..", "launch"))
+print(f"Changing directory to {launch_dir} and running ./docker.sh")
+try:
+    os.chdir(launch_dir)
+    subprocess.run(["./docker.sh"], check=True)
+except subprocess.CalledProcessError as e:
+    print(f"docker.sh failed with exit code {e.returncode}")
+except FileNotFoundError:
+    print("docker.sh not found or launch directory does not exist")
+except Exception as e:
+    print(f"Error running docker.sh: {e}")
+
+os.chdir(script_dir)
 
 cfg = load_config(args.config)
 cfg = expand_sweeps(cfg)
