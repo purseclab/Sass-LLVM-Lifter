@@ -7,6 +7,7 @@
 .address_size 64
 
 	// .globl	custom_lop3             // -- Begin function custom_lop3
+// __Z15sharedMemKernelPKiPii_sdata has been demoted
                                         // @custom_lop3
 .visible .func  (.param .b32 func_retval0) custom_lop3(
 	.param .b32 custom_lop3_param_0,
@@ -568,9 +569,10 @@ $L__BB3_2:                              // %ExitFunction
 	.reg .b64 	%SP;
 	.reg .b64 	%SPL;
 	.reg .pred 	%p<3>;
-	.reg .b32 	%r<8>;
-	.reg .b64 	%rd<17>;
-
+	.reg .b32 	%r<11>;
+	.reg .b64 	%rd<27>;
+	// demoted variable
+	.shared .align 16 .b8 __Z15sharedMemKernelPKiPii_sdata[16384];
 // %bb.0:                               // %Entry_.text._Z15sharedMemKernelPKiPii
 	mov.u64 	%SPL, __local_depot4;
 	cvta.local.u64 	%SP, %SPL;
@@ -581,30 +583,41 @@ $L__BB3_2:                              // %ExitFunction
 	mov.u32 	%r5, %ntid.x;
 	mad.lo.s32 	%r2, %r4, %r5, %r1;
 	setp.ge.s32 	%p1, %r2, %r3;
-	mul.wide.u32 	%rd16, %r2, 4;
+	mov.u64 	%rd25, __Z15sharedMemKernelPKiPii_sdata;
+	mul.wide.u32 	%rd26, %r2, 4;
 	@%p1 bra 	$L__BB4_2;
 // %bb.1:                               // %.text._Z15sharedMemKernelPKiPii_split_0x0080
 	ld.param.u64 	%rd1, [_Z15sharedMemKernelPKiPii_param_0];
-	add.s64 	%rd4, %rd16, %rd1;
+	add.s64 	%rd4, %rd26, %rd1;
 	ld.global.u32 	%r6, [%rd4];
 	add.s32 	%r7, %r6, 1;
-	cvt.u64.u32 	%rd5, %r1;
-	st.shared.u32 	[%rd5], %r7;
+	shl.b32 	%r8, %r1, 2;
+	cvt.u64.u32 	%rd5, %r8;
+	sub.s64 	%rd7, %rd5, %rd25;
+	and.b64  	%rd8, %rd7, -4;
+	add.s64 	%rd9, %rd25, %rd8;
+	st.shared.u32 	[%rd9], %r7;
 $L__BB4_2:                              // %.L_x_2
 	bar.sync 	0;
 	@%p1 bra 	$L__BB4_4;
 // %bb.3:                               // %.L_x_1_split_0x0100
 	ld.param.u64 	%rd2, [_Z15sharedMemKernelPKiPii_param_1];
-	ld.u32 	%rd6, [%SP];
-	ld.shared.u64 	%rd7, [%rd6];
-	st.u32 	[%SP], %rd7;
-	add.s64 	%rd9, %rd16, %rd2;
-	add.u64 	%rd11, %SPL, 0;
-	ld.local.u32 	%rd12, [%rd11];
-	ld.local.u32 	%rd13, [%rd11+4];
-	shl.b64 	%rd14, %rd13, 32;
-	or.b64  	%rd15, %rd14, %rd12;
-	st.global.u64 	[%rd9], %rd15;
+	ld.u32 	%r9, [%SP];
+	shl.b32 	%r10, %r9, 2;
+	cvt.u64.u32 	%rd10, %r10;
+	sub.s64 	%rd12, %rd10, %rd25;
+	shr.u64 	%rd13, %rd12, 1;
+	and.b64  	%rd14, %rd13, 9223372036854775804;
+	add.s64 	%rd15, %rd25, %rd14;
+	ld.shared.u64 	%rd16, [%rd15];
+	st.u32 	[%SP], %rd16;
+	add.s64 	%rd18, %rd26, %rd2;
+	add.u64 	%rd20, %SPL, 0;
+	ld.local.u32 	%rd21, [%rd20];
+	ld.local.u32 	%rd22, [%rd20+4];
+	shl.b64 	%rd23, %rd22, 32;
+	or.b64  	%rd24, %rd23, %rd21;
+	st.global.u64 	[%rd18], %rd24;
 $L__BB4_4:                              // %ExitFunction
 	ret;
                                         // -- End function

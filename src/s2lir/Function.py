@@ -199,7 +199,32 @@ class Function:
             
         
             
-    def lift(self, llvm_module : llvmir.Module):
+    def lift(self, llvm_module : llvmir.Module, shared_mem_elements=4096):
+        # If this function contains shared/local memory ops, ensure the module contains a shared-data global so lowering can GEP into it.
+        # We create a default i32[4096] shared global named with 'sdata'
+        # so Operand.IR_ValueFromPointer can find it.
+        needs_shared = False
+        
+        for BB in self.blocks:
+            for inst in BB.instructions:
+                if inst.opcode in ("LDS", "STS", "STL"):
+                    needs_shared = True
+                    break
+            if needs_shared:
+                break
+            
+
+        if needs_shared:
+            gname = f"_{self.name}_sdata"
+            existing = llvm_module.globals.get(gname, None)
+            
+            if existing is None:
+                arr_ty = llvmir.ArrayType(llvmir.IntType(32), shared_mem_elements) # i32[4096] array
+                gv = llvmir.GlobalVariable(llvm_module, arr_ty, name=gname, addrspace=3)
+                gv.align = 16
+                gv.linkage = 'internal'
+                gv.initializer = llvmir.Constant(arr_ty, None) # leave uninitialized
+                gv.global_constant = False
 
         IRArgs = {}
         self.IRArgs = IRArgs
