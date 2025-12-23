@@ -2,6 +2,7 @@
     "_Z8fc_layerPfS_S_S_ii": {
         ".function_name": "_Z8fc_layerPfS_S_S_ii",
         ".section": ".text._Z8fc_layerPfS_S_S_ii,\"ax\",@progbits",
+        ".sectionflags": null,
         ".sectioninfo": "@\"SHI_REGISTERS=42\"",
         ".align": "128",
         ".global": "_Z8fc_layerPfS_S_S_ii",
@@ -2605,6 +2606,7 @@
     "_Z10max_pool2dPfS_iii": {
         ".function_name": "_Z10max_pool2dPfS_iii",
         ".section": ".text._Z10max_pool2dPfS_iii,\"ax\",@progbits",
+        ".sectionflags": null,
         ".sectioninfo": "@\"SHI_REGISTERS=26\"",
         ".align": "128",
         ".global": "_Z10max_pool2dPfS_iii",
@@ -4335,6 +4337,7 @@
     "_Z4reluPfS_i": {
         ".function_name": "_Z4reluPfS_i",
         ".section": ".text._Z4reluPfS_i,\"ax\",@progbits",
+        ".sectionflags": null,
         ".sectioninfo": "@\"SHI_REGISTERS=10\"",
         ".align": "128",
         ".global": "_Z4reluPfS_i",
@@ -4573,6 +4576,7 @@
     "_Z6conv2dPfS_S_iiii": {
         ".function_name": "_Z6conv2dPfS_S_iiii",
         ".section": ".text._Z6conv2dPfS_S_iiii,\"ax\",@progbits",
+        ".sectionflags": null,
         ".sectioninfo": "@\"SHI_REGISTERS=34\"",
         ".align": "128",
         ".global": "_Z6conv2dPfS_S_iiii",

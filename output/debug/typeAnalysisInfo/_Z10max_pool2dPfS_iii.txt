@@ -56,7 +56,7 @@ is_use: False
 kill_set: ['(0x0020, UR4)']
 defs_reaching: []
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### c[0x0][0x170] #######
 is_def: False
@@ -92,7 +92,7 @@ is_use: True
 kill_set: ['(0x0040, UR4)']
 defs_reaching: ['(0x0020, UR4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### UR5 #######
 is_def: False
@@ -100,7 +100,7 @@ is_use: True
 kill_set: ['(0x0040, UR4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### URZ #######
 is_def: False
@@ -108,7 +108,7 @@ is_use: True
 kill_set: ['(0x0040, UR4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3c #######
 
@@ -1019,7 +1019,7 @@ is_use: False
 kill_set: ['(0x01f0, R21)']
 defs_reaching: ['(0x01e0, R21)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### RZ #######
 is_def: False
@@ -1027,7 +1027,7 @@ is_use: True
 kill_set: ['(0x01f0, R21)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### c[0x0][0x174] #######
 is_def: False
@@ -1043,7 +1043,7 @@ is_use: True
 kill_set: ['(0x01f0, R21)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x33 #######
 
@@ -1079,7 +1079,7 @@ is_use: True
 kill_set: ['(0x01f0, R21)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### c[0x0][0x174] #######
 is_def: False
@@ -1095,7 +1095,7 @@ is_use: True
 kill_set: ['(0x01f0, R21)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x33 #######
 
@@ -1488,7 +1488,7 @@ is_use: True
 kill_set: ['(0x02c0, R15)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -3321,26 +3321,10 @@ There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates d
 ==================== def_to_use ====================
 
 ##### Type: Float32 #####
-Operand: R0; Instruction Addr: 0x0080
-
-##### Type: Int32 #####
-Operand: R0; Instruction Addr: 0x0090
-
-****************************************
-
-##### Type: Float32 #####
 Operand: R2; Instruction Addr: 0x00a0
 
 ##### Type: Int32 #####
 Operand: R2; Instruction Addr: 0x0090
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R2; Instruction Addr: 0x0460
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x03c0
 
 ****************************************
 
@@ -3356,30 +3340,6 @@ Operand: R11; Instruction Addr: 0x02f0
 ****************************************
 
 ##### Type: Float32 #####
-Operand: R4; Instruction Addr: 0x0470
-
-##### Type: NOTYPE_PTR #####
-Operand: R4; Instruction Addr: 0x03e0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R6; Instruction Addr: 0x0480
-
-##### Type: NOTYPE_PTR #####
-Operand: R6; Instruction Addr: 0x0400
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R8; Instruction Addr: 0x0490
-
-##### Type: NOTYPE_PTR #####
-Operand: R8; Instruction Addr: 0x0410
-
-****************************************
-
-##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x0490
 Operand: R11; Instruction Addr: 0x0530
 Operand: R11; Instruction Addr: 0x0530
@@ -3391,44 +3351,12 @@ Operand: R11; Instruction Addr: 0x02f0
 ****************************************
 
 ##### Type: Float32 #####
-Operand: R2; Instruction Addr: 0x0530
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x0510
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R2; Instruction Addr: 0x05e0
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x05c0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R4; Instruction Addr: 0x05f0
-
-##### Type: NOTYPE_PTR #####
-Operand: R4; Instruction Addr: 0x05d0
-
-****************************************
-
-##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x0490
 Operand: R11; Instruction Addr: 0x0530
 Operand: R11; Instruction Addr: 0x05f0
 
 ##### Type: Int32 #####
 Operand: R11; Instruction Addr: 0x02f0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R4; Instruction Addr: 0x05f0
-
-##### Type: Float32_PTR #####
-Operand: R4; Instruction Addr: 0x05d0
 
 ****************************************
 

@@ -595,42 +595,42 @@ $L__BB3_6:                              // %.L_x_4
 	cvt.u64.u32 	%rd8, %r108;
 	shl.b64 	%rd9, %rd8, 32;
 	or.b64  	%rd10, %rd9, %rd7;
-	ld.f32 	%f18, [%rd10];
+	ld.global.f32 	%f18, [%rd10];
 	cvt.u64.u32 	%rd11, %r104;
 	cvt.u64.u32 	%rd12, %r109;
 	shl.b64 	%rd13, %rd12, 32;
 	or.b64  	%rd14, %rd13, %rd11;
-	ld.f32 	%f19, [%rd14];
-	ld.f32 	%f20, [%rd10+4];
-	ld.f32 	%f21, [%rd14+4];
-	ld.f32 	%f22, [%rd10+8];
-	ld.f32 	%f23, [%rd14+8];
-	ld.f32 	%f24, [%rd10+12];
-	ld.f32 	%f25, [%rd14+12];
-	ld.f32 	%f26, [%rd10+16];
-	ld.f32 	%f27, [%rd14+16];
-	ld.f32 	%f28, [%rd10+20];
-	ld.f32 	%f29, [%rd14+20];
-	ld.f32 	%f30, [%rd10+24];
-	ld.f32 	%f31, [%rd14+24];
-	ld.f32 	%f32, [%rd10+28];
-	ld.f32 	%f33, [%rd14+28];
-	ld.f32 	%f34, [%rd10+32];
-	ld.f32 	%f35, [%rd14+32];
-	ld.f32 	%f36, [%rd10+36];
-	ld.f32 	%f37, [%rd14+36];
-	ld.f32 	%f38, [%rd10+40];
-	ld.f32 	%f39, [%rd14+40];
-	ld.f32 	%f40, [%rd10+44];
-	ld.f32 	%f41, [%rd14+44];
-	ld.f32 	%f42, [%rd10+48];
-	ld.f32 	%f43, [%rd14+48];
-	ld.f32 	%f44, [%rd10+52];
-	ld.f32 	%f45, [%rd14+52];
-	ld.f32 	%f46, [%rd10+56];
-	ld.f32 	%f47, [%rd14+56];
-	ld.f32 	%f48, [%rd10+60];
-	ld.f32 	%f49, [%rd14+60];
+	ld.global.f32 	%f19, [%rd14];
+	ld.global.f32 	%f20, [%rd10+4];
+	ld.global.f32 	%f21, [%rd14+4];
+	ld.global.f32 	%f22, [%rd10+8];
+	ld.global.f32 	%f23, [%rd14+8];
+	ld.global.f32 	%f24, [%rd10+12];
+	ld.global.f32 	%f25, [%rd14+12];
+	ld.global.f32 	%f26, [%rd10+16];
+	ld.global.f32 	%f27, [%rd14+16];
+	ld.global.f32 	%f28, [%rd10+20];
+	ld.global.f32 	%f29, [%rd14+20];
+	ld.global.f32 	%f30, [%rd10+24];
+	ld.global.f32 	%f31, [%rd14+24];
+	ld.global.f32 	%f32, [%rd10+28];
+	ld.global.f32 	%f33, [%rd14+28];
+	ld.global.f32 	%f34, [%rd10+32];
+	ld.global.f32 	%f35, [%rd14+32];
+	ld.global.f32 	%f36, [%rd10+36];
+	ld.global.f32 	%f37, [%rd14+36];
+	ld.global.f32 	%f38, [%rd10+40];
+	ld.global.f32 	%f39, [%rd14+40];
+	ld.global.f32 	%f40, [%rd10+44];
+	ld.global.f32 	%f41, [%rd14+44];
+	ld.global.f32 	%f42, [%rd10+48];
+	ld.global.f32 	%f43, [%rd14+48];
+	ld.global.f32 	%f44, [%rd10+52];
+	ld.global.f32 	%f45, [%rd14+52];
+	ld.global.f32 	%f46, [%rd10+56];
+	ld.global.f32 	%f47, [%rd14+56];
+	ld.global.f32 	%f48, [%rd10+60];
+	ld.global.f32 	%f49, [%rd14+60];
 	add.s32 	%r17, %r104, 64;
 	setp.lt.u32 	%p6, %r17, %r104;
 	selp.u32 	%r84, 1, 0, %p6;
@@ -690,26 +690,26 @@ $L__BB3_8:                              // %.L_x_3
 	cvt.u64.u32 	%rd16, %r108;
 	shl.b64 	%rd17, %rd16, 32;
 	or.b64  	%rd18, %rd17, %rd15;
-	ld.f32 	%f81, [%rd18];
+	ld.global.f32 	%f81, [%rd18];
 	cvt.u64.u32 	%rd19, %r104;
 	cvt.u64.u32 	%rd20, %r109;
 	shl.b64 	%rd21, %rd20, 32;
 	or.b64  	%rd22, %rd21, %rd19;
-	ld.f32 	%f82, [%rd22];
-	ld.f32 	%f83, [%rd18+4];
-	ld.f32 	%f84, [%rd22+4];
-	ld.f32 	%f85, [%rd18+8];
-	ld.f32 	%f86, [%rd22+8];
-	ld.f32 	%f87, [%rd18+12];
-	ld.f32 	%f88, [%rd22+12];
-	ld.f32 	%f89, [%rd18+16];
-	ld.f32 	%f90, [%rd22+16];
-	ld.f32 	%f91, [%rd18+20];
-	ld.f32 	%f92, [%rd22+20];
-	ld.f32 	%f93, [%rd18+24];
-	ld.f32 	%f94, [%rd22+24];
-	ld.f32 	%f95, [%rd18+28];
-	ld.f32 	%f96, [%rd22+28];
+	ld.global.f32 	%f82, [%rd22];
+	ld.global.f32 	%f83, [%rd18+4];
+	ld.global.f32 	%f84, [%rd22+4];
+	ld.global.f32 	%f85, [%rd18+8];
+	ld.global.f32 	%f86, [%rd22+8];
+	ld.global.f32 	%f87, [%rd18+12];
+	ld.global.f32 	%f88, [%rd22+12];
+	ld.global.f32 	%f89, [%rd18+16];
+	ld.global.f32 	%f90, [%rd22+16];
+	ld.global.f32 	%f91, [%rd18+20];
+	ld.global.f32 	%f92, [%rd22+20];
+	ld.global.f32 	%f93, [%rd18+24];
+	ld.global.f32 	%f94, [%rd22+24];
+	ld.global.f32 	%f95, [%rd18+28];
+	ld.global.f32 	%f96, [%rd22+28];
 	add.s32 	%r28, %r104, 32;
 	setp.lt.u32 	%p10, %r28, %r104;
 	add.s32 	%r106, %r106, 8;
@@ -748,18 +748,18 @@ $L__BB3_11:                             // %.L_x_2
 	cvt.u64.u32 	%rd24, %r108;
 	shl.b64 	%rd25, %rd24, 32;
 	or.b64  	%rd26, %rd25, %rd23;
-	ld.f32 	%f112, [%rd26];
+	ld.global.f32 	%f112, [%rd26];
 	cvt.u64.u32 	%rd27, %r104;
 	cvt.u64.u32 	%rd28, %r109;
 	shl.b64 	%rd29, %rd28, 32;
 	or.b64  	%rd30, %rd29, %rd27;
-	ld.f32 	%f113, [%rd30];
-	ld.f32 	%f114, [%rd26+4];
-	ld.f32 	%f115, [%rd30+4];
-	ld.f32 	%f116, [%rd26+8];
-	ld.f32 	%f117, [%rd30+8];
-	ld.f32 	%f118, [%rd26+12];
-	ld.f32 	%f119, [%rd30+12];
+	ld.global.f32 	%f113, [%rd30];
+	ld.global.f32 	%f114, [%rd26+4];
+	ld.global.f32 	%f115, [%rd30+4];
+	ld.global.f32 	%f116, [%rd26+8];
+	ld.global.f32 	%f117, [%rd30+8];
+	ld.global.f32 	%f118, [%rd26+12];
+	ld.global.f32 	%f119, [%rd30+12];
 	add.s32 	%r105, %r105, -4;
 	add.s32 	%r56, %r104, 16;
 	setp.lt.u32 	%p15, %r56, %r104;
@@ -801,12 +801,12 @@ $L__BB3_14:                             // %.L_x_6
 	cvt.u64.u32 	%rd36, %r125;
 	shl.b64 	%rd37, %rd36, 32;
 	or.b64  	%rd38, %rd37, %rd35;
-	ld.f32 	%f127, [%rd38];
+	ld.global.f32 	%f127, [%rd38];
 	cvt.u64.u32 	%rd39, %r123;
 	cvt.u64.u32 	%rd40, %r127;
 	shl.b64 	%rd41, %rd40, 32;
 	or.b64  	%rd42, %rd41, %rd39;
-	ld.f32 	%f128, [%rd42];
+	ld.global.f32 	%f128, [%rd42];
 	add.s32 	%r126, %r126, -1;
 	add.s32 	%r72, %r123, 4;
 	setp.lt.u32 	%p19, %r72, %r123;
@@ -825,10 +825,10 @@ $L__BB3_14:                             // %.L_x_6
 $L__BB3_15:                             // %.L_x_0
 	mul.wide.u32 	%rd43, %r1, 4;
 	add.s64 	%rd44, %rd43, %rd3;
-	ld.f32 	%f130, [%rd44];
+	ld.global.f32 	%f130, [%rd44];
 	add.s64 	%rd45, %rd43, %rd4;
 	add.rn.f32 	%f131, %f130, %f139;
-	st.f32 	[%rd45], %f131;
+	st.global.f32 	[%rd45], %f131;
 $L__BB3_16:                             // %ExitFunction
 	ret;
                                         // -- End function
@@ -909,7 +909,7 @@ $L__BB4_27:                             // %.L_x_8
 	mad.lo.s32 	%r71, %r74, %r70, %r12;
 	mul.wide.u32 	%rd26, %r71, 4;
 	add.s64 	%rd27, %rd26, %rd3;
-	st.f32 	[%rd27], %f27;
+	st.global.f32 	[%rd27], %f27;
 $L__BB4_28:                             // %ExitFunction
 	ret;
 $L__BB4_10:                             // %.text._Z10max_pool2dPfS_iii_split_0x0290
@@ -954,14 +954,14 @@ $L__BB4_13:                             // %.L_x_10
 	add.s64 	%rd5, %rd4, %rd2;
 	and.b64  	%rd7, %rd5, 4294967295;
 	add.s64 	%rd8, %rd6, %rd7;
-	ld.f32 	%f15, [%rd5];
+	ld.global.f32 	%f15, [%rd5];
 	and.b64  	%rd9, %rd8, 4294967295;
 	add.s64 	%rd10, %rd6, %rd9;
-	ld.f32 	%f16, [%rd8];
+	ld.global.f32 	%f16, [%rd8];
 	and.b64  	%rd11, %rd10, 4294967295;
 	add.s64 	%rd12, %rd6, %rd11;
-	ld.f32 	%f17, [%rd10];
-	ld.f32 	%f18, [%rd12];
+	ld.global.f32 	%f17, [%rd10];
+	ld.global.f32 	%f18, [%rd12];
 	add.s32 	%r80, %r80, 4;
 	setp.gt.f32 	%p10, %f15, %f27;
 	selp.f32 	%f19, %f15, %f27, %p10;
@@ -984,7 +984,7 @@ $L__BB4_14:                             // %.L_x_9
 	mad.lo.s32 	%r68, %r34, %r51, %r33;
 	mul.wide.u32 	%rd13, %r68, 4;
 	add.s64 	%rd14, %rd13, %rd2;
-	ld.f32 	%f22, [%rd14];
+	ld.global.f32 	%f22, [%rd14];
 	setp.gt.f32 	%p16, %f27, %f22;
 	selp.f32 	%f27, %f27, %f22, %p16;
 	@%p17 bra 	$L__BB4_26;
@@ -1022,7 +1022,7 @@ $L__BB4_22:                             // %.L_x_9_split_0x05c0
 	cvt.u64.u32 	%rd24, %r83;
 	shl.b64 	%rd25, %rd24, 32;
 	or.b64  	%rd1, %rd25, %rd23;
-	ld.u32 	%r84, [%rd1];
+	ld.global.u32 	%r84, [%rd1];
 $L__BB4_24:                             // %.L_x_9_split_0x05e0
                                         //   in Loop: Header=BB4_11 Depth=1
 	add.s32 	%r36, %r69, %r33;
@@ -1034,7 +1034,7 @@ $L__BB4_24:                             // %.L_x_9_split_0x05e0
 	cvt.u64.u32 	%rd20, %r41;
 	shl.b64 	%rd21, %rd20, 32;
 	or.b64  	%rd22, %rd21, %rd19;
-	ld.f32 	%f6, [%rd22];
+	ld.global.f32 	%f6, [%rd22];
 	setp.gt.f32 	%p23, %f27, %f6;
 	selp.f32 	%f27, %f27, %f6, %p23;
 	@%p18 bra 	$L__BB4_26;
@@ -1071,11 +1071,11 @@ $L__BB4_24:                             // %.L_x_9_split_0x05e0
 	ld.param.u64 	%rd1, [_Z4reluPfS_i_param_0];
 	mul.wide.u32 	%rd3, %r1, 4;
 	add.s64 	%rd4, %rd3, %rd1;
-	ld.f32 	%f1, [%rd4];
+	ld.global.f32 	%f1, [%rd4];
 	add.s64 	%rd5, %rd3, %rd2;
 	setp.lt.f32 	%p2, %f1, 0f00000000;
 	selp.f32 	%f2, 0f00000000, %f1, %p2;
-	st.f32 	[%rd5], %f2;
+	st.global.f32 	[%rd5], %f2;
 $L__BB5_2:                              // %ExitFunction
 	ret;
                                         // -- End function
@@ -1118,7 +1118,7 @@ $L__BB5_2:                              // %ExitFunction
 $L__BB6_23:                             // %.L_x_15
 	mul.wide.u32 	%rd35, %r3, 4;
 	add.s64 	%rd36, %rd35, %rd5;
-	st.f32 	[%rd36], %f44;
+	st.global.f32 	[%rd36], %f44;
 $L__BB6_24:                             // %ExitFunction
 	ret;
 $L__BB6_2:                              // %.text._Z6conv2dPfS_S_iiii_split_0x0130
@@ -1202,22 +1202,22 @@ $L__BB6_6:                              // %.L_x_17
 	add.s64 	%rd9, %rd8, %rd3;
 	and.b64  	%rd11, %rd9, 4294967295;
 	add.s64 	%rd12, %rd10, %rd11;
-	ld.f32 	%f17, [%rd9];
+	ld.global.f32 	%f17, [%rd9];
 	cvt.u64.u32 	%rd13, %r84;
 	cvt.u64.u32 	%rd14, %r87;
 	shl.b64 	%rd15, %rd14, 32;
 	or.b64  	%rd16, %rd15, %rd13;
-	ld.f32 	%f18, [%rd16];
+	ld.global.f32 	%f18, [%rd16];
 	and.b64  	%rd17, %rd12, 4294967295;
 	add.s64 	%rd18, %rd10, %rd17;
-	ld.f32 	%f19, [%rd12];
+	ld.global.f32 	%f19, [%rd12];
 	and.b64  	%rd19, %rd18, 4294967295;
 	add.s64 	%rd20, %rd10, %rd19;
-	ld.f32 	%f20, [%rd16+4];
-	ld.f32 	%f21, [%rd18];
-	ld.f32 	%f22, [%rd16+8];
-	ld.f32 	%f23, [%rd20];
-	ld.f32 	%f24, [%rd16+12];
+	ld.global.f32 	%f20, [%rd16+4];
+	ld.global.f32 	%f21, [%rd18];
+	ld.global.f32 	%f22, [%rd16+8];
+	ld.global.f32 	%f23, [%rd20];
+	ld.global.f32 	%f24, [%rd16+12];
 	add.s32 	%r88, %r88, 4;
 	mul.rn.f32 	%f25, %f18, %f17;
 	add.rn.f32 	%f26, %f25, %f44;
@@ -1248,8 +1248,8 @@ $L__BB6_7:                              // %.L_x_16
 	add.s64 	%rd1, %rd21, %rd4;
 	mul.wide.u32 	%rd22, %r76, 4;
 	add.s64 	%rd23, %rd22, %rd3;
-	ld.f32 	%f32, [%rd1];
-	ld.f32 	%f33, [%rd23];
+	ld.global.f32 	%f32, [%rd1];
+	ld.global.f32 	%f33, [%rd23];
 	mul.rn.f32 	%f34, %f32, %f33;
 	add.rn.f32 	%f44, %f34, %f44;
 	@%p9 bra 	$L__BB6_21;
@@ -1283,7 +1283,7 @@ $L__BB6_15:                             // %.L_x_16_split_0x0590
 	@%p10 bra 	$L__BB6_17;
 // %bb.16:                              // %.L_x_16_split_0x0590_conditionalExpr_0x0590
                                         //   in Loop: Header=BB6_4 Depth=2
-	ld.f32 	%f43, [%rd1+8];
+	ld.global.f32 	%f43, [%rd1+8];
 $L__BB6_17:                             // %.L_x_16_split_0x05a0
                                         //   in Loop: Header=BB6_4 Depth=2
 	mad.lo.s32 	%r77, %r55, %r35, %r55;
@@ -1294,12 +1294,12 @@ $L__BB6_17:                             // %.L_x_16_split_0x05a0
 	cvt.u64.u32 	%rd33, %r92;
 	shl.b64 	%rd34, %rd33, 32;
 	or.b64  	%rd2, %rd34, %rd32;
-	ld.u32 	%r91, [%rd2];
+	ld.global.u32 	%r91, [%rd2];
 $L__BB6_19:                             // %.L_x_16_split_0x05c0
                                         //   in Loop: Header=BB6_4 Depth=2
 	add.s32 	%r37, %r77, %r34;
 	mul.wide.u32 	%rd24, %r37, 4;
-	ld.f32 	%f7, [%rd1+4];
+	ld.global.f32 	%f7, [%rd1+4];
 	add.s64 	%rd25, %rd24, %rd3;
 	{ .reg .b32 tmp; mov.b64 {tmp, %r42}, %rd25; }
 	cvt.u32.u64 	%r43, %rd25;
@@ -1307,7 +1307,7 @@ $L__BB6_19:                             // %.L_x_16_split_0x05c0
 	cvt.u64.u32 	%rd29, %r42;
 	shl.b64 	%rd30, %rd29, 32;
 	or.b64  	%rd31, %rd30, %rd28;
-	ld.f32 	%f10, [%rd31];
+	ld.global.f32 	%f10, [%rd31];
 	mul.rn.f32 	%f36, %f7, %f10;
 	add.rn.f32 	%f44, %f36, %f44;
 	@%p10 bra 	$L__BB6_21;
