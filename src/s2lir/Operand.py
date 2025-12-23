@@ -294,7 +294,7 @@ class Operand:
             self.llvm_module = self.ins.llvm_module
             assert self.llvm_module is not None
         
-        if self.isPtr:
+        if self.isPtr and not (self.isConstMem and self.isArg): # do not treat kernel arguments (ConstMem) as pointers to be dereferenced
             # Use the operand's IR type as the element type by default
             return self.IR_ValueFromPointer(IRBuilder, IRRegs, self.getIRType(), addr_space=None)
 
