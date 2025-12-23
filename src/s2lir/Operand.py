@@ -401,6 +401,8 @@ class Operand:
             if self.reg:
                 if LoadDataType is None:
                     LoadDataType = llvmir.IntType(32) if self.isPtr else self.getIRType()
+                
+                # Load the base register
                 IRVal = IRBuilder.load(IRRegs[self.reg], typ=LoadDataType) # TODO: Confirm if this changes data layout
 
                 # Apply swizzle modifier for pointer/index operands (e.g., R5.X4)
@@ -432,23 +434,36 @@ class Operand:
                 print(self.ins, self)
                 raise InvalidSyntaxException
             if self.isPtr:
+                # Detect 32-bit address space based on instruction opcode
+                # Shared (LDS, STS) and Local (LDL, STL) instructions use 32-bit offsets,
+                # NOT 64-bit register pairs.
+                op = self.ins.opcode.upper()
+                
+                is_32bit_addr = any(op.startswith(prefix) for prefix in 
+                                    ["LDS", "STS", "LDL", "STL"])
+                
                 match = re.search(r"^(U?R)(\d+)$", self.getRegName())
                 if match:
-                    adjRegName = match.group(1)
-                    adjRegNumber = int(match.group(2)) + 1
-                    adjRegName = adjRegName + str(adjRegNumber)
-                    
+                    # Always zero-extend the base register to 64-bit (offset is always 64-bit compatible)
                     IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
                     
-                    if adjRegName in IRRegs:
-                        adjIRReg = IRRegs[adjRegName]
-                        adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32))
-                    else:
-                        adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
-                    
-                    adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext")
-                    adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
-                    IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
+                    # Only load the adjacent high-bits register if this is NOT a Shared/Local op
+                    if not is_32bit_addr:
+                        adjRegName = match.group(1)
+                        adjRegNumber = int(match.group(2)) + 1
+                        adjRegName = adjRegName + str(adjRegNumber)
+                        
+                        IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
+                        
+                        if adjRegName in IRRegs:
+                            adjIRReg = IRRegs[adjRegName]
+                            adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32))
+                        else:
+                            adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                        
+                        adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext")
+                        adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
+                        IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
                     
                     # We return the 64-bit integer directly.
                 else:
