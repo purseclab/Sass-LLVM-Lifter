@@ -187,6 +187,566 @@ block_0xf8:
   br label %"exit"
 }
 
+define ptx_kernel void @"_Z15fc_layer_simplePfS_S_S_ii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", ptr %"Arg_3", i32 %"Arg_4", i32 %"Arg_5")
+{
+Entry_.text._Z15fc_layer_simplePfS_S_S_ii:
+  %"R1" = alloca i32, i32 1
+  %"R6" = alloca i32, i32 1
+  %"R3" = alloca i32, i32 1
+  %"P0" = alloca i1, i32 1
+  %"PT" = alloca i1, i32 1
+  %"R9" = alloca i32, i32 1
+  %"R2" = alloca i32, i32 1
+  %"RZ" = alloca i32, i32 1
+  %"UR4" = alloca i32, i32 1
+  %"R7" = alloca i32, i32 1
+  %"R4" = alloca i32, i32 1
+  %"R5" = alloca i32, i32 1
+  %"R0" = alloca i32, i32 1
+  %"R8" = alloca i32, i32 1
+  %"R10" = alloca i32, i32 1
+  %"R11" = alloca i32, i32 1
+  %"R12" = alloca i32, i32 1
+  %"R13" = alloca i32, i32 1
+  %"R14" = alloca i32, i32 1
+  %"R15" = alloca i32, i32 1
+  %"R16" = alloca i32, i32 1
+  %"R17" = alloca i32, i32 1
+  %"R18" = alloca i32, i32 1
+  %"R19" = alloca i32, i32 1
+  %"R20" = alloca i32, i32 1
+  %"R21" = alloca i32, i32 1
+  %"R22" = alloca i32, i32 1
+  %"R23" = alloca i32, i32 1
+  %"R24" = alloca i32, i32 1
+  %"R25" = alloca i32, i32 1
+  %"R26" = alloca i32, i32 1
+  %"R27" = alloca i32, i32 1
+  %"R28" = alloca i32, i32 1
+  %"R29" = alloca i32, i32 1
+  %"R30" = alloca i32, i32 1
+  %"R31" = alloca i32, i32 1
+  %"R32" = alloca i32, i32 1
+  %"R33" = alloca i32, i32 1
+  %"R34" = alloca i32, i32 1
+  %"R35" = alloca i32, i32 1
+  %"R36" = alloca i32, i32 1
+  %"R37" = alloca i32, i32 1
+  %"R38" = alloca i32, i32 1
+  %"R39" = alloca i32, i32 1
+  %"R40" = alloca i32, i32 1
+  %"R41" = alloca i32, i32 1
+  %"R42" = alloca i32, i32 1
+  %"R43" = alloca i32, i32 1
+  %"R44" = alloca i32, i32 1
+  %"R45" = alloca i32, i32 1
+  %"R46" = alloca i32, i32 1
+  %"R47" = alloca i32, i32 1
+  %"R48" = alloca i32, i32 1
+  %"R49" = alloca i32, i32 1
+  %"R50" = alloca i32, i32 1
+  %"R51" = alloca i32, i32 1
+  %"R52" = alloca i32, i32 1
+  %"R53" = alloca i32, i32 1
+  %"R54" = alloca i32, i32 1
+  %"R55" = alloca i32, i32 1
+  %"R56" = alloca i32, i32 1
+  %"R57" = alloca i32, i32 1
+  %"R58" = alloca i32, i32 1
+  %"R59" = alloca i32, i32 1
+  %"R60" = alloca i32, i32 1
+  %"R61" = alloca i32, i32 1
+  %"R62" = alloca i32, i32 1
+  %"R63" = alloca i32, i32 1
+  %"R64" = alloca i32, i32 1
+  %"R65" = alloca i32, i32 1
+  %"R66" = alloca i32, i32 1
+  %"R67" = alloca i32, i32 1
+  %"R68" = alloca i32, i32 1
+  %"R69" = alloca i32, i32 1
+  %"R70" = alloca i32, i32 1
+  %"R71" = alloca i32, i32 1
+  %"R72" = alloca i32, i32 1
+  %"R73" = alloca i32, i32 1
+  %"R74" = alloca i32, i32 1
+  %"R75" = alloca i32, i32 1
+  %"R76" = alloca i32, i32 1
+  %"R77" = alloca i32, i32 1
+  %"R78" = alloca i32, i32 1
+  %"R79" = alloca i32, i32 1
+  %"R80" = alloca i32, i32 1
+  %"R81" = alloca i32, i32 1
+  %"R82" = alloca i32, i32 1
+  %"R83" = alloca i32, i32 1
+  %"R84" = alloca i32, i32 1
+  %"R85" = alloca i32, i32 1
+  %"R86" = alloca i32, i32 1
+  %"R87" = alloca i32, i32 1
+  %"R88" = alloca i32, i32 1
+  %"R89" = alloca i32, i32 1
+  %"R90" = alloca i32, i32 1
+  %"R91" = alloca i32, i32 1
+  %"R92" = alloca i32, i32 1
+  %"R93" = alloca i32, i32 1
+  %"R94" = alloca i32, i32 1
+  %"R95" = alloca i32, i32 1
+  %"R96" = alloca i32, i32 1
+  %"R97" = alloca i32, i32 1
+  %"R98" = alloca i32, i32 1
+  %"R99" = alloca i32, i32 1
+  %"R100" = alloca i32, i32 1
+  %"R101" = alloca i32, i32 1
+  %"R102" = alloca i32, i32 1
+  %"R103" = alloca i32, i32 1
+  %"R104" = alloca i32, i32 1
+  %"R105" = alloca i32, i32 1
+  %"R106" = alloca i32, i32 1
+  %"R107" = alloca i32, i32 1
+  %"R108" = alloca i32, i32 1
+  %"R109" = alloca i32, i32 1
+  %"R110" = alloca i32, i32 1
+  %"R111" = alloca i32, i32 1
+  %"R112" = alloca i32, i32 1
+  %"R113" = alloca i32, i32 1
+  %"R114" = alloca i32, i32 1
+  %"R115" = alloca i32, i32 1
+  %"R116" = alloca i32, i32 1
+  %"R117" = alloca i32, i32 1
+  %"R118" = alloca i32, i32 1
+  %"R119" = alloca i32, i32 1
+  %"R120" = alloca i32, i32 1
+  %"R121" = alloca i32, i32 1
+  %"R122" = alloca i32, i32 1
+  %"R123" = alloca i32, i32 1
+  %"R124" = alloca i32, i32 1
+  %"R125" = alloca i32, i32 1
+  %"R126" = alloca i32, i32 1
+  %"R127" = alloca i32, i32 1
+  %"R128" = alloca i32, i32 1
+  %"R129" = alloca i32, i32 1
+  %"R130" = alloca i32, i32 1
+  %"R131" = alloca i32, i32 1
+  %"R132" = alloca i32, i32 1
+  %"R133" = alloca i32, i32 1
+  %"R134" = alloca i32, i32 1
+  %"R135" = alloca i32, i32 1
+  %"R136" = alloca i32, i32 1
+  %"R137" = alloca i32, i32 1
+  %"R138" = alloca i32, i32 1
+  %"R139" = alloca i32, i32 1
+  %"R140" = alloca i32, i32 1
+  %"R141" = alloca i32, i32 1
+  %"R142" = alloca i32, i32 1
+  %"R143" = alloca i32, i32 1
+  %"R144" = alloca i32, i32 1
+  %"R145" = alloca i32, i32 1
+  %"R146" = alloca i32, i32 1
+  %"R147" = alloca i32, i32 1
+  %"R148" = alloca i32, i32 1
+  %"R149" = alloca i32, i32 1
+  %"R150" = alloca i32, i32 1
+  %"R151" = alloca i32, i32 1
+  %"R152" = alloca i32, i32 1
+  %"R153" = alloca i32, i32 1
+  %"R154" = alloca i32, i32 1
+  %"R155" = alloca i32, i32 1
+  %"R156" = alloca i32, i32 1
+  %"R157" = alloca i32, i32 1
+  %"R158" = alloca i32, i32 1
+  %"R159" = alloca i32, i32 1
+  %"R160" = alloca i32, i32 1
+  %"R161" = alloca i32, i32 1
+  %"R162" = alloca i32, i32 1
+  %"R163" = alloca i32, i32 1
+  %"R164" = alloca i32, i32 1
+  %"R165" = alloca i32, i32 1
+  %"R166" = alloca i32, i32 1
+  %"R167" = alloca i32, i32 1
+  %"R168" = alloca i32, i32 1
+  %"R169" = alloca i32, i32 1
+  %"R170" = alloca i32, i32 1
+  %"R171" = alloca i32, i32 1
+  %"R172" = alloca i32, i32 1
+  %"R173" = alloca i32, i32 1
+  %"R174" = alloca i32, i32 1
+  %"R175" = alloca i32, i32 1
+  %"R176" = alloca i32, i32 1
+  %"R177" = alloca i32, i32 1
+  %"R178" = alloca i32, i32 1
+  %"R179" = alloca i32, i32 1
+  %"R180" = alloca i32, i32 1
+  %"R181" = alloca i32, i32 1
+  %"R182" = alloca i32, i32 1
+  %"R183" = alloca i32, i32 1
+  %"R184" = alloca i32, i32 1
+  %"R185" = alloca i32, i32 1
+  %"R186" = alloca i32, i32 1
+  %"R187" = alloca i32, i32 1
+  %"R188" = alloca i32, i32 1
+  %"R189" = alloca i32, i32 1
+  %"R190" = alloca i32, i32 1
+  %"R191" = alloca i32, i32 1
+  %"R192" = alloca i32, i32 1
+  %"R193" = alloca i32, i32 1
+  %"R194" = alloca i32, i32 1
+  %"R195" = alloca i32, i32 1
+  %"R196" = alloca i32, i32 1
+  %"R197" = alloca i32, i32 1
+  %"R198" = alloca i32, i32 1
+  %"R199" = alloca i32, i32 1
+  %"R200" = alloca i32, i32 1
+  %"R201" = alloca i32, i32 1
+  %"R202" = alloca i32, i32 1
+  %"R203" = alloca i32, i32 1
+  %"R204" = alloca i32, i32 1
+  %"R205" = alloca i32, i32 1
+  %"R206" = alloca i32, i32 1
+  %"R207" = alloca i32, i32 1
+  %"R208" = alloca i32, i32 1
+  %"R209" = alloca i32, i32 1
+  %"R210" = alloca i32, i32 1
+  %"R211" = alloca i32, i32 1
+  %"R212" = alloca i32, i32 1
+  %"R213" = alloca i32, i32 1
+  %"R214" = alloca i32, i32 1
+  %"R215" = alloca i32, i32 1
+  %"R216" = alloca i32, i32 1
+  %"R217" = alloca i32, i32 1
+  %"R218" = alloca i32, i32 1
+  %"R219" = alloca i32, i32 1
+  %"R220" = alloca i32, i32 1
+  %"R221" = alloca i32, i32 1
+  %"R222" = alloca i32, i32 1
+  %"R223" = alloca i32, i32 1
+  %"R224" = alloca i32, i32 1
+  %"R225" = alloca i32, i32 1
+  %"R226" = alloca i32, i32 1
+  %"R227" = alloca i32, i32 1
+  %"R228" = alloca i32, i32 1
+  %"R229" = alloca i32, i32 1
+  %"R230" = alloca i32, i32 1
+  %"R231" = alloca i32, i32 1
+  %"R232" = alloca i32, i32 1
+  %"R233" = alloca i32, i32 1
+  %"R234" = alloca i32, i32 1
+  %"R235" = alloca i32, i32 1
+  %"R236" = alloca i32, i32 1
+  %"R237" = alloca i32, i32 1
+  %"R238" = alloca i32, i32 1
+  %"R239" = alloca i32, i32 1
+  %"R240" = alloca i32, i32 1
+  %"R241" = alloca i32, i32 1
+  %"R242" = alloca i32, i32 1
+  %"R243" = alloca i32, i32 1
+  %"R244" = alloca i32, i32 1
+  %"R245" = alloca i32, i32 1
+  %"R246" = alloca i32, i32 1
+  %"R247" = alloca i32, i32 1
+  %"R248" = alloca i32, i32 1
+  %"R249" = alloca i32, i32 1
+  %"R250" = alloca i32, i32 1
+  %"R251" = alloca i32, i32 1
+  %"R252" = alloca i32, i32 1
+  %"R253" = alloca i32, i32 1
+  %"R254" = alloca i32, i32 1
+  %"R255" = alloca i32, i32 1
+  %"UR0" = alloca i32, i32 1
+  %"UR1" = alloca i32, i32 1
+  %"UR2" = alloca i32, i32 1
+  %"UR3" = alloca i32, i32 1
+  %"UR5" = alloca i32, i32 1
+  %"UR6" = alloca i32, i32 1
+  %"UR7" = alloca i32, i32 1
+  %"UR8" = alloca i32, i32 1
+  %"UR9" = alloca i32, i32 1
+  %"UR10" = alloca i32, i32 1
+  %"UR11" = alloca i32, i32 1
+  %"UR12" = alloca i32, i32 1
+  %"UR13" = alloca i32, i32 1
+  %"UR14" = alloca i32, i32 1
+  %"UR15" = alloca i32, i32 1
+  %"UR16" = alloca i32, i32 1
+  %"UR17" = alloca i32, i32 1
+  %"UR18" = alloca i32, i32 1
+  %"UR19" = alloca i32, i32 1
+  %"UR20" = alloca i32, i32 1
+  %"UR21" = alloca i32, i32 1
+  %"UR22" = alloca i32, i32 1
+  %"UR23" = alloca i32, i32 1
+  %"UR24" = alloca i32, i32 1
+  %"UR25" = alloca i32, i32 1
+  %"UR26" = alloca i32, i32 1
+  %"UR27" = alloca i32, i32 1
+  %"UR28" = alloca i32, i32 1
+  %"UR29" = alloca i32, i32 1
+  %"UR30" = alloca i32, i32 1
+  %"UR31" = alloca i32, i32 1
+  %"UR32" = alloca i32, i32 1
+  %"UR33" = alloca i32, i32 1
+  %"UR34" = alloca i32, i32 1
+  %"UR35" = alloca i32, i32 1
+  %"UR36" = alloca i32, i32 1
+  %"UR37" = alloca i32, i32 1
+  %"UR38" = alloca i32, i32 1
+  %"UR39" = alloca i32, i32 1
+  %"UR40" = alloca i32, i32 1
+  %"UR41" = alloca i32, i32 1
+  %"UR42" = alloca i32, i32 1
+  %"UR43" = alloca i32, i32 1
+  %"UR44" = alloca i32, i32 1
+  %"UR45" = alloca i32, i32 1
+  %"UR46" = alloca i32, i32 1
+  %"UR47" = alloca i32, i32 1
+  %"UR48" = alloca i32, i32 1
+  %"UR49" = alloca i32, i32 1
+  %"UR50" = alloca i32, i32 1
+  %"UR51" = alloca i32, i32 1
+  %"UR52" = alloca i32, i32 1
+  %"UR53" = alloca i32, i32 1
+  %"UR54" = alloca i32, i32 1
+  %"UR55" = alloca i32, i32 1
+  %"UR56" = alloca i32, i32 1
+  %"UR57" = alloca i32, i32 1
+  %"UR58" = alloca i32, i32 1
+  %"UR59" = alloca i32, i32 1
+  %"UR60" = alloca i32, i32 1
+  %"UR61" = alloca i32, i32 1
+  %"UR62" = alloca i32, i32 1
+  %"UR63" = alloca i32, i32 1
+  %"UR64" = alloca i32, i32 1
+  %"UR65" = alloca i32, i32 1
+  %"UR66" = alloca i32, i32 1
+  %"UR67" = alloca i32, i32 1
+  %"UR68" = alloca i32, i32 1
+  %"UR69" = alloca i32, i32 1
+  %"UR70" = alloca i32, i32 1
+  %"UR71" = alloca i32, i32 1
+  %"UR72" = alloca i32, i32 1
+  %"UR73" = alloca i32, i32 1
+  %"UR74" = alloca i32, i32 1
+  %"UR75" = alloca i32, i32 1
+  %"UR76" = alloca i32, i32 1
+  %"UR77" = alloca i32, i32 1
+  %"UR78" = alloca i32, i32 1
+  %"UR79" = alloca i32, i32 1
+  %"UR80" = alloca i32, i32 1
+  %"UR81" = alloca i32, i32 1
+  %"UR82" = alloca i32, i32 1
+  %"UR83" = alloca i32, i32 1
+  %"UR84" = alloca i32, i32 1
+  %"UR85" = alloca i32, i32 1
+  %"UR86" = alloca i32, i32 1
+  %"UR87" = alloca i32, i32 1
+  %"UR88" = alloca i32, i32 1
+  %"UR89" = alloca i32, i32 1
+  %"UR90" = alloca i32, i32 1
+  %"UR91" = alloca i32, i32 1
+  %"UR92" = alloca i32, i32 1
+  %"UR93" = alloca i32, i32 1
+  %"UR94" = alloca i32, i32 1
+  %"UR95" = alloca i32, i32 1
+  %"UR96" = alloca i32, i32 1
+  %"UR97" = alloca i32, i32 1
+  %"UR98" = alloca i32, i32 1
+  %"UR99" = alloca i32, i32 1
+  %"UR100" = alloca i32, i32 1
+  %"UR101" = alloca i32, i32 1
+  %"UR102" = alloca i32, i32 1
+  %"UR103" = alloca i32, i32 1
+  %"UR104" = alloca i32, i32 1
+  %"UR105" = alloca i32, i32 1
+  %"UR106" = alloca i32, i32 1
+  %"UR107" = alloca i32, i32 1
+  %"UR108" = alloca i32, i32 1
+  %"UR109" = alloca i32, i32 1
+  %"UR110" = alloca i32, i32 1
+  %"UR111" = alloca i32, i32 1
+  %"UR112" = alloca i32, i32 1
+  %"UR113" = alloca i32, i32 1
+  %"UR114" = alloca i32, i32 1
+  %"UR115" = alloca i32, i32 1
+  %"UR116" = alloca i32, i32 1
+  %"UR117" = alloca i32, i32 1
+  %"UR118" = alloca i32, i32 1
+  %"UR119" = alloca i32, i32 1
+  %"UR120" = alloca i32, i32 1
+  %"UR121" = alloca i32, i32 1
+  %"UR122" = alloca i32, i32 1
+  %"UR123" = alloca i32, i32 1
+  %"UR124" = alloca i32, i32 1
+  %"UR125" = alloca i32, i32 1
+  %"UR126" = alloca i32, i32 1
+  %"UR127" = alloca i32, i32 1
+  %"URZ" = alloca i32, i32 1
+  store i1 1, ptr %"PT"
+  store i32 0, ptr %"RZ"
+  store i32 0, ptr %"URZ"
+  ; MOV R1, c[0x0][0x28]
+  store i32 0, ptr %"R1"
+  ; S2R R6, SR_CTAID.X
+  %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
+  store i32 %"nvvm_ctaid_x", ptr %"R6"
+  ; S2R R3, SR_TID.X
+  %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
+  store i32 %"nvvm_threadidx_x", ptr %"R3"
+  ; IMAD R6, R6, c[0x0][0x0], R3
+  %".19" = load i32, ptr %"R6"
+  %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
+  %".20" = load i32, ptr %"R3"
+  %"mul" = mul i32 %".19", %"nvvm_blockdim_x"
+  %"add" = add i32 %"mul", %".20"
+  store i32 %"add", ptr %"R6"
+  ; ISETP.GE.AND P0, PT, R6, c[0x0][0x184], PT
+  %".23" = load i32, ptr %"R6"
+  %".24" = load i1, ptr %"PT"
+  %"cmp" = icmp sge i32 %".23", %"Arg_5"
+  %".25" = add i1 %"cmp", 0
+  %".26" = xor i1 %".25", -1
+  %".27" = and i1 %"cmp", %".24"
+  %".28" = and i1 %".26", %".24"
+  store i1 %".27", ptr %"P0"
+  ; @P0 EXIT
+  %".31" = load i1, ptr %"P0"
+  %".32" = icmp eq i1 %".31", 1
+  br i1 %".32", label %".text._Z15fc_layer_simplePfS_S_S_ii_conditionalExpr_0x0050", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x0060"
+.text._Z15fc_layer_simplePfS_S_S_ii_conditionalExpr_0x0050:
+  ; EXIT
+  br label %"ExitFunction"
+.text._Z15fc_layer_simplePfS_S_S_ii_split_0x0060:
+  ; MOV R9, 0x4
+  store i32 4, ptr %"R9"
+  ; IMAD R2, R6, c[0x0][0x180], RZ
+  %".39" = load i32, ptr %"R6"
+  %"mul.1" = mul i32 %".39", %"Arg_4"
+  %"add.1" = add i32 %"mul.1", 0
+  store i32 %"add.1", ptr %"R2"
+  ; ULDC.64 UR4, c[0x0][0x160]
+  %".42" = ptrtoint ptr %"Arg_0" to i64
+  %".43" = and i64 %".42", 18446744069414584320
+  %".44" = lshr i64 %".43", 32
+  %"trunc32" = trunc i64 %".44" to i32
+  %"trunc32.1" = trunc i64 %".42" to i32
+  store i32 %"trunc32.1", ptr %"UR4"
+  store i32 %"trunc32", ptr %"UR5"
+  ; LDG.E.SYS R7, [UR4]
+  %".48" = load i32, ptr %"UR4"
+  %"zext" = zext i32 %".48" to i64
+  %".49" = load i32, ptr %"UR5"
+  %"zext.1" = zext i32 %".49" to i64
+  %"shl" = shl i64 %"zext.1", 32
+  %"or" = or i64 %"shl", %"zext"
+  %".50" = add i64 %"or", 0
+  %"inttoptr_bytes" = inttoptr i64 %".50" to ptr addrspace(1)
+  %"ptr_cast_for_access" = bitcast ptr addrspace(1) %"inttoptr_bytes" to ptr addrspace(1)
+  %".51" = load float, ptr addrspace(1) %"ptr_cast_for_access"
+  %".52" = bitcast ptr %"R7" to ptr
+  store float %".51", ptr %".52"
+  ; IMAD.WIDE R2, R2, R9, c[0x0][0x168]
+  %".55" = load i32, ptr %"R2"
+  %".56" = load i32, ptr %"R9"
+  %"zext.2" = zext i32 %".55" to i64
+  %"zext.3" = zext i32 %".56" to i64
+  %"mul.2" = mul i64 %"zext.2", %"zext.3"
+  %".57" = ptrtoint ptr %"Arg_1" to i64
+  %"add.2" = add i64 %"mul.2", %".57"
+  %".58" = and i64 %"add.2", 18446744069414584320
+  %".59" = lshr i64 %".58", 32
+  %"trunc32.2" = trunc i64 %".59" to i32
+  %"trunc32.3" = trunc i64 %"add.2" to i32
+  store i32 %"trunc32.3", ptr %"R2"
+  store i32 %"trunc32.2", ptr %"R3"
+  ; IMAD.WIDE R4, R6, R9, c[0x0][0x170]
+  %".63" = load i32, ptr %"R6"
+  %".64" = load i32, ptr %"R9"
+  %"zext.4" = zext i32 %".63" to i64
+  %"zext.5" = zext i32 %".64" to i64
+  %"mul.3" = mul i64 %"zext.4", %"zext.5"
+  %".65" = ptrtoint ptr %"Arg_2" to i64
+  %"add.3" = add i64 %"mul.3", %".65"
+  %".66" = and i64 %"add.3", 18446744069414584320
+  %".67" = lshr i64 %".66", 32
+  %"trunc32.4" = trunc i64 %".67" to i32
+  %"trunc32.5" = trunc i64 %"add.3" to i32
+  store i32 %"trunc32.5", ptr %"R4"
+  store i32 %"trunc32.4", ptr %"R5"
+  ; LDG.E.SYS R2, [R2]
+  %".71" = load i32, ptr %"R2"
+  %"zext.6" = zext i32 %".71" to i64
+  %".72" = load i32, ptr %"R3"
+  %"zext.7" = zext i32 %".72" to i64
+  %"shl.1" = shl i64 %"zext.7", 32
+  %"or.1" = or i64 %"shl.1", %"zext.6"
+  %".73" = add i64 %"or.1", 0
+  %"inttoptr_bytes.1" = inttoptr i64 %".73" to ptr addrspace(1)
+  %"ptr_cast_for_access.1" = bitcast ptr addrspace(1) %"inttoptr_bytes.1" to ptr addrspace(1)
+  %".74" = load float, ptr addrspace(1) %"ptr_cast_for_access.1"
+  %".75" = bitcast ptr %"R2" to ptr
+  store float %".74", ptr %".75"
+  ; LDG.E.SYS R5, [R4]
+  %".78" = load i32, ptr %"R4"
+  %"zext.8" = zext i32 %".78" to i64
+  %".79" = load i32, ptr %"R5"
+  %"zext.9" = zext i32 %".79" to i64
+  %"shl.2" = shl i64 %"zext.9", 32
+  %"or.2" = or i64 %"shl.2", %"zext.8"
+  %".80" = add i64 %"or.2", 0
+  %"inttoptr_bytes.2" = inttoptr i64 %".80" to ptr addrspace(1)
+  %"ptr_cast_for_access.2" = bitcast ptr addrspace(1) %"inttoptr_bytes.2" to ptr addrspace(1)
+  %".81" = load float, ptr addrspace(1) %"ptr_cast_for_access.2"
+  %".82" = bitcast ptr %"R5" to ptr
+  store float %".81", ptr %".82"
+  ; FFMA R0, R2, R7, RZ
+  %".85" = load float, ptr %"R2"
+  %".86" = load float, ptr %"R7"
+  %"fmul" = fmul float %".85", %".86"
+  %"fadd" = fadd float %"fmul",              0x0
+  %".87" = bitcast ptr %"R0" to ptr
+  store float %"fadd", ptr %".87"
+  ; IMAD.WIDE R6, R6, R9, c[0x0][0x178]
+  %".90" = load i32, ptr %"R6"
+  %".91" = load i32, ptr %"R9"
+  %"zext.10" = zext i32 %".90" to i64
+  %"zext.11" = zext i32 %".91" to i64
+  %"mul.4" = mul i64 %"zext.10", %"zext.11"
+  %".92" = ptrtoint ptr %"Arg_3" to i64
+  %"add.4" = add i64 %"mul.4", %".92"
+  %".93" = and i64 %"add.4", 18446744069414584320
+  %".94" = lshr i64 %".93", 32
+  %"trunc32.6" = trunc i64 %".94" to i32
+  %"trunc32.7" = trunc i64 %"add.4" to i32
+  store i32 %"trunc32.7", ptr %"R6"
+  store i32 %"trunc32.6", ptr %"R7"
+  ; FADD R9, R0, R5
+  %".98" = load float, ptr %"R0"
+  %".99" = load float, ptr %"R5"
+  %"fadd.1" = fadd float %".98", %".99"
+  %".100" = bitcast ptr %"R9" to ptr
+  store float %"fadd.1", ptr %".100"
+  ; STG.E.SYS [R6], R9
+  %".103" = load float, ptr %"R9"
+  %".104" = load i32, ptr %"R6"
+  %"zext.12" = zext i32 %".104" to i64
+  %".105" = load i32, ptr %"R7"
+  %"zext.13" = zext i32 %".105" to i64
+  %"shl.3" = shl i64 %"zext.13", 32
+  %"or.3" = or i64 %"shl.3", %"zext.12"
+  %".106" = add i64 %"or.3", 0
+  %"inttoptr_bytes.3" = inttoptr i64 %".106" to ptr addrspace(1)
+  %"ptr_cast_for_access.3" = bitcast ptr addrspace(1) %"inttoptr_bytes.3" to ptr addrspace(1)
+  store float %".103", ptr addrspace(1) %"ptr_cast_for_access.3"
+  ; EXIT
+  br label %"ExitFunction"
+.L_x_0:
+  ; BRA `(.L_x_0)
+  br label %".L_x_0"
+ExitFunction:
+  ret void
+}
+
+declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
+
+declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
+
 define ptx_kernel void @"_Z8fc_layerPfS_S_S_ii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", ptr %"Arg_3", i32 %"Arg_4", i32 %"Arg_5")
 {
 Entry_.text._Z8fc_layerPfS_S_S_ii:
@@ -633,10 +1193,10 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".46" = and i1 %"cmp.1", %".43"
   %".47" = and i1 %".45", %".43"
   store i1 %".46", ptr %"P0"
-  ; @!P0 BRA `(.L_x_0)
+  ; @!P0 BRA `(.L_x_1)
   %".50" = load i1, ptr %"P0"
   %".51" = icmp ne i1 %".50", 1
-  br i1 %".51", label %".L_x_0", label %".text._Z8fc_layerPfS_S_S_ii_split_0x00a0"
+  br i1 %".51", label %".L_x_1", label %".text._Z8fc_layerPfS_S_S_ii_split_0x00a0"
 .text._Z8fc_layerPfS_S_S_ii_split_0x00a0:
   ; IADD3 R2, R4.reuse, -0x1, RZ
   %".54" = load i32, ptr %"R4"
@@ -664,10 +1224,10 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R5, RZ
   %".76" = load i32, ptr %"RZ"
   store i32 %".76", ptr %"R5"
-  ; @!P0 BRA `(.L_x_1)
+  ; @!P0 BRA `(.L_x_2)
   %".79" = load i1, ptr %"P0"
   %".80" = icmp ne i1 %".79", 1
-  br i1 %".80", label %".L_x_1", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0100"
+  br i1 %".80", label %".L_x_2", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0100"
 .text._Z8fc_layerPfS_S_S_ii_split_0x0100:
   ; IADD3 R6, -R4, c[0x0][0x180], RZ
   %".83" = load i32, ptr %"R4"
@@ -722,10 +1282,10 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R5, RZ
   %".120" = load i32, ptr %"RZ"
   store i32 %".120", ptr %"R5"
-  ; @!P0 BRA `(.L_x_2)
+  ; @!P0 BRA `(.L_x_3)
   %".123" = load i1, ptr %"P0"
   %".124" = icmp ne i1 %".123", 1
-  br i1 %".124", label %".L_x_2", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0190"
+  br i1 %".124", label %".L_x_3", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0190"
 .text._Z8fc_layerPfS_S_S_ii_split_0x0190:
   ; ISETP.GT.AND P1, PT, R6, 0xc, PT
   %".127" = load i32, ptr %"R6"
@@ -739,17 +1299,17 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
   %".135" = and i1 1, 1
   %".136" = and i1 %".135", 1
-  ; @!P1 BRA `(.L_x_3)
+  ; @!P1 BRA `(.L_x_4)
   %".138" = load i1, ptr %"P1"
   %".139" = icmp ne i1 %".138", 1
-  br i1 %".139", label %".L_x_3", label %".text._Z8fc_layerPfS_S_S_ii_split_0x01c0"
+  br i1 %".139", label %".L_x_4", label %".text._Z8fc_layerPfS_S_S_ii_split_0x01c0"
 .text._Z8fc_layerPfS_S_S_ii_split_0x01c0:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
   %".142" = xor i1 1, 1
   %".143" = and i1 %".142", 1
   %".144" = and i1 %".143", 1
-  br label %".L_x_4"
-.L_x_4:
+  br label %".L_x_5"
+.L_x_5:
   ; LDG.E.SYS R8, [R2]
   %".147" = load i32, ptr %"R2"
   %"zext.2" = zext i32 %".147" to i64
@@ -1354,11 +1914,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.15" = fadd float %"fmul.15", %".514"
   %".515" = bitcast ptr %"R7" to ptr
   store float %"fadd.15", ptr %".515"
-  ; @P1 BRA `(.L_x_4)
+  ; @P1 BRA `(.L_x_5)
   %".518" = load i1, ptr %"P1"
   %".519" = icmp eq i1 %".518", 1
-  br i1 %".519", label %".L_x_4", label %".L_x_3"
-.L_x_3:
+  br i1 %".519", label %".L_x_5", label %".L_x_4"
+.L_x_4:
   ; ISETP.GT.AND P1, PT, R6, 0x4, PT
   %".522" = load i32, ptr %"R6"
   %".523" = load i1, ptr %"PT"
@@ -1368,11 +1928,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".526" = and i1 %"cmp.6", %".523"
   %".527" = and i1 %".525", %".523"
   store i1 %".526", ptr %"P1"
-  ; @!P1 BRA `(.L_x_5)
+  ; @!P1 BRA `(.L_x_6)
   %".530" = load i1, ptr %"P1"
   %".531" = icmp ne i1 %".530", 1
-  br i1 %".531", label %".L_x_5", label %".L_x_3_split_0x0570"
-.L_x_3_split_0x0570:
+  br i1 %".531", label %".L_x_6", label %".L_x_4_split_0x0570"
+.L_x_4_split_0x0570:
   ; LDG.E.SYS R8, [R2]
   %".534" = load i32, ptr %"R2"
   %"zext.67" = zext i32 %".534" to i64
@@ -1703,8 +2263,8 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.23" = fadd float %"fmul.23", %".740"
   %".741" = bitcast ptr %"R7" to ptr
   store float %"fadd.23", ptr %".741"
-  br label %".L_x_5"
-.L_x_5:
+  br label %".L_x_6"
+.L_x_6:
   ; ISETP.NE.OR P0, PT, R6, RZ, P0
   %".745" = load i32, ptr %"R6"
   %".746" = load i1, ptr %"P0"
@@ -1714,11 +2274,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".749" = or i1 %"cmp.7", %".746"
   %".750" = or i1 %".748", %".746"
   store i1 %".749", ptr %"P0"
-  ; @!P0 BRA `(.L_x_1)
+  ; @!P0 BRA `(.L_x_2)
   %".753" = load i1, ptr %"P0"
   %".754" = icmp ne i1 %".753", 1
-  br i1 %".754", label %".L_x_1", label %".L_x_2"
-.L_x_2:
+  br i1 %".754", label %".L_x_2", label %".L_x_3"
+.L_x_3:
   ; LDG.E.SYS R8, [R2]
   %".757" = load i32, ptr %"R2"
   %"zext.99" = zext i32 %".757" to i64
@@ -1926,11 +2486,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.27" = fadd float %"fmul.27", %".893"
   %".894" = bitcast ptr %"R7" to ptr
   store float %"fadd.27", ptr %".894"
-  ; @P0 BRA `(.L_x_2)
+  ; @P0 BRA `(.L_x_3)
   %".897" = load i1, ptr %"P0"
   %".898" = icmp eq i1 %".897", 1
-  br i1 %".898", label %".L_x_2", label %".L_x_1"
-.L_x_1:
+  br i1 %".898", label %".L_x_3", label %".L_x_2"
+.L_x_2:
   ; ISETP.NE.AND P0, PT, R4, RZ, PT
   %".901" = load i32, ptr %"R4"
   %".902" = load i1, ptr %"PT"
@@ -1940,11 +2500,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".905" = and i1 %"cmp.9", %".902"
   %".906" = and i1 %".904", %".902"
   store i1 %".905", ptr %"P0"
-  ; @!P0 BRA `(.L_x_0)
+  ; @!P0 BRA `(.L_x_1)
   %".909" = load i1, ptr %"P0"
   %".910" = icmp ne i1 %".909", 1
-  br i1 %".910", label %".L_x_0", label %".L_x_1_split_0x0900"
-.L_x_1_split_0x0900:
+  br i1 %".910", label %".L_x_1", label %".L_x_2_split_0x0900"
+.L_x_2_split_0x0900:
   ; MOV R8, 0x4
   store i32 4, ptr %"R8"
   ; IMAD R2, R0, c[0x0][0x180], R5
@@ -1984,8 +2544,8 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R6, R2
   %".935" = load i32, ptr %"R2"
   store i32 %".935", ptr %"R6"
-  br label %".L_x_6"
-.L_x_6:
+  br label %".L_x_7"
+.L_x_7:
   ; IMAD.MOV.U32 R2, RZ, RZ, R6
   %".939" = load i32, ptr %"R6"
   %"mul.10" = mul i32 0, 0
@@ -2083,11 +2643,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.28" = fadd float %"fmul.28", %".1007"
   %".1008" = bitcast ptr %"R7" to ptr
   store float %"fadd.28", ptr %".1008"
-  ; @P0 BRA `(.L_x_6)
+  ; @P0 BRA `(.L_x_7)
   %".1011" = load i1, ptr %"P0"
   %".1012" = icmp eq i1 %".1011", 1
-  br i1 %".1012", label %".L_x_6", label %".L_x_0"
-.L_x_0:
+  br i1 %".1012", label %".L_x_7", label %".L_x_1"
+.L_x_1:
   ; MOV R5, 0x4
   store i32 4, ptr %"R5"
   ; IMAD.WIDE R2, R0, R5, c[0x0][0x170]
@@ -2151,16 +2711,12 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   store float %".1045", ptr addrspace(1) %"ptr_cast_for_access.59"
   ; EXIT
   br label %"ExitFunction"
-.L_x_7:
-  ; BRA `(.L_x_7)
-  br label %".L_x_7"
+.L_x_8:
+  ; BRA `(.L_x_8)
+  br label %".L_x_8"
 ExitFunction:
   ret void
 }
-
-declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
-
-declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
 
 declare {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".1", i32 %".2")
 
@@ -2833,10 +3389,10 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".225" = and i1 %"cmp.7", %".222"
   %".226" = and i1 %".224", %".222"
   store i1 %".225", ptr %"P0"
-  ; @!P0 BRA `(.L_x_8)
+  ; @!P0 BRA `(.L_x_9)
   %".229" = load i1, ptr %"P0"
   %".230" = icmp ne i1 %".229", 1
-  br i1 %".230", label %".L_x_8", label %".text._Z10max_pool2dPfS_iii_split_0x0290"
+  br i1 %".230", label %".L_x_9", label %".text._Z10max_pool2dPfS_iii_split_0x0290"
 .text._Z10max_pool2dPfS_iii_split_0x0290:
   ; IMAD R3, R19, c[0x0][0x170], RZ
   %".233" = load i32, ptr %"R19"
@@ -2893,8 +3449,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mul.18" = mul i32 %".271", %"Arg_2"
   %"add.18" = add i32 %"mul.18", %".272"
   store i32 %"add.18", ptr %"R14"
-  br label %".L_x_12"
-.L_x_12:
+  br label %".L_x_13"
+.L_x_13:
   ; UMOV UR4, URZ
   %".276" = load i32, ptr %"URZ"
   store i32 %".276", ptr %"UR4"
@@ -2907,11 +3463,11 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".283" = and i1 %"cmp.9", %".280"
   %".284" = and i1 %".282", %".280"
   store i1 %".283", ptr %"P2"
-  ; @!P0 BRA `(.L_x_9)
+  ; @!P0 BRA `(.L_x_10)
   %".287" = load i1, ptr %"P0"
   %".288" = icmp ne i1 %".287", 1
-  br i1 %".288", label %".L_x_9", label %".L_x_12_split_0x0360"
-.L_x_12_split_0x0360:
+  br i1 %".288", label %".L_x_10", label %".L_x_13_split_0x0360"
+.L_x_13_split_0x0360:
   ; IMAD.IADD R17, R14, 0x1, R16
   %".291" = load i32, ptr %"R14"
   %".292" = load i32, ptr %"R16"
@@ -2921,8 +3477,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; UMOV UR4, URZ
   %".295" = load i32, ptr %"URZ"
   store i32 %".295", ptr %"UR4"
-  br label %".L_x_10"
-.L_x_10:
+  br label %".L_x_11"
+.L_x_11:
   ; MOV R2, 0x4
   store i32 4, ptr %"R2"
   ; IMAD.MOV.U32 R23, RZ, RZ, c[0x0][0x170]
@@ -3107,22 +3663,22 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mnmx_final.3" = select  i1 %".409", float %"mnmx_min.3", float %"mnmx_max.3"
   %".412" = bitcast ptr %"R11" to ptr
   store float %"mnmx_final.3", ptr %".412"
-  ; @P1 BRA `(.L_x_10)
+  ; @P1 BRA `(.L_x_11)
   %".415" = load i1, ptr %"P1"
   %".416" = icmp eq i1 %".415", 1
-  br i1 %".416", label %".L_x_10", label %".L_x_9"
-.L_x_9:
+  br i1 %".416", label %".L_x_11", label %".L_x_10"
+.L_x_10:
   ; IMAD.IADD R4, R13, 0x1, R16
   %".419" = load i32, ptr %"R13"
   %".420" = load i32, ptr %"R16"
   %"mul.26" = mul i32 %".419", 1
   %"add.26" = add i32 %"mul.26", %".420"
   store i32 %"add.26", ptr %"R4"
-  ; @!P2 BRA `(.L_x_11)
+  ; @!P2 BRA `(.L_x_12)
   %".423" = load i1, ptr %"P2"
   %".424" = icmp ne i1 %".423", 1
-  br i1 %".424", label %".L_x_11", label %".L_x_9_split_0x04d0"
-.L_x_9_split_0x04d0:
+  br i1 %".424", label %".L_x_12", label %".L_x_10_split_0x04d0"
+.L_x_10_split_0x04d0:
   ; IADD3 R5, R12, UR4, RZ
   %".427" = load i32, ptr %"R12"
   %".428" = load i32, ptr %"UR4"
@@ -3184,11 +3740,11 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mnmx_final.4" = select  i1 %".464", float %"mnmx_min.4", float %"mnmx_max.4"
   %".467" = bitcast ptr %"R11" to ptr
   store float %"mnmx_final.4", ptr %".467"
-  ; @!P1 BRA `(.L_x_11)
+  ; @!P1 BRA `(.L_x_12)
   %".470" = load i1, ptr %"P1"
   %".471" = icmp ne i1 %".470", 1
-  br i1 %".471", label %".L_x_11", label %".L_x_9_split_0x0550"
-.L_x_9_split_0x0550:
+  br i1 %".471", label %".L_x_12", label %".L_x_10_split_0x0550"
+.L_x_10_split_0x0550:
   ; ISETP.NE.AND P1, PT, R15, 0x2, PT
   %".474" = load i32, ptr %"R15"
   %".475" = load i1, ptr %"PT"
@@ -3212,30 +3768,30 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 IADD3 R3, R5, 0x2, RZ
   %".491" = load i1, ptr %"P1"
   %".492" = icmp eq i1 %".491", 1
-  br i1 %".492", label %".L_x_9_split_0x0550_conditionalExpr_0x0580", label %".L_x_9_split_0x0590"
-.L_x_9_split_0x0550_conditionalExpr_0x0580:
+  br i1 %".492", label %".L_x_10_split_0x0550_conditionalExpr_0x0580", label %".L_x_10_split_0x0590"
+.L_x_10_split_0x0550_conditionalExpr_0x0580:
   ; IADD3 R3, R5, 0x2, RZ
   %".495" = load i32, ptr %"R5"
   %".496" = add i32 %".495", 2
   %".497" = add i32 %".496", 0
   store i32 %".497", ptr %"R3"
-  ; BRA `(.L_x_9_split_0x0590)
-  br label %".L_x_9_split_0x0590"
-.L_x_9_split_0x0590:
+  ; BRA `(.L_x_10_split_0x0590)
+  br label %".L_x_10_split_0x0590"
+.L_x_10_split_0x0590:
   ; @P1 IMAD R4, R3, c[0x0][0x170], R4
   %".502" = load i1, ptr %"P1"
   %".503" = icmp eq i1 %".502", 1
-  br i1 %".503", label %".L_x_9_split_0x0590_conditionalExpr_0x0590", label %".L_x_9_split_0x05a0"
-.L_x_9_split_0x0590_conditionalExpr_0x0590:
+  br i1 %".503", label %".L_x_10_split_0x0590_conditionalExpr_0x0590", label %".L_x_10_split_0x05a0"
+.L_x_10_split_0x0590_conditionalExpr_0x0590:
   ; IMAD R4, R3, c[0x0][0x170], R4
   %".506" = load i32, ptr %"R3"
   %".507" = load i32, ptr %"R4"
   %"mul.30" = mul i32 %".506", %"Arg_2"
   %"add.30" = add i32 %"mul.30", %".507"
   store i32 %"add.30", ptr %"R4"
-  ; BRA `(.L_x_9_split_0x05a0)
-  br label %".L_x_9_split_0x05a0"
-.L_x_9_split_0x05a0:
+  ; BRA `(.L_x_10_split_0x05a0)
+  br label %".L_x_10_split_0x05a0"
+.L_x_10_split_0x05a0:
   ; IMAD.WIDE R2, R2, R7, c[0x0][0x160]
   %".512" = load i32, ptr %"R2"
   %".513" = load i32, ptr %"R7"
@@ -3253,8 +3809,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 IMAD.WIDE R4, R4, R7, c[0x0][0x160]
   %".520" = load i1, ptr %"P1"
   %".521" = icmp eq i1 %".520", 1
-  br i1 %".521", label %".L_x_9_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_9_split_0x05c0"
-.L_x_9_split_0x05a0_conditionalExpr_0x05b0:
+  br i1 %".521", label %".L_x_10_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_10_split_0x05c0"
+.L_x_10_split_0x05a0_conditionalExpr_0x05b0:
   ; IMAD.WIDE R4, R4, R7, c[0x0][0x160]
   %".524" = load i32, ptr %"R4"
   %".525" = load i32, ptr %"R7"
@@ -3269,9 +3825,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"trunc32.13" = trunc i64 %"add.32" to i32
   store i32 %"trunc32.13", ptr %"R4"
   store i32 %"trunc32.12", ptr %"R5"
-  ; BRA `(.L_x_9_split_0x05c0)
-  br label %".L_x_9_split_0x05c0"
-.L_x_9_split_0x05c0:
+  ; BRA `(.L_x_10_split_0x05c0)
+  br label %".L_x_10_split_0x05c0"
+.L_x_10_split_0x05c0:
   ; LDG.E.SYS R2, [R2]
   %".534" = load i32, ptr %"R2"
   %"zext.27" = zext i32 %".534" to i64
@@ -3288,8 +3844,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 LDG.E.SYS R4, [R4]
   %".541" = load i1, ptr %"P1"
   %".542" = icmp eq i1 %".541", 1
-  br i1 %".542", label %".L_x_9_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_9_split_0x05e0"
-.L_x_9_split_0x05c0_conditionalExpr_0x05d0:
+  br i1 %".542", label %".L_x_10_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_10_split_0x05e0"
+.L_x_10_split_0x05c0_conditionalExpr_0x05d0:
   ; LDG.E.SYS R4, [R4]
   %".545" = load i32, ptr %"R4"
   %"zext.29" = zext i32 %".545" to i64
@@ -3303,9 +3859,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".548" = load float, ptr addrspace(1) %"ptr_cast_for_access.6"
   %".549" = bitcast ptr %"R4" to ptr
   store float %".548", ptr %".549"
-  ; BRA `(.L_x_9_split_0x05e0)
-  br label %".L_x_9_split_0x05e0"
-.L_x_9_split_0x05e0:
+  ; BRA `(.L_x_10_split_0x05e0)
+  br label %".L_x_10_split_0x05e0"
+.L_x_10_split_0x05e0:
   ; FMNMX R11, R11, R2, !PT
   %".554" = load float, ptr %"R11"
   %".555" = load float, ptr %"R2"
@@ -3320,8 +3876,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 FMNMX R11, R11, R4, !PT
   %".562" = load i1, ptr %"P1"
   %".563" = icmp eq i1 %".562", 1
-  br i1 %".563", label %".L_x_9_split_0x05e0_conditionalExpr_0x05f0", label %".L_x_11"
-.L_x_9_split_0x05e0_conditionalExpr_0x05f0:
+  br i1 %".563", label %".L_x_10_split_0x05e0_conditionalExpr_0x05f0", label %".L_x_12"
+.L_x_10_split_0x05e0_conditionalExpr_0x05f0:
   ; FMNMX R11, R11, R4, !PT
   %".566" = load float, ptr %"R11"
   %".567" = load float, ptr %"R4"
@@ -3333,9 +3889,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mnmx_final.6" = select  i1 %".568", float %"mnmx_min.6", float %"mnmx_max.6"
   %".571" = bitcast ptr %"R11" to ptr
   store float %"mnmx_final.6", ptr %".571"
-  ; BRA `(.L_x_11)
-  br label %".L_x_11"
-.L_x_11:
+  ; BRA `(.L_x_12)
+  br label %".L_x_12"
+.L_x_12:
   ; IADD3 R16, R16, 0x1, RZ
   %".576" = load i32, ptr %"R16"
   %".577" = add i32 %".576", 1
@@ -3350,11 +3906,11 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".585" = and i1 %"cmp.13", %".582"
   %".586" = and i1 %".584", %".582"
   store i1 %".585", ptr %"P1"
-  ; @!P1 BRA `(.L_x_12)
+  ; @!P1 BRA `(.L_x_13)
   %".589" = load i1, ptr %"P1"
   %".590" = icmp ne i1 %".589", 1
-  br i1 %".590", label %".L_x_12", label %".L_x_8"
-.L_x_8:
+  br i1 %".590", label %".L_x_13", label %".L_x_9"
+.L_x_9:
   ; IMAD R3, R21.reuse, R19, R10
   %".593" = load i32, ptr %"R21"
   %".594" = load i32, ptr %"R19"
@@ -3401,9 +3957,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   store i32 %".613", ptr addrspace(1) %"ptr_cast_for_access.7"
   ; EXIT
   br label %"ExitFunction"
-.L_x_13:
-  ; BRA `(.L_x_13)
-  br label %".L_x_13"
+.L_x_14:
+  ; BRA `(.L_x_14)
+  br label %".L_x_14"
 ExitFunction:
   ret void
 }
@@ -3909,9 +4465,9 @@ Entry_.text._Z4reluPfS_i:
   store float %".66", ptr addrspace(1) %"ptr_cast_for_access.1"
   ; EXIT
   br label %"ExitFunction"
-.L_x_14:
-  ; BRA `(.L_x_14)
-  br label %".L_x_14"
+.L_x_15:
+  ; BRA `(.L_x_15)
+  br label %".L_x_15"
 ExitFunction:
   ret void
 }
@@ -4415,10 +4971,10 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".91" = or i1 %"cmp.4", %".88"
   %".92" = or i1 %".90", %".88"
   store i1 %".91", ptr %"P0"
-  ; @P0 BRA `(.L_x_15)
+  ; @P0 BRA `(.L_x_16)
   %".95" = load i1, ptr %"P0"
   %".96" = icmp eq i1 %".95", 1
-  br i1 %".96", label %".L_x_15", label %".text._Z6conv2dPfS_S_iiii_split_0x0130"
+  br i1 %".96", label %".L_x_16", label %".text._Z6conv2dPfS_S_iiii_split_0x0130"
 .text._Z6conv2dPfS_S_iiii_split_0x0130:
   ; IMAD.MOV.U32 R4, RZ, RZ, c[0x0][0x17c]
   %"mul.3" = mul i32 0, 0
@@ -4460,8 +5016,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".130" = add i32 %".128", %".129"
   %".131" = add i32 %".130", 0
   store i32 %".131", ptr %"R26"
-  br label %".L_x_20"
-.L_x_20:
+  br label %".L_x_21"
+.L_x_21:
   ; IMAD R11, R10, c[0x0][0x178], R3
   %".135" = load i32, ptr %"R10"
   %".136" = load i32, ptr %"R3"
@@ -4497,8 +5053,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".159" = and i1 %"cmp.6", %".156"
   %".160" = and i1 %".158", %".156"
   store i1 %".159", ptr %"P1"
-  br label %".L_x_19"
-.L_x_19:
+  br label %".L_x_20"
+.L_x_20:
   ; IMAD R6, R9, c[0x0][0x17c], R8
   %".164" = load i32, ptr %"R9"
   %".165" = load i32, ptr %"R8"
@@ -4522,11 +5078,11 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"mul.9" = mul i32 %".179", %"Arg_4"
   %"add.9" = add i32 %"mul.9", 0
   store i32 %"add.9", ptr %"R29"
-  ; @!P0 BRA `(.L_x_16)
+  ; @!P0 BRA `(.L_x_17)
   %".182" = load i1, ptr %"P0"
   %".183" = icmp ne i1 %".182", 1
-  br i1 %".183", label %".L_x_16", label %".L_x_19_split_0x0260"
-.L_x_19_split_0x0260:
+  br i1 %".183", label %".L_x_17", label %".L_x_20_split_0x0260"
+.L_x_20_split_0x0260:
   ; MOV R24, 0x4
   store i32 4, ptr %"R24"
   ; IMAD.IADD R13, R5, 0x1, R8
@@ -4555,8 +5111,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; MOV R23, R6
   %".203" = load i32, ptr %"R6"
   store i32 %".203", ptr %"R23"
-  br label %".L_x_17"
-.L_x_17:
+  br label %".L_x_18"
+.L_x_18:
   ; IMAD.WIDE R14, R13, R24, c[0x0][0x160]
   %".207" = load i32, ptr %"R13"
   %".208" = load i32, ptr %"R24"
@@ -4804,22 +5360,22 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fadd.3" = fadd float %"fmul.3", %".358"
   %".359" = bitcast ptr %"R12" to ptr
   store float %"fadd.3", ptr %".359"
-  ; @P2 BRA `(.L_x_17)
+  ; @P2 BRA `(.L_x_18)
   %".362" = load i1, ptr %"P2"
   %".363" = icmp eq i1 %".362", 1
-  br i1 %".363", label %".L_x_17", label %".L_x_16"
-.L_x_16:
+  br i1 %".363", label %".L_x_18", label %".L_x_17"
+.L_x_17:
   ; IMAD.IADD R14, R2, 0x1, R8
   %".366" = load i32, ptr %"R2"
   %".367" = load i32, ptr %"R8"
   %"mul.17" = mul i32 %".366", 1
   %"add.22" = add i32 %"mul.17", %".367"
   store i32 %"add.22", ptr %"R14"
-  ; @!P3 BRA `(.L_x_18)
+  ; @!P3 BRA `(.L_x_19)
   %".370" = load i1, ptr %"P3"
   %".371" = icmp ne i1 %".370", 1
-  br i1 %".371", label %".L_x_18", label %".L_x_16_split_0x0460"
-.L_x_16_split_0x0460:
+  br i1 %".371", label %".L_x_19", label %".L_x_17_split_0x0460"
+.L_x_17_split_0x0460:
   ; IADD3 R15, R11, UR4, RZ
   %".374" = load i32, ptr %"R11"
   %".375" = load i32, ptr %"UR4"
@@ -4911,11 +5467,11 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fadd.4" = fadd float %"fmul.4", %".432"
   %".433" = bitcast ptr %"R12" to ptr
   store float %"fadd.4", ptr %".433"
-  ; @!P2 BRA `(.L_x_18)
+  ; @!P2 BRA `(.L_x_19)
   %".436" = load i1, ptr %"P2"
   %".437" = icmp ne i1 %".436", 1
-  br i1 %".437", label %".L_x_18", label %".L_x_16_split_0x0510"
-.L_x_16_split_0x0510:
+  br i1 %".437", label %".L_x_19", label %".L_x_17_split_0x0510"
+.L_x_17_split_0x0510:
   ; ISETP.NE.AND P2, PT, R4, 0x2, PT
   %".440" = load i32, ptr %"R4"
   %".441" = load i1, ptr %"PT"
@@ -4952,30 +5508,30 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 IADD3 R7, R15, 0x2, RZ
   %".464" = load i1, ptr %"P2"
   %".465" = icmp eq i1 %".464", 1
-  br i1 %".465", label %".L_x_16_split_0x0510_conditionalExpr_0x0550", label %".L_x_16_split_0x0560"
-.L_x_16_split_0x0510_conditionalExpr_0x0550:
+  br i1 %".465", label %".L_x_17_split_0x0510_conditionalExpr_0x0550", label %".L_x_17_split_0x0560"
+.L_x_17_split_0x0510_conditionalExpr_0x0550:
   ; IADD3 R7, R15, 0x2, RZ
   %".468" = load i32, ptr %"R15"
   %".469" = add i32 %".468", 2
   %".470" = add i32 %".469", 0
   store i32 %".470", ptr %"R7"
-  ; BRA `(.L_x_16_split_0x0560)
-  br label %".L_x_16_split_0x0560"
-.L_x_16_split_0x0560:
+  ; BRA `(.L_x_17_split_0x0560)
+  br label %".L_x_17_split_0x0560"
+.L_x_17_split_0x0560:
   ; @P2 IMAD R14, R7, c[0x0][0x178], R14
   %".475" = load i1, ptr %"P2"
   %".476" = icmp eq i1 %".475", 1
-  br i1 %".476", label %".L_x_16_split_0x0560_conditionalExpr_0x0560", label %".L_x_16_split_0x0570"
-.L_x_16_split_0x0560_conditionalExpr_0x0560:
+  br i1 %".476", label %".L_x_17_split_0x0560_conditionalExpr_0x0560", label %".L_x_17_split_0x0570"
+.L_x_17_split_0x0560_conditionalExpr_0x0560:
   ; IMAD R14, R7, c[0x0][0x178], R14
   %".479" = load i32, ptr %"R7"
   %".480" = load i32, ptr %"R14"
   %"mul.22" = mul i32 %".479", %"Arg_3"
   %"add.27" = add i32 %"mul.22", %".480"
   store i32 %"add.27", ptr %"R14"
-  ; BRA `(.L_x_16_split_0x0570)
-  br label %".L_x_16_split_0x0570"
-.L_x_16_split_0x0570:
+  ; BRA `(.L_x_17_split_0x0570)
+  br label %".L_x_17_split_0x0570"
+.L_x_17_split_0x0570:
   ; IMAD.WIDE R6, R6, R19, c[0x0][0x160]
   %".485" = load i32, ptr %"R6"
   %".486" = load i32, ptr %"R19"
@@ -4993,8 +5549,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 IMAD.WIDE R14, R14, R19, c[0x0][0x160]
   %".493" = load i1, ptr %"P2"
   %".494" = icmp eq i1 %".493", 1
-  br i1 %".494", label %".L_x_16_split_0x0570_conditionalExpr_0x0580", label %".L_x_16_split_0x0590"
-.L_x_16_split_0x0570_conditionalExpr_0x0580:
+  br i1 %".494", label %".L_x_17_split_0x0570_conditionalExpr_0x0580", label %".L_x_17_split_0x0590"
+.L_x_17_split_0x0570_conditionalExpr_0x0580:
   ; IMAD.WIDE R14, R14, R19, c[0x0][0x160]
   %".497" = load i32, ptr %"R14"
   %".498" = load i32, ptr %"R19"
@@ -5009,14 +5565,14 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"trunc32.17" = trunc i64 %"add.29" to i32
   store i32 %"trunc32.17", ptr %"R14"
   store i32 %"trunc32.16", ptr %"R15"
-  ; BRA `(.L_x_16_split_0x0590)
-  br label %".L_x_16_split_0x0590"
-.L_x_16_split_0x0590:
+  ; BRA `(.L_x_17_split_0x0590)
+  br label %".L_x_17_split_0x0590"
+.L_x_17_split_0x0590:
   ; @P2 LDG.E.SYS R19, [R16+0x8]
   %".507" = load i1, ptr %"P2"
   %".508" = icmp eq i1 %".507", 1
-  br i1 %".508", label %".L_x_16_split_0x0590_conditionalExpr_0x0590", label %".L_x_16_split_0x05a0"
-.L_x_16_split_0x0590_conditionalExpr_0x0590:
+  br i1 %".508", label %".L_x_17_split_0x0590_conditionalExpr_0x0590", label %".L_x_17_split_0x05a0"
+.L_x_17_split_0x0590_conditionalExpr_0x0590:
   ; LDG.E.SYS R19, [R16+0x8]
   %".511" = load i32, ptr %"R16"
   %"zext.43" = zext i32 %".511" to i64
@@ -5030,9 +5586,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".514" = load float, ptr addrspace(1) %"ptr_cast_for_access.11"
   %".515" = bitcast ptr %"R19" to ptr
   store float %".514", ptr %".515"
-  ; BRA `(.L_x_16_split_0x05a0)
-  br label %".L_x_16_split_0x05a0"
-.L_x_16_split_0x05a0:
+  ; BRA `(.L_x_17_split_0x05a0)
+  br label %".L_x_17_split_0x05a0"
+.L_x_17_split_0x05a0:
   ; LDG.E.SYS R6, [R6]
   %".520" = load i32, ptr %"R6"
   %"zext.45" = zext i32 %".520" to i64
@@ -5049,8 +5605,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 LDG.E.SYS R14, [R14]
   %".527" = load i1, ptr %"P2"
   %".528" = icmp eq i1 %".527", 1
-  br i1 %".528", label %".L_x_16_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_16_split_0x05c0"
-.L_x_16_split_0x05a0_conditionalExpr_0x05b0:
+  br i1 %".528", label %".L_x_17_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_17_split_0x05c0"
+.L_x_17_split_0x05a0_conditionalExpr_0x05b0:
   ; LDG.E.SYS R14, [R14]
   %".531" = load i32, ptr %"R14"
   %"zext.47" = zext i32 %".531" to i64
@@ -5064,9 +5620,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".534" = load float, ptr addrspace(1) %"ptr_cast_for_access.13"
   %".535" = bitcast ptr %"R14" to ptr
   store float %".534", ptr %".535"
-  ; BRA `(.L_x_16_split_0x05c0)
-  br label %".L_x_16_split_0x05c0"
-.L_x_16_split_0x05c0:
+  ; BRA `(.L_x_17_split_0x05c0)
+  br label %".L_x_17_split_0x05c0"
+.L_x_17_split_0x05c0:
   ; FFMA R12, R13, R6, R12
   %".540" = load float, ptr %"R13"
   %".541" = load float, ptr %"R6"
@@ -5078,8 +5634,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 FFMA R12, R19, R14, R12
   %".546" = load i1, ptr %"P2"
   %".547" = icmp eq i1 %".546", 1
-  br i1 %".547", label %".L_x_16_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_18"
-.L_x_16_split_0x05c0_conditionalExpr_0x05d0:
+  br i1 %".547", label %".L_x_17_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_19"
+.L_x_17_split_0x05c0_conditionalExpr_0x05d0:
   ; FFMA R12, R19, R14, R12
   %".550" = load float, ptr %"R19"
   %".551" = load float, ptr %"R14"
@@ -5088,9 +5644,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fadd.6" = fadd float %"fmul.6", %".552"
   %".553" = bitcast ptr %"R12" to ptr
   store float %"fadd.6", ptr %".553"
-  ; BRA `(.L_x_18)
-  br label %".L_x_18"
-.L_x_18:
+  ; BRA `(.L_x_19)
+  br label %".L_x_19"
+.L_x_19:
   ; IADD3 R8, R8, 0x1, RZ
   %".558" = load i32, ptr %"R8"
   %".559" = add i32 %".558", 1
@@ -5105,16 +5661,16 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".567" = and i1 %"cmp.11", %".564"
   %".568" = and i1 %".566", %".564"
   store i1 %".567", ptr %"P2"
-  ; @!P2 BRA `(.L_x_19)
+  ; @!P2 BRA `(.L_x_20)
   %".571" = load i1, ptr %"P2"
   %".572" = icmp ne i1 %".571", 1
-  br i1 %".572", label %".L_x_19", label %".L_x_18_split_0x0610"
-.L_x_18_split_0x0610:
-  ; @!P1 BRA `(.L_x_20)
+  br i1 %".572", label %".L_x_20", label %".L_x_19_split_0x0610"
+.L_x_19_split_0x0610:
+  ; @!P1 BRA `(.L_x_21)
   %".575" = load i1, ptr %"P1"
   %".576" = icmp ne i1 %".575", 1
-  br i1 %".576", label %".L_x_20", label %".L_x_15"
-.L_x_15:
+  br i1 %".576", label %".L_x_21", label %".L_x_16"
+.L_x_16:
   ; UIADD3 UR4, UR5, 0x1, URZ
   %".579" = load i32, ptr %"UR5"
   %".580" = add i32 %".579", 1
@@ -5164,9 +5720,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   store i32 %".604", ptr addrspace(1) %"ptr_cast_for_access.14"
   ; EXIT
   br label %"ExitFunction"
-.L_x_21:
-  ; BRA `(.L_x_21)
-  br label %".L_x_21"
+.L_x_22:
+  ; BRA `(.L_x_22)
+  br label %".L_x_22"
 ExitFunction:
   ret void
 }

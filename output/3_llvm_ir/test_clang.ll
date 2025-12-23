@@ -167,7 +167,7 @@ define dso_local ptx_kernel void @_Z6conv2dPfS_S_iiii(ptr noundef %0, ptr nounde
   %119 = load i32, ptr %21, align 4
   %120 = add nsw i32 %119, 1
   store i32 %120, ptr %21, align 4
-  br label %66, !llvm.loop !11
+  br label %66, !llvm.loop !12
 
 121:                                              ; preds = %66
   br label %122
@@ -176,7 +176,7 @@ define dso_local ptx_kernel void @_Z6conv2dPfS_S_iiii(ptr noundef %0, ptr nounde
   %123 = load i32, ptr %20, align 4
   %124 = add nsw i32 %123, 1
   store i32 %124, ptr %20, align 4
-  br label %61, !llvm.loop !13
+  br label %61, !llvm.loop !14
 
 125:                                              ; preds = %61
   br label %126
@@ -185,7 +185,7 @@ define dso_local ptx_kernel void @_Z6conv2dPfS_S_iiii(ptr noundef %0, ptr nounde
   %127 = load i32, ptr %19, align 4
   %128 = add nsw i32 %127, 1
   store i32 %128, ptr %19, align 4
-  br label %56, !llvm.loop !14
+  br label %56, !llvm.loop !15
 
 129:                                              ; preds = %56
   %130 = load i32, ptr %11, align 4
@@ -388,7 +388,7 @@ define dso_local ptx_kernel void @_Z10max_pool2dPfS_iii(ptr noundef %0, ptr noun
   %92 = load i32, ptr %19, align 4
   %93 = add nsw i32 %92, 1
   store i32 %93, ptr %19, align 4
-  br label %56, !llvm.loop !15
+  br label %56, !llvm.loop !16
 
 94:                                               ; preds = %56
   br label %95
@@ -397,7 +397,7 @@ define dso_local ptx_kernel void @_Z10max_pool2dPfS_iii(ptr noundef %0, ptr noun
   %96 = load i32, ptr %18, align 4
   %97 = add nsw i32 %96, 1
   store i32 %97, ptr %18, align 4
-  br label %51, !llvm.loop !16
+  br label %51, !llvm.loop !17
 
 98:                                               ; preds = %51
   %99 = load i32, ptr %13, align 4
@@ -491,7 +491,7 @@ define dso_local ptx_kernel void @_Z8fc_layerPfS_S_S_ii(ptr noundef %0, ptr noun
   %49 = load i32, ptr %15, align 4
   %50 = add nsw i32 %49, 1
   store i32 %50, ptr %15, align 4
-  br label %26, !llvm.loop !17
+  br label %26, !llvm.loop !18
 
 51:                                               ; preds = %26
   %52 = load ptr, ptr %9, align 8
@@ -511,6 +511,78 @@ define dso_local ptx_kernel void @_Z8fc_layerPfS_S_S_ii(ptr noundef %0, ptr noun
   br label %64
 
 64:                                               ; preds = %51, %24
+  ret void
+}
+
+; Function Attrs: convergent mustprogress noinline norecurse nounwind optnone
+define dso_local ptx_kernel void @_Z15fc_layer_simplePfS_S_S_ii(ptr noundef %0, ptr noundef %1, ptr noundef %2, ptr noundef %3, i32 noundef %4, i32 noundef %5) #0 {
+  %7 = alloca ptr, align 8
+  %8 = alloca ptr, align 8
+  %9 = alloca ptr, align 8
+  %10 = alloca ptr, align 8
+  %11 = alloca i32, align 4
+  %12 = alloca i32, align 4
+  %13 = alloca i32, align 4
+  %14 = alloca float, align 4
+  %15 = alloca i32, align 4
+  store ptr %0, ptr %7, align 8
+  store ptr %1, ptr %8, align 8
+  store ptr %2, ptr %9, align 8
+  store ptr %3, ptr %10, align 8
+  store i32 %4, ptr %11, align 4
+  store i32 %5, ptr %12, align 4
+  %16 = call noundef range(i32 0, 2147483647) i32 @llvm.nvvm.read.ptx.sreg.ctaid.x()
+  %17 = call noundef range(i32 1, 1025) i32 @llvm.nvvm.read.ptx.sreg.ntid.x()
+  %18 = mul i32 %16, %17
+  %19 = call noundef range(i32 0, 1024) i32 @llvm.nvvm.read.ptx.sreg.tid.x()
+  %20 = add i32 %18, %19
+  store i32 %20, ptr %13, align 4
+  %21 = load i32, ptr %13, align 4
+  %22 = load i32, ptr %12, align 4
+  %23 = icmp sge i32 %21, %22
+  br i1 %23, label %24, label %25
+
+24:                                               ; preds = %6
+  br label %55
+
+25:                                               ; preds = %6
+  store float 0.000000e+00, ptr %14, align 4
+  store i32 0, ptr %15, align 4
+  %26 = load ptr, ptr %7, align 8
+  %27 = load i32, ptr %15, align 4
+  %28 = sext i32 %27 to i64
+  %29 = getelementptr inbounds float, ptr %26, i64 %28
+  %30 = load float, ptr %29, align 4
+  %31 = load ptr, ptr %8, align 8
+  %32 = load i32, ptr %13, align 4
+  %33 = load i32, ptr %11, align 4
+  %34 = mul nsw i32 %32, %33
+  %35 = load i32, ptr %15, align 4
+  %36 = add nsw i32 %34, %35
+  %37 = sext i32 %36 to i64
+  %38 = getelementptr inbounds float, ptr %31, i64 %37
+  %39 = load float, ptr %38, align 4
+  %40 = fmul contract float %30, %39
+  %41 = load float, ptr %14, align 4
+  %42 = fadd contract float %41, %40
+  store float %42, ptr %14, align 4
+  %43 = load ptr, ptr %9, align 8
+  %44 = load i32, ptr %13, align 4
+  %45 = sext i32 %44 to i64
+  %46 = getelementptr inbounds float, ptr %43, i64 %45
+  %47 = load float, ptr %46, align 4
+  %48 = load float, ptr %14, align 4
+  %49 = fadd contract float %48, %47
+  store float %49, ptr %14, align 4
+  %50 = load float, ptr %14, align 4
+  %51 = load ptr, ptr %10, align 8
+  %52 = load i32, ptr %13, align 4
+  %53 = sext i32 %52 to i64
+  %54 = getelementptr inbounds float, ptr %51, i64 %53
+  store float %50, ptr %54, align 4
+  br label %55
+
+55:                                               ; preds = %25, %24
   ret void
 }
 
@@ -550,9 +622,9 @@ attributes #2 = { nocallback nofree nosync nounwind speculatable willreturn memo
 attributes #3 = { convergent nounwind "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="sm_75" "target-features"="+ptx85,+sm_75" "unsafe-fp-math"="false" "use-soft-float"="false" }
 
 !llvm.module.flags = !{!0, !1, !2, !3}
-!nvvm.annotations = !{!4, !5, !6, !7}
-!llvm.ident = !{!8, !9}
-!nvvmir.version = !{!10}
+!nvvm.annotations = !{!4, !5, !6, !7, !8}
+!llvm.ident = !{!9, !10}
+!nvvmir.version = !{!11}
 
 !0 = !{i32 2, !"SDK Version", [2 x i32] [i32 12, i32 5]}
 !1 = !{i32 1, !"wchar_size", i32 4}
@@ -562,13 +634,14 @@ attributes #3 = { convergent nounwind "disable-tail-calls"="false" "frame-pointe
 !5 = !{ptr @_Z4reluPfS_i}
 !6 = !{ptr @_Z10max_pool2dPfS_iii}
 !7 = !{ptr @_Z8fc_layerPfS_S_S_ii}
-!8 = !{!"Ubuntu clang version 20.1.8 (++20250708082409+6fb913d3e2ec-1~exp1~20250708202428.132)"}
-!9 = !{!"clang version 3.8.0 (tags/RELEASE_380/final)"}
-!10 = !{i32 2, i32 0}
-!11 = distinct !{!11, !12}
-!12 = !{!"llvm.loop.mustprogress"}
-!13 = distinct !{!13, !12}
-!14 = distinct !{!14, !12}
-!15 = distinct !{!15, !12}
-!16 = distinct !{!16, !12}
-!17 = distinct !{!17, !12}
+!8 = !{ptr @_Z15fc_layer_simplePfS_S_S_ii}
+!9 = !{!"Ubuntu clang version 20.1.8 (++20250708082409+6fb913d3e2ec-1~exp1~20250708202428.132)"}
+!10 = !{!"clang version 3.8.0 (tags/RELEASE_380/final)"}
+!11 = !{i32 2, i32 0}
+!12 = distinct !{!12, !13}
+!13 = !{!"llvm.loop.mustprogress"}
+!14 = distinct !{!14, !13}
+!15 = distinct !{!15, !13}
+!16 = distinct !{!16, !13}
+!17 = distinct !{!17, !13}
+!18 = distinct !{!18, !13}

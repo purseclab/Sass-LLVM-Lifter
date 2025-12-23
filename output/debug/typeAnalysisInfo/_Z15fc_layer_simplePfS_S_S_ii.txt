@@ -1,0 +1,427 @@
+########################## .text._Z15fc_layer_simplePfS_S_S_ii ##########################
+############# MOV R1, c[0x0][0x28] #############
+####### R1 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0000, R1)']
+defs_reaching: []
+reaches_next: True
+Typedesc: NOTYPE
+
+####### c[0x0][0x28] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0000, R1)']
+defs_reaching: []
+reaches_next: False
+Typedesc: NOTYPE
+
+############# S2R R6, SR_CTAID.X #############
+####### R6 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0010, R6)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### SR_CTAID.X #######
+
+############# S2R R3, SR_TID.X #############
+####### R3 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0020, R3)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### SR_TID.X #######
+
+############# IMAD R6, R6, c[0x0][0x0], R3 #############
+####### R6 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0030, R6)']
+defs_reaching: ['(0x0010, R6)']
+reaches_next: True
+Typedesc: Int32
+
+####### R6 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0030, R6)']
+defs_reaching: ['(0x0010, R6)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x0] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0030, R6)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### R3 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0030, R6)']
+defs_reaching: ['(0x0020, R3)']
+reaches_next: False
+Typedesc: Int32
+
+############# ISETP.GE.AND P0, PT, R6, c[0x0][0x184], PT #############
+####### P0 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Bool
+
+####### PT #######
+is_def: False
+is_use: True
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Bool
+
+####### R6 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0040, P0)']
+defs_reaching: ['(0x0030, R6)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x184] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### PT #######
+is_def: False
+is_use: True
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Bool
+
+############# @P0 EXIT  #############
+####### P0 #######
+is_def: None
+is_use: None
+kill_set: []
+defs_reaching: ['(0x0040, P0)']
+reaches_next: False
+Typedesc: Bool
+
+########################## .text._Z15fc_layer_simplePfS_S_S_ii_conditionalExpr_0x0050 ##########################
+############# EXIT  #############
+########################## .text._Z15fc_layer_simplePfS_S_S_ii_split_0x0060 ##########################
+############# MOV R9, 0x4 #############
+####### R9 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0060, R9)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### 0x4 #######
+
+############# IMAD R2, R6, c[0x0][0x180], RZ #############
+####### R2 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### R6 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x180] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### RZ #######
+is_def: False
+is_use: True
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+############# ULDC.64 UR4, c[0x0][0x160] #############
+####### UR4 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0080, UR4)']
+defs_reaching: []
+reaches_next: True
+Typedesc: NOTYPE
+
+####### c[0x0][0x160] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0080, UR4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# LDG.E.SYS R7, [UR4] #############
+####### R7 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0090, R7)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Float32
+
+####### [UR4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0090, R7)']
+defs_reaching: ['(0x0080, UR4)']
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# IMAD.WIDE R2, R2, R9, c[0x0][0x168] #############
+####### R2 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00a0, R2)']
+defs_reaching: ['(0x0070, R2)']
+reaches_next: True
+Typedesc: Int32
+
+####### R2 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00a0, R2)']
+defs_reaching: ['(0x0070, R2)']
+reaches_next: False
+Typedesc: Int32
+
+####### R9 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00a0, R2)']
+defs_reaching: ['(0x0060, R9)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x168] #######
+is_def: False
+is_use: False
+kill_set: ['(0x00a0, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# IMAD.WIDE R4, R6, R9, c[0x0][0x170] #############
+####### R4 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00b0, R4)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### R6 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00b0, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### R9 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00b0, R4)']
+defs_reaching: ['(0x0060, R9)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x170] #######
+is_def: False
+is_use: False
+kill_set: ['(0x00b0, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# LDG.E.SYS R2, [R2] #############
+####### R2 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00c0, R2)']
+defs_reaching: ['(0x00a0, R2)']
+reaches_next: True
+Typedesc: Float32
+
+####### [R2] #######
+is_def: False
+is_use: False
+kill_set: ['(0x00c0, R2)']
+defs_reaching: ['(0x00a0, R2)']
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# LDG.E.SYS R5, [R4] #############
+####### R5 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00d0, R5)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Float32
+
+####### [R4] #######
+is_def: False
+is_use: False
+kill_set: ['(0x00d0, R5)']
+defs_reaching: ['(0x00b0, R4)']
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# FFMA R0, R2, R7, RZ #############
+####### R0 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00e0, R0)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Float32
+
+####### R2 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00e0, R0)']
+defs_reaching: ['(0x00c0, R2)']
+reaches_next: False
+Typedesc: Float32
+
+####### R7 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00e0, R0)']
+defs_reaching: ['(0x0090, R7)']
+reaches_next: False
+Typedesc: Float32
+
+####### RZ #######
+is_def: False
+is_use: True
+kill_set: ['(0x00e0, R0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Float32
+
+############# IMAD.WIDE R6, R6, R9, c[0x0][0x178] #############
+####### R6 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00f0, R6)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### R6 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00f0, R6)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### R9 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00f0, R6)']
+defs_reaching: ['(0x0060, R9)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x178] #######
+is_def: False
+is_use: False
+kill_set: ['(0x00f0, R6)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Float32_PTR
+
+############# FADD R9, R0, R5 #############
+####### R9 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0100, R9)']
+defs_reaching: ['(0x0060, R9)']
+reaches_next: True
+Typedesc: Float32
+
+####### R0 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0100, R9)']
+defs_reaching: ['(0x00e0, R0)']
+reaches_next: False
+Typedesc: Float32
+
+####### R5 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0100, R9)']
+defs_reaching: ['(0x00d0, R5)']
+reaches_next: False
+Typedesc: Float32
+
+############# STG.E.SYS [R6], R9 #############
+####### [R6] #######
+is_def: False
+is_use: False
+kill_set: []
+defs_reaching: ['(0x00f0, R6)']
+reaches_next: False
+Typedesc: Float32_PTR
+
+####### R9 #######
+is_def: False
+is_use: True
+kill_set: []
+defs_reaching: ['(0x0100, R9)']
+reaches_next: False
+Typedesc: Float32
+
+############# EXIT  #############
+########################## .L_x_0 ##########################
+############# BRA `(.L_x_0) #############
+####### `(.L_x_0) #######
+
+
+
+
+======================= Conflicting Types Report =======================
+
+There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates different instances of conflict
+
+==================== def_to_use ====================
+
+==================== use_to_def ====================
