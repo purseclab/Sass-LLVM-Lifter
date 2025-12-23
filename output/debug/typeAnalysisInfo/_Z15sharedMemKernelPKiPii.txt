@@ -272,7 +272,7 @@ is_use: False
 kill_set: ['(0x0100, R5)']
 defs_reaching: []
 reaches_next: True
-Typedesc: NOTYPE_PTR
+Typedesc: NOTYPE
 
 ####### [R5.X4] #######
 is_def: False
@@ -341,7 +341,7 @@ is_use: True
 kill_set: []
 defs_reaching: ['(0x0100, R5)']
 reaches_next: False
-Typedesc: NOTYPE_PTR
+Typedesc: NOTYPE
 
 ############# EXIT  #############
 ########################## .L_x_3 ##########################
@@ -356,13 +356,5 @@ Typedesc: NOTYPE_PTR
 There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates different instances of conflict
 
 ==================== def_to_use ====================
-
-##### Type: Int32 #####
-Operand: R2; Instruction Addr: 0x00b0
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x00a0
-
-****************************************
 
 ==================== use_to_def ====================

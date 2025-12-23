@@ -567,8 +567,8 @@ $L__BB3_2:                              // %ExitFunction
 )                                       // @_Z15sharedMemKernelPKiPii
 {
 	.reg .pred 	%p<3>;
-	.reg .b32 	%r<11>;
-	.reg .b64 	%rd<18>;
+	.reg .b32 	%r<12>;
+	.reg .b64 	%rd<17>;
 	// demoted variable
 	.shared .align 16 .b8 __Z15sharedMemKernelPKiPii_sdata[16384];
 // %bb.0:                               // %Entry_.text._Z15sharedMemKernelPKiPii
@@ -578,30 +578,30 @@ $L__BB3_2:                              // %ExitFunction
 	mov.u32 	%r5, %ntid.x;
 	mad.lo.s32 	%r2, %r4, %r5, %r1;
 	setp.ge.s32 	%p1, %r2, %r3;
-	shl.b32 	%r10, %r1, 2;
-	mov.u64 	%rd16, __Z15sharedMemKernelPKiPii_sdata;
-	mul.wide.u32 	%rd17, %r2, 4;
+	shl.b32 	%r11, %r1, 2;
+	mov.u64 	%rd15, __Z15sharedMemKernelPKiPii_sdata;
+	mul.wide.u32 	%rd16, %r2, 4;
 	@%p1 bra 	$L__BB4_2;
 // %bb.1:                               // %.text._Z15sharedMemKernelPKiPii_split_0x0080
 	ld.param.u64 	%rd1, [_Z15sharedMemKernelPKiPii_param_0];
 	ld.u64 	%rd3, [%rd1];
-	add.s64 	%rd5, %rd17, %rd3;
+	add.s64 	%rd5, %rd16, %rd3;
 	ld.global.u32 	%r6, [%rd5];
 	add.s32 	%r7, %r6, 1;
-	cvt.u64.u32 	%rd6, %r10;
-	add.s64 	%rd8, %rd16, %rd6;
+	cvt.u64.u32 	%rd6, %r11;
+	add.s64 	%rd8, %rd15, %rd6;
 	st.shared.u32 	[%rd8], %r7;
 $L__BB4_2:                              // %.L_x_2
 	bar.sync 	0;
 	@%p1 bra 	$L__BB4_4;
 // %bb.3:                               // %.L_x_1_split_0x0100
 	ld.param.u64 	%rd2, [_Z15sharedMemKernelPKiPii_param_1];
-	cvt.u64.u32 	%rd9, %r10;
-	add.s64 	%rd11, %rd16, %rd9;
-	ld.shared.u64 	%rd12, [%rd11];
-	ld.u64 	%rd13, [%rd2];
-	add.s64 	%rd15, %rd17, %rd13;
-	st.global.u32 	[%rd15], %rd12;
+	cvt.u64.u32 	%rd9, %r11;
+	add.s64 	%rd11, %rd15, %rd9;
+	ld.shared.u32 	%r10, [%rd11];
+	ld.u64 	%rd12, [%rd2];
+	add.s64 	%rd14, %rd16, %rd12;
+	st.global.u32 	[%rd14], %r10;
 $L__BB4_4:                              // %ExitFunction
 	ret;
                                         // -- End function

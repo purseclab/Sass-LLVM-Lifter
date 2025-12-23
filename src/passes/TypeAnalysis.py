@@ -80,7 +80,7 @@ class TypeAnalysis:
         self.func : Function.Function  = func
         self.func_args = []
         self._set_func_args()
-        self.type_map: dict[tuple[Instruction.Instruction, str], str] = {}  # Map (inst, reg) to type for tracking
+        self.type_map: dict[Operand.Operand, str] = {} # we previously tracked based on (instr, str), but the same instruction can have the same register name for both source and dest and they will prob have different types
         
         current_dir = Path(__file__).parent
         self.project_root = (current_dir / "../..").resolve()
@@ -113,7 +113,7 @@ class TypeAnalysis:
         
         if current_type_str == "NOTYPE" or (current_type_str != new_type.value):
             op.setTypeDesc(new_type.value)
-            self.type_map[(op.ins, op.reg)] = new_type.value
+            self.type_map[op] = new_type.value
             if inst is not None:
                 assert inst == op.ins
             return True
@@ -547,11 +547,11 @@ class TypeAnalysis:
                 # def->use
                 if Op.is_use:
                     reaching_defs = self.reaching_defs._get_reaching_definitions_before(inst)
-                    type_dict: dict[str, set[tuple[Operand.Operand, str, str]]] = {} # maps between the type and (Operands [with the type], str(Operand), address of instruction containing the operand)
+                    type_dict = {}
                     for d_inst, regOp in reaching_defs:
-                        if regOp.reg == Op.reg and (d_inst, regOp.reg) in self.type_map:
-                            cur_type = self.type_map[(d_inst, regOp.reg)]
-                            type_dict[cur_type] = type_dict.get(cur_type, set()) | {(regOp, str(regOp), str(regOp.ins.addr))}
+                        if regOp.reg == Op.reg and regOp in self.type_map:
+                            cur_type = self.type_map[regOp]
+                            type_dict[cur_type] = type_dict.get(cur_type, set()) | {(regOp, str(regOp), str(d_inst.addr))}
                     if Op.getTypeDesc() != "NOTYPE":
                         cur_type = Op.getTypeDesc()
                         type_dict[cur_type] = type_dict.get(cur_type, set()) | {(Op, str(Op), str(Op.ins.addr))}
@@ -570,33 +570,50 @@ class TypeAnalysis:
                         changed = self.op_add_type(Op, new_type, inst)
                 
                     # use->def
-                    useOp = Op
-                    useOpType = useOp.getTypeDesc()
-                    if useOpType != "NOTYPE":
-                        if useOp in self.ud_chain:
-                            type_dict: dict[str, set[tuple[Operand.Operand, str, str]]] = {} # maps between the type and (Operands [with the type], str(Operand), address of instruction containing the operand)
-                            conflict = False
-                            type_dict[useOpType] = type_dict.get(useOpType, set()) | {(useOp, str(useOp), str(useOp.ins.addr))}
-                            for defOp in self.ud_chain[useOp]:
-                                # note that useOp is type Operand, which is necessary or we'd be mapping the same register at different instruction to the same entry, which would be wrong
-                                if defOp.getTypeDesc() != "NOTYPE":
-                                    # if str(inst) not in ("SHF.L.U32 R10, R10, 0x17, RZ", "FFMA R24, R10, R9, 1", "IADD3 R9, R24, 0x1800000, RZ", "MOV R9, R22", "FFMA R10, R24, R9, -1", "FFMA R9, R9, R10, R9"):
-                                    defOpType = defOp.getTypeDesc()
-                                    if defOpType != useOpType:
-                                        conflict = True
-                                    type_dict[defOpType] = type_dict.get(defOpType, set()) | {(defOp, str(defOp), str(defOp.ins.addr))}
-                                else:
-                                    changed = self.op_add_type(defOp, useOpType)
-                            if conflict:
+                    if Op.is_use:
+                        useOp = Op
+                        
+                        useOpType = self.type_map.get(useOp, DataType.NOTYPE.value)
+                        
+                        # only propagate if the Use actually has a type
+                        if useOpType != DataType.NOTYPE.value:
+                            
+                            if useOp in self.ud_chain:
+                                # (Your original dictionary structure)
+                                type_dict = {} 
+                                conflict = False
                                 
-                                # merge type_dict if this specific Operand has been here before so that we dont get a bunch of duplicates
-                                if useOp in self.conflicting_types["use_to_def"]:
-                                    for typ, values in self.conflicting_types["use_to_def"][useOp].items():
-                                        self.conflicting_types["use_to_def"][useOp][typ] = values | (type_dict[typ] if typ in type_dict else set())
-                                else:
-                                    self.conflicting_types["use_to_def"][useOp] = type_dict
-                        else:
-                            pass # TODO
+                                # Add the 'Use' itself to the history
+                                type_dict[useOpType] = type_dict.get(useOpType, set()) | {(useOp, str(useOp), str(useOp.ins.addr))}
+                                
+                                for defOp in self.ud_chain[useOp]: # # note that useOp is type Operand, which is necessary or we'd be mapping the same register at different instruction to the same entry, which would be wrong
+                                    defOpType = self.type_map.get(defOp, DataType.NOTYPE.value)
+
+                                    # CASE A: Definition already has a type
+                                    if defOpType != DataType.NOTYPE.value:
+                                        
+                                        # Check for conflict
+                                        if defOpType != useOpType:
+                                            conflict = True
+                                        
+                                        # Add to history
+                                        type_dict[defOpType] = type_dict.get(defOpType, set()) | {(defOp, str(defOp), str(defOp.ins.addr))}
+                                    
+                                    # CASE B: Definition is empty (NOTYPE)
+                                    else:
+                                        # Propagate backward! 
+                                        changed |= self.op_add_type(defOp, useOpType)
+
+                                # Handle Conflicts (reporting logic)
+                                if conflict:
+                                    if useOp in self.conflicting_types["use_to_def"]:
+                                        for typ, values in self.conflicting_types["use_to_def"][useOp].items():
+                                            # Merge sets
+                                            current_set = self.conflicting_types["use_to_def"][useOp].get(typ, set())
+                                            new_set = type_dict.get(typ, set())
+                                            self.conflicting_types["use_to_def"][useOp][typ] = current_set | new_set
+                                    else:
+                                        self.conflicting_types["use_to_def"][useOp] = type_dict
                 
         return changed
 
