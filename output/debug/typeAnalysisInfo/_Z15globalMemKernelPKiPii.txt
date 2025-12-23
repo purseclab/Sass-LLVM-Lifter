@@ -1,0 +1,279 @@
+########################## .text._Z15globalMemKernelPKiPii ##########################
+############# MOV R1, c[0x0][0x28] #############
+####### R1 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0000, R1)']
+defs_reaching: []
+reaches_next: True
+Typedesc: NOTYPE
+
+####### c[0x0][0x28] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0000, R1)']
+defs_reaching: []
+reaches_next: False
+Typedesc: NOTYPE
+
+############# S2R R4, SR_CTAID.X #############
+####### R4 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0010, R4)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### SR_CTAID.X #######
+
+############# S2R R3, SR_TID.X #############
+####### R3 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0020, R3)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### SR_TID.X #######
+
+############# IMAD R4, R4, c[0x0][0x0], R3 #############
+####### R4 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0030, R4)']
+defs_reaching: ['(0x0010, R4)']
+reaches_next: True
+Typedesc: Int32
+
+####### R4 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0030, R4)']
+defs_reaching: ['(0x0010, R4)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x0] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0030, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### R3 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0030, R4)']
+defs_reaching: ['(0x0020, R3)']
+reaches_next: False
+Typedesc: Int32
+
+############# ISETP.GE.AND P0, PT, R4, c[0x0][0x170], PT #############
+####### P0 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Bool
+
+####### PT #######
+is_def: False
+is_use: True
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Bool
+
+####### R4 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0040, P0)']
+defs_reaching: ['(0x0030, R4)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x170] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### PT #######
+is_def: False
+is_use: True
+kill_set: ['(0x0040, P0)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Bool
+
+############# @P0 EXIT  #############
+####### P0 #######
+is_def: None
+is_use: None
+kill_set: []
+defs_reaching: ['(0x0040, P0)']
+reaches_next: False
+Typedesc: Bool
+
+########################## .text._Z15globalMemKernelPKiPii_conditionalExpr_0x0050 ##########################
+############# EXIT  #############
+########################## .text._Z15globalMemKernelPKiPii_split_0x0060 ##########################
+############# MOV R5, 0x4 #############
+####### R5 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0060, R5)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### 0x4 #######
+
+############# IMAD.WIDE R2, R4, R5, c[0x0][0x160] #############
+####### R2 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### R4 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### R5 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0070, R2)']
+defs_reaching: ['(0x0060, R5)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x160] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0070, R2)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32_PTR
+
+############# LDG.E.SYS R2, [R2] #############
+####### R2 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0080, R2)']
+defs_reaching: ['(0x0070, R2)']
+reaches_next: True
+Typedesc: Int32
+
+####### [R2] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0080, R2)']
+defs_reaching: ['(0x0070, R2)']
+reaches_next: False
+Typedesc: Int32_PTR
+
+############# IMAD.WIDE R4, R4, R5, c[0x0][0x168] #############
+####### R4 #######
+is_def: True
+is_use: False
+kill_set: ['(0x0090, R4)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### R4 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0090, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+####### R5 #######
+is_def: False
+is_use: True
+kill_set: ['(0x0090, R4)']
+defs_reaching: ['(0x0060, R5)']
+reaches_next: False
+Typedesc: Int32
+
+####### c[0x0][0x168] #######
+is_def: False
+is_use: False
+kill_set: ['(0x0090, R4)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32_PTR
+
+############# IADD3 R7, R2, 0x1, RZ #############
+####### R7 #######
+is_def: True
+is_use: False
+kill_set: ['(0x00a0, R7)']
+defs_reaching: []
+reaches_next: True
+Typedesc: Int32
+
+####### R2 #######
+is_def: False
+is_use: True
+kill_set: ['(0x00a0, R7)']
+defs_reaching: ['(0x0080, R2)']
+reaches_next: False
+Typedesc: Int32
+
+####### 0x1 #######
+
+####### RZ #######
+is_def: False
+is_use: True
+kill_set: ['(0x00a0, R7)']
+defs_reaching: []
+reaches_next: False
+Typedesc: Int32
+
+############# STG.E.SYS [R4], R7 #############
+####### [R4] #######
+is_def: False
+is_use: False
+kill_set: []
+defs_reaching: ['(0x0090, R4)']
+reaches_next: False
+Typedesc: Int32_PTR
+
+####### R7 #######
+is_def: False
+is_use: True
+kill_set: []
+defs_reaching: ['(0x00a0, R7)']
+reaches_next: False
+Typedesc: Int32
+
+############# EXIT  #############
+########################## .L_x_4 ##########################
+############# BRA `(.L_x_4) #############
+####### `(.L_x_4) #######
+
+
+
+
+======================= Conflicting Types Report =======================
+
+There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates different instances of conflict
+
+==================== def_to_use ====================
+
+==================== use_to_def ====================

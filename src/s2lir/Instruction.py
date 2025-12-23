@@ -17,6 +17,11 @@ current_dir = Path(__file__).parent
 SM_75_UReg_Set = [f"UR{i}" for i in range(128)]
 SM_75_UReg_Set.append(f"URZ")
 
+# LLVM address space map used by the lifter (adjust if necessary)
+ADDRSPACE_GLOBAL = 1
+ADDRSPACE_SHARED = 3
+ADDRSPACE_LOCAL = 5
+
 class Instruction:
     def __init__(self, inst_dict, BB):
         self.addr = inst_dict["addr"]
@@ -172,6 +177,14 @@ class Instruction:
         # BRA is Handled in the BasicBlock.py
         if self.opcode == "BRA":
             raise InvalidSyntaxException
+        
+        if self.opcode == "BAR":
+            assert len(self.modifiers) == 1
+            if self.modifiers[0] == "SYNC":
+                IRBuilder.call(nvvm_barrier0(self.llvm_module), [], name="nvvm_barrier0")
+            else:
+                raise NotImplementedError
+            return
 
         if self.opcode == "S2R":
             ResOp = self.operands[0]
@@ -189,10 +202,14 @@ class Instruction:
                     IRVal = IRBuilder.call(nvvm_ctaid_y(self.llvm_module), [], name="nvvm_ctaid_y")
                 elif str(ValOp) == "SR_CTAID.Z":
                     IRVal = IRBuilder.call(nvvm_ctaid_z(self.llvm_module), [], name="nvvm_ctaid_z")
+                elif str(ValOp) == "SR_TID.X":
+                    IRVal = IRBuilder.call(nvvm_threadidx_x(self.llvm_module), [], name="nvvm_threadidx_x")
+                elif str(ValOp) == "SR_TID.Y":
+                    IRVal = IRBuilder.call(nvvm_threadidx_y(self.llvm_module), [], name="nvvm_threadidx_y")
+                elif str(ValOp) == "SR_TID.X":
+                    IRVal = IRBuilder.call(nvvm_threadidx_z(self.llvm_module), [], name="nvvm_threadidx_z")
                 else:
-                    # TODO: Fix later, e.g. S2R R3, SR_TID.X
-                    # Call thread idx operation
-                    IRVal = IRBuilder.call(self.BB.func.module.GetThreadIdx, [], "ThreadIdx")
+                    assert False
                     
                 # Store the result
                 # IRBuilder.store(IRVal, IRResOp)
@@ -234,7 +251,7 @@ class Instruction:
                 raise InvalidSyntaxException
             return
 
-        if self.opcode == "LDG":
+        if self.opcode == "LDG" or self.opcode == "LDS" or self.opcode == "LDL":
             # Load from Global Memory
             # e.g.: LDG.E.SYS R57, [R38]
             ResOp = self.operands[0]
@@ -247,7 +264,14 @@ class Instruction:
                 IRResOp = IRRegs[ResOp.getRegName()]
                 # IRPtrOp = IRRegs[PtrOp.getIRRegName()]
                 
-                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType())
+                if self.opcode == "LDG":
+                    addr_space = ADDRSPACE_GLOBAL
+                elif self.opcode == "LDS":
+                    addr_space = ADDRSPACE_SHARED
+                elif self.opcode == "LDL":
+                    addr_space = ADDRSPACE_LOCAL
+                
+                IRVal = PtrOp.IR_ValueFromPointer(IRBuilder, IRRegs, ResOp.getIRType(), addr_space=addr_space)
 
                 # IRVal = IRBuilder.load(IRPtrOp)
                 # IRBuilder.store(IRVal, IRResOp)
@@ -256,21 +280,41 @@ class Instruction:
                 raise InvalidSyntaxException
             return
 
-        if self.opcode == "STG":
-            # Store to global Memory
+        if self.opcode == "STG" or self.opcode == "STL" or self.opcode == "STS":
+            # Store to global, local, or shared Memory
             # e.g.: STG.E.SYS [R28], R7
             ResOp = self.operands[0]
             ValOp = self.operands[1]
             
             assert len(self.operands) == 2
+            # assert len(self.modifiers) == 0
             
             if ValOp.isReg and ResOp.isPtr:
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 # IRValOp = IRRegs[ValOp.getIRRegName()]
                 # IRVal = IRBuilder.load(IRValOp)
-                IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
-
-                ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal)
+                LoadDataType = None
+                if isinstance(ValOp.getIRType(), llvmir.PointerType):
+                    # TODO: tmp
+                    if len(self.modifiers) > 0 and self.modifiers[0] == "E":
+                        LoadDataType = llvmir.IntType(32)
+                        IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder, LoadDataType=LoadDataType)
+                else:
+                    IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder)
+                
+                # select address space based on opcode
+                if self.opcode == "STL":
+                    addr_space = ADDRSPACE_LOCAL
+                elif self.opcode == "STG":
+                    addr_space = ADDRSPACE_GLOBAL
+                elif self.opcode == "STS":
+                    addr_space = ADDRSPACE_SHARED
+                else:
+                    raise InvalidSyntaxException
+                if LoadDataType is not None:
+                    ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal, addr_space=addr_space, elem_type=LoadDataType)
+                else:
+                    ResOp.IR_ValueToPointer(IRBuilder, IRRegs, ResOp, IRVal, addr_space=addr_space)
             else:
                 raise InvalidSyntaxException
             return
@@ -359,7 +403,7 @@ class Instruction:
         if self.opcode == "ISETP" or self.opcode == "FSETP":
             # https://stackoverflow.com/questions/19357452/cuda-assembly-instructions
             ResOp = self.operands[0]
-            PReg1 = self.operands[1]
+            PReg1 = self.operands[1] # result 2 (Pv): https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opISETP.htm
             ValOp1 = self.operands[2]
             ValOp2 = self.operands[3]
             PReg2 = self.operands[4]
@@ -383,10 +427,10 @@ class Instruction:
             # IRResOp = IRRegs[ResOp.getIRRegName()]
             # IRPReg1 = IRRegs[PReg1.getIRRegName()]
             IRPReg1 = IRRegs[PReg1.getRegName()]
-            # IRPReg2 = IRRegs[PReg2.getIRRegName()]
+            IRPReg2 = IRRegs[PReg2.getRegName()]
 
-            IRPreg1Val = IRBuilder.load(IRPReg1)
-            # IRPreg2Val = IRBuilder.load(IRPReg2)
+            # IRPreg1Val = IRBuilder.load(IRPReg1)
+            IRPreg2Val = IRBuilder.load(IRPReg2)
             
             
             
@@ -439,6 +483,7 @@ class Instruction:
 
             if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
                 tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
+                tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             elif self.opcode == 'FSETP':
                 if not settings["ordered"]:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
@@ -448,19 +493,24 @@ class Instruction:
                     tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
                 else:
                     tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
+                tmp2 = IRBuilder.fadd(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             else:
                 raise InvalidSyntaxException
-
+            tmp2 = IRBuilder.not_(tmp2)
             if settings["boolean_op"] == "AND":
-                tmp = IRBuilder.and_(tmp, IRPreg1Val)
+                tmp = IRBuilder.and_(tmp, IRPreg2Val)
+                tmp2 = IRBuilder.and_(tmp2, IRPreg2Val)
             elif settings["boolean_op"] == "OR":
-                tmp = IRBuilder.or_(tmp, IRPreg1Val)
+                tmp = IRBuilder.or_(tmp, IRPreg2Val)
+                tmp2 = IRBuilder.or_(tmp2, IRPreg2Val)
             else:
                 raise NotImplementedError
         
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
-
+            
+            if PReg1.reg != "PT":
+                PReg1.IRReg_Store(IRRegs, IRBuilder, tmp2)
             return
         
         if self.opcode == "SHF":
@@ -619,13 +669,14 @@ class Instruction:
             R_dest.IRReg_Store(IRRegs, IRBuilder, tmp)
             return
 
-        if self.opcode == "FMNMX":
+        if self.opcode == "IMNMX" or self.opcode == "FMNMX":
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
             PReg = self.operands[3]
             
             assert len(self.operands) == 4
+            assert len(self.modifiers) == 0
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -635,21 +686,33 @@ class Instruction:
             # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # TODO: use _ordered or unordered?
+            
+            lt_cmp = None
+            gt_cmp = None
+            
+            if self.opcode == "FMNMX":
+                lt_cmp = IRBuilder.fcmp_ordered('<', IRValOp1, IRValOp2)
+                gt_cmp = IRBuilder.fcmp_ordered('>', IRValOp1, IRValOp2)
+            elif self.opcode == "IMNMX":
+                # TODO: assumed to be signed
+                lt_cmp = IRBuilder.icmp_signed("<", IRValOp1, IRValOp2)
+                gt_cmp = IRBuilder.icmp_signed(">", IRValOp1, IRValOp2)
+            
             min = IRBuilder.select(
-                IRBuilder.fcmp_ordered('<', IRValOp1, IRValOp2),
+                lt_cmp,
                 IRValOp1,
                 IRValOp2,
-                "fmnmx_min"
+                "mnmx_min"
             )
             max = IRBuilder.select(
-                IRBuilder.fcmp_ordered('>', IRValOp1, IRValOp2),
+                gt_cmp,
                 IRValOp1,
                 IRValOp2,
-                "fmnmx_max"
+                "mnmx_max"
             )
 
             # https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
-            tmp = IRBuilder.select(IRPreg, min, max, "fmnmx_final")
+            tmp = IRBuilder.select(IRPreg, min, max, "mnmx_final")
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
@@ -705,7 +768,7 @@ class Instruction:
 
             return
         
-        if self.opcode == "FADD":
+        if self.opcode == "IADD" or self.opcode == "FADD":
             ResOp = self.operands[0]
             ValOp1 = self.operands[1]
             ValOp2 = self.operands[2]
@@ -717,8 +780,11 @@ class Instruction:
 
             assert ResOp.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
-
-            tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
+            
+            if self.opcode == "IADD":
+                tmp = IRBuilder.add(IRValOp1, IRValOp2, "add")
+            elif self.opcode == "FADD":
+                tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
@@ -860,7 +926,7 @@ class Instruction:
                 # https://zhuanlan.zhihu.com/p/712356884
                 if immLut.Value == 0x80: # A & B & C
                     tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-                    tmp = IRBuilder.or_(tmp, IRValOp3)
+                    tmp = IRBuilder.and_(tmp, IRValOp3)
                 elif immLut.Value == 0x0: # 0
                     tmp = llvmir.Constant(llvmir.IntType(32), 0)
                 elif immLut.Value == 0x40: # A & B & ~C
@@ -943,7 +1009,7 @@ class Instruction:
             # https://zhuanlan.zhihu.com/p/712356884
             if immLut.Value == 0x80: # A & B & C
                 tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
-                tmp = IRBuilder.or_(tmp, IRValOp3)
+                tmp = IRBuilder.and_(tmp, IRValOp3)
             elif immLut.Value == 0x0: # 0
                 tmp = llvmir.Constant(llvmir.IntType(1), 0)
             elif immLut.Value == 0x40: # A & B & ~C
@@ -997,6 +1063,14 @@ class Instruction:
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
 
+            return
+        
+        if self.opcode == "I2I":
+            assert len(self.modifiers) == 0
+            return
+
+        if self.opcode == "F2F":
+            assert len(self.modifiers) == 0
             return
         
         if self.opcode == "F2I":
@@ -1211,7 +1285,7 @@ class Instruction:
             
             return
         
-        if self.opcode == "FMUL":
+        if self.opcode == "IMUL" or self.opcode == "FMUL":
             assert len(self.modifiers) == 0
             assert len(self.operands) == 3
             
@@ -1233,15 +1307,18 @@ class Instruction:
             else:
                 assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
                 assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
-                
-            tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
+            
+            if self.opcode == "IMUL":
+                tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul")
+            elif self.opcode == "FMUL":
+                tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
                 
 
             return
         
-        if self.opcode == "SEL" or self.opcode == "FSEL":
+        if self.opcode == "SEL" or self.opcode == "FSEL" or self.opcode == "USEL":
             R_dest = self.operands[0]
             R_a = self.operands[1] # select wheb True
             S_b = self.operands[2] # select wheb False

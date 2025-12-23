@@ -33,7 +33,16 @@ else
     echo "Compilation failed."
 fi
 
+# ncu -f -o new_report --import-source yes --set full ./test
 
+# ncu -f -o new_report2 --import-source yes --set full --call-stack --nvtx ./my_program
+
+# ncu \
+#     -o report \
+#     --import-source yes \
+#     --set full \
+#     --page source --print-source ptx \
+#     ./test_exec
 
 
 cuda-gdb ./test_exec \

@@ -3,6 +3,7 @@ from utils import *
 from llvmlite import ir as llvmir
 from s2lir.intrinsics import *
 import re
+import math
 import typing
 
 if typing.TYPE_CHECKING:
@@ -103,19 +104,155 @@ class Operand:
         
         self.is_use = None
         self.is_def = None
+        # Swizzle modifier, e.g. .X4
+        self.swizzle: int | None = None
 
-    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PinterType):
+    def safe_addrspace_cast(self, IRBuilder, val, dest_ptr_ty):
+        """
+        Cast pointer-valued `val` to `dest_ptr_ty` using a NVPTX-safe
+        sequence. If the source and destination address spaces are the same
+        return a bitcast when necessary. If either side is generic (addrspace
+        0) perform a single addrspacecast. If both are non-generic and
+        different, cast via a generic intermediate to avoid direct
+        non-generic->non-generic addrspacecast which can crash NVPTX lowering.
+        """
+        src_ty = val.type
+    
+        # ensure we are actually working with pointers
+        if not isinstance(src_ty, llvmir.PointerType) or not isinstance(dest_ptr_ty, llvmir.PointerType):
+            raise TypeError(f"safe_addrspace_cast expects pointers, got {src_ty} and {dest_ptr_ty}")
+
+        src_as = src_ty.addrspace
+        dest_as = dest_ptr_ty.addrspace
+
+        # Case 1: Same Address Space
+        if src_as == dest_as:
+            if src_ty == dest_ptr_ty:
+                return val
+            # different pointee type but same AS. perform bitcast
+            return IRBuilder.bitcast(val, dest_ptr_ty)
+
+        # Case 2: Casting to/from Generic (Address Space 0)
+        # cvta (convert address) in PTX
+        if src_as == 0 or dest_as == 0:
+            return IRBuilder.addrspacecast(val, dest_ptr_ty)
+
+        # Case 3: Casting between two different non-generic spaces (e.g., 3 to 5)
+        # Most backends (including NVPTX) cannot do this in one step.
+        # We MUST bridge through the generic address space (0).
+        
+        # Bridge to Generic (AS 0)
+        generic_ptr_ty = llvmir.PointerType(src_ty.pointee, addr_space=0)
+        bridge_val = IRBuilder.addrspacecast(val, generic_ptr_ty)
+        
+        # Bridge from Generic to Destination
+        # If the pointee types also differ, we might need an extra bitcast
+        if bridge_val.type.pointee != dest_ptr_ty.pointee:
+            final_generic_ty = llvmir.PointerType(dest_ptr_ty.pointee, addr_space=0)
+            bridge_val = IRBuilder.bitcast(bridge_val, final_generic_ty) # perform bitcast in generic addrspace
+            
+        return IRBuilder.addrspacecast(bridge_val, dest_ptr_ty)
+
+    def _compute_byte_address(self, IRBuilder, PtrOp, IRRegs):
+        """
+        Compute a 64-bit byte address integer for a pointer operand.
+
+        PtrOp may be `self` or another `Operand` instance representing the
+        pointer. Returns an LLVM i64 value representing the byte address.
+        """
+        # Load the pointer/index value (may return i64 or pointer)
+        PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
+
+        # If it's already a pointer value, convert to integer
+        if isinstance(PtrAddr.type, llvmir.PointerType):
+            PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
+
+        # Add any immediate offset baked into the operand
+        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), PtrOp.ptr_offset))
+        return PtrAddr
+
+    def _ptr_for_byte_address(self, IRBuilder, byte_addr, elem_type, addr_space: int | None = None, inbounds=False):
+        """
+        Given a byte address (`i64`) produce a typed pointer suitable for
+        load/store. Handles shared/global GEP lowering via the module's
+        shared/global symbol when available, otherwise falls back to
+        `inttoptr`+`bitcast` sequence.
+        """
+        # Ensure module ref
+        if self.llvm_module is None:
+            self.llvm_module = self.ins.llvm_module
+            assert self.llvm_module is not None
+
+        try:
+            from s2lir.Instruction import ADDRSPACE_SHARED, ADDRSPACE_LOCAL
+        except Exception:
+            ADDRSPACE_SHARED = 3
+            ADDRSPACE_LOCAL = 5
+
+        # Construct pointer and byte-pointer types for fallback
+        if addr_space is None:
+            ptr_ty = llvmir.PointerType(elem_type)
+            byte_ptr_ty = llvmir.PointerType(llvmir.IntType(8))
+        else:
+            ptr_ty = llvmir.PointerType(elem_type, addr_space)
+            byte_ptr_ty = llvmir.PointerType(llvmir.IntType(8), addr_space)
+
+        if addr_space in (ADDRSPACE_SHARED,):
+            shared_global = None
+            for gname, g in self.llvm_module.globals.items():
+                if gname.endswith("sdata") or "sdata" in gname:
+                    shared_global = g
+                    break
+
+            if shared_global is not None:
+                # Cast global to i8* in the same addrspace
+                # i8_ptr_ty = llvmir.PointerType(llvmir.IntType(8), addr_space)
+                # shared_as_i8 = self.safe_addrspace_cast(IRBuilder, shared_global, i8_ptr_ty)
+
+                # Calculate byte offset from base
+                # base_int = IRBuilder.ptrtoint(shared_as_i8, llvmir.IntType(64))
+                # offset_bytes = IRBuilder.sub(byte_addr, base_int, name="shared_offset_bytes")
+                # offset_bytes = byte_addr
+                
+                # Bridge into generic addrspace for a safe byte-level GEP
+                generic_i8_ptr_ty = llvmir.PointerType(llvmir.IntType(8), 0)
+                shared_base_generic = self.safe_addrspace_cast(IRBuilder, shared_global, generic_i8_ptr_ty)
+
+                gep_generic = IRBuilder.gep(shared_base_generic, [byte_addr], inbounds=inbounds, name="shared_gep")
+
+                final_ptr_ty = llvmir.PointerType(elem_type, addr_space)
+                dest_ptr = self.safe_addrspace_cast(IRBuilder, gep_generic, final_ptr_ty)
+                return dest_ptr
+
+        # Fallback: inttoptr + bitcast
+        byte_ptr = IRBuilder.inttoptr(byte_addr, byte_ptr_ty, "inttoptr_bytes")
+        dest_ptr = IRBuilder.bitcast(byte_ptr, ptr_ty, "ptr_cast_for_access")
+        return dest_ptr
+
+    def IR_ValueFromPointer(self, IRBuilder, IRRegs, PointerType, addr_space: int | None = None):
+        
+        # Ensure we have module reference for shared/global lookup
+        if self.llvm_module is None:
+            self.llvm_module = self.ins.llvm_module
+            assert self.llvm_module is not None
 
         # Fetch Value from IRPtrOp
         # PtrAddr = IRBuilder.load(IRPtrOp)
-        PtrAddr = self.IRReg_Load(IRRegs, IRBuilder)
-        
-        PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
+        PtrAddr = self._compute_byte_address(IRBuilder, self, IRRegs)
 
-        # Fetch value from PtrAddr e.g.,[R2]
-        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(PinterType), "for_LDG")
-        IRVal = IRBuilder.load(PtrAddr)
+        # Prefer GEP-based lowering for shared/local windows when a kernel
+        # shared/global symbol exists in the module. This maps the computed
+        # byte address into an element index into the shared array instead of
+        # materializing an absolute addrspace pointer via `inttoptr`.
+
+        # Resolve typed pointer for the byte address and load
+        final_ptr = self._ptr_for_byte_address(IRBuilder, PtrAddr, PointerType, addr_space, inbounds=False)
+        IRVal = IRBuilder.load(final_ptr)
+
+        # Set alignment based on the type
+        if hasattr(PointerType, 'width'):
+            align = max(1, PointerType.width // 8) # in bytes
+            IRVal.align = min(16, align) # cap at 16 bytes
 
         # Change it to Absolute value
         if self.ptr_abs:
@@ -126,29 +263,41 @@ class Operand:
 
         return IRVal
     
-    def IR_ValueToPointer(self, IRBuilder, IRRegs, PtrOp, IRVal):
+    def IR_ValueToPointer(self, IRBuilder, IRRegs, PtrOp, IRVal, addr_space: int | None = None, elem_type=None):
+        # Ensure module reference is available for GEP lowering
+        if self.llvm_module is None:
+            self.llvm_module = self.ins.llvm_module
+            assert self.llvm_module is not None
+
+
         # Fetch address from IRPtrOp
         # PtrAddr = IRBuilder.load(IRPtrOp)
-        PtrAddr = PtrOp.IRReg_Load(IRRegs, IRBuilder)
-        
-        PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), self.ptr_offset))
 
-        # Convert address to pointer type
-        PtrAddr = IRBuilder.inttoptr(PtrAddr, llvmir.PointerType(), "for_STG")
+        # Compute the byte address for PtrOp
+        byte_addr = self._compute_byte_address(IRBuilder, PtrOp, IRRegs)
 
-        # Handle absolute or negative value
+        # Determine element type for the pointer. If an explicit `elem_type`
+        # was provided use it; otherwise derive from `IRVal`.
+        if elem_type is None:
+            elem_type = IRVal.type
+
+        # Disallow absolute/negative pointer stores as before
         if self.ptr_abs or self.ptr_neg:
             raise InvalidSyntaxException
 
-        # Store value to PtrAddr
-        IRBuilder.store(IRVal, PtrAddr)
+        # Resolve destination pointer and store
+        dest_ptr = self._ptr_for_byte_address(IRBuilder, byte_addr, elem_type, addr_space, inbounds=True)
+        IRBuilder.store(IRVal, dest_ptr)
     
     def IR_FetchValue(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument]):
         if self.llvm_module is None:
             self.llvm_module = self.ins.llvm_module
             assert self.llvm_module is not None
         
+        if self.isPtr and not (self.isConstMem and self.isArg): # do not treat kernel arguments (ConstMem) as pointers to be dereferenced
+            # Use the operand's IR type as the element type by default
+            return self.IR_ValueFromPointer(IRBuilder, IRRegs, self.getIRType(), addr_space=None)
+
         # TODO: assume that normal operand other than LDG and STG is not pointers. Check it later.
         if self.isReg:
             if self.reg in ("RZ", "URZ"):
@@ -181,6 +330,17 @@ class Operand:
                 else:
                     raise InvalidSyntaxException
 
+            # Apply swizzle modifier if present (e.g., .X4 == multiply by 4)
+            if self.swizzle is not None:
+                # only support integer swizzle application for now
+                if isinstance(self.getIRType(), llvmir.IntType):
+                    # swizzle is a power of two (X2, X4, ...)
+                    if self.swizzle <= 0 or (self.swizzle & (self.swizzle - 1)) != 0: # second cond checks if its power of two
+                        raise InvalidSyntaxException
+                    shift_amt = int(math.log2(self.swizzle))
+                    IRVal = IRBuilder.shl(IRVal, llvmir.Constant(llvmir.IntType(32), shift_amt), name="swzl_shl")
+                else:
+                    raise NotImplementedError("Swizzle on non-integer IR type not supported")
             return IRVal
         
         elif self.isConstMem:
@@ -233,13 +393,27 @@ class Operand:
         print(f"Unknown Operand {self}")
         raise NotImplementedError
 
-    def IRReg_Load(self, IRRegs, IRBuilder):
+    def IRReg_Load(self, IRRegs, IRBuilder, LoadDataType=None):
         IRVal = None
         if self.isReg or self.isArg or self.isPtr:
             if self.isReg:
                 assert self.reg
             if self.reg:
-                IRVal = IRBuilder.load(IRRegs[self.reg], typ=llvmir.IntType(32) if self.isPtr else self.getIRType()) # TODO: Confirm if this changes data layout
+                if LoadDataType is None:
+                    LoadDataType = llvmir.IntType(32) if self.isPtr else self.getIRType()
+                
+                # Load the base register
+                IRVal = IRBuilder.load(IRRegs[self.reg], typ=LoadDataType) # TODO: Confirm if this changes data layout
+
+                # Apply swizzle modifier for pointer/index operands (e.g., R5.X4)
+                if self.swizzle is not None:
+                    if isinstance(IRVal.type, llvmir.IntType):
+                        if self.swizzle <= 0 or (self.swizzle & (self.swizzle - 1)) != 0:
+                            raise InvalidSyntaxException
+                        shift_amt = int(math.log2(self.swizzle))
+                        IRVal = IRBuilder.shl(IRVal, llvmir.Constant(llvmir.IntType(32), shift_amt), name="swzl_shl")
+                    else:
+                        raise NotImplementedError("Swizzle on non-integer IR type not supported in IRReg_Load")
                 
                 
                 # TODO: test - place barriers to prevent load reordering
@@ -260,23 +434,38 @@ class Operand:
                 print(self.ins, self)
                 raise InvalidSyntaxException
             if self.isPtr:
-                # we need to load the adjacent register, then r6.Val << 32 | r5.Val
+                # Detect 32-bit address space based on instruction opcode
+                # Shared (LDS, STS) and Local (LDL, STL) instructions use 32-bit offsets,
+                # NOT 64-bit register pairs.
+                op = self.ins.opcode.upper()
+                
+                is_32bit_addr = any(op.startswith(prefix) for prefix in 
+                                    ["LDS", "STS", "LDL", "STL"])
+                
                 match = re.search(r"^(U?R)(\d+)$", self.getRegName())
                 if match:
-                    adjRegName = match.group(1)
-                    adjRegNumber = int(match.group(2)) + 1
-                    adjRegName = adjRegName + str(adjRegNumber)
-                    
+                    # Always zero-extend the base register to 64-bit (offset is always 64-bit compatible)
                     IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
-                    if adjRegName in IRRegs:
-                        adjIRReg = IRRegs[adjRegName]
-                        adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32) if self.isPtr else self.getIRType())
-                    else:
-                        adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
-                    adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext") # TODO might not work as expected for ptr or float
-                    adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
-                    IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
-                    IRVal = IRBuilder.inttoptr(IRVal, llvmir.PointerType())
+                    
+                    # Only load the adjacent high-bits register if this is NOT a Shared/Local op
+                    if not is_32bit_addr:
+                        adjRegName = match.group(1)
+                        adjRegNumber = int(match.group(2)) + 1
+                        adjRegName = adjRegName + str(adjRegNumber)
+                        
+                        IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
+                        
+                        if adjRegName in IRRegs:
+                            adjIRReg = IRRegs[adjRegName]
+                            adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32))
+                        else:
+                            adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                        
+                        adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext")
+                        adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
+                        IRVal = IRBuilder.or_(adjIRVal, IRVal, "or")
+                    
+                    # We return the 64-bit integer directly.
                 else:
                     raise InvalidSyntaxException
         else:
@@ -333,6 +522,13 @@ class Operand:
 
         # Don't handle .reuse optimization
         content =  content.replace(".reuse", "")
+
+        # Extract swizzle modifier like .X4 and remove from content for further parsing
+        swz_match = re.search(r"\.X(\d+)", content)
+        if swz_match:
+            self.swizzle = int(swz_match.group(1))
+            # strip the swizzle token from the content so later parsing is simpler
+            content = content.replace(f".X{self.swizzle}", "")
 
         # Branch Label:  @!P1 BRA `(.L_x_12) ;
         if content.startswith("`"):

@@ -197,6 +197,29 @@ class PTXTestRunner:
                     drv.memcpy_htod(dptr, h)
                     device_args.append(dptr)
                     host_buffers[a["name"]] = h
+                elif base == "int":
+                    h = np.zeros(size, dtype=np.int32)
+                    init = a.get("init", "zeros")
+                    if init == "random":
+                        seed = a.get("rng_seed", None)
+                        rng = np.random.default_rng(seed)
+                        lo, hi = a.get("range", [-1, 1])
+                        h[:] = rng.integers(lo, hi + 1, size, dtype=np.int32)
+                    elif init == "zeros":
+                        pass
+                    elif init == "ones":
+                        h[:] = 1
+                    elif isinstance(init, list):
+                        arr = np.array(init, dtype=np.int32)
+                        if arr.size != size:
+                            raise ValueError("init list length mismatch")
+                        h[:] = arr
+                    else:
+                        raise ValueError(f"Unknown init {init}")
+                    dptr = drv.mem_alloc(h.nbytes)
+                    drv.memcpy_htod(dptr, h)
+                    device_args.append(dptr)
+                    host_buffers[a["name"]] = h
                 else:
                     raise NotImplementedError(f"Unsupported pointer base type: {base}")
             else:
@@ -231,7 +254,13 @@ class PTXTestRunner:
                     out[name] = arr
                     if a.get("output", False):
                         func_results.append(arr)
-                    
+                elif base == "int":
+                    arr = np.empty(size, dtype=np.int32)
+                    dptr = device_args[di]
+                    drv.memcpy_dtoh(arr, dptr)
+                    out[name] = arr
+                    if a.get("output", False):
+                        func_results.append(arr)
                 else:
                     raise NotImplementedError
                 di += 1
@@ -357,6 +386,13 @@ class PTXTestRunner:
                         d = drv.mem_alloc(h.nbytes)
                         drv.memcpy_htod(d, h)
                         bm_device_args.append(d)
+                    elif base == "int":
+                        h = host_inputs.get(a["name"])
+                        if h is None:
+                            h = np.zeros(size, dtype=np.int32)
+                        d = drv.mem_alloc(h.nbytes)
+                        drv.memcpy_htod(d, h)
+                        bm_device_args.append(d)
                     else:
                         raise NotImplementedError("benchmark pointer base type not supported")
                 else:
@@ -376,8 +412,14 @@ class PTXTestRunner:
                 if a["type"].endswith("*"):
                     name = f"arg_{i}_{a['name']}"
                     size = int(a["size"])
-                    arr = np.empty(size, dtype=np.float32)
-                    drv.memcpy_dtoh(arr, bm_device_args[di])
+                    if base == "float":
+                        arr = np.empty(size, dtype=np.float32)
+                        drv.memcpy_dtoh(arr, bm_device_args[di])
+                    elif base == "int":
+                        arr = np.empty(size, dtype=np.int32)
+                        drv.memcpy_dtoh(arr, bm_device_args[di])
+                    else:
+                        raise NotImplementedError
                     bm_outs[name] = arr
                     if a.get("output", False):
                         bm_arr.append(arr)

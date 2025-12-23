@@ -69,45 +69,121 @@ tests:
       block_x: [64, 256]
       rng_seed: [123, 999]
 
-  - name: fc_layer_benchmark_example
-    ptx_file: ../output/4_ptx/test_clang_llc.ptx
-    function: _Z8fc_layerPfS_S_S_ii
+  # - name: fc_layer_benchmark_example
+  #   ptx_file: ../output/4_ptx/test_lifted_llc.ptx
+  #   function: _Z8fc_layerPfS_S_S_ii
+  #   block: { x: 256 }
+  #   args:
+  #     - name: input
+  #       type: float*
+  #       size: 256
+  #       init: random
+  #       rng_seed: 777
+  #       range: [0, 20.0]
+  #     - name: weights
+  #       type: float*
+  #       size: 4096
+  #       init: random
+  #       rng_seed: 776
+  #       range: [0, 20.0]
+  #     - name: bias
+  #       type: float*
+  #       size: 16
+  #       init: random
+  #       rng_seed: 775
+  #       range: [0, 20.0]
+  #     - name: output
+  #       type: float*
+  #       size: 16
+  #       init: zeros
+  #       output: true
+  #     - name: size
+  #       type: int
+  #       value: 256
+  #     - name: output_size
+  #       type: int
+  #       value: 16
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/test_clang_llc.ptx
+  #       function: _Z8fc_layerPfS_S_S_ii
+  - name: memops_globalmem_benchmark_example
+    ptx_file: ../output/4_ptx/mem_ops_lifted_llc.ptx
+    function: _Z15globalMemKernelPKiPii
     block: { x: 256 }
     args:
-      - name: input
-        type: float*
+      - name: a
+        type: int*
         size: 256
         init: random
         rng_seed: 777
-        range: [0, 20.0]
-      - name: weights
-        type: float*
-        size: 4096
-        init: random
-        rng_seed: 776
-        range: [0, 20.0]
-      - name: bias
-        type: float*
-        size: 16
-        init: random
-        rng_seed: 775
-        range: [0, 20.0]
-      - name: output
-        type: float*
-        size: 16
+        range: [0, 15]
+      - name: c
+        type: int*
+        size: 256
         init: zeros
         output: true
-      - name: size
+      - name: n
         type: int
         value: 256
-      - name: output_size
-        type: int
-        value: 16
     verification:
       mode: benchmark_ptx
       tolerance:
         abs: 1e-5
         rel: 1e-6
       benchmark:
-        ptx_file: ../output/4_ptx/test_clang_llc.ptx
-        function: _Z8fc_layerPfS_S_S_ii
+        ptx_file: ../output/4_ptx/mem_ops_clang_llc.ptx
+        function: _Z15globalMemKernelPKiPii
+  - name: memops_localmem_benchmark_example
+    ptx_file: ../output/4_ptx/mem_ops_lifted_llc.ptx
+    function: _Z14localMemKernelPii
+    block: { x: 256 }
+    args:
+      - name: out
+        type: int*
+        size: 256
+        init: zeros
+        output: true
+      - name: n
+        type: int
+        value: 256
+    verification:
+      mode: benchmark_ptx
+      tolerance:
+        abs: 1e-5
+        rel: 1e-6
+      benchmark:
+        ptx_file: ../output/4_ptx/mem_ops_clang_llc.ptx
+        function: _Z14localMemKernelPii
+
+  - name: memops_sharedmem_benchmark_example
+    ptx_file: ../output/4_ptx/mem_ops_lifted_llc.ptx
+    function: _Z15sharedMemKernelPKiPii
+    block: { x: 256 }
+    args:
+      - name: in
+        type: int*
+        size: 256
+        init: random
+        rng_seed: 777
+        range: [0, 15]
+      - name: out
+        type: int*
+        size: 256
+        init: zeros
+        output: true
+      - name: n
+        type: int
+        value: 256
+    verification:
+      mode: benchmark_ptx
+      tolerance:
+        abs: 1e-5
+        rel: 1e-6
+      benchmark:
+        ptx_file: ../output/4_ptx/mem_ops_clang_llc.ptx
+        function: _Z15sharedMemKernelPKiPii

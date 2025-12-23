@@ -282,12 +282,4 @@ There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates d
 
 ==================== def_to_use ====================
 
-##### Type: Float32 #####
-Operand: R2; Instruction Addr: 0x00a0
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x0080
-
-****************************************
-
 ==================== use_to_def ====================

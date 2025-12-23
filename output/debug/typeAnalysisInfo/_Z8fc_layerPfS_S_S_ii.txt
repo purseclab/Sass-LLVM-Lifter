@@ -273,7 +273,7 @@ is_use: True
 kill_set: ['(0x00b0, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -4251,22 +4251,6 @@ Operand: R9; Instruction Addr: 0x0580
 Operand: R9; Instruction Addr: 0x0860
 Operand: R9; Instruction Addr: 0x09d0
 Operand: R9; Instruction Addr: 0x09d0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R2; Instruction Addr: 0x09e0
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x0970
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R2; Instruction Addr: 0x0a40
-
-##### Type: NOTYPE_PTR #####
-Operand: R2; Instruction Addr: 0x0a20
 
 ****************************************
 

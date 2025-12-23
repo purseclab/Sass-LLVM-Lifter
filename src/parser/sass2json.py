@@ -31,7 +31,7 @@ def parse_ins(ins_content):
 def parse_sass(file_content):
     functions = {}
     current_function = None
-    intializing_func = False
+    intializing_func = False # parse_sass is in the process of collecting function metadata
     current_block = None
 
     for line in file_content.splitlines():
@@ -45,6 +45,7 @@ def parse_sass(file_content):
             current_function = {
                 ".function_name": None,
                 ".section": None,
+                ".sectionflags": None,
                 ".sectioninfo": None,
                 ".align": None,
                 ".global": None,
@@ -60,7 +61,7 @@ def parse_sass(file_content):
             # is_parsing_function = True
         
         # Match the function info with .
-        func_info_pattern = re.compile(r'\s+\.(section|sectioninfo|align|global|type|size|weak|other)\s+(.*)')
+        func_info_pattern = re.compile(r'\s+\.(section|sectioninfo|sectionflags|align|global|type|size|weak|other)\s+(.*)')
         func_info_match = func_info_pattern.match(line)
         if func_info_match:
             if not intializing_func and current_function is None:
@@ -71,6 +72,7 @@ def parse_sass(file_content):
                 current_function = {
                     ".function_name": None,
                     ".section": None,
+                    ".sectionflags": None,
                     ".sectioninfo": None,
                     ".align": None,
                     ".global": None,
@@ -90,6 +92,8 @@ def parse_sass(file_content):
                 current_function[".section"] = value
             elif key == "sectioninfo":
                 current_function[".sectioninfo"] = value
+            elif key == "sectionflags":
+                current_function[".sectionflags"] = value
             elif key == "align":
                 current_function[".align"] = value
             elif key == "global":
@@ -104,7 +108,7 @@ def parse_sass(file_content):
                 current_function[".weak"] = value
             continue
         
-        # Match Funcanme
+        # Match Funcname
         func_label_pattern = re.compile(r'^([^:]+):$')
         func_label_match = func_label_pattern.match(line)
         if func_label_match and current_function[".function_name"] is None:
@@ -139,7 +143,7 @@ def parse_sass(file_content):
             
             continue
         
-        assert not intializing_func
+        assert not intializing_func,  "Check if there are keys in the function metadata not parsed"
         # note that .headerflags and .elftype will fall through the assertion above and thats fine, doesn't affect
         
         

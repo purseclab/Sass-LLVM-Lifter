@@ -612,7 +612,7 @@ is_use: True
 kill_set: ['(0x0180, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -2959,62 +2959,6 @@ There are two sections: 'def_to_use' and 'use_to_def'. The asterisks seperates d
 ==================== def_to_use ====================
 
 ##### Type: Float32 #####
-Operand: R14; Instruction Addr: 0x03b0
-
-##### Type: NOTYPE_PTR #####
-Operand: R14; Instruction Addr: 0x02f0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R16; Instruction Addr: 0x03e0
-
-##### Type: NOTYPE_PTR #####
-Operand: R16; Instruction Addr: 0x0320
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R18; Instruction Addr: 0x0400
-
-##### Type: NOTYPE_PTR #####
-Operand: R18; Instruction Addr: 0x0350
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R20; Instruction Addr: 0x0420
-
-##### Type: NOTYPE_PTR #####
-Operand: R20; Instruction Addr: 0x0370
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R6; Instruction Addr: 0x04f0
-
-##### Type: NOTYPE_PTR #####
-Operand: R6; Instruction Addr: 0x04d0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R6; Instruction Addr: 0x05c0
-
-##### Type: NOTYPE_PTR #####
-Operand: R6; Instruction Addr: 0x05a0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R14; Instruction Addr: 0x05d0
-
-##### Type: NOTYPE_PTR #####
-Operand: R14; Instruction Addr: 0x05b0
-
-****************************************
-
-##### Type: Float32 #####
 Operand: R12; Instruction Addr: 0x0160
 Operand: R12; Instruction Addr: 0x0420
 Operand: R12; Instruction Addr: 0x04f0
@@ -3022,14 +2966,6 @@ Operand: R12; Instruction Addr: 0x05d0
 
 ##### Type: Int32 #####
 Operand: R12; Instruction Addr: 0x00f0
-
-****************************************
-
-##### Type: Float32 #####
-Operand: R14; Instruction Addr: 0x05d0
-
-##### Type: Float32_PTR #####
-Operand: R14; Instruction Addr: 0x05b0
 
 ****************************************
 

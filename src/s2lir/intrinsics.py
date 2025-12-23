@@ -101,6 +101,22 @@ def nvvm_threadidx_x(module):
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
 
+def nvvm_threadidx_y(module):
+    
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.tid.y"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def nvvm_threadidx_z(module):
+    
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.tid.z"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
 def nvvm_blockdim_x(module):
     
     intrinsic_name = "llvm.nvvm.read.ptx.sreg.ntid.x"
@@ -112,6 +128,14 @@ def nvvm_blockdim_x(module):
 def nvvm_blockdim_y(module):
     
     intrinsic_name = "llvm.nvvm.read.ptx.sreg.ntid.y"
+    
+    intrinsic_type = ir.FunctionType(ir.IntType(32), [])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def nvvm_blockdim_z(module):
+    
+    intrinsic_name = "llvm.nvvm.read.ptx.sreg.ntid.z"
     
     intrinsic_type = ir.FunctionType(ir.IntType(32), [])
     
@@ -130,5 +154,12 @@ def llvm_uadd_with_overflow(module, size=32):
     intrinsic_name = f"llvm.uadd.with.overflow.i{size}"
     
     intrinsic_type = ir.FunctionType(ir.LiteralStructType([ir.IntType(size), ir.IntType(1)]), [ir.IntType(size), ir.IntType(size)])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def nvvm_barrier0(module):
+    intrinsic_name = f"llvm.nvvm.barrier0"
+    
+    intrinsic_type = ir.FunctionType(ir.VoidType(), [])
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
