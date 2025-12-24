@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <cuda.h>
 
-#define INPUT_SIZE 8
-#define OUTPUT_SIZE 1
-#define THREADS 1 // number of threads needed is dependent on the output_size. Every thread will go through each element in the input
+#define INPUT_SIZE 256
+#define OUTPUT_SIZE 256
+#define THREADS 256 // number of threads needed is dependent on the output_size. Every thread will go through each element in the input
 
 #define CHECK_CU(err) do { \
     CUresult res = (err); \
@@ -24,9 +24,24 @@ void prepare_input(void** h_inputs, int* num_inputs,
     int input_size = INPUT_SIZE;
     int output_size = OUTPUT_SIZE;
 
-    size_t input_bytes   = input_size * sizeof(float);
-    size_t weight_bytes  = input_size * output_size * sizeof(float);
-    size_t bias_bytes    = output_size * sizeof(float);
+    // The kernel reads past the end (Index 256). 
+    // We allocate extra space to catch this over-read safely.
+    int padding_elements = 0;
+    
+    // Allocate MORE than input_size implies
+    size_t input_bytes   = (input_size + padding_elements) * sizeof(float);
+    // The vectorizer might read past the end of the whole block.
+    // Allocate extra space to catch 'idx * input_size + 256'
+    size_t weight_elements = (input_size * output_size) + padding_elements;
+    size_t weight_bytes = weight_elements * sizeof(float);
+    
+    size_t bias_bytes = (output_size + padding_elements) * sizeof(float);
+
+    // size_t input_bytes   = input_size * sizeof(float);
+    // size_t weight_bytes  = input_size * output_size * sizeof(float);
+
+
+    // size_t bias_bytes    = output_size * sizeof(float);
     size_t output_bytes  = output_size * sizeof(float);
 
     float* h_input   = (float*)malloc(input_bytes);
@@ -37,12 +52,20 @@ void prepare_input(void** h_inputs, int* num_inputs,
     // Initialize input
     for (int i = 0; i < input_size; i++) h_input[i] = (float)(i + 1);
 
+    // Initialize padding to 0.0f so it doesn't affect math (just in case)
+    for (int i = input_size; i < input_size + padding_elements; i++) h_input[i] = 0.0f;
+
     // Initialize weights (row-major: output × input)
     for (int i = 0; i < output_size * input_size; i++)
         h_weights[i] = 0.01f * (float)(i + 1);
 
+    // zero out weight padding
+    for (int i = output_size * input_size; i < weight_elements; i++) 
+        h_weights[i] = 0.0f;
+
     // Initialize biases
     for (int i = 0; i < output_size; i++) h_bias[i] = 1.0f;
+    for (int i = output_size; i < output_size + padding_elements; i++) h_bias[i] = 0.0f;
 
     // Zero output
     for (int i = 0; i < output_size; i++) h_output[i] = 0.0f;
