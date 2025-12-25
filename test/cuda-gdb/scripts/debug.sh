@@ -54,5 +54,5 @@ cuda-gdb ./test_exec \
     # -ex "source scripts/gdb_print_at_bp.gdb"
 
 # Pre-screening with compute-sanitizer
-compute-sanitizer ./test_exec
+compute-sanitizer --tool memcheck ./test_exec
 # rm test_exec
