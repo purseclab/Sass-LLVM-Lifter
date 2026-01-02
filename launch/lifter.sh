@@ -7,6 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CONFIG_FILE="$SCRIPT_DIR/../launch/config.json"
 
 LLVM_OUTPUT=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
+LLVM_RAW_OUTPUT="${LLVM_OUTPUT%.ll}_raw.ll"
 LLC_OUTPUT="${LLVM_OUTPUT%.ll}_lifted_llc.ptx"
 
 LLC_OUTPUT_DIR="$SCRIPT_DIR/../output/4_ptx"
@@ -24,6 +25,10 @@ export LLVMLITE_ENABLE_OPAQUE_POINTERS=1
 
 
 python3 main.py
+
+# simplify the RAW LLVM IR Output we produced
+mv "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}"
+opt-20 -passes="simplifycfg,mem2reg,dce,loop-load-elim,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}" -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}"
 
 # generate ptx from .ll using llc
 

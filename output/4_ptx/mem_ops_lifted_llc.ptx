@@ -20,6 +20,7 @@
 	.reg .b32 	%r<34>;
 
 // %bb.0:                               // %entry
+	mov.b32 	%r33, -1;
 	ld.param.u32 	%r17, [custom_lop3_param_3];
 	ld.param.u32 	%r16, [custom_lop3_param_2];
 	ld.param.u32 	%r15, [custom_lop3_param_1];
@@ -99,12 +100,12 @@
 	brx.idx 	%r14, $L_brx_0;
 $L__BB0_10:                             // %block_0x0
 	mov.b32 	%r33, 0;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_5:                              // %entry
-	add.s32 	%r19, %r14, -248;
-	setp.gt.u32 	%p3, %r19, 7;
+	add.s32 	%r20, %r14, -248;
+	setp.gt.u32 	%p3, %r20, 7;
 	@%p3 bra 	$L__BB0_6;
-// %bb.23:                              // %entry
+// %bb.22:                              // %entry
 	$L_brx_1: .branchtargets
 		$L__BB0_21,
 		$L__BB0_8,
@@ -114,12 +115,12 @@ $L__BB0_5:                              // %entry
 		$L__BB0_8,
 		$L__BB0_12,
 		$L__BB0_13;
-	brx.idx 	%r19, $L_brx_1;
+	brx.idx 	%r20, $L_brx_1;
 $L__BB0_21:                             // %block_0xf8
-	or.b32  	%r20, %r15, %r16;
-	or.b32  	%r21, %r15, %r17;
-	and.b32  	%r33, %r20, %r21;
-	bra.uni 	$L__BB0_22;
+	or.b32  	%r21, %r15, %r16;
+	or.b32  	%r22, %r15, %r17;
+	and.b32  	%r33, %r21, %r22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_6:                              // %entry
 	setp.eq.s32 	%p4, %r14, 128;
 	@%p4 bra 	$L__BB0_9;
@@ -129,55 +130,52 @@ $L__BB0_6:                              // %entry
 	bra.uni 	$L__BB0_8;
 $L__BB0_16:                             // %block_0xc0
 	and.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_13:                             // %block_0xff
 	mov.b32 	%r33, 1;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_20:                             // %block_0xfc
 	or.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_12:                             // %block_0xfe
-	or.b32  	%r27, %r15, %r16;
-	or.b32  	%r33, %r27, %r17;
-	bra.uni 	$L__BB0_22;
+	or.b32  	%r28, %r15, %r16;
+	or.b32  	%r33, %r28, %r17;
+	bra.uni 	$L__BB0_8;
 $L__BB0_2:                              // %entry
 	setp.eq.s32 	%p6, %r14, 85;
 	@%p6 bra 	$L__BB0_3;
 	bra.uni 	$L__BB0_8;
 $L__BB0_3:                              // %block_0x55
 	not.b32 	%r33, %r17;
-	bra.uni 	$L__BB0_22;
-$L__BB0_8:                              // %default
-	mov.b32 	%r33, -1;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_9:                              // %block_0x80
-	and.b32  	%r31, %r15, %r16;
-	and.b32  	%r33, %r31, %r17;
-	bra.uni 	$L__BB0_22;
+	and.b32  	%r32, %r15, %r16;
+	and.b32  	%r33, %r32, %r17;
+	bra.uni 	$L__BB0_8;
 $L__BB0_11:                             // %block_0x40
-	and.b32  	%r28, %r15, %r16;
-	not.b32 	%r29, %r17;
-	and.b32  	%r33, %r28, %r29;
-	bra.uni 	$L__BB0_22;
+	and.b32  	%r29, %r15, %r16;
+	not.b32 	%r30, %r17;
+	and.b32  	%r33, %r29, %r30;
+	bra.uni 	$L__BB0_8;
 $L__BB0_18:                             // %block_0x3c
 	xor.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_14:                             // %block_0x1a
-	and.b32  	%r24, %r15, %r16;
-	or.b32  	%r25, %r24, %r17;
-	xor.b32  	%r33, %r25, %r15;
-	bra.uni 	$L__BB0_22;
+	and.b32  	%r25, %r15, %r16;
+	or.b32  	%r26, %r25, %r17;
+	xor.b32  	%r33, %r26, %r15;
+	bra.uni 	$L__BB0_8;
 $L__BB0_17:                             // %block_0x8
-	not.b32 	%r22, %r15;
-	and.b32  	%r23, %r22, %r16;
-	and.b32  	%r33, %r23, %r17;
-	bra.uni 	$L__BB0_22;
+	not.b32 	%r23, %r15;
+	and.b32  	%r24, %r23, %r16;
+	and.b32  	%r33, %r24, %r17;
+	bra.uni 	$L__BB0_8;
 $L__BB0_19:                             // %block_0xf
 	not.b32 	%r33, %r15;
-	bra.uni 	$L__BB0_22;
+	bra.uni 	$L__BB0_8;
 $L__BB0_15:                             // %block_0x33
 	not.b32 	%r33, %r16;
-$L__BB0_22:                             // %exit
+$L__BB0_8:                              // %exit
 	st.param.b32 	[func_retval0], %r33;
 	ret;
                                         // -- End function
@@ -194,6 +192,7 @@ $L__BB0_22:                             // %exit
 	.reg .b32 	%r<34>;
 
 // %bb.0:                               // %entry
+	mov.b32 	%r33, -1;
 	ld.param.u32 	%r17, [custom_plop3_param_3];
 	ld.param.u32 	%r16, [custom_plop3_param_2];
 	ld.param.u32 	%r15, [custom_plop3_param_1];
@@ -273,12 +272,12 @@ $L__BB0_22:                             // %exit
 	brx.idx 	%r14, $L_brx_0;
 $L__BB1_10:                             // %block_0x0
 	mov.b32 	%r33, 0;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_5:                              // %entry
-	add.s32 	%r19, %r14, -248;
-	setp.gt.u32 	%p3, %r19, 7;
+	add.s32 	%r20, %r14, -248;
+	setp.gt.u32 	%p3, %r20, 7;
 	@%p3 bra 	$L__BB1_6;
-// %bb.23:                              // %entry
+// %bb.22:                              // %entry
 	$L_brx_1: .branchtargets
 		$L__BB1_21,
 		$L__BB1_8,
@@ -288,12 +287,12 @@ $L__BB1_5:                              // %entry
 		$L__BB1_8,
 		$L__BB1_12,
 		$L__BB1_13;
-	brx.idx 	%r19, $L_brx_1;
+	brx.idx 	%r20, $L_brx_1;
 $L__BB1_21:                             // %block_0xf8
-	or.b32  	%r20, %r15, %r16;
-	or.b32  	%r21, %r15, %r17;
-	and.b32  	%r33, %r20, %r21;
-	bra.uni 	$L__BB1_22;
+	or.b32  	%r21, %r15, %r16;
+	or.b32  	%r22, %r15, %r17;
+	and.b32  	%r33, %r21, %r22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_6:                              // %entry
 	setp.eq.s32 	%p4, %r14, 128;
 	@%p4 bra 	$L__BB1_9;
@@ -303,55 +302,52 @@ $L__BB1_6:                              // %entry
 	bra.uni 	$L__BB1_8;
 $L__BB1_16:                             // %block_0xc0
 	and.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_13:                             // %block_0xff
 	mov.b32 	%r33, 1;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_20:                             // %block_0xfc
 	or.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_12:                             // %block_0xfe
-	or.b32  	%r27, %r15, %r16;
-	or.b32  	%r33, %r27, %r17;
-	bra.uni 	$L__BB1_22;
+	or.b32  	%r28, %r15, %r16;
+	or.b32  	%r33, %r28, %r17;
+	bra.uni 	$L__BB1_8;
 $L__BB1_2:                              // %entry
 	setp.eq.s32 	%p6, %r14, 85;
 	@%p6 bra 	$L__BB1_3;
 	bra.uni 	$L__BB1_8;
 $L__BB1_3:                              // %block_0x55
 	xor.b32  	%r33, %r17, 1;
-	bra.uni 	$L__BB1_22;
-$L__BB1_8:                              // %default
-	mov.b32 	%r33, -1;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_9:                              // %block_0x80
-	and.b32  	%r31, %r15, %r16;
-	and.b32  	%r33, %r31, %r17;
-	bra.uni 	$L__BB1_22;
+	and.b32  	%r32, %r15, %r16;
+	and.b32  	%r33, %r32, %r17;
+	bra.uni 	$L__BB1_8;
 $L__BB1_11:                             // %block_0x40
-	and.b32  	%r28, %r15, %r16;
-	xor.b32  	%r29, %r17, 1;
-	and.b32  	%r33, %r28, %r29;
-	bra.uni 	$L__BB1_22;
+	and.b32  	%r29, %r15, %r16;
+	xor.b32  	%r30, %r17, 1;
+	and.b32  	%r33, %r29, %r30;
+	bra.uni 	$L__BB1_8;
 $L__BB1_18:                             // %block_0x3c
 	xor.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_14:                             // %block_0x1a
-	and.b32  	%r24, %r15, %r16;
-	or.b32  	%r25, %r24, %r17;
-	xor.b32  	%r33, %r25, %r15;
-	bra.uni 	$L__BB1_22;
+	and.b32  	%r25, %r15, %r16;
+	or.b32  	%r26, %r25, %r17;
+	xor.b32  	%r33, %r26, %r15;
+	bra.uni 	$L__BB1_8;
 $L__BB1_17:                             // %block_0x8
-	xor.b32  	%r22, %r15, 1;
-	and.b32  	%r23, %r22, %r16;
-	and.b32  	%r33, %r23, %r17;
-	bra.uni 	$L__BB1_22;
+	xor.b32  	%r23, %r15, 1;
+	and.b32  	%r24, %r23, %r16;
+	and.b32  	%r33, %r24, %r17;
+	bra.uni 	$L__BB1_8;
 $L__BB1_19:                             // %block_0xf
 	xor.b32  	%r33, %r15, 1;
-	bra.uni 	$L__BB1_22;
+	bra.uni 	$L__BB1_8;
 $L__BB1_15:                             // %block_0x33
 	xor.b32  	%r33, %r16, 1;
-$L__BB1_22:                             // %exit
+$L__BB1_8:                              // %exit
 	st.param.b32 	[func_retval0], %r33;
 	ret;
                                         // -- End function
@@ -368,6 +364,7 @@ $L__BB1_22:                             // %exit
 	.reg .b32 	%r<34>;
 
 // %bb.0:                               // %entry
+	mov.b32 	%r33, -1;
 	ld.param.u32 	%r17, [custom_ulop3_param_3];
 	ld.param.u32 	%r16, [custom_ulop3_param_2];
 	ld.param.u32 	%r15, [custom_ulop3_param_1];
@@ -447,12 +444,12 @@ $L__BB1_22:                             // %exit
 	brx.idx 	%r14, $L_brx_0;
 $L__BB2_10:                             // %block_0x0
 	mov.b32 	%r33, 0;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_5:                              // %entry
-	add.s32 	%r19, %r14, -248;
-	setp.gt.u32 	%p3, %r19, 7;
+	add.s32 	%r20, %r14, -248;
+	setp.gt.u32 	%p3, %r20, 7;
 	@%p3 bra 	$L__BB2_6;
-// %bb.23:                              // %entry
+// %bb.22:                              // %entry
 	$L_brx_1: .branchtargets
 		$L__BB2_21,
 		$L__BB2_8,
@@ -462,12 +459,12 @@ $L__BB2_5:                              // %entry
 		$L__BB2_8,
 		$L__BB2_12,
 		$L__BB2_13;
-	brx.idx 	%r19, $L_brx_1;
+	brx.idx 	%r20, $L_brx_1;
 $L__BB2_21:                             // %block_0xf8
-	or.b32  	%r20, %r15, %r16;
-	or.b32  	%r21, %r15, %r17;
-	and.b32  	%r33, %r20, %r21;
-	bra.uni 	$L__BB2_22;
+	or.b32  	%r21, %r15, %r16;
+	or.b32  	%r22, %r15, %r17;
+	and.b32  	%r33, %r21, %r22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_6:                              // %entry
 	setp.eq.s32 	%p4, %r14, 128;
 	@%p4 bra 	$L__BB2_9;
@@ -477,55 +474,52 @@ $L__BB2_6:                              // %entry
 	bra.uni 	$L__BB2_8;
 $L__BB2_16:                             // %block_0xc0
 	and.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_13:                             // %block_0xff
 	mov.b32 	%r33, 1;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_20:                             // %block_0xfc
 	or.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_12:                             // %block_0xfe
-	or.b32  	%r27, %r15, %r16;
-	or.b32  	%r33, %r27, %r17;
-	bra.uni 	$L__BB2_22;
+	or.b32  	%r28, %r15, %r16;
+	or.b32  	%r33, %r28, %r17;
+	bra.uni 	$L__BB2_8;
 $L__BB2_2:                              // %entry
 	setp.eq.s32 	%p6, %r14, 85;
 	@%p6 bra 	$L__BB2_3;
 	bra.uni 	$L__BB2_8;
 $L__BB2_3:                              // %block_0x55
 	not.b32 	%r33, %r17;
-	bra.uni 	$L__BB2_22;
-$L__BB2_8:                              // %default
-	mov.b32 	%r33, -1;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_9:                              // %block_0x80
-	and.b32  	%r31, %r15, %r16;
-	and.b32  	%r33, %r31, %r17;
-	bra.uni 	$L__BB2_22;
+	and.b32  	%r32, %r15, %r16;
+	and.b32  	%r33, %r32, %r17;
+	bra.uni 	$L__BB2_8;
 $L__BB2_11:                             // %block_0x40
-	and.b32  	%r28, %r15, %r16;
-	not.b32 	%r29, %r17;
-	and.b32  	%r33, %r28, %r29;
-	bra.uni 	$L__BB2_22;
+	and.b32  	%r29, %r15, %r16;
+	not.b32 	%r30, %r17;
+	and.b32  	%r33, %r29, %r30;
+	bra.uni 	$L__BB2_8;
 $L__BB2_18:                             // %block_0x3c
 	xor.b32  	%r33, %r15, %r16;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_14:                             // %block_0x1a
-	and.b32  	%r24, %r15, %r16;
-	or.b32  	%r25, %r24, %r17;
-	xor.b32  	%r33, %r25, %r15;
-	bra.uni 	$L__BB2_22;
+	and.b32  	%r25, %r15, %r16;
+	or.b32  	%r26, %r25, %r17;
+	xor.b32  	%r33, %r26, %r15;
+	bra.uni 	$L__BB2_8;
 $L__BB2_17:                             // %block_0x8
-	not.b32 	%r22, %r15;
-	and.b32  	%r23, %r22, %r16;
-	and.b32  	%r33, %r23, %r17;
-	bra.uni 	$L__BB2_22;
+	not.b32 	%r23, %r15;
+	and.b32  	%r24, %r23, %r16;
+	and.b32  	%r33, %r24, %r17;
+	bra.uni 	$L__BB2_8;
 $L__BB2_19:                             // %block_0xf
 	not.b32 	%r33, %r15;
-	bra.uni 	$L__BB2_22;
+	bra.uni 	$L__BB2_8;
 $L__BB2_15:                             // %block_0x33
 	not.b32 	%r33, %r16;
-$L__BB2_22:                             // %exit
+$L__BB2_8:                              // %exit
 	st.param.b32 	[func_retval0], %r33;
 	ret;
                                         // -- End function
@@ -589,7 +583,7 @@ $L__BB3_2:                              // %ExitFunction
 	cvt.u64.u32 	%rd5, %r11;
 	add.s64 	%rd7, %rd13, %rd5;
 	st.shared.u32 	[%rd7], %r7;
-$L__BB4_2:                              // %.L_x_2
+$L__BB4_2:                              // %.L_x_1
 	bar.sync 	0;
 	@%p1 bra 	$L__BB4_4;
 // %bb.3:                               // %.L_x_1_split_0x0100
