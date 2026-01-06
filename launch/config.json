@@ -8,5 +8,6 @@
         "select_cubin": "mem_ops.2.sm_75.cubin"
     },
     "allow_temp_behavior": false,
-    "allow_incomplete_type_analysis": false
+    "allow_incomplete_type_analysis": false,
+    "opaque_pointers": true
 }
