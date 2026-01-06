@@ -2,6 +2,9 @@
 
 set -e
 
+SCRIPT_DIR="$(split_dir=$(dirname "${BASH_SOURCE[0]}") && cd "$split_dir" && pwd)"
+PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)") # depending on where docker.sh is (symlinked) at, this var will be different
+
 cd ..
 
 # Generate .ll from .cu using clang
@@ -15,11 +18,9 @@ docker run -v "$(pwd):/app" --name my-clang-llgen clang-llgen:latest
 # Remove existing container if exists (optional)
 docker rm -f my-sass-lifter || true
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)") # depending on where docker.sh is (symlinked) at, this var will be different
 
 # Read config.json
-CONFIG_FILE="$SCRIPT_DIR/$PARENT_FOLDER_NAME/config.json"
+CONFIG_FILE="$SCRIPT_DIR/config.json"
 
 OPAQUE=$(jq -r 'if .opaque_pointers == null then true else .opaque_pointers end' "$CONFIG_FILE")
 
