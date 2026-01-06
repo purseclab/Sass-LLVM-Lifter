@@ -3,8 +3,9 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)") # depending on where docker.sh is (symlinked) at, this var will be different; export so that the python scripts can see this var
 # Read config.json
-CONFIG_FILE="$SCRIPT_DIR/../launch/config.json"
+CONFIG_FILE="$SCRIPT_DIR/../$PARENT_FOLDER_NAME/config.json"
 
 LLVM_OUTPUT=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
 LLVM_RAW_OUTPUT="${LLVM_OUTPUT%.ll}_raw.ll"

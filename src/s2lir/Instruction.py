@@ -11,6 +11,7 @@ from s2lir.intrinsics import *
 from s2lir.helper import *
 import typing
 import re
+import os
 
 current_dir = Path(__file__).parent
 
@@ -39,7 +40,8 @@ class Instruction:
         self.branch_target : BasicBlock = None
 
         self.BB: 'BasicBlock' = BB
-        config_path = current_dir / "../.." / "launch" / "config.json"
+        config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+        config_path = current_dir / "../.." / config_folder_name / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)

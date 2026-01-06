@@ -64,4 +64,8 @@ RUN ln -s /usr/bin/llvm-cxxfilt-${LLVM_VERSION} /usr/bin/llvm-cxxfilt && \
     ln -s /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang
 
 # CMD ["sh", "-c", "ls -al && pwd && tree /app && nvcc --version && cuobjdump --version"]
-CMD ["sh", "-c", "cd launch && ./lifter.sh"]
+ARG LIFTER_FOLDER
+# transfer ARG to ENV so that CMD can see it
+ENV LIFTER_FOLDER=${LIFTER_FOLDER}
+
+CMD ["sh", "-c", "cd ${LIFTER_FOLDER} && ./lifter.sh"]

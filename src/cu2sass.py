@@ -62,7 +62,8 @@ def disassemble_cubin(cubin_file, output_sass_file):
 def main():
     project_root = (current_dir / "..").resolve()
     
-    config_path = current_dir / ".." / "launch" / "config.json"
+    config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+    config_path = current_dir / ".." / config_folder_name / "config.json"
     
     with open(config_path.resolve(), 'r') as file:
         data = json.load(file)

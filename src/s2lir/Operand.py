@@ -5,6 +5,7 @@ from s2lir.intrinsics import *
 import re
 import math
 import typing
+import os
 
 if typing.TYPE_CHECKING:
     from s2lir.Instruction import Instruction
@@ -94,7 +95,8 @@ class Operand:
         
         self.llvm_module = None
         
-        config_path = current_dir / "../.." / "launch" / "config.json"
+        config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+        config_path = current_dir / "../.." / config_folder_name / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)

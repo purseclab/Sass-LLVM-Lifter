@@ -6,6 +6,7 @@ from passes.ReachingDefinitionsAnalysis import ReachingDefinitionsAnalysis
 from pathlib import Path
 import json
 from llvmlite import ir as llvmir
+import os
 
 from enum import Enum
 
@@ -84,8 +85,9 @@ class TypeAnalysis:
         
         current_dir = Path(__file__).parent
         self.project_root = (current_dir / "../..").resolve()
-    
-        config_path = self.project_root / "launch" / "config.json"
+
+        config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+        config_path = self.project_root / config_folder_name / "config.json"
         
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
