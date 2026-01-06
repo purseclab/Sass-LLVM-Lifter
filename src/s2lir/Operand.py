@@ -307,6 +307,8 @@ class Operand:
                     return llvmir.Constant(llvmir.IntType(32), 0)
                 elif self.getTypeDesc() == "NOTYPE":
                     return llvmir.Constant(llvmir.IntType(32), 0)
+                elif self.getTypeDesc() == "Bool":
+                    return llvmir.Constant(llvmir.IntType(1), 0)
                 raise Exception(f"Invalid TypeDesc: {self.getTypeDesc()}")
 
             # IRVal = IRRegs[self.getIRRegName()]
@@ -686,7 +688,23 @@ class Operand:
             elif self.typeDesc == "Void":
                 self.IRType = llvmir.VoidType()
             elif "_PTR" in self.typeDesc:
-                self.IRType = llvmir.PointerType()
+                if not self.config.get("opaque_pointers", True):
+                    # Create a pointer to the appropriate pointee type instead of
+                    # an untyped/opaque pointer. Examples: Float32_PTR -> float*
+                    if self.typeDesc.startswith("Float32"):
+                        pointee = llvmir.FloatType()
+                    elif self.typeDesc.startswith("Int32"):
+                        pointee = llvmir.IntType(32)
+                    elif self.typeDesc.startswith("Bool"):
+                        pointee = llvmir.IntType(1)
+                    elif self.typeDesc.startswith("Void"):
+                        pointee = llvmir.VoidType()
+                    else:
+                        # Default to 32-bit int for unknown pointees
+                        pointee = llvmir.IntType(32)
+                    self.IRType = llvmir.PointerType(pointee)
+                else:
+                    self.IRType = llvmir.PointerType()
             else:
                 return llvmir.IntType(32)
 

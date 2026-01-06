@@ -18,7 +18,15 @@ CUBIN_OUTPUT_NAME="${LLVM_OUTPUT%.ll}_lifted.cubin"
 
 cd "$SCRIPT_DIR/../src"
 python3 cu2sass.py
-export LLVMLITE_ENABLE_OPAQUE_POINTERS=1
+
+OPAQUE=$(jq -r 'if .opaque_pointers == null then true else .opaque_pointers end' "$CONFIG_FILE")
+
+if [ "$OPAQUE" = "true" ]; then
+    # SHOULD also install llvm 20
+    export LLVMLITE_ENABLE_OPAQUE_POINTERS=1
+else
+    export LLVMLITE_ENABLE_OPAQUE_POINTERS=0
+fi
 
 
 
@@ -28,7 +36,7 @@ python3 main.py
 
 # simplify the RAW LLVM IR Output we produced
 mv "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}"
-opt-20 -passes="simplifycfg,mem2reg,dce,loop-load-elim,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}" -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}"
+opt -passes="simplifycfg,mem2reg,dce,loop-load-elim,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}" -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}"
 
 # generate ptx from .ll using llc
 
@@ -40,7 +48,7 @@ then
 fi
 
 
-llc-20 -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$LLC_OUTPUT_FULLDIR"
+llc -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$LLC_OUTPUT_FULLDIR"
 # compile ptx into cubin, and then open the file in Nsight
 # https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
 nvcc -cubin -g -G -arch=sm_75  $LLC_OUTPUT_FULLDIR -o "$CUBIN_OUTPUT_DIR/$CUBIN_OUTPUT_NAME"

@@ -52,7 +52,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean
 
 # assumes clang 20.1.7
-RUN ./llvm.sh 20
+ARG LLVM_VERSION
+RUN ./llvm.sh ${LLVM_VERSION}
+
+RUN ln -s /usr/bin/llvm-cxxfilt-${LLVM_VERSION} /usr/bin/llvm-cxxfilt && \
+    ln -s /usr/bin/llvm-config-${LLVM_VERSION} /usr/bin/llvm-config && \
+    ln -s /usr/bin/llvm-dis-${LLVM_VERSION} /usr/bin/llvm-dis && \
+    ln -s /usr/bin/llvm-as-${LLVM_VERSION} /usr/bin/llvm-as && \
+    ln -s /usr/bin/opt-${LLVM_VERSION} /usr/bin/opt && \
+    ln -s /usr/bin/llc-${LLVM_VERSION} /usr/bin/llc && \
+    ln -s /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang
 
 # CMD ["sh", "-c", "ls -al && pwd && tree /app && nvcc --version && cuobjdump --version"]
 CMD ["sh", "-c", "cd launch && ./lifter.sh"]

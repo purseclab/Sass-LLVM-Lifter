@@ -890,7 +890,7 @@ class Instruction:
             # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
             PReg = self.operands[5]
             
-            assert len(self.operands) == 6
+            assert len(self.operands) == 6 or len(self.operands) == 7 # TODO investigate what the last operand does for "LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT"
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)

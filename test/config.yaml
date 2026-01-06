@@ -68,7 +68,49 @@ tests:
       sizes: [1024, 8192]
       block_x: [64, 256]
       rng_seed: [123, 999]
-
+  # - name: fc_layer_benchmark_example
+  #   ptx_file: ../output/4_ptx/test_lifted_llc.ptx
+  #   function: _Z8fc_layerPfS_S_S_ii
+  #   grid: { x: 8 }
+  #   block: { x: 32 }
+  #   args:
+  #     - name: input
+  #       type: float*
+  #       size: 272 # intended 256 (padding -- prob from overread)
+  #       init: random
+  #       rng_seed: 777
+  #       range: [0, 20.0]
+  #     - name: weights
+  #       type: float*
+  #       size: 73984 # intended 256^2=65536
+  #       init: random
+  #       rng_seed: 776
+  #       range: [0, 20.0]
+  #     - name: bias
+  #       type: float*
+  #       size: 272 # intended 256
+  #       init: random
+  #       rng_seed: 775
+  #       range: [0, 20.0]
+  #     - name: output
+  #       type: float*
+  #       size: 256
+  #       init: zeros
+  #       output: true
+  #     - name: input_size
+  #       type: int
+  #       value: 257
+  #     - name: output_size
+  #       type: int
+  #       value: 256
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/test_clang_llc.ptx
+  #       function: _Z8fc_layerPfS_S_S_ii
   - name: fc_layer_simple_benchmark_example
     ptx_file: ../output/4_ptx/test_lifted_llc.ptx
     function: _Z15fc_layer_simplePfS_S_S_ii
@@ -82,19 +124,19 @@ tests:
         range: [0, 20.0]
       - name: weights
         type: float*
-        size: 4096
+        size: 65536 # 256^2
         init: random
         rng_seed: 776
         range: [0, 20.0]
       - name: bias
         type: float*
-        size: 16
+        size: 256
         init: random
         rng_seed: 775
         range: [0, 20.0]
       - name: output
         type: float*
-        size: 16
+        size: 256
         init: zeros
         output: true
       - name: size
@@ -102,7 +144,7 @@ tests:
         value: 256
       - name: output_size
         type: int
-        value: 16
+        value: 256
     verification:
       mode: benchmark_ptx
       tolerance:
