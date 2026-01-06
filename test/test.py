@@ -103,7 +103,10 @@ if args.run_lifter:
 
         # Run with current config first (if present)
         print("Running docker with current launch/config.json (if present)")
-        _run_docker_in_launch()
+        code = _run_docker_in_launch()
+        if code != 0:
+            print(f"docker.sh exited with code {code}")
+            exit(code)
 
         # Iterate over files in configs_dir
         entries = sorted(os.listdir(configs_dir))
@@ -124,6 +127,7 @@ if args.run_lifter:
             code = _run_docker_in_launch()
             if code != 0:
                 print(f"docker.sh exited with code {code} for config {ent}")
+                exit(code)
 
         # Restore original
         if original is not None:
