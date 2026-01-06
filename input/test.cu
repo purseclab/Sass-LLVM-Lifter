@@ -105,14 +105,9 @@ __global__ void fc_layer_simple(float *input, float *weights, float *bias,
     if (idx >= output_size) return;
 
     float sum = 0.0f;
-    int i = 0;
-    
-    sum += input[i] * weights[idx * input_size + i];
-    i++;
-    sum += input[i] * weights[idx * input_size + i];
-    i++;
-    sum += input[i] * weights[idx * input_size + i];
-    
+    for (int i = 0; i < input_size - 1; ++i) {
+        sum += input[i] * weights[idx * input_size + i];
+    }
     sum += bias[idx];
     output[idx] = sum;
 }

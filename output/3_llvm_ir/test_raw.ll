@@ -191,49 +191,55 @@ define ptx_kernel void @"_Z15fc_layer_simplePfS_S_S_ii"(ptr %"Arg_0", ptr %"Arg_
 {
 Entry_.text._Z15fc_layer_simplePfS_S_S_ii:
   %"R1" = alloca i32, i32 1
-  %"R6" = alloca i32, i32 1
+  %"R0" = alloca i32, i32 1
   %"R3" = alloca i32, i32 1
   %"P0" = alloca i1, i32 1
   %"PT" = alloca i1, i32 1
-  %"R13" = alloca i32, i32 1
-  %"R2" = alloca i32, i32 1
-  %"RZ" = alloca i32, i32 1
-  %"UR4" = alloca i32, i32 1
-  %"R7" = alloca i32, i32 1
-  %"R8" = alloca i32, i32 1
   %"R4" = alloca i32, i32 1
-  %"R10" = alloca i32, i32 1
-  %"R0" = alloca i32, i32 1
+  %"R7" = alloca i32, i32 1
+  %"RZ" = alloca i32, i32 1
+  %"R2" = alloca i32, i32 1
+  %"R5" = alloca i32, i32 1
+  %"R6" = alloca i32, i32 1
+  %"UR4" = alloca i32, i32 1
+  %"R8" = alloca i32, i32 1
+  %"P1" = alloca i1, i32 1
   %"R9" = alloca i32, i32 1
   %"R11" = alloca i32, i32 1
-  %"R5" = alloca i32, i32 1
+  %"R10" = alloca i32, i32 1
+  %"R13" = alloca i32, i32 1
   %"R12" = alloca i32, i32 1
-  %"R14" = alloca i32, i32 1
   %"R15" = alloca i32, i32 1
-  %"R16" = alloca i32, i32 1
+  %"R14" = alloca i32, i32 1
   %"R17" = alloca i32, i32 1
-  %"R18" = alloca i32, i32 1
+  %"R16" = alloca i32, i32 1
   %"R19" = alloca i32, i32 1
-  %"R20" = alloca i32, i32 1
+  %"R18" = alloca i32, i32 1
   %"R21" = alloca i32, i32 1
-  %"R22" = alloca i32, i32 1
+  %"R20" = alloca i32, i32 1
   %"R23" = alloca i32, i32 1
-  %"R24" = alloca i32, i32 1
+  %"R22" = alloca i32, i32 1
   %"R25" = alloca i32, i32 1
-  %"R26" = alloca i32, i32 1
+  %"R24" = alloca i32, i32 1
   %"R27" = alloca i32, i32 1
-  %"R28" = alloca i32, i32 1
+  %"R26" = alloca i32, i32 1
   %"R29" = alloca i32, i32 1
-  %"R30" = alloca i32, i32 1
+  %"R28" = alloca i32, i32 1
   %"R31" = alloca i32, i32 1
-  %"R32" = alloca i32, i32 1
+  %"R30" = alloca i32, i32 1
   %"R33" = alloca i32, i32 1
-  %"R34" = alloca i32, i32 1
+  %"R32" = alloca i32, i32 1
   %"R35" = alloca i32, i32 1
-  %"R36" = alloca i32, i32 1
+  %"R34" = alloca i32, i32 1
   %"R37" = alloca i32, i32 1
-  %"R38" = alloca i32, i32 1
+  %"R36" = alloca i32, i32 1
   %"R39" = alloca i32, i32 1
+  %"R38" = alloca i32, i32 1
+  %"UP0" = alloca i1, i32 1
+  %"URZ" = alloca i32, i32 1
+  %"UR5" = alloca i32, i32 1
+  %"UPT" = alloca i1, i32 1
+  %"P2" = alloca i1, i32 1
   %"R40" = alloca i32, i32 1
   %"R41" = alloca i32, i32 1
   %"R42" = alloca i32, i32 1
@@ -454,7 +460,6 @@ Entry_.text._Z15fc_layer_simplePfS_S_S_ii:
   %"UR1" = alloca i32, i32 1
   %"UR2" = alloca i32, i32 1
   %"UR3" = alloca i32, i32 1
-  %"UR5" = alloca i32, i32 1
   %"UR6" = alloca i32, i32 1
   %"UR7" = alloca i32, i32 1
   %"UR8" = alloca i32, i32 1
@@ -577,236 +582,1588 @@ Entry_.text._Z15fc_layer_simplePfS_S_S_ii:
   %"UR125" = alloca i32, i32 1
   %"UR126" = alloca i32, i32 1
   %"UR127" = alloca i32, i32 1
-  %"URZ" = alloca i32, i32 1
   store i1 1, ptr %"PT"
+  store i1 1, ptr %"UPT"
   store i32 0, ptr %"RZ"
   store i32 0, ptr %"URZ"
   ; MOV R1, c[0x0][0x28]
   store i32 0, ptr %"R1"
-  ; S2R R6, SR_CTAID.X
+  ; S2R R0, SR_CTAID.X
   %"nvvm_ctaid_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
-  store i32 %"nvvm_ctaid_x", ptr %"R6"
+  store i32 %"nvvm_ctaid_x", ptr %"R0"
   ; S2R R3, SR_TID.X
   %"nvvm_threadidx_x" = call i32 @"llvm.nvvm.read.ptx.sreg.tid.x"()
   store i32 %"nvvm_threadidx_x", ptr %"R3"
-  ; IMAD R6, R6, c[0x0][0x0], R3
-  %".19" = load i32, ptr %"R6"
+  ; IMAD R0, R0, c[0x0][0x0], R3
+  %".20" = load i32, ptr %"R0"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
-  %".20" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".19", %"nvvm_blockdim_x"
-  %"add" = add i32 %"mul", %".20"
-  store i32 %"add", ptr %"R6"
-  ; ISETP.GE.AND P0, PT, R6, c[0x0][0x184], PT
-  %".23" = load i32, ptr %"R6"
-  %".24" = load i1, ptr %"PT"
-  %"cmp" = icmp sge i32 %".23", %"Arg_5"
-  %".25" = add i1 %"cmp", 0
-  %".26" = xor i1 %".25", -1
-  %".27" = and i1 %"cmp", %".24"
-  %".28" = and i1 %".26", %".24"
-  store i1 %".27", ptr %"P0"
+  %".21" = load i32, ptr %"R3"
+  %"mul" = mul i32 %".20", %"nvvm_blockdim_x"
+  %"add" = add i32 %"mul", %".21"
+  store i32 %"add", ptr %"R0"
+  ; ISETP.GE.AND P0, PT, R0, c[0x0][0x184], PT
+  %".24" = load i32, ptr %"R0"
+  %".25" = load i1, ptr %"PT"
+  %"cmp" = icmp sge i32 %".24", %"Arg_5"
+  %".26" = add i1 %"cmp", 0
+  %".27" = xor i1 %".26", -1
+  %".28" = and i1 %"cmp", %".25"
+  %".29" = and i1 %".27", %".25"
+  store i1 %".28", ptr %"P0"
   ; @P0 EXIT
-  %".31" = load i1, ptr %"P0"
-  %".32" = icmp eq i1 %".31", 1
-  br i1 %".32", label %".text._Z15fc_layer_simplePfS_S_S_ii_conditionalExpr_0x0050", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x0060"
+  %".32" = load i1, ptr %"P0"
+  %".33" = icmp eq i1 %".32", 1
+  br i1 %".33", label %".text._Z15fc_layer_simplePfS_S_S_ii_conditionalExpr_0x0050", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x0060"
 .text._Z15fc_layer_simplePfS_S_S_ii_conditionalExpr_0x0050:
   ; EXIT
   br label %"ExitFunction"
 .text._Z15fc_layer_simplePfS_S_S_ii_split_0x0060:
-  ; MOV R13, 0x4
-  store i32 4, ptr %"R13"
-  ; IMAD R2, R6, c[0x0][0x180], RZ
-  %".39" = load i32, ptr %"R6"
-  %"mul.1" = mul i32 %".39", %"Arg_4"
+  ; MOV R4, c[0x0][0x180]
+  store i32 %"Arg_4", ptr %"R4"
+  ; IMAD.MOV.U32 R7, RZ, RZ, RZ
+  %"mul.1" = mul i32 0, 0
   %"add.1" = add i32 %"mul.1", 0
-  store i32 %"add.1", ptr %"R2"
+  store i32 %"add.1", ptr %"R7"
+  ; ISETP.GE.AND P0, PT, R4, 0x2, PT
+  %".42" = load i32, ptr %"R4"
+  %".43" = load i1, ptr %"PT"
+  %"cmp.1" = icmp sge i32 %".42", 2
+  %".44" = add i1 %"cmp.1", 0
+  %".45" = xor i1 %".44", -1
+  %".46" = and i1 %"cmp.1", %".43"
+  %".47" = and i1 %".45", %".43"
+  store i1 %".46", ptr %"P0"
+  ; @!P0 BRA `(.L_x_0)
+  %".50" = load i1, ptr %"P0"
+  %".51" = icmp ne i1 %".50", 1
+  br i1 %".51", label %".L_x_0", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x00a0"
+.text._Z15fc_layer_simplePfS_S_S_ii_split_0x00a0:
+  ; IADD3 R2, R4.reuse, -0x2, RZ
+  %".54" = load i32, ptr %"R4"
+  %".55" = add i32 %".54", -2
+  %".56" = add i32 %".55", 0
+  store i32 %".56", ptr %"R2"
+  ; IMAD.MOV.U32 R5, RZ, RZ, RZ
+  %"mul.2" = mul i32 0, 0
+  %"add.2" = add i32 %"mul.2", 0
+  store i32 %"add.2", ptr %"R5"
+  ; IADD3 R4, R4, -0x1, RZ
+  %".61" = load i32, ptr %"R4"
+  %".62" = add i32 %".61", -1
+  %".63" = add i32 %".62", 0
+  store i32 %".63", ptr %"R4"
+  ; ISETP.GE.U32.AND P0, PT, R2, 0x3, PT
+  %".66" = load i32, ptr %"R2"
+  %".67" = load i1, ptr %"PT"
+  %"cmp.2" = icmp sge i32 %".66", 3
+  %".68" = add i1 %"cmp.2", 0
+  %".69" = xor i1 %".68", -1
+  %".70" = and i1 %"cmp.2", %".67"
+  %".71" = and i1 %".69", %".67"
+  store i1 %".70", ptr %"P0"
+  ; MOV R7, RZ
+  %".74" = load float, ptr %"RZ"
+  %".75" = bitcast ptr %"R7" to ptr
+  store float %".74", ptr %".75"
+  ; LOP3.LUT R4, R4, 0x3, RZ, 0xc0, !PT
+  %".78" = load i32, ptr %"R4"
+  %".79" = xor i1 1, -1
+  %".80" = and i32 %".78", 3
+  store i32 %".80", ptr %"R4"
+  ; @!P0 BRA `(.L_x_1)
+  %".83" = load i1, ptr %"P0"
+  %".84" = icmp ne i1 %".83", 1
+  br i1 %".84", label %".L_x_1", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x0110"
+.text._Z15fc_layer_simplePfS_S_S_ii_split_0x0110:
+  ; IADD3 R6, -R4, c[0x0][0x180], RZ
+  %".87" = load i32, ptr %"R4"
+  %".88" = sub i32 0, %".87"
+  %".89" = add i32 %".88", %"Arg_4"
+  %".90" = add i32 %".89", 0
+  store i32 %".90", ptr %"R6"
+  ; IMAD R2, R0, c[0x0][0x180], RZ
+  %".93" = load i32, ptr %"R0"
+  %"mul.3" = mul i32 %".93", %"Arg_4"
+  %"add.3" = add i32 %"mul.3", 0
+  store i32 %"add.3", ptr %"R2"
+  ; MOV R3, 0x4
+  store i32 4, ptr %"R3"
   ; ULDC.64 UR4, c[0x0][0x160]
-  %".42" = ptrtoint ptr %"Arg_0" to i64
-  %".43" = and i64 %".42", 18446744069414584320
-  %".44" = lshr i64 %".43", 32
-  %"trunc32" = trunc i64 %".44" to i32
-  %"trunc32.1" = trunc i64 %".42" to i32
+  %".98" = ptrtoint ptr %"Arg_0" to i64
+  %".99" = and i64 %".98", 18446744069414584320
+  %".100" = lshr i64 %".99", 32
+  %"trunc32" = trunc i64 %".100" to i32
+  %"trunc32.1" = trunc i64 %".98" to i32
   store i32 %"trunc32.1", ptr %"UR4"
   store i32 %"trunc32", ptr %"UR5"
-  ; LDG.E.SYS R7, [UR4]
-  %".48" = load i32, ptr %"UR4"
-  %"zext" = zext i32 %".48" to i64
-  %".49" = load i32, ptr %"UR5"
-  %"zext.1" = zext i32 %".49" to i64
-  %"shl" = shl i64 %"zext.1", 32
-  %"or" = or i64 %"shl", %"zext"
-  %".50" = add i64 %"or", 0
-  %"inttoptr_bytes" = inttoptr i64 %".50" to ptr addrspace(1)
-  %"ptr_cast_for_access" = bitcast ptr addrspace(1) %"inttoptr_bytes" to ptr addrspace(1)
-  %".51" = load float, ptr addrspace(1) %"ptr_cast_for_access"
-  %".52" = bitcast ptr %"R7" to ptr
-  store float %".51", ptr %".52"
-  ; IMAD.WIDE R2, R2, R13, c[0x0][0x168]
-  %".55" = load i32, ptr %"R2"
-  %".56" = load i32, ptr %"R13"
-  %"zext.2" = zext i32 %".55" to i64
-  %"zext.3" = zext i32 %".56" to i64
-  %"mul.2" = mul i64 %"zext.2", %"zext.3"
-  %".57" = ptrtoint ptr %"Arg_1" to i64
-  %"add.2" = add i64 %"mul.2", %".57"
-  %".58" = and i64 %"add.2", 18446744069414584320
-  %".59" = lshr i64 %".58", 32
-  %"trunc32.2" = trunc i64 %".59" to i32
-  %"trunc32.3" = trunc i64 %"add.2" to i32
+  ; ISETP.GT.AND P0, PT, R6, 0x1, PT
+  %".104" = load i32, ptr %"R6"
+  %".105" = load i1, ptr %"PT"
+  %"cmp.3" = icmp sgt i32 %".104", 1
+  %".106" = add i1 %"cmp.3", 0
+  %".107" = xor i1 %".106", -1
+  %".108" = and i1 %"cmp.3", %".105"
+  %".109" = and i1 %".107", %".105"
+  store i1 %".108", ptr %"P0"
+  ; IMAD.MOV.U32 R5, RZ, RZ, RZ
+  %"mul.4" = mul i32 0, 0
+  %"add.4" = add i32 %"mul.4", 0
+  store i32 %"add.4", ptr %"R5"
+  ; MOV R7, RZ
+  %".114" = load float, ptr %"RZ"
+  %".115" = bitcast ptr %"R7" to ptr
+  store float %".114", ptr %".115"
+  ; IMAD.WIDE R2, R2, R3, c[0x0][0x168]
+  %".118" = load i32, ptr %"R2"
+  %".119" = load i32, ptr %"R3"
+  %"zext" = zext i32 %".118" to i64
+  %"zext.1" = zext i32 %".119" to i64
+  %"mul.5" = mul i64 %"zext", %"zext.1"
+  %".120" = ptrtoint ptr %"Arg_1" to i64
+  %"add.5" = add i64 %"mul.5", %".120"
+  %".121" = and i64 %"add.5", 18446744069414584320
+  %".122" = lshr i64 %".121", 32
+  %"trunc32.2" = trunc i64 %".122" to i32
+  %"trunc32.3" = trunc i64 %"add.5" to i32
   store i32 %"trunc32.3", ptr %"R2"
   store i32 %"trunc32.2", ptr %"R3"
-  ; LDG.E.SYS R8, [UR4+0x4]
-  %".63" = load i32, ptr %"UR4"
-  %"zext.4" = zext i32 %".63" to i64
-  %".64" = load i32, ptr %"UR5"
-  %"zext.5" = zext i32 %".64" to i64
+  ; @!P0 BRA `(.L_x_2)
+  %".126" = load i1, ptr %"P0"
+  %".127" = icmp ne i1 %".126", 1
+  br i1 %".127", label %".L_x_2", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x01a0"
+.text._Z15fc_layer_simplePfS_S_S_ii_split_0x01a0:
+  ; IADD3 R8, R6, -0x1, RZ
+  %".130" = load i32, ptr %"R6"
+  %".131" = add i32 %".130", -1
+  %".132" = add i32 %".131", 0
+  store i32 %".132", ptr %"R8"
+  ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
+  %".135" = and i1 1, 1
+  %".136" = and i1 %".135", 1
+  ; ISETP.GT.AND P1, PT, R8, 0xc, PT
+  %".138" = load i32, ptr %"R8"
+  %".139" = load i1, ptr %"PT"
+  %"cmp.4" = icmp sgt i32 %".138", 12
+  %".140" = add i1 %"cmp.4", 0
+  %".141" = xor i1 %".140", -1
+  %".142" = and i1 %"cmp.4", %".139"
+  %".143" = and i1 %".141", %".139"
+  store i1 %".142", ptr %"P1"
+  ; @!P1 BRA `(.L_x_3)
+  %".146" = load i1, ptr %"P1"
+  %".147" = icmp ne i1 %".146", 1
+  br i1 %".147", label %".L_x_3", label %".text._Z15fc_layer_simplePfS_S_S_ii_split_0x01e0"
+.text._Z15fc_layer_simplePfS_S_S_ii_split_0x01e0:
+  ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
+  %".150" = xor i1 1, 1
+  %".151" = and i1 %".150", 1
+  %".152" = and i1 %".151", 1
+  br label %".L_x_4"
+.L_x_4:
+  ; LDG.E.SYS R8, [R2]
+  %".155" = load i32, ptr %"R2"
+  %"zext.2" = zext i32 %".155" to i64
+  %".156" = load i32, ptr %"R3"
+  %"zext.3" = zext i32 %".156" to i64
+  %"shl" = shl i64 %"zext.3", 32
+  %"or" = or i64 %"shl", %"zext.2"
+  %".157" = add i64 %"or", 0
+  %"inttoptr_bytes" = inttoptr i64 %".157" to ptr addrspace(1)
+  %"ptr_cast_for_access" = bitcast ptr addrspace(1) %"inttoptr_bytes" to ptr addrspace(1)
+  %".158" = load float, ptr addrspace(1) %"ptr_cast_for_access"
+  %".159" = bitcast ptr %"R8" to ptr
+  store float %".158", ptr %".159"
+  ; LDG.E.SYS R9, [UR4]
+  %".162" = load i32, ptr %"UR4"
+  %"zext.4" = zext i32 %".162" to i64
+  %".163" = load i32, ptr %"UR5"
+  %"zext.5" = zext i32 %".163" to i64
   %"shl.1" = shl i64 %"zext.5", 32
   %"or.1" = or i64 %"shl.1", %"zext.4"
-  %".65" = add i64 %"or.1", 4
-  %"inttoptr_bytes.1" = inttoptr i64 %".65" to ptr addrspace(1)
+  %".164" = add i64 %"or.1", 0
+  %"inttoptr_bytes.1" = inttoptr i64 %".164" to ptr addrspace(1)
   %"ptr_cast_for_access.1" = bitcast ptr addrspace(1) %"inttoptr_bytes.1" to ptr addrspace(1)
-  %".66" = load float, ptr addrspace(1) %"ptr_cast_for_access.1"
-  %".67" = bitcast ptr %"R8" to ptr
-  store float %".66", ptr %".67"
-  ; IMAD.WIDE R4, R6, R13, c[0x0][0x170]
-  %".70" = load i32, ptr %"R6"
-  %".71" = load i32, ptr %"R13"
-  %"zext.6" = zext i32 %".70" to i64
-  %"zext.7" = zext i32 %".71" to i64
-  %"mul.3" = mul i64 %"zext.6", %"zext.7"
-  %".72" = ptrtoint ptr %"Arg_2" to i64
-  %"add.3" = add i64 %"mul.3", %".72"
-  %".73" = and i64 %"add.3", 18446744069414584320
-  %".74" = lshr i64 %".73", 32
-  %"trunc32.4" = trunc i64 %".74" to i32
-  %"trunc32.5" = trunc i64 %"add.3" to i32
-  store i32 %"trunc32.5", ptr %"R4"
-  store i32 %"trunc32.4", ptr %"R5"
-  ; LDG.E.SYS R10, [UR4+0x8]
-  %".78" = load i32, ptr %"UR4"
-  %"zext.8" = zext i32 %".78" to i64
-  %".79" = load i32, ptr %"UR5"
-  %"zext.9" = zext i32 %".79" to i64
-  %"shl.2" = shl i64 %"zext.9", 32
-  %"or.2" = or i64 %"shl.2", %"zext.8"
-  %".80" = add i64 %"or.2", 8
-  %"inttoptr_bytes.2" = inttoptr i64 %".80" to ptr addrspace(1)
+  %".165" = load float, ptr addrspace(1) %"ptr_cast_for_access.1"
+  %".166" = bitcast ptr %"R9" to ptr
+  store float %".165", ptr %".166"
+  ; LDG.E.SYS R11, [R2+0x4]
+  %".169" = load i32, ptr %"R2"
+  %"zext.6" = zext i32 %".169" to i64
+  %".170" = load i32, ptr %"R3"
+  %"zext.7" = zext i32 %".170" to i64
+  %"shl.2" = shl i64 %"zext.7", 32
+  %"or.2" = or i64 %"shl.2", %"zext.6"
+  %".171" = add i64 %"or.2", 4
+  %"inttoptr_bytes.2" = inttoptr i64 %".171" to ptr addrspace(1)
   %"ptr_cast_for_access.2" = bitcast ptr addrspace(1) %"inttoptr_bytes.2" to ptr addrspace(1)
-  %".81" = load float, ptr addrspace(1) %"ptr_cast_for_access.2"
-  %".82" = bitcast ptr %"R10" to ptr
-  store float %".81", ptr %".82"
-  ; LDG.E.SYS R0, [R2]
-  %".85" = load i32, ptr %"R2"
-  %"zext.10" = zext i32 %".85" to i64
-  %".86" = load i32, ptr %"R3"
-  %"zext.11" = zext i32 %".86" to i64
-  %"shl.3" = shl i64 %"zext.11", 32
-  %"or.3" = or i64 %"shl.3", %"zext.10"
-  %".87" = add i64 %"or.3", 0
-  %"inttoptr_bytes.3" = inttoptr i64 %".87" to ptr addrspace(1)
+  %".172" = load float, ptr addrspace(1) %"ptr_cast_for_access.2"
+  %".173" = bitcast ptr %"R11" to ptr
+  store float %".172", ptr %".173"
+  ; LDG.E.SYS R10, [UR4+0x4]
+  %".176" = load i32, ptr %"UR4"
+  %"zext.8" = zext i32 %".176" to i64
+  %".177" = load i32, ptr %"UR5"
+  %"zext.9" = zext i32 %".177" to i64
+  %"shl.3" = shl i64 %"zext.9", 32
+  %"or.3" = or i64 %"shl.3", %"zext.8"
+  %".178" = add i64 %"or.3", 4
+  %"inttoptr_bytes.3" = inttoptr i64 %".178" to ptr addrspace(1)
   %"ptr_cast_for_access.3" = bitcast ptr addrspace(1) %"inttoptr_bytes.3" to ptr addrspace(1)
-  %".88" = load float, ptr addrspace(1) %"ptr_cast_for_access.3"
-  %".89" = bitcast ptr %"R0" to ptr
-  store float %".88", ptr %".89"
-  ; LDG.E.SYS R9, [R2+0x4]
-  %".92" = load i32, ptr %"R2"
-  %"zext.12" = zext i32 %".92" to i64
-  %".93" = load i32, ptr %"R3"
-  %"zext.13" = zext i32 %".93" to i64
-  %"shl.4" = shl i64 %"zext.13", 32
-  %"or.4" = or i64 %"shl.4", %"zext.12"
-  %".94" = add i64 %"or.4", 4
-  %"inttoptr_bytes.4" = inttoptr i64 %".94" to ptr addrspace(1)
+  %".179" = load float, ptr addrspace(1) %"ptr_cast_for_access.3"
+  %".180" = bitcast ptr %"R10" to ptr
+  store float %".179", ptr %".180"
+  ; LDG.E.SYS R13, [R2+0x8]
+  %".183" = load i32, ptr %"R2"
+  %"zext.10" = zext i32 %".183" to i64
+  %".184" = load i32, ptr %"R3"
+  %"zext.11" = zext i32 %".184" to i64
+  %"shl.4" = shl i64 %"zext.11", 32
+  %"or.4" = or i64 %"shl.4", %"zext.10"
+  %".185" = add i64 %"or.4", 8
+  %"inttoptr_bytes.4" = inttoptr i64 %".185" to ptr addrspace(1)
   %"ptr_cast_for_access.4" = bitcast ptr addrspace(1) %"inttoptr_bytes.4" to ptr addrspace(1)
-  %".95" = load float, ptr addrspace(1) %"ptr_cast_for_access.4"
-  %".96" = bitcast ptr %"R9" to ptr
-  store float %".95", ptr %".96"
-  ; LDG.E.SYS R11, [R2+0x8]
-  %".99" = load i32, ptr %"R2"
-  %"zext.14" = zext i32 %".99" to i64
-  %".100" = load i32, ptr %"R3"
-  %"zext.15" = zext i32 %".100" to i64
-  %"shl.5" = shl i64 %"zext.15", 32
-  %"or.5" = or i64 %"shl.5", %"zext.14"
-  %".101" = add i64 %"or.5", 8
-  %"inttoptr_bytes.5" = inttoptr i64 %".101" to ptr addrspace(1)
+  %".186" = load float, ptr addrspace(1) %"ptr_cast_for_access.4"
+  %".187" = bitcast ptr %"R13" to ptr
+  store float %".186", ptr %".187"
+  ; LDG.E.SYS R12, [UR4+0x8]
+  %".190" = load i32, ptr %"UR4"
+  %"zext.12" = zext i32 %".190" to i64
+  %".191" = load i32, ptr %"UR5"
+  %"zext.13" = zext i32 %".191" to i64
+  %"shl.5" = shl i64 %"zext.13", 32
+  %"or.5" = or i64 %"shl.5", %"zext.12"
+  %".192" = add i64 %"or.5", 8
+  %"inttoptr_bytes.5" = inttoptr i64 %".192" to ptr addrspace(1)
   %"ptr_cast_for_access.5" = bitcast ptr addrspace(1) %"inttoptr_bytes.5" to ptr addrspace(1)
-  %".102" = load float, ptr addrspace(1) %"ptr_cast_for_access.5"
-  %".103" = bitcast ptr %"R11" to ptr
-  store float %".102", ptr %".103"
-  ; LDG.E.SYS R5, [R4]
-  %".106" = load i32, ptr %"R4"
-  %"zext.16" = zext i32 %".106" to i64
-  %".107" = load i32, ptr %"R5"
-  %"zext.17" = zext i32 %".107" to i64
-  %"shl.6" = shl i64 %"zext.17", 32
-  %"or.6" = or i64 %"shl.6", %"zext.16"
-  %".108" = add i64 %"or.6", 0
-  %"inttoptr_bytes.6" = inttoptr i64 %".108" to ptr addrspace(1)
+  %".193" = load float, ptr addrspace(1) %"ptr_cast_for_access.5"
+  %".194" = bitcast ptr %"R12" to ptr
+  store float %".193", ptr %".194"
+  ; LDG.E.SYS R15, [R2+0xc]
+  %".197" = load i32, ptr %"R2"
+  %"zext.14" = zext i32 %".197" to i64
+  %".198" = load i32, ptr %"R3"
+  %"zext.15" = zext i32 %".198" to i64
+  %"shl.6" = shl i64 %"zext.15", 32
+  %"or.6" = or i64 %"shl.6", %"zext.14"
+  %".199" = add i64 %"or.6", 12
+  %"inttoptr_bytes.6" = inttoptr i64 %".199" to ptr addrspace(1)
   %"ptr_cast_for_access.6" = bitcast ptr addrspace(1) %"inttoptr_bytes.6" to ptr addrspace(1)
-  %".109" = load float, ptr addrspace(1) %"ptr_cast_for_access.6"
-  %".110" = bitcast ptr %"R5" to ptr
-  store float %".109", ptr %".110"
-  ; FFMA R0, R0, R7, RZ
-  %".113" = load float, ptr %"R0"
-  %".114" = load float, ptr %"R7"
-  %"fmul" = fmul float %".113", %".114"
-  %"fadd" = fadd float %"fmul",              0x0
-  %".115" = bitcast ptr %"R0" to ptr
-  store float %"fadd", ptr %".115"
-  ; FFMA R0, R9, R8, R0
-  %".118" = load float, ptr %"R9"
-  %".119" = load float, ptr %"R8"
-  %".120" = load float, ptr %"R0"
-  %"fmul.1" = fmul float %".118", %".119"
-  %"fadd.1" = fadd float %"fmul.1", %".120"
-  %".121" = bitcast ptr %"R0" to ptr
-  store float %"fadd.1", ptr %".121"
-  ; FFMA R0, R11, R10, R0
-  %".124" = load float, ptr %"R11"
-  %".125" = load float, ptr %"R10"
-  %".126" = load float, ptr %"R0"
-  %"fmul.2" = fmul float %".124", %".125"
-  %"fadd.2" = fadd float %"fmul.2", %".126"
-  %".127" = bitcast ptr %"R0" to ptr
-  store float %"fadd.2", ptr %".127"
-  ; IMAD.WIDE R6, R6, R13, c[0x0][0x178]
-  %".130" = load i32, ptr %"R6"
-  %".131" = load i32, ptr %"R13"
-  %"zext.18" = zext i32 %".130" to i64
-  %"zext.19" = zext i32 %".131" to i64
-  %"mul.4" = mul i64 %"zext.18", %"zext.19"
-  %".132" = ptrtoint ptr %"Arg_3" to i64
-  %"add.4" = add i64 %"mul.4", %".132"
-  %".133" = and i64 %"add.4", 18446744069414584320
-  %".134" = lshr i64 %".133", 32
-  %"trunc32.6" = trunc i64 %".134" to i32
-  %"trunc32.7" = trunc i64 %"add.4" to i32
-  store i32 %"trunc32.7", ptr %"R6"
-  store i32 %"trunc32.6", ptr %"R7"
-  ; FADD R9, R0, R5
-  %".138" = load float, ptr %"R0"
-  %".139" = load float, ptr %"R5"
-  %"fadd.3" = fadd float %".138", %".139"
-  %".140" = bitcast ptr %"R9" to ptr
-  store float %"fadd.3", ptr %".140"
-  ; STG.E.SYS [R6], R9
-  %".143" = load float, ptr %"R9"
-  %".144" = load i32, ptr %"R6"
-  %"zext.20" = zext i32 %".144" to i64
-  %".145" = load i32, ptr %"R7"
-  %"zext.21" = zext i32 %".145" to i64
-  %"shl.7" = shl i64 %"zext.21", 32
-  %"or.7" = or i64 %"shl.7", %"zext.20"
-  %".146" = add i64 %"or.7", 0
-  %"inttoptr_bytes.7" = inttoptr i64 %".146" to ptr addrspace(1)
+  %".200" = load float, ptr addrspace(1) %"ptr_cast_for_access.6"
+  %".201" = bitcast ptr %"R15" to ptr
+  store float %".200", ptr %".201"
+  ; LDG.E.SYS R14, [UR4+0xc]
+  %".204" = load i32, ptr %"UR4"
+  %"zext.16" = zext i32 %".204" to i64
+  %".205" = load i32, ptr %"UR5"
+  %"zext.17" = zext i32 %".205" to i64
+  %"shl.7" = shl i64 %"zext.17", 32
+  %"or.7" = or i64 %"shl.7", %"zext.16"
+  %".206" = add i64 %"or.7", 12
+  %"inttoptr_bytes.7" = inttoptr i64 %".206" to ptr addrspace(1)
   %"ptr_cast_for_access.7" = bitcast ptr addrspace(1) %"inttoptr_bytes.7" to ptr addrspace(1)
-  store float %".143", ptr addrspace(1) %"ptr_cast_for_access.7"
+  %".207" = load float, ptr addrspace(1) %"ptr_cast_for_access.7"
+  %".208" = bitcast ptr %"R14" to ptr
+  store float %".207", ptr %".208"
+  ; LDG.E.SYS R17, [R2+0x10]
+  %".211" = load i32, ptr %"R2"
+  %"zext.18" = zext i32 %".211" to i64
+  %".212" = load i32, ptr %"R3"
+  %"zext.19" = zext i32 %".212" to i64
+  %"shl.8" = shl i64 %"zext.19", 32
+  %"or.8" = or i64 %"shl.8", %"zext.18"
+  %".213" = add i64 %"or.8", 16
+  %"inttoptr_bytes.8" = inttoptr i64 %".213" to ptr addrspace(1)
+  %"ptr_cast_for_access.8" = bitcast ptr addrspace(1) %"inttoptr_bytes.8" to ptr addrspace(1)
+  %".214" = load float, ptr addrspace(1) %"ptr_cast_for_access.8"
+  %".215" = bitcast ptr %"R17" to ptr
+  store float %".214", ptr %".215"
+  ; LDG.E.SYS R16, [UR4+0x10]
+  %".218" = load i32, ptr %"UR4"
+  %"zext.20" = zext i32 %".218" to i64
+  %".219" = load i32, ptr %"UR5"
+  %"zext.21" = zext i32 %".219" to i64
+  %"shl.9" = shl i64 %"zext.21", 32
+  %"or.9" = or i64 %"shl.9", %"zext.20"
+  %".220" = add i64 %"or.9", 16
+  %"inttoptr_bytes.9" = inttoptr i64 %".220" to ptr addrspace(1)
+  %"ptr_cast_for_access.9" = bitcast ptr addrspace(1) %"inttoptr_bytes.9" to ptr addrspace(1)
+  %".221" = load float, ptr addrspace(1) %"ptr_cast_for_access.9"
+  %".222" = bitcast ptr %"R16" to ptr
+  store float %".221", ptr %".222"
+  ; LDG.E.SYS R19, [R2+0x14]
+  %".225" = load i32, ptr %"R2"
+  %"zext.22" = zext i32 %".225" to i64
+  %".226" = load i32, ptr %"R3"
+  %"zext.23" = zext i32 %".226" to i64
+  %"shl.10" = shl i64 %"zext.23", 32
+  %"or.10" = or i64 %"shl.10", %"zext.22"
+  %".227" = add i64 %"or.10", 20
+  %"inttoptr_bytes.10" = inttoptr i64 %".227" to ptr addrspace(1)
+  %"ptr_cast_for_access.10" = bitcast ptr addrspace(1) %"inttoptr_bytes.10" to ptr addrspace(1)
+  %".228" = load float, ptr addrspace(1) %"ptr_cast_for_access.10"
+  %".229" = bitcast ptr %"R19" to ptr
+  store float %".228", ptr %".229"
+  ; LDG.E.SYS R18, [UR4+0x14]
+  %".232" = load i32, ptr %"UR4"
+  %"zext.24" = zext i32 %".232" to i64
+  %".233" = load i32, ptr %"UR5"
+  %"zext.25" = zext i32 %".233" to i64
+  %"shl.11" = shl i64 %"zext.25", 32
+  %"or.11" = or i64 %"shl.11", %"zext.24"
+  %".234" = add i64 %"or.11", 20
+  %"inttoptr_bytes.11" = inttoptr i64 %".234" to ptr addrspace(1)
+  %"ptr_cast_for_access.11" = bitcast ptr addrspace(1) %"inttoptr_bytes.11" to ptr addrspace(1)
+  %".235" = load float, ptr addrspace(1) %"ptr_cast_for_access.11"
+  %".236" = bitcast ptr %"R18" to ptr
+  store float %".235", ptr %".236"
+  ; LDG.E.SYS R21, [R2+0x18]
+  %".239" = load i32, ptr %"R2"
+  %"zext.26" = zext i32 %".239" to i64
+  %".240" = load i32, ptr %"R3"
+  %"zext.27" = zext i32 %".240" to i64
+  %"shl.12" = shl i64 %"zext.27", 32
+  %"or.12" = or i64 %"shl.12", %"zext.26"
+  %".241" = add i64 %"or.12", 24
+  %"inttoptr_bytes.12" = inttoptr i64 %".241" to ptr addrspace(1)
+  %"ptr_cast_for_access.12" = bitcast ptr addrspace(1) %"inttoptr_bytes.12" to ptr addrspace(1)
+  %".242" = load float, ptr addrspace(1) %"ptr_cast_for_access.12"
+  %".243" = bitcast ptr %"R21" to ptr
+  store float %".242", ptr %".243"
+  ; LDG.E.SYS R20, [UR4+0x18]
+  %".246" = load i32, ptr %"UR4"
+  %"zext.28" = zext i32 %".246" to i64
+  %".247" = load i32, ptr %"UR5"
+  %"zext.29" = zext i32 %".247" to i64
+  %"shl.13" = shl i64 %"zext.29", 32
+  %"or.13" = or i64 %"shl.13", %"zext.28"
+  %".248" = add i64 %"or.13", 24
+  %"inttoptr_bytes.13" = inttoptr i64 %".248" to ptr addrspace(1)
+  %"ptr_cast_for_access.13" = bitcast ptr addrspace(1) %"inttoptr_bytes.13" to ptr addrspace(1)
+  %".249" = load float, ptr addrspace(1) %"ptr_cast_for_access.13"
+  %".250" = bitcast ptr %"R20" to ptr
+  store float %".249", ptr %".250"
+  ; LDG.E.SYS R23, [R2+0x1c]
+  %".253" = load i32, ptr %"R2"
+  %"zext.30" = zext i32 %".253" to i64
+  %".254" = load i32, ptr %"R3"
+  %"zext.31" = zext i32 %".254" to i64
+  %"shl.14" = shl i64 %"zext.31", 32
+  %"or.14" = or i64 %"shl.14", %"zext.30"
+  %".255" = add i64 %"or.14", 28
+  %"inttoptr_bytes.14" = inttoptr i64 %".255" to ptr addrspace(1)
+  %"ptr_cast_for_access.14" = bitcast ptr addrspace(1) %"inttoptr_bytes.14" to ptr addrspace(1)
+  %".256" = load float, ptr addrspace(1) %"ptr_cast_for_access.14"
+  %".257" = bitcast ptr %"R23" to ptr
+  store float %".256", ptr %".257"
+  ; LDG.E.SYS R22, [UR4+0x1c]
+  %".260" = load i32, ptr %"UR4"
+  %"zext.32" = zext i32 %".260" to i64
+  %".261" = load i32, ptr %"UR5"
+  %"zext.33" = zext i32 %".261" to i64
+  %"shl.15" = shl i64 %"zext.33", 32
+  %"or.15" = or i64 %"shl.15", %"zext.32"
+  %".262" = add i64 %"or.15", 28
+  %"inttoptr_bytes.15" = inttoptr i64 %".262" to ptr addrspace(1)
+  %"ptr_cast_for_access.15" = bitcast ptr addrspace(1) %"inttoptr_bytes.15" to ptr addrspace(1)
+  %".263" = load float, ptr addrspace(1) %"ptr_cast_for_access.15"
+  %".264" = bitcast ptr %"R22" to ptr
+  store float %".263", ptr %".264"
+  ; LDG.E.SYS R25, [R2+0x20]
+  %".267" = load i32, ptr %"R2"
+  %"zext.34" = zext i32 %".267" to i64
+  %".268" = load i32, ptr %"R3"
+  %"zext.35" = zext i32 %".268" to i64
+  %"shl.16" = shl i64 %"zext.35", 32
+  %"or.16" = or i64 %"shl.16", %"zext.34"
+  %".269" = add i64 %"or.16", 32
+  %"inttoptr_bytes.16" = inttoptr i64 %".269" to ptr addrspace(1)
+  %"ptr_cast_for_access.16" = bitcast ptr addrspace(1) %"inttoptr_bytes.16" to ptr addrspace(1)
+  %".270" = load float, ptr addrspace(1) %"ptr_cast_for_access.16"
+  %".271" = bitcast ptr %"R25" to ptr
+  store float %".270", ptr %".271"
+  ; LDG.E.SYS R24, [UR4+0x20]
+  %".274" = load i32, ptr %"UR4"
+  %"zext.36" = zext i32 %".274" to i64
+  %".275" = load i32, ptr %"UR5"
+  %"zext.37" = zext i32 %".275" to i64
+  %"shl.17" = shl i64 %"zext.37", 32
+  %"or.17" = or i64 %"shl.17", %"zext.36"
+  %".276" = add i64 %"or.17", 32
+  %"inttoptr_bytes.17" = inttoptr i64 %".276" to ptr addrspace(1)
+  %"ptr_cast_for_access.17" = bitcast ptr addrspace(1) %"inttoptr_bytes.17" to ptr addrspace(1)
+  %".277" = load float, ptr addrspace(1) %"ptr_cast_for_access.17"
+  %".278" = bitcast ptr %"R24" to ptr
+  store float %".277", ptr %".278"
+  ; LDG.E.SYS R27, [R2+0x24]
+  %".281" = load i32, ptr %"R2"
+  %"zext.38" = zext i32 %".281" to i64
+  %".282" = load i32, ptr %"R3"
+  %"zext.39" = zext i32 %".282" to i64
+  %"shl.18" = shl i64 %"zext.39", 32
+  %"or.18" = or i64 %"shl.18", %"zext.38"
+  %".283" = add i64 %"or.18", 36
+  %"inttoptr_bytes.18" = inttoptr i64 %".283" to ptr addrspace(1)
+  %"ptr_cast_for_access.18" = bitcast ptr addrspace(1) %"inttoptr_bytes.18" to ptr addrspace(1)
+  %".284" = load float, ptr addrspace(1) %"ptr_cast_for_access.18"
+  %".285" = bitcast ptr %"R27" to ptr
+  store float %".284", ptr %".285"
+  ; LDG.E.SYS R26, [UR4+0x24]
+  %".288" = load i32, ptr %"UR4"
+  %"zext.40" = zext i32 %".288" to i64
+  %".289" = load i32, ptr %"UR5"
+  %"zext.41" = zext i32 %".289" to i64
+  %"shl.19" = shl i64 %"zext.41", 32
+  %"or.19" = or i64 %"shl.19", %"zext.40"
+  %".290" = add i64 %"or.19", 36
+  %"inttoptr_bytes.19" = inttoptr i64 %".290" to ptr addrspace(1)
+  %"ptr_cast_for_access.19" = bitcast ptr addrspace(1) %"inttoptr_bytes.19" to ptr addrspace(1)
+  %".291" = load float, ptr addrspace(1) %"ptr_cast_for_access.19"
+  %".292" = bitcast ptr %"R26" to ptr
+  store float %".291", ptr %".292"
+  ; LDG.E.SYS R29, [R2+0x28]
+  %".295" = load i32, ptr %"R2"
+  %"zext.42" = zext i32 %".295" to i64
+  %".296" = load i32, ptr %"R3"
+  %"zext.43" = zext i32 %".296" to i64
+  %"shl.20" = shl i64 %"zext.43", 32
+  %"or.20" = or i64 %"shl.20", %"zext.42"
+  %".297" = add i64 %"or.20", 40
+  %"inttoptr_bytes.20" = inttoptr i64 %".297" to ptr addrspace(1)
+  %"ptr_cast_for_access.20" = bitcast ptr addrspace(1) %"inttoptr_bytes.20" to ptr addrspace(1)
+  %".298" = load float, ptr addrspace(1) %"ptr_cast_for_access.20"
+  %".299" = bitcast ptr %"R29" to ptr
+  store float %".298", ptr %".299"
+  ; LDG.E.SYS R28, [UR4+0x28]
+  %".302" = load i32, ptr %"UR4"
+  %"zext.44" = zext i32 %".302" to i64
+  %".303" = load i32, ptr %"UR5"
+  %"zext.45" = zext i32 %".303" to i64
+  %"shl.21" = shl i64 %"zext.45", 32
+  %"or.21" = or i64 %"shl.21", %"zext.44"
+  %".304" = add i64 %"or.21", 40
+  %"inttoptr_bytes.21" = inttoptr i64 %".304" to ptr addrspace(1)
+  %"ptr_cast_for_access.21" = bitcast ptr addrspace(1) %"inttoptr_bytes.21" to ptr addrspace(1)
+  %".305" = load float, ptr addrspace(1) %"ptr_cast_for_access.21"
+  %".306" = bitcast ptr %"R28" to ptr
+  store float %".305", ptr %".306"
+  ; LDG.E.SYS R31, [R2+0x2c]
+  %".309" = load i32, ptr %"R2"
+  %"zext.46" = zext i32 %".309" to i64
+  %".310" = load i32, ptr %"R3"
+  %"zext.47" = zext i32 %".310" to i64
+  %"shl.22" = shl i64 %"zext.47", 32
+  %"or.22" = or i64 %"shl.22", %"zext.46"
+  %".311" = add i64 %"or.22", 44
+  %"inttoptr_bytes.22" = inttoptr i64 %".311" to ptr addrspace(1)
+  %"ptr_cast_for_access.22" = bitcast ptr addrspace(1) %"inttoptr_bytes.22" to ptr addrspace(1)
+  %".312" = load float, ptr addrspace(1) %"ptr_cast_for_access.22"
+  %".313" = bitcast ptr %"R31" to ptr
+  store float %".312", ptr %".313"
+  ; LDG.E.SYS R30, [UR4+0x2c]
+  %".316" = load i32, ptr %"UR4"
+  %"zext.48" = zext i32 %".316" to i64
+  %".317" = load i32, ptr %"UR5"
+  %"zext.49" = zext i32 %".317" to i64
+  %"shl.23" = shl i64 %"zext.49", 32
+  %"or.23" = or i64 %"shl.23", %"zext.48"
+  %".318" = add i64 %"or.23", 44
+  %"inttoptr_bytes.23" = inttoptr i64 %".318" to ptr addrspace(1)
+  %"ptr_cast_for_access.23" = bitcast ptr addrspace(1) %"inttoptr_bytes.23" to ptr addrspace(1)
+  %".319" = load float, ptr addrspace(1) %"ptr_cast_for_access.23"
+  %".320" = bitcast ptr %"R30" to ptr
+  store float %".319", ptr %".320"
+  ; LDG.E.SYS R33, [R2+0x30]
+  %".323" = load i32, ptr %"R2"
+  %"zext.50" = zext i32 %".323" to i64
+  %".324" = load i32, ptr %"R3"
+  %"zext.51" = zext i32 %".324" to i64
+  %"shl.24" = shl i64 %"zext.51", 32
+  %"or.24" = or i64 %"shl.24", %"zext.50"
+  %".325" = add i64 %"or.24", 48
+  %"inttoptr_bytes.24" = inttoptr i64 %".325" to ptr addrspace(1)
+  %"ptr_cast_for_access.24" = bitcast ptr addrspace(1) %"inttoptr_bytes.24" to ptr addrspace(1)
+  %".326" = load float, ptr addrspace(1) %"ptr_cast_for_access.24"
+  %".327" = bitcast ptr %"R33" to ptr
+  store float %".326", ptr %".327"
+  ; LDG.E.SYS R32, [UR4+0x30]
+  %".330" = load i32, ptr %"UR4"
+  %"zext.52" = zext i32 %".330" to i64
+  %".331" = load i32, ptr %"UR5"
+  %"zext.53" = zext i32 %".331" to i64
+  %"shl.25" = shl i64 %"zext.53", 32
+  %"or.25" = or i64 %"shl.25", %"zext.52"
+  %".332" = add i64 %"or.25", 48
+  %"inttoptr_bytes.25" = inttoptr i64 %".332" to ptr addrspace(1)
+  %"ptr_cast_for_access.25" = bitcast ptr addrspace(1) %"inttoptr_bytes.25" to ptr addrspace(1)
+  %".333" = load float, ptr addrspace(1) %"ptr_cast_for_access.25"
+  %".334" = bitcast ptr %"R32" to ptr
+  store float %".333", ptr %".334"
+  ; LDG.E.SYS R35, [R2+0x34]
+  %".337" = load i32, ptr %"R2"
+  %"zext.54" = zext i32 %".337" to i64
+  %".338" = load i32, ptr %"R3"
+  %"zext.55" = zext i32 %".338" to i64
+  %"shl.26" = shl i64 %"zext.55", 32
+  %"or.26" = or i64 %"shl.26", %"zext.54"
+  %".339" = add i64 %"or.26", 52
+  %"inttoptr_bytes.26" = inttoptr i64 %".339" to ptr addrspace(1)
+  %"ptr_cast_for_access.26" = bitcast ptr addrspace(1) %"inttoptr_bytes.26" to ptr addrspace(1)
+  %".340" = load float, ptr addrspace(1) %"ptr_cast_for_access.26"
+  %".341" = bitcast ptr %"R35" to ptr
+  store float %".340", ptr %".341"
+  ; LDG.E.SYS R34, [UR4+0x34]
+  %".344" = load i32, ptr %"UR4"
+  %"zext.56" = zext i32 %".344" to i64
+  %".345" = load i32, ptr %"UR5"
+  %"zext.57" = zext i32 %".345" to i64
+  %"shl.27" = shl i64 %"zext.57", 32
+  %"or.27" = or i64 %"shl.27", %"zext.56"
+  %".346" = add i64 %"or.27", 52
+  %"inttoptr_bytes.27" = inttoptr i64 %".346" to ptr addrspace(1)
+  %"ptr_cast_for_access.27" = bitcast ptr addrspace(1) %"inttoptr_bytes.27" to ptr addrspace(1)
+  %".347" = load float, ptr addrspace(1) %"ptr_cast_for_access.27"
+  %".348" = bitcast ptr %"R34" to ptr
+  store float %".347", ptr %".348"
+  ; LDG.E.SYS R37, [R2+0x38]
+  %".351" = load i32, ptr %"R2"
+  %"zext.58" = zext i32 %".351" to i64
+  %".352" = load i32, ptr %"R3"
+  %"zext.59" = zext i32 %".352" to i64
+  %"shl.28" = shl i64 %"zext.59", 32
+  %"or.28" = or i64 %"shl.28", %"zext.58"
+  %".353" = add i64 %"or.28", 56
+  %"inttoptr_bytes.28" = inttoptr i64 %".353" to ptr addrspace(1)
+  %"ptr_cast_for_access.28" = bitcast ptr addrspace(1) %"inttoptr_bytes.28" to ptr addrspace(1)
+  %".354" = load float, ptr addrspace(1) %"ptr_cast_for_access.28"
+  %".355" = bitcast ptr %"R37" to ptr
+  store float %".354", ptr %".355"
+  ; LDG.E.SYS R36, [UR4+0x38]
+  %".358" = load i32, ptr %"UR4"
+  %"zext.60" = zext i32 %".358" to i64
+  %".359" = load i32, ptr %"UR5"
+  %"zext.61" = zext i32 %".359" to i64
+  %"shl.29" = shl i64 %"zext.61", 32
+  %"or.29" = or i64 %"shl.29", %"zext.60"
+  %".360" = add i64 %"or.29", 56
+  %"inttoptr_bytes.29" = inttoptr i64 %".360" to ptr addrspace(1)
+  %"ptr_cast_for_access.29" = bitcast ptr addrspace(1) %"inttoptr_bytes.29" to ptr addrspace(1)
+  %".361" = load float, ptr addrspace(1) %"ptr_cast_for_access.29"
+  %".362" = bitcast ptr %"R36" to ptr
+  store float %".361", ptr %".362"
+  ; LDG.E.SYS R39, [R2+0x3c]
+  %".365" = load i32, ptr %"R2"
+  %"zext.62" = zext i32 %".365" to i64
+  %".366" = load i32, ptr %"R3"
+  %"zext.63" = zext i32 %".366" to i64
+  %"shl.30" = shl i64 %"zext.63", 32
+  %"or.30" = or i64 %"shl.30", %"zext.62"
+  %".367" = add i64 %"or.30", 60
+  %"inttoptr_bytes.30" = inttoptr i64 %".367" to ptr addrspace(1)
+  %"ptr_cast_for_access.30" = bitcast ptr addrspace(1) %"inttoptr_bytes.30" to ptr addrspace(1)
+  %".368" = load float, ptr addrspace(1) %"ptr_cast_for_access.30"
+  %".369" = bitcast ptr %"R39" to ptr
+  store float %".368", ptr %".369"
+  ; LDG.E.SYS R38, [UR4+0x3c]
+  %".372" = load i32, ptr %"UR4"
+  %"zext.64" = zext i32 %".372" to i64
+  %".373" = load i32, ptr %"UR5"
+  %"zext.65" = zext i32 %".373" to i64
+  %"shl.31" = shl i64 %"zext.65", 32
+  %"or.31" = or i64 %"shl.31", %"zext.64"
+  %".374" = add i64 %"or.31", 60
+  %"inttoptr_bytes.31" = inttoptr i64 %".374" to ptr addrspace(1)
+  %"ptr_cast_for_access.31" = bitcast ptr addrspace(1) %"inttoptr_bytes.31" to ptr addrspace(1)
+  %".375" = load float, ptr addrspace(1) %"ptr_cast_for_access.31"
+  %".376" = bitcast ptr %"R38" to ptr
+  store float %".375", ptr %".376"
+  ; IADD3 R6, R6, -0x10, RZ
+  %".379" = load i32, ptr %"R6"
+  %".380" = add i32 %".379", -16
+  %".381" = add i32 %".380", 0
+  store i32 %".381", ptr %"R6"
+  ; UIADD3 UR4, UP0, UR4, 0x40, URZ
+  %".384" = load i32, ptr %"UR4"
+  %".385" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".384", i32 64)
+  %".386" = extractvalue {i32, i1} %".385", 0
+  %".387" = extractvalue {i32, i1} %".385", 1
+  %".388" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".386", i32 0)
+  %".389" = extractvalue {i32, i1} %".388", 0
+  %".390" = extractvalue {i32, i1} %".388", 1
+  %".391" = or i1 %".387", %".390"
+  store i32 %".389", ptr %"UR4"
+  store i1 %".391", ptr %"UP0"
+  ; IADD3 R5, R5, 0x10, RZ
+  %".395" = load i32, ptr %"R5"
+  %".396" = add i32 %".395", 16
+  %".397" = add i32 %".396", 0
+  store i32 %".397", ptr %"R5"
+  ; ISETP.GT.AND P1, PT, R6, 0xd, PT
+  %".400" = load i32, ptr %"R6"
+  %".401" = load i1, ptr %"PT"
+  %"cmp.5" = icmp sgt i32 %".400", 13
+  %".402" = add i1 %"cmp.5", 0
+  %".403" = xor i1 %".402", -1
+  %".404" = and i1 %"cmp.5", %".401"
+  %".405" = and i1 %".403", %".401"
+  store i1 %".404", ptr %"P1"
+  ; UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT
+  %".408" = load i32, ptr %"UR5"
+  %".409" = load i1, ptr %"UP0"
+  %".410" = xor i1 1, -1
+  %".411" = zext i1 %".409" to i32
+  %".412" = zext i1 %".410" to i32
+  %"add.6" = add i32 0, %".408"
+  %"add.7" = add i32 %"add.6", 0
+  %"add.8" = add i32 %"add.7", %".411"
+  %"add.9" = add i32 %"add.8", %".412"
+  store i32 %"add.9", ptr %"UR5"
+  ; IADD3 R2, P2, R2, 0x40, RZ
+  %".415" = load i32, ptr %"R2"
+  %".416" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".415", i32 64)
+  %".417" = extractvalue {i32, i1} %".416", 0
+  %".418" = extractvalue {i32, i1} %".416", 1
+  %".419" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".417", i32 0)
+  %".420" = extractvalue {i32, i1} %".419", 0
+  %".421" = extractvalue {i32, i1} %".419", 1
+  %".422" = or i1 %".418", %".421"
+  store i32 %".420", ptr %"R2"
+  store i1 %".422", ptr %"P2"
+  ; IADD3.X R3, RZ, R3, RZ, P2, !PT
+  %".426" = load i32, ptr %"R3"
+  %".427" = load i1, ptr %"P2"
+  %".428" = xor i1 1, -1
+  %".429" = zext i1 %".427" to i32
+  %".430" = zext i1 %".428" to i32
+  %"add.10" = add i32 0, %".426"
+  %"add.11" = add i32 %"add.10", 0
+  %"add.12" = add i32 %"add.11", %".429"
+  %"add.13" = add i32 %"add.12", %".430"
+  store i32 %"add.13", ptr %"R3"
+  ; FFMA R8, R8, R9, R7
+  %".433" = load float, ptr %"R8"
+  %".434" = load float, ptr %"R9"
+  %".435" = load float, ptr %"R7"
+  %"fmul" = fmul float %".433", %".434"
+  %"fadd" = fadd float %"fmul", %".435"
+  %".436" = bitcast ptr %"R8" to ptr
+  store float %"fadd", ptr %".436"
+  ; FFMA R8, R11, R10, R8
+  %".439" = load float, ptr %"R11"
+  %".440" = load float, ptr %"R10"
+  %".441" = load float, ptr %"R8"
+  %"fmul.1" = fmul float %".439", %".440"
+  %"fadd.1" = fadd float %"fmul.1", %".441"
+  %".442" = bitcast ptr %"R8" to ptr
+  store float %"fadd.1", ptr %".442"
+  ; FFMA R8, R13, R12, R8
+  %".445" = load float, ptr %"R13"
+  %".446" = load float, ptr %"R12"
+  %".447" = load float, ptr %"R8"
+  %"fmul.2" = fmul float %".445", %".446"
+  %"fadd.2" = fadd float %"fmul.2", %".447"
+  %".448" = bitcast ptr %"R8" to ptr
+  store float %"fadd.2", ptr %".448"
+  ; FFMA R8, R15, R14, R8
+  %".451" = load float, ptr %"R15"
+  %".452" = load float, ptr %"R14"
+  %".453" = load float, ptr %"R8"
+  %"fmul.3" = fmul float %".451", %".452"
+  %"fadd.3" = fadd float %"fmul.3", %".453"
+  %".454" = bitcast ptr %"R8" to ptr
+  store float %"fadd.3", ptr %".454"
+  ; FFMA R8, R17, R16, R8
+  %".457" = load float, ptr %"R17"
+  %".458" = load float, ptr %"R16"
+  %".459" = load float, ptr %"R8"
+  %"fmul.4" = fmul float %".457", %".458"
+  %"fadd.4" = fadd float %"fmul.4", %".459"
+  %".460" = bitcast ptr %"R8" to ptr
+  store float %"fadd.4", ptr %".460"
+  ; FFMA R8, R19, R18, R8
+  %".463" = load float, ptr %"R19"
+  %".464" = load float, ptr %"R18"
+  %".465" = load float, ptr %"R8"
+  %"fmul.5" = fmul float %".463", %".464"
+  %"fadd.5" = fadd float %"fmul.5", %".465"
+  %".466" = bitcast ptr %"R8" to ptr
+  store float %"fadd.5", ptr %".466"
+  ; FFMA R8, R21, R20, R8
+  %".469" = load float, ptr %"R21"
+  %".470" = load float, ptr %"R20"
+  %".471" = load float, ptr %"R8"
+  %"fmul.6" = fmul float %".469", %".470"
+  %"fadd.6" = fadd float %"fmul.6", %".471"
+  %".472" = bitcast ptr %"R8" to ptr
+  store float %"fadd.6", ptr %".472"
+  ; FFMA R8, R23, R22, R8
+  %".475" = load float, ptr %"R23"
+  %".476" = load float, ptr %"R22"
+  %".477" = load float, ptr %"R8"
+  %"fmul.7" = fmul float %".475", %".476"
+  %"fadd.7" = fadd float %"fmul.7", %".477"
+  %".478" = bitcast ptr %"R8" to ptr
+  store float %"fadd.7", ptr %".478"
+  ; FFMA R8, R25, R24, R8
+  %".481" = load float, ptr %"R25"
+  %".482" = load float, ptr %"R24"
+  %".483" = load float, ptr %"R8"
+  %"fmul.8" = fmul float %".481", %".482"
+  %"fadd.8" = fadd float %"fmul.8", %".483"
+  %".484" = bitcast ptr %"R8" to ptr
+  store float %"fadd.8", ptr %".484"
+  ; FFMA R8, R27, R26, R8
+  %".487" = load float, ptr %"R27"
+  %".488" = load float, ptr %"R26"
+  %".489" = load float, ptr %"R8"
+  %"fmul.9" = fmul float %".487", %".488"
+  %"fadd.9" = fadd float %"fmul.9", %".489"
+  %".490" = bitcast ptr %"R8" to ptr
+  store float %"fadd.9", ptr %".490"
+  ; FFMA R8, R29, R28, R8
+  %".493" = load float, ptr %"R29"
+  %".494" = load float, ptr %"R28"
+  %".495" = load float, ptr %"R8"
+  %"fmul.10" = fmul float %".493", %".494"
+  %"fadd.10" = fadd float %"fmul.10", %".495"
+  %".496" = bitcast ptr %"R8" to ptr
+  store float %"fadd.10", ptr %".496"
+  ; FFMA R8, R31, R30, R8
+  %".499" = load float, ptr %"R31"
+  %".500" = load float, ptr %"R30"
+  %".501" = load float, ptr %"R8"
+  %"fmul.11" = fmul float %".499", %".500"
+  %"fadd.11" = fadd float %"fmul.11", %".501"
+  %".502" = bitcast ptr %"R8" to ptr
+  store float %"fadd.11", ptr %".502"
+  ; FFMA R8, R33, R32, R8
+  %".505" = load float, ptr %"R33"
+  %".506" = load float, ptr %"R32"
+  %".507" = load float, ptr %"R8"
+  %"fmul.12" = fmul float %".505", %".506"
+  %"fadd.12" = fadd float %"fmul.12", %".507"
+  %".508" = bitcast ptr %"R8" to ptr
+  store float %"fadd.12", ptr %".508"
+  ; FFMA R8, R35, R34, R8
+  %".511" = load float, ptr %"R35"
+  %".512" = load float, ptr %"R34"
+  %".513" = load float, ptr %"R8"
+  %"fmul.13" = fmul float %".511", %".512"
+  %"fadd.13" = fadd float %"fmul.13", %".513"
+  %".514" = bitcast ptr %"R8" to ptr
+  store float %"fadd.13", ptr %".514"
+  ; FFMA R8, R37, R36, R8
+  %".517" = load float, ptr %"R37"
+  %".518" = load float, ptr %"R36"
+  %".519" = load float, ptr %"R8"
+  %"fmul.14" = fmul float %".517", %".518"
+  %"fadd.14" = fadd float %"fmul.14", %".519"
+  %".520" = bitcast ptr %"R8" to ptr
+  store float %"fadd.14", ptr %".520"
+  ; FFMA R7, R39, R38, R8
+  %".523" = load float, ptr %"R39"
+  %".524" = load float, ptr %"R38"
+  %".525" = load float, ptr %"R8"
+  %"fmul.15" = fmul float %".523", %".524"
+  %"fadd.15" = fadd float %"fmul.15", %".525"
+  %".526" = bitcast ptr %"R7" to ptr
+  store float %"fadd.15", ptr %".526"
+  ; @P1 BRA `(.L_x_4)
+  %".529" = load i1, ptr %"P1"
+  %".530" = icmp eq i1 %".529", 1
+  br i1 %".530", label %".L_x_4", label %".L_x_3"
+.L_x_3:
+  ; IADD3 R8, R6, -0x1, RZ
+  %".533" = load i32, ptr %"R6"
+  %".534" = add i32 %".533", -1
+  %".535" = add i32 %".534", 0
+  store i32 %".535", ptr %"R8"
+  ; ISETP.GT.AND P1, PT, R8, 0x4, PT
+  %".538" = load i32, ptr %"R8"
+  %".539" = load i1, ptr %"PT"
+  %"cmp.6" = icmp sgt i32 %".538", 4
+  %".540" = add i1 %"cmp.6", 0
+  %".541" = xor i1 %".540", -1
+  %".542" = and i1 %"cmp.6", %".539"
+  %".543" = and i1 %".541", %".539"
+  store i1 %".542", ptr %"P1"
+  ; @!P1 BRA `(.L_x_5)
+  %".546" = load i1, ptr %"P1"
+  %".547" = icmp ne i1 %".546", 1
+  br i1 %".547", label %".L_x_5", label %".L_x_3_split_0x05a0"
+.L_x_3_split_0x05a0:
+  ; LDG.E.SYS R8, [R2]
+  %".550" = load i32, ptr %"R2"
+  %"zext.66" = zext i32 %".550" to i64
+  %".551" = load i32, ptr %"R3"
+  %"zext.67" = zext i32 %".551" to i64
+  %"shl.32" = shl i64 %"zext.67", 32
+  %"or.32" = or i64 %"shl.32", %"zext.66"
+  %".552" = add i64 %"or.32", 0
+  %"inttoptr_bytes.32" = inttoptr i64 %".552" to ptr addrspace(1)
+  %"ptr_cast_for_access.32" = bitcast ptr addrspace(1) %"inttoptr_bytes.32" to ptr addrspace(1)
+  %".553" = load float, ptr addrspace(1) %"ptr_cast_for_access.32"
+  %".554" = bitcast ptr %"R8" to ptr
+  store float %".553", ptr %".554"
+  ; LDG.E.SYS R9, [UR4]
+  %".557" = load i32, ptr %"UR4"
+  %"zext.68" = zext i32 %".557" to i64
+  %".558" = load i32, ptr %"UR5"
+  %"zext.69" = zext i32 %".558" to i64
+  %"shl.33" = shl i64 %"zext.69", 32
+  %"or.33" = or i64 %"shl.33", %"zext.68"
+  %".559" = add i64 %"or.33", 0
+  %"inttoptr_bytes.33" = inttoptr i64 %".559" to ptr addrspace(1)
+  %"ptr_cast_for_access.33" = bitcast ptr addrspace(1) %"inttoptr_bytes.33" to ptr addrspace(1)
+  %".560" = load float, ptr addrspace(1) %"ptr_cast_for_access.33"
+  %".561" = bitcast ptr %"R9" to ptr
+  store float %".560", ptr %".561"
+  ; LDG.E.SYS R11, [R2+0x4]
+  %".564" = load i32, ptr %"R2"
+  %"zext.70" = zext i32 %".564" to i64
+  %".565" = load i32, ptr %"R3"
+  %"zext.71" = zext i32 %".565" to i64
+  %"shl.34" = shl i64 %"zext.71", 32
+  %"or.34" = or i64 %"shl.34", %"zext.70"
+  %".566" = add i64 %"or.34", 4
+  %"inttoptr_bytes.34" = inttoptr i64 %".566" to ptr addrspace(1)
+  %"ptr_cast_for_access.34" = bitcast ptr addrspace(1) %"inttoptr_bytes.34" to ptr addrspace(1)
+  %".567" = load float, ptr addrspace(1) %"ptr_cast_for_access.34"
+  %".568" = bitcast ptr %"R11" to ptr
+  store float %".567", ptr %".568"
+  ; LDG.E.SYS R10, [UR4+0x4]
+  %".571" = load i32, ptr %"UR4"
+  %"zext.72" = zext i32 %".571" to i64
+  %".572" = load i32, ptr %"UR5"
+  %"zext.73" = zext i32 %".572" to i64
+  %"shl.35" = shl i64 %"zext.73", 32
+  %"or.35" = or i64 %"shl.35", %"zext.72"
+  %".573" = add i64 %"or.35", 4
+  %"inttoptr_bytes.35" = inttoptr i64 %".573" to ptr addrspace(1)
+  %"ptr_cast_for_access.35" = bitcast ptr addrspace(1) %"inttoptr_bytes.35" to ptr addrspace(1)
+  %".574" = load float, ptr addrspace(1) %"ptr_cast_for_access.35"
+  %".575" = bitcast ptr %"R10" to ptr
+  store float %".574", ptr %".575"
+  ; LDG.E.SYS R13, [R2+0x8]
+  %".578" = load i32, ptr %"R2"
+  %"zext.74" = zext i32 %".578" to i64
+  %".579" = load i32, ptr %"R3"
+  %"zext.75" = zext i32 %".579" to i64
+  %"shl.36" = shl i64 %"zext.75", 32
+  %"or.36" = or i64 %"shl.36", %"zext.74"
+  %".580" = add i64 %"or.36", 8
+  %"inttoptr_bytes.36" = inttoptr i64 %".580" to ptr addrspace(1)
+  %"ptr_cast_for_access.36" = bitcast ptr addrspace(1) %"inttoptr_bytes.36" to ptr addrspace(1)
+  %".581" = load float, ptr addrspace(1) %"ptr_cast_for_access.36"
+  %".582" = bitcast ptr %"R13" to ptr
+  store float %".581", ptr %".582"
+  ; LDG.E.SYS R12, [UR4+0x8]
+  %".585" = load i32, ptr %"UR4"
+  %"zext.76" = zext i32 %".585" to i64
+  %".586" = load i32, ptr %"UR5"
+  %"zext.77" = zext i32 %".586" to i64
+  %"shl.37" = shl i64 %"zext.77", 32
+  %"or.37" = or i64 %"shl.37", %"zext.76"
+  %".587" = add i64 %"or.37", 8
+  %"inttoptr_bytes.37" = inttoptr i64 %".587" to ptr addrspace(1)
+  %"ptr_cast_for_access.37" = bitcast ptr addrspace(1) %"inttoptr_bytes.37" to ptr addrspace(1)
+  %".588" = load float, ptr addrspace(1) %"ptr_cast_for_access.37"
+  %".589" = bitcast ptr %"R12" to ptr
+  store float %".588", ptr %".589"
+  ; LDG.E.SYS R15, [R2+0xc]
+  %".592" = load i32, ptr %"R2"
+  %"zext.78" = zext i32 %".592" to i64
+  %".593" = load i32, ptr %"R3"
+  %"zext.79" = zext i32 %".593" to i64
+  %"shl.38" = shl i64 %"zext.79", 32
+  %"or.38" = or i64 %"shl.38", %"zext.78"
+  %".594" = add i64 %"or.38", 12
+  %"inttoptr_bytes.38" = inttoptr i64 %".594" to ptr addrspace(1)
+  %"ptr_cast_for_access.38" = bitcast ptr addrspace(1) %"inttoptr_bytes.38" to ptr addrspace(1)
+  %".595" = load float, ptr addrspace(1) %"ptr_cast_for_access.38"
+  %".596" = bitcast ptr %"R15" to ptr
+  store float %".595", ptr %".596"
+  ; LDG.E.SYS R14, [UR4+0xc]
+  %".599" = load i32, ptr %"UR4"
+  %"zext.80" = zext i32 %".599" to i64
+  %".600" = load i32, ptr %"UR5"
+  %"zext.81" = zext i32 %".600" to i64
+  %"shl.39" = shl i64 %"zext.81", 32
+  %"or.39" = or i64 %"shl.39", %"zext.80"
+  %".601" = add i64 %"or.39", 12
+  %"inttoptr_bytes.39" = inttoptr i64 %".601" to ptr addrspace(1)
+  %"ptr_cast_for_access.39" = bitcast ptr addrspace(1) %"inttoptr_bytes.39" to ptr addrspace(1)
+  %".602" = load float, ptr addrspace(1) %"ptr_cast_for_access.39"
+  %".603" = bitcast ptr %"R14" to ptr
+  store float %".602", ptr %".603"
+  ; LDG.E.SYS R17, [R2+0x10]
+  %".606" = load i32, ptr %"R2"
+  %"zext.82" = zext i32 %".606" to i64
+  %".607" = load i32, ptr %"R3"
+  %"zext.83" = zext i32 %".607" to i64
+  %"shl.40" = shl i64 %"zext.83", 32
+  %"or.40" = or i64 %"shl.40", %"zext.82"
+  %".608" = add i64 %"or.40", 16
+  %"inttoptr_bytes.40" = inttoptr i64 %".608" to ptr addrspace(1)
+  %"ptr_cast_for_access.40" = bitcast ptr addrspace(1) %"inttoptr_bytes.40" to ptr addrspace(1)
+  %".609" = load float, ptr addrspace(1) %"ptr_cast_for_access.40"
+  %".610" = bitcast ptr %"R17" to ptr
+  store float %".609", ptr %".610"
+  ; LDG.E.SYS R16, [UR4+0x10]
+  %".613" = load i32, ptr %"UR4"
+  %"zext.84" = zext i32 %".613" to i64
+  %".614" = load i32, ptr %"UR5"
+  %"zext.85" = zext i32 %".614" to i64
+  %"shl.41" = shl i64 %"zext.85", 32
+  %"or.41" = or i64 %"shl.41", %"zext.84"
+  %".615" = add i64 %"or.41", 16
+  %"inttoptr_bytes.41" = inttoptr i64 %".615" to ptr addrspace(1)
+  %"ptr_cast_for_access.41" = bitcast ptr addrspace(1) %"inttoptr_bytes.41" to ptr addrspace(1)
+  %".616" = load float, ptr addrspace(1) %"ptr_cast_for_access.41"
+  %".617" = bitcast ptr %"R16" to ptr
+  store float %".616", ptr %".617"
+  ; LDG.E.SYS R19, [R2+0x14]
+  %".620" = load i32, ptr %"R2"
+  %"zext.86" = zext i32 %".620" to i64
+  %".621" = load i32, ptr %"R3"
+  %"zext.87" = zext i32 %".621" to i64
+  %"shl.42" = shl i64 %"zext.87", 32
+  %"or.42" = or i64 %"shl.42", %"zext.86"
+  %".622" = add i64 %"or.42", 20
+  %"inttoptr_bytes.42" = inttoptr i64 %".622" to ptr addrspace(1)
+  %"ptr_cast_for_access.42" = bitcast ptr addrspace(1) %"inttoptr_bytes.42" to ptr addrspace(1)
+  %".623" = load float, ptr addrspace(1) %"ptr_cast_for_access.42"
+  %".624" = bitcast ptr %"R19" to ptr
+  store float %".623", ptr %".624"
+  ; LDG.E.SYS R18, [UR4+0x14]
+  %".627" = load i32, ptr %"UR4"
+  %"zext.88" = zext i32 %".627" to i64
+  %".628" = load i32, ptr %"UR5"
+  %"zext.89" = zext i32 %".628" to i64
+  %"shl.43" = shl i64 %"zext.89", 32
+  %"or.43" = or i64 %"shl.43", %"zext.88"
+  %".629" = add i64 %"or.43", 20
+  %"inttoptr_bytes.43" = inttoptr i64 %".629" to ptr addrspace(1)
+  %"ptr_cast_for_access.43" = bitcast ptr addrspace(1) %"inttoptr_bytes.43" to ptr addrspace(1)
+  %".630" = load float, ptr addrspace(1) %"ptr_cast_for_access.43"
+  %".631" = bitcast ptr %"R18" to ptr
+  store float %".630", ptr %".631"
+  ; LDG.E.SYS R21, [R2+0x18]
+  %".634" = load i32, ptr %"R2"
+  %"zext.90" = zext i32 %".634" to i64
+  %".635" = load i32, ptr %"R3"
+  %"zext.91" = zext i32 %".635" to i64
+  %"shl.44" = shl i64 %"zext.91", 32
+  %"or.44" = or i64 %"shl.44", %"zext.90"
+  %".636" = add i64 %"or.44", 24
+  %"inttoptr_bytes.44" = inttoptr i64 %".636" to ptr addrspace(1)
+  %"ptr_cast_for_access.44" = bitcast ptr addrspace(1) %"inttoptr_bytes.44" to ptr addrspace(1)
+  %".637" = load float, ptr addrspace(1) %"ptr_cast_for_access.44"
+  %".638" = bitcast ptr %"R21" to ptr
+  store float %".637", ptr %".638"
+  ; LDG.E.SYS R20, [UR4+0x18]
+  %".641" = load i32, ptr %"UR4"
+  %"zext.92" = zext i32 %".641" to i64
+  %".642" = load i32, ptr %"UR5"
+  %"zext.93" = zext i32 %".642" to i64
+  %"shl.45" = shl i64 %"zext.93", 32
+  %"or.45" = or i64 %"shl.45", %"zext.92"
+  %".643" = add i64 %"or.45", 24
+  %"inttoptr_bytes.45" = inttoptr i64 %".643" to ptr addrspace(1)
+  %"ptr_cast_for_access.45" = bitcast ptr addrspace(1) %"inttoptr_bytes.45" to ptr addrspace(1)
+  %".644" = load float, ptr addrspace(1) %"ptr_cast_for_access.45"
+  %".645" = bitcast ptr %"R20" to ptr
+  store float %".644", ptr %".645"
+  ; LDG.E.SYS R23, [R2+0x1c]
+  %".648" = load i32, ptr %"R2"
+  %"zext.94" = zext i32 %".648" to i64
+  %".649" = load i32, ptr %"R3"
+  %"zext.95" = zext i32 %".649" to i64
+  %"shl.46" = shl i64 %"zext.95", 32
+  %"or.46" = or i64 %"shl.46", %"zext.94"
+  %".650" = add i64 %"or.46", 28
+  %"inttoptr_bytes.46" = inttoptr i64 %".650" to ptr addrspace(1)
+  %"ptr_cast_for_access.46" = bitcast ptr addrspace(1) %"inttoptr_bytes.46" to ptr addrspace(1)
+  %".651" = load float, ptr addrspace(1) %"ptr_cast_for_access.46"
+  %".652" = bitcast ptr %"R23" to ptr
+  store float %".651", ptr %".652"
+  ; LDG.E.SYS R22, [UR4+0x1c]
+  %".655" = load i32, ptr %"UR4"
+  %"zext.96" = zext i32 %".655" to i64
+  %".656" = load i32, ptr %"UR5"
+  %"zext.97" = zext i32 %".656" to i64
+  %"shl.47" = shl i64 %"zext.97", 32
+  %"or.47" = or i64 %"shl.47", %"zext.96"
+  %".657" = add i64 %"or.47", 28
+  %"inttoptr_bytes.47" = inttoptr i64 %".657" to ptr addrspace(1)
+  %"ptr_cast_for_access.47" = bitcast ptr addrspace(1) %"inttoptr_bytes.47" to ptr addrspace(1)
+  %".658" = load float, ptr addrspace(1) %"ptr_cast_for_access.47"
+  %".659" = bitcast ptr %"R22" to ptr
+  store float %".658", ptr %".659"
+  ; UIADD3 UR4, UP0, UR4, 0x20, URZ
+  %".662" = load i32, ptr %"UR4"
+  %".663" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".662", i32 32)
+  %".664" = extractvalue {i32, i1} %".663", 0
+  %".665" = extractvalue {i32, i1} %".663", 1
+  %".666" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".664", i32 0)
+  %".667" = extractvalue {i32, i1} %".666", 0
+  %".668" = extractvalue {i32, i1} %".666", 1
+  %".669" = or i1 %".665", %".668"
+  store i32 %".667", ptr %"UR4"
+  store i1 %".669", ptr %"UP0"
+  ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
+  %".673" = xor i1 1, 1
+  %".674" = and i1 %".673", 1
+  %".675" = and i1 %".674", 1
+  ; IADD3 R5, R5, 0x8, RZ
+  %".677" = load i32, ptr %"R5"
+  %".678" = add i32 %".677", 8
+  %".679" = add i32 %".678", 0
+  store i32 %".679", ptr %"R5"
+  ; UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT
+  %".682" = load i32, ptr %"UR5"
+  %".683" = load i1, ptr %"UP0"
+  %".684" = xor i1 1, -1
+  %".685" = zext i1 %".683" to i32
+  %".686" = zext i1 %".684" to i32
+  %"add.14" = add i32 0, %".682"
+  %"add.15" = add i32 %"add.14", 0
+  %"add.16" = add i32 %"add.15", %".685"
+  %"add.17" = add i32 %"add.16", %".686"
+  store i32 %"add.17", ptr %"UR5"
+  ; IADD3 R2, P1, R2, 0x20, RZ
+  %".689" = load i32, ptr %"R2"
+  %".690" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".689", i32 32)
+  %".691" = extractvalue {i32, i1} %".690", 0
+  %".692" = extractvalue {i32, i1} %".690", 1
+  %".693" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".691", i32 0)
+  %".694" = extractvalue {i32, i1} %".693", 0
+  %".695" = extractvalue {i32, i1} %".693", 1
+  %".696" = or i1 %".692", %".695"
+  store i32 %".694", ptr %"R2"
+  store i1 %".696", ptr %"P1"
+  ; IADD3 R6, R6, -0x8, RZ
+  %".700" = load i32, ptr %"R6"
+  %".701" = add i32 %".700", -8
+  %".702" = add i32 %".701", 0
+  store i32 %".702", ptr %"R6"
+  ; IADD3.X R3, RZ, R3, RZ, P1, !PT
+  %".705" = load i32, ptr %"R3"
+  %".706" = load i1, ptr %"P1"
+  %".707" = xor i1 1, -1
+  %".708" = zext i1 %".706" to i32
+  %".709" = zext i1 %".707" to i32
+  %"add.18" = add i32 0, %".705"
+  %"add.19" = add i32 %"add.18", 0
+  %"add.20" = add i32 %"add.19", %".708"
+  %"add.21" = add i32 %"add.20", %".709"
+  store i32 %"add.21", ptr %"R3"
+  ; FFMA R8, R8, R9, R7
+  %".712" = load float, ptr %"R8"
+  %".713" = load float, ptr %"R9"
+  %".714" = load float, ptr %"R7"
+  %"fmul.16" = fmul float %".712", %".713"
+  %"fadd.16" = fadd float %"fmul.16", %".714"
+  %".715" = bitcast ptr %"R8" to ptr
+  store float %"fadd.16", ptr %".715"
+  ; FFMA R8, R11, R10, R8
+  %".718" = load float, ptr %"R11"
+  %".719" = load float, ptr %"R10"
+  %".720" = load float, ptr %"R8"
+  %"fmul.17" = fmul float %".718", %".719"
+  %"fadd.17" = fadd float %"fmul.17", %".720"
+  %".721" = bitcast ptr %"R8" to ptr
+  store float %"fadd.17", ptr %".721"
+  ; FFMA R8, R13, R12, R8
+  %".724" = load float, ptr %"R13"
+  %".725" = load float, ptr %"R12"
+  %".726" = load float, ptr %"R8"
+  %"fmul.18" = fmul float %".724", %".725"
+  %"fadd.18" = fadd float %"fmul.18", %".726"
+  %".727" = bitcast ptr %"R8" to ptr
+  store float %"fadd.18", ptr %".727"
+  ; FFMA R8, R15, R14, R8
+  %".730" = load float, ptr %"R15"
+  %".731" = load float, ptr %"R14"
+  %".732" = load float, ptr %"R8"
+  %"fmul.19" = fmul float %".730", %".731"
+  %"fadd.19" = fadd float %"fmul.19", %".732"
+  %".733" = bitcast ptr %"R8" to ptr
+  store float %"fadd.19", ptr %".733"
+  ; FFMA R8, R17, R16, R8
+  %".736" = load float, ptr %"R17"
+  %".737" = load float, ptr %"R16"
+  %".738" = load float, ptr %"R8"
+  %"fmul.20" = fmul float %".736", %".737"
+  %"fadd.20" = fadd float %"fmul.20", %".738"
+  %".739" = bitcast ptr %"R8" to ptr
+  store float %"fadd.20", ptr %".739"
+  ; FFMA R8, R19, R18, R8
+  %".742" = load float, ptr %"R19"
+  %".743" = load float, ptr %"R18"
+  %".744" = load float, ptr %"R8"
+  %"fmul.21" = fmul float %".742", %".743"
+  %"fadd.21" = fadd float %"fmul.21", %".744"
+  %".745" = bitcast ptr %"R8" to ptr
+  store float %"fadd.21", ptr %".745"
+  ; FFMA R8, R21, R20, R8
+  %".748" = load float, ptr %"R21"
+  %".749" = load float, ptr %"R20"
+  %".750" = load float, ptr %"R8"
+  %"fmul.22" = fmul float %".748", %".749"
+  %"fadd.22" = fadd float %"fmul.22", %".750"
+  %".751" = bitcast ptr %"R8" to ptr
+  store float %"fadd.22", ptr %".751"
+  ; FFMA R7, R23, R22, R8
+  %".754" = load float, ptr %"R23"
+  %".755" = load float, ptr %"R22"
+  %".756" = load float, ptr %"R8"
+  %"fmul.23" = fmul float %".754", %".755"
+  %"fadd.23" = fadd float %"fmul.23", %".756"
+  %".757" = bitcast ptr %"R7" to ptr
+  store float %"fadd.23", ptr %".757"
+  br label %".L_x_5"
+.L_x_5:
+  ; ISETP.NE.OR P0, PT, R6, 0x1, P0
+  %".761" = load i32, ptr %"R6"
+  %".762" = load i1, ptr %"P0"
+  %"cmp.7" = icmp ne i32 %".761", 1
+  %".763" = add i1 %"cmp.7", 0
+  %".764" = xor i1 %".763", -1
+  %".765" = or i1 %"cmp.7", %".762"
+  %".766" = or i1 %".764", %".762"
+  store i1 %".765", ptr %"P0"
+  ; @!P0 BRA `(.L_x_1)
+  %".769" = load i1, ptr %"P0"
+  %".770" = icmp ne i1 %".769", 1
+  br i1 %".770", label %".L_x_1", label %".L_x_2"
+.L_x_2:
+  ; LDG.E.SYS R8, [R2]
+  %".773" = load i32, ptr %"R2"
+  %"zext.98" = zext i32 %".773" to i64
+  %".774" = load i32, ptr %"R3"
+  %"zext.99" = zext i32 %".774" to i64
+  %"shl.48" = shl i64 %"zext.99", 32
+  %"or.48" = or i64 %"shl.48", %"zext.98"
+  %".775" = add i64 %"or.48", 0
+  %"inttoptr_bytes.48" = inttoptr i64 %".775" to ptr addrspace(1)
+  %"ptr_cast_for_access.48" = bitcast ptr addrspace(1) %"inttoptr_bytes.48" to ptr addrspace(1)
+  %".776" = load float, ptr addrspace(1) %"ptr_cast_for_access.48"
+  %".777" = bitcast ptr %"R8" to ptr
+  store float %".776", ptr %".777"
+  ; LDG.E.SYS R9, [UR4]
+  %".780" = load i32, ptr %"UR4"
+  %"zext.100" = zext i32 %".780" to i64
+  %".781" = load i32, ptr %"UR5"
+  %"zext.101" = zext i32 %".781" to i64
+  %"shl.49" = shl i64 %"zext.101", 32
+  %"or.49" = or i64 %"shl.49", %"zext.100"
+  %".782" = add i64 %"or.49", 0
+  %"inttoptr_bytes.49" = inttoptr i64 %".782" to ptr addrspace(1)
+  %"ptr_cast_for_access.49" = bitcast ptr addrspace(1) %"inttoptr_bytes.49" to ptr addrspace(1)
+  %".783" = load float, ptr addrspace(1) %"ptr_cast_for_access.49"
+  %".784" = bitcast ptr %"R9" to ptr
+  store float %".783", ptr %".784"
+  ; LDG.E.SYS R11, [R2+0x4]
+  %".787" = load i32, ptr %"R2"
+  %"zext.102" = zext i32 %".787" to i64
+  %".788" = load i32, ptr %"R3"
+  %"zext.103" = zext i32 %".788" to i64
+  %"shl.50" = shl i64 %"zext.103", 32
+  %"or.50" = or i64 %"shl.50", %"zext.102"
+  %".789" = add i64 %"or.50", 4
+  %"inttoptr_bytes.50" = inttoptr i64 %".789" to ptr addrspace(1)
+  %"ptr_cast_for_access.50" = bitcast ptr addrspace(1) %"inttoptr_bytes.50" to ptr addrspace(1)
+  %".790" = load float, ptr addrspace(1) %"ptr_cast_for_access.50"
+  %".791" = bitcast ptr %"R11" to ptr
+  store float %".790", ptr %".791"
+  ; LDG.E.SYS R10, [UR4+0x4]
+  %".794" = load i32, ptr %"UR4"
+  %"zext.104" = zext i32 %".794" to i64
+  %".795" = load i32, ptr %"UR5"
+  %"zext.105" = zext i32 %".795" to i64
+  %"shl.51" = shl i64 %"zext.105", 32
+  %"or.51" = or i64 %"shl.51", %"zext.104"
+  %".796" = add i64 %"or.51", 4
+  %"inttoptr_bytes.51" = inttoptr i64 %".796" to ptr addrspace(1)
+  %"ptr_cast_for_access.51" = bitcast ptr addrspace(1) %"inttoptr_bytes.51" to ptr addrspace(1)
+  %".797" = load float, ptr addrspace(1) %"ptr_cast_for_access.51"
+  %".798" = bitcast ptr %"R10" to ptr
+  store float %".797", ptr %".798"
+  ; LDG.E.SYS R13, [R2+0x8]
+  %".801" = load i32, ptr %"R2"
+  %"zext.106" = zext i32 %".801" to i64
+  %".802" = load i32, ptr %"R3"
+  %"zext.107" = zext i32 %".802" to i64
+  %"shl.52" = shl i64 %"zext.107", 32
+  %"or.52" = or i64 %"shl.52", %"zext.106"
+  %".803" = add i64 %"or.52", 8
+  %"inttoptr_bytes.52" = inttoptr i64 %".803" to ptr addrspace(1)
+  %"ptr_cast_for_access.52" = bitcast ptr addrspace(1) %"inttoptr_bytes.52" to ptr addrspace(1)
+  %".804" = load float, ptr addrspace(1) %"ptr_cast_for_access.52"
+  %".805" = bitcast ptr %"R13" to ptr
+  store float %".804", ptr %".805"
+  ; LDG.E.SYS R12, [UR4+0x8]
+  %".808" = load i32, ptr %"UR4"
+  %"zext.108" = zext i32 %".808" to i64
+  %".809" = load i32, ptr %"UR5"
+  %"zext.109" = zext i32 %".809" to i64
+  %"shl.53" = shl i64 %"zext.109", 32
+  %"or.53" = or i64 %"shl.53", %"zext.108"
+  %".810" = add i64 %"or.53", 8
+  %"inttoptr_bytes.53" = inttoptr i64 %".810" to ptr addrspace(1)
+  %"ptr_cast_for_access.53" = bitcast ptr addrspace(1) %"inttoptr_bytes.53" to ptr addrspace(1)
+  %".811" = load float, ptr addrspace(1) %"ptr_cast_for_access.53"
+  %".812" = bitcast ptr %"R12" to ptr
+  store float %".811", ptr %".812"
+  ; LDG.E.SYS R15, [R2+0xc]
+  %".815" = load i32, ptr %"R2"
+  %"zext.110" = zext i32 %".815" to i64
+  %".816" = load i32, ptr %"R3"
+  %"zext.111" = zext i32 %".816" to i64
+  %"shl.54" = shl i64 %"zext.111", 32
+  %"or.54" = or i64 %"shl.54", %"zext.110"
+  %".817" = add i64 %"or.54", 12
+  %"inttoptr_bytes.54" = inttoptr i64 %".817" to ptr addrspace(1)
+  %"ptr_cast_for_access.54" = bitcast ptr addrspace(1) %"inttoptr_bytes.54" to ptr addrspace(1)
+  %".818" = load float, ptr addrspace(1) %"ptr_cast_for_access.54"
+  %".819" = bitcast ptr %"R15" to ptr
+  store float %".818", ptr %".819"
+  ; LDG.E.SYS R14, [UR4+0xc]
+  %".822" = load i32, ptr %"UR4"
+  %"zext.112" = zext i32 %".822" to i64
+  %".823" = load i32, ptr %"UR5"
+  %"zext.113" = zext i32 %".823" to i64
+  %"shl.55" = shl i64 %"zext.113", 32
+  %"or.55" = or i64 %"shl.55", %"zext.112"
+  %".824" = add i64 %"or.55", 12
+  %"inttoptr_bytes.55" = inttoptr i64 %".824" to ptr addrspace(1)
+  %"ptr_cast_for_access.55" = bitcast ptr addrspace(1) %"inttoptr_bytes.55" to ptr addrspace(1)
+  %".825" = load float, ptr addrspace(1) %"ptr_cast_for_access.55"
+  %".826" = bitcast ptr %"R14" to ptr
+  store float %".825", ptr %".826"
+  ; IADD3 R6, R6, -0x4, RZ
+  %".829" = load i32, ptr %"R6"
+  %".830" = add i32 %".829", -4
+  %".831" = add i32 %".830", 0
+  store i32 %".831", ptr %"R6"
+  ; UIADD3 UR4, UP0, UR4, 0x10, URZ
+  %".834" = load i32, ptr %"UR4"
+  %".835" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".834", i32 16)
+  %".836" = extractvalue {i32, i1} %".835", 0
+  %".837" = extractvalue {i32, i1} %".835", 1
+  %".838" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".836", i32 0)
+  %".839" = extractvalue {i32, i1} %".838", 0
+  %".840" = extractvalue {i32, i1} %".838", 1
+  %".841" = or i1 %".837", %".840"
+  store i32 %".839", ptr %"UR4"
+  store i1 %".841", ptr %"UP0"
+  ; IADD3 R5, R5, 0x4, RZ
+  %".845" = load i32, ptr %"R5"
+  %".846" = add i32 %".845", 4
+  %".847" = add i32 %".846", 0
+  store i32 %".847", ptr %"R5"
+  ; ISETP.NE.AND P0, PT, R6, 0x1, PT
+  %".850" = load i32, ptr %"R6"
+  %".851" = load i1, ptr %"PT"
+  %"cmp.8" = icmp ne i32 %".850", 1
+  %".852" = add i1 %"cmp.8", 0
+  %".853" = xor i1 %".852", -1
+  %".854" = and i1 %"cmp.8", %".851"
+  %".855" = and i1 %".853", %".851"
+  store i1 %".854", ptr %"P0"
+  ; UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT
+  %".858" = load i32, ptr %"UR5"
+  %".859" = load i1, ptr %"UP0"
+  %".860" = xor i1 1, -1
+  %".861" = zext i1 %".859" to i32
+  %".862" = zext i1 %".860" to i32
+  %"add.22" = add i32 0, %".858"
+  %"add.23" = add i32 %"add.22", 0
+  %"add.24" = add i32 %"add.23", %".861"
+  %"add.25" = add i32 %"add.24", %".862"
+  store i32 %"add.25", ptr %"UR5"
+  ; FFMA R8, R8, R9, R7
+  %".865" = load float, ptr %"R8"
+  %".866" = load float, ptr %"R9"
+  %".867" = load float, ptr %"R7"
+  %"fmul.24" = fmul float %".865", %".866"
+  %"fadd.24" = fadd float %"fmul.24", %".867"
+  %".868" = bitcast ptr %"R8" to ptr
+  store float %"fadd.24", ptr %".868"
+  ; IADD3 R9, P1, R2, 0x10, RZ
+  %".871" = load i32, ptr %"R2"
+  %".872" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".871", i32 16)
+  %".873" = extractvalue {i32, i1} %".872", 0
+  %".874" = extractvalue {i32, i1} %".872", 1
+  %".875" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".873", i32 0)
+  %".876" = extractvalue {i32, i1} %".875", 0
+  %".877" = extractvalue {i32, i1} %".875", 1
+  %".878" = or i1 %".874", %".877"
+  store i32 %".876", ptr %"R9"
+  store i1 %".878", ptr %"P1"
+  ; MOV R2, R9
+  %".882" = load i32, ptr %"R9"
+  store i32 %".882", ptr %"R2"
+  ; FFMA R8, R11, R10, R8
+  %".885" = load float, ptr %"R11"
+  %".886" = load float, ptr %"R10"
+  %".887" = load float, ptr %"R8"
+  %"fmul.25" = fmul float %".885", %".886"
+  %"fadd.25" = fadd float %"fmul.25", %".887"
+  %".888" = bitcast ptr %"R8" to ptr
+  store float %"fadd.25", ptr %".888"
+  ; IMAD.X R10, RZ, RZ, R3, P1
+  %".891" = load i32, ptr %"R3"
+  %".892" = load i1, ptr %"P1"
+  %"mul.6" = mul i32 0, 0
+  %"add.26" = add i32 %"mul.6", %".891"
+  %"zext.114" = zext i1 %".892" to i32
+  %"add.27" = add i32 %"add.26", %"zext.114"
+  store i32 %"add.27", ptr %"R10"
+  ; MOV R3, R10
+  %".895" = load i32, ptr %"R10"
+  store i32 %".895", ptr %"R3"
+  ; FFMA R8, R13, R12, R8
+  %".898" = load float, ptr %"R13"
+  %".899" = load float, ptr %"R12"
+  %".900" = load float, ptr %"R8"
+  %"fmul.26" = fmul float %".898", %".899"
+  %"fadd.26" = fadd float %"fmul.26", %".900"
+  %".901" = bitcast ptr %"R8" to ptr
+  store float %"fadd.26", ptr %".901"
+  ; FFMA R7, R15, R14, R8
+  %".904" = load float, ptr %"R15"
+  %".905" = load float, ptr %"R14"
+  %".906" = load float, ptr %"R8"
+  %"fmul.27" = fmul float %".904", %".905"
+  %"fadd.27" = fadd float %"fmul.27", %".906"
+  %".907" = bitcast ptr %"R7" to ptr
+  store float %"fadd.27", ptr %".907"
+  ; @P0 BRA `(.L_x_2)
+  %".910" = load i1, ptr %"P0"
+  %".911" = icmp eq i1 %".910", 1
+  br i1 %".911", label %".L_x_2", label %".L_x_1"
+.L_x_1:
+  ; ISETP.NE.AND P0, PT, R4, RZ, PT
+  %".914" = load i32, ptr %"R4"
+  %".915" = load i1, ptr %"PT"
+  %"cmp.9" = icmp ne i32 %".914", 0
+  %".916" = add i1 %"cmp.9", 0
+  %".917" = xor i1 %".916", -1
+  %".918" = and i1 %"cmp.9", %".915"
+  %".919" = and i1 %".917", %".915"
+  store i1 %".918", ptr %"P0"
+  ; @!P0 BRA `(.L_x_0)
+  %".922" = load i1, ptr %"P0"
+  %".923" = icmp ne i1 %".922", 1
+  br i1 %".923", label %".L_x_0", label %".L_x_1_split_0x0930"
+.L_x_1_split_0x0930:
+  ; IMAD.MOV.U32 R8, RZ, RZ, 0x4
+  %"mul.7" = mul i32 0, 0
+  %"add.28" = add i32 %"mul.7", 4
+  store i32 %"add.28", ptr %"R8"
+  ; IMAD R2, R0, c[0x0][0x180], R5
+  %".928" = load i32, ptr %"R0"
+  %".929" = load i32, ptr %"R5"
+  %"mul.8" = mul i32 %".928", %"Arg_4"
+  %"add.29" = add i32 %"mul.8", %".929"
+  store i32 %"add.29", ptr %"R2"
+  ; IMAD.WIDE R2, R2, R8, c[0x0][0x168]
+  %".932" = load i32, ptr %"R2"
+  %".933" = load i32, ptr %"R8"
+  %"zext.115" = zext i32 %".932" to i64
+  %"zext.116" = zext i32 %".933" to i64
+  %"mul.9" = mul i64 %"zext.115", %"zext.116"
+  %".934" = ptrtoint ptr %"Arg_1" to i64
+  %"add.30" = add i64 %"mul.9", %".934"
+  %".935" = and i64 %"add.30", 18446744069414584320
+  %".936" = lshr i64 %".935", 32
+  %"trunc32.4" = trunc i64 %".936" to i32
+  %"trunc32.5" = trunc i64 %"add.30" to i32
+  store i32 %"trunc32.5", ptr %"R2"
+  store i32 %"trunc32.4", ptr %"R3"
+  ; IMAD.WIDE R8, R5, R8, c[0x0][0x160]
+  %".940" = load i32, ptr %"R5"
+  %".941" = load i32, ptr %"R8"
+  %"zext.117" = zext i32 %".940" to i64
+  %"zext.118" = zext i32 %".941" to i64
+  %"mul.10" = mul i64 %"zext.117", %"zext.118"
+  %".942" = ptrtoint ptr %"Arg_0" to i64
+  %"add.31" = add i64 %"mul.10", %".942"
+  %".943" = and i64 %"add.31", 18446744069414584320
+  %".944" = lshr i64 %".943", 32
+  %"trunc32.6" = trunc i64 %".944" to i32
+  %"trunc32.7" = trunc i64 %"add.31" to i32
+  store i32 %"trunc32.7", ptr %"R8"
+  store i32 %"trunc32.6", ptr %"R9"
+  ; MOV R6, R2
+  %".948" = load i32, ptr %"R2"
+  store i32 %".948", ptr %"R6"
+  br label %".L_x_6"
+.L_x_6:
+  ; MOV R2, R6
+  %".952" = load i32, ptr %"R6"
+  store i32 %".952", ptr %"R2"
+  ; LDG.E.SYS R5, [R8]
+  %".955" = load i32, ptr %"R8"
+  %"zext.119" = zext i32 %".955" to i64
+  %".956" = load i32, ptr %"R9"
+  %"zext.120" = zext i32 %".956" to i64
+  %"shl.56" = shl i64 %"zext.120", 32
+  %"or.56" = or i64 %"shl.56", %"zext.119"
+  %".957" = add i64 %"or.56", 0
+  %"inttoptr_bytes.56" = inttoptr i64 %".957" to ptr addrspace(1)
+  %"ptr_cast_for_access.56" = bitcast ptr addrspace(1) %"inttoptr_bytes.56" to ptr addrspace(1)
+  %".958" = load float, ptr addrspace(1) %"ptr_cast_for_access.56"
+  %".959" = bitcast ptr %"R5" to ptr
+  store float %".958", ptr %".959"
+  ; LDG.E.SYS R2, [R2]
+  %".962" = load i32, ptr %"R2"
+  %"zext.121" = zext i32 %".962" to i64
+  %".963" = load i32, ptr %"R3"
+  %"zext.122" = zext i32 %".963" to i64
+  %"shl.57" = shl i64 %"zext.122", 32
+  %"or.57" = or i64 %"shl.57", %"zext.121"
+  %".964" = add i64 %"or.57", 0
+  %"inttoptr_bytes.57" = inttoptr i64 %".964" to ptr addrspace(1)
+  %"ptr_cast_for_access.57" = bitcast ptr addrspace(1) %"inttoptr_bytes.57" to ptr addrspace(1)
+  %".965" = load float, ptr addrspace(1) %"ptr_cast_for_access.57"
+  %".966" = bitcast ptr %"R2" to ptr
+  store float %".965", ptr %".966"
+  ; IADD3 R4, R4, -0x1, RZ
+  %".969" = load i32, ptr %"R4"
+  %".970" = add i32 %".969", -1
+  %".971" = add i32 %".970", 0
+  store i32 %".971", ptr %"R4"
+  ; ISETP.NE.AND P0, PT, R4, RZ, PT
+  %".974" = load i32, ptr %"R4"
+  %".975" = load i1, ptr %"PT"
+  %"cmp.10" = icmp ne i32 %".974", 0
+  %".976" = add i1 %"cmp.10", 0
+  %".977" = xor i1 %".976", -1
+  %".978" = and i1 %"cmp.10", %".975"
+  %".979" = and i1 %".977", %".975"
+  store i1 %".978", ptr %"P0"
+  ; IADD3 R6, P1, R6, 0x4, RZ
+  %".982" = load i32, ptr %"R6"
+  %".983" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".982", i32 4)
+  %".984" = extractvalue {i32, i1} %".983", 0
+  %".985" = extractvalue {i32, i1} %".983", 1
+  %".986" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".984", i32 0)
+  %".987" = extractvalue {i32, i1} %".986", 0
+  %".988" = extractvalue {i32, i1} %".986", 1
+  %".989" = or i1 %".985", %".988"
+  store i32 %".987", ptr %"R6"
+  store i1 %".989", ptr %"P1"
+  ; IADD3 R8, P2, R8, 0x4, RZ
+  %".993" = load i32, ptr %"R8"
+  %".994" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".993", i32 4)
+  %".995" = extractvalue {i32, i1} %".994", 0
+  %".996" = extractvalue {i32, i1} %".994", 1
+  %".997" = call {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".995", i32 0)
+  %".998" = extractvalue {i32, i1} %".997", 0
+  %".999" = extractvalue {i32, i1} %".997", 1
+  %".1000" = or i1 %".996", %".999"
+  store i32 %".998", ptr %"R8"
+  store i1 %".1000", ptr %"P2"
+  ; IMAD.X R3, RZ, RZ, R3, P1
+  %".1004" = load i32, ptr %"R3"
+  %".1005" = load i1, ptr %"P1"
+  %"mul.11" = mul i32 0, 0
+  %"add.32" = add i32 %"mul.11", %".1004"
+  %"zext.123" = zext i1 %".1005" to i32
+  %"add.33" = add i32 %"add.32", %"zext.123"
+  store i32 %"add.33", ptr %"R3"
+  ; IADD3.X R9, RZ, R9, RZ, P2, !PT
+  %".1008" = load i32, ptr %"R9"
+  %".1009" = load i1, ptr %"P2"
+  %".1010" = xor i1 1, -1
+  %".1011" = zext i1 %".1009" to i32
+  %".1012" = zext i1 %".1010" to i32
+  %"add.34" = add i32 0, %".1008"
+  %"add.35" = add i32 %"add.34", 0
+  %"add.36" = add i32 %"add.35", %".1011"
+  %"add.37" = add i32 %"add.36", %".1012"
+  store i32 %"add.37", ptr %"R9"
+  ; FFMA R7, R2, R5, R7
+  %".1015" = load float, ptr %"R2"
+  %".1016" = load float, ptr %"R5"
+  %".1017" = load float, ptr %"R7"
+  %"fmul.28" = fmul float %".1015", %".1016"
+  %"fadd.28" = fadd float %"fmul.28", %".1017"
+  %".1018" = bitcast ptr %"R7" to ptr
+  store float %"fadd.28", ptr %".1018"
+  ; @P0 BRA `(.L_x_6)
+  %".1021" = load i1, ptr %"P0"
+  %".1022" = icmp eq i1 %".1021", 1
+  br i1 %".1022", label %".L_x_6", label %".L_x_0"
+.L_x_0:
+  ; MOV R5, 0x4
+  store i32 4, ptr %"R5"
+  ; IMAD.WIDE R2, R0, R5, c[0x0][0x170]
+  %".1027" = load i32, ptr %"R0"
+  %".1028" = load i32, ptr %"R5"
+  %"zext.124" = zext i32 %".1027" to i64
+  %"zext.125" = zext i32 %".1028" to i64
+  %"mul.12" = mul i64 %"zext.124", %"zext.125"
+  %".1029" = ptrtoint ptr %"Arg_2" to i64
+  %"add.38" = add i64 %"mul.12", %".1029"
+  %".1030" = and i64 %"add.38", 18446744069414584320
+  %".1031" = lshr i64 %".1030", 32
+  %"trunc32.8" = trunc i64 %".1031" to i32
+  %"trunc32.9" = trunc i64 %"add.38" to i32
+  store i32 %"trunc32.9", ptr %"R2"
+  store i32 %"trunc32.8", ptr %"R3"
+  ; LDG.E.SYS R2, [R2]
+  %".1035" = load i32, ptr %"R2"
+  %"zext.126" = zext i32 %".1035" to i64
+  %".1036" = load i32, ptr %"R3"
+  %"zext.127" = zext i32 %".1036" to i64
+  %"shl.58" = shl i64 %"zext.127", 32
+  %"or.58" = or i64 %"shl.58", %"zext.126"
+  %".1037" = add i64 %"or.58", 0
+  %"inttoptr_bytes.58" = inttoptr i64 %".1037" to ptr addrspace(1)
+  %"ptr_cast_for_access.58" = bitcast ptr addrspace(1) %"inttoptr_bytes.58" to ptr addrspace(1)
+  %".1038" = load float, ptr addrspace(1) %"ptr_cast_for_access.58"
+  %".1039" = bitcast ptr %"R2" to ptr
+  store float %".1038", ptr %".1039"
+  ; IMAD.WIDE R4, R0, R5, c[0x0][0x178]
+  %".1042" = load i32, ptr %"R0"
+  %".1043" = load i32, ptr %"R5"
+  %"zext.128" = zext i32 %".1042" to i64
+  %"zext.129" = zext i32 %".1043" to i64
+  %"mul.13" = mul i64 %"zext.128", %"zext.129"
+  %".1044" = ptrtoint ptr %"Arg_3" to i64
+  %"add.39" = add i64 %"mul.13", %".1044"
+  %".1045" = and i64 %"add.39", 18446744069414584320
+  %".1046" = lshr i64 %".1045", 32
+  %"trunc32.10" = trunc i64 %".1046" to i32
+  %"trunc32.11" = trunc i64 %"add.39" to i32
+  store i32 %"trunc32.11", ptr %"R4"
+  store i32 %"trunc32.10", ptr %"R5"
+  ; FADD R7, R2, R7
+  %".1050" = load float, ptr %"R2"
+  %".1051" = load float, ptr %"R7"
+  %"fadd.29" = fadd float %".1050", %".1051"
+  %".1052" = bitcast ptr %"R7" to ptr
+  store float %"fadd.29", ptr %".1052"
+  ; STG.E.SYS [R4], R7
+  %".1055" = load float, ptr %"R7"
+  %".1056" = load i32, ptr %"R4"
+  %"zext.130" = zext i32 %".1056" to i64
+  %".1057" = load i32, ptr %"R5"
+  %"zext.131" = zext i32 %".1057" to i64
+  %"shl.59" = shl i64 %"zext.131", 32
+  %"or.59" = or i64 %"shl.59", %"zext.130"
+  %".1058" = add i64 %"or.59", 0
+  %"inttoptr_bytes.59" = inttoptr i64 %".1058" to ptr addrspace(1)
+  %"ptr_cast_for_access.59" = bitcast ptr addrspace(1) %"inttoptr_bytes.59" to ptr addrspace(1)
+  store float %".1055", ptr addrspace(1) %"ptr_cast_for_access.59"
   ; EXIT
   br label %"ExitFunction"
-.L_x_0:
-  ; BRA `(.L_x_0)
-  br label %".L_x_0"
+.L_x_7:
+  ; BRA `(.L_x_7)
+  br label %".L_x_7"
 ExitFunction:
   ret void
 }
@@ -814,6 +2171,8 @@ ExitFunction:
 declare i32 @"llvm.nvvm.read.ptx.sreg.ctaid.x"()
 
 declare i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
+
+declare {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".1", i32 %".2")
 
 define ptx_kernel void @"_Z8fc_layerPfS_S_S_ii"(ptr %"Arg_0", ptr %"Arg_1", ptr %"Arg_2", ptr %"Arg_3", i32 %"Arg_4", i32 %"Arg_5")
 {
@@ -1261,10 +2620,10 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".46" = and i1 %"cmp.1", %".43"
   %".47" = and i1 %".45", %".43"
   store i1 %".46", ptr %"P0"
-  ; @!P0 BRA `(.L_x_1)
+  ; @!P0 BRA `(.L_x_8)
   %".50" = load i1, ptr %"P0"
   %".51" = icmp ne i1 %".50", 1
-  br i1 %".51", label %".L_x_1", label %".text._Z8fc_layerPfS_S_S_ii_split_0x00a0"
+  br i1 %".51", label %".L_x_8", label %".text._Z8fc_layerPfS_S_S_ii_split_0x00a0"
 .text._Z8fc_layerPfS_S_S_ii_split_0x00a0:
   ; IADD3 R2, R4.reuse, -0x1, RZ
   %".54" = load i32, ptr %"R4"
@@ -1292,10 +2651,10 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R5, RZ
   %".76" = load i32, ptr %"RZ"
   store i32 %".76", ptr %"R5"
-  ; @!P0 BRA `(.L_x_2)
+  ; @!P0 BRA `(.L_x_9)
   %".79" = load i1, ptr %"P0"
   %".80" = icmp ne i1 %".79", 1
-  br i1 %".80", label %".L_x_2", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0100"
+  br i1 %".80", label %".L_x_9", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0100"
 .text._Z8fc_layerPfS_S_S_ii_split_0x0100:
   ; IADD3 R6, -R4, c[0x0][0x180], RZ
   %".83" = load i32, ptr %"R4"
@@ -1350,10 +2709,10 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R5, RZ
   %".120" = load i32, ptr %"RZ"
   store i32 %".120", ptr %"R5"
-  ; @!P0 BRA `(.L_x_3)
+  ; @!P0 BRA `(.L_x_10)
   %".123" = load i1, ptr %"P0"
   %".124" = icmp ne i1 %".123", 1
-  br i1 %".124", label %".L_x_3", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0190"
+  br i1 %".124", label %".L_x_10", label %".text._Z8fc_layerPfS_S_S_ii_split_0x0190"
 .text._Z8fc_layerPfS_S_S_ii_split_0x0190:
   ; ISETP.GT.AND P1, PT, R6, 0xc, PT
   %".127" = load i32, ptr %"R6"
@@ -1367,17 +2726,17 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0
   %".135" = and i1 1, 1
   %".136" = and i1 %".135", 1
-  ; @!P1 BRA `(.L_x_4)
+  ; @!P1 BRA `(.L_x_11)
   %".138" = load i1, ptr %"P1"
   %".139" = icmp ne i1 %".138", 1
-  br i1 %".139", label %".L_x_4", label %".text._Z8fc_layerPfS_S_S_ii_split_0x01c0"
+  br i1 %".139", label %".L_x_11", label %".text._Z8fc_layerPfS_S_S_ii_split_0x01c0"
 .text._Z8fc_layerPfS_S_S_ii_split_0x01c0:
   ; PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0
   %".142" = xor i1 1, 1
   %".143" = and i1 %".142", 1
   %".144" = and i1 %".143", 1
-  br label %".L_x_5"
-.L_x_5:
+  br label %".L_x_12"
+.L_x_12:
   ; LDG.E.SYS R8, [R2]
   %".147" = load i32, ptr %"R2"
   %"zext.2" = zext i32 %".147" to i64
@@ -1982,11 +3341,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.15" = fadd float %"fmul.15", %".514"
   %".515" = bitcast ptr %"R7" to ptr
   store float %"fadd.15", ptr %".515"
-  ; @P1 BRA `(.L_x_5)
+  ; @P1 BRA `(.L_x_12)
   %".518" = load i1, ptr %"P1"
   %".519" = icmp eq i1 %".518", 1
-  br i1 %".519", label %".L_x_5", label %".L_x_4"
-.L_x_4:
+  br i1 %".519", label %".L_x_12", label %".L_x_11"
+.L_x_11:
   ; ISETP.GT.AND P1, PT, R6, 0x4, PT
   %".522" = load i32, ptr %"R6"
   %".523" = load i1, ptr %"PT"
@@ -1996,11 +3355,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".526" = and i1 %"cmp.6", %".523"
   %".527" = and i1 %".525", %".523"
   store i1 %".526", ptr %"P1"
-  ; @!P1 BRA `(.L_x_6)
+  ; @!P1 BRA `(.L_x_13)
   %".530" = load i1, ptr %"P1"
   %".531" = icmp ne i1 %".530", 1
-  br i1 %".531", label %".L_x_6", label %".L_x_4_split_0x0570"
-.L_x_4_split_0x0570:
+  br i1 %".531", label %".L_x_13", label %".L_x_11_split_0x0570"
+.L_x_11_split_0x0570:
   ; LDG.E.SYS R8, [R2]
   %".534" = load i32, ptr %"R2"
   %"zext.67" = zext i32 %".534" to i64
@@ -2331,8 +3690,8 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.23" = fadd float %"fmul.23", %".740"
   %".741" = bitcast ptr %"R7" to ptr
   store float %"fadd.23", ptr %".741"
-  br label %".L_x_6"
-.L_x_6:
+  br label %".L_x_13"
+.L_x_13:
   ; ISETP.NE.OR P0, PT, R6, RZ, P0
   %".745" = load i32, ptr %"R6"
   %".746" = load i1, ptr %"P0"
@@ -2342,11 +3701,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".749" = or i1 %"cmp.7", %".746"
   %".750" = or i1 %".748", %".746"
   store i1 %".749", ptr %"P0"
-  ; @!P0 BRA `(.L_x_2)
+  ; @!P0 BRA `(.L_x_9)
   %".753" = load i1, ptr %"P0"
   %".754" = icmp ne i1 %".753", 1
-  br i1 %".754", label %".L_x_2", label %".L_x_3"
-.L_x_3:
+  br i1 %".754", label %".L_x_9", label %".L_x_10"
+.L_x_10:
   ; LDG.E.SYS R8, [R2]
   %".757" = load i32, ptr %"R2"
   %"zext.99" = zext i32 %".757" to i64
@@ -2554,11 +3913,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.27" = fadd float %"fmul.27", %".893"
   %".894" = bitcast ptr %"R7" to ptr
   store float %"fadd.27", ptr %".894"
-  ; @P0 BRA `(.L_x_3)
+  ; @P0 BRA `(.L_x_10)
   %".897" = load i1, ptr %"P0"
   %".898" = icmp eq i1 %".897", 1
-  br i1 %".898", label %".L_x_3", label %".L_x_2"
-.L_x_2:
+  br i1 %".898", label %".L_x_10", label %".L_x_9"
+.L_x_9:
   ; ISETP.NE.AND P0, PT, R4, RZ, PT
   %".901" = load i32, ptr %"R4"
   %".902" = load i1, ptr %"PT"
@@ -2568,11 +3927,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %".905" = and i1 %"cmp.9", %".902"
   %".906" = and i1 %".904", %".902"
   store i1 %".905", ptr %"P0"
-  ; @!P0 BRA `(.L_x_1)
+  ; @!P0 BRA `(.L_x_8)
   %".909" = load i1, ptr %"P0"
   %".910" = icmp ne i1 %".909", 1
-  br i1 %".910", label %".L_x_1", label %".L_x_2_split_0x0900"
-.L_x_2_split_0x0900:
+  br i1 %".910", label %".L_x_8", label %".L_x_9_split_0x0900"
+.L_x_9_split_0x0900:
   ; MOV R8, 0x4
   store i32 4, ptr %"R8"
   ; IMAD R2, R0, c[0x0][0x180], R5
@@ -2612,8 +3971,8 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   ; MOV R6, R2
   %".935" = load i32, ptr %"R2"
   store i32 %".935", ptr %"R6"
-  br label %".L_x_7"
-.L_x_7:
+  br label %".L_x_14"
+.L_x_14:
   ; IMAD.MOV.U32 R2, RZ, RZ, R6
   %".939" = load i32, ptr %"R6"
   %"mul.10" = mul i32 0, 0
@@ -2711,11 +4070,11 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   %"fadd.28" = fadd float %"fmul.28", %".1007"
   %".1008" = bitcast ptr %"R7" to ptr
   store float %"fadd.28", ptr %".1008"
-  ; @P0 BRA `(.L_x_7)
+  ; @P0 BRA `(.L_x_14)
   %".1011" = load i1, ptr %"P0"
   %".1012" = icmp eq i1 %".1011", 1
-  br i1 %".1012", label %".L_x_7", label %".L_x_1"
-.L_x_1:
+  br i1 %".1012", label %".L_x_14", label %".L_x_8"
+.L_x_8:
   ; MOV R5, 0x4
   store i32 4, ptr %"R5"
   ; IMAD.WIDE R2, R0, R5, c[0x0][0x170]
@@ -2779,14 +4138,12 @@ Entry_.text._Z8fc_layerPfS_S_S_ii:
   store float %".1045", ptr addrspace(1) %"ptr_cast_for_access.59"
   ; EXIT
   br label %"ExitFunction"
-.L_x_8:
-  ; BRA `(.L_x_8)
-  br label %".L_x_8"
+.L_x_15:
+  ; BRA `(.L_x_15)
+  br label %".L_x_15"
 ExitFunction:
   ret void
 }
-
-declare {i32, i1} @"llvm.uadd.with.overflow.i32"(i32 %".1", i32 %".2")
 
 define ptx_kernel void @"_Z10max_pool2dPfS_iii"(ptr %"Arg_0", ptr %"Arg_1", i32 %"Arg_2", i32 %"Arg_3", i32 %"Arg_4")
 {
@@ -3457,10 +4814,10 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".225" = and i1 %"cmp.7", %".222"
   %".226" = and i1 %".224", %".222"
   store i1 %".225", ptr %"P0"
-  ; @!P0 BRA `(.L_x_9)
+  ; @!P0 BRA `(.L_x_16)
   %".229" = load i1, ptr %"P0"
   %".230" = icmp ne i1 %".229", 1
-  br i1 %".230", label %".L_x_9", label %".text._Z10max_pool2dPfS_iii_split_0x0290"
+  br i1 %".230", label %".L_x_16", label %".text._Z10max_pool2dPfS_iii_split_0x0290"
 .text._Z10max_pool2dPfS_iii_split_0x0290:
   ; IMAD R3, R19, c[0x0][0x170], RZ
   %".233" = load i32, ptr %"R19"
@@ -3517,8 +4874,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mul.18" = mul i32 %".271", %"Arg_2"
   %"add.18" = add i32 %"mul.18", %".272"
   store i32 %"add.18", ptr %"R14"
-  br label %".L_x_13"
-.L_x_13:
+  br label %".L_x_20"
+.L_x_20:
   ; UMOV UR4, URZ
   %".276" = load i32, ptr %"URZ"
   store i32 %".276", ptr %"UR4"
@@ -3531,11 +4888,11 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".283" = and i1 %"cmp.9", %".280"
   %".284" = and i1 %".282", %".280"
   store i1 %".283", ptr %"P2"
-  ; @!P0 BRA `(.L_x_10)
+  ; @!P0 BRA `(.L_x_17)
   %".287" = load i1, ptr %"P0"
   %".288" = icmp ne i1 %".287", 1
-  br i1 %".288", label %".L_x_10", label %".L_x_13_split_0x0360"
-.L_x_13_split_0x0360:
+  br i1 %".288", label %".L_x_17", label %".L_x_20_split_0x0360"
+.L_x_20_split_0x0360:
   ; IMAD.IADD R17, R14, 0x1, R16
   %".291" = load i32, ptr %"R14"
   %".292" = load i32, ptr %"R16"
@@ -3545,8 +4902,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; UMOV UR4, URZ
   %".295" = load i32, ptr %"URZ"
   store i32 %".295", ptr %"UR4"
-  br label %".L_x_11"
-.L_x_11:
+  br label %".L_x_18"
+.L_x_18:
   ; MOV R2, 0x4
   store i32 4, ptr %"R2"
   ; IMAD.MOV.U32 R23, RZ, RZ, c[0x0][0x170]
@@ -3731,22 +5088,22 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mnmx_final.3" = select  i1 %".409", float %"mnmx_min.3", float %"mnmx_max.3"
   %".412" = bitcast ptr %"R11" to ptr
   store float %"mnmx_final.3", ptr %".412"
-  ; @P1 BRA `(.L_x_11)
+  ; @P1 BRA `(.L_x_18)
   %".415" = load i1, ptr %"P1"
   %".416" = icmp eq i1 %".415", 1
-  br i1 %".416", label %".L_x_11", label %".L_x_10"
-.L_x_10:
+  br i1 %".416", label %".L_x_18", label %".L_x_17"
+.L_x_17:
   ; IMAD.IADD R4, R13, 0x1, R16
   %".419" = load i32, ptr %"R13"
   %".420" = load i32, ptr %"R16"
   %"mul.26" = mul i32 %".419", 1
   %"add.26" = add i32 %"mul.26", %".420"
   store i32 %"add.26", ptr %"R4"
-  ; @!P2 BRA `(.L_x_12)
+  ; @!P2 BRA `(.L_x_19)
   %".423" = load i1, ptr %"P2"
   %".424" = icmp ne i1 %".423", 1
-  br i1 %".424", label %".L_x_12", label %".L_x_10_split_0x04d0"
-.L_x_10_split_0x04d0:
+  br i1 %".424", label %".L_x_19", label %".L_x_17_split_0x04d0"
+.L_x_17_split_0x04d0:
   ; IADD3 R5, R12, UR4, RZ
   %".427" = load i32, ptr %"R12"
   %".428" = load i32, ptr %"UR4"
@@ -3808,11 +5165,11 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mnmx_final.4" = select  i1 %".464", float %"mnmx_min.4", float %"mnmx_max.4"
   %".467" = bitcast ptr %"R11" to ptr
   store float %"mnmx_final.4", ptr %".467"
-  ; @!P1 BRA `(.L_x_12)
+  ; @!P1 BRA `(.L_x_19)
   %".470" = load i1, ptr %"P1"
   %".471" = icmp ne i1 %".470", 1
-  br i1 %".471", label %".L_x_12", label %".L_x_10_split_0x0550"
-.L_x_10_split_0x0550:
+  br i1 %".471", label %".L_x_19", label %".L_x_17_split_0x0550"
+.L_x_17_split_0x0550:
   ; ISETP.NE.AND P1, PT, R15, 0x2, PT
   %".474" = load i32, ptr %"R15"
   %".475" = load i1, ptr %"PT"
@@ -3836,30 +5193,30 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 IADD3 R3, R5, 0x2, RZ
   %".491" = load i1, ptr %"P1"
   %".492" = icmp eq i1 %".491", 1
-  br i1 %".492", label %".L_x_10_split_0x0550_conditionalExpr_0x0580", label %".L_x_10_split_0x0590"
-.L_x_10_split_0x0550_conditionalExpr_0x0580:
+  br i1 %".492", label %".L_x_17_split_0x0550_conditionalExpr_0x0580", label %".L_x_17_split_0x0590"
+.L_x_17_split_0x0550_conditionalExpr_0x0580:
   ; IADD3 R3, R5, 0x2, RZ
   %".495" = load i32, ptr %"R5"
   %".496" = add i32 %".495", 2
   %".497" = add i32 %".496", 0
   store i32 %".497", ptr %"R3"
-  ; BRA `(.L_x_10_split_0x0590)
-  br label %".L_x_10_split_0x0590"
-.L_x_10_split_0x0590:
+  ; BRA `(.L_x_17_split_0x0590)
+  br label %".L_x_17_split_0x0590"
+.L_x_17_split_0x0590:
   ; @P1 IMAD R4, R3, c[0x0][0x170], R4
   %".502" = load i1, ptr %"P1"
   %".503" = icmp eq i1 %".502", 1
-  br i1 %".503", label %".L_x_10_split_0x0590_conditionalExpr_0x0590", label %".L_x_10_split_0x05a0"
-.L_x_10_split_0x0590_conditionalExpr_0x0590:
+  br i1 %".503", label %".L_x_17_split_0x0590_conditionalExpr_0x0590", label %".L_x_17_split_0x05a0"
+.L_x_17_split_0x0590_conditionalExpr_0x0590:
   ; IMAD R4, R3, c[0x0][0x170], R4
   %".506" = load i32, ptr %"R3"
   %".507" = load i32, ptr %"R4"
   %"mul.30" = mul i32 %".506", %"Arg_2"
   %"add.30" = add i32 %"mul.30", %".507"
   store i32 %"add.30", ptr %"R4"
-  ; BRA `(.L_x_10_split_0x05a0)
-  br label %".L_x_10_split_0x05a0"
-.L_x_10_split_0x05a0:
+  ; BRA `(.L_x_17_split_0x05a0)
+  br label %".L_x_17_split_0x05a0"
+.L_x_17_split_0x05a0:
   ; IMAD.WIDE R2, R2, R7, c[0x0][0x160]
   %".512" = load i32, ptr %"R2"
   %".513" = load i32, ptr %"R7"
@@ -3877,8 +5234,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 IMAD.WIDE R4, R4, R7, c[0x0][0x160]
   %".520" = load i1, ptr %"P1"
   %".521" = icmp eq i1 %".520", 1
-  br i1 %".521", label %".L_x_10_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_10_split_0x05c0"
-.L_x_10_split_0x05a0_conditionalExpr_0x05b0:
+  br i1 %".521", label %".L_x_17_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_17_split_0x05c0"
+.L_x_17_split_0x05a0_conditionalExpr_0x05b0:
   ; IMAD.WIDE R4, R4, R7, c[0x0][0x160]
   %".524" = load i32, ptr %"R4"
   %".525" = load i32, ptr %"R7"
@@ -3893,9 +5250,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"trunc32.13" = trunc i64 %"add.32" to i32
   store i32 %"trunc32.13", ptr %"R4"
   store i32 %"trunc32.12", ptr %"R5"
-  ; BRA `(.L_x_10_split_0x05c0)
-  br label %".L_x_10_split_0x05c0"
-.L_x_10_split_0x05c0:
+  ; BRA `(.L_x_17_split_0x05c0)
+  br label %".L_x_17_split_0x05c0"
+.L_x_17_split_0x05c0:
   ; LDG.E.SYS R2, [R2]
   %".534" = load i32, ptr %"R2"
   %"zext.27" = zext i32 %".534" to i64
@@ -3912,8 +5269,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 LDG.E.SYS R4, [R4]
   %".541" = load i1, ptr %"P1"
   %".542" = icmp eq i1 %".541", 1
-  br i1 %".542", label %".L_x_10_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_10_split_0x05e0"
-.L_x_10_split_0x05c0_conditionalExpr_0x05d0:
+  br i1 %".542", label %".L_x_17_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_17_split_0x05e0"
+.L_x_17_split_0x05c0_conditionalExpr_0x05d0:
   ; LDG.E.SYS R4, [R4]
   %".545" = load i32, ptr %"R4"
   %"zext.29" = zext i32 %".545" to i64
@@ -3927,9 +5284,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".548" = load float, ptr addrspace(1) %"ptr_cast_for_access.6"
   %".549" = bitcast ptr %"R4" to ptr
   store float %".548", ptr %".549"
-  ; BRA `(.L_x_10_split_0x05e0)
-  br label %".L_x_10_split_0x05e0"
-.L_x_10_split_0x05e0:
+  ; BRA `(.L_x_17_split_0x05e0)
+  br label %".L_x_17_split_0x05e0"
+.L_x_17_split_0x05e0:
   ; FMNMX R11, R11, R2, !PT
   %".554" = load float, ptr %"R11"
   %".555" = load float, ptr %"R2"
@@ -3944,8 +5301,8 @@ Entry_.text._Z10max_pool2dPfS_iii:
   ; @P1 FMNMX R11, R11, R4, !PT
   %".562" = load i1, ptr %"P1"
   %".563" = icmp eq i1 %".562", 1
-  br i1 %".563", label %".L_x_10_split_0x05e0_conditionalExpr_0x05f0", label %".L_x_12"
-.L_x_10_split_0x05e0_conditionalExpr_0x05f0:
+  br i1 %".563", label %".L_x_17_split_0x05e0_conditionalExpr_0x05f0", label %".L_x_19"
+.L_x_17_split_0x05e0_conditionalExpr_0x05f0:
   ; FMNMX R11, R11, R4, !PT
   %".566" = load float, ptr %"R11"
   %".567" = load float, ptr %"R4"
@@ -3957,9 +5314,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %"mnmx_final.6" = select  i1 %".568", float %"mnmx_min.6", float %"mnmx_max.6"
   %".571" = bitcast ptr %"R11" to ptr
   store float %"mnmx_final.6", ptr %".571"
-  ; BRA `(.L_x_12)
-  br label %".L_x_12"
-.L_x_12:
+  ; BRA `(.L_x_19)
+  br label %".L_x_19"
+.L_x_19:
   ; IADD3 R16, R16, 0x1, RZ
   %".576" = load i32, ptr %"R16"
   %".577" = add i32 %".576", 1
@@ -3974,11 +5331,11 @@ Entry_.text._Z10max_pool2dPfS_iii:
   %".585" = and i1 %"cmp.13", %".582"
   %".586" = and i1 %".584", %".582"
   store i1 %".585", ptr %"P1"
-  ; @!P1 BRA `(.L_x_13)
+  ; @!P1 BRA `(.L_x_20)
   %".589" = load i1, ptr %"P1"
   %".590" = icmp ne i1 %".589", 1
-  br i1 %".590", label %".L_x_13", label %".L_x_9"
-.L_x_9:
+  br i1 %".590", label %".L_x_20", label %".L_x_16"
+.L_x_16:
   ; IMAD R3, R21.reuse, R19, R10
   %".593" = load i32, ptr %"R21"
   %".594" = load i32, ptr %"R19"
@@ -4025,9 +5382,9 @@ Entry_.text._Z10max_pool2dPfS_iii:
   store i32 %".613", ptr addrspace(1) %"ptr_cast_for_access.7"
   ; EXIT
   br label %"ExitFunction"
-.L_x_14:
-  ; BRA `(.L_x_14)
-  br label %".L_x_14"
+.L_x_21:
+  ; BRA `(.L_x_21)
+  br label %".L_x_21"
 ExitFunction:
   ret void
 }
@@ -4533,9 +5890,9 @@ Entry_.text._Z4reluPfS_i:
   store float %".66", ptr addrspace(1) %"ptr_cast_for_access.1"
   ; EXIT
   br label %"ExitFunction"
-.L_x_15:
-  ; BRA `(.L_x_15)
-  br label %".L_x_15"
+.L_x_22:
+  ; BRA `(.L_x_22)
+  br label %".L_x_22"
 ExitFunction:
   ret void
 }
@@ -5039,10 +6396,10 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".91" = or i1 %"cmp.4", %".88"
   %".92" = or i1 %".90", %".88"
   store i1 %".91", ptr %"P0"
-  ; @P0 BRA `(.L_x_16)
+  ; @P0 BRA `(.L_x_23)
   %".95" = load i1, ptr %"P0"
   %".96" = icmp eq i1 %".95", 1
-  br i1 %".96", label %".L_x_16", label %".text._Z6conv2dPfS_S_iiii_split_0x0130"
+  br i1 %".96", label %".L_x_23", label %".text._Z6conv2dPfS_S_iiii_split_0x0130"
 .text._Z6conv2dPfS_S_iiii_split_0x0130:
   ; IMAD.MOV.U32 R4, RZ, RZ, c[0x0][0x17c]
   %"mul.3" = mul i32 0, 0
@@ -5084,8 +6441,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".130" = add i32 %".128", %".129"
   %".131" = add i32 %".130", 0
   store i32 %".131", ptr %"R26"
-  br label %".L_x_21"
-.L_x_21:
+  br label %".L_x_28"
+.L_x_28:
   ; IMAD R11, R10, c[0x0][0x178], R3
   %".135" = load i32, ptr %"R10"
   %".136" = load i32, ptr %"R3"
@@ -5121,8 +6478,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".159" = and i1 %"cmp.6", %".156"
   %".160" = and i1 %".158", %".156"
   store i1 %".159", ptr %"P1"
-  br label %".L_x_20"
-.L_x_20:
+  br label %".L_x_27"
+.L_x_27:
   ; IMAD R6, R9, c[0x0][0x17c], R8
   %".164" = load i32, ptr %"R9"
   %".165" = load i32, ptr %"R8"
@@ -5146,11 +6503,11 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"mul.9" = mul i32 %".179", %"Arg_4"
   %"add.9" = add i32 %"mul.9", 0
   store i32 %"add.9", ptr %"R29"
-  ; @!P0 BRA `(.L_x_17)
+  ; @!P0 BRA `(.L_x_24)
   %".182" = load i1, ptr %"P0"
   %".183" = icmp ne i1 %".182", 1
-  br i1 %".183", label %".L_x_17", label %".L_x_20_split_0x0260"
-.L_x_20_split_0x0260:
+  br i1 %".183", label %".L_x_24", label %".L_x_27_split_0x0260"
+.L_x_27_split_0x0260:
   ; MOV R24, 0x4
   store i32 4, ptr %"R24"
   ; IMAD.IADD R13, R5, 0x1, R8
@@ -5179,8 +6536,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; MOV R23, R6
   %".203" = load i32, ptr %"R6"
   store i32 %".203", ptr %"R23"
-  br label %".L_x_18"
-.L_x_18:
+  br label %".L_x_25"
+.L_x_25:
   ; IMAD.WIDE R14, R13, R24, c[0x0][0x160]
   %".207" = load i32, ptr %"R13"
   %".208" = load i32, ptr %"R24"
@@ -5428,22 +6785,22 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fadd.3" = fadd float %"fmul.3", %".358"
   %".359" = bitcast ptr %"R12" to ptr
   store float %"fadd.3", ptr %".359"
-  ; @P2 BRA `(.L_x_18)
+  ; @P2 BRA `(.L_x_25)
   %".362" = load i1, ptr %"P2"
   %".363" = icmp eq i1 %".362", 1
-  br i1 %".363", label %".L_x_18", label %".L_x_17"
-.L_x_17:
+  br i1 %".363", label %".L_x_25", label %".L_x_24"
+.L_x_24:
   ; IMAD.IADD R14, R2, 0x1, R8
   %".366" = load i32, ptr %"R2"
   %".367" = load i32, ptr %"R8"
   %"mul.17" = mul i32 %".366", 1
   %"add.22" = add i32 %"mul.17", %".367"
   store i32 %"add.22", ptr %"R14"
-  ; @!P3 BRA `(.L_x_19)
+  ; @!P3 BRA `(.L_x_26)
   %".370" = load i1, ptr %"P3"
   %".371" = icmp ne i1 %".370", 1
-  br i1 %".371", label %".L_x_19", label %".L_x_17_split_0x0460"
-.L_x_17_split_0x0460:
+  br i1 %".371", label %".L_x_26", label %".L_x_24_split_0x0460"
+.L_x_24_split_0x0460:
   ; IADD3 R15, R11, UR4, RZ
   %".374" = load i32, ptr %"R11"
   %".375" = load i32, ptr %"UR4"
@@ -5535,11 +6892,11 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fadd.4" = fadd float %"fmul.4", %".432"
   %".433" = bitcast ptr %"R12" to ptr
   store float %"fadd.4", ptr %".433"
-  ; @!P2 BRA `(.L_x_19)
+  ; @!P2 BRA `(.L_x_26)
   %".436" = load i1, ptr %"P2"
   %".437" = icmp ne i1 %".436", 1
-  br i1 %".437", label %".L_x_19", label %".L_x_17_split_0x0510"
-.L_x_17_split_0x0510:
+  br i1 %".437", label %".L_x_26", label %".L_x_24_split_0x0510"
+.L_x_24_split_0x0510:
   ; ISETP.NE.AND P2, PT, R4, 0x2, PT
   %".440" = load i32, ptr %"R4"
   %".441" = load i1, ptr %"PT"
@@ -5576,30 +6933,30 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 IADD3 R7, R15, 0x2, RZ
   %".464" = load i1, ptr %"P2"
   %".465" = icmp eq i1 %".464", 1
-  br i1 %".465", label %".L_x_17_split_0x0510_conditionalExpr_0x0550", label %".L_x_17_split_0x0560"
-.L_x_17_split_0x0510_conditionalExpr_0x0550:
+  br i1 %".465", label %".L_x_24_split_0x0510_conditionalExpr_0x0550", label %".L_x_24_split_0x0560"
+.L_x_24_split_0x0510_conditionalExpr_0x0550:
   ; IADD3 R7, R15, 0x2, RZ
   %".468" = load i32, ptr %"R15"
   %".469" = add i32 %".468", 2
   %".470" = add i32 %".469", 0
   store i32 %".470", ptr %"R7"
-  ; BRA `(.L_x_17_split_0x0560)
-  br label %".L_x_17_split_0x0560"
-.L_x_17_split_0x0560:
+  ; BRA `(.L_x_24_split_0x0560)
+  br label %".L_x_24_split_0x0560"
+.L_x_24_split_0x0560:
   ; @P2 IMAD R14, R7, c[0x0][0x178], R14
   %".475" = load i1, ptr %"P2"
   %".476" = icmp eq i1 %".475", 1
-  br i1 %".476", label %".L_x_17_split_0x0560_conditionalExpr_0x0560", label %".L_x_17_split_0x0570"
-.L_x_17_split_0x0560_conditionalExpr_0x0560:
+  br i1 %".476", label %".L_x_24_split_0x0560_conditionalExpr_0x0560", label %".L_x_24_split_0x0570"
+.L_x_24_split_0x0560_conditionalExpr_0x0560:
   ; IMAD R14, R7, c[0x0][0x178], R14
   %".479" = load i32, ptr %"R7"
   %".480" = load i32, ptr %"R14"
   %"mul.22" = mul i32 %".479", %"Arg_3"
   %"add.27" = add i32 %"mul.22", %".480"
   store i32 %"add.27", ptr %"R14"
-  ; BRA `(.L_x_17_split_0x0570)
-  br label %".L_x_17_split_0x0570"
-.L_x_17_split_0x0570:
+  ; BRA `(.L_x_24_split_0x0570)
+  br label %".L_x_24_split_0x0570"
+.L_x_24_split_0x0570:
   ; IMAD.WIDE R6, R6, R19, c[0x0][0x160]
   %".485" = load i32, ptr %"R6"
   %".486" = load i32, ptr %"R19"
@@ -5617,8 +6974,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 IMAD.WIDE R14, R14, R19, c[0x0][0x160]
   %".493" = load i1, ptr %"P2"
   %".494" = icmp eq i1 %".493", 1
-  br i1 %".494", label %".L_x_17_split_0x0570_conditionalExpr_0x0580", label %".L_x_17_split_0x0590"
-.L_x_17_split_0x0570_conditionalExpr_0x0580:
+  br i1 %".494", label %".L_x_24_split_0x0570_conditionalExpr_0x0580", label %".L_x_24_split_0x0590"
+.L_x_24_split_0x0570_conditionalExpr_0x0580:
   ; IMAD.WIDE R14, R14, R19, c[0x0][0x160]
   %".497" = load i32, ptr %"R14"
   %".498" = load i32, ptr %"R19"
@@ -5633,14 +6990,14 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"trunc32.17" = trunc i64 %"add.29" to i32
   store i32 %"trunc32.17", ptr %"R14"
   store i32 %"trunc32.16", ptr %"R15"
-  ; BRA `(.L_x_17_split_0x0590)
-  br label %".L_x_17_split_0x0590"
-.L_x_17_split_0x0590:
+  ; BRA `(.L_x_24_split_0x0590)
+  br label %".L_x_24_split_0x0590"
+.L_x_24_split_0x0590:
   ; @P2 LDG.E.SYS R19, [R16+0x8]
   %".507" = load i1, ptr %"P2"
   %".508" = icmp eq i1 %".507", 1
-  br i1 %".508", label %".L_x_17_split_0x0590_conditionalExpr_0x0590", label %".L_x_17_split_0x05a0"
-.L_x_17_split_0x0590_conditionalExpr_0x0590:
+  br i1 %".508", label %".L_x_24_split_0x0590_conditionalExpr_0x0590", label %".L_x_24_split_0x05a0"
+.L_x_24_split_0x0590_conditionalExpr_0x0590:
   ; LDG.E.SYS R19, [R16+0x8]
   %".511" = load i32, ptr %"R16"
   %"zext.43" = zext i32 %".511" to i64
@@ -5654,9 +7011,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".514" = load float, ptr addrspace(1) %"ptr_cast_for_access.11"
   %".515" = bitcast ptr %"R19" to ptr
   store float %".514", ptr %".515"
-  ; BRA `(.L_x_17_split_0x05a0)
-  br label %".L_x_17_split_0x05a0"
-.L_x_17_split_0x05a0:
+  ; BRA `(.L_x_24_split_0x05a0)
+  br label %".L_x_24_split_0x05a0"
+.L_x_24_split_0x05a0:
   ; LDG.E.SYS R6, [R6]
   %".520" = load i32, ptr %"R6"
   %"zext.45" = zext i32 %".520" to i64
@@ -5673,8 +7030,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 LDG.E.SYS R14, [R14]
   %".527" = load i1, ptr %"P2"
   %".528" = icmp eq i1 %".527", 1
-  br i1 %".528", label %".L_x_17_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_17_split_0x05c0"
-.L_x_17_split_0x05a0_conditionalExpr_0x05b0:
+  br i1 %".528", label %".L_x_24_split_0x05a0_conditionalExpr_0x05b0", label %".L_x_24_split_0x05c0"
+.L_x_24_split_0x05a0_conditionalExpr_0x05b0:
   ; LDG.E.SYS R14, [R14]
   %".531" = load i32, ptr %"R14"
   %"zext.47" = zext i32 %".531" to i64
@@ -5688,9 +7045,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".534" = load float, ptr addrspace(1) %"ptr_cast_for_access.13"
   %".535" = bitcast ptr %"R14" to ptr
   store float %".534", ptr %".535"
-  ; BRA `(.L_x_17_split_0x05c0)
-  br label %".L_x_17_split_0x05c0"
-.L_x_17_split_0x05c0:
+  ; BRA `(.L_x_24_split_0x05c0)
+  br label %".L_x_24_split_0x05c0"
+.L_x_24_split_0x05c0:
   ; FFMA R12, R13, R6, R12
   %".540" = load float, ptr %"R13"
   %".541" = load float, ptr %"R6"
@@ -5702,8 +7059,8 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   ; @P2 FFMA R12, R19, R14, R12
   %".546" = load i1, ptr %"P2"
   %".547" = icmp eq i1 %".546", 1
-  br i1 %".547", label %".L_x_17_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_19"
-.L_x_17_split_0x05c0_conditionalExpr_0x05d0:
+  br i1 %".547", label %".L_x_24_split_0x05c0_conditionalExpr_0x05d0", label %".L_x_26"
+.L_x_24_split_0x05c0_conditionalExpr_0x05d0:
   ; FFMA R12, R19, R14, R12
   %".550" = load float, ptr %"R19"
   %".551" = load float, ptr %"R14"
@@ -5712,9 +7069,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %"fadd.6" = fadd float %"fmul.6", %".552"
   %".553" = bitcast ptr %"R12" to ptr
   store float %"fadd.6", ptr %".553"
-  ; BRA `(.L_x_19)
-  br label %".L_x_19"
-.L_x_19:
+  ; BRA `(.L_x_26)
+  br label %".L_x_26"
+.L_x_26:
   ; IADD3 R8, R8, 0x1, RZ
   %".558" = load i32, ptr %"R8"
   %".559" = add i32 %".558", 1
@@ -5729,16 +7086,16 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   %".567" = and i1 %"cmp.11", %".564"
   %".568" = and i1 %".566", %".564"
   store i1 %".567", ptr %"P2"
-  ; @!P2 BRA `(.L_x_20)
+  ; @!P2 BRA `(.L_x_27)
   %".571" = load i1, ptr %"P2"
   %".572" = icmp ne i1 %".571", 1
-  br i1 %".572", label %".L_x_20", label %".L_x_19_split_0x0610"
-.L_x_19_split_0x0610:
-  ; @!P1 BRA `(.L_x_21)
+  br i1 %".572", label %".L_x_27", label %".L_x_26_split_0x0610"
+.L_x_26_split_0x0610:
+  ; @!P1 BRA `(.L_x_28)
   %".575" = load i1, ptr %"P1"
   %".576" = icmp ne i1 %".575", 1
-  br i1 %".576", label %".L_x_21", label %".L_x_16"
-.L_x_16:
+  br i1 %".576", label %".L_x_28", label %".L_x_23"
+.L_x_23:
   ; UIADD3 UR4, UR5, 0x1, URZ
   %".579" = load i32, ptr %"UR5"
   %".580" = add i32 %".579", 1
@@ -5788,9 +7145,9 @@ Entry_.text._Z6conv2dPfS_S_iiii:
   store i32 %".604", ptr addrspace(1) %"ptr_cast_for_access.14"
   ; EXIT
   br label %"ExitFunction"
-.L_x_22:
-  ; BRA `(.L_x_22)
-  br label %".L_x_22"
+.L_x_29:
+  ; BRA `(.L_x_29)
+  br label %".L_x_29"
 ExitFunction:
   ret void
 }
