@@ -72,10 +72,10 @@ class Operand:
         self.arg_neg = False
         self.arg_abs = False
 
-        # Pointer
+        # Pointer (assume to be 64 bit)
         self.isPtr = False
         self.ptr_offset = 0
-        # self.ptr_reg = None
+        self.ptr_offset_reg = None
         self.ptr_neg = False
         self.ptr_abs = False
 
@@ -169,8 +169,27 @@ class Operand:
         if isinstance(PtrAddr.type, llvmir.PointerType):
             PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
 
-        # Add any immediate offset baked into the operand
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), PtrOp.ptr_offset))
+        # Add dynamic register offset (e.g. + UR4)
+        if getattr(PtrOp, 'offset_reg', None):
+            reg_name = PtrOp.offset_reg
+            if reg_name in ("RZ", "URZ"):
+                offset_val = llvmir.Constant(llvmir.IntType(64), 0)
+            elif reg_name in IRRegs:
+                reg_ptr = IRRegs[reg_name]
+                
+                # load the value (usually i32)
+                offset_val = IRBuilder.load(reg_ptr, name=f"val_{reg_name}")
+                if offset_val.type == llvmir.IntType(32):
+                    offset_val = IRBuilder.zext(offset_val, llvmir.IntType(64), name=f"zext_{reg_name}")
+            else:
+                raise Exception(f"Register {reg_name} not found in IRRegs during address computation")
+
+            # Add the dynamic offset to the base
+            PtrAddr = IRBuilder.add(PtrAddr, offset_val, name="base_plus_reg_offset")
+            
+        # Add any immediate offset baked into the operand (e.g. +0x2)
+        if PtrOp.ptr_offset != 0:
+            PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), PtrOp.ptr_offset), name="ptr_plus_imm")
         return PtrAddr
 
     def _ptr_for_byte_address(self, IRBuilder, byte_addr, elem_type, addr_space: int | None = None, inbounds=False):
@@ -562,12 +581,32 @@ class Operand:
             self.isPtr = True
             content = content[1:-1]
             dprint(content)
+            
+            # clean register names (e.g., "R12.64" -> "R12")
+            def parse_reg_part(part):
+                if ".64" in part:
+                    # self.is_64bit_ptr = True
+                    return part.split(".")[0] # return "R12"
+                return part
+            
             if content.find("+") != -1:
-                self.ptr_offset = int(content.split("+")[1], 16)
-                self.reg = content.split("+")[0]
+                left_part = content.split("+")[0].strip()
+                right_part = content.split("+")[1].strip()
+                assert content.count("+") == 1, f"more than 1 '+' found: {self}"
                 
+                # base register (e.g. R12.64)
+                self.reg = parse_reg_part(left_part)
+                
+                # offset
+                if right_part in SM_75_Reg_Set or right_part in SM_75_UReg_Set:
+                    # right part is a register (dynamic offset)
+                    self.ptr_offset_reg = right_part
+                else:
+                    # static offset
+                    self.ptr_offset = int(right_part, 16)
             else:
-                self.reg = content
+                # cases like [R12.64] without a plus sign
+                self.reg = parse_reg_part(content)
             # assume there is no !R1 or -R1 case
             assert self.reg in SM_75_Reg_Set or self.reg in SM_75_UReg_Set
             return
