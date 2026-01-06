@@ -20,7 +20,8 @@ CUBIN_OUTPUT_NAME="${LLVM_OUTPUT%.ll}_lifted.cubin"
 cd "$SCRIPT_DIR/../src"
 python3 cu2sass.py
 
-OPAQUE=$(jq -r 'if .opaque_pointers == null then true else .opaque_pointers end' "$CONFIG_FILE")
+OPAQUE=$(jq -r 'if .opaque_pointers == null then true else .opaque_pointers end' "$CONFIG_FILE") # default true
+IS_DECOMPILE=$(jq -r 'if .is_decompile == null then false else .is_decompile end' "$CONFIG_FILE") # default false
 
 if [ "$OPAQUE" = "true" ]; then
     # SHOULD also install llvm 20
@@ -53,6 +54,17 @@ llc -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" 
 # compile ptx into cubin, and then open the file in Nsight
 # https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
 nvcc -cubin -g -G -arch=sm_75  $LLC_OUTPUT_FULLDIR -o "$CUBIN_OUTPUT_DIR/$CUBIN_OUTPUT_NAME"
+
+if [[ "$IS_DECOMPILE" = "true" ]]; then
+    # produce decompiled C src file
+    
+    # echo $CONFIG_FILE
+    # tree /build
+    # which retdec-llvmir2hll
+
+    # NOTE: if there's any problems with retdec-llvmir2hll, then remove the line in Dockerfile that removes all other folders in retdec/ except bin/
+    retdec-llvmir2hll -target-hll=c -o "$SCRIPT_DIR/output/${LLVM_OUTPUT%.ll}.c" "$SCRIPT_DIR/../output/3_llvm_ir/$LLVM_OUTPUT"
+fi
 
 
 # -debug-pass=Structure

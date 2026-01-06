@@ -9,5 +9,6 @@
     },
     "allow_temp_behavior": false,
     "allow_incomplete_type_analysis": false,
-    "opaque_pointers": false
+    "opaque_pointers": false,
+    "is_decompile": true
 }
