@@ -2,12 +2,13 @@
 
 set -e
 
+# Set SCRIPT_DIR before cd ..
 SCRIPT_DIR="$(split_dir=$(dirname "${BASH_SOURCE[0]}") && cd "$split_dir" && pwd)"
 PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)") # depending on where docker.sh is (symlinked) at, this var will be different
 
 cd ..
 
-# Generate .ll from .cu using clang
+# Generate .ll from .cu using clang; llvm_gen.dockerfile builds based on the config in launch/
 
 # Remove existing container if exists (optional)
 docker rm -f my-clang-llgen || true
