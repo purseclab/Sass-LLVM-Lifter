@@ -1,11 +1,11 @@
 {
     "lifter": {
-        "input_file": "rnn.sass",
-        "output_file": "rnn.ll"
+        "input_file": "transformer.sass",
+        "output_file": "transformer.ll"
     },
     "cu2sass": {
-        "cuda_file": "rnn.cu",
-        "select_cubin": "rnn.2.sm_75.cubin"
+        "cuda_file": "transformer.cu",
+        "select_cubin": "transformer.2.sm_75.cubin"
     },
     "allow_temp_behavior": false,
     "allow_incomplete_type_analysis": true
