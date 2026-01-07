@@ -22,12 +22,15 @@ def run_command(cmd):
 
 def compile_cuda(cuda_file, output_executable):
     """Compile CUDA file to executable using nvcc"""
-    run_command([
-        "nvcc", "-g" , "-G", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
-    ])
+    # Note that compiling with -g -G appears to produce a single cubin, e.g. lstm.sm_75.cubin, while compiling without -g -G produces two cubin, e.g. lstm.1.sm_75.cubin and lstm.2.sm_75.cubin.
+    # This is a somewhat important implication since the launch/config.json has a setting on the cubin it uses
+    
     # run_command([
-    #     "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
+    #     "nvcc", "-g" , "-G", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
     # ])
+    run_command([
+        "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
+    ])
 
 def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     """Extract cubin files using cuobjdump"""
@@ -94,6 +97,24 @@ def main():
         exec_and_cubin_path = (output_dir / "0_exec_and_cubin").resolve()
         output_executable_path = (exec_and_cubin_path / output_executable).resolve()
         
+        # Clean destination folders of any previously generated artifacts so that we don't accidentally use stale files when config is wrong (i.e. we'll let the lifter fail); because the presence of -g -G causes different combination of files to be generated, which needs to update the config.json accordingly, and we dont want to accidentally reused them
+        exec_and_cubin_path.mkdir(parents=True, exist_ok=True)
+        # Remove any existing cubin files that match the executable prefix
+        for p in exec_and_cubin_path.glob(f"{output_executable}*.cubin"):
+            try:
+                p.unlink()
+                print(f"Removed old cubin: {p}")
+            except Exception as e:
+                print(f"Warning: failed to remove old cubin {p}: {e}")
+
+        # Also remove previously generated disassembly (SASS) if present
+        try:
+            if output_sass.exists():
+                output_sass.unlink()
+                print(f"Removed old SASS file: {output_sass}")
+        except Exception as e:
+            print(f"Warning: failed to remove old SASS {output_sass}: {e}")
+
         original_dir = os.getcwd()
         os.chdir(project_root)
         # when compiling with -g flag, the compiler will embed path to your source file in the binary. if you provide absolute path to nvcc, this will be stored as absolute path, and since we compiled in docker container and running in host computer, this is problematic, so we compile in relative path relative to project root
