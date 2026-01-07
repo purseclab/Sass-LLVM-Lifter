@@ -3280,7 +3280,7 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %"llvm_fabs_result" = call float @"llvm.fabs"(float %".1840")
   %".1841" = load i1, ptr %"PT"
   %"fcmp_unordered" = fcmp oge float %"llvm_fabs_result", 0x3fe3333340000000
-  %".1842" = fadd i1 %"fcmp_unordered", 0
+  %".1842" = add i1 %"fcmp_unordered", 0
   %".1843" = xor i1 %".1842", -1
   %".1844" = and i1 %"fcmp_unordered", %".1841"
   %".1845" = and i1 %".1843", %".1841"
@@ -3363,7 +3363,7 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %"llvm_fabs_result.2" = call float @"llvm.fabs"(float %".1896")
   %".1897" = load i1, ptr %"PT"
   %"fcmp_unordered.1" = fcmp oge float %"llvm_fabs_result.2", 0x4022059680000000
-  %".1898" = fadd i1 %"fcmp_unordered.1", 0
+  %".1898" = add i1 %"fcmp_unordered.1", 0
   %".1899" = xor i1 %".1898", -1
   %".1900" = and i1 %"fcmp_unordered.1", %".1897"
   %".1901" = and i1 %".1899", %".1897"
@@ -4090,7 +4090,7 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a50...1:
   %".2429" = load float, ptr %"R12"
   %".2430" = load i1, ptr %"PT"
   %"fcmp_ordered" = fcmp une float %".2428", %".2429"
-  %".2431" = fadd i1 %"fcmp_ordered", 0
+  %".2431" = add i1 %"fcmp_ordered", 0
   %".2432" = xor i1 %".2431", -1
   %".2433" = and i1 %"fcmp_ordered", %".2430"
   %".2434" = and i1 %".2432", %".2430"
@@ -4684,7 +4684,7 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a50...2:
   %".2883" = load float, ptr %"R12"
   %".2884" = load i1, ptr %"PT"
   %"fcmp_ordered.1" = fcmp une float %".2882", %".2883"
-  %".2885" = fadd i1 %"fcmp_ordered.1", 0
+  %".2885" = add i1 %"fcmp_ordered.1", 0
   %".2886" = xor i1 %".2885", -1
   %".2887" = and i1 %"fcmp_ordered.1", %".2884"
   %".2888" = and i1 %".2886", %".2884"
@@ -4938,7 +4938,7 @@ ExitBlock_$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath.1:
   %"llvm_fabs_result.3" = call float @"llvm.fabs"(float %".3081")
   %".3082" = load i1, ptr %"PT"
   %"fcmp_unordered.2" = fcmp oge float %"llvm_fabs_result.3", 0x3fe3333340000000
-  %".3083" = fadd i1 %"fcmp_unordered.2", 0
+  %".3083" = add i1 %"fcmp_unordered.2", 0
   %".3084" = xor i1 %".3083", -1
   %".3085" = and i1 %"fcmp_unordered.2", %".3082"
   %".3086" = and i1 %".3084", %".3082"
@@ -4962,7 +4962,7 @@ ExitBlock_$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath.1:
   %"llvm_fabs_result.5" = call float @"llvm.fabs"(float %".3100")
   %".3101" = load i1, ptr %"PT"
   %"fcmp_unordered.3" = fcmp oge float %"llvm_fabs_result.5", 0x4022059680000000
-  %".3102" = fadd i1 %"fcmp_unordered.3", 0
+  %".3102" = add i1 %"fcmp_unordered.3", 0
   %".3103" = xor i1 %".3102", -1
   %".3104" = and i1 %"fcmp_unordered.3", %".3101"
   %".3105" = and i1 %".3103", %".3101"
@@ -5456,7 +5456,7 @@ $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a50...3:
   %".3457" = load float, ptr %"R12"
   %".3458" = load i1, ptr %"PT"
   %"fcmp_ordered.2" = fcmp une float %".3456", %".3457"
-  %".3459" = fadd i1 %"fcmp_ordered.2", 0
+  %".3459" = add i1 %"fcmp_ordered.2", 0
   %".3460" = xor i1 %".3459", -1
   %".3461" = and i1 %"fcmp_ordered.2", %".3458"
   %".3462" = and i1 %".3460", %".3458"
