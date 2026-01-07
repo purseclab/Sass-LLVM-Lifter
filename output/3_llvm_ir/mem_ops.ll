@@ -280,21 +280,21 @@ Entry_.text._Z14localMemKernelPii:
   %imad_mul = mul i32 %nvvm_ctaid_x, %nvvm_blockdim_x
   %imad_add = add i32 %imad_mul, %nvvm_threadidx_x
   %cmp = icmp sge i32 %imad_add, %Arg_1
-  %.23 = and i1 %cmp, true
-  %.28 = icmp eq i1 %.23, true
-  br i1 %.28, label %ExitFunction, label %.text._Z14localMemKernelPii_split_0x0060
+  %.22 = and i1 %cmp, true
+  %.27 = icmp eq i1 %.22, true
+  br i1 %.27, label %ExitFunction, label %.text._Z14localMemKernelPii_split_0x0060
 
 .text._Z14localMemKernelPii_split_0x0060:         ; preds = %Entry_.text._Z14localMemKernelPii
-  %.36 = add i32 %imad_add, 1
-  %.37 = add i32 %.36, 0
+  %.35 = add i32 %imad_add, 1
+  %.36 = add i32 %.35, 0
   %imad_ext1 = zext i32 %imad_add to i64
   %imad_ext2 = zext i32 4 to i64
   %imad_mul.1 = mul i64 %imad_ext1, %imad_ext2
-  %.42 = ptrtoint ptr %Arg_0 to i64
-  %imad_add.1 = add i64 %imad_mul.1, %.42
-  %.43 = and i64 %imad_add.1, -4294967296
-  %.44 = lshr i64 %.43, 32
-  %trunc32 = trunc i64 %.44 to i32
+  %.41 = ptrtoint ptr %Arg_0 to i64
+  %imad_add.1 = add i64 %imad_mul.1, %.41
+  %.42 = and i64 %imad_add.1, -4294967296
+  %.43 = lshr i64 %.42, 32
+  %trunc32 = trunc i64 %.43 to i32
   %trunc32.1 = trunc i64 %imad_add.1 to i32
   %zext = zext i32 %trunc32.1 to i64
   %zext.1 = zext i32 %trunc32 to i64
@@ -302,7 +302,7 @@ Entry_.text._Z14localMemKernelPii:
   %or = or i64 %shl, %zext
   %inttoptr_bytes = inttoptr i64 %or to ptr addrspace(1)
   %ptr_cast_for_access = bitcast ptr addrspace(1) %inttoptr_bytes to ptr addrspace(1)
-  store i32 %.37, ptr addrspace(1) %ptr_cast_for_access, align 4
+  store i32 %.36, ptr addrspace(1) %ptr_cast_for_access, align 4
   br label %ExitFunction
 
 ExitFunction:                                     ; preds = %Entry_.text._Z14localMemKernelPii, %.text._Z14localMemKernelPii_split_0x0060
@@ -323,19 +323,19 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   %imad_mul = mul i32 %nvvm_ctaid_x, %nvvm_blockdim_x
   %imad_add = add i32 %imad_mul, %nvvm_threadidx_x
   %cmp = icmp sge i32 %imad_add, %Arg_2
-  %.26 = and i1 %cmp, true
-  %.31 = icmp eq i1 %.26, true
-  br i1 %.31, label %.L_x_1, label %.text._Z15sharedMemKernelPKiPii_split_0x0080
+  %.25 = and i1 %cmp, true
+  %.30 = icmp eq i1 %.25, true
+  br i1 %.30, label %.L_x_1, label %.text._Z15sharedMemKernelPKiPii_split_0x0080
 
 .text._Z15sharedMemKernelPKiPii_split_0x0080:     ; preds = %Entry_.text._Z15sharedMemKernelPKiPii
   %imad_ext1 = zext i32 %imad_add to i64
   %imad_ext2 = zext i32 4 to i64
   %imad_mul.1 = mul i64 %imad_ext1, %imad_ext2
-  %.38 = ptrtoint ptr %Arg_0 to i64
-  %imad_add.1 = add i64 %imad_mul.1, %.38
-  %.39 = and i64 %imad_add.1, -4294967296
-  %.40 = lshr i64 %.39, 32
-  %trunc32 = trunc i64 %.40 to i32
+  %.37 = ptrtoint ptr %Arg_0 to i64
+  %imad_add.1 = add i64 %imad_mul.1, %.37
+  %.38 = and i64 %imad_add.1, -4294967296
+  %.39 = lshr i64 %.38, 32
+  %trunc32 = trunc i64 %.39 to i32
   %trunc32.1 = trunc i64 %imad_add.1 to i32
   %zext = zext i32 %trunc32.1 to i64
   %zext.1 = zext i32 %trunc32 to i64
@@ -343,37 +343,37 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   %or = or i64 %shl, %zext
   %inttoptr_bytes = inttoptr i64 %or to ptr addrspace(1)
   %ptr_cast_for_access = bitcast ptr addrspace(1) %inttoptr_bytes to ptr addrspace(1)
-  %.46 = load i32, ptr addrspace(1) %ptr_cast_for_access, align 4
-  %.50 = add i32 %.46, 1
-  %.51 = add i32 %.50, 0
+  %.45 = load i32, ptr addrspace(1) %ptr_cast_for_access, align 4
+  %.49 = add i32 %.45, 1
+  %.50 = add i32 %.49, 0
   %swzl_shl = shl i32 %nvvm_threadidx_x, 2
   %zext.2 = zext i32 %swzl_shl to i64
-  %.56 = addrspacecast ptr addrspace(3) @__Z15sharedMemKernelPKiPii_sdata to ptr
-  %shared_gep = getelementptr inbounds i8, ptr %.56, i64 %zext.2
-  %.57 = addrspacecast ptr %shared_gep to ptr addrspace(3)
-  store i32 %.51, ptr addrspace(3) %.57, align 4
+  %.55 = addrspacecast ptr addrspace(3) @__Z15sharedMemKernelPKiPii_sdata to ptr
+  %shared_gep = getelementptr inbounds i8, ptr %.55, i64 %zext.2
+  %.56 = addrspacecast ptr %shared_gep to ptr addrspace(3)
+  store i32 %.50, ptr addrspace(3) %.56, align 4
   br label %.L_x_1
 
 .L_x_1:                                           ; preds = %Entry_.text._Z15sharedMemKernelPKiPii, %.text._Z15sharedMemKernelPKiPii_split_0x0080
   call void @llvm.nvvm.barrier0()
-  %.65 = icmp eq i1 %.26, true
-  br i1 %.65, label %ExitFunction, label %.L_x_1_split_0x0100
+  %.64 = icmp eq i1 %.25, true
+  br i1 %.64, label %ExitFunction, label %.L_x_1_split_0x0100
 
 .L_x_1_split_0x0100:                              ; preds = %.L_x_1
   %swzl_shl.1 = shl i32 %nvvm_threadidx_x, 2
   %zext.3 = zext i32 %swzl_shl.1 to i64
-  %.71 = addrspacecast ptr addrspace(3) @__Z15sharedMemKernelPKiPii_sdata to ptr
-  %shared_gep.1 = getelementptr i8, ptr %.71, i64 %zext.3
-  %.72 = addrspacecast ptr %shared_gep.1 to ptr addrspace(3)
-  %.73 = load i32, ptr addrspace(3) %.72, align 4
+  %.70 = addrspacecast ptr addrspace(3) @__Z15sharedMemKernelPKiPii_sdata to ptr
+  %shared_gep.1 = getelementptr i8, ptr %.70, i64 %zext.3
+  %.71 = addrspacecast ptr %shared_gep.1 to ptr addrspace(3)
+  %.72 = load i32, ptr addrspace(3) %.71, align 4
   %imad_ext1.1 = zext i32 %imad_add to i64
   %imad_ext2.1 = zext i32 4 to i64
   %imad_mul.2 = mul i64 %imad_ext1.1, %imad_ext2.1
-  %.80 = ptrtoint ptr %Arg_1 to i64
-  %imad_add.2 = add i64 %imad_mul.2, %.80
-  %.81 = and i64 %imad_add.2, -4294967296
-  %.82 = lshr i64 %.81, 32
-  %trunc32.2 = trunc i64 %.82 to i32
+  %.79 = ptrtoint ptr %Arg_1 to i64
+  %imad_add.2 = add i64 %imad_mul.2, %.79
+  %.80 = and i64 %imad_add.2, -4294967296
+  %.81 = lshr i64 %.80, 32
+  %trunc32.2 = trunc i64 %.81 to i32
   %trunc32.3 = trunc i64 %imad_add.2 to i32
   %zext.4 = zext i32 %trunc32.3 to i64
   %zext.5 = zext i32 %trunc32.2 to i64
@@ -381,7 +381,7 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   %or.1 = or i64 %shl.1, %zext.4
   %inttoptr_bytes.1 = inttoptr i64 %or.1 to ptr addrspace(1)
   %ptr_cast_for_access.1 = bitcast ptr addrspace(1) %inttoptr_bytes.1 to ptr addrspace(1)
-  store i32 %.73, ptr addrspace(1) %ptr_cast_for_access.1, align 4
+  store i32 %.72, ptr addrspace(1) %ptr_cast_for_access.1, align 4
   br label %ExitFunction
 
 ExitFunction:                                     ; preds = %.L_x_1, %.L_x_1_split_0x0100
@@ -399,19 +399,19 @@ Entry_.text._Z15globalMemKernelPKiPii:
   %imad_mul = mul i32 %nvvm_ctaid_x, %nvvm_blockdim_x
   %imad_add = add i32 %imad_mul, %nvvm_threadidx_x
   %cmp = icmp sge i32 %imad_add, %Arg_2
-  %.24 = and i1 %cmp, true
-  %.29 = icmp eq i1 %.24, true
-  br i1 %.29, label %ExitFunction, label %.text._Z15globalMemKernelPKiPii_split_0x0060
+  %.23 = and i1 %cmp, true
+  %.28 = icmp eq i1 %.23, true
+  br i1 %.28, label %ExitFunction, label %.text._Z15globalMemKernelPKiPii_split_0x0060
 
 .text._Z15globalMemKernelPKiPii_split_0x0060:     ; preds = %Entry_.text._Z15globalMemKernelPKiPii
   %imad_ext1 = zext i32 %imad_add to i64
   %imad_ext2 = zext i32 4 to i64
   %imad_mul.1 = mul i64 %imad_ext1, %imad_ext2
-  %.38 = ptrtoint ptr %Arg_0 to i64
-  %imad_add.1 = add i64 %imad_mul.1, %.38
-  %.39 = and i64 %imad_add.1, -4294967296
-  %.40 = lshr i64 %.39, 32
-  %trunc32 = trunc i64 %.40 to i32
+  %.37 = ptrtoint ptr %Arg_0 to i64
+  %imad_add.1 = add i64 %imad_mul.1, %.37
+  %.38 = and i64 %imad_add.1, -4294967296
+  %.39 = lshr i64 %.38, 32
+  %trunc32 = trunc i64 %.39 to i32
   %trunc32.1 = trunc i64 %imad_add.1 to i32
   %zext = zext i32 %trunc32.1 to i64
   %zext.1 = zext i32 %trunc32 to i64
@@ -419,25 +419,25 @@ Entry_.text._Z15globalMemKernelPKiPii:
   %or = or i64 %shl, %zext
   %inttoptr_bytes = inttoptr i64 %or to ptr addrspace(1)
   %ptr_cast_for_access = bitcast ptr addrspace(1) %inttoptr_bytes to ptr addrspace(1)
-  %.46 = load i32, ptr addrspace(1) %ptr_cast_for_access, align 4
+  %.45 = load i32, ptr addrspace(1) %ptr_cast_for_access, align 4
   %imad_ext1.1 = zext i32 %imad_add to i64
   %imad_ext2.1 = zext i32 4 to i64
   %imad_mul.2 = mul i64 %imad_ext1.1, %imad_ext2.1
-  %.51 = ptrtoint ptr %Arg_1 to i64
-  %imad_add.2 = add i64 %imad_mul.2, %.51
-  %.52 = and i64 %imad_add.2, -4294967296
-  %.53 = lshr i64 %.52, 32
-  %trunc32.2 = trunc i64 %.53 to i32
+  %.50 = ptrtoint ptr %Arg_1 to i64
+  %imad_add.2 = add i64 %imad_mul.2, %.50
+  %.51 = and i64 %imad_add.2, -4294967296
+  %.52 = lshr i64 %.51, 32
+  %trunc32.2 = trunc i64 %.52 to i32
   %trunc32.3 = trunc i64 %imad_add.2 to i32
-  %.58 = add i32 %.46, 1
-  %.59 = add i32 %.58, 0
+  %.57 = add i32 %.45, 1
+  %.58 = add i32 %.57, 0
   %zext.2 = zext i32 %trunc32.3 to i64
   %zext.3 = zext i32 %trunc32.2 to i64
   %shl.1 = shl i64 %zext.3, 32
   %or.1 = or i64 %shl.1, %zext.2
   %inttoptr_bytes.1 = inttoptr i64 %or.1 to ptr addrspace(1)
   %ptr_cast_for_access.1 = bitcast ptr addrspace(1) %inttoptr_bytes.1 to ptr addrspace(1)
-  store i32 %.59, ptr addrspace(1) %ptr_cast_for_access.1, align 4
+  store i32 %.58, ptr addrspace(1) %ptr_cast_for_access.1, align 4
   br label %ExitFunction
 
 ExitFunction:                                     ; preds = %Entry_.text._Z15globalMemKernelPKiPii, %.text._Z15globalMemKernelPKiPii_split_0x0060

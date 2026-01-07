@@ -541,7 +541,7 @@ class Instruction:
                     tmp = IRBuilder.icmp_unsigned(cmp_op, IRValOp1, IRValOp2, "unsigned_cmp")
                 else:
                     tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
-                tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
+                # tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             elif self.opcode == 'FSETP':
                 if not settings["ordered"]:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
@@ -551,16 +551,19 @@ class Instruction:
                     tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
                 else:
                     tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
-                tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
+                # tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             else:
                 raise InvalidSyntaxException
-            tmp2 = IRBuilder.not_(tmp2)
+            tmp2 = IRBuilder.not_(tmp)
             if settings["boolean_op"] == "AND":
                 tmp = IRBuilder.and_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.and_(tmp2, IRPreg2Val)
             elif settings["boolean_op"] == "OR":
                 tmp = IRBuilder.or_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.or_(tmp2, IRPreg2Val)
+            elif settings["boolean_op"] is None:
+                # no boolean_op provided
+                pass
             else:
                 raise NotImplementedError
         

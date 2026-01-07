@@ -457,6 +457,9 @@ class Operand:
                 print(self.ins, self)
                 raise InvalidSyntaxException
             if self.isPtr:
+                if self.getRegName() in ["RZ", "URZ"]:
+                    return llvmir.Constant(llvmir.IntType(64), 0)
+                
                 # Detect 32-bit address space based on instruction opcode
                 # Shared (LDS, STS) and Local (LDL, STL) instructions use 32-bit offsets,
                 # NOT 64-bit register pairs.
