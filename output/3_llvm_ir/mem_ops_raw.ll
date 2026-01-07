@@ -593,9 +593,9 @@ Entry_.text._Z14localMemKernelPii:
   %".15" = load i32, ptr %"R2"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".16" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".15", %"nvvm_blockdim_x"
-  %"add" = add i32 %"mul", %".16"
-  store i32 %"add", ptr %"R2"
+  %"imad_mul" = mul i32 %".15", %"nvvm_blockdim_x"
+  %"imad_add" = add i32 %"imad_mul", %".16"
+  store i32 %"imad_add", ptr %"R2"
   ; ISETP.GE.AND P0, PT, R2, c[0x0][0x168], PT
   %".19" = load i32, ptr %"R2"
   %".20" = load i1, ptr %"PT"
@@ -623,25 +623,25 @@ Entry_.text._Z14localMemKernelPii:
   ; IMAD.WIDE R2, R2, R3, c[0x0][0x160]
   %".40" = load i32, ptr %"R2"
   %".41" = load i32, ptr %"R3"
-  %"zext" = zext i32 %".40" to i64
-  %"zext.1" = zext i32 %".41" to i64
-  %"mul.1" = mul i64 %"zext", %"zext.1"
+  %"imad_ext1" = zext i32 %".40" to i64
+  %"imad_ext2" = zext i32 %".41" to i64
+  %"imad_mul.1" = mul i64 %"imad_ext1", %"imad_ext2"
   %".42" = ptrtoint ptr %"Arg_0" to i64
-  %"add.1" = add i64 %"mul.1", %".42"
-  %".43" = and i64 %"add.1", 18446744069414584320
+  %"imad_add.1" = add i64 %"imad_mul.1", %".42"
+  %".43" = and i64 %"imad_add.1", 18446744069414584320
   %".44" = lshr i64 %".43", 32
   %"trunc32" = trunc i64 %".44" to i32
-  %"trunc32.1" = trunc i64 %"add.1" to i32
+  %"trunc32.1" = trunc i64 %"imad_add.1" to i32
   store i32 %"trunc32.1", ptr %"R2"
   store i32 %"trunc32", ptr %"R3"
   ; STG.E.SYS [R2], R5
   %".48" = load i32, ptr %"R5"
   %".49" = load i32, ptr %"R2"
-  %"zext.2" = zext i32 %".49" to i64
+  %"zext" = zext i32 %".49" to i64
   %".50" = load i32, ptr %"R3"
-  %"zext.3" = zext i32 %".50" to i64
-  %"shl" = shl i64 %"zext.3", 32
-  %"or" = or i64 %"shl", %"zext.2"
+  %"zext.1" = zext i32 %".50" to i64
+  %"shl" = shl i64 %"zext.1", 32
+  %"or" = or i64 %"shl", %"zext"
   %"inttoptr_bytes" = inttoptr i64 %"or" to ptr addrspace(1)
   %"ptr_cast_for_access" = bitcast ptr addrspace(1) %"inttoptr_bytes" to ptr addrspace(1)
   store i32 %".48", ptr addrspace(1) %"ptr_cast_for_access"
@@ -1067,9 +1067,9 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   %".18" = load i32, ptr %"R0"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".19" = load i32, ptr %"R5"
-  %"mul" = mul i32 %".18", %"nvvm_blockdim_x"
-  %"add" = add i32 %"mul", %".19"
-  store i32 %"add", ptr %"R0"
+  %"imad_mul" = mul i32 %".18", %"nvvm_blockdim_x"
+  %"imad_add" = add i32 %"imad_mul", %".19"
+  store i32 %"imad_add", ptr %"R0"
   ; ISETP.GE.AND P0, PT, R0, c[0x0][0x170], PT
   %".22" = load i32, ptr %"R0"
   %".23" = load i1, ptr %"PT"
@@ -1089,24 +1089,24 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   ; IMAD.WIDE R2, R0, R3, c[0x0][0x160]
   %".36" = load i32, ptr %"R0"
   %".37" = load i32, ptr %"R3"
-  %"zext" = zext i32 %".36" to i64
-  %"zext.1" = zext i32 %".37" to i64
-  %"mul.1" = mul i64 %"zext", %"zext.1"
+  %"imad_ext1" = zext i32 %".36" to i64
+  %"imad_ext2" = zext i32 %".37" to i64
+  %"imad_mul.1" = mul i64 %"imad_ext1", %"imad_ext2"
   %".38" = ptrtoint ptr %"Arg_0" to i64
-  %"add.1" = add i64 %"mul.1", %".38"
-  %".39" = and i64 %"add.1", 18446744069414584320
+  %"imad_add.1" = add i64 %"imad_mul.1", %".38"
+  %".39" = and i64 %"imad_add.1", 18446744069414584320
   %".40" = lshr i64 %".39", 32
   %"trunc32" = trunc i64 %".40" to i32
-  %"trunc32.1" = trunc i64 %"add.1" to i32
+  %"trunc32.1" = trunc i64 %"imad_add.1" to i32
   store i32 %"trunc32.1", ptr %"R2"
   store i32 %"trunc32", ptr %"R3"
   ; LDG.E.SYS R2, [R2]
   %".44" = load i32, ptr %"R2"
-  %"zext.2" = zext i32 %".44" to i64
+  %"zext" = zext i32 %".44" to i64
   %".45" = load i32, ptr %"R3"
-  %"zext.3" = zext i32 %".45" to i64
-  %"shl" = shl i64 %"zext.3", 32
-  %"or" = or i64 %"shl", %"zext.2"
+  %"zext.1" = zext i32 %".45" to i64
+  %"shl" = shl i64 %"zext.1", 32
+  %"or" = or i64 %"shl", %"zext"
   %"inttoptr_bytes" = inttoptr i64 %"or" to ptr addrspace(1)
   %"ptr_cast_for_access" = bitcast ptr addrspace(1) %"inttoptr_bytes" to ptr addrspace(1)
   %".46" = load i32, ptr addrspace(1) %"ptr_cast_for_access", align 4
@@ -1120,9 +1120,9 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   %".54" = load i32, ptr %"R4"
   %".55" = load i32, ptr %"R5"
   %"swzl_shl" = shl i32 %".55", 2
-  %"zext.4" = zext i32 %"swzl_shl" to i64
+  %"zext.2" = zext i32 %"swzl_shl" to i64
   %".56" = addrspacecast ptr addrspace(3) @"__Z15sharedMemKernelPKiPii_sdata" to ptr
-  %"shared_gep" = getelementptr inbounds i8, ptr %".56", i64 %"zext.4"
+  %"shared_gep" = getelementptr inbounds i8, ptr %".56", i64 %"zext.2"
   %".57" = addrspacecast ptr %"shared_gep" to ptr addrspace(3)
   store i32 %".54", ptr addrspace(3) %".57"
   br label %".L_x_2"
@@ -1143,9 +1143,9 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   ; LDS.U R5, [R5.X4]
   %".70" = load i32, ptr %"R5"
   %"swzl_shl.1" = shl i32 %".70", 2
-  %"zext.5" = zext i32 %"swzl_shl.1" to i64
+  %"zext.3" = zext i32 %"swzl_shl.1" to i64
   %".71" = addrspacecast ptr addrspace(3) @"__Z15sharedMemKernelPKiPii_sdata" to ptr
-  %"shared_gep.1" = getelementptr i8, ptr %".71", i64 %"zext.5"
+  %"shared_gep.1" = getelementptr i8, ptr %".71", i64 %"zext.3"
   %".72" = addrspacecast ptr %"shared_gep.1" to ptr addrspace(3)
   %".73" = load i32, ptr addrspace(3) %".72", align 4
   store i32 %".73", ptr %"R5"
@@ -1154,25 +1154,25 @@ Entry_.text._Z15sharedMemKernelPKiPii:
   ; IMAD.WIDE R2, R0, R3, c[0x0][0x168]
   %".78" = load i32, ptr %"R0"
   %".79" = load i32, ptr %"R3"
-  %"zext.6" = zext i32 %".78" to i64
-  %"zext.7" = zext i32 %".79" to i64
-  %"mul.2" = mul i64 %"zext.6", %"zext.7"
+  %"imad_ext1.1" = zext i32 %".78" to i64
+  %"imad_ext2.1" = zext i32 %".79" to i64
+  %"imad_mul.2" = mul i64 %"imad_ext1.1", %"imad_ext2.1"
   %".80" = ptrtoint ptr %"Arg_1" to i64
-  %"add.2" = add i64 %"mul.2", %".80"
-  %".81" = and i64 %"add.2", 18446744069414584320
+  %"imad_add.2" = add i64 %"imad_mul.2", %".80"
+  %".81" = and i64 %"imad_add.2", 18446744069414584320
   %".82" = lshr i64 %".81", 32
   %"trunc32.2" = trunc i64 %".82" to i32
-  %"trunc32.3" = trunc i64 %"add.2" to i32
+  %"trunc32.3" = trunc i64 %"imad_add.2" to i32
   store i32 %"trunc32.3", ptr %"R2"
   store i32 %"trunc32.2", ptr %"R3"
   ; STG.E.SYS [R2], R5
   %".86" = load i32, ptr %"R5"
   %".87" = load i32, ptr %"R2"
-  %"zext.8" = zext i32 %".87" to i64
+  %"zext.4" = zext i32 %".87" to i64
   %".88" = load i32, ptr %"R3"
-  %"zext.9" = zext i32 %".88" to i64
-  %"shl.1" = shl i64 %"zext.9", 32
-  %"or.1" = or i64 %"shl.1", %"zext.8"
+  %"zext.5" = zext i32 %".88" to i64
+  %"shl.1" = shl i64 %"zext.5", 32
+  %"or.1" = or i64 %"shl.1", %"zext.4"
   %"inttoptr_bytes.1" = inttoptr i64 %"or.1" to ptr addrspace(1)
   %"ptr_cast_for_access.1" = bitcast ptr addrspace(1) %"inttoptr_bytes.1" to ptr addrspace(1)
   store i32 %".86", ptr addrspace(1) %"ptr_cast_for_access.1"
@@ -1593,9 +1593,9 @@ Entry_.text._Z15globalMemKernelPKiPii:
   %".16" = load i32, ptr %"R4"
   %"nvvm_blockdim_x" = call i32 @"llvm.nvvm.read.ptx.sreg.ntid.x"()
   %".17" = load i32, ptr %"R3"
-  %"mul" = mul i32 %".16", %"nvvm_blockdim_x"
-  %"add" = add i32 %"mul", %".17"
-  store i32 %"add", ptr %"R4"
+  %"imad_mul" = mul i32 %".16", %"nvvm_blockdim_x"
+  %"imad_add" = add i32 %"imad_mul", %".17"
+  store i32 %"imad_add", ptr %"R4"
   ; ISETP.GE.AND P0, PT, R4, c[0x0][0x170], PT
   %".20" = load i32, ptr %"R4"
   %".21" = load i1, ptr %"PT"
@@ -1618,24 +1618,24 @@ Entry_.text._Z15globalMemKernelPKiPii:
   ; IMAD.WIDE R2, R4, R5, c[0x0][0x160]
   %".36" = load i32, ptr %"R4"
   %".37" = load i32, ptr %"R5"
-  %"zext" = zext i32 %".36" to i64
-  %"zext.1" = zext i32 %".37" to i64
-  %"mul.1" = mul i64 %"zext", %"zext.1"
+  %"imad_ext1" = zext i32 %".36" to i64
+  %"imad_ext2" = zext i32 %".37" to i64
+  %"imad_mul.1" = mul i64 %"imad_ext1", %"imad_ext2"
   %".38" = ptrtoint ptr %"Arg_0" to i64
-  %"add.1" = add i64 %"mul.1", %".38"
-  %".39" = and i64 %"add.1", 18446744069414584320
+  %"imad_add.1" = add i64 %"imad_mul.1", %".38"
+  %".39" = and i64 %"imad_add.1", 18446744069414584320
   %".40" = lshr i64 %".39", 32
   %"trunc32" = trunc i64 %".40" to i32
-  %"trunc32.1" = trunc i64 %"add.1" to i32
+  %"trunc32.1" = trunc i64 %"imad_add.1" to i32
   store i32 %"trunc32.1", ptr %"R2"
   store i32 %"trunc32", ptr %"R3"
   ; LDG.E.SYS R2, [R2]
   %".44" = load i32, ptr %"R2"
-  %"zext.2" = zext i32 %".44" to i64
+  %"zext" = zext i32 %".44" to i64
   %".45" = load i32, ptr %"R3"
-  %"zext.3" = zext i32 %".45" to i64
-  %"shl" = shl i64 %"zext.3", 32
-  %"or" = or i64 %"shl", %"zext.2"
+  %"zext.1" = zext i32 %".45" to i64
+  %"shl" = shl i64 %"zext.1", 32
+  %"or" = or i64 %"shl", %"zext"
   %"inttoptr_bytes" = inttoptr i64 %"or" to ptr addrspace(1)
   %"ptr_cast_for_access" = bitcast ptr addrspace(1) %"inttoptr_bytes" to ptr addrspace(1)
   %".46" = load i32, ptr addrspace(1) %"ptr_cast_for_access", align 4
@@ -1643,15 +1643,15 @@ Entry_.text._Z15globalMemKernelPKiPii:
   ; IMAD.WIDE R4, R4, R5, c[0x0][0x168]
   %".49" = load i32, ptr %"R4"
   %".50" = load i32, ptr %"R5"
-  %"zext.4" = zext i32 %".49" to i64
-  %"zext.5" = zext i32 %".50" to i64
-  %"mul.2" = mul i64 %"zext.4", %"zext.5"
+  %"imad_ext1.1" = zext i32 %".49" to i64
+  %"imad_ext2.1" = zext i32 %".50" to i64
+  %"imad_mul.2" = mul i64 %"imad_ext1.1", %"imad_ext2.1"
   %".51" = ptrtoint ptr %"Arg_1" to i64
-  %"add.2" = add i64 %"mul.2", %".51"
-  %".52" = and i64 %"add.2", 18446744069414584320
+  %"imad_add.2" = add i64 %"imad_mul.2", %".51"
+  %".52" = and i64 %"imad_add.2", 18446744069414584320
   %".53" = lshr i64 %".52", 32
   %"trunc32.2" = trunc i64 %".53" to i32
-  %"trunc32.3" = trunc i64 %"add.2" to i32
+  %"trunc32.3" = trunc i64 %"imad_add.2" to i32
   store i32 %"trunc32.3", ptr %"R4"
   store i32 %"trunc32.2", ptr %"R5"
   ; IADD3 R7, R2, 0x1, RZ
@@ -1662,11 +1662,11 @@ Entry_.text._Z15globalMemKernelPKiPii:
   ; STG.E.SYS [R4], R7
   %".62" = load i32, ptr %"R7"
   %".63" = load i32, ptr %"R4"
-  %"zext.6" = zext i32 %".63" to i64
+  %"zext.2" = zext i32 %".63" to i64
   %".64" = load i32, ptr %"R5"
-  %"zext.7" = zext i32 %".64" to i64
-  %"shl.1" = shl i64 %"zext.7", 32
-  %"or.1" = or i64 %"shl.1", %"zext.6"
+  %"zext.3" = zext i32 %".64" to i64
+  %"shl.1" = shl i64 %"zext.3", 32
+  %"or.1" = or i64 %"shl.1", %"zext.2"
   %"inttoptr_bytes.1" = inttoptr i64 %"or.1" to ptr addrspace(1)
   %"ptr_cast_for_access.1" = bitcast ptr addrspace(1) %"inttoptr_bytes.1" to ptr addrspace(1)
   store i32 %".62", ptr addrspace(1) %"ptr_cast_for_access.1"
