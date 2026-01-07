@@ -1011,30 +1011,30 @@ Typedesc: Bool
 
 ############# USHF.R.S32.HI UR6, URZ, 0x1f, UR7 #############
 ####### UR6 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0280, UR6)']
 defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0280, UR6)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1f #######
 
 ####### UR7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0280, UR6)']
 defs_reaching: ['(0x0260, UR7)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# ISETP.GE.U32.AND P1, PT, R10, 0x3, PT #############
 ####### P1 #######
@@ -1205,57 +1205,57 @@ Typedesc: Int32
 
 ############# USHF.L.U64.HI UR5, UR7, 0x2, UR6 #############
 ####### UR5 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x02f0, UR5)']
 defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### UR7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x02f0, UR5)']
 defs_reaching: ['(0x0260, UR7)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### UR6 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
+is_def: False
+is_use: True
+kill_set: ['(0x02f0, UR5)']
+defs_reaching: ['(0x0280, UR6)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# USHF.L.U32 UR4, UR7, 0x2, URZ #############
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0300, UR4)']
 defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### UR7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0300, UR4)']
 defs_reaching: ['(0x0260, UR7)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0300, UR4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ########################## .L_x_2 ##########################
 ############# SHF.L.U32 R11, R28, 0x2, RZ #############
@@ -1463,7 +1463,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0370, R32)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1513,7 +1513,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0390, R33)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1570,7 +1570,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x03a0, R38)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1620,7 +1620,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x03c0, R39)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1694,7 +1694,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x03e0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1744,7 +1744,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0400, R23)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1801,7 +1801,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0410, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1851,7 +1851,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0430, R13)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1925,7 +1925,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0450, R18)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -1975,7 +1975,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0470, R19)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2032,7 +2032,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0480, R14)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2082,7 +2082,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x04a0, R15)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2139,7 +2139,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x04b0, R10)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2189,7 +2189,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x04d0, R11)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2246,7 +2246,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x04e0, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2296,7 +2296,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0500, R17)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2353,7 +2353,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0510, R24)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2403,7 +2403,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0530, R25)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2460,7 +2460,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0540, R26)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2510,7 +2510,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0560, R27)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2567,7 +2567,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0570, R30)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2617,7 +2617,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0590, R31)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2674,7 +2674,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x05a0, R32)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2724,7 +2724,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x05c0, R33)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2781,7 +2781,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x05d0, R22)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2831,7 +2831,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x05f0, R23)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2888,7 +2888,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0600, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -2938,7 +2938,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0620, R13)']
-defs_reaching: []
+defs_reaching: ['(0x02f0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -3765,30 +3765,30 @@ Typedesc: Int32
 
 ############# USHF.L.U64.HI UR5, UR7, 0x2, UR6 #############
 ####### UR5 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+is_def: True
+is_use: False
+kill_set: ['(0x07e0, UR5)']
+defs_reaching: ['(0x02f0, UR5)']
+reaches_next: True
+Typedesc: Int32
 
 ####### UR7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x07e0, UR5)']
 defs_reaching: ['(0x0260, UR7)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### UR6 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
+is_def: False
+is_use: True
+kill_set: ['(0x07e0, UR5)']
+defs_reaching: ['(0x0280, UR6)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# IMAD.WIDE R10, R10, R9, c[0x0][0x160] #############
 ####### R10 #######
@@ -3825,30 +3825,30 @@ Typedesc: Float32_PTR
 
 ############# USHF.L.U32 UR4, UR7, 0x2, URZ #############
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+is_def: True
+is_use: False
+kill_set: ['(0x0800, UR4)']
+defs_reaching: ['(0x0300, UR4)']
+reaches_next: True
+Typedesc: Int32
 
 ####### UR7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0800, UR4)']
 defs_reaching: ['(0x0260, UR7)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0800, UR4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# IMAD R13, R28, 0x4, R5 #############
 ####### R13 #######
@@ -4056,7 +4056,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0870, R14)']
-defs_reaching: []
+defs_reaching: ['(0x0800, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -4106,7 +4106,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0890, R15)']
-defs_reaching: []
+defs_reaching: ['(0x07e0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -4163,7 +4163,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x08a0, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0800, UR4)']
 reaches_next: False
 Typedesc: Int32
 
@@ -4213,7 +4213,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x08c0, R17)']
-defs_reaching: []
+defs_reaching: ['(0x07e0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -4651,35 +4651,35 @@ Typedesc: Int32
 
 ############# UISETP.GE.AND UP0, UPT, UR8, 0x1, UPT #############
 ####### UP0 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x09c0, UP0)']
 defs_reaching: []
-reaches_next: False
+reaches_next: True
 Typedesc: Bool
 
 ####### UPT #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x09c0, UP0)']
 defs_reaching: []
 reaches_next: False
 Typedesc: Bool
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x09c0, UP0)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1 #######
 
 ####### UPT #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x09c0, UP0)']
 defs_reaching: []
 reaches_next: False
 Typedesc: Bool
@@ -4721,7 +4721,7 @@ Typedesc: Bool
 is_def: False
 is_use: True
 kill_set: ['(0x09d0, P0)']
-defs_reaching: []
+defs_reaching: ['(0x09c0, UP0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -4746,7 +4746,7 @@ Typedesc: Bool
 is_def: True
 is_use: False
 kill_set: ['(0x09f0, UR4)']
-defs_reaching: []
+defs_reaching: ['(0x0300, UR4)', '(0x0800, UR4)']
 reaches_next: True
 Typedesc: Int32
 
@@ -4848,35 +4848,35 @@ Typedesc: Bool
 
 ############# UISETP.GE.U32.AND UP0, UPT, UR4, 0x3, UPT #############
 ####### UP0 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
+is_def: True
+is_use: False
+kill_set: ['(0x0a20, UP0)']
+defs_reaching: ['(0x09c0, UP0)']
+reaches_next: True
 Typedesc: Bool
 
 ####### UPT #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0a20, UP0)']
 defs_reaching: []
 reaches_next: False
 Typedesc: Bool
 
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0a20, UP0)']
 defs_reaching: ['(0x09f0, UR4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3 #######
 
 ####### UPT #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0a20, UP0)']
 defs_reaching: []
 reaches_next: False
 Typedesc: Bool
@@ -4886,7 +4886,7 @@ Typedesc: Bool
 is_def: True
 is_use: False
 kill_set: ['(0x0a30, UR6)']
-defs_reaching: []
+defs_reaching: ['(0x0280, UR6)']
 reaches_next: True
 Typedesc: Int32
 
@@ -5000,7 +5000,7 @@ Typedesc: Bool
 is_def: False
 is_use: True
 kill_set: ['(0x0a50, P1)']
-defs_reaching: []
+defs_reaching: ['(0x0a20, UP0)']
 reaches_next: False
 Typedesc: Bool
 
@@ -5022,30 +5022,30 @@ Typedesc: Bool
 ########################## .L_x_0_split_0x0a70 ##########################
 ############# USHF.R.S32.HI UR4, URZ, 0x1f, UR8 #############
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0a70, UR4)']
 defs_reaching: ['(0x09f0, UR4)']
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0a70, UR4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1f #######
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0a70, UR4)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# MOV R22, RZ #############
 ####### R22 #######
@@ -5083,30 +5083,30 @@ Typedesc: Int32
 
 ############# USHF.L.U32 UR9, UR8, 0x2, URZ #############
 ####### UR9 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0aa0, UR9)']
 defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0aa0, UR9)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0aa0, UR9)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# UIADD3 UR7, -UR6, UR7, URZ #############
 ####### UR7 #######
@@ -5143,30 +5143,30 @@ Typedesc: Int32
 
 ############# USHF.L.U64.HI UR5, UR8, 0x2, UR4 #############
 ####### UR5 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+is_def: True
+is_use: False
+kill_set: ['(0x0ac0, UR5)']
+defs_reaching: ['(0x02f0, UR5)', '(0x07e0, UR5)']
+reaches_next: True
+Typedesc: Int32
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0ac0, UR5)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: ['(0x09f0, UR4)']
+is_def: False
+is_use: True
+kill_set: ['(0x0ac0, UR5)']
+defs_reaching: ['(0x0a70, UR4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ########################## .L_x_6 ##########################
 ############# IMAD.SHL.U32 R11, R22, 0x4, RZ #############
@@ -5374,7 +5374,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0b30, R32)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5424,7 +5424,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0b50, R33)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5481,7 +5481,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0b60, R36)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5531,7 +5531,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0b80, R37)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5605,7 +5605,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0ba0, R38)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5655,7 +5655,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0bc0, R39)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5712,7 +5712,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0bd0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5762,7 +5762,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0bf0, R13)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5836,7 +5836,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0c10, R18)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5886,7 +5886,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0c30, R19)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5943,7 +5943,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0c40, R14)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -5993,7 +5993,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0c60, R15)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6050,7 +6050,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0c70, R10)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6100,7 +6100,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0c90, R11)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6157,7 +6157,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0ca0, R16)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6207,7 +6207,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0cc0, R17)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6264,7 +6264,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0cd0, R24)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6314,7 +6314,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0cf0, R25)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6371,7 +6371,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d00, R20)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6421,7 +6421,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d20, R21)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6478,7 +6478,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d30, R28)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6528,7 +6528,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d50, R29)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6585,7 +6585,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d60, R30)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6635,7 +6635,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d80, R31)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6692,7 +6692,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0d90, R32)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6742,7 +6742,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0db0, R33)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6799,7 +6799,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0dc0, R12)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
 Typedesc: Int32
 
@@ -6816,17 +6816,17 @@ Typedesc: Int32
 is_def: True
 is_use: False
 kill_set: ['(0x0dd0, UR4)']
-defs_reaching: ['(0x09f0, UR4)', '(0x0dd0, UR4)']
+defs_reaching: ['(0x0a70, UR4)', '(0x0dd0, UR4)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### UR9 #######
 is_def: False
 is_use: True
 kill_set: ['(0x0dd0, UR4)']
-defs_reaching: []
+defs_reaching: ['(0x0aa0, UR9)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# LDG.E.CONSTANT.SYS R30, [R30] #############
 ####### R30 #######
@@ -6866,7 +6866,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x0df0, R13)']
-defs_reaching: []
+defs_reaching: ['(0x0ac0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -7627,30 +7627,30 @@ Typedesc: Int32
 
 ############# USHF.R.S32.HI UR4, URZ, 0x1f, UR8 #############
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0f90, UR4)']
 defs_reaching: ['(0x09f0, UR4)', '(0x0dd0, UR4)']
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0f90, UR4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x1f #######
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0f90, UR4)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# IMAD R22, R7, c[0x0][0x1b0], R22 #############
 ####### R22 #######
@@ -7687,30 +7687,30 @@ Typedesc: Int32
 
 ############# USHF.L.U32 UR7, UR8, 0x2, URZ #############
 ####### UR7 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: True
+is_use: False
+kill_set: ['(0x0fb0, UR7)']
 defs_reaching: ['(0x0260, UR7)', '(0x0e30, UR7)']
-reaches_next: False
-Typedesc: NOTYPE
+reaches_next: True
+Typedesc: Int32
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0fb0, UR7)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### URZ #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0fb0, UR7)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# LEA R5, R10, R5, 0x2 #############
 ####### R5 #######
@@ -7807,30 +7807,30 @@ Typedesc: Int32
 
 ############# USHF.L.U64.HI UR5, UR8, 0x2, UR4 #############
 ####### UR5 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: []
-reaches_next: False
-Typedesc: NOTYPE
+is_def: True
+is_use: False
+kill_set: ['(0x0ff0, UR5)']
+defs_reaching: ['(0x02f0, UR5)', '(0x07e0, UR5)', '(0x0ac0, UR5)']
+reaches_next: True
+Typedesc: Int32
 
 ####### UR8 #######
-is_def: None
-is_use: None
-kill_set: []
+is_def: False
+is_use: True
+kill_set: ['(0x0ff0, UR5)']
 defs_reaching: ['(0x09b0, UR8)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x2 #######
 
 ####### UR4 #######
-is_def: None
-is_use: None
-kill_set: []
-defs_reaching: ['(0x09f0, UR4)', '(0x0dd0, UR4)']
+is_def: False
+is_use: True
+kill_set: ['(0x0ff0, UR5)']
+defs_reaching: ['(0x0f90, UR4)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ############# IMAD R16, R4, c[0x0][0x0], R5 #############
 ####### R16 #######
@@ -7978,7 +7978,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x1040, R12)']
-defs_reaching: ['(0x0260, UR7)', '(0x0e30, UR7)']
+defs_reaching: ['(0x0fb0, UR7)']
 reaches_next: False
 Typedesc: Int32
 
@@ -7995,7 +7995,7 @@ Typedesc: Int32
 is_def: True
 is_use: False
 kill_set: ['(0x1050, UR4)']
-defs_reaching: ['(0x09f0, UR4)', '(0x0dd0, UR4)', '(0x1050, UR4)']
+defs_reaching: ['(0x0f90, UR4)', '(0x1050, UR4)']
 reaches_next: True
 Typedesc: Int32
 
@@ -8003,7 +8003,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x1050, UR4)']
-defs_reaching: ['(0x0260, UR7)', '(0x0e30, UR7)']
+defs_reaching: ['(0x0fb0, UR7)']
 reaches_next: False
 Typedesc: Int32
 
@@ -8045,7 +8045,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x1070, R13)']
-defs_reaching: []
+defs_reaching: ['(0x0ff0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -8102,7 +8102,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x1080, R14)']
-defs_reaching: ['(0x0260, UR7)', '(0x0e30, UR7)']
+defs_reaching: ['(0x0fb0, UR7)']
 reaches_next: False
 Typedesc: Int32
 
@@ -8152,7 +8152,7 @@ Typedesc: Int32
 is_def: False
 is_use: True
 kill_set: ['(0x10a0, R15)']
-defs_reaching: []
+defs_reaching: ['(0x0ff0, UR5)']
 reaches_next: False
 Typedesc: Int32
 
@@ -15785,7 +15785,7 @@ Typedesc: Int32
 is_def: True
 is_use: False
 kill_set: ['(0x1800, UR4)']
-defs_reaching: ['(0x09f0, UR4)', '(0x0dd0, UR4)', '(0x1050, UR4)']
+defs_reaching: ['(0x0300, UR4)', '(0x0800, UR4)', '(0x09f0, UR4)', '(0x0dd0, UR4)', '(0x1050, UR4)']
 reaches_next: True
 Typedesc: NOTYPE
 

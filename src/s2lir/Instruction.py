@@ -402,7 +402,7 @@ class Instruction:
 
             return
         
-        if self.opcode == "ISETP" or self.opcode == "FSETP":
+        if self.opcode == "ISETP" or self.opcode == "UISETP" or self.opcode == "FSETP":
             # https://stackoverflow.com/questions/19357452/cuda-assembly-instructions
             ResOp = self.operands[0]
             PReg1 = self.operands[1] # result 2 (Pv): https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opISETP.htm
@@ -419,7 +419,7 @@ class Instruction:
                 if self.opcode == "FSETP":
                     assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
                     assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
-                elif self.opcode == "ISETP":
+                elif self.opcode in ("ISETP", "UISETP"):
                     assert isinstance(IRValOp1.type, (llvmir.IntType)) 
                     assert isinstance(IRValOp2.type, (llvmir.IntType)) 
 
@@ -444,7 +444,8 @@ class Instruction:
                 "type": {
                     "signage": None,
                     "bits": None
-                }
+                },
+                "unsigned": False
             }
             
             for mod in self.modifiers:
@@ -456,10 +457,9 @@ class Instruction:
                 match = re.match(pattern, mod)
                 if match:
                     settings["cmp_op"] = match.group(1)
-                    if match.group(3) != "":
-                        # group 1 and 2 seem to capture the same thing (inner and outer bracket of comparators)
-                        assert match.group(3) == "U"
-                        assert self.opcode == "FSETP"
+                    # If modifier includes U (unsigned), mark unsigned semantics.
+                    if match.group(3) == "U":
+                        settings["unsigned"] = True
                         settings["ordered"] = False
                     continue
                 
@@ -483,8 +483,12 @@ class Instruction:
             if cmp_op is None:
                 raise InvalidSyntaxException
 
-            if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
-                tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
+            if self.opcode in ('ISETP', 'UISETP') or self.config["allow_temp_behavior"]:
+                # Use unsigned compare if explicitly requested or opcode is UISETP
+                if self.opcode == 'UISETP' or settings.get("unsigned", False):
+                    tmp = IRBuilder.icmp_unsigned(cmp_op, IRValOp1, IRValOp2, "unsigned_cmp")
+                else:
+                    tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
                 tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             elif self.opcode == 'FSETP':
                 if not settings["ordered"]:
@@ -514,6 +518,8 @@ class Instruction:
             if PReg1.reg != "PT":
                 PReg1.IRReg_Store(IRRegs, IRBuilder, tmp2)
             return
+
+        
         
         if self.opcode in ("SHF", "USHF"):
             # SHF - Funnel shift

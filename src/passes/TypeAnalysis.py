@@ -286,7 +286,7 @@ class TypeAnalysis:
                 operand.is_use = False
             return
 
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "LDS", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "UISETP", "FSETP", "MOV", "UMOV", "LDG", "LDS", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "USHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     # first operand of this instruction is a def
@@ -329,7 +329,7 @@ class TypeAnalysis:
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD", "FMUL"]:
             TypeDesc = "Float32"
-        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "UIADD3", "LEA", "SHF", "IABS"] :
+        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "UIADD3", "LEA", "SHF", "USHF", "IABS"] :
             TypeDesc = "Int32"
 
         if TypeDesc is not None:
@@ -348,7 +348,7 @@ class TypeAnalysis:
             return "Float32"
 
         #### Batch 3
-        if inst.opcode == "ISETP" or inst.opcode == "FSETP":
+        if inst.opcode == "ISETP" or inst.opcode == "UISETP" or inst.opcode == "FSETP":
             if inst.opcode == "ISETP":
                 TypeDesc = "Int32"
             elif inst.opcode == "FSETP":
