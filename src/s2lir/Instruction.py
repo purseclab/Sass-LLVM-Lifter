@@ -334,7 +334,9 @@ class Instruction:
                 "wide": False,
                 "mov": False,
                 "iadd": False,
-                "x": False
+                "x": False,
+                "shl": False,
+                "hi": False
             }
             
             for mod in self.modifiers:
@@ -345,17 +347,19 @@ class Instruction:
                 elif mod == "MOV" or mod == "IADD":
                     # just compiler informing the reader that IMAD is essentially performing MOV/IADD
                     # https://stackoverflow.com/questions/59777333/combined-format-of-sass-instructions
-                    
-                    if mod == "MOV":
-                        settings["mov"] = True
-                    elif mod == "IADD":
-                        settings["iadd"] = True
-
+                    settings[mod.lower()] = True
+                    continue
+                elif mod == "SHL":
+                    settings["shl"] = True
+                    continue
+                elif mod == "HI":
+                    settings["hi"] = True
                     continue
                 elif mod == "X":
                     settings["x"] = True
-                elif mod == "U32" or mod == "HI":
-                    # TODO handle these
+                    continue
+                elif mod == "U32" or mod == "S32":
+                    # U32 is the standard width for IMAD; usually safe to skip 
                     continue
                 else:
                     print(self)
@@ -368,37 +372,74 @@ class Instruction:
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
             if settings["x"]:
+                # Fetch carry operand if .X is present
                 assert len(self.operands) == 5
                 ValOp4 = self.operands[4]
                 IRValOp4 = ValOp4.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             else:
                 assert len(self.operands) == 4
 
+            
+            is_64bit_calc = settings["hi"] or settings["wide"]
+            calc_type = llvmir.IntType(64) if is_64bit_calc else llvmir.IntType(32)
+            
             assert ValOp1.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
-            if settings["wide"]:
-                # zero extend op1 and op2 into 64 bit so that the result of mul is 64 bit
-                IRValOp1 = IRBuilder.zext(IRValOp1, llvmir.IntType(64), name="zext")
-                IRValOp2 = IRBuilder.zext(IRValOp2, llvmir.IntType(64), name="zext")
-            tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul") 
-            if settings["wide"]:
-                # assert isinstance(IRValOp3.type, llvmir.PointerType) or IRValOp3.type.width == 64
-                if isinstance(IRValOp3.type, llvmir.PointerType):
-                    IRValOp3 = IRBuilder.ptrtoint(IRValOp3, llvmir.IntType(64))
-                elif IRValOp3.type == llvmir.IntType(32):
-                    IRValOp3 = IRBuilder.zext(IRValOp3, llvmir.IntType(64), name="zext")
-                else:
-                    raise InvalidSyntaxException
-            tmp = IRBuilder.add(tmp, IRValOp3, "add")
             
-            if settings["x"]:
-                assert ValOp4.get_bit_width() == 1
+            
+            # MULTIPLICATION/SHIFT STAGE
+            
+            if settings["shl"]:
+                # IMAD.SHL: (Op1 << Op2) + Op3
+                # need further verification
+                tmp = IRBuilder.shl(IRValOp1, IRValOp2, name="imad_shl")
+                if is_64bit_calc:
+                    tmp = IRBuilder.zext(tmp, calc_type, name="shl_ext")
+            else:
+                # (Op1 * Op2)
                 
-                IRValOp4 = IRBuilder.zext(IRValOp4, llvmir.IntType(32), name="zext")
-                tmp = IRBuilder.add(tmp, IRValOp4, "add")
+                if is_64bit_calc:
+                    ext1 = IRBuilder.zext(IRValOp1, calc_type, name="imad_ext1")
+                    ext2 = IRBuilder.zext(IRValOp2, calc_type, name="imad_ext2")
+                else:
+                    ext1 = IRValOp1
+                    ext2 = IRValOp2
+                tmp = IRBuilder.mul(ext1, ext2, name="imad_mul")
             
-            # IRBuilder.store(tmp, IRResOp)
-            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
+            
+            # ADDITION/ACCUMULATION
+            if isinstance(IRValOp3.type, llvmir.PointerType):
+                IRValOp3_ready = IRBuilder.ptrtoint(IRValOp3, calc_type)
+            elif IRValOp3.type.width < calc_type.width:
+                IRValOp3_ready = IRBuilder.zext(IRValOp3, calc_type, name="imad_ext3")
+            else:
+                IRValOp3_ready = IRValOp3
+            
+            # tmp = (Product/Shift) + Op3
+            tmp = IRBuilder.add(tmp, IRValOp3_ready, name="imad_add")
+            
+            # Handle carry-in (.X)
+            if settings["x"]:
+                IRValOp4_ext = IRBuilder.zext(IRValOp4, calc_type, name="imad_ext4")
+                tmp = IRBuilder.add(tmp, IRValOp4_ext, name="imad_add_x")
+            
+            # FINAL TRUNCATION / SELECTION STAGE
+            
+            if settings["hi"]:
+                # Extract the high 32 bits: (Result >> 32)
+                hi_bits = IRBuilder.lshr(tmp, llvmir.Constant(calc_type, 32), name="imad_hi_shift")
+                final_res = IRBuilder.trunc(hi_bits, llvmir.IntType(32), name="imad_hi_trunc")
+            elif settings["wide"]:
+                # Keep full 64 bits
+                final_res = tmp
+            else:
+                # Standard 32-bit result (should already be 32-bit unless widened by logic)
+                if tmp.type.width > 32:
+                    final_res = IRBuilder.trunc(tmp, llvmir.IntType(32), name="imad_trunc")
+                else:
+                    final_res = tmp
+
+            ResOp.IRReg_Store(IRRegs, IRBuilder, final_res)
 
             return
         
