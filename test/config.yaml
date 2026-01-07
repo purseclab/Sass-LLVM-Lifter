@@ -303,3 +303,93 @@ tests:
   #     benchmark:
   #       ptx_file: ../output/4_ptx/lstm_clang_llc.ptx
   #       function: _Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii
+  # - name: linear_proj_benchmark_example
+  #   ptx_file: ../output/4_ptx/transformer_lifted_llc.ptx
+  #   function: _Z18linear_proj_kernelPKfS0_S0_Pfiii
+  #   block: { x: 32, y: 8 }
+  #   args:
+  #     - name: X
+  #       type: float*
+  #       size: 2048        # seq_len * d_model (32 * 64)
+  #       init: random
+  #       rng_seed: 101
+  #       range: [-1.0, 1.0]
+  #     - name: W
+  #       type: float*
+  #       size: 2048        # d_k * d_model (32 * 64)
+  #       init: random
+  #       rng_seed: 102
+  #       range: [-0.1, 0.1]
+  #     - name: b
+  #       type: float*
+  #       size: 32          # d_k
+  #       init: random
+  #       rng_seed: 103
+  #       range: [-0.01, 0.01]
+  #     - name: Y
+  #       type: float*
+  #       size: 1024        # seq_len * d_k (32 * 32)
+  #       init: zeros
+  #       output: true
+  #     - name: seq_len
+  #       type: int
+  #       value: 32
+  #     - name: d_model
+  #       type: int
+  #       value: 64
+  #     - name: d_k
+  #       type: int
+  #       value: 32
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/transformer_clang_llc.ptx
+  #       function: _Z18linear_proj_kernelPKfS0_S0_Pfiii
+  # - name: ffn_relu_benchmark_example
+  #   ptx_file: ../output/4_ptx/transformer_lifted_llc.ptx
+  #   function: _Z15ffn_relu_kernelPKfS0_S0_Pfiii
+  #   block: { x: 16, y: 4 }
+  #   args:
+  #     - name: X
+  #       type: float*
+  #       size: 32        # seq_len * d_model (4 * 8)
+  #       init: random
+  #       rng_seed: 201
+  #       range: [-1.0, 1.0]
+  #     - name: W1
+  #       type: float*
+  #       size: 128       # d_ff * d_model (16 * 8)
+  #       init: random
+  #       rng_seed: 202
+  #       range: [-0.1, 0.1]
+  #     - name: b1
+  #       type: float*
+  #       size: 16        # d_ff
+  #       init: random
+  #       rng_seed: 203
+  #       range: [-0.01, 0.01]
+  #     - name: Y
+  #       type: float*
+  #       size: 64        # seq_len * d_ff (4 * 16)
+  #       init: zeros
+  #       output: true
+  #     - name: seq_len
+  #       type: int
+  #       value: 4
+  #     - name: d_model
+  #       type: int
+  #       value: 8
+  #     - name: d_ff
+  #       type: int
+  #       value: 16
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/transformer_clang_llc.ptx
+  #       function: _Z15ffn_relu_kernelPKfS0_S0_Pfiii
