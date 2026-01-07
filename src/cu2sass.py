@@ -22,12 +22,12 @@ def run_command(cmd):
 
 def compile_cuda(cuda_file, output_executable):
     """Compile CUDA file to executable using nvcc"""
-    # run_command([
-    #     "nvcc", "-g" , "-G", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
-    # ])
     run_command([
-        "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
+        "nvcc", "-g" , "-G", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
     ])
+    # run_command([
+    #     "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
+    # ])
 
 def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     """Extract cubin files using cuobjdump"""
