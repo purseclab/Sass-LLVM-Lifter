@@ -430,44 +430,53 @@ class TypeAnalysis:
         # =========================================================
         elif inst.opcode in ("ULOP3", "LOP3"):
             changed = False
-            
-            # 1. Gather the relevant register operands (Dest + 3 Sources)
-            # LOP3 format is typically: Dest, Src1, Src2, Src3, ImmLUT
-            # We care about the first 4 operands.
-            relevant_ops = inst.operands[:4]
-            
-            # 2. Check current types
+
+            # LOP3 has two formats:
+            # A) With Predicate Dest: LOP3.LUT Pu, Rd, Ra, Sb, Rc, Imm, Pcond
+            # B) No Predicate Dest:   LOP3.LUT Rd, Ra, Sb, Rc, Imm, Pcond
+            # Detect format A vs B by checking if the first operand is a predicate reg.
+            firstOp = inst.operands[0]
+            if firstOp.isPReg:
+                # Format A: predicate destination present
+                pu_op = inst.operands[0]
+                res_op = inst.operands[1]
+                val_ops = [inst.operands[2], inst.operands[3], inst.operands[4]]
+            else:
+                pu_op = None
+                res_op = inst.operands[0]
+                val_ops = [inst.operands[1], inst.operands[2], inst.operands[3]]
+
+            # Ensure predicate dest is Bool
+            if pu_op is not None:
+                changed |= self.op_add_type(pu_op, DataType.BOOL, inst)
+
+            # Collect current types for the result and sources
+            relevant_ops = [res_op] + val_ops
             current_types = [DataType.from_str(op.getTypeDesc()) for op in relevant_ops]
             known_types = [t for t in current_types if t != DataType.NOTYPE]
             
             # 3. Logic: LOP3 is inherently a bitwise integer operation.
-            # If we know *any* operand is Int32, or if we default bitwise ops to Int32,
-            # we should propagate this to the output (Op 0) and inputs.
-            
-            target_type = DataType.NOTYPE
-            
             # Heuristic A: If any operand is already confirmed as Int32, use that.
+            target_type = DataType.NOTYPE
             if DataType.INT32 in known_types:
                 target_type = DataType.INT32
-            
-            # Heuristic B: Voting (in case mixed types appear, though unlikely for LOP3)
+            # Heuristic B: Voting - if mixed known types appear, take the most common.
             elif known_types:
                 from collections import Counter
                 most_common, count = Counter(known_types).most_common(1)[0]
-                if count >= 1: # Even 1 known type is enough hint for LOP3
+                if count >= 1:
                     target_type = most_common
             
-            # Heuristic C: Strong Default. LOP3 is almost always Int32.
-            # If completely unknown, we can optimistically assume Int32.
+            # Heuristic C: Strong Default - LOP3 is almost always Int32; assume Int32 when unknown.
             else:
                 target_type = DataType.INT32
 
-            # 4. Apply the resolved type to all register operands (Dest and Srcs)
+            # Apply the resolved type to destination and sources (registers only)
             if target_type != DataType.NOTYPE:
                 for op in relevant_ops:
-                    if DataType.from_str(op.getTypeDesc()) == DataType.NOTYPE:
+                    if not op.isPReg and DataType.from_str(op.getTypeDesc()) == DataType.NOTYPE:
                         changed |= self.op_add_type(op, target_type, inst)
-                            
+
             return changed
 
         # =========================================================

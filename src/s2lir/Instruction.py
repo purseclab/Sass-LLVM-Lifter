@@ -884,15 +884,35 @@ class Instruction:
                     return r;
                 }
             '''
-            ResOp = self.operands[0]
-            ValOp1 = self.operands[1]
-            ValOp2 = self.operands[2]
-            ValOp3 = self.operands[3]
-            immLut = self.operands[4]
-            # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
-            PReg = self.operands[5]
+            
+            # LOP3 has two main formats:
+            # A) With Predicate Dest: LOP3.LUT Pu, Rd, Ra, Sb, Rc, Imm
+            # B) No Predicate Dest:   LOP3.LUT Rd, Ra, Sb, Rc, Imm
+            
+            firstOp = self.operands[0]
             
             assert len(self.operands) == 6 or len(self.operands) == 7 # TODO investigate what the last operand does for "LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT"
+            
+            if firstOp.isPReg:
+                # Format A
+                PuOp   = self.operands[0]  # Predicate Destination
+                ResOp   = self.operands[1]  # Register Destination
+                ValOp1   = self.operands[2]
+                ValOp2   = self.operands[3]
+                ValOp3   = self.operands[4]
+                immLut  = self.operands[5]
+                PReg = self.operands[6]
+            else:
+                # Format B
+                PuOp = None
+                ResOp = self.operands[0]
+                ValOp1 = self.operands[1]
+                ValOp2 = self.operands[2]
+                ValOp3 = self.operands[3]
+                immLut = self.operands[4]
+                # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
+                PReg = self.operands[5]
+            
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -975,6 +995,11 @@ class Instruction:
             
             # IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
+            
+            if PuOp:
+                # LOP3 sets predicate based on Non-Zero result
+                is_nonzero = IRBuilder.icmp_unsigned('!=', tmp, llvmir.Constant(llvmir.IntType(32), 0))
+                PuOp.IRReg_Store(IRRegs, IRBuilder, is_nonzero)
             return
 
 
