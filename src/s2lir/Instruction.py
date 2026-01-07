@@ -515,7 +515,7 @@ class Instruction:
                 PReg1.IRReg_Store(IRRegs, IRBuilder, tmp2)
             return
         
-        if self.opcode == "SHF":
+        if self.opcode in ("SHF", "USHF"):
             # SHF - Funnel shift
             # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opSHF.htm
             
@@ -604,7 +604,9 @@ class Instruction:
             
             if settings["dir"] == "L":
                 # left shift
-                if settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                # Treat `USHF` as the unsigned variant even if the .U modifier
+                # is not present in `settings["maxshift"]`.
+                if (settings["maxshift"] and settings["maxshift"]["signage"] == "U") or self.opcode == "USHF":
                     # Assumptions: 
                     # mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .U64) is probably 64 bits
                     # shift = min(Sb, 64)
@@ -653,7 +655,7 @@ class Instruction:
                         tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
                     else:
                         raise NotImplementedError
-                elif settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                elif (settings["maxshift"] and settings["maxshift"]["signage"] == "U") or self.opcode == "USHF":
                     tmp = IRBuilder.lshr(tmp, IRValOp_Rb_64, "lshr")
                     if settings["xmode"] == "HI":
                         tmp = IRBuilder.lshr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "lshr")
