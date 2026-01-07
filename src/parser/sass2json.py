@@ -23,11 +23,15 @@ def parse_ins(ins_content):
     
     # Handle Opcode and its modifiers (e.g., FSETP.GTU.FTZ.AND)
     ins_res[0] = ins_list[0].split(".")
-    
-    
-    operand_raw = " ".join(ins_list[1:])
-    operands = [op.strip() for op in operand_raw.split(",") if op.strip()]
-    # Operands = [  for x in Operands]
+    base_opcode = ins_res[0][0]
+    if base_opcode == "RET":
+        assert len(ins_list[1:]) == 2 # e.g. R8 `(_Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii)
+        operand_raw = " ".join(ins_list[1:])
+        operands = [op.strip() for op in operand_raw.split(None, 1) if op.strip()]
+    else:
+        operand_raw = " ".join(ins_list[1:])
+        operands = [op.strip() for op in operand_raw.split(",") if op.strip()]
+        # Operands = [  for x in Operands]
     ins_res[1] = operands
 
 

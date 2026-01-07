@@ -1426,7 +1426,7 @@ class Instruction:
             # TODO right now we're assuming that it's only being used to return to the address below a CALL instruction
             # therefore, the instruction we're returning to would be the first instruction in a BB
             # we'll use info from reaching def analysis to determine the addr to jump to, the address shld be at the beginning of a basic block
-            assert len(self.operands) == 2
+            assert len(self.operands) == 2 # e.g. R8 `(_Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii)
             assert self.operands[0].isReg or self.operands[0].isConst
             # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
             
