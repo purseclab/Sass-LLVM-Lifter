@@ -56,8 +56,19 @@ class Instruction:
             ope.parse()
         
         if self.opcode == "BRA":
-            assert len(self.operands) <= 2
-            self.branch_target = self.BB.func.labels2block[self.operands[0].branch_label]
+            assert (len(self.operands) == 1 and not self.isConditionExpr()) or (len(self.operands) == 2 and self.isConditionExpr()) or (len(self.operands) == 3 and self.isConditionExpr())
+            # TODO it's possible we might see self.operands == 2 and not self.isConditionalExpr, which would look like "BRA P0, `branch_target"
+            
+            if len(self.operands) == 3:
+                # e.g. @P0 BRA P1, `branch_target
+                # operand 0 is P1, operand 1 is the branch target, and operand 2 is P0
+                # the condition expression operand is always the last
+                
+                branch_label = self.operands[1].branch_label
+            else:
+                branch_label = self.operands[0].branch_label
+            
+            self.branch_target = self.BB.func.labels2block[branch_label]
 
         # self.dump()
 
