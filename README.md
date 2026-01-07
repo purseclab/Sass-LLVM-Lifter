@@ -1,6 +1,10 @@
-# Lift Nvidia SASS to LLVM IR
+# NVLift: A SASS-to-LLVM IR Binary Lifter
 
-(Working in Process)
+NVLift is a proof-of-concept (PoC) tool designed to lift NVIDIA SASS Assembly to LLVM Intermediate Representation (IR). We also implemented the pipeline to translate from LLVM IR into C code with `retdec`.
+
+> **Note on Project Maturity** NVLift is currently in an experimental state. To facilitate rapid prototyping, the lifter uses heuristic parsing and string-based register mapping. While these work well for small kernels and inital testing, they are not yet a substitute for a robust, production-scale decompiler. Correctness has only been validated on a limited subset of simple kernels.
+
+`sudo chown -R $USER:$USER /path/to/project/output` might be needed since the lifter runs in a docker container, which generates files owned by root.
 
 ## Usage
 
