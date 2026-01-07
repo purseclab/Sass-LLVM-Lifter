@@ -1,3 +1,13 @@
+
+# TLDR
+
+1. Run ./nvsight.sh
+2. You might need to remove previous SSH fingerprint with the provided command on the screen. SOmething like `ssh-keygen -f "/home/X/.ssh/known_hosts" -R "[localhost]:2222"`
+3. On your host PC, run the port forwarding command below `ssh -L 5901:localhost:5901 pursec -N`
+4. Use RealVNC or any VNC client to connect to `localhost:5901`
+
+
+
 Linux’s docker doesnt hv buildx (according to readme at https://github.com/docker/buildx), buildx needed for the --build-context flag, so we need to install `docker-buildx-plugin` before running `./nvsight.sh` 
 
 ```bash
