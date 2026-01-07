@@ -601,7 +601,7 @@ is_use: True
 kill_set: ['(0x0170, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -7404,7 +7404,7 @@ is_use: True
 kill_set: ['(0x1230, R9)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -8392,7 +8392,7 @@ is_use: False
 kill_set: ['(0x4a30, R11)']
 defs_reaching: ['(0x4900, R11)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -8400,7 +8400,7 @@ is_use: True
 kill_set: ['(0x4a30, R11)']
 defs_reaching: ['(0x1210, R24)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -8410,7 +8410,7 @@ is_use: True
 kill_set: ['(0x4a30, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -8440,7 +8440,7 @@ is_use: False
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -8448,7 +8448,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3f800000 #######
 
@@ -8458,7 +8458,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -8518,7 +8518,7 @@ is_use: True
 kill_set: ['(0x4a70, R12)']
 defs_reaching: ['(0x4a50, R11)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ############# FFMA R13, R11, R12, -1 #############
 ####### R13 #######
@@ -8645,7 +8645,7 @@ is_use: False
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4a70, R12)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R22.reuse #######
 is_def: False
@@ -8653,7 +8653,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -8663,7 +8663,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -8731,7 +8731,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: ['(0x4ac0, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x800000 #######
 
@@ -8741,7 +8741,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -8904,7 +8904,7 @@ is_use: True
 kill_set: ['(0x4b30, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R13 #######
 is_def: False
@@ -8955,7 +8955,7 @@ is_use: True
 kill_set: ['(0x4b40, P0)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23.reuse #######
 is_def: False
@@ -9000,7 +9000,7 @@ is_use: True
 kill_set: ['(0x4b50, P2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23 #######
 is_def: False
@@ -9090,7 +9090,7 @@ is_use: True
 kill_set: ['(0x4b70, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -9098,7 +9098,7 @@ is_use: True
 kill_set: ['(0x4b70, P1)']
 defs_reaching: ['(0x1210, R24)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -9484,7 +9484,7 @@ is_use: False
 kill_set: ['(0x4bf0, R11)']
 defs_reaching: ['(0x4be0, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -9502,7 +9502,7 @@ is_use: True
 kill_set: ['(0x4bf0, R11)']
 defs_reaching: ['(0x1210, R24)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0xf8 #######
 
@@ -15077,7 +15077,7 @@ is_use: False
 kill_set: ['(0x2070, R9)']
 defs_reaching: ['(0x2060, R9)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R9 #######
 is_def: False
@@ -15085,7 +15085,7 @@ is_use: True
 kill_set: ['(0x2070, R9)']
 defs_reaching: ['(0x2060, R9)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x80000000 #######
 
@@ -15095,7 +15095,7 @@ is_use: True
 kill_set: ['(0x2070, R9)']
 defs_reaching: ['(0x1fc0, R12)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0xf8 #######
 
@@ -15367,7 +15367,7 @@ is_use: True
 kill_set: ['(0x2140, R8)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -16372,7 +16372,7 @@ is_use: False
 kill_set: ['(0x4a30, R11)']
 defs_reaching: ['(0x4900, R11)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -16390,7 +16390,7 @@ is_use: True
 kill_set: ['(0x4a30, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -16420,7 +16420,7 @@ is_use: False
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -16428,7 +16428,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3f800000 #######
 
@@ -16438,7 +16438,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -16498,7 +16498,7 @@ is_use: True
 kill_set: ['(0x4a70, R12)']
 defs_reaching: ['(0x4a50, R11)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ############# FFMA R13, R11, R12, -1 #############
 ####### R13 #######
@@ -16625,7 +16625,7 @@ is_use: False
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4a70, R12)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R22.reuse #######
 is_def: False
@@ -16633,7 +16633,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -16643,7 +16643,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -16711,7 +16711,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: ['(0x4ac0, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x800000 #######
 
@@ -16721,7 +16721,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -16884,7 +16884,7 @@ is_use: True
 kill_set: ['(0x4b30, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R13 #######
 is_def: False
@@ -16935,7 +16935,7 @@ is_use: True
 kill_set: ['(0x4b40, P0)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23.reuse #######
 is_def: False
@@ -16980,7 +16980,7 @@ is_use: True
 kill_set: ['(0x4b50, P2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23 #######
 is_def: False
@@ -17070,7 +17070,7 @@ is_use: True
 kill_set: ['(0x4b70, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -17464,7 +17464,7 @@ is_use: False
 kill_set: ['(0x4bf0, R11)']
 defs_reaching: ['(0x4be0, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -17844,7 +17844,7 @@ is_use: True
 kill_set: ['(0x2290, R15)']
 defs_reaching: ['(0x00c0, R15)', '(0x07d0, R15)', '(0x0a70, R15)', '(0x0dd0, R15)', '(0x0fc0, R15)', '(0x1c80, R15)', '(0x1e00, R15)', '(0x1f40, R15)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3 #######
 
@@ -17854,7 +17854,7 @@ is_use: True
 kill_set: ['(0x2290, R15)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -17891,7 +17891,7 @@ is_use: True
 kill_set: ['(0x22a0, R48)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -27207,7 +27207,7 @@ is_use: True
 kill_set: ['(0x38e0, R4)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -28195,7 +28195,7 @@ is_use: False
 kill_set: ['(0x4a30, R11)']
 defs_reaching: ['(0x4900, R11)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -28203,7 +28203,7 @@ is_use: True
 kill_set: ['(0x4a30, R11)']
 defs_reaching: ['(0x38c0, R24)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -28213,7 +28213,7 @@ is_use: True
 kill_set: ['(0x4a30, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -28243,7 +28243,7 @@ is_use: False
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -28251,7 +28251,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3f800000 #######
 
@@ -28261,7 +28261,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -28321,7 +28321,7 @@ is_use: True
 kill_set: ['(0x4a70, R12)']
 defs_reaching: ['(0x4a50, R11)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ############# FFMA R13, R11, R12, -1 #############
 ####### R13 #######
@@ -28448,7 +28448,7 @@ is_use: False
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4a70, R12)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R22.reuse #######
 is_def: False
@@ -28456,7 +28456,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -28466,7 +28466,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -28534,7 +28534,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: ['(0x4ac0, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x800000 #######
 
@@ -28544,7 +28544,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -28707,7 +28707,7 @@ is_use: True
 kill_set: ['(0x4b30, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R13 #######
 is_def: False
@@ -28758,7 +28758,7 @@ is_use: True
 kill_set: ['(0x4b40, P0)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23.reuse #######
 is_def: False
@@ -28803,7 +28803,7 @@ is_use: True
 kill_set: ['(0x4b50, P2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23 #######
 is_def: False
@@ -28893,7 +28893,7 @@ is_use: True
 kill_set: ['(0x4b70, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -28901,7 +28901,7 @@ is_use: True
 kill_set: ['(0x4b70, P1)']
 defs_reaching: ['(0x38c0, R24)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -29287,7 +29287,7 @@ is_use: False
 kill_set: ['(0x4bf0, R11)']
 defs_reaching: ['(0x4be0, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -29305,7 +29305,7 @@ is_use: True
 kill_set: ['(0x4bf0, R11)']
 defs_reaching: ['(0x38c0, R24)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0xf8 #######
 
@@ -34829,7 +34829,7 @@ is_use: False
 kill_set: ['(0x46f0, R4)']
 defs_reaching: ['(0x46e0, R4)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R4 #######
 is_def: False
@@ -34837,7 +34837,7 @@ is_use: True
 kill_set: ['(0x46f0, R4)']
 defs_reaching: ['(0x46e0, R4)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x80000000 #######
 
@@ -34847,7 +34847,7 @@ is_use: True
 kill_set: ['(0x46f0, R4)']
 defs_reaching: ['(0x4640, R21)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0xf8 #######
 
@@ -35119,7 +35119,7 @@ is_use: True
 kill_set: ['(0x47c0, R5)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -36124,7 +36124,7 @@ is_use: False
 kill_set: ['(0x4a30, R11)']
 defs_reaching: ['(0x4900, R11)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -36142,7 +36142,7 @@ is_use: True
 kill_set: ['(0x4a30, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -36172,7 +36172,7 @@ is_use: False
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: True
-Typedesc: Float32
+Typedesc: Int32
 
 ####### R11 #######
 is_def: False
@@ -36180,7 +36180,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: ['(0x4a30, R11)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x3f800000 #######
 
@@ -36190,7 +36190,7 @@ is_use: True
 kill_set: ['(0x4a50, R11)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -36250,7 +36250,7 @@ is_use: True
 kill_set: ['(0x4a70, R12)']
 defs_reaching: ['(0x4a50, R11)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ############# FFMA R13, R11, R12, -1 #############
 ####### R13 #######
@@ -36377,7 +36377,7 @@ is_use: False
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4a70, R12)']
 reaches_next: True
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R22.reuse #######
 is_def: False
@@ -36385,7 +36385,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: ['(0x4aa0, R22)']
 reaches_next: False
-Typedesc: Float32
+Typedesc: Int32
 
 ####### 0x7fffff #######
 
@@ -36395,7 +36395,7 @@ is_use: True
 kill_set: ['(0x4ac0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xc0 #######
 
@@ -36463,7 +36463,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: ['(0x4ac0, R12)']
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0x800000 #######
 
@@ -36473,7 +36473,7 @@ is_use: True
 kill_set: ['(0x4ae0, R12)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### 0xfc #######
 
@@ -36636,7 +36636,7 @@ is_use: True
 kill_set: ['(0x4b30, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R13 #######
 is_def: False
@@ -36687,7 +36687,7 @@ is_use: True
 kill_set: ['(0x4b40, P0)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23.reuse #######
 is_def: False
@@ -36732,7 +36732,7 @@ is_use: True
 kill_set: ['(0x4b50, P2)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R23 #######
 is_def: False
@@ -36822,7 +36822,7 @@ is_use: True
 kill_set: ['(0x4b70, P1)']
 defs_reaching: []
 reaches_next: False
-Typedesc: NOTYPE
+Typedesc: Int32
 
 ####### R24 #######
 is_def: False
@@ -37619,7 +37619,48 @@ Operand: R24; Instruction Addr: 0x4960
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x1210
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4a30
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x1210
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4b70
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x1210
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x49e0
+Operand: R11; Instruction Addr: 0x4c10
 Operand: R11; Instruction Addr: 0x4c30
 
 ##### Type: Int32 #####
@@ -37640,6 +37681,22 @@ Operand: R20; Instruction Addr: 0x13a0
 
 ##### Type: Int32 #####
 Operand: R20; Instruction Addr: 0x1360
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R9; Instruction Addr: 0x2060
+
+##### Type: Int32 #####
+Operand: R9; Instruction Addr: 0x2070
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R12; Instruction Addr: 0x1fc0
+
+##### Type: Int32 #####
+Operand: R12; Instruction Addr: 0x2070
 
 ****************************************
 
@@ -37676,11 +37733,37 @@ Operand: R24; Instruction Addr: 0x2170
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x49e0
+Operand: R11; Instruction Addr: 0x4c10
 Operand: R11; Instruction Addr: 0x4c30
 
 ##### Type: Int32 #####
 Operand: R11; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R9; Instruction Addr: 0x20f0
+Operand: R9; Instruction Addr: 0x2240
+
+##### Type: Int32 #####
+Operand: R9; Instruction Addr: 0x2070
 
 ****************************************
 
@@ -37695,6 +37778,7 @@ Operand: R15; Instruction Addr: 0x00c0
 Operand: R15; Instruction Addr: 0x0a70
 Operand: R15; Instruction Addr: 0x0dd0
 Operand: R15; Instruction Addr: 0x0fc0
+Operand: R15; Instruction Addr: 0x2290
 
 ****************************************
 
@@ -37793,7 +37877,48 @@ Operand: R24; Instruction Addr: 0x4960
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x38c0
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4a30
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x38c0
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4b70
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x38c0
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x49e0
+Operand: R11; Instruction Addr: 0x4c10
 Operand: R11; Instruction Addr: 0x4c30
 
 ##### Type: Int32 #####
@@ -37814,6 +37939,22 @@ Operand: R23; Instruction Addr: 0x3a40
 
 ##### Type: Int32 #####
 Operand: R23; Instruction Addr: 0x3a00
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R4; Instruction Addr: 0x46e0
+
+##### Type: Int32 #####
+Operand: R4; Instruction Addr: 0x46f0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R21; Instruction Addr: 0x4640
+
+##### Type: Int32 #####
+Operand: R21; Instruction Addr: 0x46f0
 
 ****************************************
 
@@ -37850,6 +37991,22 @@ Operand: R24; Instruction Addr: 0x47f0
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x49e0
 
 ##### Type: Int32 #####
@@ -37874,6 +38031,15 @@ Operand: R5; Instruction Addr: 0x48b0
 
 ##### Type: Int32 #####
 Operand: R5; Instruction Addr: 0x4820
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R4; Instruction Addr: 0x4770
+Operand: R4; Instruction Addr: 0x48c0
+
+##### Type: Int32 #####
+Operand: R4; Instruction Addr: 0x46f0
 
 ****************************************
 
@@ -37920,6 +38086,46 @@ Operand: R24; Instruction Addr: 0x4960
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x1210
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4a30
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x1210
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4b70
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x1210
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R10; Instruction Addr: 0x1340
 
 ##### Type: Int32 #####
@@ -37932,6 +38138,22 @@ Operand: R20; Instruction Addr: 0x13a0
 
 ##### Type: Int32 #####
 Operand: R20; Instruction Addr: 0x1360
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R9; Instruction Addr: 0x2060
+
+##### Type: Int32 #####
+Operand: R9; Instruction Addr: 0x2070
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R12; Instruction Addr: 0x1fc0
+
+##### Type: Int32 #####
+Operand: R12; Instruction Addr: 0x2070
 
 ****************************************
 
@@ -37964,6 +38186,46 @@ Operand: R24; Instruction Addr: 0x4980
 
 ##### Type: Int32 #####
 Operand: R24; Instruction Addr: 0x2170
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R9; Instruction Addr: 0x20f0
+Operand: R9; Instruction Addr: 0x2240
+
+##### Type: Int32 #####
+Operand: R9; Instruction Addr: 0x2070
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R15; Instruction Addr: 0x07d0
+Operand: R15; Instruction Addr: 0x1c80
+Operand: R15; Instruction Addr: 0x1e00
+Operand: R15; Instruction Addr: 0x1f40
+
+##### Type: Int32 #####
+Operand: R15; Instruction Addr: 0x00c0
+Operand: R15; Instruction Addr: 0x0a70
+Operand: R15; Instruction Addr: 0x0dd0
+Operand: R15; Instruction Addr: 0x0fc0
+Operand: R15; Instruction Addr: 0x2290
 
 ****************************************
 
@@ -38062,6 +38324,46 @@ Operand: R24; Instruction Addr: 0x4960
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x38c0
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4a30
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x38c0
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4b70
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R24; Instruction Addr: 0x38c0
+
+##### Type: Int32 #####
+Operand: R24; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R4; Instruction Addr: 0x39e0
 
 ##### Type: Int32 #####
@@ -38074,6 +38376,22 @@ Operand: R23; Instruction Addr: 0x3a40
 
 ##### Type: Int32 #####
 Operand: R23; Instruction Addr: 0x3a00
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R4; Instruction Addr: 0x46e0
+
+##### Type: Int32 #####
+Operand: R4; Instruction Addr: 0x46f0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R21; Instruction Addr: 0x4640
+
+##### Type: Int32 #####
+Operand: R21; Instruction Addr: 0x46f0
 
 ****************************************
 
@@ -38110,6 +38428,22 @@ Operand: R24; Instruction Addr: 0x47f0
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x4a80
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4a50
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R22; Instruction Addr: 0x4aa0
+
+##### Type: Int32 #####
+Operand: R22.reuse; Instruction Addr: 0x4ac0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R5; Instruction Addr: 0x4870
 Operand: -R5; Instruction Addr: 0x48a0
 
@@ -38128,11 +38462,50 @@ Operand: R5; Instruction Addr: 0x4820
 ****************************************
 
 ##### Type: Float32 #####
+Operand: R4; Instruction Addr: 0x4770
+Operand: R4; Instruction Addr: 0x48c0
+
+##### Type: Int32 #####
+Operand: R4; Instruction Addr: 0x46f0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x49e0
+Operand: R11; Instruction Addr: 0x4c10
+Operand: R11; Instruction Addr: 0x4c30
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
 Operand: R11; Instruction Addr: 0x49e0
 
 ##### Type: Int32 #####
 Operand: R11; Instruction Addr: 0x4bf0
 Operand: R11; Instruction Addr: 0x4c10
 Operand: R11; Instruction Addr: 0x4c30
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x49e0
+Operand: R11; Instruction Addr: 0x4c10
+Operand: R11; Instruction Addr: 0x4c30
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4bf0
+
+****************************************
+
+##### Type: Float32 #####
+Operand: R11; Instruction Addr: 0x49e0
+Operand: R11; Instruction Addr: 0x4c10
+Operand: R11; Instruction Addr: 0x4c30
+
+##### Type: Int32 #####
+Operand: R11; Instruction Addr: 0x4bf0
 
 ****************************************

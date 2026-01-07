@@ -2,6 +2,7 @@
     "_Z11gru_forwardPfS_S_S_iii": {
         ".function_name": "_Z11gru_forwardPfS_S_S_iii",
         ".section": ".text._Z11gru_forwardPfS_S_S_iii,\"ax\",@progbits",
+        ".sectionflags": null,
         ".sectioninfo": "@\"SHI_REGISTERS=64\"",
         ".align": "128",
         ".global": "_Z11gru_forwardPfS_S_S_iii",
@@ -17678,6 +17679,7 @@
     "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath": {
         ".function_name": "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath",
         ".section": null,
+        ".sectionflags": null,
         ".sectioninfo": null,
         ".align": null,
         ".global": null,
