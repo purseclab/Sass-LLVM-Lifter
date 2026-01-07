@@ -170,8 +170,8 @@ class Operand:
             PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
 
         # Add dynamic register offset (e.g. + UR4)
-        if getattr(PtrOp, 'offset_reg', None):
-            reg_name = PtrOp.offset_reg
+        if getattr(PtrOp, 'ptr_offset_reg', None):
+            reg_name = PtrOp.ptr_offset_reg
             if reg_name in ("RZ", "URZ"):
                 offset_val = llvmir.Constant(llvmir.IntType(64), 0)
             elif reg_name in IRRegs:
@@ -476,13 +476,14 @@ class Operand:
                         adjRegNumber = int(match.group(2)) + 1
                         adjRegName = adjRegName + str(adjRegNumber)
                         
-                        IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
+                        # IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
                         
                         if adjRegName in IRRegs:
                             adjIRReg = IRRegs[adjRegName]
                             adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32))
                         else:
-                            adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                            # adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                            raise Exception(f"High-bits register {adjRegName} not defined for 64-bit pointer construction.")
                         
                         adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext")
                         adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
