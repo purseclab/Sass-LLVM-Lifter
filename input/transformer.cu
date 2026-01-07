@@ -47,65 +47,65 @@ __global__ void linear_proj_kernel(
 // Q, K, V: [seq_len, d_k]
 // Output: [seq_len, d_k]
 // Each query position t is handled by one thread (very naive).
-__global__ void attention_forward_kernel(
-    const float* __restrict__ Q,
-    const float* __restrict__ K,
-    const float* __restrict__ V,
-    float* __restrict__ Out,
-    int seq_len,
-    int d_k
-) {
-    int t = blockIdx.x * blockDim.x + threadIdx.x; // query index
-    if (t >= seq_len) return;
+// __global__ void attention_forward_kernel(
+//     const float* __restrict__ Q,
+//     const float* __restrict__ K,
+//     const float* __restrict__ V,
+//     float* __restrict__ Out,
+//     int seq_len,
+//     int d_k
+// ) {
+//     int t = blockIdx.x * blockDim.x + threadIdx.x; // query index
+//     if (t >= seq_len) return;
 
-    float inv_sqrt_dk = rsqrtf((float)d_k);
+//     float inv_sqrt_dk = rsqrtf((float)d_k);
 
-    // 1) Find max score for numerical stability
-    float max_score = -1e30f;
-    for (int s = 0; s < seq_len; ++s) {
-        float dot = 0.f;
-        for (int d = 0; d < d_k; ++d) {
-            float q = Q[t * d_k + d];
-            float k = K[s * d_k + d];
-            dot += q * k;
-        }
-        float score = dot * inv_sqrt_dk;
-        if (score > max_score) max_score = score;
-    }
+//     // 1) Find max score for numerical stability
+//     float max_score = -1e30f;
+//     for (int s = 0; s < seq_len; ++s) {
+//         float dot = 0.f;
+//         for (int d = 0; d < d_k; ++d) {
+//             float q = Q[t * d_k + d];
+//             float k = K[s * d_k + d];
+//             dot += q * k;
+//         }
+//         float score = dot * inv_sqrt_dk;
+//         if (score > max_score) max_score = score;
+//     }
 
-    // 2) Compute denominator of softmax
-    float sum_exp = 0.f;
-    for (int s = 0; s < seq_len; ++s) {
-        float dot = 0.f;
-        for (int d = 0; d < d_k; ++d) {
-            float q = Q[t * d_k + d];
-            float k = K[s * d_k + d];
-            dot += q * k;
-        }
-        float score = dot * inv_sqrt_dk;
-        sum_exp += expf(score - max_score);
-    }
+//     // 2) Compute denominator of softmax
+//     float sum_exp = 0.f;
+//     for (int s = 0; s < seq_len; ++s) {
+//         float dot = 0.f;
+//         for (int d = 0; d < d_k; ++d) {
+//             float q = Q[t * d_k + d];
+//             float k = K[s * d_k + d];
+//             dot += q * k;
+//         }
+//         float score = dot * inv_sqrt_dk;
+//         sum_exp += expf(score - max_score);
+//     }
 
-    // 3) Weighted sum of V
-    for (int d = 0; d < d_k; ++d) {
-        Out[t * d_k + d] = 0.f;
-    }
+//     // 3) Weighted sum of V
+//     for (int d = 0; d < d_k; ++d) {
+//         Out[t * d_k + d] = 0.f;
+//     }
 
-    for (int s = 0; s < seq_len; ++s) {
-        float dot = 0.f;
-        for (int d = 0; d < d_k; ++d) {
-            float q = Q[t * d_k + d];
-            float k = K[s * d_k + d];
-            dot += q * k;
-        }
-        float score = dot * inv_sqrt_dk;
-        float weight = expf(score - max_score) / sum_exp;
+//     for (int s = 0; s < seq_len; ++s) {
+//         float dot = 0.f;
+//         for (int d = 0; d < d_k; ++d) {
+//             float q = Q[t * d_k + d];
+//             float k = K[s * d_k + d];
+//             dot += q * k;
+//         }
+//         float score = dot * inv_sqrt_dk;
+//         float weight = expf(score - max_score) / sum_exp;
 
-        for (int d = 0; d < d_k; ++d) {
-            Out[t * d_k + d] += weight * V[s * d_k + d];
-        }
-    }
-}
+//         for (int d = 0; d < d_k; ++d) {
+//             Out[t * d_k + d] += weight * V[s * d_k + d];
+//         }
+//     }
+// }
 
 // Tiny feed-forward: Y = ReLU(X * W1^T + b1)
 // X: [seq_len, d_model], W1: [d_ff, d_model], b1: [d_ff]
@@ -225,12 +225,12 @@ int main() {
     CUDA_CHECK(cudaDeviceSynchronize());
 
     // Attention
-    dim3 blockDim_attn(128);
-    dim3 gridDim_attn((seq_len + blockDim_attn.x - 1) / blockDim_attn.x);
+    // dim3 blockDim_attn(128);
+    // dim3 gridDim_attn((seq_len + blockDim_attn.x - 1) / blockDim_attn.x);
 
-    attention_forward_kernel<<<gridDim_attn, blockDim_attn>>>(
-        d_Q, d_K, d_V, d_attn_out, seq_len, d_k);
-    CUDA_CHECK(cudaDeviceSynchronize());
+    // attention_forward_kernel<<<gridDim_attn, blockDim_attn>>>(
+    //     d_Q, d_K, d_V, d_attn_out, seq_len, d_k);
+    // CUDA_CHECK(cudaDeviceSynchronize());
 
     // FFN on top of attention output (using same d_k as d_model)
     dim3 blockDim_ffn(16, 4);
