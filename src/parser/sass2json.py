@@ -6,8 +6,10 @@ from utils import *
 def parse_ins(ins_content):
     # Opcodes, Operands, Condition
     ins_res = [[], [], ""]
-    ins_content = ins_content.strip()
-    ins_list = ins_content.split(" ")
+    # split() will handle multiple spaces, tabs, etc.
+    ins_list = ins_content.strip().split()
+    if not ins_list:
+        return None
     # print(opcode, oprands)
     dprint(ins_list)
 
@@ -18,12 +20,15 @@ def parse_ins(ins_content):
     
     # print(ins_list)
     assert len(ins_list) >= 1
+    
+    # Handle Opcode and its modifiers (e.g., FSETP.GTU.FTZ.AND)
     ins_res[0] = ins_list[0].split(".")
-    Operands = ins_list[1:]
-    # Remove the final ","
-    Operands = [x.strip(",") for x in Operands]
+    
+    
+    operand_raw = " ".join(ins_list[1:])
+    operands = [op.strip() for op in operand_raw.split(",") if op.strip()]
     # Operands = [  for x in Operands]
-    ins_res[1] = Operands
+    ins_res[1] = operands
 
 
     return ins_res

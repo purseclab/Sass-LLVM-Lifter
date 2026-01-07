@@ -52,7 +52,7 @@ class Instruction:
         
 
     def parse(self):
-        for ope in self.operands:
+        for i, ope in enumerate(self.operands):
             ope.parse()
         
         if self.opcode == "BRA":
