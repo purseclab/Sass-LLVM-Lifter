@@ -180,7 +180,7 @@ class Operand:
                 # load the value (usually i32)
                 offset_val = IRBuilder.load(reg_ptr, name=f"val_{reg_name}")
                 if offset_val.type == llvmir.IntType(32):
-                    offset_val = IRBuilder.zext(offset_val, llvmir.IntType(64), name=f"zext_{reg_name}")
+                    offset_val = IRBuilder.sext(offset_val, llvmir.IntType(64), name=f"sext_{reg_name}")
             else:
                 raise Exception(f"Register {reg_name} not found in IRRegs during address computation")
 

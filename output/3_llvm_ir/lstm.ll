@@ -1111,8 +1111,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %zext.67 = zext i32 %.696 to i64
   %shl.35 = shl i64 %zext.67, 32
   %or.31 = or i64 %shl.35, %zext.66
-  %zext_UR4 = zext i32 %trunc32.18 to i64
-  %base_plus_reg_offset = add i64 %or.31, %zext_UR4
+  %sext_UR4 = sext i32 %trunc32.18 to i64
+  %base_plus_reg_offset = add i64 %or.31, %sext_UR4
   %inttoptr_bytes.27 = inttoptr i64 %base_plus_reg_offset to ptr addrspace(1)
   %ptr_cast_for_access.27 = bitcast ptr addrspace(1) %inttoptr_bytes.27 to ptr addrspace(1)
   %.697 = load float, ptr addrspace(1) %ptr_cast_for_access.27, align 4
@@ -1416,8 +1416,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %zext.83 = zext i32 %.944 to i64
   %shl.44 = shl i64 %zext.83, 32
   %or.38 = or i64 %shl.44, %zext.82
-  %zext_UR4.1 = zext i32 %trunc32.27 to i64
-  %base_plus_reg_offset.1 = add i64 %or.38, %zext_UR4.1
+  %sext_UR4.1 = sext i32 %trunc32.27 to i64
+  %base_plus_reg_offset.1 = add i64 %or.38, %sext_UR4.1
   %inttoptr_bytes.32 = inttoptr i64 %base_plus_reg_offset.1 to ptr addrspace(1)
   %ptr_cast_for_access.32 = bitcast ptr addrspace(1) %inttoptr_bytes.32 to ptr addrspace(1)
   %.945 = load float, ptr addrspace(1) %ptr_cast_for_access.32, align 4
@@ -2022,8 +2022,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %zext.132 = zext i32 %.1521 to i64
   %shl.69 = shl i64 %zext.132, 32
   %or.61 = or i64 %shl.69, %zext.131
-  %zext_UR4.2 = zext i32 %trunc32.31 to i64
-  %base_plus_reg_offset.2 = add i64 %or.61, %zext_UR4.2
+  %sext_UR4.2 = sext i32 %trunc32.31 to i64
+  %base_plus_reg_offset.2 = add i64 %or.61, %sext_UR4.2
   %inttoptr_bytes.52 = inttoptr i64 %base_plus_reg_offset.2 to ptr addrspace(1)
   %ptr_cast_for_access.52 = bitcast ptr addrspace(1) %inttoptr_bytes.52 to ptr addrspace(1)
   %.1522 = load float, ptr addrspace(1) %ptr_cast_for_access.52, align 4
@@ -2329,8 +2329,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %zext.151 = zext i32 %.1773 to i64
   %shl.80 = shl i64 %zext.151, 32
   %or.69 = or i64 %shl.80, %zext.150
-  %zext_UR4.3 = zext i32 %trunc32.38 to i64
-  %base_plus_reg_offset.3 = add i64 %or.69, %zext_UR4.3
+  %sext_UR4.3 = sext i32 %trunc32.38 to i64
+  %base_plus_reg_offset.3 = add i64 %or.69, %sext_UR4.3
   %inttoptr_bytes.57 = inttoptr i64 %base_plus_reg_offset.3 to ptr addrspace(1)
   %ptr_cast_for_access.57 = bitcast ptr addrspace(1) %inttoptr_bytes.57 to ptr addrspace(1)
   %.1774 = load float, ptr addrspace(1) %ptr_cast_for_access.57, align 4
@@ -3700,8 +3700,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %zext.200 = zext i32 %.3216 to i64
   %shl.106 = shl i64 %zext.200, 32
   %or.86 = or i64 %shl.106, %zext.199
-  %zext_UR4.4 = zext i32 %trunc32.60 to i64
-  %base_plus_reg_offset.4 = add i64 %or.86, %zext_UR4.4
+  %sext_UR4.4 = sext i32 %trunc32.60 to i64
+  %base_plus_reg_offset.4 = add i64 %or.86, %sext_UR4.4
   %inttoptr_bytes.59 = inttoptr i64 %base_plus_reg_offset.4 to ptr addrspace(1)
   %ptr_cast_for_access.59 = bitcast ptr addrspace(1) %inttoptr_bytes.59 to ptr addrspace(1)
   store float %.3214, ptr addrspace(1) %ptr_cast_for_access.59, align 4
@@ -4094,8 +4094,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %zext.217 = zext i32 %.3657 to i64
   %shl.114 = shl i64 %zext.217, 32
   %or.92 = or i64 %shl.114, %zext.216
-  %zext_UR4.5 = zext i32 %trunc32.69 to i64
-  %base_plus_reg_offset.5 = add i64 %or.92, %zext_UR4.5
+  %sext_UR4.5 = sext i32 %trunc32.69 to i64
+  %base_plus_reg_offset.5 = add i64 %or.92, %sext_UR4.5
   %inttoptr_bytes.60 = inttoptr i64 %base_plus_reg_offset.5 to ptr addrspace(1)
   %ptr_cast_for_access.60 = bitcast ptr addrspace(1) %inttoptr_bytes.60 to ptr addrspace(1)
   store float %.3655, ptr addrspace(1) %ptr_cast_for_access.60, align 4

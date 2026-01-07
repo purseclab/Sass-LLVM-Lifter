@@ -617,7 +617,7 @@ $L__BB2_8:                              // %exit
 	mul.lo.s32 	%r8, %r44, %r2;
 	mov.b32 	%r163, 0;
 	mov.b64 	%rd131, 0;
-	cvt.u64.u32 	%rd92, %r7;
+	cvt.s64.s32 	%rd92, %r7;
 $L__BB3_4:                              // %.L_x_2
                                         // =>This Inner Loop Header: Depth=1
 	cvt.u32.u64 	%r59, %rd131;
@@ -830,7 +830,7 @@ $L__BB3_5:                              // %.L_x_1
 	shl.b32 	%r123, %r121, 2;
 	add.s32 	%r166, %r1, %r123;
 	shl.b32 	%r17, %r45, 2;
-	cvt.u64.u32 	%rd114, %r15;
+	cvt.s64.s32 	%rd114, %r15;
 $L__BB3_7:                              // %.L_x_3
                                         // =>This Inner Loop Header: Depth=1
 	mul.wide.u32 	%rd100, %r166, 4;
@@ -987,7 +987,7 @@ $L__BB3_13:                             // %"$__internal_0_$__cuda_sm20_rcp_rn_f
 	shl.b32 	%r145, %r28, 2;
 	setp.eq.s32 	%p38, %r145, 0;
 $L__BB3_16:                             // %.L_x_17
-	and.b64  	%rd128, %rd10, 4294967295;
+	cvt.s64.s32 	%rd128, %rd10;
 	add.s64 	%rd129, %rd5, %rd128;
 	mov.b32 	%r160, 2143289344;
 	st.global.u32 	[%rd129], %r160;
