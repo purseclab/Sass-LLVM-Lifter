@@ -229,3 +229,77 @@ tests:
       benchmark:
         ptx_file: ../output/4_ptx/mem_ops_clang_llc.ptx
         function: _Z15sharedMemKernelPKiPii
+  # - name: lstm_step_benchmark_example
+  #   ptx_file: ../output/4_ptx/lstm_lifted_llc.ptx
+  #   function: _Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii
+  #   block: { x: 16, y: 4 }
+  #   args:
+  #     - name: x
+  #       type: float*
+  #       size: 6                # batch_size * input_size (2 * 3)
+  #       init: random
+  #       rng_seed: 42
+  #       range: [-1.0, 1.0]
+  #     - name: h_prev
+  #       type: float*
+  #       size: 8                # batch_size * hidden_size (2 * 4)
+  #       init: random
+  #       rng_seed: 43
+  #       range: [-0.5, 0.5]
+  #     - name: c_prev
+  #       type: float*
+  #       size: 8
+  #       init: random
+  #       rng_seed: 44
+  #       range: [-0.5, 0.5]
+  #     - name: W_ih
+  #       type: float*
+  #       size: 48               # input_size * 4 * hidden_size (3 * 4 * 4)
+  #       init: random
+  #       rng_seed: 45
+  #       range: [-0.1, 0.1]
+  #     - name: W_hh
+  #       type: float*
+  #       size: 64               # hidden_size * 4 * hidden_size (4 * 4 * 4)
+  #       init: random
+  #       rng_seed: 46
+  #       range: [-0.1, 0.1]
+  #     - name: b_ih
+  #       type: float*
+  #       size: 16               # 4 * hidden_size
+  #       init: random
+  #       rng_seed: 47
+  #       range: [-0.01, 0.01]
+  #     - name: b_hh
+  #       type: float*
+  #       size: 16
+  #       init: random
+  #       rng_seed: 48
+  #       range: [-0.01, 0.01]
+  #     - name: h_new
+  #       type: float*
+  #       size: 8
+  #       init: zeros
+  #       output: true
+  #     - name: c_new
+  #       type: float*
+  #       size: 8
+  #       init: zeros
+  #       output: true
+  #     - name: batch_size
+  #       type: int
+  #       value: 2
+  #     - name: input_size
+  #       type: int
+  #       value: 3
+  #     - name: hidden_size
+  #       type: int
+  #       value: 4
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/lstm_clang_llc.ptx
+  #       function: _Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii
