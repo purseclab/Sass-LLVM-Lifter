@@ -7,6 +7,13 @@ export PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && p
 # Read config.json
 CONFIG_FILE="$SCRIPT_DIR/config.json"
 
+# Check if jq is installed
+if ! command -v jq &> /dev/null
+then
+    echo "Error: jq is not installed. Please install jq first."
+    exit 1
+fi
+
 LLVM_OUTPUT=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
 LLVM_OUTPUT_LINKED="${LLVM_OUTPUT%.ll}_linked.ll"
 LLVM_RAW_OUTPUT="${LLVM_OUTPUT%.ll}_raw.ll"
@@ -39,22 +46,15 @@ python3 main.py
 
 # simplify the RAW LLVM IR Output we produced
 mv "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}"
-opt -passes="mem2reg,simplifycfg,loop-load-elim,instcombine<no-verify-fixpoint>,tailcallelim,dce,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}" -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}"
 
 # generate ptx from .ll using llc
-
-# Check if jq is installed
-if ! command -v jq &> /dev/null
-then
-    echo "Error: jq is not installed. Please install jq first."
-    exit 1
-fi
 
 # llvm-link "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" \
 #           /usr/local/cuda/nvvm/libdevice/libdevice.10.bc \
 #           -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT_LINKED}"
 
 if [[ "$IS_DECOMPILE" != "true" ]]; then
+    opt -passes="mem2reg,simplifycfg,loop-load-elim,instcombine<no-verify-fixpoint>,tailcallelim,dce,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}" -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}"
     llc -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$LLC_OUTPUT_FULLDIR"
     # compile ptx into cubin, and then open the file in Nsight
     # https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
@@ -62,6 +62,8 @@ if [[ "$IS_DECOMPILE" != "true" ]]; then
 fi
 
 if [[ "$IS_DECOMPILE" = "true" ]]; then
+    opt -passes="mem2reg,simplifycfg,loop-load-elim,tailcallelim,dce,mergereturn" --mtriple=nvptx64-nvidia-cuda -S "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_RAW_OUTPUT}" -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}"
+
     # produce decompiled C src file
     
     # echo $CONFIG_FILE
