@@ -63,6 +63,9 @@ if [[ "$IS_DECOMPILE" = "true" ]]; then
     # which retdec-llvmir2hll
 
     # NOTE: if there's any problems with retdec-llvmir2hll, then remove the line in Dockerfile that removes all other folders in retdec/ except bin/
+    
+    # use sed to remove incompatible attributes
+    sed -i -E 's/(nofree|nosync|willreturn|speculatable|readnone) //g' "$SCRIPT_DIR/../output/3_llvm_ir/$LLVM_OUTPUT"
     retdec-llvmir2hll -target-hll=c -o "$SCRIPT_DIR/output/${LLVM_OUTPUT%.ll}.c" "$SCRIPT_DIR/../output/3_llvm_ir/$LLVM_OUTPUT"
 fi
 
