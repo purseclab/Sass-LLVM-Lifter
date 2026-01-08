@@ -17,10 +17,10 @@
 )
 {
 	.reg .pred 	%p<7>;
-	.reg .b32 	%r<34>;
+	.reg .b32 	%r<33>;
 
 // %bb.0:                               // %entry
-	mov.b32 	%r33, -1;
+	mov.b32 	%r32, -1;
 	ld.param.u32 	%r17, [custom_lop3_param_3];
 	ld.param.u32 	%r16, [custom_lop3_param_2];
 	ld.param.u32 	%r15, [custom_lop3_param_1];
@@ -99,7 +99,7 @@
 		$L__BB0_11;
 	brx.idx 	%r14, $L_brx_0;
 $L__BB0_10:                             // %block_0x0
-	mov.b32 	%r33, 0;
+	mov.b32 	%r32, 0;
 	bra.uni 	$L__BB0_8;
 $L__BB0_5:                              // %entry
 	add.s32 	%r20, %r14, -248;
@@ -117,9 +117,8 @@ $L__BB0_5:                              // %entry
 		$L__BB0_13;
 	brx.idx 	%r20, $L_brx_1;
 $L__BB0_21:                             // %block_0xf8
-	or.b32  	%r21, %r15, %r16;
-	or.b32  	%r22, %r15, %r17;
-	and.b32  	%r33, %r21, %r22;
+	and.b32  	%r21, %r16, %r17;
+	or.b32  	%r32, %r15, %r21;
 	bra.uni 	$L__BB0_8;
 $L__BB0_6:                              // %entry
 	setp.eq.s32 	%p4, %r14, 128;
@@ -129,54 +128,54 @@ $L__BB0_6:                              // %entry
 	@%p5 bra 	$L__BB0_16;
 	bra.uni 	$L__BB0_8;
 $L__BB0_16:                             // %block_0xc0
-	and.b32  	%r33, %r15, %r16;
+	and.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB0_8;
 $L__BB0_13:                             // %block_0xff
-	mov.b32 	%r33, 1;
+	mov.b32 	%r32, 1;
 	bra.uni 	$L__BB0_8;
 $L__BB0_20:                             // %block_0xfc
-	or.b32  	%r33, %r15, %r16;
+	or.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB0_8;
 $L__BB0_12:                             // %block_0xfe
-	or.b32  	%r28, %r15, %r16;
-	or.b32  	%r33, %r28, %r17;
+	or.b32  	%r27, %r15, %r16;
+	or.b32  	%r32, %r27, %r17;
 	bra.uni 	$L__BB0_8;
 $L__BB0_2:                              // %entry
 	setp.eq.s32 	%p6, %r14, 85;
 	@%p6 bra 	$L__BB0_3;
 	bra.uni 	$L__BB0_8;
 $L__BB0_3:                              // %block_0x55
-	not.b32 	%r33, %r17;
+	not.b32 	%r32, %r17;
 	bra.uni 	$L__BB0_8;
 $L__BB0_9:                              // %block_0x80
-	and.b32  	%r32, %r15, %r16;
-	and.b32  	%r33, %r32, %r17;
+	and.b32  	%r31, %r15, %r16;
+	and.b32  	%r32, %r31, %r17;
 	bra.uni 	$L__BB0_8;
 $L__BB0_11:                             // %block_0x40
-	and.b32  	%r29, %r15, %r16;
-	not.b32 	%r30, %r17;
-	and.b32  	%r33, %r29, %r30;
+	not.b32 	%r28, %r17;
+	and.b32  	%r29, %r16, %r28;
+	and.b32  	%r32, %r29, %r15;
 	bra.uni 	$L__BB0_8;
 $L__BB0_18:                             // %block_0x3c
-	xor.b32  	%r33, %r15, %r16;
+	xor.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB0_8;
 $L__BB0_14:                             // %block_0x1a
-	and.b32  	%r25, %r15, %r16;
-	or.b32  	%r26, %r25, %r17;
-	xor.b32  	%r33, %r26, %r15;
+	and.b32  	%r24, %r15, %r16;
+	or.b32  	%r25, %r24, %r17;
+	xor.b32  	%r32, %r25, %r15;
 	bra.uni 	$L__BB0_8;
 $L__BB0_17:                             // %block_0x8
-	not.b32 	%r23, %r15;
-	and.b32  	%r24, %r23, %r16;
-	and.b32  	%r33, %r24, %r17;
+	not.b32 	%r22, %r15;
+	and.b32  	%r23, %r16, %r22;
+	and.b32  	%r32, %r23, %r17;
 	bra.uni 	$L__BB0_8;
 $L__BB0_19:                             // %block_0xf
-	not.b32 	%r33, %r15;
+	not.b32 	%r32, %r15;
 	bra.uni 	$L__BB0_8;
 $L__BB0_15:                             // %block_0x33
-	not.b32 	%r33, %r16;
+	not.b32 	%r32, %r16;
 $L__BB0_8:                              // %exit
-	st.param.b32 	[func_retval0], %r33;
+	st.param.b32 	[func_retval0], %r32;
 	ret;
                                         // -- End function
 }
@@ -189,10 +188,10 @@ $L__BB0_8:                              // %exit
 )                                       // @custom_plop3
 {
 	.reg .pred 	%p<7>;
-	.reg .b32 	%r<34>;
+	.reg .b32 	%r<33>;
 
 // %bb.0:                               // %entry
-	mov.b32 	%r33, -1;
+	mov.b32 	%r32, -1;
 	ld.param.u32 	%r17, [custom_plop3_param_3];
 	ld.param.u32 	%r16, [custom_plop3_param_2];
 	ld.param.u32 	%r15, [custom_plop3_param_1];
@@ -271,7 +270,7 @@ $L__BB0_8:                              // %exit
 		$L__BB1_11;
 	brx.idx 	%r14, $L_brx_0;
 $L__BB1_10:                             // %block_0x0
-	mov.b32 	%r33, 0;
+	mov.b32 	%r32, 0;
 	bra.uni 	$L__BB1_8;
 $L__BB1_5:                              // %entry
 	add.s32 	%r20, %r14, -248;
@@ -289,9 +288,8 @@ $L__BB1_5:                              // %entry
 		$L__BB1_13;
 	brx.idx 	%r20, $L_brx_1;
 $L__BB1_21:                             // %block_0xf8
-	or.b32  	%r21, %r15, %r16;
-	or.b32  	%r22, %r15, %r17;
-	and.b32  	%r33, %r21, %r22;
+	and.b32  	%r21, %r16, %r17;
+	or.b32  	%r32, %r15, %r21;
 	bra.uni 	$L__BB1_8;
 $L__BB1_6:                              // %entry
 	setp.eq.s32 	%p4, %r14, 128;
@@ -301,54 +299,54 @@ $L__BB1_6:                              // %entry
 	@%p5 bra 	$L__BB1_16;
 	bra.uni 	$L__BB1_8;
 $L__BB1_16:                             // %block_0xc0
-	and.b32  	%r33, %r15, %r16;
+	and.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB1_8;
 $L__BB1_13:                             // %block_0xff
-	mov.b32 	%r33, 1;
+	mov.b32 	%r32, 1;
 	bra.uni 	$L__BB1_8;
 $L__BB1_20:                             // %block_0xfc
-	or.b32  	%r33, %r15, %r16;
+	or.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB1_8;
 $L__BB1_12:                             // %block_0xfe
-	or.b32  	%r28, %r15, %r16;
-	or.b32  	%r33, %r28, %r17;
+	or.b32  	%r27, %r15, %r16;
+	or.b32  	%r32, %r27, %r17;
 	bra.uni 	$L__BB1_8;
 $L__BB1_2:                              // %entry
 	setp.eq.s32 	%p6, %r14, 85;
 	@%p6 bra 	$L__BB1_3;
 	bra.uni 	$L__BB1_8;
 $L__BB1_3:                              // %block_0x55
-	xor.b32  	%r33, %r17, 1;
+	xor.b32  	%r32, %r17, 1;
 	bra.uni 	$L__BB1_8;
 $L__BB1_9:                              // %block_0x80
-	and.b32  	%r32, %r15, %r16;
-	and.b32  	%r33, %r32, %r17;
+	and.b32  	%r31, %r15, %r16;
+	and.b32  	%r32, %r31, %r17;
 	bra.uni 	$L__BB1_8;
 $L__BB1_11:                             // %block_0x40
-	and.b32  	%r29, %r15, %r16;
-	xor.b32  	%r30, %r17, 1;
-	and.b32  	%r33, %r29, %r30;
+	xor.b32  	%r28, %r17, 1;
+	and.b32  	%r29, %r16, %r28;
+	and.b32  	%r32, %r29, %r15;
 	bra.uni 	$L__BB1_8;
 $L__BB1_18:                             // %block_0x3c
-	xor.b32  	%r33, %r15, %r16;
+	xor.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB1_8;
 $L__BB1_14:                             // %block_0x1a
-	and.b32  	%r25, %r15, %r16;
-	or.b32  	%r26, %r25, %r17;
-	xor.b32  	%r33, %r26, %r15;
+	and.b32  	%r24, %r15, %r16;
+	or.b32  	%r25, %r24, %r17;
+	xor.b32  	%r32, %r25, %r15;
 	bra.uni 	$L__BB1_8;
 $L__BB1_17:                             // %block_0x8
-	xor.b32  	%r23, %r15, 1;
-	and.b32  	%r24, %r23, %r16;
-	and.b32  	%r33, %r24, %r17;
+	xor.b32  	%r22, %r15, 1;
+	and.b32  	%r23, %r22, %r16;
+	and.b32  	%r32, %r23, %r17;
 	bra.uni 	$L__BB1_8;
 $L__BB1_19:                             // %block_0xf
-	xor.b32  	%r33, %r15, 1;
+	xor.b32  	%r32, %r15, 1;
 	bra.uni 	$L__BB1_8;
 $L__BB1_15:                             // %block_0x33
-	xor.b32  	%r33, %r16, 1;
+	xor.b32  	%r32, %r16, 1;
 $L__BB1_8:                              // %exit
-	st.param.b32 	[func_retval0], %r33;
+	st.param.b32 	[func_retval0], %r32;
 	ret;
                                         // -- End function
 }
@@ -361,10 +359,10 @@ $L__BB1_8:                              // %exit
 )                                       // @custom_ulop3
 {
 	.reg .pred 	%p<7>;
-	.reg .b32 	%r<34>;
+	.reg .b32 	%r<33>;
 
 // %bb.0:                               // %entry
-	mov.b32 	%r33, -1;
+	mov.b32 	%r32, -1;
 	ld.param.u32 	%r17, [custom_ulop3_param_3];
 	ld.param.u32 	%r16, [custom_ulop3_param_2];
 	ld.param.u32 	%r15, [custom_ulop3_param_1];
@@ -443,7 +441,7 @@ $L__BB1_8:                              // %exit
 		$L__BB2_11;
 	brx.idx 	%r14, $L_brx_0;
 $L__BB2_10:                             // %block_0x0
-	mov.b32 	%r33, 0;
+	mov.b32 	%r32, 0;
 	bra.uni 	$L__BB2_8;
 $L__BB2_5:                              // %entry
 	add.s32 	%r20, %r14, -248;
@@ -461,9 +459,8 @@ $L__BB2_5:                              // %entry
 		$L__BB2_13;
 	brx.idx 	%r20, $L_brx_1;
 $L__BB2_21:                             // %block_0xf8
-	or.b32  	%r21, %r15, %r16;
-	or.b32  	%r22, %r15, %r17;
-	and.b32  	%r33, %r21, %r22;
+	and.b32  	%r21, %r16, %r17;
+	or.b32  	%r32, %r15, %r21;
 	bra.uni 	$L__BB2_8;
 $L__BB2_6:                              // %entry
 	setp.eq.s32 	%p4, %r14, 128;
@@ -473,54 +470,54 @@ $L__BB2_6:                              // %entry
 	@%p5 bra 	$L__BB2_16;
 	bra.uni 	$L__BB2_8;
 $L__BB2_16:                             // %block_0xc0
-	and.b32  	%r33, %r15, %r16;
+	and.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB2_8;
 $L__BB2_13:                             // %block_0xff
-	mov.b32 	%r33, 1;
+	mov.b32 	%r32, 1;
 	bra.uni 	$L__BB2_8;
 $L__BB2_20:                             // %block_0xfc
-	or.b32  	%r33, %r15, %r16;
+	or.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB2_8;
 $L__BB2_12:                             // %block_0xfe
-	or.b32  	%r28, %r15, %r16;
-	or.b32  	%r33, %r28, %r17;
+	or.b32  	%r27, %r15, %r16;
+	or.b32  	%r32, %r27, %r17;
 	bra.uni 	$L__BB2_8;
 $L__BB2_2:                              // %entry
 	setp.eq.s32 	%p6, %r14, 85;
 	@%p6 bra 	$L__BB2_3;
 	bra.uni 	$L__BB2_8;
 $L__BB2_3:                              // %block_0x55
-	not.b32 	%r33, %r17;
+	not.b32 	%r32, %r17;
 	bra.uni 	$L__BB2_8;
 $L__BB2_9:                              // %block_0x80
-	and.b32  	%r32, %r15, %r16;
-	and.b32  	%r33, %r32, %r17;
+	and.b32  	%r31, %r15, %r16;
+	and.b32  	%r32, %r31, %r17;
 	bra.uni 	$L__BB2_8;
 $L__BB2_11:                             // %block_0x40
-	and.b32  	%r29, %r15, %r16;
-	not.b32 	%r30, %r17;
-	and.b32  	%r33, %r29, %r30;
+	not.b32 	%r28, %r17;
+	and.b32  	%r29, %r16, %r28;
+	and.b32  	%r32, %r29, %r15;
 	bra.uni 	$L__BB2_8;
 $L__BB2_18:                             // %block_0x3c
-	xor.b32  	%r33, %r15, %r16;
+	xor.b32  	%r32, %r15, %r16;
 	bra.uni 	$L__BB2_8;
 $L__BB2_14:                             // %block_0x1a
-	and.b32  	%r25, %r15, %r16;
-	or.b32  	%r26, %r25, %r17;
-	xor.b32  	%r33, %r26, %r15;
+	and.b32  	%r24, %r15, %r16;
+	or.b32  	%r25, %r24, %r17;
+	xor.b32  	%r32, %r25, %r15;
 	bra.uni 	$L__BB2_8;
 $L__BB2_17:                             // %block_0x8
-	not.b32 	%r23, %r15;
-	and.b32  	%r24, %r23, %r16;
-	and.b32  	%r33, %r24, %r17;
+	not.b32 	%r22, %r15;
+	and.b32  	%r23, %r16, %r22;
+	and.b32  	%r32, %r23, %r17;
 	bra.uni 	$L__BB2_8;
 $L__BB2_19:                             // %block_0xf
-	not.b32 	%r33, %r15;
+	not.b32 	%r32, %r15;
 	bra.uni 	$L__BB2_8;
 $L__BB2_15:                             // %block_0x33
-	not.b32 	%r33, %r16;
+	not.b32 	%r32, %r16;
 $L__BB2_8:                              // %exit
-	st.param.b32 	[func_retval0], %r33;
+	st.param.b32 	[func_retval0], %r32;
 	ret;
                                         // -- End function
 }
@@ -539,15 +536,15 @@ $L__BB2_8:                              // %exit
 	mov.u32 	%r3, %ctaid.x;
 	mov.u32 	%r4, %tid.x;
 	mov.u32 	%r5, %ntid.x;
-	mad.lo.s32 	%r1, %r3, %r5, %r4;
-	setp.ge.s32 	%p1, %r1, %r2;
+	mad.lo.s32 	%r6, %r3, %r5, %r4;
+	setp.ge.s32 	%p1, %r6, %r2;
 	@%p1 bra 	$L__BB3_2;
 // %bb.1:                               // %.text._Z14localMemKernelPii_split_0x0060
-	ld.param.u64 	%rd1, [_Z14localMemKernelPii_param_0];
-	add.s32 	%r6, %r1, 1;
-	mul.wide.u32 	%rd2, %r1, 4;
-	add.s64 	%rd3, %rd2, %rd1;
-	st.global.u32 	[%rd3], %r6;
+	ld.param.u64 	%rd2, [_Z14localMemKernelPii_param_0];
+	add.s32 	%r1, %r6, 1;
+	mul.wide.u32 	%rd3, %r6, 4;
+	add.s64 	%rd1, %rd3, %rd2;
+	st.global.u32 	[%rd1], %r1;
 $L__BB3_2:                              // %ExitFunction
 	ret;
                                         // -- End function
@@ -560,39 +557,37 @@ $L__BB3_2:                              // %ExitFunction
 )                                       // @_Z15sharedMemKernelPKiPii
 {
 	.reg .pred 	%p<3>;
-	.reg .b32 	%r<12>;
-	.reg .b64 	%rd<15>;
+	.reg .b32 	%r<10>;
+	.reg .b64 	%rd<9>;
 	// demoted variable
 	.shared .align 16 .b8 __Z15sharedMemKernelPKiPii_sdata[16384];
 // %bb.0:                               // %Entry_.text._Z15sharedMemKernelPKiPii
-	ld.param.u32 	%r3, [_Z15sharedMemKernelPKiPii_param_2];
-	mov.u32 	%r4, %ctaid.x;
-	mov.u32 	%r1, %tid.x;
+	ld.param.u32 	%r2, [_Z15sharedMemKernelPKiPii_param_2];
+	mov.u32 	%r3, %ctaid.x;
+	mov.u32 	%r4, %tid.x;
 	mov.u32 	%r5, %ntid.x;
-	mad.lo.s32 	%r2, %r4, %r5, %r1;
-	setp.ge.s32 	%p1, %r2, %r3;
-	shl.b32 	%r11, %r1, 2;
-	mov.u64 	%rd13, __Z15sharedMemKernelPKiPii_sdata;
-	mul.wide.u32 	%rd14, %r2, 4;
+	mad.lo.s32 	%r1, %r3, %r5, %r4;
+	setp.ge.s32 	%p1, %r1, %r2;
+	mul.wide.u32 	%rd1, %r1, 4;
+	shl.b32 	%r6, %r4, 2;
+	cvt.u64.u32 	%rd7, %r6;
+	mov.u64 	%rd8, __Z15sharedMemKernelPKiPii_sdata;
+	add.s64 	%rd3, %rd8, %rd7;
 	@%p1 bra 	$L__BB4_2;
 // %bb.1:                               // %.text._Z15sharedMemKernelPKiPii_split_0x0080
-	ld.param.u64 	%rd1, [_Z15sharedMemKernelPKiPii_param_0];
-	add.s64 	%rd4, %rd14, %rd1;
-	ld.global.u32 	%r6, [%rd4];
-	add.s32 	%r7, %r6, 1;
-	cvt.u64.u32 	%rd5, %r11;
-	add.s64 	%rd7, %rd13, %rd5;
-	st.shared.u32 	[%rd7], %r7;
+	ld.param.u64 	%rd6, [_Z15sharedMemKernelPKiPii_param_0];
+	add.s64 	%rd2, %rd1, %rd6;
+	ld.global.u32 	%r7, [%rd2];
+	add.s32 	%r8, %r7, 1;
+	st.shared.u32 	[%rd3], %r8;
 $L__BB4_2:                              // %.L_x_1
 	bar.sync 	0;
 	@%p1 bra 	$L__BB4_4;
 // %bb.3:                               // %.L_x_1_split_0x0100
-	ld.param.u64 	%rd2, [_Z15sharedMemKernelPKiPii_param_1];
-	cvt.u64.u32 	%rd8, %r11;
-	add.s64 	%rd10, %rd13, %rd8;
-	ld.shared.u32 	%r10, [%rd10];
-	add.s64 	%rd12, %rd14, %rd2;
-	st.global.u32 	[%rd12], %r10;
+	ld.param.u64 	%rd5, [_Z15sharedMemKernelPKiPii_param_1];
+	add.s64 	%rd4, %rd1, %rd5;
+	ld.shared.u32 	%r9, [%rd3];
+	st.global.u32 	[%rd4], %r9;
 $L__BB4_4:                              // %ExitFunction
 	ret;
                                         // -- End function
