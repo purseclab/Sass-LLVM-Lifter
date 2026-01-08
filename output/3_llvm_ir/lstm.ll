@@ -2907,293 +2907,363 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...1_conditionalExpr_0x1a20": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...1"
   %.2294 = load float, ptr %R11, align 4
   %.2295 = fneg float %.2294
-  %fadd.73 = fadd float %.2295, 0.000000e+00
-  %.2296 = bitcast ptr %R12 to ptr
-  store float %fadd.73, ptr %.2296, align 4
+  %.2296 = call float @llvm.fabs.f32(float %.2295)
+  %.2297 = fcmp ogt float %.2296, 0.000000e+00
+  %.2298 = fcmp olt float %.2296, 0x3810000000000000
+  %.2299 = and i1 %.2297, %.2298
+  %.2300 = select i1 %.2299, float 0.000000e+00, float %.2295
+  %.2301 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2302 = fcmp ogt float %.2301, 0.000000e+00
+  %.2303 = fcmp olt float %.2301, 0x3810000000000000
+  %.2304 = and i1 %.2302, %.2303
+  %.2305 = select i1 %.2304, float 0.000000e+00, float 0.000000e+00
+  %fadd.73 = fadd float %.2300, %.2305
+  %.2306 = call float @llvm.fabs.f32(float %fadd.73)
+  %.2307 = fcmp ogt float %.2306, 0.000000e+00
+  %.2308 = fcmp olt float %.2306, 0x3810000000000000
+  %.2309 = and i1 %.2307, %.2308
+  %.2310 = select i1 %.2309, float 0.000000e+00, float %fadd.73
+  %.2311 = bitcast ptr %R12 to ptr
+  store float %.2310, ptr %.2311, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...1"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...1": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...1_conditionalExpr_0x1a20", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...1"
-  %.2301 = load float, ptr %R11, align 4
-  %.2302 = fneg float %.2301
-  %fadd.74 = fadd float %.2302, 0.000000e+00
-  %.2303 = bitcast ptr %R12 to ptr
-  store float %fadd.74, ptr %.2303, align 4
-  %.2309 = icmp eq i1 %.2216, true
-  br i1 %.2309, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...1_conditionalExpr_0x1a30", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...1"
+  %.2316 = load float, ptr %R11, align 4
+  %.2317 = fneg float %.2316
+  %.2318 = call float @llvm.fabs.f32(float %.2317)
+  %.2319 = fcmp ogt float %.2318, 0.000000e+00
+  %.2320 = fcmp olt float %.2318, 0x3810000000000000
+  %.2321 = and i1 %.2319, %.2320
+  %.2322 = select i1 %.2321, float 0.000000e+00, float %.2317
+  %.2323 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2324 = fcmp ogt float %.2323, 0.000000e+00
+  %.2325 = fcmp olt float %.2323, 0x3810000000000000
+  %.2326 = and i1 %.2324, %.2325
+  %.2327 = select i1 %.2326, float 0.000000e+00, float 0.000000e+00
+  %fadd.74 = fadd float %.2322, %.2327
+  %.2328 = call float @llvm.fabs.f32(float %fadd.74)
+  %.2329 = fcmp ogt float %.2328, 0.000000e+00
+  %.2330 = fcmp olt float %.2328, 0x3810000000000000
+  %.2331 = and i1 %.2329, %.2330
+  %.2332 = select i1 %.2331, float 0.000000e+00, float %fadd.74
+  %.2333 = bitcast ptr %R12 to ptr
+  store float %.2332, ptr %.2333, align 4
+  %.2339 = icmp eq i1 %.2216, true
+  br i1 %.2339, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...1_conditionalExpr_0x1a30", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...1"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...1_conditionalExpr_0x1a30": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...1"
-  %.2312 = load float, ptr %R9, align 4
-  %.2313 = load float, ptr %R12, align 4
-  %.2314 = load float, ptr %R9, align 4
-  %fmul.67 = fmul float %.2312, %.2313
-  %fadd.75 = fadd float %fmul.67, %.2314
-  %.2315 = bitcast ptr %R12 to ptr
-  store float %fadd.75, ptr %.2315, align 4
+  %.2342 = load float, ptr %R9, align 4
+  %.2343 = load float, ptr %R12, align 4
+  %.2344 = load float, ptr %R9, align 4
+  %fmul.67 = fmul float %.2342, %.2343
+  %fadd.75 = fadd float %fmul.67, %.2344
+  %.2345 = bitcast ptr %R12 to ptr
+  store float %fadd.75, ptr %.2345, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...1"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...1": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...1_conditionalExpr_0x1a30", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...1"
-  %.2320 = load float, ptr %R9, align 4
-  %.2321 = load float, ptr %R12, align 4
-  %.2322 = load float, ptr %R9, align 4
-  %fmul.68 = fmul float %.2320, %.2321
-  %fadd.76 = fadd float %fmul.68, %.2322
-  %.2323 = bitcast ptr %R12 to ptr
-  store float %fadd.76, ptr %.2323, align 4
-  %.2329 = icmp eq i1 %.2216, true
-  br i1 %.2329, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...1_conditionalExpr_0x1a40", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...1"
+  %.2350 = load float, ptr %R9, align 4
+  %.2351 = load float, ptr %R12, align 4
+  %.2352 = load float, ptr %R9, align 4
+  %fmul.68 = fmul float %.2350, %.2351
+  %fadd.76 = fadd float %fmul.68, %.2352
+  %.2353 = bitcast ptr %R12 to ptr
+  store float %fadd.76, ptr %.2353, align 4
+  %.2359 = icmp eq i1 %.2216, true
+  br i1 %.2359, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...1_conditionalExpr_0x1a40", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...1"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...1_conditionalExpr_0x1a40": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...1"
-  %.2332 = load float, ptr %R12, align 4
-  %fmul.69 = fmul float %.2332, 0x43F0000000000000
+  %.2362 = load float, ptr %R12, align 4
+  %fmul.69 = fmul float %.2362, 0x43F0000000000000
   %fadd.77 = fadd float %fmul.69, 0.000000e+00
-  %.2333 = bitcast ptr %R0 to ptr
-  store float %fadd.77, ptr %.2333, align 4
+  %.2363 = bitcast ptr %R0 to ptr
+  store float %fadd.77, ptr %.2363, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...1"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...1": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...1_conditionalExpr_0x1a40", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...1"
-  %.2338 = load float, ptr %R12, align 4
-  %fmul.70 = fmul float %.2338, 0x43F0000000000000
+  %.2368 = load float, ptr %R12, align 4
+  %fmul.70 = fmul float %.2368, 0x43F0000000000000
   %fadd.78 = fadd float %fmul.70, 0.000000e+00
-  %.2339 = bitcast ptr %R0 to ptr
-  store float %fadd.78, ptr %.2339, align 4
+  %.2369 = bitcast ptr %R0 to ptr
+  store float %fadd.78, ptr %.2369, align 4
   br label %.L_x_20...1
 
 .L_x_21...1:                                      ; preds = %.L_x_4_split_0x14e0_CALL_0x1510
-  %.2346 = load i32, ptr %R16, align 4
-  %.2347 = add i32 %.2346, -253
-  %.2348 = add i32 %.2347, 0
-  store i32 %.2348, ptr %R18, align 4
-  %.2351 = load i32, ptr %R18, align 4
-  %cmp.11 = icmp sgt i32 %.2351, 1
-  %.2354 = and i1 %cmp.11, true
-  %.2359 = icmp eq i1 %.2354, true
-  br i1 %.2359, label %.L_x_23...1, label %.L_x_21_split_0x1a90...1
+  %.2376 = load i32, ptr %R16, align 4
+  %.2377 = add i32 %.2376, -253
+  %.2378 = add i32 %.2377, 0
+  store i32 %.2378, ptr %R18, align 4
+  %.2381 = load i32, ptr %R18, align 4
+  %cmp.11 = icmp sgt i32 %.2381, 1
+  %.2384 = and i1 %cmp.11, true
+  %.2389 = icmp eq i1 %.2384, true
+  br i1 %.2389, label %.L_x_23...1, label %.L_x_21_split_0x1a90...1
 
 .L_x_21_split_0x1a90...1:                         ; preds = %.L_x_21...1
-  %.2362 = load i32, ptr %R15, align 4
-  %.2364 = and i32 %.2362, 8388607
-  store i32 %.2364, ptr %R0, align 4
+  %.2392 = load i32, ptr %R15, align 4
+  %.2394 = and i32 %.2392, 8388607
+  store i32 %.2394, ptr %R0, align 4
   store i32 3, ptr %R13, align 4
-  %.2369 = load i32, ptr %R0, align 4
-  %.2371 = or i32 %.2369, 1065353216
-  store i32 %.2371, ptr %R0, align 4
-  %.2376 = load i32, ptr %R13, align 4
-  %.2377 = load i32, ptr %R18, align 4
+  %.2399 = load i32, ptr %R0, align 4
+  %.2401 = or i32 %.2399, 1065353216
+  store i32 %.2401, ptr %R0, align 4
+  %.2406 = load i32, ptr %R13, align 4
+  %.2407 = load i32, ptr %R18, align 4
   %zext.169 = zext i32 0 to i64
-  %zext.170 = zext i32 %.2376 to i64
-  %zext.171 = zext i32 %.2377 to i64
+  %zext.170 = zext i32 %.2406 to i64
+  %zext.171 = zext i32 %.2407 to i64
   %shl.91 = shl i64 %zext.169, 32
   %or.76 = or i64 %shl.91, %zext.170
   %shl.92 = shl i64 %or.76, %zext.171
   %and.8 = and i64 %shl.92, 4294967295
   %trunc32.51 = trunc i64 %and.8 to i32
   store i32 %trunc32.51, ptr %R13, align 4
-  %.2380 = load i32, ptr %R0, align 4
-  %sint_to_f32 = sitofp i32 %.2380 to float
-  %.2381 = fdiv float 1.000000e+00, %sint_to_f32
-  %.2382 = fptosi float %.2381 to i32
-  store i32 %.2382, ptr %R9, align 4
-  %.2385 = load float, ptr %R0, align 4
-  %.2386 = load float, ptr %R9, align 4
-  %fmul.71 = fmul float %.2385, %.2386
+  %.2410 = load i32, ptr %R0, align 4
+  %sint_to_f32 = sitofp i32 %.2410 to float
+  %.2411 = fdiv float 1.000000e+00, %sint_to_f32
+  %.2412 = fptosi float %.2411 to i32
+  store i32 %.2412, ptr %R9, align 4
+  %.2415 = load float, ptr %R0, align 4
+  %.2416 = load float, ptr %R9, align 4
+  %fmul.71 = fmul float %.2415, %.2416
   %fadd.79 = fadd float %fmul.71, -1.000000e+00
-  %.2387 = bitcast ptr %R8 to ptr
-  store float %fadd.79, ptr %.2387, align 4
-  %.2390 = load float, ptr %R8, align 4
-  %.2391 = fneg float %.2390
-  %fadd.80 = fadd float %.2391, 0.000000e+00
-  %.2392 = bitcast ptr %R8 to ptr
-  store float %fadd.80, ptr %.2392, align 4
-  %.2395 = load float, ptr %R9, align 4
-  %.2396 = load float, ptr %R8, align 4
-  %.2397 = load float, ptr %R9, align 4
-  %fmul.72 = fmul float %.2395, %.2396
-  %fadd.81 = fadd float %fmul.72, %.2397
-  %.2398 = bitcast ptr %R11 to ptr
-  store float %fadd.81, ptr %.2398, align 4
-  %.2401 = load float, ptr %R9, align 4
-  %.2402 = load float, ptr %R8, align 4
-  %.2403 = load float, ptr %R9, align 4
-  %fmul.73 = fmul float %.2401, %.2402
-  %fadd.82 = fadd float %fmul.73, %.2403
-  %.2404 = bitcast ptr %R12 to ptr
-  store float %fadd.82, ptr %.2404, align 4
-  %.2407 = load i32, ptr %R11, align 4
-  %.2409 = and i32 %.2407, 8388607
-  store i32 %.2409, ptr %R8, align 4
-  %.2412 = load float, ptr %R11, align 4
-  %.2413 = load float, ptr %R12, align 4
-  %fcmp_ordered = fcmp une float %.2412, %.2413
-  %.2416 = and i1 %fcmp_ordered, true
-  %.2420 = load i32, ptr %R8, align 4
-  %.2422 = or i32 %.2420, 8388608
-  store i32 %.2422, ptr %R8, align 4
-  %.2426 = xor i1 %.2416, true
-  %.2427 = icmp eq i1 %.2426, true
-  %sel = select i1 %.2427, i32 0, i32 -1
+  %.2417 = bitcast ptr %R8 to ptr
+  store float %fadd.79, ptr %.2417, align 4
+  %.2420 = load float, ptr %R8, align 4
+  %.2421 = fneg float %.2420
+  %.2422 = call float @llvm.fabs.f32(float %.2421)
+  %.2423 = fcmp ogt float %.2422, 0.000000e+00
+  %.2424 = fcmp olt float %.2422, 0x3810000000000000
+  %.2425 = and i1 %.2423, %.2424
+  %.2426 = select i1 %.2425, float 0.000000e+00, float %.2421
+  %.2427 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2428 = fcmp ogt float %.2427, 0.000000e+00
+  %.2429 = fcmp olt float %.2427, 0x3810000000000000
+  %.2430 = and i1 %.2428, %.2429
+  %.2431 = select i1 %.2430, float 0.000000e+00, float 0.000000e+00
+  %fadd.80 = fadd float %.2426, %.2431
+  %.2432 = call float @llvm.fabs.f32(float %fadd.80)
+  %.2433 = fcmp ogt float %.2432, 0.000000e+00
+  %.2434 = fcmp olt float %.2432, 0x3810000000000000
+  %.2435 = and i1 %.2433, %.2434
+  %.2436 = select i1 %.2435, float 0.000000e+00, float %fadd.80
+  %.2437 = bitcast ptr %R8 to ptr
+  store float %.2436, ptr %.2437, align 4
+  %.2440 = load float, ptr %R9, align 4
+  %.2441 = load float, ptr %R8, align 4
+  %.2442 = load float, ptr %R9, align 4
+  %fmul.72 = fmul float %.2440, %.2441
+  %fadd.81 = fadd float %fmul.72, %.2442
+  %.2443 = bitcast ptr %R11 to ptr
+  store float %fadd.81, ptr %.2443, align 4
+  %.2446 = load float, ptr %R9, align 4
+  %.2447 = load float, ptr %R8, align 4
+  %.2448 = load float, ptr %R9, align 4
+  %fmul.73 = fmul float %.2446, %.2447
+  %fadd.82 = fadd float %fmul.73, %.2448
+  %.2449 = bitcast ptr %R12 to ptr
+  store float %fadd.82, ptr %.2449, align 4
+  %.2452 = load i32, ptr %R11, align 4
+  %.2454 = and i32 %.2452, 8388607
+  store i32 %.2454, ptr %R8, align 4
+  %.2457 = load float, ptr %R11, align 4
+  %.2458 = load float, ptr %R12, align 4
+  %.2460 = call float @llvm.fabs.f32(float %.2457)
+  %.2461 = fcmp ogt float %.2460, 0.000000e+00
+  %.2462 = fcmp olt float %.2460, 0x3810000000000000
+  %.2463 = and i1 %.2461, %.2462
+  %.2464 = select i1 %.2463, float 0.000000e+00, float %.2457
+  %.2465 = call float @llvm.fabs.f32(float %.2458)
+  %.2466 = fcmp ogt float %.2465, 0.000000e+00
+  %.2467 = fcmp olt float %.2465, 0x3810000000000000
+  %.2468 = and i1 %.2466, %.2467
+  %.2469 = select i1 %.2468, float 0.000000e+00, float %.2458
+  %fcmp_ordered = fcmp une float %.2464, %.2469
+  %.2471 = and i1 %fcmp_ordered, true
+  %.2475 = load i32, ptr %R8, align 4
+  %.2477 = or i32 %.2475, 8388608
+  store i32 %.2477, ptr %R8, align 4
+  %.2481 = xor i1 %.2471, true
+  %.2482 = icmp eq i1 %.2481, true
+  %sel = select i1 %.2482, i32 0, i32 -1
   store i32 %sel, ptr %R9, align 4
-  %.2430 = load i32, ptr %R13, align 4
-  %.2431 = load i32, ptr %R8, align 4
-  %.2433 = and i32 %.2430, %.2431
-  store i32 %.2433, ptr %R13, align 4
-  %.2436 = load i32, ptr %R9, align 4
-  %.2437 = sub i32 0, %.2436
+  %.2485 = load i32, ptr %R13, align 4
+  %.2486 = load i32, ptr %R8, align 4
+  %.2488 = and i32 %.2485, %.2486
+  store i32 %.2488, ptr %R13, align 4
+  %.2491 = load i32, ptr %R9, align 4
+  %.2492 = sub i32 0, %.2491
   %imad_mul.44 = mul i32 0, 0
-  %imad_add.47 = add i32 %imad_mul.44, %.2437
+  %imad_add.47 = add i32 %imad_mul.44, %.2492
   store i32 %imad_add.47, ptr %R9, align 4
-  %.2442 = load i32, ptr %R13, align 4
-  %.2443 = load i32, ptr %R18, align 4
-  %zext.172 = zext i32 %.2442 to i64
+  %.2497 = load i32, ptr %R13, align 4
+  %.2498 = load i32, ptr %R18, align 4
+  %zext.172 = zext i32 %.2497 to i64
   %zext.173 = zext i32 0 to i64
-  %zext.174 = zext i32 %.2443 to i64
+  %zext.174 = zext i32 %.2498 to i64
   %shl.93 = shl i64 %zext.172, 32
   %or.77 = or i64 %shl.93, %zext.173
   %lshr.6 = lshr i64 %or.77, %zext.174
   %lshr.7 = lshr i64 %lshr.6, 32
   %trunc32.52 = trunc i64 %lshr.7 to i32
   store i32 %trunc32.52, ptr %R13, align 4
-  %.2457 = load i32, ptr %R13, align 4
-  %.2459 = and i32 %.2457, 1
-  %.2461 = icmp ne i32 %.2459, 0
-  %.2471 = load i32, ptr %R16, align 4
-  %.2472 = add i32 %.2471, -252
-  %.2473 = add i32 %.2472, 0
-  store i32 %.2473, ptr %R9, align 4
-  %.2481 = load i32, ptr %R15, align 4
-  %.2483 = and i32 %.2481, 8388607
-  %.2485 = icmp ne i32 %.2483, 0
-  %.2489 = xor i1 %.2461, true
-  %.2490 = icmp eq i1 %.2489, true
-  %sel.1 = select i1 %.2490, i32 0, i32 1
+  %.2512 = load i32, ptr %R13, align 4
+  %.2514 = and i32 %.2512, 1
+  %.2516 = icmp ne i32 %.2514, 0
+  %.2526 = load i32, ptr %R16, align 4
+  %.2527 = add i32 %.2526, -252
+  %.2528 = add i32 %.2527, 0
+  store i32 %.2528, ptr %R9, align 4
+  %.2536 = load i32, ptr %R15, align 4
+  %.2538 = and i32 %.2536, 8388607
+  %.2540 = icmp ne i32 %.2538, 0
+  %.2544 = xor i1 %.2516, true
+  %.2545 = icmp eq i1 %.2544, true
+  %sel.1 = select i1 %.2545, i32 0, i32 1
   store i32 %sel.1, ptr %R0, align 4
-  %.2493 = load i32, ptr %R0, align 4
-  %.2494 = sub i32 0, %.2493
-  %.2495 = add i32 %.2494, 0
-  %.2496 = add i32 %.2495, 0
-  store i32 %.2496, ptr %R0, align 4
-  %.2499 = load i32, ptr %R0, align 4
-  %cmp.12 = icmp sge i32 %.2499, 0
-  %.2502 = and i1 %cmp.12, true
-  %.2508 = load i32, ptr %R8, align 4
-  %.2509 = load i32, ptr %R9, align 4
-  %zext.175 = zext i32 %.2508 to i64
+  %.2548 = load i32, ptr %R0, align 4
+  %.2549 = sub i32 0, %.2548
+  %.2550 = add i32 %.2549, 0
+  %.2551 = add i32 %.2550, 0
+  store i32 %.2551, ptr %R0, align 4
+  %.2554 = load i32, ptr %R0, align 4
+  %cmp.12 = icmp sge i32 %.2554, 0
+  %.2557 = and i1 %cmp.12, true
+  %.2563 = load i32, ptr %R8, align 4
+  %.2564 = load i32, ptr %R9, align 4
+  %zext.175 = zext i32 %.2563 to i64
   %zext.176 = zext i32 0 to i64
-  %zext.177 = zext i32 %.2509 to i64
+  %zext.177 = zext i32 %.2564 to i64
   %shl.94 = shl i64 %zext.175, 32
   %or.78 = or i64 %shl.94, %zext.176
   %lshr.8 = lshr i64 %or.78, %zext.177
   %lshr.9 = lshr i64 %lshr.8, 32
   %trunc32.53 = trunc i64 %lshr.9 to i32
   store i32 %trunc32.53, ptr %R0, align 4
-  %.2513 = icmp ne i1 %.2502, true
-  br i1 %.2513, label %.L_x_21_split_0x1a90...1_conditionalExpr_0x1c30, label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...1
+  %.2568 = icmp ne i1 %.2557, true
+  br i1 %.2568, label %.L_x_21_split_0x1a90...1_conditionalExpr_0x1c30, label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...1
 
 .L_x_21_split_0x1a90...1_conditionalExpr_0x1c30:  ; preds = %.L_x_21_split_0x1a90...1
-  %.2516 = load i32, ptr %R0, align 4
-  %.2517 = add i32 %.2516, 1
-  %.2518 = add i32 %.2517, 0
-  store i32 %.2518, ptr %R0, align 4
+  %.2571 = load i32, ptr %R0, align 4
+  %.2572 = add i32 %.2571, 1
+  %.2573 = add i32 %.2572, 0
+  store i32 %.2573, ptr %R0, align 4
   br label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...1
 
 .L_x_21_split_0x1a90_conditionalExpr_0x1c30...1:  ; preds = %.L_x_21_split_0x1a90...1_conditionalExpr_0x1c30, %.L_x_21_split_0x1a90...1
-  %.2523 = load i32, ptr %R0, align 4
-  %.2524 = add i32 %.2523, 1
-  %.2525 = add i32 %.2524, 0
-  store i32 %.2525, ptr %R0, align 4
-  %.2531 = icmp ne i1 %.2485, true
-  br i1 %.2531, label %.L_x_21_split_0x1c40...1_conditionalExpr_0x1c40, label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...1
+  %.2578 = load i32, ptr %R0, align 4
+  %.2579 = add i32 %.2578, 1
+  %.2580 = add i32 %.2579, 0
+  store i32 %.2580, ptr %R0, align 4
+  %.2586 = icmp ne i1 %.2540, true
+  br i1 %.2586, label %.L_x_21_split_0x1c40...1_conditionalExpr_0x1c40, label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...1
 
 .L_x_21_split_0x1c40...1_conditionalExpr_0x1c40:  ; preds = %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...1
-  %.2534 = load i32, ptr %R0, align 4
-  %imad_shl.3 = shl i32 %.2534, 2
+  %.2589 = load i32, ptr %R0, align 4
+  %imad_shl.3 = shl i32 %.2589, 2
   %imad_add.48 = add i32 %imad_shl.3, 0
   store i32 %imad_add.48, ptr %R0, align 4
   br label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...1
 
 .L_x_21_split_0x1c40_conditionalExpr_0x1c40...1:  ; preds = %.L_x_21_split_0x1c40...1_conditionalExpr_0x1c40, %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...1
-  %.2539 = load i32, ptr %R0, align 4
-  %imad_shl.4 = shl i32 %.2539, 2
+  %.2594 = load i32, ptr %R0, align 4
+  %imad_shl.4 = shl i32 %.2594, 2
   %imad_add.49 = add i32 %imad_shl.4, 0
   store i32 %imad_add.49, ptr %R0, align 4
-  %.2544 = load i32, ptr %R0, align 4
-  %.2545 = load i32, ptr %R15, align 4
-  %.2547 = or i32 %.2544, -2147483648
-  %.2548 = or i32 %.2544, %.2545
-  %.2549 = and i32 %.2547, %.2548
-  store i32 %.2549, ptr %R0, align 4
+  %.2599 = load i32, ptr %R0, align 4
+  %.2600 = load i32, ptr %R15, align 4
+  %.2602 = or i32 %.2599, -2147483648
+  %.2603 = or i32 %.2599, %.2600
+  %.2604 = and i32 %.2602, %.2603
+  store i32 %.2604, ptr %R0, align 4
   br label %.L_x_20...1
 
 .L_x_23...1:                                      ; preds = %.L_x_21...1
-  %.2554 = load float, ptr %R15, align 4
-  %.2555 = fdiv float 1.000000e+00, %.2554
-  %.2556 = bitcast ptr %R0 to ptr
-  store float %.2555, ptr %.2556, align 4
+  %.2609 = load float, ptr %R15, align 4
+  %.2610 = fdiv float 1.000000e+00, %.2609
+  %.2611 = bitcast ptr %R0 to ptr
+  store float %.2610, ptr %.2611, align 4
   br label %.L_x_20...1
 
 .L_x_20...1:                                      ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...1", %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...1, %.L_x_23...1
-  %.2562 = load i32, ptr %R14, align 4
-  store i32 %.2562, ptr %R8, align 4
+  %.2617 = load i32, ptr %R14, align 4
+  store i32 %.2617, ptr %R8, align 4
   %imad_mul.45 = mul i32 0, 0
   %imad_add.50 = add i32 %imad_mul.45, 0
   store i32 %imad_add.50, ptr %R9, align 4
-  %.2572 = load i32, ptr %R0, align 4
+  %.2627 = load i32, ptr %R0, align 4
   %imad_mul.46 = mul i32 0, 0
-  %imad_add.51 = add i32 %imad_mul.46, %.2572
+  %imad_add.51 = add i32 %imad_mul.46, %.2627
   store i32 %imad_add.51, ptr %R7, align 4
   br label %.L_x_8
 
 .L_x_9:                                           ; preds = %.L_x_4_split_0x14c0
-  %.2577 = load float, ptr %R15, align 4
-  %.2578 = fdiv float 1.000000e+00, %.2577
-  %.2579 = bitcast ptr %R7 to ptr
-  store float %.2578, ptr %.2579, align 4
-  %.2582 = load float, ptr %R15, align 4
-  %.2583 = load float, ptr %R7, align 4
-  %fmul.74 = fmul float %.2582, %.2583
+  %.2632 = load float, ptr %R15, align 4
+  %.2633 = fdiv float 1.000000e+00, %.2632
+  %.2634 = bitcast ptr %R7 to ptr
+  store float %.2633, ptr %.2634, align 4
+  %.2637 = load float, ptr %R15, align 4
+  %.2638 = load float, ptr %R7, align 4
+  %fmul.74 = fmul float %.2637, %.2638
   %fadd.83 = fadd float %fmul.74, -1.000000e+00
-  %.2584 = bitcast ptr %R0 to ptr
-  store float %fadd.83, ptr %.2584, align 4
-  %.2587 = load float, ptr %R0, align 4
-  %.2588 = fneg float %.2587
-  %fadd.84 = fadd float %.2588, 0.000000e+00
-  %.2589 = bitcast ptr %R0 to ptr
-  store float %fadd.84, ptr %.2589, align 4
-  %.2592 = load float, ptr %R7, align 4
-  %.2593 = load float, ptr %R0, align 4
-  %.2594 = load float, ptr %R7, align 4
-  %fmul.75 = fmul float %.2592, %.2593
-  %fadd.85 = fadd float %fmul.75, %.2594
-  %.2595 = bitcast ptr %R7 to ptr
-  store float %fadd.85, ptr %.2595, align 4
+  %.2639 = bitcast ptr %R0 to ptr
+  store float %fadd.83, ptr %.2639, align 4
+  %.2642 = load float, ptr %R0, align 4
+  %.2643 = fneg float %.2642
+  %.2644 = call float @llvm.fabs.f32(float %.2643)
+  %.2645 = fcmp ogt float %.2644, 0.000000e+00
+  %.2646 = fcmp olt float %.2644, 0x3810000000000000
+  %.2647 = and i1 %.2645, %.2646
+  %.2648 = select i1 %.2647, float 0.000000e+00, float %.2643
+  %.2649 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2650 = fcmp ogt float %.2649, 0.000000e+00
+  %.2651 = fcmp olt float %.2649, 0x3810000000000000
+  %.2652 = and i1 %.2650, %.2651
+  %.2653 = select i1 %.2652, float 0.000000e+00, float 0.000000e+00
+  %fadd.84 = fadd float %.2648, %.2653
+  %.2654 = call float @llvm.fabs.f32(float %fadd.84)
+  %.2655 = fcmp ogt float %.2654, 0.000000e+00
+  %.2656 = fcmp olt float %.2654, 0x3810000000000000
+  %.2657 = and i1 %.2655, %.2656
+  %.2658 = select i1 %.2657, float 0.000000e+00, float %fadd.84
+  %.2659 = bitcast ptr %R0 to ptr
+  store float %.2658, ptr %.2659, align 4
+  %.2662 = load float, ptr %R7, align 4
+  %.2663 = load float, ptr %R0, align 4
+  %.2664 = load float, ptr %R7, align 4
+  %fmul.75 = fmul float %.2662, %.2663
+  %fadd.85 = fadd float %fmul.75, %.2664
+  %.2665 = bitcast ptr %R7 to ptr
+  store float %fadd.85, ptr %.2665, align 4
   br label %.L_x_8
 
 .L_x_8:                                           ; preds = %.L_x_20...1, %.L_x_9
-  %.2601 = load i32, ptr %R2, align 4
-  %.2602 = add i32 %.2601, 25165824
-  %.2603 = add i32 %.2602, 0
-  store i32 %.2603, ptr %R0, align 4
-  %.2608 = load float, ptr %R4, align 4
-  %.2609 = load float, ptr %R7, align 4
-  %fmul.76 = fmul float %.2608, %.2609
-  %.2610 = bitcast ptr %R4 to ptr
-  store float %fmul.76, ptr %.2610, align 4
-  %.2613 = load i32, ptr %R0, align 4
-  %.2615 = and i32 %.2613, 2139095040
-  store i32 %.2615, ptr %R0, align 4
-  %.2618 = load i32, ptr %R0, align 4
-  %cmp.13 = icmp sgt i32 %.2618, 33554431
-  %.2621 = and i1 %cmp.13, true
-  %.2626 = icmp eq i1 %.2621, true
-  br i1 %.2626, label %.L_x_12, label %.L_x_8_split_0x15e0_CALL_0x1620
+  %.2671 = load i32, ptr %R2, align 4
+  %.2672 = add i32 %.2671, 25165824
+  %.2673 = add i32 %.2672, 0
+  store i32 %.2673, ptr %R0, align 4
+  %.2678 = load float, ptr %R4, align 4
+  %.2679 = load float, ptr %R7, align 4
+  %fmul.76 = fmul float %.2678, %.2679
+  %.2680 = bitcast ptr %R4 to ptr
+  store float %fmul.76, ptr %.2680, align 4
+  %.2683 = load i32, ptr %R0, align 4
+  %.2685 = and i32 %.2683, 2139095040
+  store i32 %.2685, ptr %R0, align 4
+  %.2688 = load i32, ptr %R0, align 4
+  %cmp.13 = icmp sgt i32 %.2688, 33554431
+  %.2691 = and i1 %cmp.13, true
+  %.2696 = icmp eq i1 %.2691, true
+  br i1 %.2696, label %.L_x_12, label %.L_x_8_split_0x15e0_CALL_0x1620
 
 .L_x_8_split_0x15e0_CALL_0x1620:                  ; preds = %.L_x_8
-  %.2629 = load float, ptr %R2, align 4
-  %.2630 = bitcast ptr %R15 to ptr
-  store float %.2629, ptr %.2630, align 4
+  %.2699 = load float, ptr %R2, align 4
+  %.2700 = bitcast ptr %R15 to ptr
+  store float %.2699, ptr %.2700, align 4
   store i32 5648, ptr %R14, align 4
-  %.2638 = load i32, ptr %R15, align 4
+  %.2708 = load i32, ptr %R15, align 4
   %zext.178 = zext i32 0 to i64
-  %zext.179 = zext i32 %.2638 to i64
+  %zext.179 = zext i32 %.2708 to i64
   %zext.180 = zext i32 1 to i64
   %shl.95 = shl i64 %zext.178, 32
   %or.79 = or i64 %shl.95, %zext.179
@@ -3201,8 +3271,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %and.9 = and i64 %shl.96, 4294967295
   %trunc32.54 = trunc i64 %and.9 to i32
   store i32 %trunc32.54, ptr %R0, align 4
-  %.2644 = load i32, ptr %R0, align 4
-  %zext.181 = zext i32 %.2644 to i64
+  %.2714 = load i32, ptr %R0, align 4
+  %zext.181 = zext i32 %.2714 to i64
   %zext.182 = zext i32 0 to i64
   %zext.183 = zext i32 24 to i64
   %shl.97 = shl i64 %zext.181, 32
@@ -3211,465 +3281,535 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %lshr.11 = lshr i64 %lshr.10, 32
   %trunc32.55 = trunc i64 %lshr.11 to i32
   store i32 %trunc32.55, ptr %R16, align 4
-  %.2647 = load i32, ptr %R16, align 4
-  %cmp.14 = icmp ne i32 %.2647, 0
-  %.2650 = and i1 %cmp.14, true
-  %.2655 = icmp eq i1 %.2650, true
-  br i1 %.2655, label %.L_x_21...2, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2"
+  %.2717 = load i32, ptr %R16, align 4
+  %cmp.14 = icmp ne i32 %.2717, 0
+  %.2720 = and i1 %cmp.14, true
+  %.2725 = icmp eq i1 %.2720, true
+  br i1 %.2725, label %.L_x_21...2, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2": ; preds = %.L_x_8_split_0x15e0_CALL_0x1620
-  %.2658 = load i32, ptr %R15, align 4
-  %imad_shl.5 = shl i32 %.2658, 2
+  %.2728 = load i32, ptr %R15, align 4
+  %imad_shl.5 = shl i32 %.2728, 2
   %imad_add.52 = add i32 %imad_shl.5, 0
   store i32 %imad_add.52, ptr %R0, align 4
-  %.2661 = load i32, ptr %R0, align 4
-  %cmp.15 = icmp ne i32 %.2661, 0
-  %.2664 = and i1 %cmp.15, true
-  %.2669 = icmp eq i1 %.2664, true
-  br i1 %.2669, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2_conditionalExpr_0x19e0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...2"
+  %.2731 = load i32, ptr %R0, align 4
+  %cmp.15 = icmp ne i32 %.2731, 0
+  %.2734 = and i1 %cmp.15, true
+  %.2739 = icmp eq i1 %.2734, true
+  br i1 %.2739, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2_conditionalExpr_0x19e0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2_conditionalExpr_0x19e0": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2"
-  %.2672 = load float, ptr %R15, align 4
-  %fmul.77 = fmul float %.2672, 0x43F0000000000000
+  %.2742 = load float, ptr %R15, align 4
+  %fmul.77 = fmul float %.2742, 0x43F0000000000000
   %fadd.86 = fadd float %fmul.77, 0.000000e+00
-  %.2673 = bitcast ptr %R8 to ptr
-  store float %fadd.86, ptr %.2673, align 4
+  %.2743 = bitcast ptr %R8 to ptr
+  store float %fadd.86, ptr %.2743, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2_conditionalExpr_0x19e0", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...2"
-  %.2678 = load float, ptr %R15, align 4
-  %fmul.78 = fmul float %.2678, 0x43F0000000000000
+  %.2748 = load float, ptr %R15, align 4
+  %fmul.78 = fmul float %.2748, 0x43F0000000000000
   %fadd.87 = fadd float %fmul.78, 0.000000e+00
-  %.2679 = bitcast ptr %R8 to ptr
-  store float %fadd.87, ptr %.2679, align 4
-  %.2685 = icmp ne i1 %.2664, true
-  br i1 %.2685, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...2_conditionalExpr_0x19f0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...2"
+  %.2749 = bitcast ptr %R8 to ptr
+  store float %fadd.87, ptr %.2749, align 4
+  %.2755 = icmp ne i1 %.2734, true
+  br i1 %.2755, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...2_conditionalExpr_0x19f0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...2_conditionalExpr_0x19f0": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...2"
-  %.2688 = load i32, ptr %R15, align 4
-  %sint_to_f32.1 = sitofp i32 %.2688 to float
-  %.2689 = fdiv float 1.000000e+00, %sint_to_f32.1
-  %.2690 = fptosi float %.2689 to i32
-  store i32 %.2690, ptr %R0, align 4
+  %.2758 = load i32, ptr %R15, align 4
+  %sint_to_f32.1 = sitofp i32 %.2758 to float
+  %.2759 = fdiv float 1.000000e+00, %sint_to_f32.1
+  %.2760 = fptosi float %.2759 to i32
+  store i32 %.2760, ptr %R0, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...2_conditionalExpr_0x19f0", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...2"
-  %.2695 = load i32, ptr %R15, align 4
-  %sint_to_f32.2 = sitofp i32 %.2695 to float
-  %.2696 = fdiv float 1.000000e+00, %sint_to_f32.2
-  %.2697 = fptosi float %.2696 to i32
-  store i32 %.2697, ptr %R0, align 4
-  %.2703 = icmp eq i1 %.2664, true
-  br i1 %.2703, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...2_conditionalExpr_0x1a00", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...2"
+  %.2765 = load i32, ptr %R15, align 4
+  %sint_to_f32.2 = sitofp i32 %.2765 to float
+  %.2766 = fdiv float 1.000000e+00, %sint_to_f32.2
+  %.2767 = fptosi float %.2766 to i32
+  store i32 %.2767, ptr %R0, align 4
+  %.2773 = icmp eq i1 %.2734, true
+  br i1 %.2773, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...2_conditionalExpr_0x1a00", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...2_conditionalExpr_0x1a00": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...2"
-  %.2706 = load float, ptr %R8, align 4
-  %.2707 = fdiv float 1.000000e+00, %.2706
-  %.2708 = bitcast ptr %R9 to ptr
-  store float %.2707, ptr %.2708, align 4
+  %.2776 = load float, ptr %R8, align 4
+  %.2777 = fdiv float 1.000000e+00, %.2776
+  %.2778 = bitcast ptr %R9 to ptr
+  store float %.2777, ptr %.2778, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...2_conditionalExpr_0x1a00", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...2"
-  %.2713 = load float, ptr %R8, align 4
-  %.2714 = fdiv float 1.000000e+00, %.2713
-  %.2715 = bitcast ptr %R9 to ptr
-  store float %.2714, ptr %.2715, align 4
-  %.2721 = icmp eq i1 %.2664, true
-  br i1 %.2721, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...2_conditionalExpr_0x1a10", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...2"
+  %.2783 = load float, ptr %R8, align 4
+  %.2784 = fdiv float 1.000000e+00, %.2783
+  %.2785 = bitcast ptr %R9 to ptr
+  store float %.2784, ptr %.2785, align 4
+  %.2791 = icmp eq i1 %.2734, true
+  br i1 %.2791, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...2_conditionalExpr_0x1a10", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...2_conditionalExpr_0x1a10": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...2"
-  %.2724 = load float, ptr %R8, align 4
-  %.2725 = load float, ptr %R9, align 4
-  %fmul.79 = fmul float %.2724, %.2725
+  %.2794 = load float, ptr %R8, align 4
+  %.2795 = load float, ptr %R9, align 4
+  %fmul.79 = fmul float %.2794, %.2795
   %fadd.88 = fadd float %fmul.79, -1.000000e+00
-  %.2726 = bitcast ptr %R11 to ptr
-  store float %fadd.88, ptr %.2726, align 4
+  %.2796 = bitcast ptr %R11 to ptr
+  store float %fadd.88, ptr %.2796, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...2_conditionalExpr_0x1a10", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...2"
-  %.2731 = load float, ptr %R8, align 4
-  %.2732 = load float, ptr %R9, align 4
-  %fmul.80 = fmul float %.2731, %.2732
+  %.2801 = load float, ptr %R8, align 4
+  %.2802 = load float, ptr %R9, align 4
+  %fmul.80 = fmul float %.2801, %.2802
   %fadd.89 = fadd float %fmul.80, -1.000000e+00
-  %.2733 = bitcast ptr %R11 to ptr
-  store float %fadd.89, ptr %.2733, align 4
-  %.2739 = icmp eq i1 %.2664, true
-  br i1 %.2739, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...2_conditionalExpr_0x1a20", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...2"
+  %.2803 = bitcast ptr %R11 to ptr
+  store float %fadd.89, ptr %.2803, align 4
+  %.2809 = icmp eq i1 %.2734, true
+  br i1 %.2809, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...2_conditionalExpr_0x1a20", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...2_conditionalExpr_0x1a20": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...2"
-  %.2742 = load float, ptr %R11, align 4
-  %.2743 = fneg float %.2742
-  %fadd.90 = fadd float %.2743, 0.000000e+00
-  %.2744 = bitcast ptr %R12 to ptr
-  store float %fadd.90, ptr %.2744, align 4
+  %.2812 = load float, ptr %R11, align 4
+  %.2813 = fneg float %.2812
+  %.2814 = call float @llvm.fabs.f32(float %.2813)
+  %.2815 = fcmp ogt float %.2814, 0.000000e+00
+  %.2816 = fcmp olt float %.2814, 0x3810000000000000
+  %.2817 = and i1 %.2815, %.2816
+  %.2818 = select i1 %.2817, float 0.000000e+00, float %.2813
+  %.2819 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2820 = fcmp ogt float %.2819, 0.000000e+00
+  %.2821 = fcmp olt float %.2819, 0x3810000000000000
+  %.2822 = and i1 %.2820, %.2821
+  %.2823 = select i1 %.2822, float 0.000000e+00, float 0.000000e+00
+  %fadd.90 = fadd float %.2818, %.2823
+  %.2824 = call float @llvm.fabs.f32(float %fadd.90)
+  %.2825 = fcmp ogt float %.2824, 0.000000e+00
+  %.2826 = fcmp olt float %.2824, 0x3810000000000000
+  %.2827 = and i1 %.2825, %.2826
+  %.2828 = select i1 %.2827, float 0.000000e+00, float %fadd.90
+  %.2829 = bitcast ptr %R12 to ptr
+  store float %.2828, ptr %.2829, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...2_conditionalExpr_0x1a20", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...2"
-  %.2749 = load float, ptr %R11, align 4
-  %.2750 = fneg float %.2749
-  %fadd.91 = fadd float %.2750, 0.000000e+00
-  %.2751 = bitcast ptr %R12 to ptr
-  store float %fadd.91, ptr %.2751, align 4
-  %.2757 = icmp eq i1 %.2664, true
-  br i1 %.2757, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...2_conditionalExpr_0x1a30", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...2"
+  %.2834 = load float, ptr %R11, align 4
+  %.2835 = fneg float %.2834
+  %.2836 = call float @llvm.fabs.f32(float %.2835)
+  %.2837 = fcmp ogt float %.2836, 0.000000e+00
+  %.2838 = fcmp olt float %.2836, 0x3810000000000000
+  %.2839 = and i1 %.2837, %.2838
+  %.2840 = select i1 %.2839, float 0.000000e+00, float %.2835
+  %.2841 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2842 = fcmp ogt float %.2841, 0.000000e+00
+  %.2843 = fcmp olt float %.2841, 0x3810000000000000
+  %.2844 = and i1 %.2842, %.2843
+  %.2845 = select i1 %.2844, float 0.000000e+00, float 0.000000e+00
+  %fadd.91 = fadd float %.2840, %.2845
+  %.2846 = call float @llvm.fabs.f32(float %fadd.91)
+  %.2847 = fcmp ogt float %.2846, 0.000000e+00
+  %.2848 = fcmp olt float %.2846, 0x3810000000000000
+  %.2849 = and i1 %.2847, %.2848
+  %.2850 = select i1 %.2849, float 0.000000e+00, float %fadd.91
+  %.2851 = bitcast ptr %R12 to ptr
+  store float %.2850, ptr %.2851, align 4
+  %.2857 = icmp eq i1 %.2734, true
+  br i1 %.2857, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...2_conditionalExpr_0x1a30", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...2_conditionalExpr_0x1a30": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...2"
-  %.2760 = load float, ptr %R9, align 4
-  %.2761 = load float, ptr %R12, align 4
-  %.2762 = load float, ptr %R9, align 4
-  %fmul.81 = fmul float %.2760, %.2761
-  %fadd.92 = fadd float %fmul.81, %.2762
-  %.2763 = bitcast ptr %R12 to ptr
-  store float %fadd.92, ptr %.2763, align 4
+  %.2860 = load float, ptr %R9, align 4
+  %.2861 = load float, ptr %R12, align 4
+  %.2862 = load float, ptr %R9, align 4
+  %fmul.81 = fmul float %.2860, %.2861
+  %fadd.92 = fadd float %fmul.81, %.2862
+  %.2863 = bitcast ptr %R12 to ptr
+  store float %fadd.92, ptr %.2863, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...2_conditionalExpr_0x1a30", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...2"
-  %.2768 = load float, ptr %R9, align 4
-  %.2769 = load float, ptr %R12, align 4
-  %.2770 = load float, ptr %R9, align 4
-  %fmul.82 = fmul float %.2768, %.2769
-  %fadd.93 = fadd float %fmul.82, %.2770
-  %.2771 = bitcast ptr %R12 to ptr
-  store float %fadd.93, ptr %.2771, align 4
-  %.2777 = icmp eq i1 %.2664, true
-  br i1 %.2777, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...2_conditionalExpr_0x1a40", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...2"
+  %.2868 = load float, ptr %R9, align 4
+  %.2869 = load float, ptr %R12, align 4
+  %.2870 = load float, ptr %R9, align 4
+  %fmul.82 = fmul float %.2868, %.2869
+  %fadd.93 = fadd float %fmul.82, %.2870
+  %.2871 = bitcast ptr %R12 to ptr
+  store float %fadd.93, ptr %.2871, align 4
+  %.2877 = icmp eq i1 %.2734, true
+  br i1 %.2877, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...2_conditionalExpr_0x1a40", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...2_conditionalExpr_0x1a40": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...2"
-  %.2780 = load float, ptr %R12, align 4
-  %fmul.83 = fmul float %.2780, 0x43F0000000000000
+  %.2880 = load float, ptr %R12, align 4
+  %fmul.83 = fmul float %.2880, 0x43F0000000000000
   %fadd.94 = fadd float %fmul.83, 0.000000e+00
-  %.2781 = bitcast ptr %R0 to ptr
-  store float %fadd.94, ptr %.2781, align 4
+  %.2881 = bitcast ptr %R0 to ptr
+  store float %fadd.94, ptr %.2881, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...2"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...2": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...2_conditionalExpr_0x1a40", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...2"
-  %.2786 = load float, ptr %R12, align 4
-  %fmul.84 = fmul float %.2786, 0x43F0000000000000
+  %.2886 = load float, ptr %R12, align 4
+  %fmul.84 = fmul float %.2886, 0x43F0000000000000
   %fadd.95 = fadd float %fmul.84, 0.000000e+00
-  %.2787 = bitcast ptr %R0 to ptr
-  store float %fadd.95, ptr %.2787, align 4
+  %.2887 = bitcast ptr %R0 to ptr
+  store float %fadd.95, ptr %.2887, align 4
   br label %.L_x_20...2
 
 .L_x_21...2:                                      ; preds = %.L_x_8_split_0x15e0_CALL_0x1620
-  %.2794 = load i32, ptr %R16, align 4
-  %.2795 = add i32 %.2794, -253
-  %.2796 = add i32 %.2795, 0
-  store i32 %.2796, ptr %R18, align 4
-  %.2799 = load i32, ptr %R18, align 4
-  %cmp.16 = icmp sgt i32 %.2799, 1
-  %.2802 = and i1 %cmp.16, true
-  %.2807 = icmp eq i1 %.2802, true
-  br i1 %.2807, label %.L_x_23...2, label %.L_x_21_split_0x1a90...2
+  %.2894 = load i32, ptr %R16, align 4
+  %.2895 = add i32 %.2894, -253
+  %.2896 = add i32 %.2895, 0
+  store i32 %.2896, ptr %R18, align 4
+  %.2899 = load i32, ptr %R18, align 4
+  %cmp.16 = icmp sgt i32 %.2899, 1
+  %.2902 = and i1 %cmp.16, true
+  %.2907 = icmp eq i1 %.2902, true
+  br i1 %.2907, label %.L_x_23...2, label %.L_x_21_split_0x1a90...2
 
 .L_x_21_split_0x1a90...2:                         ; preds = %.L_x_21...2
-  %.2810 = load i32, ptr %R15, align 4
-  %.2812 = and i32 %.2810, 8388607
-  store i32 %.2812, ptr %R0, align 4
+  %.2910 = load i32, ptr %R15, align 4
+  %.2912 = and i32 %.2910, 8388607
+  store i32 %.2912, ptr %R0, align 4
   store i32 3, ptr %R13, align 4
-  %.2817 = load i32, ptr %R0, align 4
-  %.2819 = or i32 %.2817, 1065353216
-  store i32 %.2819, ptr %R0, align 4
-  %.2824 = load i32, ptr %R13, align 4
-  %.2825 = load i32, ptr %R18, align 4
+  %.2917 = load i32, ptr %R0, align 4
+  %.2919 = or i32 %.2917, 1065353216
+  store i32 %.2919, ptr %R0, align 4
+  %.2924 = load i32, ptr %R13, align 4
+  %.2925 = load i32, ptr %R18, align 4
   %zext.184 = zext i32 0 to i64
-  %zext.185 = zext i32 %.2824 to i64
-  %zext.186 = zext i32 %.2825 to i64
+  %zext.185 = zext i32 %.2924 to i64
+  %zext.186 = zext i32 %.2925 to i64
   %shl.98 = shl i64 %zext.184, 32
   %or.81 = or i64 %shl.98, %zext.185
   %shl.99 = shl i64 %or.81, %zext.186
   %and.10 = and i64 %shl.99, 4294967295
   %trunc32.56 = trunc i64 %and.10 to i32
   store i32 %trunc32.56, ptr %R13, align 4
-  %.2828 = load i32, ptr %R0, align 4
-  %sint_to_f32.3 = sitofp i32 %.2828 to float
-  %.2829 = fdiv float 1.000000e+00, %sint_to_f32.3
-  %.2830 = fptosi float %.2829 to i32
-  store i32 %.2830, ptr %R9, align 4
-  %.2833 = load float, ptr %R0, align 4
-  %.2834 = load float, ptr %R9, align 4
-  %fmul.85 = fmul float %.2833, %.2834
+  %.2928 = load i32, ptr %R0, align 4
+  %sint_to_f32.3 = sitofp i32 %.2928 to float
+  %.2929 = fdiv float 1.000000e+00, %sint_to_f32.3
+  %.2930 = fptosi float %.2929 to i32
+  store i32 %.2930, ptr %R9, align 4
+  %.2933 = load float, ptr %R0, align 4
+  %.2934 = load float, ptr %R9, align 4
+  %fmul.85 = fmul float %.2933, %.2934
   %fadd.96 = fadd float %fmul.85, -1.000000e+00
-  %.2835 = bitcast ptr %R8 to ptr
-  store float %fadd.96, ptr %.2835, align 4
-  %.2838 = load float, ptr %R8, align 4
-  %.2839 = fneg float %.2838
-  %fadd.97 = fadd float %.2839, 0.000000e+00
-  %.2840 = bitcast ptr %R8 to ptr
-  store float %fadd.97, ptr %.2840, align 4
-  %.2843 = load float, ptr %R9, align 4
-  %.2844 = load float, ptr %R8, align 4
-  %.2845 = load float, ptr %R9, align 4
-  %fmul.86 = fmul float %.2843, %.2844
-  %fadd.98 = fadd float %fmul.86, %.2845
-  %.2846 = bitcast ptr %R11 to ptr
-  store float %fadd.98, ptr %.2846, align 4
-  %.2849 = load float, ptr %R9, align 4
-  %.2850 = load float, ptr %R8, align 4
-  %.2851 = load float, ptr %R9, align 4
-  %fmul.87 = fmul float %.2849, %.2850
-  %fadd.99 = fadd float %fmul.87, %.2851
-  %.2852 = bitcast ptr %R12 to ptr
-  store float %fadd.99, ptr %.2852, align 4
-  %.2855 = load i32, ptr %R11, align 4
-  %.2857 = and i32 %.2855, 8388607
-  store i32 %.2857, ptr %R8, align 4
-  %.2860 = load float, ptr %R11, align 4
-  %.2861 = load float, ptr %R12, align 4
-  %fcmp_ordered.1 = fcmp une float %.2860, %.2861
-  %.2864 = and i1 %fcmp_ordered.1, true
-  %.2868 = load i32, ptr %R8, align 4
-  %.2870 = or i32 %.2868, 8388608
-  store i32 %.2870, ptr %R8, align 4
-  %.2874 = xor i1 %.2864, true
-  %.2875 = icmp eq i1 %.2874, true
-  %sel.2 = select i1 %.2875, i32 0, i32 -1
+  %.2935 = bitcast ptr %R8 to ptr
+  store float %fadd.96, ptr %.2935, align 4
+  %.2938 = load float, ptr %R8, align 4
+  %.2939 = fneg float %.2938
+  %.2940 = call float @llvm.fabs.f32(float %.2939)
+  %.2941 = fcmp ogt float %.2940, 0.000000e+00
+  %.2942 = fcmp olt float %.2940, 0x3810000000000000
+  %.2943 = and i1 %.2941, %.2942
+  %.2944 = select i1 %.2943, float 0.000000e+00, float %.2939
+  %.2945 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.2946 = fcmp ogt float %.2945, 0.000000e+00
+  %.2947 = fcmp olt float %.2945, 0x3810000000000000
+  %.2948 = and i1 %.2946, %.2947
+  %.2949 = select i1 %.2948, float 0.000000e+00, float 0.000000e+00
+  %fadd.97 = fadd float %.2944, %.2949
+  %.2950 = call float @llvm.fabs.f32(float %fadd.97)
+  %.2951 = fcmp ogt float %.2950, 0.000000e+00
+  %.2952 = fcmp olt float %.2950, 0x3810000000000000
+  %.2953 = and i1 %.2951, %.2952
+  %.2954 = select i1 %.2953, float 0.000000e+00, float %fadd.97
+  %.2955 = bitcast ptr %R8 to ptr
+  store float %.2954, ptr %.2955, align 4
+  %.2958 = load float, ptr %R9, align 4
+  %.2959 = load float, ptr %R8, align 4
+  %.2960 = load float, ptr %R9, align 4
+  %fmul.86 = fmul float %.2958, %.2959
+  %fadd.98 = fadd float %fmul.86, %.2960
+  %.2961 = bitcast ptr %R11 to ptr
+  store float %fadd.98, ptr %.2961, align 4
+  %.2964 = load float, ptr %R9, align 4
+  %.2965 = load float, ptr %R8, align 4
+  %.2966 = load float, ptr %R9, align 4
+  %fmul.87 = fmul float %.2964, %.2965
+  %fadd.99 = fadd float %fmul.87, %.2966
+  %.2967 = bitcast ptr %R12 to ptr
+  store float %fadd.99, ptr %.2967, align 4
+  %.2970 = load i32, ptr %R11, align 4
+  %.2972 = and i32 %.2970, 8388607
+  store i32 %.2972, ptr %R8, align 4
+  %.2975 = load float, ptr %R11, align 4
+  %.2976 = load float, ptr %R12, align 4
+  %.2978 = call float @llvm.fabs.f32(float %.2975)
+  %.2979 = fcmp ogt float %.2978, 0.000000e+00
+  %.2980 = fcmp olt float %.2978, 0x3810000000000000
+  %.2981 = and i1 %.2979, %.2980
+  %.2982 = select i1 %.2981, float 0.000000e+00, float %.2975
+  %.2983 = call float @llvm.fabs.f32(float %.2976)
+  %.2984 = fcmp ogt float %.2983, 0.000000e+00
+  %.2985 = fcmp olt float %.2983, 0x3810000000000000
+  %.2986 = and i1 %.2984, %.2985
+  %.2987 = select i1 %.2986, float 0.000000e+00, float %.2976
+  %fcmp_ordered.1 = fcmp une float %.2982, %.2987
+  %.2989 = and i1 %fcmp_ordered.1, true
+  %.2993 = load i32, ptr %R8, align 4
+  %.2995 = or i32 %.2993, 8388608
+  store i32 %.2995, ptr %R8, align 4
+  %.2999 = xor i1 %.2989, true
+  %.3000 = icmp eq i1 %.2999, true
+  %sel.2 = select i1 %.3000, i32 0, i32 -1
   store i32 %sel.2, ptr %R9, align 4
-  %.2878 = load i32, ptr %R13, align 4
-  %.2879 = load i32, ptr %R8, align 4
-  %.2881 = and i32 %.2878, %.2879
-  store i32 %.2881, ptr %R13, align 4
-  %.2884 = load i32, ptr %R9, align 4
-  %.2885 = sub i32 0, %.2884
+  %.3003 = load i32, ptr %R13, align 4
+  %.3004 = load i32, ptr %R8, align 4
+  %.3006 = and i32 %.3003, %.3004
+  store i32 %.3006, ptr %R13, align 4
+  %.3009 = load i32, ptr %R9, align 4
+  %.3010 = sub i32 0, %.3009
   %imad_mul.47 = mul i32 0, 0
-  %imad_add.53 = add i32 %imad_mul.47, %.2885
+  %imad_add.53 = add i32 %imad_mul.47, %.3010
   store i32 %imad_add.53, ptr %R9, align 4
-  %.2890 = load i32, ptr %R13, align 4
-  %.2891 = load i32, ptr %R18, align 4
-  %zext.187 = zext i32 %.2890 to i64
+  %.3015 = load i32, ptr %R13, align 4
+  %.3016 = load i32, ptr %R18, align 4
+  %zext.187 = zext i32 %.3015 to i64
   %zext.188 = zext i32 0 to i64
-  %zext.189 = zext i32 %.2891 to i64
+  %zext.189 = zext i32 %.3016 to i64
   %shl.100 = shl i64 %zext.187, 32
   %or.82 = or i64 %shl.100, %zext.188
   %lshr.12 = lshr i64 %or.82, %zext.189
   %lshr.13 = lshr i64 %lshr.12, 32
   %trunc32.57 = trunc i64 %lshr.13 to i32
   store i32 %trunc32.57, ptr %R13, align 4
-  %.2905 = load i32, ptr %R13, align 4
-  %.2907 = and i32 %.2905, 1
-  %.2909 = icmp ne i32 %.2907, 0
-  %.2919 = load i32, ptr %R16, align 4
-  %.2920 = add i32 %.2919, -252
-  %.2921 = add i32 %.2920, 0
-  store i32 %.2921, ptr %R9, align 4
-  %.2929 = load i32, ptr %R15, align 4
-  %.2931 = and i32 %.2929, 8388607
-  %.2933 = icmp ne i32 %.2931, 0
-  %.2937 = xor i1 %.2909, true
-  %.2938 = icmp eq i1 %.2937, true
-  %sel.3 = select i1 %.2938, i32 0, i32 1
+  %.3030 = load i32, ptr %R13, align 4
+  %.3032 = and i32 %.3030, 1
+  %.3034 = icmp ne i32 %.3032, 0
+  %.3044 = load i32, ptr %R16, align 4
+  %.3045 = add i32 %.3044, -252
+  %.3046 = add i32 %.3045, 0
+  store i32 %.3046, ptr %R9, align 4
+  %.3054 = load i32, ptr %R15, align 4
+  %.3056 = and i32 %.3054, 8388607
+  %.3058 = icmp ne i32 %.3056, 0
+  %.3062 = xor i1 %.3034, true
+  %.3063 = icmp eq i1 %.3062, true
+  %sel.3 = select i1 %.3063, i32 0, i32 1
   store i32 %sel.3, ptr %R0, align 4
-  %.2941 = load i32, ptr %R0, align 4
-  %.2942 = sub i32 0, %.2941
-  %.2943 = add i32 %.2942, 0
-  %.2944 = add i32 %.2943, 0
-  store i32 %.2944, ptr %R0, align 4
-  %.2947 = load i32, ptr %R0, align 4
-  %cmp.17 = icmp sge i32 %.2947, 0
-  %.2950 = and i1 %cmp.17, true
-  %.2956 = load i32, ptr %R8, align 4
-  %.2957 = load i32, ptr %R9, align 4
-  %zext.190 = zext i32 %.2956 to i64
+  %.3066 = load i32, ptr %R0, align 4
+  %.3067 = sub i32 0, %.3066
+  %.3068 = add i32 %.3067, 0
+  %.3069 = add i32 %.3068, 0
+  store i32 %.3069, ptr %R0, align 4
+  %.3072 = load i32, ptr %R0, align 4
+  %cmp.17 = icmp sge i32 %.3072, 0
+  %.3075 = and i1 %cmp.17, true
+  %.3081 = load i32, ptr %R8, align 4
+  %.3082 = load i32, ptr %R9, align 4
+  %zext.190 = zext i32 %.3081 to i64
   %zext.191 = zext i32 0 to i64
-  %zext.192 = zext i32 %.2957 to i64
+  %zext.192 = zext i32 %.3082 to i64
   %shl.101 = shl i64 %zext.190, 32
   %or.83 = or i64 %shl.101, %zext.191
   %lshr.14 = lshr i64 %or.83, %zext.192
   %lshr.15 = lshr i64 %lshr.14, 32
   %trunc32.58 = trunc i64 %lshr.15 to i32
   store i32 %trunc32.58, ptr %R0, align 4
-  %.2961 = icmp ne i1 %.2950, true
-  br i1 %.2961, label %.L_x_21_split_0x1a90...2_conditionalExpr_0x1c30, label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...2
+  %.3086 = icmp ne i1 %.3075, true
+  br i1 %.3086, label %.L_x_21_split_0x1a90...2_conditionalExpr_0x1c30, label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...2
 
 .L_x_21_split_0x1a90...2_conditionalExpr_0x1c30:  ; preds = %.L_x_21_split_0x1a90...2
-  %.2964 = load i32, ptr %R0, align 4
-  %.2965 = add i32 %.2964, 1
-  %.2966 = add i32 %.2965, 0
-  store i32 %.2966, ptr %R0, align 4
+  %.3089 = load i32, ptr %R0, align 4
+  %.3090 = add i32 %.3089, 1
+  %.3091 = add i32 %.3090, 0
+  store i32 %.3091, ptr %R0, align 4
   br label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...2
 
 .L_x_21_split_0x1a90_conditionalExpr_0x1c30...2:  ; preds = %.L_x_21_split_0x1a90...2_conditionalExpr_0x1c30, %.L_x_21_split_0x1a90...2
-  %.2971 = load i32, ptr %R0, align 4
-  %.2972 = add i32 %.2971, 1
-  %.2973 = add i32 %.2972, 0
-  store i32 %.2973, ptr %R0, align 4
-  %.2979 = icmp ne i1 %.2933, true
-  br i1 %.2979, label %.L_x_21_split_0x1c40...2_conditionalExpr_0x1c40, label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...2
+  %.3096 = load i32, ptr %R0, align 4
+  %.3097 = add i32 %.3096, 1
+  %.3098 = add i32 %.3097, 0
+  store i32 %.3098, ptr %R0, align 4
+  %.3104 = icmp ne i1 %.3058, true
+  br i1 %.3104, label %.L_x_21_split_0x1c40...2_conditionalExpr_0x1c40, label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...2
 
 .L_x_21_split_0x1c40...2_conditionalExpr_0x1c40:  ; preds = %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...2
-  %.2982 = load i32, ptr %R0, align 4
-  %imad_shl.6 = shl i32 %.2982, 2
+  %.3107 = load i32, ptr %R0, align 4
+  %imad_shl.6 = shl i32 %.3107, 2
   %imad_add.54 = add i32 %imad_shl.6, 0
   store i32 %imad_add.54, ptr %R0, align 4
   br label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...2
 
 .L_x_21_split_0x1c40_conditionalExpr_0x1c40...2:  ; preds = %.L_x_21_split_0x1c40...2_conditionalExpr_0x1c40, %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...2
-  %.2987 = load i32, ptr %R0, align 4
-  %imad_shl.7 = shl i32 %.2987, 2
+  %.3112 = load i32, ptr %R0, align 4
+  %imad_shl.7 = shl i32 %.3112, 2
   %imad_add.55 = add i32 %imad_shl.7, 0
   store i32 %imad_add.55, ptr %R0, align 4
-  %.2992 = load i32, ptr %R0, align 4
-  %.2993 = load i32, ptr %R15, align 4
-  %.2995 = or i32 %.2992, -2147483648
-  %.2996 = or i32 %.2992, %.2993
-  %.2997 = and i32 %.2995, %.2996
-  store i32 %.2997, ptr %R0, align 4
+  %.3117 = load i32, ptr %R0, align 4
+  %.3118 = load i32, ptr %R15, align 4
+  %.3120 = or i32 %.3117, -2147483648
+  %.3121 = or i32 %.3117, %.3118
+  %.3122 = and i32 %.3120, %.3121
+  store i32 %.3122, ptr %R0, align 4
   br label %.L_x_20...2
 
 .L_x_23...2:                                      ; preds = %.L_x_21...2
-  %.3002 = load i32, ptr %R15, align 4
-  %sint_to_f32.4 = sitofp i32 %.3002 to float
-  %.3003 = fdiv float 1.000000e+00, %sint_to_f32.4
-  %.3004 = fptosi float %.3003 to i32
-  store i32 %.3004, ptr %R0, align 4
+  %.3127 = load i32, ptr %R15, align 4
+  %sint_to_f32.4 = sitofp i32 %.3127 to float
+  %.3128 = fdiv float 1.000000e+00, %sint_to_f32.4
+  %.3129 = fptosi float %.3128 to i32
+  store i32 %.3129, ptr %R0, align 4
   br label %.L_x_20...2
 
 .L_x_20...2:                                      ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...2", %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...2, %.L_x_23...2
-  %.3010 = load i32, ptr %R14, align 4
-  store i32 %.3010, ptr %R8, align 4
+  %.3135 = load i32, ptr %R14, align 4
+  store i32 %.3135, ptr %R8, align 4
   %imad_mul.48 = mul i32 0, 0
   %imad_add.56 = add i32 %imad_mul.48, 0
   store i32 %imad_add.56, ptr %R9, align 4
-  %.3020 = load i32, ptr %R0, align 4
+  %.3145 = load i32, ptr %R0, align 4
   %imad_mul.49 = mul i32 0, 0
-  %imad_add.57 = add i32 %imad_mul.49, %.3020
+  %imad_add.57 = add i32 %imad_mul.49, %.3145
   store i32 %imad_add.57, ptr %R7, align 4
   br label %.L_x_11
 
 .L_x_12:                                          ; preds = %.L_x_8
-  %.3025 = load float, ptr %R2, align 4
-  %.3026 = fdiv float 1.000000e+00, %.3025
-  %.3027 = bitcast ptr %R7 to ptr
-  store float %.3026, ptr %.3027, align 4
-  %.3030 = load float, ptr %R2, align 4
-  %.3031 = load float, ptr %R7, align 4
-  %fmul.88 = fmul float %.3030, %.3031
+  %.3150 = load float, ptr %R2, align 4
+  %.3151 = fdiv float 1.000000e+00, %.3150
+  %.3152 = bitcast ptr %R7 to ptr
+  store float %.3151, ptr %.3152, align 4
+  %.3155 = load float, ptr %R2, align 4
+  %.3156 = load float, ptr %R7, align 4
+  %fmul.88 = fmul float %.3155, %.3156
   %fadd.100 = fadd float %fmul.88, -1.000000e+00
-  %.3032 = bitcast ptr %R0 to ptr
-  store float %fadd.100, ptr %.3032, align 4
-  %.3035 = load float, ptr %R0, align 4
-  %.3036 = fneg float %.3035
-  %fadd.101 = fadd float %.3036, 0.000000e+00
-  %.3037 = bitcast ptr %R0 to ptr
-  store float %fadd.101, ptr %.3037, align 4
-  %.3040 = load float, ptr %R7, align 4
-  %.3041 = load float, ptr %R0, align 4
-  %.3042 = load float, ptr %R7, align 4
-  %fmul.89 = fmul float %.3040, %.3041
-  %fadd.102 = fadd float %fmul.89, %.3042
-  %.3043 = bitcast ptr %R7 to ptr
-  store float %fadd.102, ptr %.3043, align 4
+  %.3157 = bitcast ptr %R0 to ptr
+  store float %fadd.100, ptr %.3157, align 4
+  %.3160 = load float, ptr %R0, align 4
+  %.3161 = fneg float %.3160
+  %.3162 = call float @llvm.fabs.f32(float %.3161)
+  %.3163 = fcmp ogt float %.3162, 0.000000e+00
+  %.3164 = fcmp olt float %.3162, 0x3810000000000000
+  %.3165 = and i1 %.3163, %.3164
+  %.3166 = select i1 %.3165, float 0.000000e+00, float %.3161
+  %.3167 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.3168 = fcmp ogt float %.3167, 0.000000e+00
+  %.3169 = fcmp olt float %.3167, 0x3810000000000000
+  %.3170 = and i1 %.3168, %.3169
+  %.3171 = select i1 %.3170, float 0.000000e+00, float 0.000000e+00
+  %fadd.101 = fadd float %.3166, %.3171
+  %.3172 = call float @llvm.fabs.f32(float %fadd.101)
+  %.3173 = fcmp ogt float %.3172, 0.000000e+00
+  %.3174 = fcmp olt float %.3172, 0x3810000000000000
+  %.3175 = and i1 %.3173, %.3174
+  %.3176 = select i1 %.3175, float 0.000000e+00, float %fadd.101
+  %.3177 = bitcast ptr %R0 to ptr
+  store float %.3176, ptr %.3177, align 4
+  %.3180 = load float, ptr %R7, align 4
+  %.3181 = load float, ptr %R0, align 4
+  %.3182 = load float, ptr %R7, align 4
+  %fmul.89 = fmul float %.3180, %.3181
+  %fadd.102 = fadd float %fmul.89, %.3182
+  %.3183 = bitcast ptr %R7 to ptr
+  store float %fadd.102, ptr %.3183, align 4
   br label %.L_x_11
 
 .L_x_11:                                          ; preds = %.L_x_20...2, %.L_x_12
-  %.3049 = load float, ptr %R7, align 4
-  %.3050 = load float, ptr %R10, align 4
-  %.3051 = load float, ptr %R4, align 4
-  %fmul.90 = fmul float %.3049, %.3050
-  %fadd.103 = fadd float %fmul.90, %.3051
-  %.3052 = bitcast ptr %R9 to ptr
-  store float %fadd.103, ptr %.3052, align 4
-  %.3057 = load float, ptr %R9, align 4
-  %llvm_fabs_result.3 = call float @llvm.fabs.f32(float %.3057)
+  %.3189 = load float, ptr %R7, align 4
+  %.3190 = load float, ptr %R10, align 4
+  %.3191 = load float, ptr %R4, align 4
+  %fmul.90 = fmul float %.3189, %.3190
+  %fadd.103 = fadd float %fmul.90, %.3191
+  %.3192 = bitcast ptr %R9 to ptr
+  store float %fadd.103, ptr %.3192, align 4
+  %.3197 = load float, ptr %R9, align 4
+  %llvm_fabs_result.3 = call float @llvm.fabs.f32(float %.3197)
   %fcmp_unordered.2 = fcmp oge float %llvm_fabs_result.3, 0x3FE3333340000000
-  %.3060 = and i1 %fcmp_unordered.2, true
-  %.3065 = icmp ne i1 %.3060, true
-  br i1 %.3065, label %.L_x_15, label %.L_x_11_split_0x16d0
+  %.3200 = and i1 %fcmp_unordered.2, true
+  %.3205 = icmp ne i1 %.3200, true
+  br i1 %.3205, label %.L_x_15, label %.L_x_11_split_0x16d0
 
 .L_x_11_split_0x16d0:                             ; preds = %.L_x_11
-  %.3068 = load float, ptr %R9, align 4
-  %llvm_fabs_result.4 = call float @llvm.fabs.f32(float %.3068)
+  %.3208 = load float, ptr %R9, align 4
+  %llvm_fabs_result.4 = call float @llvm.fabs.f32(float %.3208)
   %fmul.91 = fmul float %llvm_fabs_result.4, 0x4007154760000000
-  %.3069 = bitcast ptr %R0 to ptr
-  store float %fmul.91, ptr %.3069, align 4
-  %.3072 = bitcast ptr %R7 to ptr
-  store float 0x41CFC00000000000, ptr %.3072, align 4
-  %.3075 = load float, ptr %R9, align 4
-  %llvm_fabs_result.5 = call float @llvm.fabs.f32(float %.3075)
+  %.3209 = bitcast ptr %R0 to ptr
+  store float %fmul.91, ptr %.3209, align 4
+  %.3212 = bitcast ptr %R7 to ptr
+  store float 0x41CFC00000000000, ptr %.3212, align 4
+  %.3215 = load float, ptr %R9, align 4
+  %llvm_fabs_result.5 = call float @llvm.fabs.f32(float %.3215)
   %fcmp_unordered.3 = fcmp oge float %llvm_fabs_result.5, 0x4022059680000000
-  %.3078 = and i1 %fcmp_unordered.3, true
-  %.3082 = load float, ptr %R0, align 4
-  %llvm_exp2_f32_result.4 = call float @llvm.exp2.f32(float %.3082)
-  %.3083 = bitcast ptr %R0 to ptr
-  store float %llvm_exp2_f32_result.4, ptr %.3083, align 4
-  %.3086 = load float, ptr %R0, align 4
-  %fadd.104 = fadd float %.3086, 1.000000e+00
-  %.3087 = bitcast ptr %R2 to ptr
-  store float %fadd.104, ptr %.3087, align 4
-  %.3090 = load float, ptr %R2, align 4
-  %.3091 = fdiv float 1.000000e+00, %.3090
-  %.3092 = bitcast ptr %R2 to ptr
-  store float %.3091, ptr %.3092, align 4
-  %.3095 = load float, ptr %R2, align 4
-  %.3096 = load float, ptr %R7, align 4
-  %fmul.92 = fmul float %.3095, -2.000000e+00
-  %fadd.105 = fadd float %fmul.92, %.3096
-  %.3097 = bitcast ptr %R4 to ptr
-  store float %fadd.105, ptr %.3097, align 4
-  %.3100 = load float, ptr %R4, align 4
-  %.3102 = xor i1 %.3078, true
-  %.3103 = icmp eq i1 %.3102, true
-  %fsel.1 = select i1 %.3103, float %.3100, float 1.000000e+00
-  %.3104 = bitcast ptr %R4 to ptr
-  store float %fsel.1, ptr %.3104, align 4
-  %.3107 = load i32, ptr %R4, align 4
-  %.3108 = load i32, ptr %R9, align 4
-  %.3110 = or i32 %.3107, -2147483648
-  %.3111 = or i32 %.3107, %.3108
-  %.3112 = and i32 %.3110, %.3111
-  store i32 %.3112, ptr %R7, align 4
+  %.3218 = and i1 %fcmp_unordered.3, true
+  %.3222 = load float, ptr %R0, align 4
+  %llvm_exp2_f32_result.4 = call float @llvm.exp2.f32(float %.3222)
+  %.3223 = bitcast ptr %R0 to ptr
+  store float %llvm_exp2_f32_result.4, ptr %.3223, align 4
+  %.3226 = load float, ptr %R0, align 4
+  %fadd.104 = fadd float %.3226, 1.000000e+00
+  %.3227 = bitcast ptr %R2 to ptr
+  store float %fadd.104, ptr %.3227, align 4
+  %.3230 = load float, ptr %R2, align 4
+  %.3231 = fdiv float 1.000000e+00, %.3230
+  %.3232 = bitcast ptr %R2 to ptr
+  store float %.3231, ptr %.3232, align 4
+  %.3235 = load float, ptr %R2, align 4
+  %.3236 = load float, ptr %R7, align 4
+  %fmul.92 = fmul float %.3235, -2.000000e+00
+  %fadd.105 = fadd float %fmul.92, %.3236
+  %.3237 = bitcast ptr %R4 to ptr
+  store float %fadd.105, ptr %.3237, align 4
+  %.3240 = load float, ptr %R4, align 4
+  %.3242 = xor i1 %.3218, true
+  %.3243 = icmp eq i1 %.3242, true
+  %fsel.1 = select i1 %.3243, float %.3240, float 1.000000e+00
+  %.3244 = bitcast ptr %R4 to ptr
+  store float %fsel.1, ptr %.3244, align 4
+  %.3247 = load i32, ptr %R4, align 4
+  %.3248 = load i32, ptr %R9, align 4
+  %.3250 = or i32 %.3247, -2147483648
+  %.3251 = or i32 %.3247, %.3248
+  %.3252 = and i32 %.3250, %.3251
+  store i32 %.3252, ptr %R7, align 4
   br label %.L_x_14
 
 .L_x_15:                                          ; preds = %.L_x_11
   %imad_mul.50 = mul i32 0, 0
   %imad_add.58 = add i32 %imad_mul.50, 1015083138
   store i32 %imad_add.58, ptr %R7, align 4
-  %.3119 = load float, ptr %R9, align 4
-  %.3120 = load float, ptr %R9, align 4
-  %fmul.93 = fmul float %.3119, %.3120
-  %.3121 = bitcast ptr %R0 to ptr
-  store float %fmul.93, ptr %.3121, align 4
-  %.3124 = load float, ptr %R0, align 4
-  %.3125 = load float, ptr %R7, align 4
-  %fmul.94 = fmul float %.3124, %.3125
+  %.3259 = load float, ptr %R9, align 4
+  %.3260 = load float, ptr %R9, align 4
+  %fmul.93 = fmul float %.3259, %.3260
+  %.3261 = bitcast ptr %R0 to ptr
+  store float %fmul.93, ptr %.3261, align 4
+  %.3264 = load float, ptr %R0, align 4
+  %.3265 = load float, ptr %R7, align 4
+  %fmul.94 = fmul float %.3264, %.3265
   %fadd.106 = fadd float %fmul.94, 0xBFAAC795C0000000
-  %.3126 = bitcast ptr %R7 to ptr
-  store float %fadd.106, ptr %.3126, align 4
-  %.3129 = load float, ptr %R0, align 4
-  %.3130 = load float, ptr %R7, align 4
-  %fmul.95 = fmul float %.3129, %.3130
+  %.3266 = bitcast ptr %R7 to ptr
+  store float %fadd.106, ptr %.3266, align 4
+  %.3269 = load float, ptr %R0, align 4
+  %.3270 = load float, ptr %R7, align 4
+  %fmul.95 = fmul float %.3269, %.3270
   %fadd.107 = fadd float %fmul.95, 0x3FC10B2820000000
-  %.3131 = bitcast ptr %R7 to ptr
-  store float %fadd.107, ptr %.3131, align 4
-  %.3134 = load float, ptr %R0, align 4
-  %.3135 = load float, ptr %R7, align 4
-  %fmul.96 = fmul float %.3134, %.3135
+  %.3271 = bitcast ptr %R7 to ptr
+  store float %fadd.107, ptr %.3271, align 4
+  %.3274 = load float, ptr %R0, align 4
+  %.3275 = load float, ptr %R7, align 4
+  %fmul.96 = fmul float %.3274, %.3275
   %fadd.108 = fadd float %fmul.96, 0xBFD5553DA0000000
-  %.3136 = bitcast ptr %R7 to ptr
-  store float %fadd.108, ptr %.3136, align 4
-  %.3139 = load float, ptr %R0, align 4
-  %.3140 = load float, ptr %R7, align 4
-  %fmul.97 = fmul float %.3139, %.3140
+  %.3276 = bitcast ptr %R7 to ptr
+  store float %fadd.108, ptr %.3276, align 4
+  %.3279 = load float, ptr %R0, align 4
+  %.3280 = load float, ptr %R7, align 4
+  %fmul.97 = fmul float %.3279, %.3280
   %fadd.109 = fadd float %fmul.97, 0.000000e+00
-  %.3141 = bitcast ptr %R7 to ptr
-  store float %fadd.109, ptr %.3141, align 4
-  %.3144 = load float, ptr %R9, align 4
-  %.3145 = load float, ptr %R7, align 4
-  %.3146 = load float, ptr %R9, align 4
-  %fmul.98 = fmul float %.3144, %.3145
-  %fadd.110 = fadd float %fmul.98, %.3146
-  %.3147 = bitcast ptr %R7 to ptr
-  store float %fadd.110, ptr %.3147, align 4
+  %.3281 = bitcast ptr %R7 to ptr
+  store float %fadd.109, ptr %.3281, align 4
+  %.3284 = load float, ptr %R9, align 4
+  %.3285 = load float, ptr %R7, align 4
+  %.3286 = load float, ptr %R9, align 4
+  %fmul.98 = fmul float %.3284, %.3285
+  %fadd.110 = fadd float %fmul.98, %.3286
+  %.3287 = bitcast ptr %R7 to ptr
+  store float %fadd.110, ptr %.3287, align 4
   br label %.L_x_14
 
 .L_x_14:                                          ; preds = %.L_x_11_split_0x16d0, %.L_x_15
-  %.3153 = load i32, ptr %R5, align 4
-  %.3154 = add i32 %.3153, 25165824
-  %.3155 = add i32 %.3154, 0
-  store i32 %.3155, ptr %R0, align 4
-  %.3158 = ptrtoint ptr %Arg_8 to i64
-  %trunc32.60 = trunc i64 %.3158 to i32
-  %.3165 = load i32, ptr %R3, align 4
-  %zext.193 = zext i32 %.3165 to i64
+  %.3293 = load i32, ptr %R5, align 4
+  %.3294 = add i32 %.3293, 25165824
+  %.3295 = add i32 %.3294, 0
+  store i32 %.3295, ptr %R0, align 4
+  %.3298 = ptrtoint ptr %Arg_8 to i64
+  %trunc32.60 = trunc i64 %.3298 to i32
+  %.3305 = load i32, ptr %R3, align 4
+  %zext.193 = zext i32 %.3305 to i64
   %zext.194 = zext i32 %imad_add.41 to i64
   %zext.195 = zext i32 2 to i64
   %shl.102 = shl i64 %zext.193, 32
@@ -3678,9 +3818,9 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %lshr.16 = lshr i64 %shl.103, 32
   %trunc32.61 = trunc i64 %lshr.16 to i32
   store i32 %trunc32.61, ptr %R3, align 4
-  %.3170 = load i32, ptr %R0, align 4
-  %.3172 = and i32 %.3170, 2139095040
-  store i32 %.3172, ptr %R0, align 4
+  %.3310 = load i32, ptr %R0, align 4
+  %.3312 = and i32 %.3310, 2139095040
+  store i32 %.3312, ptr %R0, align 4
   %zext.196 = zext i32 0 to i64
   %zext.197 = zext i32 %imad_add.41 to i64
   %zext.198 = zext i32 2 to i64
@@ -3690,33 +3830,33 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %and.11 = and i64 %shl.105, 4294967295
   %trunc32.62 = trunc i64 %and.11 to i32
   store i32 %trunc32.62, ptr %R2, align 4
-  %.3180 = load i32, ptr %R0, align 4
-  %cmp.18 = icmp sgt i32 %.3180, 33554431
-  %.3183 = and i1 %cmp.18, true
-  %.3187 = load float, ptr %R9, align 4
-  %.3188 = load i32, ptr %R2, align 4
-  %zext.199 = zext i32 %.3188 to i64
-  %.3189 = load i32, ptr %R3, align 4
-  %zext.200 = zext i32 %.3189 to i64
+  %.3320 = load i32, ptr %R0, align 4
+  %cmp.18 = icmp sgt i32 %.3320, 33554431
+  %.3323 = and i1 %cmp.18, true
+  %.3327 = load float, ptr %R9, align 4
+  %.3328 = load i32, ptr %R2, align 4
+  %zext.199 = zext i32 %.3328 to i64
+  %.3329 = load i32, ptr %R3, align 4
+  %zext.200 = zext i32 %.3329 to i64
   %shl.106 = shl i64 %zext.200, 32
   %or.86 = or i64 %shl.106, %zext.199
   %sext_UR4.4 = sext i32 %trunc32.60 to i64
   %base_plus_reg_offset.4 = add i64 %or.86, %sext_UR4.4
   %inttoptr_bytes.59 = inttoptr i64 %base_plus_reg_offset.4 to ptr addrspace(1)
   %ptr_cast_for_access.59 = bitcast ptr addrspace(1) %inttoptr_bytes.59 to ptr addrspace(1)
-  store float %.3187, ptr addrspace(1) %ptr_cast_for_access.59, align 4
-  %.3193 = icmp eq i1 %.3183, true
-  br i1 %.3193, label %.L_x_18, label %.L_x_14_split_0x1890_CALL_0x18c0
+  store float %.3327, ptr addrspace(1) %ptr_cast_for_access.59, align 4
+  %.3333 = icmp eq i1 %.3323, true
+  br i1 %.3333, label %.L_x_18, label %.L_x_14_split_0x1890_CALL_0x18c0
 
 .L_x_14_split_0x1890_CALL_0x18c0:                 ; preds = %.L_x_14
-  %.3196 = load i32, ptr %R5, align 4
+  %.3336 = load i32, ptr %R5, align 4
   %imad_mul.51 = mul i32 0, 0
-  %imad_add.59 = add i32 %imad_mul.51, %.3196
+  %imad_add.59 = add i32 %imad_mul.51, %.3336
   store i32 %imad_add.59, ptr %R15, align 4
   store i32 6336, ptr %R14, align 4
-  %.3204 = load i32, ptr %R15, align 4
+  %.3344 = load i32, ptr %R15, align 4
   %zext.201 = zext i32 0 to i64
-  %zext.202 = zext i32 %.3204 to i64
+  %zext.202 = zext i32 %.3344 to i64
   %zext.203 = zext i32 1 to i64
   %shl.107 = shl i64 %zext.201, 32
   %or.87 = or i64 %shl.107, %zext.202
@@ -3724,8 +3864,8 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %and.12 = and i64 %shl.108, 4294967295
   %trunc32.63 = trunc i64 %and.12 to i32
   store i32 %trunc32.63, ptr %R0, align 4
-  %.3210 = load i32, ptr %R0, align 4
-  %zext.204 = zext i32 %.3210 to i64
+  %.3350 = load i32, ptr %R0, align 4
+  %zext.204 = zext i32 %.3350 to i64
   %zext.205 = zext i32 0 to i64
   %zext.206 = zext i32 24 to i64
   %shl.109 = shl i64 %zext.204, 32
@@ -3734,371 +3874,441 @@ Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii:
   %lshr.18 = lshr i64 %lshr.17, 32
   %trunc32.64 = trunc i64 %lshr.18 to i32
   store i32 %trunc32.64, ptr %R16, align 4
-  %.3213 = load i32, ptr %R16, align 4
-  %cmp.19 = icmp ne i32 %.3213, 0
-  %.3216 = and i1 %cmp.19, true
-  %.3221 = icmp eq i1 %.3216, true
-  br i1 %.3221, label %.L_x_21...3, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3"
+  %.3353 = load i32, ptr %R16, align 4
+  %cmp.19 = icmp ne i32 %.3353, 0
+  %.3356 = and i1 %cmp.19, true
+  %.3361 = icmp eq i1 %.3356, true
+  br i1 %.3361, label %.L_x_21...3, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3": ; preds = %.L_x_14_split_0x1890_CALL_0x18c0
-  %.3224 = load i32, ptr %R15, align 4
-  %imad_shl.8 = shl i32 %.3224, 2
+  %.3364 = load i32, ptr %R15, align 4
+  %imad_shl.8 = shl i32 %.3364, 2
   %imad_add.60 = add i32 %imad_shl.8, 0
   store i32 %imad_add.60, ptr %R0, align 4
-  %.3227 = load i32, ptr %R0, align 4
-  %cmp.20 = icmp ne i32 %.3227, 0
-  %.3230 = and i1 %cmp.20, true
-  %.3235 = icmp eq i1 %.3230, true
-  br i1 %.3235, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3_conditionalExpr_0x19e0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...3"
+  %.3367 = load i32, ptr %R0, align 4
+  %cmp.20 = icmp ne i32 %.3367, 0
+  %.3370 = and i1 %cmp.20, true
+  %.3375 = icmp eq i1 %.3370, true
+  br i1 %.3375, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3_conditionalExpr_0x19e0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3_conditionalExpr_0x19e0": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3"
-  %.3238 = load float, ptr %R15, align 4
-  %fmul.99 = fmul float %.3238, 0x43F0000000000000
+  %.3378 = load float, ptr %R15, align 4
+  %fmul.99 = fmul float %.3378, 0x43F0000000000000
   %fadd.111 = fadd float %fmul.99, 0.000000e+00
-  %.3239 = bitcast ptr %R8 to ptr
-  store float %fadd.111, ptr %.3239, align 4
+  %.3379 = bitcast ptr %R8 to ptr
+  store float %fadd.111, ptr %.3379, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3_conditionalExpr_0x19e0", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0...3"
-  %.3244 = load float, ptr %R15, align 4
-  %fmul.100 = fmul float %.3244, 0x43F0000000000000
+  %.3384 = load float, ptr %R15, align 4
+  %fmul.100 = fmul float %.3384, 0x43F0000000000000
   %fadd.112 = fadd float %fmul.100, 0.000000e+00
-  %.3245 = bitcast ptr %R8 to ptr
-  store float %fadd.112, ptr %.3245, align 4
-  %.3251 = icmp ne i1 %.3230, true
-  br i1 %.3251, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...3_conditionalExpr_0x19f0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...3"
+  %.3385 = bitcast ptr %R8 to ptr
+  store float %fadd.112, ptr %.3385, align 4
+  %.3391 = icmp ne i1 %.3370, true
+  br i1 %.3391, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...3_conditionalExpr_0x19f0", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...3_conditionalExpr_0x19f0": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...3"
-  %.3254 = load i32, ptr %R15, align 4
-  %sint_to_f32.5 = sitofp i32 %.3254 to float
-  %.3255 = fdiv float 1.000000e+00, %sint_to_f32.5
-  %.3256 = fptosi float %.3255 to i32
-  store i32 %.3256, ptr %R0, align 4
+  %.3394 = load i32, ptr %R15, align 4
+  %sint_to_f32.5 = sitofp i32 %.3394 to float
+  %.3395 = fdiv float 1.000000e+00, %sint_to_f32.5
+  %.3396 = fptosi float %.3395 to i32
+  store i32 %.3396, ptr %R0, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0...3_conditionalExpr_0x19f0", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19c0_conditionalExpr_0x19e0...3"
-  %.3261 = load i32, ptr %R15, align 4
-  %sint_to_f32.6 = sitofp i32 %.3261 to float
-  %.3262 = fdiv float 1.000000e+00, %sint_to_f32.6
-  %.3263 = fptosi float %.3262 to i32
-  store i32 %.3263, ptr %R0, align 4
-  %.3269 = icmp eq i1 %.3230, true
-  br i1 %.3269, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...3_conditionalExpr_0x1a00", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...3"
+  %.3401 = load i32, ptr %R15, align 4
+  %sint_to_f32.6 = sitofp i32 %.3401 to float
+  %.3402 = fdiv float 1.000000e+00, %sint_to_f32.6
+  %.3403 = fptosi float %.3402 to i32
+  store i32 %.3403, ptr %R0, align 4
+  %.3409 = icmp eq i1 %.3370, true
+  br i1 %.3409, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...3_conditionalExpr_0x1a00", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...3_conditionalExpr_0x1a00": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...3"
-  %.3272 = load float, ptr %R8, align 4
-  %.3273 = fdiv float 1.000000e+00, %.3272
-  %.3274 = bitcast ptr %R9 to ptr
-  store float %.3273, ptr %.3274, align 4
+  %.3412 = load float, ptr %R8, align 4
+  %.3413 = fdiv float 1.000000e+00, %.3412
+  %.3414 = bitcast ptr %R9 to ptr
+  store float %.3413, ptr %.3414, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00...3_conditionalExpr_0x1a00", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x19f0_conditionalExpr_0x19f0...3"
-  %.3279 = load float, ptr %R8, align 4
-  %.3280 = fdiv float 1.000000e+00, %.3279
-  %.3281 = bitcast ptr %R9 to ptr
-  store float %.3280, ptr %.3281, align 4
-  %.3287 = icmp eq i1 %.3230, true
-  br i1 %.3287, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...3_conditionalExpr_0x1a10", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...3"
+  %.3419 = load float, ptr %R8, align 4
+  %.3420 = fdiv float 1.000000e+00, %.3419
+  %.3421 = bitcast ptr %R9 to ptr
+  store float %.3420, ptr %.3421, align 4
+  %.3427 = icmp eq i1 %.3370, true
+  br i1 %.3427, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...3_conditionalExpr_0x1a10", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...3_conditionalExpr_0x1a10": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...3"
-  %.3290 = load float, ptr %R8, align 4
-  %.3291 = load float, ptr %R9, align 4
-  %fmul.101 = fmul float %.3290, %.3291
+  %.3430 = load float, ptr %R8, align 4
+  %.3431 = load float, ptr %R9, align 4
+  %fmul.101 = fmul float %.3430, %.3431
   %fadd.113 = fadd float %fmul.101, -1.000000e+00
-  %.3292 = bitcast ptr %R11 to ptr
-  store float %fadd.113, ptr %.3292, align 4
+  %.3432 = bitcast ptr %R11 to ptr
+  store float %fadd.113, ptr %.3432, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10...3_conditionalExpr_0x1a10", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a00_conditionalExpr_0x1a00...3"
-  %.3297 = load float, ptr %R8, align 4
-  %.3298 = load float, ptr %R9, align 4
-  %fmul.102 = fmul float %.3297, %.3298
+  %.3437 = load float, ptr %R8, align 4
+  %.3438 = load float, ptr %R9, align 4
+  %fmul.102 = fmul float %.3437, %.3438
   %fadd.114 = fadd float %fmul.102, -1.000000e+00
-  %.3299 = bitcast ptr %R11 to ptr
-  store float %fadd.114, ptr %.3299, align 4
-  %.3305 = icmp eq i1 %.3230, true
-  br i1 %.3305, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...3_conditionalExpr_0x1a20", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...3"
+  %.3439 = bitcast ptr %R11 to ptr
+  store float %fadd.114, ptr %.3439, align 4
+  %.3445 = icmp eq i1 %.3370, true
+  br i1 %.3445, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...3_conditionalExpr_0x1a20", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...3_conditionalExpr_0x1a20": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...3"
-  %.3308 = load float, ptr %R11, align 4
-  %.3309 = fneg float %.3308
-  %fadd.115 = fadd float %.3309, 0.000000e+00
-  %.3310 = bitcast ptr %R12 to ptr
-  store float %fadd.115, ptr %.3310, align 4
+  %.3448 = load float, ptr %R11, align 4
+  %.3449 = fneg float %.3448
+  %.3450 = call float @llvm.fabs.f32(float %.3449)
+  %.3451 = fcmp ogt float %.3450, 0.000000e+00
+  %.3452 = fcmp olt float %.3450, 0x3810000000000000
+  %.3453 = and i1 %.3451, %.3452
+  %.3454 = select i1 %.3453, float 0.000000e+00, float %.3449
+  %.3455 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.3456 = fcmp ogt float %.3455, 0.000000e+00
+  %.3457 = fcmp olt float %.3455, 0x3810000000000000
+  %.3458 = and i1 %.3456, %.3457
+  %.3459 = select i1 %.3458, float 0.000000e+00, float 0.000000e+00
+  %fadd.115 = fadd float %.3454, %.3459
+  %.3460 = call float @llvm.fabs.f32(float %fadd.115)
+  %.3461 = fcmp ogt float %.3460, 0.000000e+00
+  %.3462 = fcmp olt float %.3460, 0x3810000000000000
+  %.3463 = and i1 %.3461, %.3462
+  %.3464 = select i1 %.3463, float 0.000000e+00, float %fadd.115
+  %.3465 = bitcast ptr %R12 to ptr
+  store float %.3464, ptr %.3465, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20...3_conditionalExpr_0x1a20", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a10_conditionalExpr_0x1a10...3"
-  %.3315 = load float, ptr %R11, align 4
-  %.3316 = fneg float %.3315
-  %fadd.116 = fadd float %.3316, 0.000000e+00
-  %.3317 = bitcast ptr %R12 to ptr
-  store float %fadd.116, ptr %.3317, align 4
-  %.3323 = icmp eq i1 %.3230, true
-  br i1 %.3323, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...3_conditionalExpr_0x1a30", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...3"
+  %.3470 = load float, ptr %R11, align 4
+  %.3471 = fneg float %.3470
+  %.3472 = call float @llvm.fabs.f32(float %.3471)
+  %.3473 = fcmp ogt float %.3472, 0.000000e+00
+  %.3474 = fcmp olt float %.3472, 0x3810000000000000
+  %.3475 = and i1 %.3473, %.3474
+  %.3476 = select i1 %.3475, float 0.000000e+00, float %.3471
+  %.3477 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.3478 = fcmp ogt float %.3477, 0.000000e+00
+  %.3479 = fcmp olt float %.3477, 0x3810000000000000
+  %.3480 = and i1 %.3478, %.3479
+  %.3481 = select i1 %.3480, float 0.000000e+00, float 0.000000e+00
+  %fadd.116 = fadd float %.3476, %.3481
+  %.3482 = call float @llvm.fabs.f32(float %fadd.116)
+  %.3483 = fcmp ogt float %.3482, 0.000000e+00
+  %.3484 = fcmp olt float %.3482, 0x3810000000000000
+  %.3485 = and i1 %.3483, %.3484
+  %.3486 = select i1 %.3485, float 0.000000e+00, float %fadd.116
+  %.3487 = bitcast ptr %R12 to ptr
+  store float %.3486, ptr %.3487, align 4
+  %.3493 = icmp eq i1 %.3370, true
+  br i1 %.3493, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...3_conditionalExpr_0x1a30", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...3_conditionalExpr_0x1a30": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...3"
-  %.3326 = load float, ptr %R9, align 4
-  %.3327 = load float, ptr %R12, align 4
-  %.3328 = load float, ptr %R9, align 4
-  %fmul.103 = fmul float %.3326, %.3327
-  %fadd.117 = fadd float %fmul.103, %.3328
-  %.3329 = bitcast ptr %R12 to ptr
-  store float %fadd.117, ptr %.3329, align 4
+  %.3496 = load float, ptr %R9, align 4
+  %.3497 = load float, ptr %R12, align 4
+  %.3498 = load float, ptr %R9, align 4
+  %fmul.103 = fmul float %.3496, %.3497
+  %fadd.117 = fadd float %fmul.103, %.3498
+  %.3499 = bitcast ptr %R12 to ptr
+  store float %fadd.117, ptr %.3499, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30...3_conditionalExpr_0x1a30", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a20_conditionalExpr_0x1a20...3"
-  %.3334 = load float, ptr %R9, align 4
-  %.3335 = load float, ptr %R12, align 4
-  %.3336 = load float, ptr %R9, align 4
-  %fmul.104 = fmul float %.3334, %.3335
-  %fadd.118 = fadd float %fmul.104, %.3336
-  %.3337 = bitcast ptr %R12 to ptr
-  store float %fadd.118, ptr %.3337, align 4
-  %.3343 = icmp eq i1 %.3230, true
-  br i1 %.3343, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...3_conditionalExpr_0x1a40", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...3"
+  %.3504 = load float, ptr %R9, align 4
+  %.3505 = load float, ptr %R12, align 4
+  %.3506 = load float, ptr %R9, align 4
+  %fmul.104 = fmul float %.3504, %.3505
+  %fadd.118 = fadd float %fmul.104, %.3506
+  %.3507 = bitcast ptr %R12 to ptr
+  store float %fadd.118, ptr %.3507, align 4
+  %.3513 = icmp eq i1 %.3370, true
+  br i1 %.3513, label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...3_conditionalExpr_0x1a40", label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...3_conditionalExpr_0x1a40": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...3"
-  %.3346 = load float, ptr %R12, align 4
-  %fmul.105 = fmul float %.3346, 0x43F0000000000000
+  %.3516 = load float, ptr %R12, align 4
+  %fmul.105 = fmul float %.3516, 0x43F0000000000000
   %fadd.119 = fadd float %fmul.105, 0.000000e+00
-  %.3347 = bitcast ptr %R0 to ptr
-  store float %fadd.119, ptr %.3347, align 4
+  %.3517 = bitcast ptr %R0 to ptr
+  store float %fadd.119, ptr %.3517, align 4
   br label %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...3"
 
 "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...3": ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40...3_conditionalExpr_0x1a40", %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a30_conditionalExpr_0x1a30...3"
-  %.3352 = load float, ptr %R12, align 4
-  %fmul.106 = fmul float %.3352, 0x43F0000000000000
+  %.3522 = load float, ptr %R12, align 4
+  %fmul.106 = fmul float %.3522, 0x43F0000000000000
   %fadd.120 = fadd float %fmul.106, 0.000000e+00
-  %.3353 = bitcast ptr %R0 to ptr
-  store float %fadd.120, ptr %.3353, align 4
+  %.3523 = bitcast ptr %R0 to ptr
+  store float %fadd.120, ptr %.3523, align 4
   br label %.L_x_20...3
 
 .L_x_21...3:                                      ; preds = %.L_x_14_split_0x1890_CALL_0x18c0
-  %.3360 = load i32, ptr %R16, align 4
-  %.3361 = add i32 %.3360, -253
-  %.3362 = add i32 %.3361, 0
-  store i32 %.3362, ptr %R18, align 4
-  %.3365 = load i32, ptr %R18, align 4
-  %cmp.21 = icmp sgt i32 %.3365, 1
-  %.3368 = and i1 %cmp.21, true
-  %.3373 = icmp eq i1 %.3368, true
-  br i1 %.3373, label %.L_x_23...3, label %.L_x_21_split_0x1a90...3
+  %.3530 = load i32, ptr %R16, align 4
+  %.3531 = add i32 %.3530, -253
+  %.3532 = add i32 %.3531, 0
+  store i32 %.3532, ptr %R18, align 4
+  %.3535 = load i32, ptr %R18, align 4
+  %cmp.21 = icmp sgt i32 %.3535, 1
+  %.3538 = and i1 %cmp.21, true
+  %.3543 = icmp eq i1 %.3538, true
+  br i1 %.3543, label %.L_x_23...3, label %.L_x_21_split_0x1a90...3
 
 .L_x_21_split_0x1a90...3:                         ; preds = %.L_x_21...3
-  %.3376 = load i32, ptr %R15, align 4
-  %.3378 = and i32 %.3376, 8388607
-  store i32 %.3378, ptr %R0, align 4
+  %.3546 = load i32, ptr %R15, align 4
+  %.3548 = and i32 %.3546, 8388607
+  store i32 %.3548, ptr %R0, align 4
   store i32 3, ptr %R13, align 4
-  %.3383 = load i32, ptr %R0, align 4
-  %.3385 = or i32 %.3383, 1065353216
-  store i32 %.3385, ptr %R0, align 4
-  %.3390 = load i32, ptr %R13, align 4
-  %.3391 = load i32, ptr %R18, align 4
+  %.3553 = load i32, ptr %R0, align 4
+  %.3555 = or i32 %.3553, 1065353216
+  store i32 %.3555, ptr %R0, align 4
+  %.3560 = load i32, ptr %R13, align 4
+  %.3561 = load i32, ptr %R18, align 4
   %zext.207 = zext i32 0 to i64
-  %zext.208 = zext i32 %.3390 to i64
-  %zext.209 = zext i32 %.3391 to i64
+  %zext.208 = zext i32 %.3560 to i64
+  %zext.209 = zext i32 %.3561 to i64
   %shl.110 = shl i64 %zext.207, 32
   %or.89 = or i64 %shl.110, %zext.208
   %shl.111 = shl i64 %or.89, %zext.209
   %and.13 = and i64 %shl.111, 4294967295
   %trunc32.65 = trunc i64 %and.13 to i32
   store i32 %trunc32.65, ptr %R13, align 4
-  %.3394 = load i32, ptr %R0, align 4
-  %sint_to_f32.7 = sitofp i32 %.3394 to float
-  %.3395 = fdiv float 1.000000e+00, %sint_to_f32.7
-  %.3396 = fptosi float %.3395 to i32
-  store i32 %.3396, ptr %R9, align 4
-  %.3399 = load float, ptr %R0, align 4
-  %.3400 = load float, ptr %R9, align 4
-  %fmul.107 = fmul float %.3399, %.3400
+  %.3564 = load i32, ptr %R0, align 4
+  %sint_to_f32.7 = sitofp i32 %.3564 to float
+  %.3565 = fdiv float 1.000000e+00, %sint_to_f32.7
+  %.3566 = fptosi float %.3565 to i32
+  store i32 %.3566, ptr %R9, align 4
+  %.3569 = load float, ptr %R0, align 4
+  %.3570 = load float, ptr %R9, align 4
+  %fmul.107 = fmul float %.3569, %.3570
   %fadd.121 = fadd float %fmul.107, -1.000000e+00
-  %.3401 = bitcast ptr %R8 to ptr
-  store float %fadd.121, ptr %.3401, align 4
-  %.3404 = load float, ptr %R8, align 4
-  %.3405 = fneg float %.3404
-  %fadd.122 = fadd float %.3405, 0.000000e+00
-  %.3406 = bitcast ptr %R8 to ptr
-  store float %fadd.122, ptr %.3406, align 4
-  %.3409 = load float, ptr %R9, align 4
-  %.3410 = load float, ptr %R8, align 4
-  %.3411 = load float, ptr %R9, align 4
-  %fmul.108 = fmul float %.3409, %.3410
-  %fadd.123 = fadd float %fmul.108, %.3411
-  %.3412 = bitcast ptr %R11 to ptr
-  store float %fadd.123, ptr %.3412, align 4
-  %.3415 = load float, ptr %R9, align 4
-  %.3416 = load float, ptr %R8, align 4
-  %.3417 = load float, ptr %R9, align 4
-  %fmul.109 = fmul float %.3415, %.3416
-  %fadd.124 = fadd float %fmul.109, %.3417
-  %.3418 = bitcast ptr %R12 to ptr
-  store float %fadd.124, ptr %.3418, align 4
-  %.3421 = load i32, ptr %R11, align 4
-  %.3423 = and i32 %.3421, 8388607
-  store i32 %.3423, ptr %R8, align 4
-  %.3426 = load float, ptr %R11, align 4
-  %.3427 = load float, ptr %R12, align 4
-  %fcmp_ordered.2 = fcmp une float %.3426, %.3427
-  %.3430 = and i1 %fcmp_ordered.2, true
-  %.3434 = load i32, ptr %R8, align 4
-  %.3436 = or i32 %.3434, 8388608
-  store i32 %.3436, ptr %R8, align 4
-  %.3440 = xor i1 %.3430, true
-  %.3441 = icmp eq i1 %.3440, true
-  %sel.4 = select i1 %.3441, i32 0, i32 -1
+  %.3571 = bitcast ptr %R8 to ptr
+  store float %fadd.121, ptr %.3571, align 4
+  %.3574 = load float, ptr %R8, align 4
+  %.3575 = fneg float %.3574
+  %.3576 = call float @llvm.fabs.f32(float %.3575)
+  %.3577 = fcmp ogt float %.3576, 0.000000e+00
+  %.3578 = fcmp olt float %.3576, 0x3810000000000000
+  %.3579 = and i1 %.3577, %.3578
+  %.3580 = select i1 %.3579, float 0.000000e+00, float %.3575
+  %.3581 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.3582 = fcmp ogt float %.3581, 0.000000e+00
+  %.3583 = fcmp olt float %.3581, 0x3810000000000000
+  %.3584 = and i1 %.3582, %.3583
+  %.3585 = select i1 %.3584, float 0.000000e+00, float 0.000000e+00
+  %fadd.122 = fadd float %.3580, %.3585
+  %.3586 = call float @llvm.fabs.f32(float %fadd.122)
+  %.3587 = fcmp ogt float %.3586, 0.000000e+00
+  %.3588 = fcmp olt float %.3586, 0x3810000000000000
+  %.3589 = and i1 %.3587, %.3588
+  %.3590 = select i1 %.3589, float 0.000000e+00, float %fadd.122
+  %.3591 = bitcast ptr %R8 to ptr
+  store float %.3590, ptr %.3591, align 4
+  %.3594 = load float, ptr %R9, align 4
+  %.3595 = load float, ptr %R8, align 4
+  %.3596 = load float, ptr %R9, align 4
+  %fmul.108 = fmul float %.3594, %.3595
+  %fadd.123 = fadd float %fmul.108, %.3596
+  %.3597 = bitcast ptr %R11 to ptr
+  store float %fadd.123, ptr %.3597, align 4
+  %.3600 = load float, ptr %R9, align 4
+  %.3601 = load float, ptr %R8, align 4
+  %.3602 = load float, ptr %R9, align 4
+  %fmul.109 = fmul float %.3600, %.3601
+  %fadd.124 = fadd float %fmul.109, %.3602
+  %.3603 = bitcast ptr %R12 to ptr
+  store float %fadd.124, ptr %.3603, align 4
+  %.3606 = load i32, ptr %R11, align 4
+  %.3608 = and i32 %.3606, 8388607
+  store i32 %.3608, ptr %R8, align 4
+  %.3611 = load float, ptr %R11, align 4
+  %.3612 = load float, ptr %R12, align 4
+  %.3614 = call float @llvm.fabs.f32(float %.3611)
+  %.3615 = fcmp ogt float %.3614, 0.000000e+00
+  %.3616 = fcmp olt float %.3614, 0x3810000000000000
+  %.3617 = and i1 %.3615, %.3616
+  %.3618 = select i1 %.3617, float 0.000000e+00, float %.3611
+  %.3619 = call float @llvm.fabs.f32(float %.3612)
+  %.3620 = fcmp ogt float %.3619, 0.000000e+00
+  %.3621 = fcmp olt float %.3619, 0x3810000000000000
+  %.3622 = and i1 %.3620, %.3621
+  %.3623 = select i1 %.3622, float 0.000000e+00, float %.3612
+  %fcmp_ordered.2 = fcmp une float %.3618, %.3623
+  %.3625 = and i1 %fcmp_ordered.2, true
+  %.3629 = load i32, ptr %R8, align 4
+  %.3631 = or i32 %.3629, 8388608
+  store i32 %.3631, ptr %R8, align 4
+  %.3635 = xor i1 %.3625, true
+  %.3636 = icmp eq i1 %.3635, true
+  %sel.4 = select i1 %.3636, i32 0, i32 -1
   store i32 %sel.4, ptr %R9, align 4
-  %.3444 = load i32, ptr %R13, align 4
-  %.3445 = load i32, ptr %R8, align 4
-  %.3447 = and i32 %.3444, %.3445
-  store i32 %.3447, ptr %R13, align 4
-  %.3450 = load i32, ptr %R9, align 4
-  %.3451 = sub i32 0, %.3450
+  %.3639 = load i32, ptr %R13, align 4
+  %.3640 = load i32, ptr %R8, align 4
+  %.3642 = and i32 %.3639, %.3640
+  store i32 %.3642, ptr %R13, align 4
+  %.3645 = load i32, ptr %R9, align 4
+  %.3646 = sub i32 0, %.3645
   %imad_mul.52 = mul i32 0, 0
-  %imad_add.61 = add i32 %imad_mul.52, %.3451
+  %imad_add.61 = add i32 %imad_mul.52, %.3646
   store i32 %imad_add.61, ptr %R9, align 4
-  %.3456 = load i32, ptr %R13, align 4
-  %.3457 = load i32, ptr %R18, align 4
-  %zext.210 = zext i32 %.3456 to i64
+  %.3651 = load i32, ptr %R13, align 4
+  %.3652 = load i32, ptr %R18, align 4
+  %zext.210 = zext i32 %.3651 to i64
   %zext.211 = zext i32 0 to i64
-  %zext.212 = zext i32 %.3457 to i64
+  %zext.212 = zext i32 %.3652 to i64
   %shl.112 = shl i64 %zext.210, 32
   %or.90 = or i64 %shl.112, %zext.211
   %lshr.19 = lshr i64 %or.90, %zext.212
   %lshr.20 = lshr i64 %lshr.19, 32
   %trunc32.66 = trunc i64 %lshr.20 to i32
   store i32 %trunc32.66, ptr %R13, align 4
-  %.3471 = load i32, ptr %R13, align 4
-  %.3473 = and i32 %.3471, 1
-  %.3475 = icmp ne i32 %.3473, 0
-  %.3485 = load i32, ptr %R16, align 4
-  %.3486 = add i32 %.3485, -252
-  %.3487 = add i32 %.3486, 0
-  store i32 %.3487, ptr %R9, align 4
-  %.3495 = load i32, ptr %R15, align 4
-  %.3497 = and i32 %.3495, 8388607
-  %.3499 = icmp ne i32 %.3497, 0
-  %.3503 = xor i1 %.3475, true
-  %.3504 = icmp eq i1 %.3503, true
-  %sel.5 = select i1 %.3504, i32 0, i32 1
+  %.3666 = load i32, ptr %R13, align 4
+  %.3668 = and i32 %.3666, 1
+  %.3670 = icmp ne i32 %.3668, 0
+  %.3680 = load i32, ptr %R16, align 4
+  %.3681 = add i32 %.3680, -252
+  %.3682 = add i32 %.3681, 0
+  store i32 %.3682, ptr %R9, align 4
+  %.3690 = load i32, ptr %R15, align 4
+  %.3692 = and i32 %.3690, 8388607
+  %.3694 = icmp ne i32 %.3692, 0
+  %.3698 = xor i1 %.3670, true
+  %.3699 = icmp eq i1 %.3698, true
+  %sel.5 = select i1 %.3699, i32 0, i32 1
   store i32 %sel.5, ptr %R0, align 4
-  %.3507 = load i32, ptr %R0, align 4
-  %.3508 = sub i32 0, %.3507
-  %.3509 = add i32 %.3508, 0
-  %.3510 = add i32 %.3509, 0
-  store i32 %.3510, ptr %R0, align 4
-  %.3513 = load i32, ptr %R0, align 4
-  %cmp.22 = icmp sge i32 %.3513, 0
-  %.3516 = and i1 %cmp.22, true
-  %.3522 = load i32, ptr %R8, align 4
-  %.3523 = load i32, ptr %R9, align 4
-  %zext.213 = zext i32 %.3522 to i64
+  %.3702 = load i32, ptr %R0, align 4
+  %.3703 = sub i32 0, %.3702
+  %.3704 = add i32 %.3703, 0
+  %.3705 = add i32 %.3704, 0
+  store i32 %.3705, ptr %R0, align 4
+  %.3708 = load i32, ptr %R0, align 4
+  %cmp.22 = icmp sge i32 %.3708, 0
+  %.3711 = and i1 %cmp.22, true
+  %.3717 = load i32, ptr %R8, align 4
+  %.3718 = load i32, ptr %R9, align 4
+  %zext.213 = zext i32 %.3717 to i64
   %zext.214 = zext i32 0 to i64
-  %zext.215 = zext i32 %.3523 to i64
+  %zext.215 = zext i32 %.3718 to i64
   %shl.113 = shl i64 %zext.213, 32
   %or.91 = or i64 %shl.113, %zext.214
   %lshr.21 = lshr i64 %or.91, %zext.215
   %lshr.22 = lshr i64 %lshr.21, 32
   %trunc32.67 = trunc i64 %lshr.22 to i32
   store i32 %trunc32.67, ptr %R0, align 4
-  %.3527 = icmp ne i1 %.3516, true
-  br i1 %.3527, label %.L_x_21_split_0x1a90...3_conditionalExpr_0x1c30, label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...3
+  %.3722 = icmp ne i1 %.3711, true
+  br i1 %.3722, label %.L_x_21_split_0x1a90...3_conditionalExpr_0x1c30, label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...3
 
 .L_x_21_split_0x1a90...3_conditionalExpr_0x1c30:  ; preds = %.L_x_21_split_0x1a90...3
-  %.3530 = load i32, ptr %R0, align 4
-  %.3531 = add i32 %.3530, 1
-  %.3532 = add i32 %.3531, 0
-  store i32 %.3532, ptr %R0, align 4
+  %.3725 = load i32, ptr %R0, align 4
+  %.3726 = add i32 %.3725, 1
+  %.3727 = add i32 %.3726, 0
+  store i32 %.3727, ptr %R0, align 4
   br label %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...3
 
 .L_x_21_split_0x1a90_conditionalExpr_0x1c30...3:  ; preds = %.L_x_21_split_0x1a90...3_conditionalExpr_0x1c30, %.L_x_21_split_0x1a90...3
-  %.3537 = load i32, ptr %R0, align 4
-  %.3538 = add i32 %.3537, 1
-  %.3539 = add i32 %.3538, 0
-  store i32 %.3539, ptr %R0, align 4
-  %.3545 = icmp ne i1 %.3499, true
-  br i1 %.3545, label %.L_x_21_split_0x1c40...3_conditionalExpr_0x1c40, label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...3
+  %.3732 = load i32, ptr %R0, align 4
+  %.3733 = add i32 %.3732, 1
+  %.3734 = add i32 %.3733, 0
+  store i32 %.3734, ptr %R0, align 4
+  %.3740 = icmp ne i1 %.3694, true
+  br i1 %.3740, label %.L_x_21_split_0x1c40...3_conditionalExpr_0x1c40, label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...3
 
 .L_x_21_split_0x1c40...3_conditionalExpr_0x1c40:  ; preds = %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...3
-  %.3548 = load i32, ptr %R0, align 4
-  %imad_shl.9 = shl i32 %.3548, 2
+  %.3743 = load i32, ptr %R0, align 4
+  %imad_shl.9 = shl i32 %.3743, 2
   %imad_add.62 = add i32 %imad_shl.9, 0
   store i32 %imad_add.62, ptr %R0, align 4
   br label %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...3
 
 .L_x_21_split_0x1c40_conditionalExpr_0x1c40...3:  ; preds = %.L_x_21_split_0x1c40...3_conditionalExpr_0x1c40, %.L_x_21_split_0x1a90_conditionalExpr_0x1c30...3
-  %.3553 = load i32, ptr %R0, align 4
-  %imad_shl.10 = shl i32 %.3553, 2
+  %.3748 = load i32, ptr %R0, align 4
+  %imad_shl.10 = shl i32 %.3748, 2
   %imad_add.63 = add i32 %imad_shl.10, 0
   store i32 %imad_add.63, ptr %R0, align 4
-  %.3558 = load i32, ptr %R0, align 4
-  %.3559 = load i32, ptr %R15, align 4
-  %.3561 = or i32 %.3558, -2147483648
-  %.3562 = or i32 %.3558, %.3559
-  %.3563 = and i32 %.3561, %.3562
-  store i32 %.3563, ptr %R0, align 4
+  %.3753 = load i32, ptr %R0, align 4
+  %.3754 = load i32, ptr %R15, align 4
+  %.3756 = or i32 %.3753, -2147483648
+  %.3757 = or i32 %.3753, %.3754
+  %.3758 = and i32 %.3756, %.3757
+  store i32 %.3758, ptr %R0, align 4
   br label %.L_x_20...3
 
 .L_x_23...3:                                      ; preds = %.L_x_21...3
-  %.3568 = load i32, ptr %R15, align 4
-  %sint_to_f32.8 = sitofp i32 %.3568 to float
-  %.3569 = fdiv float 1.000000e+00, %sint_to_f32.8
-  %.3570 = fptosi float %.3569 to i32
-  store i32 %.3570, ptr %R0, align 4
+  %.3763 = load i32, ptr %R15, align 4
+  %sint_to_f32.8 = sitofp i32 %.3763 to float
+  %.3764 = fdiv float 1.000000e+00, %sint_to_f32.8
+  %.3765 = fptosi float %.3764 to i32
+  store i32 %.3765, ptr %R0, align 4
   br label %.L_x_20...3
 
 .L_x_20...3:                                      ; preds = %"$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath_split_0x1a40_conditionalExpr_0x1a40...3", %.L_x_21_split_0x1c40_conditionalExpr_0x1c40...3, %.L_x_23...3
-  %.3576 = load i32, ptr %R14, align 4
-  store i32 %.3576, ptr %R8, align 4
+  %.3771 = load i32, ptr %R14, align 4
+  store i32 %.3771, ptr %R8, align 4
   %imad_mul.53 = mul i32 0, 0
   %imad_add.64 = add i32 %imad_mul.53, 0
   store i32 %imad_add.64, ptr %R9, align 4
   br label %.L_x_17
 
 .L_x_18:                                          ; preds = %.L_x_14
-  %.3588 = load float, ptr %R5, align 4
-  %.3589 = fdiv float 1.000000e+00, %.3588
-  %.3590 = bitcast ptr %R0 to ptr
-  store float %.3589, ptr %.3590, align 4
-  %.3593 = load float, ptr %R5, align 4
-  %.3594 = load float, ptr %R0, align 4
-  %fmul.110 = fmul float %.3593, %.3594
+  %.3783 = load float, ptr %R5, align 4
+  %.3784 = fdiv float 1.000000e+00, %.3783
+  %.3785 = bitcast ptr %R0 to ptr
+  store float %.3784, ptr %.3785, align 4
+  %.3788 = load float, ptr %R5, align 4
+  %.3789 = load float, ptr %R0, align 4
+  %fmul.110 = fmul float %.3788, %.3789
   %fadd.125 = fadd float %fmul.110, -1.000000e+00
-  %.3595 = bitcast ptr %R4 to ptr
-  store float %fadd.125, ptr %.3595, align 4
-  %.3598 = load float, ptr %R4, align 4
-  %.3599 = fneg float %.3598
-  %fadd.126 = fadd float %.3599, 0.000000e+00
-  %.3600 = bitcast ptr %R9 to ptr
-  store float %fadd.126, ptr %.3600, align 4
-  %.3603 = load float, ptr %R0, align 4
-  %.3604 = load float, ptr %R9, align 4
-  %.3605 = load float, ptr %R0, align 4
-  %fmul.111 = fmul float %.3603, %.3604
-  %fadd.127 = fadd float %fmul.111, %.3605
-  %.3606 = bitcast ptr %R0 to ptr
-  store float %fadd.127, ptr %.3606, align 4
+  %.3790 = bitcast ptr %R4 to ptr
+  store float %fadd.125, ptr %.3790, align 4
+  %.3793 = load float, ptr %R4, align 4
+  %.3794 = fneg float %.3793
+  %.3795 = call float @llvm.fabs.f32(float %.3794)
+  %.3796 = fcmp ogt float %.3795, 0.000000e+00
+  %.3797 = fcmp olt float %.3795, 0x3810000000000000
+  %.3798 = and i1 %.3796, %.3797
+  %.3799 = select i1 %.3798, float 0.000000e+00, float %.3794
+  %.3800 = call float @llvm.fabs.f32(float 0.000000e+00)
+  %.3801 = fcmp ogt float %.3800, 0.000000e+00
+  %.3802 = fcmp olt float %.3800, 0x3810000000000000
+  %.3803 = and i1 %.3801, %.3802
+  %.3804 = select i1 %.3803, float 0.000000e+00, float 0.000000e+00
+  %fadd.126 = fadd float %.3799, %.3804
+  %.3805 = call float @llvm.fabs.f32(float %fadd.126)
+  %.3806 = fcmp ogt float %.3805, 0.000000e+00
+  %.3807 = fcmp olt float %.3805, 0x3810000000000000
+  %.3808 = and i1 %.3806, %.3807
+  %.3809 = select i1 %.3808, float 0.000000e+00, float %fadd.126
+  %.3810 = bitcast ptr %R9 to ptr
+  store float %.3809, ptr %.3810, align 4
+  %.3813 = load float, ptr %R0, align 4
+  %.3814 = load float, ptr %R9, align 4
+  %.3815 = load float, ptr %R0, align 4
+  %fmul.111 = fmul float %.3813, %.3814
+  %fadd.127 = fadd float %fmul.111, %.3815
+  %.3816 = bitcast ptr %R0 to ptr
+  store float %fadd.127, ptr %.3816, align 4
   br label %.L_x_17
 
 .L_x_17:                                          ; preds = %.L_x_20...3, %.L_x_18
-  %.3612 = load float, ptr %R0, align 4
-  %.3613 = load float, ptr %R7, align 4
-  %fmul.112 = fmul float %.3612, %.3613
-  %.3614 = bitcast ptr %R7 to ptr
-  store float %fmul.112, ptr %.3614, align 4
-  %.3617 = ptrtoint ptr %Arg_7 to i64
-  %trunc32.69 = trunc i64 %.3617 to i32
-  %.3623 = load float, ptr %R7, align 4
-  %.3624 = load i32, ptr %R2, align 4
-  %zext.216 = zext i32 %.3624 to i64
-  %.3625 = load i32, ptr %R3, align 4
-  %zext.217 = zext i32 %.3625 to i64
+  %.3822 = load float, ptr %R0, align 4
+  %.3823 = load float, ptr %R7, align 4
+  %fmul.112 = fmul float %.3822, %.3823
+  %.3824 = bitcast ptr %R7 to ptr
+  store float %fmul.112, ptr %.3824, align 4
+  %.3827 = ptrtoint ptr %Arg_7 to i64
+  %trunc32.69 = trunc i64 %.3827 to i32
+  %.3833 = load float, ptr %R7, align 4
+  %.3834 = load i32, ptr %R2, align 4
+  %zext.216 = zext i32 %.3834 to i64
+  %.3835 = load i32, ptr %R3, align 4
+  %zext.217 = zext i32 %.3835 to i64
   %shl.114 = shl i64 %zext.217, 32
   %or.92 = or i64 %shl.114, %zext.216
   %sext_UR4.5 = sext i32 %trunc32.69 to i64
   %base_plus_reg_offset.5 = add i64 %or.92, %sext_UR4.5
   %inttoptr_bytes.60 = inttoptr i64 %base_plus_reg_offset.5 to ptr addrspace(1)
   %ptr_cast_for_access.60 = bitcast ptr addrspace(1) %inttoptr_bytes.60 to ptr addrspace(1)
-  store float %.3623, ptr addrspace(1) %ptr_cast_for_access.60, align 4
+  store float %.3833, ptr addrspace(1) %ptr_cast_for_access.60, align 4
   br label %ExitFunction
 
 ExitFunction:                                     ; preds = %Entry_.text._Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii, %.L_x_17

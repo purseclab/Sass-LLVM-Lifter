@@ -148,6 +148,35 @@ class Instruction:
     def dump(self):
         print(self.dump_text())
         
+    def apply_ftz(self, val, IRBuilder):
+        """
+        If value is subnormal, replace it with 0.0.
+        Logic: If (abs(val) > 0.0) AND (abs(val) < SmallestNormal), it is subnormal.
+        """
+        val_type = val.type
+        
+        if isinstance(val_type, llvmir.FloatType):
+            # Smallest positive normal float32: 1.17549435e-38
+            smallest_norm = llvmir.Constant(val_type, 1.17549435e-38)
+            zero = llvmir.Constant(val_type, 0.0)
+        elif isinstance(val_type, llvmir.DoubleType):
+            # Smallest positive normal float64: 2.2250738585072014e-308
+            smallest_norm = llvmir.Constant(val_type, 2.2250738585072014e-308)
+            zero = llvmir.Constant(val_type, 0.0)
+        else:
+            return val
+        
+        abs_val = IRBuilder.call(llvm_fabs(self.llvm_module), [val])
+
+        # check: 0.0 < abs_val < smallest_norm
+        is_not_zero = IRBuilder.fcmp_ordered('>', abs_val, zero)
+        is_tiny = IRBuilder.fcmp_ordered('<', abs_val, smallest_norm)
+        is_subnormal = IRBuilder.and_(is_not_zero, is_tiny)
+
+        # If subnormal, return 0.0, else return original
+        return IRBuilder.select(is_subnormal, zero, val)
+        
+    
     def __str__(self):
         operands = [str(ope) for ope in self.operands]
         
@@ -543,6 +572,9 @@ class Instruction:
                     tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
                 # tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             elif self.opcode == 'FSETP':
+                if settings["ftz"]:
+                    IRValOp1 = self.apply_ftz(IRValOp1, IRBuilder)
+                    IRValOp2 = self.apply_ftz(IRValOp2, IRBuilder)
                 if not settings["ordered"]:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
                     # une, ult, etc
@@ -839,6 +871,20 @@ class Instruction:
             ValOp2 = self.operands[2]
             
             assert len(self.operands) == 3
+            
+            settings = {
+                "ftz": False,
+            }
+            
+            for mod in self.modifiers:
+                if mod in ("FTZ"):
+                    settings[mod.lower()] = True
+                    continue
+                raise InvalidSyntaxException
+            
+            if settings["ftz"]:
+                assert self.opcode == "FADD"
+                # NOTE: We apply ftz to both the inputs and the output
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -849,7 +895,14 @@ class Instruction:
             if self.opcode == "IADD":
                 tmp = IRBuilder.add(IRValOp1, IRValOp2, "add")
             elif self.opcode == "FADD":
+                if settings["ftz"]:
+                    IRValOp1 = self.apply_ftz(IRValOp1, IRBuilder)
+                    IRValOp2 = self.apply_ftz(IRValOp2, IRBuilder)
+                
                 tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
+                
+                if settings["ftz"]:
+                   tmp = self.apply_ftz(tmp, IRBuilder)
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
@@ -1164,18 +1217,65 @@ class Instruction:
             return
         
         if self.opcode == "F2I":
+            settings = {
+                "ftz": False,
+                "sign": "S32",
+                "round": "NEAR"
+            }
+            
+            for mod in self.modifiers:
+                m = mod.upper()
+                if m in ("FTZ", "NTZ"):
+                    settings[m.lower()] = True
+                elif m == "U32":
+                    settings["sign"] = "U32"
+                elif m == "S32":
+                    settings["sign"] = "S32"
+                elif m == "TRUNC":
+                    settings["round"] = "TRUNC"
+                elif m == "FLOOR":
+                    settings["round"] = "FLOOR"
+                elif m == "CEIL":
+                    settings["round"] = "CEIL"
+                else:
+                    print(self)
+                    raise InvalidSyntaxException
+
             ResOp = self.operands[0]
             ValOp = self.operands[1]
             
             assert len(self.operands) == 2
 
-            IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            val_float = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # tmp = IRBuilder.fptosi(IRValOp, IRResOp.type.pointee)
             # IRBuilder.store(tmp, IRResOp)
+            
+            if settings["ftz"]:
+                val_float = self.apply_ftz(val_float, IRBuilder)
+            
+            
+            if settings["round"] == "NEAR":
+                val_float = IRBuilder.call(llvm_rint_f32(self.llvm_module), [val_float])
+            elif settings["round"] == "FLOOR":
+                val_float = IRBuilder.call(llvm_floor_f32(self.llvm_module), [val_float])
+            elif settings["round"] == "CEIL":
+                val_float = IRBuilder.call(llvm_ceil_f32(self.llvm_module), [val_float])
+            elif settings["round"] == "TRUNC":
+                pass
+            
+            target_type = ir.IntType(32) 
+    
+            if settings["sign"] == "U32":
+                # Unsigned Cast
+                IRValOp = IRBuilder.fptoui(val_float, target_type)
+            else:
+                # Signed Cast
+                IRValOp = IRBuilder.fptosi(val_float, target_type)
+            
             ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
 
             return
