@@ -911,13 +911,22 @@ class Instruction:
         if self.opcode == "LEA":
             #  LEA R13, R31, R13, 0x2 ;
             #  LEA dst, a, b, shift; ==> dst = (a << shift) + b
+            # Alternatively, LEA R8, P0, R25, R4, 0x2
             ResOp = self.operands[0]
-            ValOp1 = self.operands[1]
-            ValOp2 = self.operands[2]
-            shift = self.operands[3]
             
-            assert len(self.operands) == 4
-
+            print(len(self.operands))
+            assert len(self.operands) in (4, 5, 6)
+            if len(self.operands) == 4:
+                offset = 0
+            else:
+                offset = 1
+                # TODO: currently ignore the predicate
+                # TODO: handle these cases: LEA.HI.X (6 operands); LEA.HI.SX32, LEA.Hi
+            ValOp1 = self.operands[offset + 1]
+            ValOp2 = self.operands[offset + 2]
+            shift = self.operands[offset + 3]
+            
+            
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRShift = shift.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
