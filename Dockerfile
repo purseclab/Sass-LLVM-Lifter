@@ -76,6 +76,7 @@ RUN ln -s /usr/bin/llvm-cxxfilt-${LLVM_VERSION} /usr/bin/llvm-cxxfilt && \
     ln -s /usr/bin/llvm-config-${LLVM_VERSION} /usr/bin/llvm-config && \
     ln -s /usr/bin/llvm-dis-${LLVM_VERSION} /usr/bin/llvm-dis && \
     ln -s /usr/bin/llvm-as-${LLVM_VERSION} /usr/bin/llvm-as && \
+    ln -s /usr/bin/llvm-link-${LLVM_VERSION} /usr/bin/llvm-link && \
     ln -s /usr/bin/opt-${LLVM_VERSION} /usr/bin/opt && \
     ln -s /usr/bin/llc-${LLVM_VERSION} /usr/bin/llc && \
     ln -s /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang

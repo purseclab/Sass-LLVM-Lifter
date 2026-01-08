@@ -8,6 +8,7 @@ export PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && p
 CONFIG_FILE="$SCRIPT_DIR/config.json"
 
 LLVM_OUTPUT=$(jq -r '.lifter.output_file' "$CONFIG_FILE")
+LLVM_OUTPUT_LINKED="${LLVM_OUTPUT%.ll}_linked.ll"
 LLVM_RAW_OUTPUT="${LLVM_OUTPUT%.ll}_raw.ll"
 LLC_OUTPUT="${LLVM_OUTPUT%.ll}_lifted_llc.ptx"
 
@@ -49,11 +50,16 @@ then
     exit 1
 fi
 
+# llvm-link "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" \
+#           /usr/local/cuda/nvvm/libdevice/libdevice.10.bc \
+#           -o "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT_LINKED}"
 
-llc -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$LLC_OUTPUT_FULLDIR"
-# compile ptx into cubin, and then open the file in Nsight
-# https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
-nvcc -cubin -g -G -arch=sm_75  $LLC_OUTPUT_FULLDIR -o "$CUBIN_OUTPUT_DIR/$CUBIN_OUTPUT_NAME"
+if [[ "$IS_DECOMPILE" != "true" ]]; then
+    llc -march=nvptx64 -mcpu=sm_75 "$SCRIPT_DIR/../output/3_llvm_ir/${LLVM_OUTPUT}" -o "$LLC_OUTPUT_FULLDIR"
+    # compile ptx into cubin, and then open the file in Nsight
+    # https://forums.developer.nvidia.com/t/how-can-i-map-ptx-instructions-to-sass-instructions/313100/4
+    nvcc -cubin -g -G -arch=sm_75  $LLC_OUTPUT_FULLDIR -o "$CUBIN_OUTPUT_DIR/$CUBIN_OUTPUT_NAME"
+fi
 
 if [[ "$IS_DECOMPILE" = "true" ]]; then
     # produce decompiled C src file
