@@ -425,8 +425,17 @@ class Operand:
                 if LoadDataType is None:
                     LoadDataType = llvmir.IntType(32) if self.isPtr else self.getIRType()
                 
+                if self.getRegName() in ["RZ", "URZ"]:
+                    return llvmir.Constant(LoadDataType, 0)
+                
+                reg_ptr = IRRegs[self.reg]
+                
+                if reg_ptr.type.pointee != LoadDataType:
+                    # Cast i32* -> float*
+                    reg_ptr = IRBuilder.bitcast(reg_ptr, LoadDataType.as_pointer(), name="cast_ptr")
+                
                 # Load the base register
-                IRVal = IRBuilder.load(IRRegs[self.reg], typ=LoadDataType) # TODO: Confirm if this changes data layout
+                IRVal = IRBuilder.load(reg_ptr, typ=LoadDataType) # TODO: Confirm if this changes data layout
 
                 # Apply swizzle modifier for pointer/index operands (e.g., R5.X4)
                 if self.swizzle is not None:
