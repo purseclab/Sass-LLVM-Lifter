@@ -49,10 +49,13 @@ def print_pass_fail_counts(result_pf: list[bool]) -> None:
 def true_factory():
     return True
 
+import argparse
+
 parser = ArgumentParser()
 parser.add_argument("--config", "-c", default="config.yaml")
 parser.add_argument("--out", "-o", default="results.json")
 parser.add_argument("--plot", action="store_true")
+parser.add_argument("--run-lifter", action=argparse.BooleanOptionalAction, default=True)
 args = parser.parse_args()
 
 
@@ -80,55 +83,60 @@ def _run_docker_in_launch():
 ##################### INIT #####################
 
 
-# run lifter on all past config files to make sure the .ll files are all up to date using the current lifter
+if args.run_lifter:
+    # run lifter on all past config files to make sure the .ll files are all up to date using the current lifter
 
-script_dir = os.path.dirname(os.path.abspath(__file__))
-launch_dir = os.path.normpath(os.path.join(script_dir, "..", "launch"))
-configs_dir = os.path.normpath(os.path.join(script_dir, "test_configs"))
-launch_config = os.path.join(launch_dir, "config.json")
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    launch_dir = os.path.normpath(os.path.join(script_dir, "..", "launch"))
+    configs_dir = os.path.normpath(os.path.join(script_dir, "test_configs"))
+    launch_config = os.path.join(launch_dir, "config.json")
 
-if not os.path.isdir(configs_dir):
-    print(f"Configs directory not found: {configs_dir}")
-else:
-    # Backup original
-    try:
-        with open(launch_config, "r") as f:
-            original = f.read()
-    except FileNotFoundError:
-        original = None
-
-    # Run with current config first (if present)
-    print("Running docker with current launch/config.json (if present)")
-    _run_docker_in_launch()
-
-    # Iterate over files in configs_dir
-    entries = sorted(os.listdir(configs_dir))
-    for ent in entries:
-        path = os.path.join(configs_dir, ent)
-        if not os.path.isfile(path):
-            continue
-        if not ent.lower().endswith('.json'):
-            continue
-        print(f"Applying config {path} to {launch_config}")
+    if not os.path.isdir(configs_dir):
+        print(f"Configs directory not found: {configs_dir}")
+    else:
+        # Backup original
         try:
-            with open(path, "r") as src, open(launch_config, "w") as dst:
-                dst.write(src.read())
-        except Exception as e:
-            print(f"Failed to copy config {path}: {e}")
-            continue
+            with open(launch_config, "r") as f:
+                original = f.read()
+        except FileNotFoundError:
+            original = None
 
+        # Run with current config first (if present)
+        print("Running docker with current launch/config.json (if present)")
         code = _run_docker_in_launch()
         if code != 0:
-            print(f"docker.sh exited with code {code} for config {ent}")
+            print(f"docker.sh exited with code {code}")
+            exit(code)
 
-    # Restore original
-    if original is not None:
-        try:
-            with open(launch_config, "w") as f:
-                f.write(original)
-            print("Restored original launch/config.json")
-        except Exception as e:
-            print(f"Failed to restore original config: {e}")
+        # Iterate over files in configs_dir
+        entries = sorted(os.listdir(configs_dir))
+        for ent in entries:
+            path = os.path.join(configs_dir, ent)
+            if not os.path.isfile(path):
+                continue
+            if not ent.lower().endswith('.json'):
+                continue
+            print(f"Applying config {path} to {launch_config}")
+            try:
+                with open(path, "r") as src, open(launch_config, "w") as dst:
+                    dst.write(src.read())
+            except Exception as e:
+                print(f"Failed to copy config {path}: {e}")
+                continue
+
+            code = _run_docker_in_launch()
+            if code != 0:
+                print(f"docker.sh exited with code {code} for config {ent}")
+                exit(code)
+
+        # Restore original
+        if original is not None:
+            try:
+                with open(launch_config, "w") as f:
+                    f.write(original)
+                print("Restored original launch/config.json")
+            except Exception as e:
+                print(f"Failed to restore original config: {e}")
 
 
 ##################### TESTER START #####################

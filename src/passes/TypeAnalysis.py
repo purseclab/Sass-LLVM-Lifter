@@ -6,6 +6,7 @@ from passes.ReachingDefinitionsAnalysis import ReachingDefinitionsAnalysis
 from pathlib import Path
 import json
 from llvmlite import ir as llvmir
+import os
 
 from enum import Enum
 
@@ -84,8 +85,9 @@ class TypeAnalysis:
         
         current_dir = Path(__file__).parent
         self.project_root = (current_dir / "../..").resolve()
-    
-        config_path = self.project_root / "launch" / "config.json"
+
+        config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+        config_path = self.project_root / config_folder_name / "config.json"
         
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
@@ -284,7 +286,7 @@ class TypeAnalysis:
                 operand.is_use = False
             return
 
-        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "FSETP", "MOV", "UMOV", "LDG", "LDS", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
+        if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "UISETP", "FSETP", "MOV", "UMOV", "LDG", "LDS", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "USHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
                     # first operand of this instruction is a def
@@ -327,7 +329,7 @@ class TypeAnalysis:
         #### Batch 1
         if inst.opcode in ["FFMA", "FADD", "FMUL"]:
             TypeDesc = "Float32"
-        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "UIADD3", "LEA", "SHF", "IABS"] :
+        elif inst.opcode in ["IMAD", "SHL",  "SHR", "S2R", "IADD3", "UIADD3", "LEA", "SHF", "USHF", "IABS"] :
             TypeDesc = "Int32"
 
         if TypeDesc is not None:
@@ -346,7 +348,7 @@ class TypeAnalysis:
             return "Float32"
 
         #### Batch 3
-        if inst.opcode == "ISETP" or inst.opcode == "FSETP":
+        if inst.opcode == "ISETP" or inst.opcode == "UISETP" or inst.opcode == "FSETP":
             if inst.opcode == "ISETP":
                 TypeDesc = "Int32"
             elif inst.opcode == "FSETP":
@@ -428,44 +430,53 @@ class TypeAnalysis:
         # =========================================================
         elif inst.opcode in ("ULOP3", "LOP3"):
             changed = False
-            
-            # 1. Gather the relevant register operands (Dest + 3 Sources)
-            # LOP3 format is typically: Dest, Src1, Src2, Src3, ImmLUT
-            # We care about the first 4 operands.
-            relevant_ops = inst.operands[:4]
-            
-            # 2. Check current types
+
+            # LOP3 has two formats:
+            # A) With Predicate Dest: LOP3.LUT Pu, Rd, Ra, Sb, Rc, Imm, Pcond
+            # B) No Predicate Dest:   LOP3.LUT Rd, Ra, Sb, Rc, Imm, Pcond
+            # Detect format A vs B by checking if the first operand is a predicate reg.
+            firstOp = inst.operands[0]
+            if firstOp.isPReg:
+                # Format A: predicate destination present
+                pu_op = inst.operands[0]
+                res_op = inst.operands[1]
+                val_ops = [inst.operands[2], inst.operands[3], inst.operands[4]]
+            else:
+                pu_op = None
+                res_op = inst.operands[0]
+                val_ops = [inst.operands[1], inst.operands[2], inst.operands[3]]
+
+            # Ensure predicate dest is Bool
+            if pu_op is not None:
+                changed |= self.op_add_type(pu_op, DataType.BOOL, inst)
+
+            # Collect current types for the result and sources
+            relevant_ops = [res_op] + val_ops
             current_types = [DataType.from_str(op.getTypeDesc()) for op in relevant_ops]
             known_types = [t for t in current_types if t != DataType.NOTYPE]
             
             # 3. Logic: LOP3 is inherently a bitwise integer operation.
-            # If we know *any* operand is Int32, or if we default bitwise ops to Int32,
-            # we should propagate this to the output (Op 0) and inputs.
-            
-            target_type = DataType.NOTYPE
-            
             # Heuristic A: If any operand is already confirmed as Int32, use that.
+            target_type = DataType.NOTYPE
             if DataType.INT32 in known_types:
                 target_type = DataType.INT32
-            
-            # Heuristic B: Voting (in case mixed types appear, though unlikely for LOP3)
+            # Heuristic B: Voting - if mixed known types appear, take the most common.
             elif known_types:
                 from collections import Counter
                 most_common, count = Counter(known_types).most_common(1)[0]
-                if count >= 1: # Even 1 known type is enough hint for LOP3
+                if count >= 1:
                     target_type = most_common
             
-            # Heuristic C: Strong Default. LOP3 is almost always Int32.
-            # If completely unknown, we can optimistically assume Int32.
+            # Heuristic C: Strong Default - LOP3 is almost always Int32; assume Int32 when unknown.
             else:
                 target_type = DataType.INT32
 
-            # 4. Apply the resolved type to all register operands (Dest and Srcs)
+            # Apply the resolved type to destination and sources (registers only)
             if target_type != DataType.NOTYPE:
                 for op in relevant_ops:
-                    if DataType.from_str(op.getTypeDesc()) == DataType.NOTYPE:
+                    if not op.isPReg and DataType.from_str(op.getTypeDesc()) == DataType.NOTYPE:
                         changed |= self.op_add_type(op, target_type, inst)
-                            
+
             return changed
 
         # =========================================================

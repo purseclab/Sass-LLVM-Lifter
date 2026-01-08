@@ -11,6 +11,7 @@ from s2lir.intrinsics import *
 from s2lir.helper import *
 import typing
 import re
+import os
 
 current_dir = Path(__file__).parent
 
@@ -39,7 +40,8 @@ class Instruction:
         self.branch_target : BasicBlock = None
 
         self.BB: 'BasicBlock' = BB
-        config_path = current_dir / "../.." / "launch" / "config.json"
+        config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+        config_path = current_dir / "../.." / config_folder_name / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
@@ -50,12 +52,23 @@ class Instruction:
         
 
     def parse(self):
-        for ope in self.operands:
+        for i, ope in enumerate(self.operands):
             ope.parse()
         
         if self.opcode == "BRA":
-            assert len(self.operands) <= 2
-            self.branch_target = self.BB.func.labels2block[self.operands[0].branch_label]
+            assert (len(self.operands) == 1 and not self.isConditionExpr()) or (len(self.operands) == 2 and self.isConditionExpr()) or (len(self.operands) == 3 and self.isConditionExpr())
+            # TODO it's possible we might see self.operands == 2 and not self.isConditionalExpr, which would look like "BRA P0, `branch_target"
+            
+            if len(self.operands) == 3:
+                # e.g. @P0 BRA P1, `branch_target
+                # operand 0 is P1, operand 1 is the branch target, and operand 2 is P0
+                # the condition expression operand is always the last
+                
+                branch_label = self.operands[1].branch_label
+            else:
+                branch_label = self.operands[0].branch_label
+            
+            self.branch_target = self.BB.func.labels2block[branch_label]
 
         # self.dump()
 
@@ -135,6 +148,35 @@ class Instruction:
     def dump(self):
         print(self.dump_text())
         
+    def apply_ftz(self, val, IRBuilder):
+        """
+        If value is subnormal, replace it with 0.0.
+        Logic: If (abs(val) > 0.0) AND (abs(val) < SmallestNormal), it is subnormal.
+        """
+        val_type = val.type
+        
+        if isinstance(val_type, llvmir.FloatType):
+            # Smallest positive normal float32: 1.17549435e-38
+            smallest_norm = llvmir.Constant(val_type, 1.17549435e-38)
+            zero = llvmir.Constant(val_type, 0.0)
+        elif isinstance(val_type, llvmir.DoubleType):
+            # Smallest positive normal float64: 2.2250738585072014e-308
+            smallest_norm = llvmir.Constant(val_type, 2.2250738585072014e-308)
+            zero = llvmir.Constant(val_type, 0.0)
+        else:
+            return val
+        
+        abs_val = IRBuilder.call(llvm_fabs(self.llvm_module), [val])
+
+        # check: 0.0 < abs_val < smallest_norm
+        is_not_zero = IRBuilder.fcmp_ordered('>', abs_val, zero)
+        is_tiny = IRBuilder.fcmp_ordered('<', abs_val, smallest_norm)
+        is_subnormal = IRBuilder.and_(is_not_zero, is_tiny)
+
+        # If subnormal, return 0.0, else return original
+        return IRBuilder.select(is_subnormal, zero, val)
+        
+    
     def __str__(self):
         operands = [str(ope) for ope in self.operands]
         
@@ -332,7 +374,9 @@ class Instruction:
                 "wide": False,
                 "mov": False,
                 "iadd": False,
-                "x": False
+                "x": False,
+                "shl": False,
+                "hi": False
             }
             
             for mod in self.modifiers:
@@ -343,17 +387,19 @@ class Instruction:
                 elif mod == "MOV" or mod == "IADD":
                     # just compiler informing the reader that IMAD is essentially performing MOV/IADD
                     # https://stackoverflow.com/questions/59777333/combined-format-of-sass-instructions
-                    
-                    if mod == "MOV":
-                        settings["mov"] = True
-                    elif mod == "IADD":
-                        settings["iadd"] = True
-
+                    settings[mod.lower()] = True
+                    continue
+                elif mod == "SHL":
+                    settings["shl"] = True
+                    continue
+                elif mod == "HI":
+                    settings["hi"] = True
                     continue
                 elif mod == "X":
                     settings["x"] = True
-                elif mod == "U32" or mod == "HI":
-                    # TODO handle these
+                    continue
+                elif mod == "U32" or mod == "S32":
+                    # U32 is the standard width for IMAD; usually safe to skip 
                     continue
                 else:
                     print(self)
@@ -366,41 +412,78 @@ class Instruction:
             IRValOp3 = ValOp3.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             
             if settings["x"]:
+                # Fetch carry operand if .X is present
                 assert len(self.operands) == 5
                 ValOp4 = self.operands[4]
                 IRValOp4 = ValOp4.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             else:
                 assert len(self.operands) == 4
 
+            
+            is_64bit_calc = settings["hi"] or settings["wide"]
+            calc_type = llvmir.IntType(64) if is_64bit_calc else llvmir.IntType(32)
+            
             assert ValOp1.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
-            if settings["wide"]:
-                # zero extend op1 and op2 into 64 bit so that the result of mul is 64 bit
-                IRValOp1 = IRBuilder.zext(IRValOp1, llvmir.IntType(64), name="zext")
-                IRValOp2 = IRBuilder.zext(IRValOp2, llvmir.IntType(64), name="zext")
-            tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul") 
-            if settings["wide"]:
-                # assert isinstance(IRValOp3.type, llvmir.PointerType) or IRValOp3.type.width == 64
-                if isinstance(IRValOp3.type, llvmir.PointerType):
-                    IRValOp3 = IRBuilder.ptrtoint(IRValOp3, llvmir.IntType(64))
-                elif IRValOp3.type == llvmir.IntType(32):
-                    IRValOp3 = IRBuilder.zext(IRValOp3, llvmir.IntType(64), name="zext")
-                else:
-                    raise InvalidSyntaxException
-            tmp = IRBuilder.add(tmp, IRValOp3, "add")
             
-            if settings["x"]:
-                assert ValOp4.get_bit_width() == 1
+            
+            # MULTIPLICATION/SHIFT STAGE
+            
+            if settings["shl"]:
+                # IMAD.SHL: (Op1 << Op2) + Op3
+                # need further verification
+                tmp = IRBuilder.shl(IRValOp1, IRValOp2, name="imad_shl")
+                if is_64bit_calc:
+                    tmp = IRBuilder.zext(tmp, calc_type, name="shl_ext")
+            else:
+                # (Op1 * Op2)
                 
-                IRValOp4 = IRBuilder.zext(IRValOp4, llvmir.IntType(32), name="zext")
-                tmp = IRBuilder.add(tmp, IRValOp4, "add")
+                if is_64bit_calc:
+                    ext1 = IRBuilder.zext(IRValOp1, calc_type, name="imad_ext1")
+                    ext2 = IRBuilder.zext(IRValOp2, calc_type, name="imad_ext2")
+                else:
+                    ext1 = IRValOp1
+                    ext2 = IRValOp2
+                tmp = IRBuilder.mul(ext1, ext2, name="imad_mul")
             
-            # IRBuilder.store(tmp, IRResOp)
-            ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
+            
+            # ADDITION/ACCUMULATION
+            if isinstance(IRValOp3.type, llvmir.PointerType):
+                IRValOp3_ready = IRBuilder.ptrtoint(IRValOp3, calc_type)
+            elif IRValOp3.type.width < calc_type.width:
+                IRValOp3_ready = IRBuilder.zext(IRValOp3, calc_type, name="imad_ext3")
+            else:
+                IRValOp3_ready = IRValOp3
+            
+            # tmp = (Product/Shift) + Op3
+            tmp = IRBuilder.add(tmp, IRValOp3_ready, name="imad_add")
+            
+            # Handle carry-in (.X)
+            if settings["x"]:
+                IRValOp4_ext = IRBuilder.zext(IRValOp4, calc_type, name="imad_ext4")
+                tmp = IRBuilder.add(tmp, IRValOp4_ext, name="imad_add_x")
+            
+            # FINAL TRUNCATION / SELECTION STAGE
+            
+            if settings["hi"]:
+                # Extract the high 32 bits: (Result >> 32)
+                hi_bits = IRBuilder.lshr(tmp, llvmir.Constant(calc_type, 32), name="imad_hi_shift")
+                final_res = IRBuilder.trunc(hi_bits, llvmir.IntType(32), name="imad_hi_trunc")
+            elif settings["wide"]:
+                # Keep full 64 bits
+                final_res = tmp
+            else:
+                # Standard 32-bit result (should already be 32-bit unless widened by logic)
+                if tmp.type.width > 32:
+                    final_res = IRBuilder.trunc(tmp, llvmir.IntType(32), name="imad_trunc")
+                else:
+                    final_res = tmp
+
+            ResOp.IRReg_Store(IRRegs, IRBuilder, final_res)
 
             return
         
-        if self.opcode == "ISETP" or self.opcode == "FSETP":
+        if self.opcode == "ISETP" or self.opcode == "UISETP" or self.opcode == "FSETP":
             # https://stackoverflow.com/questions/19357452/cuda-assembly-instructions
             ResOp = self.operands[0]
             PReg1 = self.operands[1] # result 2 (Pv): https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opISETP.htm
@@ -417,7 +500,7 @@ class Instruction:
                 if self.opcode == "FSETP":
                     assert isinstance(IRValOp1.type, (llvmir.FloatType, llvmir.DoubleType)) 
                     assert isinstance(IRValOp2.type, (llvmir.FloatType, llvmir.DoubleType)) 
-                elif self.opcode == "ISETP":
+                elif self.opcode in ("ISETP", "UISETP"):
                     assert isinstance(IRValOp1.type, (llvmir.IntType)) 
                     assert isinstance(IRValOp2.type, (llvmir.IntType)) 
 
@@ -442,7 +525,8 @@ class Instruction:
                 "type": {
                     "signage": None,
                     "bits": None
-                }
+                },
+                "unsigned": False
             }
             
             for mod in self.modifiers:
@@ -454,10 +538,9 @@ class Instruction:
                 match = re.match(pattern, mod)
                 if match:
                     settings["cmp_op"] = match.group(1)
-                    if match.group(3) != "":
-                        # group 1 and 2 seem to capture the same thing (inner and outer bracket of comparators)
-                        assert match.group(3) == "U"
-                        assert self.opcode == "FSETP"
+                    # If modifier includes U (unsigned), mark unsigned semantics.
+                    if match.group(3) == "U":
+                        settings["unsigned"] = True
                         settings["ordered"] = False
                     continue
                 
@@ -481,10 +564,17 @@ class Instruction:
             if cmp_op is None:
                 raise InvalidSyntaxException
 
-            if self.opcode == 'ISETP' or self.config["allow_temp_behavior"]:
-                tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
-                tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
+            if self.opcode in ('ISETP', 'UISETP') or self.config["allow_temp_behavior"]:
+                # Use unsigned compare if explicitly requested or opcode is UISETP
+                if self.opcode == 'UISETP' or settings.get("unsigned", False):
+                    tmp = IRBuilder.icmp_unsigned(cmp_op, IRValOp1, IRValOp2, "unsigned_cmp")
+                else:
+                    tmp = IRBuilder.icmp_signed(cmp_op, IRValOp1, IRValOp2, "cmp")
+                # tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             elif self.opcode == 'FSETP':
+                if settings["ftz"]:
+                    IRValOp1 = self.apply_ftz(IRValOp1, IRBuilder)
+                    IRValOp2 = self.apply_ftz(IRValOp2, IRBuilder)
                 if not settings["ordered"]:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
                     # une, ult, etc
@@ -493,16 +583,19 @@ class Instruction:
                     tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
                 else:
                     tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
-                tmp2 = IRBuilder.fadd(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
+                # tmp2 = IRBuilder.add(tmp, llvmir.Constant(llvmir.IntType(1), 0)) # creating a new copy for Preg1
             else:
                 raise InvalidSyntaxException
-            tmp2 = IRBuilder.not_(tmp2)
+            tmp2 = IRBuilder.not_(tmp)
             if settings["boolean_op"] == "AND":
                 tmp = IRBuilder.and_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.and_(tmp2, IRPreg2Val)
             elif settings["boolean_op"] == "OR":
                 tmp = IRBuilder.or_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.or_(tmp2, IRPreg2Val)
+            elif settings["boolean_op"] is None:
+                # no boolean_op provided
+                pass
             else:
                 raise NotImplementedError
         
@@ -512,8 +605,10 @@ class Instruction:
             if PReg1.reg != "PT":
                 PReg1.IRReg_Store(IRRegs, IRBuilder, tmp2)
             return
+
         
-        if self.opcode == "SHF":
+        
+        if self.opcode in ("SHF", "USHF"):
             # SHF - Funnel shift
             # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opSHF.htm
             
@@ -602,7 +697,9 @@ class Instruction:
             
             if settings["dir"] == "L":
                 # left shift
-                if settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                # Treat `USHF` as the unsigned variant even if the .U modifier
+                # is not present in `settings["maxshift"]`.
+                if (settings["maxshift"] and settings["maxshift"]["signage"] == "U") or self.opcode == "USHF":
                     # Assumptions: 
                     # mode == clamp, i.e. shift = min(Sb, maxshift), maxshift (due to .U64) is probably 64 bits
                     # shift = min(Sb, 64)
@@ -651,7 +748,7 @@ class Instruction:
                         tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
                     else:
                         raise NotImplementedError
-                elif settings["maxshift"] and settings["maxshift"]["signage"] == "U":
+                elif (settings["maxshift"] and settings["maxshift"]["signage"] == "U") or self.opcode == "USHF":
                     tmp = IRBuilder.lshr(tmp, IRValOp_Rb_64, "lshr")
                     if settings["xmode"] == "HI":
                         tmp = IRBuilder.lshr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "lshr")
@@ -774,6 +871,20 @@ class Instruction:
             ValOp2 = self.operands[2]
             
             assert len(self.operands) == 3
+            
+            settings = {
+                "ftz": False,
+            }
+            
+            for mod in self.modifiers:
+                if mod in ("FTZ"):
+                    settings[mod.lower()] = True
+                    continue
+                raise InvalidSyntaxException
+            
+            if settings["ftz"]:
+                assert self.opcode == "FADD"
+                # NOTE: We apply ftz to both the inputs and the output
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -784,7 +895,14 @@ class Instruction:
             if self.opcode == "IADD":
                 tmp = IRBuilder.add(IRValOp1, IRValOp2, "add")
             elif self.opcode == "FADD":
+                if settings["ftz"]:
+                    IRValOp1 = self.apply_ftz(IRValOp1, IRBuilder)
+                    IRValOp2 = self.apply_ftz(IRValOp2, IRBuilder)
+                
                 tmp = IRBuilder.fadd(IRValOp1, IRValOp2, "fadd")
+                
+                if settings["ftz"]:
+                   tmp = self.apply_ftz(tmp, IRBuilder)
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
 
@@ -793,13 +911,22 @@ class Instruction:
         if self.opcode == "LEA":
             #  LEA R13, R31, R13, 0x2 ;
             #  LEA dst, a, b, shift; ==> dst = (a << shift) + b
+            # Alternatively, LEA R8, P0, R25, R4, 0x2
             ResOp = self.operands[0]
-            ValOp1 = self.operands[1]
-            ValOp2 = self.operands[2]
-            shift = self.operands[3]
             
-            assert len(self.operands) == 4
-
+            print(len(self.operands))
+            assert len(self.operands) in (4, 5, 6)
+            if len(self.operands) == 4:
+                offset = 0
+            else:
+                offset = 1
+                # TODO: currently ignore the predicate
+                # TODO: handle these cases: LEA.HI.X (6 operands); LEA.HI.SX32, LEA.Hi
+            ValOp1 = self.operands[offset + 1]
+            ValOp2 = self.operands[offset + 2]
+            shift = self.operands[offset + 3]
+            
+            
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRShift = shift.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -882,15 +1009,35 @@ class Instruction:
                     return r;
                 }
             '''
-            ResOp = self.operands[0]
-            ValOp1 = self.operands[1]
-            ValOp2 = self.operands[2]
-            ValOp3 = self.operands[3]
-            immLut = self.operands[4]
-            # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
-            PReg = self.operands[5]
             
-            assert len(self.operands) == 6
+            # LOP3 has two main formats:
+            # A) With Predicate Dest: LOP3.LUT Pu, Rd, Ra, Sb, Rc, Imm
+            # B) No Predicate Dest:   LOP3.LUT Rd, Ra, Sb, Rc, Imm
+            
+            firstOp = self.operands[0]
+            
+            assert len(self.operands) == 6 or len(self.operands) == 7 # TODO investigate what the last operand does for "LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT"
+            
+            if firstOp.isPReg:
+                # Format A
+                PuOp   = self.operands[0]  # Predicate Destination
+                ResOp   = self.operands[1]  # Register Destination
+                ValOp1   = self.operands[2]
+                ValOp2   = self.operands[3]
+                ValOp3   = self.operands[4]
+                immLut  = self.operands[5]
+                PReg = self.operands[6]
+            else:
+                # Format B
+                PuOp = None
+                ResOp = self.operands[0]
+                ValOp1 = self.operands[1]
+                ValOp2 = self.operands[2]
+                ValOp3 = self.operands[3]
+                immLut = self.operands[4]
+                # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
+                PReg = self.operands[5]
+            
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
             IRValOp2 = ValOp2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -973,6 +1120,11 @@ class Instruction:
             
             # IRBuilder.store(tmp, IRRegs[ResOp.getIRRegName()])
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
+            
+            if PuOp:
+                # LOP3 sets predicate based on Non-Zero result
+                is_nonzero = IRBuilder.icmp_unsigned('!=', tmp, llvmir.Constant(llvmir.IntType(32), 0))
+                PuOp.IRReg_Store(IRRegs, IRBuilder, is_nonzero)
             return
 
 
@@ -1074,18 +1226,65 @@ class Instruction:
             return
         
         if self.opcode == "F2I":
+            settings = {
+                "ftz": False,
+                "sign": "S32",
+                "round": "NEAR"
+            }
+            
+            for mod in self.modifiers:
+                m = mod.upper()
+                if m in ("FTZ", "NTZ"):
+                    settings[m.lower()] = True
+                elif m == "U32":
+                    settings["sign"] = "U32"
+                elif m == "S32":
+                    settings["sign"] = "S32"
+                elif m == "TRUNC":
+                    settings["round"] = "TRUNC"
+                elif m == "FLOOR":
+                    settings["round"] = "FLOOR"
+                elif m == "CEIL":
+                    settings["round"] = "CEIL"
+                else:
+                    print(self)
+                    raise InvalidSyntaxException
+
             ResOp = self.operands[0]
             ValOp = self.operands[1]
             
             assert len(self.operands) == 2
 
-            IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+            val_float = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # tmp = IRBuilder.fptosi(IRValOp, IRResOp.type.pointee)
             # IRBuilder.store(tmp, IRResOp)
+            
+            if settings["ftz"]:
+                val_float = self.apply_ftz(val_float, IRBuilder)
+            
+            
+            if settings["round"] == "NEAR":
+                val_float = IRBuilder.call(llvm_rint_f32(self.llvm_module), [val_float])
+            elif settings["round"] == "FLOOR":
+                val_float = IRBuilder.call(llvm_floor_f32(self.llvm_module), [val_float])
+            elif settings["round"] == "CEIL":
+                val_float = IRBuilder.call(llvm_ceil_f32(self.llvm_module), [val_float])
+            elif settings["round"] == "TRUNC":
+                pass
+            
+            target_type = ir.IntType(32) 
+    
+            if settings["sign"] == "U32":
+                # Unsigned Cast
+                IRValOp = IRBuilder.fptoui(val_float, target_type)
+            else:
+                # Signed Cast
+                IRValOp = IRBuilder.fptosi(val_float, target_type)
+            
             ResOp.IRReg_Store(IRRegs, IRBuilder, IRValOp)
 
             return
@@ -1350,7 +1549,7 @@ class Instruction:
             # TODO right now we're assuming that it's only being used to return to the address below a CALL instruction
             # therefore, the instruction we're returning to would be the first instruction in a BB
             # we'll use info from reaching def analysis to determine the addr to jump to, the address shld be at the beginning of a basic block
-            assert len(self.operands) == 2
+            assert len(self.operands) == 2 # e.g. R8 `(_Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii)
             assert self.operands[0].isReg or self.operands[0].isConst
             # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
             

@@ -99,6 +99,19 @@ __global__ void fc_layer(float *input, float *weights, float *bias,
     output[idx] = sum;
 }
 
+__global__ void fc_layer_simple(float *input, float *weights, float *bias, 
+                        float *output, int input_size, int output_size) {
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    if (idx >= output_size) return;
+
+    float sum = 0.0f;
+    for (int i = 0; i < input_size - 1; ++i) {
+        sum += input[i] * weights[idx * input_size + i];
+    }
+    sum += bias[idx];
+    output[idx] = sum;
+}
+
 int main() {
     // 主机内存分配
     float *h_input = (float*)malloc(INPUT_SIZE * INPUT_SIZE * INPUT_CHANNELS * sizeof(float));

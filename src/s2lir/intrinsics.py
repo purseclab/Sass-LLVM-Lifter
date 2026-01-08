@@ -163,3 +163,45 @@ def nvvm_barrier0(module):
     intrinsic_type = ir.FunctionType(ir.VoidType(), [])
     
     return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_rint_f32(module):
+    intrinsic_name = f"llvm.rint.f32"
+    
+    intrinsic_type = ir.FunctionType(ir.FloatType(), [ir.FloatType()])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_rint_f64(module):
+    intrinsic_name = f"llvm.rint.f64"
+    
+    intrinsic_type = ir.FunctionType(ir.DoubleType(), [ir.DoubleType()])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_floor_f32(module):
+    intrinsic_name = f"llvm.floor.f32"
+    
+    intrinsic_type = ir.FunctionType(ir.FloatType(), [ir.FloatType()])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_floor_f64(module):
+    intrinsic_name = f"llvm.floor.f64"
+    
+    intrinsic_type = ir.FunctionType(ir.DoubleType(), [ir.DoubleType()])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_ceil_f32(module):
+    intrinsic_name = f"llvm.ceil.f32"
+    
+    intrinsic_type = ir.FunctionType(ir.FloatType(), [ir.FloatType()])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)
+
+def llvm_ceil_f64(module):
+    intrinsic_name = f"llvm.ceil.f64"
+    
+    intrinsic_type = ir.FunctionType(ir.DoubleType(), [ir.DoubleType()])
+    
+    return intrinsic_construct(module, intrinsic_type, intrinsic_name)

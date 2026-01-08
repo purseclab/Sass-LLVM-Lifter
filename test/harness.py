@@ -121,7 +121,7 @@ def expand_sweeps(cfg: Dict[str,Any]) -> List[Dict[str,Any]]:
     return new_cfg
 
 # ---------- golden-case saving ----------
-def save_golden_case(test_name: str, inputs: Dict[str,np.ndarray], outputs: Dict[str,np.ndarray], ref: Dict[str,np.ndarray], meta: Dict[str,Any], artifacts_dir: str = "artifacts"):
+def _old_save_golden_case(test_name: str, inputs: Dict[str,np.ndarray], outputs: Dict[str,np.ndarray], ref: Dict[str,np.ndarray], meta: Dict[str,Any], artifacts_dir: str = "artifacts"):
     ensure_dir_exists(artifacts_dir)
     fname = f"{test_name}__{now_ts()}.npz"
     path = os.path.join(artifacts_dir, fname)
@@ -136,6 +136,41 @@ def save_golden_case(test_name: str, inputs: Dict[str,np.ndarray], outputs: Dict
     # meta: store as JSON-like string
     save_dict["meta_info"] = np.array([str(meta)])
     np.savez_compressed(path, **save_dict)
+    return path
+
+import yaml
+def to_pure_python(obj):
+    """
+    Recursively converts numpy types to pure python types
+    so they look clean in YAML.
+    """
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()  # Convert array to standard list
+    elif isinstance(obj, np.generic):
+        return obj.item()    # Convert scalar (e.g. np.float32) to float
+    elif isinstance(obj, dict):
+        return {k: to_pure_python(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [to_pure_python(v) for v in obj]
+    return obj
+
+def save_golden_case(test_name: str, inputs: Dict[str,np.ndarray], outputs: Dict[str,np.ndarray], ref: Dict[str,np.ndarray], meta: Dict[str,Any], artifacts_dir: str = "artifacts"):
+    ensure_dir_exists(artifacts_dir)
+    fname = f"{test_name}__{now_ts()}.yaml"
+    path = os.path.join(artifacts_dir, fname)
+    
+    # Clean the data before dumping
+    data = {
+        "meta": to_pure_python(meta),
+        "inputs": to_pure_python(inputs),
+        "outputs": to_pure_python(outputs),
+        "reference": to_pure_python(ref)
+    }
+
+    with open(path, "w") as f:
+        # default_flow_style=None lets lists look like lists, not inline blobs
+        yaml.safe_dump(data, f, sort_keys=False, default_flow_style=None)
+        
     return path
 
 # ---------- PTX runner / orchestrator ----------
@@ -227,8 +262,11 @@ class PTXTestRunner:
                 if typ == "int":
                     v = int(a["value"])
                     device_args.append(np.int32(v))
+                    host_buffers[a["name"]] = v  
                 elif typ == "float":
+                    v = float(a["value"])
                     device_args.append(np.float32(a["value"]))
+                    host_buffers[a["name"]] = v
                 else:
                     raise NotImplementedError(f"Scalar type not supported: {typ}")
         return device_args, host_buffers
@@ -324,6 +362,7 @@ class PTXTestRunner:
         outputs, func_results = self.readback_outputs(arg_descs, device_args, host_inputs)
 
         mode = verification.get("mode", "host_reference")
+
         # ========= host reference mode =========
         if mode == "host_reference":
             
@@ -339,6 +378,7 @@ class PTXTestRunner:
                 ref_out = host_reference.relu(h_input)
             else:
                 raise NotImplementedError
+
             diffs = np.abs(ref_out - h_output)
             max_abs = float(diffs.max())
             mean_abs = float(diffs.mean())
@@ -352,14 +392,17 @@ class PTXTestRunner:
             mask = almost_equal_elemwise(ref_out, h_output, tol.abs, tol.rel)
             num_failed = int(np.count_nonzero(~mask))
             passed = num_failed == 0
+            
             if not passed and save_on_fail:
                 meta = {"test_cfg": test_cfg, "elapsed_ms": elapsed_ms}
                 try:
-                    saved = save_golden_case(name, {"input": h_input}, {"output": h_output}, {"ref_output": ref_out}, meta)
+                    saved = save_golden_case(name, host_inputs, {"output": h_output}, {"ref_output": ref_out}, meta)
                     print(f"[golden] saved failing case to: {saved}")
                 except Exception as e:
                     print(f"Failed saving golden case: {e}")
+            
             return TestResult(name=name, passed=passed, max_abs_error=max_abs, mean_abs_error=mean_abs, num_failed=num_failed, elapsed_ms=elapsed_ms, details={"size": len(h_output), "grid_cfg": grid_cfg, "block_cfg": block_cfg})
+
         # ========= benchmark_ptx mode =========
         elif mode == "benchmark_ptx":
             bm = verification.get("benchmark")
@@ -412,6 +455,7 @@ class PTXTestRunner:
                 if a["type"].endswith("*"):
                     name = f"arg_{i}_{a['name']}"
                     size = int(a["size"])
+                    base = a["type"][:-1].strip()
                     if base == "float":
                         arr = np.empty(size, dtype=np.float32)
                         drv.memcpy_dtoh(arr, bm_device_args[di])
@@ -423,7 +467,6 @@ class PTXTestRunner:
                     bm_outs[name] = arr
                     if a.get("output", False):
                         bm_arr.append(arr)
-                    
                     di += 1
                 else:
                     di += 1
@@ -435,28 +478,37 @@ class PTXTestRunner:
             
             assert len(out_arr) == len(bm_arr)
             passed = True
+            
+            # Note: This logic assumes 1 output for simplicity in reporting, loop for correctness
+            diffs = None 
+            max_abs = 0.0
+            mean_abs = 0.0
+            num_failed = 0
+            
             for idx in range(len(out_arr)):
-                diffs = np.abs(bm_arr[idx] - out_arr[idx])
-                # with np.printoptions(threshold=np.inf, precision=6, suppress=True):
-                #     print(outputs.get("input"))
-                #     print("---------------")
-                #     print(bm_arr)
-                #     print("---------------")
-                #     print(out_arr)
-                # exit(1)
+                current_diffs = np.abs(bm_arr[idx] - out_arr[idx])
                 
-                max_abs = float(diffs.max())
-                mean_abs = float(diffs.mean())
+                max_abs = max(max_abs, float(current_diffs.max()))
+                mean_abs = max(mean_abs, float(current_diffs.mean())) # simple approximation
                 mask = almost_equal_elemwise(bm_arr[idx], out_arr[idx], tol.abs, tol.rel)
-                num_failed = int(np.count_nonzero(~mask))
-                passed = passed and num_failed == 0
-            if not passed and save_on_fail:
+                
+                nf = int(np.count_nonzero(~mask))
+                if nf > 0:
+                    passed = False
+                    num_failed += nf
+                    diffs = current_diffs # Store the last failing diff for saving
+            
+            # if not passed and save_on_fail:
+            if True:
                 meta = {"test_cfg": test_cfg, "elapsed_ms": elapsed_ms, "benchmark_elapsed_ms": bm_elapsed}
                 try:
-                    saved = save_golden_case(name, {"input": host_inputs.get("input")}, {"out_primary": out_arr, "out_benchmark": bm_arr}, {"diff": diffs}, meta)
+                    # --- FIX: Pass host_inputs directly ---
+                    saved = save_golden_case(name, host_inputs, {"out_primary": out_arr, "out_benchmark": bm_arr}, {"diff": diffs}, meta)
                     print(f"[golden] saved failing benchmark case to: {saved}")
                 except Exception as e:
                     print(f"Failed saving golden case: {e}")
+            
             return TestResult(name=name, passed=passed, max_abs_error=max_abs, mean_abs_error=mean_abs, num_failed=num_failed, elapsed_ms=elapsed_ms, details={"size": len(out_arr), "benchmark_ms": bm_elapsed, "grid_cfg": grid_cfg, "block_cfg": block_cfg})
+        
         else:
             raise RuntimeError(f"Unknown verification mode: {mode}")

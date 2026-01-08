@@ -554,3 +554,112 @@ $L__BB3_7:
 	ret;
                                         // -- End function
 }
+	// .globl	_Z15fc_layer_simplePfS_S_S_ii // -- Begin function _Z15fc_layer_simplePfS_S_S_ii
+.visible .entry _Z15fc_layer_simplePfS_S_S_ii(
+	.param .u64 .ptr .align 1 _Z15fc_layer_simplePfS_S_S_ii_param_0,
+	.param .u64 .ptr .align 1 _Z15fc_layer_simplePfS_S_S_ii_param_1,
+	.param .u64 .ptr .align 1 _Z15fc_layer_simplePfS_S_S_ii_param_2,
+	.param .u64 .ptr .align 1 _Z15fc_layer_simplePfS_S_S_ii_param_3,
+	.param .u32 _Z15fc_layer_simplePfS_S_S_ii_param_4,
+	.param .u32 _Z15fc_layer_simplePfS_S_S_ii_param_5
+)                                       // @_Z15fc_layer_simplePfS_S_S_ii
+{
+	.local .align 8 .b8 	__local_depot4[56];
+	.reg .b64 	%SP;
+	.reg .b64 	%SPL;
+	.reg .pred 	%p<3>;
+	.reg .b32 	%r<21>;
+	.reg .f32 	%f<9>;
+	.reg .b64 	%rd<27>;
+
+// %bb.0:
+	mov.u64 	%SPL, __local_depot4;
+	cvta.local.u64 	%SP, %SPL;
+	ld.param.u32 	%r2, [_Z15fc_layer_simplePfS_S_S_ii_param_5];
+	ld.param.u32 	%r1, [_Z15fc_layer_simplePfS_S_S_ii_param_4];
+	ld.param.u64 	%rd4, [_Z15fc_layer_simplePfS_S_S_ii_param_3];
+	ld.param.u64 	%rd3, [_Z15fc_layer_simplePfS_S_S_ii_param_2];
+	ld.param.u64 	%rd2, [_Z15fc_layer_simplePfS_S_S_ii_param_1];
+	ld.param.u64 	%rd1, [_Z15fc_layer_simplePfS_S_S_ii_param_0];
+	cvta.to.global.u64 	%rd5, %rd4;
+	cvta.global.u64 	%rd6, %rd5;
+	cvta.to.global.u64 	%rd7, %rd3;
+	cvta.global.u64 	%rd8, %rd7;
+	cvta.to.global.u64 	%rd9, %rd2;
+	cvta.global.u64 	%rd10, %rd9;
+	cvta.to.global.u64 	%rd11, %rd1;
+	cvta.global.u64 	%rd12, %rd11;
+	st.u64 	[%SP], %rd12;
+	st.u64 	[%SP+8], %rd10;
+	st.u64 	[%SP+16], %rd8;
+	st.u64 	[%SP+24], %rd6;
+	st.u32 	[%SP+32], %r1;
+	st.u32 	[%SP+36], %r2;
+	mov.u32 	%r3, %ctaid.x;
+	mov.u32 	%r4, %ntid.x;
+	mul.lo.s32 	%r5, %r3, %r4;
+	mov.u32 	%r6, %tid.x;
+	add.s32 	%r7, %r5, %r6;
+	st.u32 	[%SP+40], %r7;
+	ld.u32 	%r8, [%SP+40];
+	ld.u32 	%r9, [%SP+36];
+	setp.lt.s32 	%p1, %r8, %r9;
+	@%p1 bra 	$L__BB4_2;
+	bra.uni 	$L__BB4_1;
+$L__BB4_1:
+	bra.uni 	$L__BB4_7;
+$L__BB4_2:
+	mov.b32 	%r10, 0;
+	st.u32 	[%SP+44], %r10;
+	st.u32 	[%SP+48], %r10;
+	bra.uni 	$L__BB4_3;
+$L__BB4_3:                              // =>This Inner Loop Header: Depth=1
+	ld.u32 	%r11, [%SP+48];
+	ld.u32 	%r12, [%SP+32];
+	add.s32 	%r13, %r12, -1;
+	setp.ge.s32 	%p2, %r11, %r13;
+	@%p2 bra 	$L__BB4_6;
+	bra.uni 	$L__BB4_4;
+$L__BB4_4:                              //   in Loop: Header=BB4_3 Depth=1
+	ld.u64 	%rd21, [%SP];
+	ld.u32 	%r14, [%SP+48];
+	mul.wide.s32 	%rd22, %r14, 4;
+	add.s64 	%rd23, %rd21, %rd22;
+	ld.f32 	%f5, [%rd23];
+	ld.u64 	%rd24, [%SP+8];
+	ld.u32 	%r15, [%SP+40];
+	ld.u32 	%r16, [%SP+32];
+	mul.lo.s32 	%r17, %r15, %r16;
+	add.s32 	%r18, %r17, %r14;
+	mul.wide.s32 	%rd25, %r18, 4;
+	add.s64 	%rd26, %rd24, %rd25;
+	ld.f32 	%f6, [%rd26];
+	ld.f32 	%f7, [%SP+44];
+	fma.rn.f32 	%f8, %f5, %f6, %f7;
+	st.f32 	[%SP+44], %f8;
+	bra.uni 	$L__BB4_5;
+$L__BB4_5:                              //   in Loop: Header=BB4_3 Depth=1
+	ld.u32 	%r19, [%SP+48];
+	add.s32 	%r20, %r19, 1;
+	st.u32 	[%SP+48], %r20;
+	bra.uni 	$L__BB4_3;
+$L__BB4_6:
+	ld.u64 	%rd13, [%SP+16];
+	ld.s32 	%rd14, [%SP+40];
+	shl.b64 	%rd15, %rd14, 2;
+	add.s64 	%rd16, %rd13, %rd15;
+	ld.f32 	%f1, [%rd16];
+	ld.f32 	%f2, [%SP+44];
+	add.rn.f32 	%f3, %f2, %f1;
+	st.f32 	[%SP+44], %f3;
+	ld.f32 	%f4, [%SP+44];
+	ld.u64 	%rd17, [%SP+24];
+	ld.s32 	%rd18, [%SP+40];
+	shl.b64 	%rd19, %rd18, 2;
+	add.s64 	%rd20, %rd17, %rd19;
+	st.f32 	[%rd20], %f4;
+	bra.uni 	$L__BB4_7;
+$L__BB4_7:
+	ret;
+                                        // -- End function
+}

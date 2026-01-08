@@ -20,7 +20,8 @@ RUN apt-get install -y --no-install-recommends \
     graphviz-dev \
     && apt-get clean
 # Set working directory, files will be copied here inside the docker container
-WORKDIR /app
+# we dont want to the workdir here to clash with the mounting later
+WORKDIR /build
 
 # This copy step is crucial, without it pip install will not be cached and will run every time you build the image
 COPY requirements.txt .
@@ -50,9 +51,41 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     software-properties-common \
     gnupg \
     && apt-get clean
+    
+# Install RetDec v4 (v4 specifically because we need retdec-llvmir2hll, which is removed in the newer versions)
+# RetDec also can't read the new LLVM IR with opaque pointers, so we need to run on LLVM 14 with typed pointers
+# Install this before the ARG below so that we don't duplicate this (big) layer twice
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl
+
+# the bash exec removes everything in retdec/ except the bin folder; we're only using retdec-llvmir2hll which seemed to work fine without the other folders, but feel free to remove the last line if you believe a retdec bin is dependent on other folders like share/
+RUN curl -LO https://github.com/avast/retdec/releases/download/v4.0/retdec-v4.0-ubuntu-64b.tar.xz \
+    && tar -xvf retdec-v4.0-ubuntu-64b.tar.xz \
+    && rm retdec-v4.0-ubuntu-64b.tar.xz \
+    && bash -c 'shopt -s extglob dotglob; eval "rm -rf retdec/!(bin)"'
+
+ENV PATH="/build/retdec/bin:${PATH}"
+
 
 # assumes clang 20.1.7
-RUN ./llvm.sh 20
+ARG LLVM_VERSION
+RUN ./llvm.sh ${LLVM_VERSION}
+
+RUN ln -s /usr/bin/llvm-cxxfilt-${LLVM_VERSION} /usr/bin/llvm-cxxfilt && \
+    ln -s /usr/bin/llvm-config-${LLVM_VERSION} /usr/bin/llvm-config && \
+    ln -s /usr/bin/llvm-dis-${LLVM_VERSION} /usr/bin/llvm-dis && \
+    ln -s /usr/bin/llvm-as-${LLVM_VERSION} /usr/bin/llvm-as && \
+    ln -s /usr/bin/llvm-link-${LLVM_VERSION} /usr/bin/llvm-link && \
+    ln -s /usr/bin/opt-${LLVM_VERSION} /usr/bin/opt && \
+    ln -s /usr/bin/llc-${LLVM_VERSION} /usr/bin/llc && \
+    ln -s /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang
+
+WORKDIR /app
 
 # CMD ["sh", "-c", "ls -al && pwd && tree /app && nvcc --version && cuobjdump --version"]
-CMD ["sh", "-c", "cd launch && ./lifter.sh"]
+ARG LIFTER_FOLDER
+# transfer ARG to ENV so that CMD can see it
+ENV LIFTER_FOLDER=${LIFTER_FOLDER}
+
+CMD ["sh", "-c", "cd ${LIFTER_FOLDER} && ./lifter.sh"]

@@ -82,13 +82,14 @@ class BasicBlock:
             IRBuilder.comment(str(Inst))
             if i == len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):
                 if Inst.isBranch() and not Inst.isConditionExpr():
-                    # Unconditional Branch
+                    # Unconditional Branch, e.g. BRA `(.L_x_4_split_0x1200) 
+                    assert len(Inst.operands) == 1 # we might encounter case like "BRA P0, `branch_target" in the future, where the branch target is conditioned on the first operand being true
                     targetBB = Inst.branch_target
                     dprint(Inst.addr)
                     dprint(targetBB.label)
                     IRBuilder.branch(BlockMap[targetBB])
                 elif Inst.isConditionExpr():
-
+                    # e.g. @P0 BRA `(.L_x_4_split_0x1200); or it could also be just conditional execution, doesn't have to just be BRA
                     P = Inst.operands[-1]
                     # PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
                     PredReg = IRRegs[P.getRegName()]
@@ -104,6 +105,14 @@ class BasicBlock:
 
                     # Conditional Branch
                     if Inst.isBranch():
+                        if len(Inst.operands) == 3:
+                            # e.g. @P0 BRA P1, `(.L_x_4_split_0x1200)
+                            # we'll AND the two PredRegVal together before deciding whether to take the branch
+                            P2 = Inst.operands[0]
+                            PredRegVal2 = P2.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
+                            PredRegVal = IRBuilder.and_(PredRegVal, PredRegVal2)
+                            
+                        
                         targetBB = Inst.branch_target
 
                         # If self BB is the last one, jump to ExitBlock, else jump to NextBB

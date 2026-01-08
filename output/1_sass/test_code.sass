@@ -2,13 +2,210 @@
 	.elftype	@"ET_EXEC"
 
 
+//--------------------- .text._Z15fc_layer_simplePfS_S_S_ii --------------------------
+	.section	.text._Z15fc_layer_simplePfS_S_S_ii,"ax",@progbits
+	.sectioninfo	@"SHI_REGISTERS=42"
+	.align	128
+        .global         _Z15fc_layer_simplePfS_S_S_ii
+        .type           _Z15fc_layer_simplePfS_S_S_ii,@function
+        .size           _Z15fc_layer_simplePfS_S_S_ii,(.L_x_30 - _Z15fc_layer_simplePfS_S_S_ii)
+        .other          _Z15fc_layer_simplePfS_S_S_ii,@"STO_CUDA_ENTRY STV_DEFAULT"
+_Z15fc_layer_simplePfS_S_S_ii:
+.text._Z15fc_layer_simplePfS_S_S_ii:
+        /*0000*/                   MOV R1, c[0x0][0x28] ;
+        /*0010*/                   S2R R0, SR_CTAID.X ;
+        /*0020*/                   S2R R3, SR_TID.X ;
+        /*0030*/                   IMAD R0, R0, c[0x0][0x0], R3 ;
+        /*0040*/                   ISETP.GE.AND P0, PT, R0, c[0x0][0x184], PT ;
+        /*0050*/               @P0 EXIT ;
+        /*0060*/                   MOV R4, c[0x0][0x180] ;
+        /*0070*/                   IMAD.MOV.U32 R7, RZ, RZ, RZ ;
+        /*0080*/                   ISETP.GE.AND P0, PT, R4, 0x2, PT ;
+        /*0090*/              @!P0 BRA `(.L_x_0) ;
+        /*00a0*/                   IADD3 R2, R4.reuse, -0x2, RZ ;
+        /*00b0*/                   IMAD.MOV.U32 R5, RZ, RZ, RZ ;
+        /*00c0*/                   IADD3 R4, R4, -0x1, RZ ;
+        /*00d0*/                   ISETP.GE.U32.AND P0, PT, R2, 0x3, PT ;
+        /*00e0*/                   MOV R7, RZ ;
+        /*00f0*/                   LOP3.LUT R4, R4, 0x3, RZ, 0xc0, !PT ;
+        /*0100*/              @!P0 BRA `(.L_x_1) ;
+        /*0110*/                   IADD3 R6, -R4, c[0x0][0x180], RZ ;
+        /*0120*/                   IMAD R2, R0, c[0x0][0x180], RZ ;
+        /*0130*/                   MOV R3, 0x4 ;
+        /*0140*/                   ULDC.64 UR4, c[0x0][0x160] ;
+        /*0150*/                   ISETP.GT.AND P0, PT, R6, 0x1, PT ;
+        /*0160*/                   IMAD.MOV.U32 R5, RZ, RZ, RZ ;
+        /*0170*/                   MOV R7, RZ ;
+        /*0180*/                   IMAD.WIDE R2, R2, R3, c[0x0][0x168] ;
+        /*0190*/              @!P0 BRA `(.L_x_2) ;
+        /*01a0*/                   IADD3 R8, R6, -0x1, RZ ;
+        /*01b0*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0 ;
+        /*01c0*/                   ISETP.GT.AND P1, PT, R8, 0xc, PT ;
+        /*01d0*/              @!P1 BRA `(.L_x_3) ;
+        /*01e0*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 ;
+.L_x_4:
+        /*01f0*/                   LDG.E.SYS R8, [R2] ;
+        /*0200*/                   LDG.E.SYS R9, [UR4] ;
+        /*0210*/                   LDG.E.SYS R11, [R2+0x4] ;
+        /*0220*/                   LDG.E.SYS R10, [UR4+0x4] ;
+        /*0230*/                   LDG.E.SYS R13, [R2+0x8] ;
+        /*0240*/                   LDG.E.SYS R12, [UR4+0x8] ;
+        /*0250*/                   LDG.E.SYS R15, [R2+0xc] ;
+        /*0260*/                   LDG.E.SYS R14, [UR4+0xc] ;
+        /*0270*/                   LDG.E.SYS R17, [R2+0x10] ;
+        /*0280*/                   LDG.E.SYS R16, [UR4+0x10] ;
+        /*0290*/                   LDG.E.SYS R19, [R2+0x14] ;
+        /*02a0*/                   LDG.E.SYS R18, [UR4+0x14] ;
+        /*02b0*/                   LDG.E.SYS R21, [R2+0x18] ;
+        /*02c0*/                   LDG.E.SYS R20, [UR4+0x18] ;
+        /*02d0*/                   LDG.E.SYS R23, [R2+0x1c] ;
+        /*02e0*/                   LDG.E.SYS R22, [UR4+0x1c] ;
+        /*02f0*/                   LDG.E.SYS R25, [R2+0x20] ;
+        /*0300*/                   LDG.E.SYS R24, [UR4+0x20] ;
+        /*0310*/                   LDG.E.SYS R27, [R2+0x24] ;
+        /*0320*/                   LDG.E.SYS R26, [UR4+0x24] ;
+        /*0330*/                   LDG.E.SYS R29, [R2+0x28] ;
+        /*0340*/                   LDG.E.SYS R28, [UR4+0x28] ;
+        /*0350*/                   LDG.E.SYS R31, [R2+0x2c] ;
+        /*0360*/                   LDG.E.SYS R30, [UR4+0x2c] ;
+        /*0370*/                   LDG.E.SYS R33, [R2+0x30] ;
+        /*0380*/                   LDG.E.SYS R32, [UR4+0x30] ;
+        /*0390*/                   LDG.E.SYS R35, [R2+0x34] ;
+        /*03a0*/                   LDG.E.SYS R34, [UR4+0x34] ;
+        /*03b0*/                   LDG.E.SYS R37, [R2+0x38] ;
+        /*03c0*/                   LDG.E.SYS R36, [UR4+0x38] ;
+        /*03d0*/                   LDG.E.SYS R39, [R2+0x3c] ;
+        /*03e0*/                   LDG.E.SYS R38, [UR4+0x3c] ;
+        /*03f0*/                   IADD3 R6, R6, -0x10, RZ ;
+        /*0400*/                   UIADD3 UR4, UP0, UR4, 0x40, URZ ;
+        /*0410*/                   IADD3 R5, R5, 0x10, RZ ;
+        /*0420*/                   ISETP.GT.AND P1, PT, R6, 0xd, PT ;
+        /*0430*/                   UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT ;
+        /*0440*/                   IADD3 R2, P2, R2, 0x40, RZ ;
+        /*0450*/                   IADD3.X R3, RZ, R3, RZ, P2, !PT ;
+        /*0460*/                   FFMA R8, R8, R9, R7 ;
+        /*0470*/                   FFMA R8, R11, R10, R8 ;
+        /*0480*/                   FFMA R8, R13, R12, R8 ;
+        /*0490*/                   FFMA R8, R15, R14, R8 ;
+        /*04a0*/                   FFMA R8, R17, R16, R8 ;
+        /*04b0*/                   FFMA R8, R19, R18, R8 ;
+        /*04c0*/                   FFMA R8, R21, R20, R8 ;
+        /*04d0*/                   FFMA R8, R23, R22, R8 ;
+        /*04e0*/                   FFMA R8, R25, R24, R8 ;
+        /*04f0*/                   FFMA R8, R27, R26, R8 ;
+        /*0500*/                   FFMA R8, R29, R28, R8 ;
+        /*0510*/                   FFMA R8, R31, R30, R8 ;
+        /*0520*/                   FFMA R8, R33, R32, R8 ;
+        /*0530*/                   FFMA R8, R35, R34, R8 ;
+        /*0540*/                   FFMA R8, R37, R36, R8 ;
+        /*0550*/                   FFMA R7, R39, R38, R8 ;
+        /*0560*/               @P1 BRA `(.L_x_4) ;
+.L_x_3:
+        /*0570*/                   IADD3 R8, R6, -0x1, RZ ;
+        /*0580*/                   ISETP.GT.AND P1, PT, R8, 0x4, PT ;
+        /*0590*/              @!P1 BRA `(.L_x_5) ;
+        /*05a0*/                   LDG.E.SYS R8, [R2] ;
+        /*05b0*/                   LDG.E.SYS R9, [UR4] ;
+        /*05c0*/                   LDG.E.SYS R11, [R2+0x4] ;
+        /*05d0*/                   LDG.E.SYS R10, [UR4+0x4] ;
+        /*05e0*/                   LDG.E.SYS R13, [R2+0x8] ;
+        /*05f0*/                   LDG.E.SYS R12, [UR4+0x8] ;
+        /*0600*/                   LDG.E.SYS R15, [R2+0xc] ;
+        /*0610*/                   LDG.E.SYS R14, [UR4+0xc] ;
+        /*0620*/                   LDG.E.SYS R17, [R2+0x10] ;
+        /*0630*/                   LDG.E.SYS R16, [UR4+0x10] ;
+        /*0640*/                   LDG.E.SYS R19, [R2+0x14] ;
+        /*0650*/                   LDG.E.SYS R18, [UR4+0x14] ;
+        /*0660*/                   LDG.E.SYS R21, [R2+0x18] ;
+        /*0670*/                   LDG.E.SYS R20, [UR4+0x18] ;
+        /*0680*/                   LDG.E.SYS R23, [R2+0x1c] ;
+        /*0690*/                   LDG.E.SYS R22, [UR4+0x1c] ;
+        /*06a0*/                   UIADD3 UR4, UP0, UR4, 0x20, URZ ;
+        /*06b0*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 ;
+        /*06c0*/                   IADD3 R5, R5, 0x8, RZ ;
+        /*06d0*/                   UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT ;
+        /*06e0*/                   IADD3 R2, P1, R2, 0x20, RZ ;
+        /*06f0*/                   IADD3 R6, R6, -0x8, RZ ;
+        /*0700*/                   IADD3.X R3, RZ, R3, RZ, P1, !PT ;
+        /*0710*/                   FFMA R8, R8, R9, R7 ;
+        /*0720*/                   FFMA R8, R11, R10, R8 ;
+        /*0730*/                   FFMA R8, R13, R12, R8 ;
+        /*0740*/                   FFMA R8, R15, R14, R8 ;
+        /*0750*/                   FFMA R8, R17, R16, R8 ;
+        /*0760*/                   FFMA R8, R19, R18, R8 ;
+        /*0770*/                   FFMA R8, R21, R20, R8 ;
+        /*0780*/                   FFMA R7, R23, R22, R8 ;
+.L_x_5:
+        /*0790*/                   ISETP.NE.OR P0, PT, R6, 0x1, P0 ;
+        /*07a0*/              @!P0 BRA `(.L_x_1) ;
+.L_x_2:
+        /*07b0*/                   LDG.E.SYS R8, [R2] ;
+        /*07c0*/                   LDG.E.SYS R9, [UR4] ;
+        /*07d0*/                   LDG.E.SYS R11, [R2+0x4] ;
+        /*07e0*/                   LDG.E.SYS R10, [UR4+0x4] ;
+        /*07f0*/                   LDG.E.SYS R13, [R2+0x8] ;
+        /*0800*/                   LDG.E.SYS R12, [UR4+0x8] ;
+        /*0810*/                   LDG.E.SYS R15, [R2+0xc] ;
+        /*0820*/                   LDG.E.SYS R14, [UR4+0xc] ;
+        /*0830*/                   IADD3 R6, R6, -0x4, RZ ;
+        /*0840*/                   UIADD3 UR4, UP0, UR4, 0x10, URZ ;
+        /*0850*/                   IADD3 R5, R5, 0x4, RZ ;
+        /*0860*/                   ISETP.NE.AND P0, PT, R6, 0x1, PT ;
+        /*0870*/                   UIADD3.X UR5, URZ, UR5, URZ, UP0, !UPT ;
+        /*0880*/                   FFMA R8, R8, R9, R7 ;
+        /*0890*/                   IADD3 R9, P1, R2, 0x10, RZ ;
+        /*08a0*/                   MOV R2, R9 ;
+        /*08b0*/                   FFMA R8, R11, R10, R8 ;
+        /*08c0*/                   IMAD.X R10, RZ, RZ, R3, P1 ;
+        /*08d0*/                   MOV R3, R10 ;
+        /*08e0*/                   FFMA R8, R13, R12, R8 ;
+        /*08f0*/                   FFMA R7, R15, R14, R8 ;
+        /*0900*/               @P0 BRA `(.L_x_2) ;
+.L_x_1:
+        /*0910*/                   ISETP.NE.AND P0, PT, R4, RZ, PT ;
+        /*0920*/              @!P0 BRA `(.L_x_0) ;
+        /*0930*/                   IMAD.MOV.U32 R8, RZ, RZ, 0x4 ;
+        /*0940*/                   IMAD R2, R0, c[0x0][0x180], R5 ;
+        /*0950*/                   IMAD.WIDE R2, R2, R8, c[0x0][0x168] ;
+        /*0960*/                   IMAD.WIDE R8, R5, R8, c[0x0][0x160] ;
+        /*0970*/                   MOV R6, R2 ;
+.L_x_6:
+        /*0980*/                   MOV R2, R6 ;
+        /*0990*/                   LDG.E.SYS R5, [R8] ;
+        /*09a0*/                   LDG.E.SYS R2, [R2] ;
+        /*09b0*/                   IADD3 R4, R4, -0x1, RZ ;
+        /*09c0*/                   ISETP.NE.AND P0, PT, R4, RZ, PT ;
+        /*09d0*/                   IADD3 R6, P1, R6, 0x4, RZ ;
+        /*09e0*/                   IADD3 R8, P2, R8, 0x4, RZ ;
+        /*09f0*/                   IMAD.X R3, RZ, RZ, R3, P1 ;
+        /*0a00*/                   IADD3.X R9, RZ, R9, RZ, P2, !PT ;
+        /*0a10*/                   FFMA R7, R2, R5, R7 ;
+        /*0a20*/               @P0 BRA `(.L_x_6) ;
+.L_x_0:
+        /*0a30*/                   MOV R5, 0x4 ;
+        /*0a40*/                   IMAD.WIDE R2, R0, R5, c[0x0][0x170] ;
+        /*0a50*/                   LDG.E.SYS R2, [R2] ;
+        /*0a60*/                   IMAD.WIDE R4, R0, R5, c[0x0][0x178] ;
+        /*0a70*/                   FADD R7, R2, R7 ;
+        /*0a80*/                   STG.E.SYS [R4], R7 ;
+        /*0a90*/                   EXIT ;
+.L_x_7:
+        /*0aa0*/                   BRA `(.L_x_7);
+        /*0ab0*/                   NOP;
+        /*0ac0*/                   NOP;
+        /*0ad0*/                   NOP;
+        /*0ae0*/                   NOP;
+        /*0af0*/                   NOP;
+.L_x_30:
+
+
 //--------------------- .text._Z8fc_layerPfS_S_S_ii --------------------------
 	.section	.text._Z8fc_layerPfS_S_S_ii,"ax",@progbits
 	.sectioninfo	@"SHI_REGISTERS=42"
 	.align	128
         .global         _Z8fc_layerPfS_S_S_ii
         .type           _Z8fc_layerPfS_S_S_ii,@function
-        .size           _Z8fc_layerPfS_S_S_ii,(.L_x_22 - _Z8fc_layerPfS_S_S_ii)
+        .size           _Z8fc_layerPfS_S_S_ii,(.L_x_31 - _Z8fc_layerPfS_S_S_ii)
         .other          _Z8fc_layerPfS_S_S_ii,@"STO_CUDA_ENTRY STV_DEFAULT"
 _Z8fc_layerPfS_S_S_ii:
 .text._Z8fc_layerPfS_S_S_ii:
@@ -21,13 +218,13 @@ _Z8fc_layerPfS_S_S_ii:
         /*0060*/                   MOV R4, c[0x0][0x180] ;
         /*0070*/                   IMAD.MOV.U32 R7, RZ, RZ, RZ ;
         /*0080*/                   ISETP.GE.AND P0, PT, R4, 0x1, PT ;
-        /*0090*/              @!P0 BRA `(.L_x_0) ;
+        /*0090*/              @!P0 BRA `(.L_x_8) ;
         /*00a0*/                   IADD3 R2, R4.reuse, -0x1, RZ ;
         /*00b0*/                   LOP3.LUT R4, R4, 0x3, RZ, 0xc0, !PT ;
         /*00c0*/                   ISETP.GE.U32.AND P0, PT, R2, 0x3, PT ;
         /*00d0*/                   MOV R7, RZ ;
         /*00e0*/                   MOV R5, RZ ;
-        /*00f0*/              @!P0 BRA `(.L_x_1) ;
+        /*00f0*/              @!P0 BRA `(.L_x_9) ;
         /*0100*/                   IADD3 R6, -R4, c[0x0][0x180], RZ ;
         /*0110*/                   IMAD R2, R0, c[0x0][0x180], RZ ;
         /*0120*/                   ULDC.64 UR4, c[0x0][0x160] ;
@@ -36,12 +233,12 @@ _Z8fc_layerPfS_S_S_ii:
         /*0150*/                   MOV R7, RZ ;
         /*0160*/                   IMAD.WIDE R2, R2, R3, c[0x0][0x168] ;
         /*0170*/                   MOV R5, RZ ;
-        /*0180*/              @!P0 BRA `(.L_x_2) ;
+        /*0180*/              @!P0 BRA `(.L_x_10) ;
         /*0190*/                   ISETP.GT.AND P1, PT, R6, 0xc, PT ;
         /*01a0*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0 ;
-        /*01b0*/              @!P1 BRA `(.L_x_3) ;
+        /*01b0*/              @!P1 BRA `(.L_x_11) ;
         /*01c0*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 ;
-.L_x_4:
+.L_x_12:
         /*01d0*/                   LDG.E.SYS R8, [R2] ;
         /*01e0*/                   LDG.E.SYS R9, [UR4] ;
         /*01f0*/                   LDG.E.SYS R11, [R2+0x4] ;
@@ -97,10 +294,10 @@ _Z8fc_layerPfS_S_S_ii:
         /*0510*/                   FFMA R8, R35, R34, R8 ;
         /*0520*/                   FFMA R8, R37, R36, R8 ;
         /*0530*/                   FFMA R7, R39, R38, R8 ;
-        /*0540*/               @P1 BRA `(.L_x_4) ;
-.L_x_3:
+        /*0540*/               @P1 BRA `(.L_x_12) ;
+.L_x_11:
         /*0550*/                   ISETP.GT.AND P1, PT, R6, 0x4, PT ;
-        /*0560*/              @!P1 BRA `(.L_x_5) ;
+        /*0560*/              @!P1 BRA `(.L_x_13) ;
         /*0570*/                   LDG.E.SYS R8, [R2] ;
         /*0580*/                   LDG.E.SYS R9, [UR4] ;
         /*0590*/                   LDG.E.SYS R11, [R2+0x4] ;
@@ -132,10 +329,10 @@ _Z8fc_layerPfS_S_S_ii:
         /*0730*/                   FFMA R8, R19, R18, R8 ;
         /*0740*/                   FFMA R8, R21, R20, R8 ;
         /*0750*/                   FFMA R7, R23, R22, R8 ;
-.L_x_5:
+.L_x_13:
         /*0760*/                   ISETP.NE.OR P0, PT, R6, RZ, P0 ;
-        /*0770*/              @!P0 BRA `(.L_x_1) ;
-.L_x_2:
+        /*0770*/              @!P0 BRA `(.L_x_9) ;
+.L_x_10:
         /*0780*/                   LDG.E.SYS R8, [R2] ;
         /*0790*/                   LDG.E.SYS R9, [UR4] ;
         /*07a0*/                   LDG.E.SYS R11, [R2+0x4] ;
@@ -157,16 +354,16 @@ _Z8fc_layerPfS_S_S_ii:
         /*08a0*/                   MOV R3, R10 ;
         /*08b0*/                   FFMA R8, R13, R12, R8 ;
         /*08c0*/                   FFMA R7, R15, R14, R8 ;
-        /*08d0*/               @P0 BRA `(.L_x_2) ;
-.L_x_1:
+        /*08d0*/               @P0 BRA `(.L_x_10) ;
+.L_x_9:
         /*08e0*/                   ISETP.NE.AND P0, PT, R4, RZ, PT ;
-        /*08f0*/              @!P0 BRA `(.L_x_0) ;
+        /*08f0*/              @!P0 BRA `(.L_x_8) ;
         /*0900*/                   MOV R8, 0x4 ;
         /*0910*/                   IMAD R2, R0, c[0x0][0x180], R5 ;
         /*0920*/                   IMAD.WIDE R2, R2, R8, c[0x0][0x168] ;
         /*0930*/                   IMAD.WIDE R8, R5, R8, c[0x0][0x160] ;
         /*0940*/                   MOV R6, R2 ;
-.L_x_6:
+.L_x_14:
         /*0950*/                   IMAD.MOV.U32 R2, RZ, RZ, R6 ;
         /*0960*/                   LDG.E.SYS R5, [R8] ;
         /*0970*/                   LDG.E.SYS R2, [R2] ;
@@ -177,8 +374,8 @@ _Z8fc_layerPfS_S_S_ii:
         /*09c0*/                   IADD3.X R3, RZ, R3, RZ, P1, !PT ;
         /*09d0*/                   IADD3.X R9, RZ, R9, RZ, P2, !PT ;
         /*09e0*/                   FFMA R7, R2, R5, R7 ;
-        /*09f0*/               @P0 BRA `(.L_x_6) ;
-.L_x_0:
+        /*09f0*/               @P0 BRA `(.L_x_14) ;
+.L_x_8:
         /*0a00*/                   MOV R5, 0x4 ;
         /*0a10*/                   IMAD.WIDE R2, R0, R5, c[0x0][0x170] ;
         /*0a20*/                   LDG.E.SYS R2, [R2] ;
@@ -186,9 +383,9 @@ _Z8fc_layerPfS_S_S_ii:
         /*0a40*/                   FADD R7, R2, R7 ;
         /*0a50*/                   STG.E.SYS [R4], R7 ;
         /*0a60*/                   EXIT ;
-.L_x_7:
-        /*0a70*/                   BRA `(.L_x_7);
-.L_x_22:
+.L_x_15:
+        /*0a70*/                   BRA `(.L_x_15);
+.L_x_31:
 
 
 //--------------------- .text._Z10max_pool2dPfS_iii --------------------------
@@ -197,7 +394,7 @@ _Z8fc_layerPfS_S_S_ii:
 	.align	128
         .global         _Z10max_pool2dPfS_iii
         .type           _Z10max_pool2dPfS_iii,@function
-        .size           _Z10max_pool2dPfS_iii,(.L_x_23 - _Z10max_pool2dPfS_iii)
+        .size           _Z10max_pool2dPfS_iii,(.L_x_32 - _Z10max_pool2dPfS_iii)
         .other          _Z10max_pool2dPfS_iii,@"STO_CUDA_ENTRY STV_DEFAULT"
 _Z10max_pool2dPfS_iii:
 .text._Z10max_pool2dPfS_iii:
@@ -241,7 +438,7 @@ _Z10max_pool2dPfS_iii:
         /*0250*/                   IMAD.MOV.U32 R15, RZ, RZ, c[0x0][0x174] ;
         /*0260*/                   MOV R11, 0xff800000 ;
         /*0270*/                   ISETP.GE.AND P0, PT, R15, 0x1, PT ;
-        /*0280*/              @!P0 BRA `(.L_x_8) ;
+        /*0280*/              @!P0 BRA `(.L_x_16) ;
         /*0290*/                   IMAD R3, R19, c[0x0][0x170], RZ ;
         /*02a0*/                   IADD3 R2, R15.reuse, -0x1, RZ ;
         /*02b0*/                   IMAD R13, R0, c[0x0][0x174], RZ ;
@@ -252,13 +449,13 @@ _Z10max_pool2dPfS_iii:
         /*0300*/                   IADD3 R20, R15, -c[0x0][0x174], RZ ;
         /*0310*/                   IMAD.MOV.U32 R16, RZ, RZ, RZ ;
         /*0320*/                   IMAD R14, R12, c[0x0][0x170], R13 ;
-.L_x_12:
+.L_x_20:
         /*0330*/                   UMOV UR4, URZ ;
         /*0340*/                   ISETP.NE.AND P2, PT, R15, RZ, PT ;
-        /*0350*/              @!P0 BRA `(.L_x_9) ;
+        /*0350*/              @!P0 BRA `(.L_x_17) ;
         /*0360*/                   IMAD.IADD R17, R14, 0x1, R16 ;
         /*0370*/                   UMOV UR4, URZ ;
-.L_x_10:
+.L_x_18:
         /*0380*/                   MOV R2, 0x4 ;
         /*0390*/                   IMAD.MOV.U32 R23, RZ, RZ, c[0x0][0x170] ;
         /*03a0*/                   IMAD.WIDE R2, R17, R2, c[0x0][0x160] ;
@@ -277,10 +474,10 @@ _Z10max_pool2dPfS_iii:
         /*0470*/                   FMNMX R11, R11, R4, !PT ;
         /*0480*/                   FMNMX R11, R11, R6, !PT ;
         /*0490*/                   FMNMX R11, R11, R8, !PT ;
-        /*04a0*/               @P1 BRA `(.L_x_10) ;
-.L_x_9:
+        /*04a0*/               @P1 BRA `(.L_x_18) ;
+.L_x_17:
         /*04b0*/                   IMAD.IADD R4, R13, 0x1, R16 ;
-        /*04c0*/              @!P2 BRA `(.L_x_11) ;
+        /*04c0*/              @!P2 BRA `(.L_x_19) ;
         /*04d0*/                   IADD3 R5, R12, UR4, RZ ;
         /*04e0*/                   MOV R7, 0x4 ;
         /*04f0*/                   IMAD R2, R5, c[0x0][0x170], R4 ;
@@ -288,7 +485,7 @@ _Z10max_pool2dPfS_iii:
         /*0510*/                   LDG.E.SYS R2, [R2] ;
         /*0520*/                   ISETP.NE.AND P1, PT, R15, 0x1, PT ;
         /*0530*/                   FMNMX R11, R11, R2, !PT ;
-        /*0540*/              @!P1 BRA `(.L_x_11) ;
+        /*0540*/              @!P1 BRA `(.L_x_19) ;
         /*0550*/                   ISETP.NE.AND P1, PT, R15, 0x2, PT ;
         /*0560*/                   IADD3 R2, R5, 0x1, RZ ;
         /*0570*/                   IMAD R2, R2, c[0x0][0x170], R4 ;
@@ -300,26 +497,26 @@ _Z10max_pool2dPfS_iii:
         /*05d0*/               @P1 LDG.E.SYS R4, [R4] ;
         /*05e0*/                   FMNMX R11, R11, R2, !PT ;
         /*05f0*/               @P1 FMNMX R11, R11, R4, !PT ;
-.L_x_11:
+.L_x_19:
         /*0600*/                   IADD3 R16, R16, 0x1, RZ ;
         /*0610*/                   ISETP.GE.AND P1, PT, R16, c[0x0][0x174], PT ;
-        /*0620*/              @!P1 BRA `(.L_x_12) ;
-.L_x_8:
+        /*0620*/              @!P1 BRA `(.L_x_20) ;
+.L_x_16:
         /*0630*/                   IMAD R3, R21.reuse, R19, R10 ;
         /*0640*/                   IMAD.MOV.U32 R2, RZ, RZ, 0x4 ;
         /*0650*/                   IMAD R3, R21, R3, R0 ;
         /*0660*/                   IMAD.WIDE R2, R3, R2, c[0x0][0x168] ;
         /*0670*/                   STG.E.SYS [R2], R11 ;
         /*0680*/                   EXIT ;
-.L_x_13:
-        /*0690*/                   BRA `(.L_x_13);
+.L_x_21:
+        /*0690*/                   BRA `(.L_x_21);
         /*06a0*/                   NOP;
         /*06b0*/                   NOP;
         /*06c0*/                   NOP;
         /*06d0*/                   NOP;
         /*06e0*/                   NOP;
         /*06f0*/                   NOP;
-.L_x_23:
+.L_x_32:
 
 
 //--------------------- .text._Z4reluPfS_i        --------------------------
@@ -328,7 +525,7 @@ _Z10max_pool2dPfS_iii:
 	.align	128
         .global         _Z4reluPfS_i
         .type           _Z4reluPfS_i,@function
-        .size           _Z4reluPfS_i,(.L_x_24 - _Z4reluPfS_i)
+        .size           _Z4reluPfS_i,(.L_x_33 - _Z4reluPfS_i)
         .other          _Z4reluPfS_i,@"STO_CUDA_ENTRY STV_DEFAULT"
 _Z4reluPfS_i:
 .text._Z4reluPfS_i:
@@ -345,11 +542,11 @@ _Z4reluPfS_i:
         /*00a0*/                   FMNMX R7, RZ, R2, !PT ;
         /*00b0*/                   STG.E.SYS [R4], R7 ;
         /*00c0*/                   EXIT ;
-.L_x_14:
-        /*00d0*/                   BRA `(.L_x_14);
+.L_x_22:
+        /*00d0*/                   BRA `(.L_x_22);
         /*00e0*/                   NOP;
         /*00f0*/                   NOP;
-.L_x_24:
+.L_x_33:
 
 
 //--------------------- .text._Z6conv2dPfS_S_iiii --------------------------
@@ -358,7 +555,7 @@ _Z4reluPfS_i:
 	.align	128
         .global         _Z6conv2dPfS_S_iiii
         .type           _Z6conv2dPfS_S_iiii,@function
-        .size           _Z6conv2dPfS_S_iiii,(.L_x_25 - _Z6conv2dPfS_S_iiii)
+        .size           _Z6conv2dPfS_S_iiii,(.L_x_34 - _Z6conv2dPfS_S_iiii)
         .other          _Z6conv2dPfS_S_iiii,@"STO_CUDA_ENTRY STV_DEFAULT"
 _Z6conv2dPfS_S_iiii:
 .text._Z6conv2dPfS_S_iiii:
@@ -380,7 +577,7 @@ _Z6conv2dPfS_S_iiii:
         /*00f0*/                   IMAD.MOV.U32 R12, RZ, RZ, RZ ;
         /*0100*/                   ISETP.LE.AND P0, PT, R4, c[0x0][0x17c], PT ;
         /*0110*/                   ISETP.GT.OR P0, PT, R4, c[0x0][0x180], !P0 ;
-        /*0120*/               @P0 BRA `(.L_x_15) ;
+        /*0120*/               @P0 BRA `(.L_x_23) ;
         /*0130*/                   IMAD.MOV.U32 R4, RZ, RZ, c[0x0][0x17c] ;
         /*0140*/                   MOV R5, 0x1 ;
         /*0150*/                   IMAD.MOV.U32 R10, RZ, RZ, RZ ;
@@ -389,25 +586,25 @@ _Z6conv2dPfS_S_iiii:
         /*0180*/                   LOP3.LUT R4, R4, 0x3, RZ, 0xc0, !PT ;
         /*0190*/                   ISETP.GE.U32.AND P0, PT, R5, 0x3, PT ;
         /*01a0*/                   IADD3 R26, R4, -c[0x0][0x17c], RZ ;
-.L_x_20:
+.L_x_28:
         /*01b0*/                   IMAD R11, R10, c[0x0][0x178], R3 ;
         /*01c0*/                   MOV R8, RZ ;
         /*01d0*/                   IMAD R9, R0, c[0x0][0x180], R10 ;
         /*01e0*/                   IADD3 R10, R10, 0x1, RZ ;
         /*01f0*/                   IMAD R5, R11, c[0x0][0x178], R2 ;
         /*0200*/                   ISETP.GE.AND P1, PT, R10, c[0x0][0x180], PT ;
-.L_x_19:
+.L_x_27:
         /*0210*/                   IMAD R6, R9, c[0x0][0x17c], R8 ;
         /*0220*/                   UMOV UR4, URZ ;
         /*0230*/                   ISETP.NE.AND P3, PT, R4, RZ, PT ;
         /*0240*/                   IMAD R29, R6, c[0x0][0x17c], RZ ;
-        /*0250*/              @!P0 BRA `(.L_x_16) ;
+        /*0250*/              @!P0 BRA `(.L_x_24) ;
         /*0260*/                   MOV R24, 0x4 ;
         /*0270*/                   IMAD.IADD R13, R5, 0x1, R8 ;
         /*0280*/                   UMOV UR4, URZ ;
         /*0290*/                   IMAD.WIDE R6, R29, R24, c[0x0][0x168] ;
         /*02a0*/                   MOV R23, R6 ;
-.L_x_17:
+.L_x_25:
         /*02b0*/                   IMAD.WIDE R14, R13, R24, c[0x0][0x160] ;
         /*02c0*/                   MOV R31, c[0x0][0x178] ;
         /*02d0*/                   IMAD.MOV.U32 R6, RZ, RZ, R23 ;
@@ -432,10 +629,10 @@ _Z6conv2dPfS_S_iiii:
         /*0400*/                   FFMA R22, R25, R18, R22 ;
         /*0410*/                   IADD3.X R7, RZ, R7, RZ, P4, !PT ;
         /*0420*/                   FFMA R12, R27, R20, R22 ;
-        /*0430*/               @P2 BRA `(.L_x_17) ;
-.L_x_16:
+        /*0430*/               @P2 BRA `(.L_x_25) ;
+.L_x_24:
         /*0440*/                   IMAD.IADD R14, R2, 0x1, R8 ;
-        /*0450*/              @!P3 BRA `(.L_x_18) ;
+        /*0450*/              @!P3 BRA `(.L_x_26) ;
         /*0460*/                   IADD3 R15, R11, UR4, RZ ;
         /*0470*/                   IADD3 R16, R29, UR4, RZ ;
         /*0480*/                   MOV R19, 0x4 ;
@@ -446,7 +643,7 @@ _Z6conv2dPfS_S_iiii:
         /*04d0*/                   LDG.E.SYS R6, [R6] ;
         /*04e0*/                   ISETP.NE.AND P2, PT, R4, 0x1, PT ;
         /*04f0*/                   FFMA R12, R13, R6, R12 ;
-        /*0500*/              @!P2 BRA `(.L_x_18) ;
+        /*0500*/              @!P2 BRA `(.L_x_26) ;
         /*0510*/                   ISETP.NE.AND P2, PT, R4, 0x2, PT ;
         /*0520*/                   LDG.E.SYS R13, [R16+0x4] ;
         /*0530*/                   IADD3 R6, R15, 0x1, RZ ;
@@ -460,12 +657,12 @@ _Z6conv2dPfS_S_iiii:
         /*05b0*/               @P2 LDG.E.SYS R14, [R14] ;
         /*05c0*/                   FFMA R12, R13, R6, R12 ;
         /*05d0*/               @P2 FFMA R12, R19, R14, R12 ;
-.L_x_18:
+.L_x_26:
         /*05e0*/                   IADD3 R8, R8, 0x1, RZ ;
         /*05f0*/                   ISETP.GE.AND P2, PT, R8, c[0x0][0x17c], PT ;
-        /*0600*/              @!P2 BRA `(.L_x_19) ;
-        /*0610*/              @!P1 BRA `(.L_x_20) ;
-.L_x_15:
+        /*0600*/              @!P2 BRA `(.L_x_27) ;
+        /*0610*/              @!P1 BRA `(.L_x_28) ;
+.L_x_23:
         /*0620*/                   UIADD3 UR4, UR5, 0x1, URZ ;
         /*0630*/                   IMAD R3, R0, UR4, R3 ;
         /*0640*/                   MOV R0, 0x4 ;
@@ -473,12 +670,12 @@ _Z6conv2dPfS_S_iiii:
         /*0660*/                   IMAD.WIDE R2, R3, R0, c[0x0][0x170] ;
         /*0670*/                   STG.E.SYS [R2], R12 ;
         /*0680*/                   EXIT ;
-.L_x_21:
-        /*0690*/                   BRA `(.L_x_21);
+.L_x_29:
+        /*0690*/                   BRA `(.L_x_29);
         /*06a0*/                   NOP;
         /*06b0*/                   NOP;
         /*06c0*/                   NOP;
         /*06d0*/                   NOP;
         /*06e0*/                   NOP;
         /*06f0*/                   NOP;
-.L_x_25:
+.L_x_34:

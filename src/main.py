@@ -85,7 +85,8 @@ class LLVMModule:
 
 
 if __name__=="__main__":
-    config_path = current_dir / ".." / "launch" / "config.json"
+    config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+    config_path = current_dir / ".." / config_folder_name / "config.json"
     
     with open(config_path.resolve(), 'r') as file:
         data = json.load(file)

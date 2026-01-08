@@ -5,6 +5,7 @@ from s2lir.intrinsics import *
 import re
 import math
 import typing
+import os
 
 if typing.TYPE_CHECKING:
     from s2lir.Instruction import Instruction
@@ -71,10 +72,10 @@ class Operand:
         self.arg_neg = False
         self.arg_abs = False
 
-        # Pointer
+        # Pointer (assume to be 64 bit)
         self.isPtr = False
         self.ptr_offset = 0
-        # self.ptr_reg = None
+        self.ptr_offset_reg = None
         self.ptr_neg = False
         self.ptr_abs = False
 
@@ -94,7 +95,8 @@ class Operand:
         
         self.llvm_module = None
         
-        config_path = current_dir / "../.." / "launch" / "config.json"
+        config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
+        config_path = current_dir / "../.." / config_folder_name / "config.json"
     
         with open(config_path.resolve(), 'r') as file:
             self.config = json.load(file)
@@ -167,8 +169,27 @@ class Operand:
         if isinstance(PtrAddr.type, llvmir.PointerType):
             PtrAddr = IRBuilder.ptrtoint(PtrAddr, llvmir.IntType(64))
 
-        # Add any immediate offset baked into the operand
-        PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), PtrOp.ptr_offset))
+        # Add dynamic register offset (e.g. + UR4)
+        if getattr(PtrOp, 'ptr_offset_reg', None):
+            reg_name = PtrOp.ptr_offset_reg
+            if reg_name in ("RZ", "URZ"):
+                offset_val = llvmir.Constant(llvmir.IntType(64), 0)
+            elif reg_name in IRRegs:
+                reg_ptr = IRRegs[reg_name]
+                
+                # load the value (usually i32)
+                offset_val = IRBuilder.load(reg_ptr, name=f"val_{reg_name}")
+                if offset_val.type == llvmir.IntType(32):
+                    offset_val = IRBuilder.sext(offset_val, llvmir.IntType(64), name=f"sext_{reg_name}")
+            else:
+                raise Exception(f"Register {reg_name} not found in IRRegs during address computation")
+
+            # Add the dynamic offset to the base
+            PtrAddr = IRBuilder.add(PtrAddr, offset_val, name="base_plus_reg_offset")
+            
+        # Add any immediate offset baked into the operand (e.g. +0x2)
+        if PtrOp.ptr_offset != 0:
+            PtrAddr = IRBuilder.add(PtrAddr, llvmir.Constant(llvmir.IntType(64), PtrOp.ptr_offset), name="ptr_plus_imm")
         return PtrAddr
 
     def _ptr_for_byte_address(self, IRBuilder, byte_addr, elem_type, addr_space: int | None = None, inbounds=False):
@@ -307,6 +328,8 @@ class Operand:
                     return llvmir.Constant(llvmir.IntType(32), 0)
                 elif self.getTypeDesc() == "NOTYPE":
                     return llvmir.Constant(llvmir.IntType(32), 0)
+                elif self.getTypeDesc() == "Bool":
+                    return llvmir.Constant(llvmir.IntType(1), 0)
                 raise Exception(f"Invalid TypeDesc: {self.getTypeDesc()}")
 
             # IRVal = IRRegs[self.getIRRegName()]
@@ -402,8 +425,17 @@ class Operand:
                 if LoadDataType is None:
                     LoadDataType = llvmir.IntType(32) if self.isPtr else self.getIRType()
                 
+                if self.getRegName() in ["RZ", "URZ"]:
+                    return llvmir.Constant(LoadDataType, 0)
+                
+                reg_ptr = IRRegs[self.reg]
+                
+                if reg_ptr.type.pointee != LoadDataType:
+                    # Cast i32* -> float*
+                    reg_ptr = IRBuilder.bitcast(reg_ptr, LoadDataType.as_pointer(), name="cast_ptr")
+                
                 # Load the base register
-                IRVal = IRBuilder.load(IRRegs[self.reg], typ=LoadDataType) # TODO: Confirm if this changes data layout
+                IRVal = IRBuilder.load(reg_ptr, typ=LoadDataType) # TODO: Confirm if this changes data layout
 
                 # Apply swizzle modifier for pointer/index operands (e.g., R5.X4)
                 if self.swizzle is not None:
@@ -434,6 +466,9 @@ class Operand:
                 print(self.ins, self)
                 raise InvalidSyntaxException
             if self.isPtr:
+                if self.getRegName() in ["RZ", "URZ"]:
+                    return llvmir.Constant(llvmir.IntType(64), 0)
+                
                 # Detect 32-bit address space based on instruction opcode
                 # Shared (LDS, STS) and Local (LDL, STL) instructions use 32-bit offsets,
                 # NOT 64-bit register pairs.
@@ -453,13 +488,14 @@ class Operand:
                         adjRegNumber = int(match.group(2)) + 1
                         adjRegName = adjRegName + str(adjRegNumber)
                         
-                        IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
+                        # IRVal = IRBuilder.zext(IRVal, llvmir.IntType(64), name="zext")
                         
                         if adjRegName in IRRegs:
                             adjIRReg = IRRegs[adjRegName]
                             adjIRVal = IRBuilder.load(adjIRReg, typ=llvmir.IntType(32))
                         else:
-                            adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                            # adjIRVal = llvmir.Constant(llvmir.IntType(32), 0)
+                            raise Exception(f"High-bits register {adjRegName} not defined for 64-bit pointer construction.")
                         
                         adjIRVal = IRBuilder.zext(adjIRVal, llvmir.IntType(64), name="zext")
                         adjIRVal = IRBuilder.shl(adjIRVal, llvmir.Constant(llvmir.IntType(64), 32), "shl")
@@ -558,12 +594,32 @@ class Operand:
             self.isPtr = True
             content = content[1:-1]
             dprint(content)
+            
+            # clean register names (e.g., "R12.64" -> "R12")
+            def parse_reg_part(part):
+                if ".64" in part:
+                    # self.is_64bit_ptr = True
+                    return part.split(".")[0] # return "R12"
+                return part
+            
             if content.find("+") != -1:
-                self.ptr_offset = int(content.split("+")[1], 16)
-                self.reg = content.split("+")[0]
+                left_part = content.split("+")[0].strip()
+                right_part = content.split("+")[1].strip()
+                assert content.count("+") == 1, f"more than 1 '+' found: {self}"
                 
+                # base register (e.g. R12.64)
+                self.reg = parse_reg_part(left_part)
+                
+                # offset
+                if right_part in SM_75_Reg_Set or right_part in SM_75_UReg_Set:
+                    # right part is a register (dynamic offset)
+                    self.ptr_offset_reg = right_part
+                else:
+                    # static offset
+                    self.ptr_offset = int(right_part, 16)
             else:
-                self.reg = content
+                # cases like [R12.64] without a plus sign
+                self.reg = parse_reg_part(content)
             # assume there is no !R1 or -R1 case
             assert self.reg in SM_75_Reg_Set or self.reg in SM_75_UReg_Set
             return
@@ -686,7 +742,23 @@ class Operand:
             elif self.typeDesc == "Void":
                 self.IRType = llvmir.VoidType()
             elif "_PTR" in self.typeDesc:
-                self.IRType = llvmir.PointerType()
+                if not self.config.get("opaque_pointers", True):
+                    # Create a pointer to the appropriate pointee type instead of
+                    # an untyped/opaque pointer. Examples: Float32_PTR -> float*
+                    if self.typeDesc.startswith("Float32"):
+                        pointee = llvmir.FloatType()
+                    elif self.typeDesc.startswith("Int32"):
+                        pointee = llvmir.IntType(32)
+                    elif self.typeDesc.startswith("Bool"):
+                        pointee = llvmir.IntType(1)
+                    elif self.typeDesc.startswith("Void"):
+                        pointee = llvmir.VoidType()
+                    else:
+                        # Default to 32-bit int for unknown pointees
+                        pointee = llvmir.IntType(32)
+                    self.IRType = llvmir.PointerType(pointee)
+                else:
+                    self.IRType = llvmir.PointerType()
             else:
                 return llvmir.IntType(32)
 

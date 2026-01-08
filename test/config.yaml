@@ -68,41 +68,41 @@ tests:
       sizes: [1024, 8192]
       block_x: [64, 256]
       rng_seed: [123, 999]
-
   # - name: fc_layer_benchmark_example
   #   ptx_file: ../output/4_ptx/test_lifted_llc.ptx
   #   function: _Z8fc_layerPfS_S_S_ii
-  #   block: { x: 256 }
+  #   grid: { x: 8 }
+  #   block: { x: 32 }
   #   args:
   #     - name: input
   #       type: float*
-  #       size: 256
+  #       size: 272 # intended 256 (padding -- prob from overread)
   #       init: random
   #       rng_seed: 777
   #       range: [0, 20.0]
   #     - name: weights
   #       type: float*
-  #       size: 4096
+  #       size: 73984 # intended 256^2=65536
   #       init: random
   #       rng_seed: 776
   #       range: [0, 20.0]
   #     - name: bias
   #       type: float*
-  #       size: 16
+  #       size: 272 # intended 256
   #       init: random
   #       rng_seed: 775
   #       range: [0, 20.0]
   #     - name: output
   #       type: float*
-  #       size: 16
+  #       size: 256
   #       init: zeros
   #       output: true
-  #     - name: size
+  #     - name: input_size
   #       type: int
-  #       value: 256
+  #       value: 257
   #     - name: output_size
   #       type: int
-  #       value: 16
+  #       value: 256
   #   verification:
   #     mode: benchmark_ptx
   #     tolerance:
@@ -111,6 +111,48 @@ tests:
   #     benchmark:
   #       ptx_file: ../output/4_ptx/test_clang_llc.ptx
   #       function: _Z8fc_layerPfS_S_S_ii
+  - name: fc_layer_simple_benchmark_example
+    ptx_file: ../output/4_ptx/test_lifted_llc.ptx
+    function: _Z15fc_layer_simplePfS_S_S_ii
+    block: { x: 256 }
+    args:
+      - name: input
+        type: float*
+        size: 256
+        init: random
+        rng_seed: 777
+        range: [0, 20.0]
+      - name: weights
+        type: float*
+        size: 65536 # 256^2
+        init: random
+        rng_seed: 776
+        range: [0, 20.0]
+      - name: bias
+        type: float*
+        size: 256
+        init: random
+        rng_seed: 775
+        range: [0, 20.0]
+      - name: output
+        type: float*
+        size: 256
+        init: zeros
+        output: true
+      - name: size
+        type: int
+        value: 256
+      - name: output_size
+        type: int
+        value: 256
+    verification:
+      mode: benchmark_ptx
+      tolerance:
+        abs: 1e-5
+        rel: 1e-6
+      benchmark:
+        ptx_file: ../output/4_ptx/test_clang_llc.ptx
+        function: _Z15fc_layer_simplePfS_S_S_ii
   - name: memops_globalmem_benchmark_example
     ptx_file: ../output/4_ptx/mem_ops_lifted_llc.ptx
     function: _Z15globalMemKernelPKiPii
@@ -187,3 +229,167 @@ tests:
       benchmark:
         ptx_file: ../output/4_ptx/mem_ops_clang_llc.ptx
         function: _Z15sharedMemKernelPKiPii
+  # - name: lstm_step_benchmark_example
+  #   ptx_file: ../output/4_ptx/lstm_lifted_llc.ptx
+  #   function: _Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii
+  #   block: { x: 16, y: 4 }
+  #   args:
+  #     - name: x
+  #       type: float*
+  #       size: 6                # batch_size * input_size (2 * 3)
+  #       init: random
+  #       rng_seed: 42
+  #       range: [-1.0, 1.0]
+  #     - name: h_prev
+  #       type: float*
+  #       size: 8                # batch_size * hidden_size (2 * 4)
+  #       init: random
+  #       rng_seed: 43
+  #       range: [-0.5, 0.5]
+  #     - name: c_prev
+  #       type: float*
+  #       size: 8
+  #       init: random
+  #       rng_seed: 44
+  #       range: [-0.5, 0.5]
+  #     - name: W_ih
+  #       type: float*
+  #       size: 48               # input_size * 4 * hidden_size (3 * 4 * 4)
+  #       init: random
+  #       rng_seed: 45
+  #       range: [-0.1, 0.1]
+  #     - name: W_hh
+  #       type: float*
+  #       size: 64               # hidden_size * 4 * hidden_size (4 * 4 * 4)
+  #       init: random
+  #       rng_seed: 46
+  #       range: [-0.1, 0.1]
+  #     - name: b_ih
+  #       type: float*
+  #       size: 16               # 4 * hidden_size
+  #       init: random
+  #       rng_seed: 47
+  #       range: [-0.01, 0.01]
+  #     - name: b_hh
+  #       type: float*
+  #       size: 16
+  #       init: random
+  #       rng_seed: 48
+  #       range: [-0.01, 0.01]
+  #     - name: h_new
+  #       type: float*
+  #       size: 8
+  #       init: zeros
+  #       output: true
+  #     - name: c_new
+  #       type: float*
+  #       size: 8
+  #       init: zeros
+  #       output: true
+  #     - name: batch_size
+  #       type: int
+  #       value: 2
+  #     - name: input_size
+  #       type: int
+  #       value: 3
+  #     - name: hidden_size
+  #       type: int
+  #       value: 4
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/lstm_clang_llc.ptx
+  #       function: _Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii
+  # - name: linear_proj_benchmark_example
+  #   ptx_file: ../output/4_ptx/transformer_lifted_llc.ptx
+  #   function: _Z18linear_proj_kernelPKfS0_S0_Pfiii
+  #   block: { x: 32, y: 8 }
+  #   args:
+  #     - name: X
+  #       type: float*
+  #       size: 2048        # seq_len * d_model (32 * 64)
+  #       init: random
+  #       rng_seed: 101
+  #       range: [-1.0, 1.0]
+  #     - name: W
+  #       type: float*
+  #       size: 2048        # d_k * d_model (32 * 64)
+  #       init: random
+  #       rng_seed: 102
+  #       range: [-0.1, 0.1]
+  #     - name: b
+  #       type: float*
+  #       size: 32          # d_k
+  #       init: random
+  #       rng_seed: 103
+  #       range: [-0.01, 0.01]
+  #     - name: Y
+  #       type: float*
+  #       size: 1024        # seq_len * d_k (32 * 32)
+  #       init: zeros
+  #       output: true
+  #     - name: seq_len
+  #       type: int
+  #       value: 32
+  #     - name: d_model
+  #       type: int
+  #       value: 64
+  #     - name: d_k
+  #       type: int
+  #       value: 32
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/transformer_clang_llc.ptx
+  #       function: _Z18linear_proj_kernelPKfS0_S0_Pfiii
+  # - name: ffn_relu_benchmark_example
+  #   ptx_file: ../output/4_ptx/transformer_lifted_llc.ptx
+  #   function: _Z15ffn_relu_kernelPKfS0_S0_Pfiii
+  #   block: { x: 16, y: 4 }
+  #   args:
+  #     - name: X
+  #       type: float*
+  #       size: 32        # seq_len * d_model (4 * 8)
+  #       init: random
+  #       rng_seed: 201
+  #       range: [-1.0, 1.0]
+  #     - name: W1
+  #       type: float*
+  #       size: 128       # d_ff * d_model (16 * 8)
+  #       init: random
+  #       rng_seed: 202
+  #       range: [-0.1, 0.1]
+  #     - name: b1
+  #       type: float*
+  #       size: 16        # d_ff
+  #       init: random
+  #       rng_seed: 203
+  #       range: [-0.01, 0.01]
+  #     - name: Y
+  #       type: float*
+  #       size: 64        # seq_len * d_ff (4 * 16)
+  #       init: zeros
+  #       output: true
+  #     - name: seq_len
+  #       type: int
+  #       value: 4
+  #     - name: d_model
+  #       type: int
+  #       value: 8
+  #     - name: d_ff
+  #       type: int
+  #       value: 16
+  #   verification:
+  #     mode: benchmark_ptx
+  #     tolerance:
+  #       abs: 1e-5
+  #       rel: 1e-6
+  #     benchmark:
+  #       ptx_file: ../output/4_ptx/transformer_clang_llc.ptx
+  #       function: _Z15ffn_relu_kernelPKfS0_S0_Pfiii
