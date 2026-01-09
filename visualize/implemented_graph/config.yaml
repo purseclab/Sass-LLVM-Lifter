@@ -2,5 +2,5 @@ csv_path: data/instruction_counts_cublas.csv
 title: SASS Instruction Implementation Status
 xlabel: Instruction (Top 50 by Count)
 ylabel: Count (from NVIDIA cuBLAS library)
-output: output/result_cublas.png
+output: output/result_cublas.pdf
 figsize: [20, 8]
