@@ -14,7 +14,7 @@ def lop3(IRModule):
     def func_0(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # 0
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
         else:
@@ -25,7 +25,7 @@ def lop3(IRModule):
         # A & B & ~C
         
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
             second_param = 1
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
@@ -47,7 +47,7 @@ def lop3(IRModule):
     def func_ff(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # 1
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
         else:
@@ -63,7 +63,7 @@ def lop3(IRModule):
     def func_33(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # ~B
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
             second_param = 1
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
@@ -81,7 +81,7 @@ def lop3(IRModule):
         # (~A) & B & C
         
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
             second_param = 1
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
@@ -101,7 +101,7 @@ def lop3(IRModule):
         # ~A
         
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
             second_param = 1
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
@@ -114,7 +114,7 @@ def lop3(IRModule):
     def func_55(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # ~C
         if func_op == "plop3":
-            int_type = ir.IntType(32) # TODO not sure, original implementation is inttype(1)
+            int_type = ir.IntType(32) # Note: Original implementation used IntType(1)
             second_param = 1
         elif func_op in ("lop3", "ulop3"):
             int_type = ir.IntType(32)
@@ -141,7 +141,7 @@ def lop3(IRModule):
         if existing_func is not None:
             exit(1)
         
-        # TODO: Determine the types
+        # Note: Need to determine the accurate data types
         # Takes in (immLut value, A, B, C)
         func = ir.Function(
                     IRModule,
@@ -153,7 +153,7 @@ def lop3(IRModule):
         # assuming that BB name only need to be unique within function, not across the module
         builder = ir.IRBuilder(block_entry)
         
-        immLut, A, B, C = func.args # TODO verify later
+        immLut, A, B, C = func.args # Note: Verify the argument unpacking logic later
         
         # 3rd entry is just additional parameters for the function
         cases = {

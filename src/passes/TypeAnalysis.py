@@ -46,7 +46,7 @@ class DataType(str, Enum):
             pass
         # Handle nested pointers (e.g., "Int32_PTR_PTR" -> "Int32_PTR")
         if "_PTR" in label:
-            # TODO, tmp behavior
+            # Temporary analysis fix
             # Find the base type (everything before the first _PTR)
             # and append a single _PTR suffix.
             base_part = label.split("_PTR")[0]
@@ -194,12 +194,12 @@ class TypeAnalysis:
                     elif TypeDesc == llvmir.FloatType():
                         TypeDesc = "Float32"
                     elif TypeDesc == llvmir.FloatType().as_pointer():
-                        # TODO confirm, has isPtr already been set, is this the right way..
+                        # Note: Check if isPtr has already been correctly set here.
                         TypeDesc = "Float32_PTR" # should it be Float32* ?
                         # implication: a constant ptr?
                         arg_Op.isPtr = True
                     elif TypeDesc == llvmir.IntType(32).as_pointer():
-                        # TODO confirm, has isPtr already been set, is this the right way..
+                        # Note: Check if isPtr has already been correctly set here.
                         TypeDesc = "Int32_PTR" # should it be Float32* ?
                         # implication: a constant ptr?
                         arg_Op.isPtr = True
@@ -434,7 +434,7 @@ class TypeAnalysis:
             # Both known: Consistency check (optional)
             if type0 != DataType.NOTYPE and type1 != DataType.NOTYPE:
                 if type0 != type1:
-                    # TODO: conflict
+                    # Note: Type conflict observed between uses and defs.
                     pass
                 return False
 

@@ -43,7 +43,7 @@ class CFG:
             (4) Normal instructions, e.g. MOV R2, 0x4
         """
         
-        # TODO check if there's pred/succ connection between gru's func and the internal func. This would probably just affect the reachingdefinition analysis and type analysis, so not fixing atm
+        # Note: Check if there's pred/succ connection between gru's func and the internal func. This would probably just affect the reachingdefinition analysis and type analysis, so not fixing atm
         
         # Handle (1), (2) and (4)
         BBs = self.func.blocks
@@ -187,7 +187,7 @@ class CFG:
                     BB_i_end = len(BBs)
                     BB_i += len(BBs_new) + 1
                     
-                    # TODO make sure that the BBs are added to the correct position for each cases, and they're splitted correctly with correct preds and succs?
+                    # Note: Make sure that the BBs are added to the correct position for each cases, and they're splitted correctly with correct preds and succs?
                     # also need to make sure things like the RET branching are correct for each instance of the interal func invocation?
                 
                     continue
@@ -196,7 +196,7 @@ class CFG:
                     
                     
         
-        # TODO: need to add Exit block for internal function
+        # Note: need to add Exit block for internal function
         
 
         print("="*100)

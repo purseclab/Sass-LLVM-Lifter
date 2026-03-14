@@ -24,7 +24,7 @@ def promote_integer_list(builder: ir.IRBuilder, values: List[ir.Value]) -> Tuple
     promoted = []
     for val in int_values:
         if val.type.width < max_bits:
-            # TODO: not entirely sure if i shld use sext or zext, i think it depends on whether its signed or unsigned
+            # Note: Determine whether sext or zext is appropriate based on signage.
             val = builder.sext(val, common_type)
         promoted.append(val)
 

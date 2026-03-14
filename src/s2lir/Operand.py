@@ -335,7 +335,7 @@ class Operand:
             # Use the operand's IR type as the element type by default
             return self.IR_ValueFromPointer(IRBuilder, IRRegs, self.getIRType(), addr_space=None)
 
-        # TODO: assume that normal operand other than LDG and STG is not pointers. Check it later.
+        # Note: Assume normal operands (excluding LDG/STG) are not pointers.
         if self.isReg:
             if self.reg in ("RZ", "URZ"):
                 if self.getTypeDesc() == "Float32":
@@ -357,7 +357,7 @@ class Operand:
                 if isinstance(self.getIRType(), llvmir.FloatType):
                     IRVal = IRBuilder.call(llvm_fabs(self.llvm_module), [IRVal], name="llvm_fabs_result")
                 elif isinstance(self.getIRType(), llvmir.IntType):
-                    # TODO setting 2nd parameter to be false arbitrarily, only affects result if INT_MIN is passed
+                    # Note: Setting second parameter false; affects behavior on INT_MIN
                     IRVal = IRBuilder.call(llvm_abs(self.llvm_module), [IRVal, llvmir.Constant(llvmir.IntType(1), 0)], name="llvm_abs_result")
                 else:
                     raise InvalidSyntaxException
@@ -397,7 +397,7 @@ class Operand:
                     IRVal = IRBuilder.call(nvvm_blockdim_x(self.llvm_module), [], name="nvvm_blockdim_x")
                 elif self.offset_in_const_mem == 0x28:
                     # https://stackoverflow.com/questions/77889199/why-there-is-an-unused-data-move-in-the-beginning-of-cuda-kernel
-                    # TODO this is subject to change across different SM version
+                    # Note: Subject to change across different SM versions
                     # ignore processing
                     IRVal = llvmir.Constant(llvmir.IntType(32), 0)
                 elif self.offset_in_const_mem == 0x4:
@@ -451,7 +451,7 @@ class Operand:
                     reg_ptr = IRBuilder.bitcast(reg_ptr, LoadDataType.as_pointer(), name="cast_ptr")
                 
                 # Load the base register
-                IRVal = IRBuilder.load(reg_ptr, typ=LoadDataType) # TODO: Confirm if this changes data layout
+                IRVal = IRBuilder.load(reg_ptr, typ=LoadDataType) # Note: Confirm if this affects data layout
 
                 # Apply swizzle modifier for pointer/index operands (e.g., R5.X4)
                 if self.swizzle is not None:
@@ -464,7 +464,7 @@ class Operand:
                         raise NotImplementedError("Swizzle on non-integer IR type not supported in IRReg_Load")
                 
                 
-                # TODO: test - place barriers to prevent load reordering
+                # Note: Place barriers to prevent load reordering if needed
                 # asm_ty = llvmir.FunctionType(llvmir.VoidType(), [])
                 # inline_asm = llvmir.InlineAsm(asm_ty, "", "~{memory}", side_effect=True)
                 # IRBuilder.call(inline_asm, [])
@@ -558,7 +558,7 @@ class Operand:
                     else:
                         raise Exception
             # prevRegName = self.getCurRegName()
-            IRBuilder.store(storeVal, IRReg) # TODO: Confirm if this changes data layout
+            IRBuilder.store(storeVal, IRReg) # Note: Confirm if this affects data layout
             
             if wide_mode:
                 # store high 32 at adjacent register
@@ -659,7 +659,7 @@ class Operand:
             
             if not self.config["allow_temp_behavior"]:
                 self.IRType = llvmir.FloatType() # needed otherwise IRFetchValue wont create the correct type of constant
-            # TODO: differentiate between float32 and 64 (doubletype)
+            # Note: Need explicit differentiation between Float32 and Float64 (double)
             # self.typeDesc = "Float32"
             return
         
@@ -810,7 +810,7 @@ class Operand:
 
     def getRegNum(self):
         assert self.reg
-        # TODO there's other types of reg, like UR
+        # Note: Consider other register types like UR
         pattern = r"^U?R(\d+)$"
         match = re.match(pattern, self.reg)
         if match:
@@ -818,7 +818,7 @@ class Operand:
         return None
     
     def getAdjRegName(self):
-        # TODO there's other types of reg, like UR
+        # Note: Consider other register types like UR
         return self.getRegPrefix() + str(self.getRegNum() + 1)
     
     def getCurRegName(self):

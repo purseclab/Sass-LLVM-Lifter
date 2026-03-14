@@ -72,7 +72,7 @@ class Instruction:
         
         if self.opcode == "BRA":
             assert (len(self.operands) == 1 and not self.isConditionExpr()) or (len(self.operands) == 2 and self.isConditionExpr()) or (len(self.operands) == 3 and self.isConditionExpr())
-            # TODO it's possible we might see self.operands == 2 and not self.isConditionalExpr, which would look like "BRA P0, `branch_target"
+            # Note: Potential for operands == 2 without isConditionalExpr ("BRA P0, `branch_target")
             
             if len(self.operands) == 3:
                 # e.g. @P0 BRA P1, `branch_target
@@ -254,7 +254,7 @@ class Instruction:
             assert len(self.operands) == 2
             
             if ResOp.isReg and ValOp.SReg:
-                # TODO: Fix it later;
+                # Note: Fix it later;
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 
                 if str(ValOp) == "SR_CTAID.X":
@@ -356,7 +356,7 @@ class Instruction:
                 # IRVal = IRBuilder.load(IRValOp)
                 LoadDataType = None
                 if isinstance(ValOp.getIRType(), llvmir.PointerType):
-                    # TODO: tmp
+                    # Note: Temporary logic
                     if len(self.modifiers) > 0 and self.modifiers[0] == "E":
                         LoadDataType = llvmir.IntType(32)
                         IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder, LoadDataType=LoadDataType)
@@ -564,7 +564,7 @@ class Instruction:
                     continue
                 
                 if mod == "FTZ":
-                    settings["ftz"] = True # TODO handle this. Probably means subnormal/very small numbers are just zeroed out
+                    settings["ftz"] = True # Note: Handle this (likely subnormal numbers are zeroed out)
                     continue
                 
                 pattern = r"^([US]{0,1})((32|64))$"
@@ -574,7 +574,7 @@ class Instruction:
                         "signage" : match.group(1), # None if not present
                         "bits" : match.group(2)
                     }
-                    # TODO handle this
+                    # Note: Handle this
                     continue
                 
                 raise InvalidSyntaxException
@@ -598,7 +598,7 @@ class Instruction:
                     # https://llvm.org/docs/LangRef.html#fcmp-instruction
                     # une, ult, etc
                     # meaning of unordered vs ordered: https://docs.factorcode.org/content/article-math.floats.compare.html
-                    # TODO: determine the true behavior when one of the operand is NaN
+                    # Note: Determine behavior on NaN operand
                     tmp = IRBuilder.fcmp_unordered(cmp_op, IRValOp1, IRValOp2, "fcmp_ordered")
                 else:
                     tmp = IRBuilder.fcmp_ordered(cmp_op, IRValOp1, IRValOp2, "fcmp_unordered")
@@ -735,7 +735,7 @@ class Instruction:
                     if settings["xmode"] is None:
                         tmp = IRBuilder.and_(tmp, llvmir.Constant(llvmir.IntType(64), 0xffffffff), "and")
                     elif settings["xmode"] == "HI":
-                        # TODO: not sure if shld use lshr or ashr, i assume lshr since we're in U mode
+                        # Note: Check if lshr or ashr should be used (defaulting to lshr for U mode)
                         tmp = IRBuilder.lshr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "lshr")
                     else:
                         raise NotImplementedError
@@ -761,7 +761,7 @@ class Instruction:
                 
                 if settings["maxshift"] and settings["maxshift"]["signage"] == "S":
                     tmp = IRBuilder.ashr(tmp, IRValOp_Rb_64, "ashr")
-                    # TODO not entirely sure if shld use ashr, need further testing
+                    # Note: Check if ashr is appropriate here; requires further testing
                     if settings["xmode"] == "HI":
                         tmp = IRBuilder.ashr(tmp, llvmir.Constant(llvmir.IntType(64), 32), "ashr")
                         tmp = IRBuilder.trunc(tmp, llvmir.IntType(32), "trunc32")
@@ -801,7 +801,7 @@ class Instruction:
             assert ResOp.isReg and PReg.isPReg
             # IRResOp = IRRegs[ResOp.getIRRegName()]
 
-            # TODO: use _ordered or unordered?
+            # Note: Decide between _ordered or unordered
             
             lt_cmp = None
             gt_cmp = None
@@ -810,7 +810,7 @@ class Instruction:
                 lt_cmp = IRBuilder.fcmp_ordered('<', IRValOp1, IRValOp2)
                 gt_cmp = IRBuilder.fcmp_ordered('>', IRValOp1, IRValOp2)
             elif self.opcode == "IMNMX":
-                # TODO: assumed to be signed
+                # Note: Assumed to be signed
                 lt_cmp = IRBuilder.icmp_signed("<", IRValOp1, IRValOp2)
                 gt_cmp = IRBuilder.icmp_signed(">", IRValOp1, IRValOp2)
             
@@ -865,7 +865,7 @@ class Instruction:
                 assert isinstance(IRValOp3.type, (llvmir.FloatType, llvmir.DoubleType, llvmir.IntType)) 
             
             if self.config["allow_temp_behavior"]:
-                # TODO: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750971276767179
+                # Note: Consult internal slack references for edge cases
                 if isinstance(IRValOp3.type, (llvmir.DoubleType,llvmir.FloatType)):
                     IRValOp3 = IRBuilder.fptosi(IRValOp3, llvmir.IntType(32), name="fp_to_sint32")
                 if isinstance(IRValOp1.type, (llvmir.DoubleType,llvmir.FloatType)):
@@ -939,8 +939,8 @@ class Instruction:
                 offset = 0
             else:
                 offset = 1
-                # TODO: currently ignore the predicate
-                # TODO: handle these cases: LEA.HI.X (6 operands); LEA.HI.SX32, LEA.Hi
+                # Note: Currently ignoring the predicate
+                # Note: Handle LEA.HI.X (6 operands) and variants
             ValOp1 = self.operands[offset + 1]
             ValOp2 = self.operands[offset + 2]
             shift = self.operands[offset + 3]
@@ -988,7 +988,7 @@ class Instruction:
             return
         
         if self.opcode == "ULDC":
-            # TODO: 64 bit not implemented
+            # Note: 64-bit not implemented
             ResOp = self.operands[0]
             ValOp = self.operands[1]
             
@@ -1035,7 +1035,7 @@ class Instruction:
             
             firstOp = self.operands[0]
             
-            assert len(self.operands) == 6 or len(self.operands) == 7 # TODO investigate what the last operand does for "LOP3.LUT P1, RZ, R13, R34, R12, 0xf8, !PT"
+            assert len(self.operands) == 6 or len(self.operands) == 7 # Note: Investigate 7th operand in LOP3.LUT
             
             if firstOp.isPReg:
                 # Format A
@@ -1054,7 +1054,7 @@ class Instruction:
                 ValOp2 = self.operands[2]
                 ValOp3 = self.operands[3]
                 immLut = self.operands[4]
-                # TODO: GUESS: ALL I met for the final one is 0, what's the meaning of the final one?
+                # Note: Determine the meaning of the final operand (appears to be 0)
                 PReg = self.operands[5]
             
 
@@ -1155,7 +1155,7 @@ class Instruction:
             ValOp3 = self.operands[3]
             immLut = self.operands[5]
             assert immLut.isConst
-            # todo figure out op[4] and op[6]. op[4] is prob a negation of the result, or a negation of each inputs
+            # Note: Figure out op[4] and op[6] (op[4] might be negation)
             assert len(self.operands) == 7
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -1314,7 +1314,7 @@ class Instruction:
             
             assert len(self.operands) == 2
             
-            if ValOp.getTypeDesc() == "NOTYPE": # TODO tmp solution
+            if ValOp.getTypeDesc() == "NOTYPE": # Note: Temporary solution
                 ValOp.setTypeDesc(ResOp.getTypeDesc())
             
             IRValOp = ValOp.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -1328,7 +1328,7 @@ class Instruction:
                 tmp = IRBuilder.fdiv(llvmir.Constant(llvmir.FloatType(), 1), IRValOp)
             elif self.modifiers[0] == "EX2": # Exponent base-2
                 # https://nintyconservation9619.github.io/Switch%20SDK/Docs-JAP/Documents/Package/contents/SASS/opcodes/opMUFU.htm
-                # TODO: there's some small precision issue, as noted here: https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1750988222773009
+                # Note: Small precision issue noted internally
                 
                 llvm_module = self.llvm_module
                 
@@ -1380,7 +1380,7 @@ class Instruction:
                 ValOp1 = self.operands[1]
                 ValOp2 = self.operands[2]
                 ValOp3 = self.operands[3]
-                # TODO not entirely sure what these pred are, but they're probably either carry or overflow bits
+                # Note: Predicates likely carry or overflow bits
                 PregOp1 = self.operands[4]
                 PregOp2 = self.operands[5]
                 assert PregOp1.isPReg
@@ -1424,7 +1424,7 @@ class Instruction:
                 sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
                 sum = IRBuilder.add(sum, IRValOp3, "add")
                 sum = IRBuilder.add(sum, IRPreg1, "add")
-                # TODO not entirely sure the role of this last preg
+                # Note: Unsure of the role of this last preg
                 sum = IRBuilder.add(sum, IRPreg2, "add")
 
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
@@ -1461,9 +1461,9 @@ class Instruction:
                 
                 if str(self.operands[0])[0] == "`":
                     # e.g. CALL.REL.NOINC `($__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath)
-                    # TODO not entirely sure but I believe that `() means that "$__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath" is an unresolved target that might be resolved at runtime. definition of $__internal_0_$__cuda_sm20_rcp_rn_f32_slowpath can be found within the SASS file
-                    # TODO i think the f32 is just refering to the return type, im also assuming that the instructions prior to CALL would set up the arguments, so Function() call will just say that there's no args being passed as input
-                    # TODO not handling NOINC yet
+                    # Note: Re-evaluate unresolved target resolution at runtime
+                    # Note: Assuming f32 is return type and arguments are set up prior
+                    # Note: NOINC not handled yet
                     
                     pattern = r'^`\((.*?_(f\d+)[^)]*)\)$'
                     match = re.match(pattern, str(self.operands[0]))
@@ -1529,7 +1529,7 @@ class Instruction:
             if self.opcode == "IMUL":
                 tmp = IRBuilder.mul(IRValOp1, IRValOp2, "mul")
             elif self.opcode == "FMUL":
-                tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # TODO need further verfication
+                tmp = IRBuilder.fmul(IRValOp1, IRValOp2, "fmul") # Note: Needs further verification
             # IRBuilder.store(tmp, IRResOp)
             ResOp.IRReg_Store(IRRegs, IRBuilder, tmp)
                 
@@ -1564,8 +1564,8 @@ class Instruction:
             return
 
         if self.opcode == "RET":
-            # TODO ret doesnt need to be handled for now. See https://sys-sec-purdue.slack.com/archives/D08RM389XEZ/p1753385146834629
-            # TODO right now we're assuming that it's only being used to return to the address below a CALL instruction
+            # Note: RET is unhandled; assumed used for returning from CALL
+            # Note: RET behavior typically returns to caller sequentially
             # therefore, the instruction we're returning to would be the first instruction in a BB
             # we'll use info from reaching def analysis to determine the addr to jump to, the address shld be at the beginning of a basic block
             assert len(self.operands) == 2 # e.g. R8 `(_Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii)
@@ -1617,7 +1617,7 @@ class Instruction:
     
     def get_kill_set(self):
         """Return set of registers defined (killed) by this instruction."""
-        # TODO handle 64 bit (need to add both registers [there'd be one implicit register] into kill set)
+        # Note: Handle 64-bit (add implicit second register to kill set)
         return {op.reg for op in self._get_kill_set()}
     
     def _get_kill_set(self):

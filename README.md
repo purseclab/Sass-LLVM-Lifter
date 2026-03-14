@@ -1,24 +1,24 @@
 # NVLift: A SASS-to-LLVM IR Binary Lifter
 
-NVLift is a proof-of-concept (PoC) demonstrating the viability to lift undocumented NVIDIA SASS (SM_75/Turing Architecture) to LLVM Intermediate Representation (IR). We also further implemented the pipeline to transpile from LLVM IR into C code with `retdec`.
+NVLift is a proof-of-concept (PoC) demonstrating the viability of lifting undocumented NVIDIA SASS (specifically targeting the SM_75/Turing Architecture) into LLVM Intermediate Representation (IR). The pipeline also supports transpiling the extracted LLVM IR into C code using `retdec`.
 
-> **Note on Project Maturity**: NVLift is currently in an experimental state. To facilitate rapid prototyping, the lifter uses heuristic parsing and string-based register mapping, among many other shortcuts. While these work well for small kernels and inital testing, they are not yet a substitute for a robust, production-scale decompiler. Correctness has only been validated on a limited subset of simple kernels.
+> **Note on Project Maturity**: NVLift is currently in an experimental state. To facilitate rapid prototyping, the lifter utilizes heuristic parsing and string-based register mapping, among other simplifications. While these mechanisms work well for small kernels and initial testing, they are not yet a substitute for a robust, production-scale decompiler. Correctness has only been validated on a limited subset of simple kernels.
 
-`sudo chown -R $USER:$USER /path/to/project/output` might be needed since the lifter runs in a docker container, which generates files owned by root.
+## Quick Start & Usage
 
-## Usage
+The lifter is designed to run in an isolated Docker environment to ensure dependency consistency.
 
-### Setting up Docker for the first time
-
+### 1. Docker Setup
+If you haven't configured Docker to run without `sudo` on your system, please do so:
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
 
-### Running lifter pipeline
-
-Edit `launch/config.json` to configure the path to `.cu` file, names of intermediate files, and the output file name. For example, rename all `gru` into the new name you want:
+### 2. Configuration (`launch/config.json`)
+Before executing the lifter, you must define your input and output targets in `launch/config.json`. 
+For example, if you want to lift a kernel named `gru`, configure the paths as follows:
 ```json
 {
     "lifter": {
@@ -32,86 +32,58 @@ Edit `launch/config.json` to configure the path to `.cu` file, names of intermed
 }
 ```
 
-```sh
+### 3. Execution
+Run the launch script. This will start the Docker container and execute the lifter pipeline.
+```bash
 cd launch
 ./docker.sh
 ```
 
-Sidenote: `/debug/nvsight.sh` allows you to launch a container with desktop environment, which can be accessed via VNC at port 5901. Run `/debug/nvsight.sh` on the host computer, then on your local computer perform port forwarding with `ssh -L 5901:localhost:5901 user@host -N`, and then use a VNC client to connect to `localhost:5901`. The password is `secure`. See `/debug/README.md` for more details.
+**Troubleshooting Permissions:** 
+Because the lifter runs inside a Docker container, the output files may be owned by root. If you encounter permission issues when accessing the output, simply reclaim ownership:
+```bash
+sudo chown -R $USER:$USER /path/to/project/output
+```
 
-## Internal Procedure
+*Tip: For an interactive debugging session with a GUI, use `/debug/nvsight.sh`. Run it on your host, forward the VNC port (`ssh -L 5901:localhost:5901 user@host -N`), and connect a VNC client to `localhost:5901` (Password: `secure`). See `/debug/README.md` for more details.*
 
-sass code(test.sass) =====(parser/sass2json.py)=====> test.json =====(parser/json2ir.py)======> s2lir ======(Passes, e.g. type analysis)=====> analyzed s2lir ========(lifter)=======> test.llvm
+## Architecture & Lifter Pipeline
 
-## How to do Type Analysis?
+The pipeline processes code in several distinct phases:
 
-#### By Opcode and modifiers
-e.g. `IMAD.WIDE R2, R4, R5, c[0x0][0x160] ;`
-=> R2, R4, R5 and c[0x0][0x160] here are Integers; R4 and R5 are 32-bit; R3||R2 are treated as 64 bit together; c[0x0][0x160] is also treated as 64 bit;
+1. **Disassembly & Target Extraction:** Compiles `.cu` source (or uses existing binary) into `cubin`, then disassembles it to SASS.
+2. **Parsing:** Converts raw SASS (`test.sass`) into structured JSON (`parser/sass2json.py`).
+3. **IR Construction:** Generates an intermediate representation (`s2lir`) from the JSON (`parser/json2ir.py`).
+4. **Analysis Passes:** Runs dataflow and type analyses (e.g., reaching definitions, control-flow graph construction, type inference) on the `s2lir`.
+5. **LLVM Lifting:** Emits standard LLVM IR (`test.llvm`) based on the enriched `s2lir`.
 
-e.g. `FMNMX R7, RZ, R2, !PT ;`, R7, R2, RZ here are Float pointers.
+### Supported Instructions
 
-e.g. `ULDC.64 UR4, c[0x0][0x160]`, apperently 64bit operators, but UR4 is actually UR5||UR4? 
-refer:  https://forums.developer.nvidia.com/t/maxwell-sm-50-instruction-ldg-e/39123
+Currently, NVLift supports a subset of SM_75 instructions, including but not limited to:
+- **Control Flow:** `EXIT`, `BRA`, `NOP`
+- **Memory/Data:** `LDG`, `STG`, `MOV/UMOV`, `S2R`, `ULDC`
+- **ALU/Math:** `IMAD`, `IADD3/UIADD3`, `FADD`, `FMNMX`, `FMMA`, `IABS`, `I2F/F2I`, `MUFU.RCP`
+- **Logic:** `ISETP`, `ULOP3/LOP3/POP3`, `LEA`
 
+*Future updates aim to expand instruction and operator support, particularly for ONNX and TVM-generated kernels.*
 
-e.g., `IMAD.MOV.U32 R12, RZ, RZ, RZ ;`, 
+## Type Analysis Heuristics
 
-## Supported Instructions
+Because SASS is untyped, NVLift infers variable types dynamically using heuristic analysis based on instruction opcodes and modifiers. 
 
-+ EXIT
-+ NOP
-+ BRA
-+ S2R
-+ MOV/UMOV
-+ LDG
-+ STG
-+ IMAD
-+ ISETP
-+ FMNMX
-+ FMMA
-+ FADD
-+ LEA
-+ IABS
-+ ULDC
-+ ULOP3/LOP3/POP3
-+ I2F/F2I
-+ MUFU.RCP
-+ IADD3/UIADD3
+For example:
+- **Modifier hints:** `IMAD.WIDE R2, R4, R5, c[0x0][0x160]` informs the lifter that `R2`, `R4`, `R5`, and `c[0x0][0x160]` are Integers. `R4` and `R5` are 32-bit scalars, whereas the destination (`R3||R2`) and constant memory are treated as 64-bit wide.
+- **Opcode semantics:** `FMNMX R7, RZ, R2, !PT` implicitly dictates that `R7` and `R2` are floating-point types.
 
-## Challenge
+## Known Challenges
+Because NVIDIA's SASS ISA is not officially documented, its semantics must be inferred through empirical testing, reverse-engineering, and pattern-matching against standard CUDA compilation. Future work focuses on improving type inference accuracy, reducing noise in parsed definitions, and verifying full-program execution correctness.
 
-+ SASS is not officially documented, which means we can only infer the meaning of each instruction by gathering online information and comparing source code with binary data.
+## Acknowledgements
 
-## TODO List
-- [ ] Better Type Analysis.
-- [ ] Romove PT and RZ from Definitions
-- [ ] Find a method to run the program and check the correctness.
-- [ ] In branch parsing, put `likely` to None
-- [ ] Use `IRBuilder.comment`
-- [x] Extent Basic Block in the first round by Conditional Execution Operations (`@`), to beautify the code.
-- [ ] Parse `SR_CTAID.X` and `SR_TID.X` in more details(treat them as argument)
-- [x] Find a better way to represent Arg
-- [ ] Support for more ONNX operator is ongoing.
-- [ ] Support for Operators generated by TVM 
+Our initial lifting architecture is built upon the foundational concepts introduced by [SLifter](https://github.com/cupbop/SLifter).
 
-
-## Notes
-
-+ The current version supports SM_75.
-+ The current version support Operator 
-  + `Relu`
-  + `FC`
-  + `Max Pool`
-  + `Conv 2D`
-
-## Acknowledgement
-
-Our initial version is built upon [SLifter](https://github.com/cupbop/SLifter).
-
-## Refs
-
-+ https://kuterdinel.com/nv_isa_sm89/FMNMX.html
-+ https://llvmlite.readthedocs.io/en/latest/user-guide/ir/ir-builder.html#id6
-+ https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758
-+ [Decoding Cuda Binary](https://people.cs.rutgers.edu/zz124/assets/pdf/cgo19.pdf)
+## References
+- [Ampere SASS Annotation](https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758)
+- [Decoding CUDA Binary (CGO '19)](https://people.cs.rutgers.edu/zz124/assets/pdf/cgo19.pdf)
+- [FMNMX Instruction Details](https://kuterdinel.com/nv_isa_sm89/FMNMX.html)
+- [LLVMLite IRBuilder Documentation](https://llvmlite.readthedocs.io/en/latest/user-guide/ir/ir-builder.html)
