@@ -1,3 +1,9 @@
+"""
+Reaching Definitions Analysis Module.
+
+Performs forward dataflow analysis to compute reaching definitions for registers
+across the basic blocks of a function. This is critical for building Use-Def chains.
+"""
 import typing
 
 from s2lir.Function import Function
@@ -6,6 +12,10 @@ from s2lir.Operand import Operand
 from s2lir.Instruction import Instruction
     
 class ReachingDefinitionsAnalysis:
+    """
+    Analyzes definition points of registers and propagates them forward through the CFG
+    to determine which definitions reach which uses.
+    """
     def __init__(self, func):
         self.func : Function = func
         self.all_defs : dict[str, set[tuple[Instruction, str]]] = {}  # {reg: set of (inst, reg) pairs defining reg}

@@ -1,3 +1,10 @@
+"""
+Operand Module.
+
+Defines the `Operand` class which represents SASS registers, predicates, 
+immediates, or memory addresses used by instructions. Handles LLVM type mapping
+and memory fetching logic.
+"""
 from s2lir import *
 from utils import *
 from llvmlite import ir as llvmir
@@ -40,8 +47,17 @@ import json
 current_dir = Path(__file__).parent
 
 class Operand:
-
+    """
+    Represents an operand within a SASS instruction (e.g., Register, Constant, Predicate).
+    Tracks properties like type, use-def status, and assists in LLVM IR generation.
+    """
     def __init__(self, OriginalContent, ins):
+        """
+        Args:
+            OriginalContent (str): The raw string representing the operand.
+            ins (Instruction.Instruction): The instruction owning this operand.
+        """
+
         self.OriginalContent = OriginalContent
 
         # Register

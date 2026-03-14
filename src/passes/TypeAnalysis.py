@@ -1,3 +1,10 @@
+"""
+Type Inference and Analysis Module.
+
+Provides heuristics and structural analysis to infer the high-level LLVM types
+(e.g., Int32, Float32, Pointers) of SASS registers based on their usage in specific instructions,
+tracking propagation across Use-Def chains.
+"""
 from collections import Counter
 from s2lir import Function, Basicblock, Instruction, Operand
 from utils import *
@@ -11,6 +18,9 @@ import os
 from enum import Enum
 
 class DataType(str, Enum):
+    """
+    Enumeration of supported SASS/LLVM basic data types.
+    """
     NOTYPE      = "NOTYPE"
     BOOL        = "Bool"
     INT32       = "Int32"
@@ -76,7 +86,11 @@ class DataType(str, Enum):
         return mapping.get(self, None)
 
 class TypeAnalysis:
-    
+    """
+    Applies logic to infer the types of register operands. Resolves types using
+    instruction opcodes (e.g., FADD implies Float32), propagation across MOVs,
+    and reaching definitions.
+    """
     def __init__(self, func):
         self.func : Function.Function  = func
         self.func_args = []

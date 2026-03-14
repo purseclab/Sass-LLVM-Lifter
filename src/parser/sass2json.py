@@ -1,10 +1,26 @@
+"""
+SASS Parsing Module.
+
+This module provides functions to parse raw SASS assembly text into a structured
+JSON format. It identifies functions, sections, basic blocks, and extracts 
+individual SASS instructions for further intermediate representation (IR) processing.
+"""
 import re
 import json
 from utils import *
 
 
 def parse_ins(ins_content):
-    # Opcodes, Operands, Condition
+    """
+    Parses a single SASS instruction line into its opcode, operands, and conditions.
+    
+    Args:
+        ins_content (str): The raw string of the instruction (e.g., "@!PT FADD R0, R1, R2").
+        
+    Returns:
+        list|None: A list containing [Modifiers, Operands, Condition] or None if empty.
+    """
+    # [Opcodes, Operands, Condition]
     ins_res = [[], [], ""]
     # split() will handle multiple spaces, tabs, etc.
     ins_list = ins_content.strip().split()
@@ -38,9 +54,20 @@ def parse_ins(ins_content):
     return ins_res
 
 def parse_sass(file_content):
+    """
+    Parses the entire SASS file content, extracting functions and their metadata,
+    basic blocks, and instructions.
+    
+    Args:
+        file_content (str): The raw contents of the SASS file.
+        
+    Returns:
+        dict: A dictionary of parsed functions and their attributes.
+    """
     functions = {}
     current_function = None
-    intializing_func = False # parse_sass is in the process of collecting function metadata
+    # Flag indicating whether we are in the process of collecting function metadata
+    intializing_func = False 
     current_block = None
 
     for line in file_content.splitlines():
@@ -67,7 +94,6 @@ def parse_sass(file_content):
             }
             functions[func_name] = current_function
             continue
-            # is_parsing_function = True
         
         # Match the function info with .
         func_info_pattern = re.compile(r'\s+\.(section|sectioninfo|sectionflags|align|global|type|size|weak|other)\s+(.*)')
@@ -123,8 +149,6 @@ def parse_sass(file_content):
         if func_label_match and current_function[".function_name"] is None:
             func_label = func_label_match.group(1)
             if "__internal" not in func_label:
-                # if current_function[".function_name"] is None: # Match the first label as function name
-                # assert block_label == functions[func_name]
                 current_function[".function_name"] = func_label
                 intializing_func = False
                 continue
@@ -135,8 +159,6 @@ def parse_sass(file_content):
         if internal_func_label_match and intializing_func:
             assert current_function[".function_name"] is None
             func_label = func_label_match.group(1)
-            # if current_function[".function_name"] is None: # Match the first label as function name
-            # assert block_label == functions[func_name]
             current_function[".function_name"] = func_label
             current_function["internal_func"] = True
             functions[current_function[".function_name"]] = current_function
@@ -153,7 +175,7 @@ def parse_sass(file_content):
             continue
         
         assert not intializing_func,  "Check if there are keys in the function metadata not parsed"
-        # note that .headerflags and .elftype will fall through the assertion above and thats fine, doesn't affect
+        # Note that .headerflags and .elftype will fall through the assertion above, which is expected.
         
         
         # Match Labels
@@ -161,7 +183,8 @@ def parse_sass(file_content):
         block_label_match = black_label_pattern.match(line)
         if block_label_match:
             if current_function["internal_func"]:
-                assert len(current_function["Basicblocks"]) > 0 # since we have already manually set up the block above
+                # Ensure we have already manually set up the block above for internal functions.
+                assert len(current_function["Basicblocks"]) > 0 
                 
             block_label = block_label_match.group(1)
             dprint(block_label)
@@ -188,12 +211,19 @@ def parse_sass(file_content):
     return functions
 
 def sass_to_json(sass_file, json_file):
+    """
+    Reads a SASS file, parses it into instructions, and saves the result as JSON.
+    
+    Args:
+        sass_file (str|Path): Input path to the SASS file.
+        json_file (str|Path): Output path for the generated JSON file.
+    """
     with open(sass_file, 'r') as f:
         sass_content = f.read()
 
     functions = parse_sass(sass_content)
 
-    # filter out empty labels
+    # Filter out empty blocks
     for func in functions:
         blocks = functions[func]["Basicblocks"]
         functions[func]["Basicblocks"] = [block for block in blocks if block["instructions"]]

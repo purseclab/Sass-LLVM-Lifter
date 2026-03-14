@@ -1,3 +1,9 @@
+"""
+Control Flow Graph (CFG) Construction Module.
+
+This module provides the `CFG` class, which connects adjacent basic blocks and
+resolves SASS branch instructions to build a complete control flow graph for a function.
+"""
 from s2lir.Instruction import Instruction
 from s2lir.Basicblock import BasicBlock
 import copy
@@ -9,7 +15,16 @@ if typing.TYPE_CHECKING:
     from s2lir.Function import Function
 
 class CFG:
+    """
+    Constructs the Control Flow Graph for a given SASS function.
+    """
     def __init__(self, func):
+        """
+        Initializes the CFG constructor and triggers the graph building process.
+        
+        Args:
+            func (Function.Function): The function IR object.
+        """
         self.func: Function = func
         
         # self.entry_point: BasicBlock = self.func.blocks[0]
@@ -18,14 +33,15 @@ class CFG:
         self.__apply()
 
     def __apply(self):
-        '''
-        Connect ajacent BBs or Branches.
-            Here we only parse the final instruction of a Basic Block, it has three possibilities:
-                (1) Unconditional Branch, e.g., BRA `(.L_x_10)`
-                (2) Conditional Branch, e.g., @P2 BRA `(.L_x_10)`
-                (3) Conditional Execution, e.g., @P1 FMNMX R11, R11, R4, !PT
-                (4) Normal instructions, e.g. MOV R2, 0x4
-        '''
+        """
+        Connects adjacent Basic Blocks or Branches.
+        
+        Parses the final instruction of a Basic Block, handling:
+            (1) Unconditional Branch, e.g., BRA `(.L_x_10)`
+            (2) Conditional Branch, e.g., @P2 BRA `(.L_x_10)`
+            (3) Conditional Execution, e.g., @P1 FMNMX R11, R11, R4, !PT
+            (4) Normal instructions, e.g. MOV R2, 0x4
+        """
         
         # TODO check if there's pred/succ connection between gru's func and the internal func. This would probably just affect the reachingdefinition analysis and type analysis, so not fixing atm
         

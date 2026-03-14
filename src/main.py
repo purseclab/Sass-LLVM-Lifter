@@ -1,4 +1,11 @@
+"""
+NVLift Pipeline Entry Point.
 
+This module orchestrates the SASS-to-LLVM lifting pipeline. It reads SASS input
+instructions, converts them into an intermediate JSON format, parses that JSON into
+our custom intermediate representation (s2lir), performs various analyses (like CFG creation
+and Type Analysis), and finally uses llvmlite to generate LLVM IR.
+"""
 import parser.sass2json as s2j
 import parser.json2ir as j2ir
 from s2lir import Function
@@ -18,60 +25,83 @@ from s2lir.intrinsics import *
 current_dir = Path(__file__).parent
 
 class LLVMModule:
-    # def __init__(self, name, parser):
+    """
+    Represents the main LLVM Module containing the lifted functions and global 
+    information needed to generate valid LLVM IR.
+    """
     def __init__(self, name, functions):
+        """
+        Initializes the LLVMModule.
+        
+        Args:
+            name (str): The name of the LLVM module.
+            functions (list[Function.Function]): A list of Function instances representing SASS functions.
+        """
         self.name = name
-        self.functions : dict[str, Function.Function] = {func.name: func for func in functions} # func_name -> function obj # TODO: I dont think it's an issue rn that the functions are unordered, but maybe it would be an issue in the future
+        # func_name -> function obj 
+        self.functions : dict[str, Function.Function] = {func.name: func for func in functions} 
         self.llvm_module = None
 
         for _, func in self.functions.items():
             func.module = self
 
     def addPseudoFunctions(self, llvm_module):
+        """
+        Injects necessary pseudo-functions or intrinsics used by the lifter 
+        (e.g., getting thread/block index).
+        """
         # Create thread idx function
         self.GetThreadIdx = nvvm_threadidx_x(llvm_module)
-        # FuncTy = llvmir.FunctionType(llvmir.IntType(32), [])
-        # IRFunc = llvmir.Function(llvm_module, FuncTy, "thread_idx")
-        # self.GetThreadIdx = IRFunc
 
     
     def parse(self):
+        """
+        Instructs each function in the module to parse its instructions 
+        from the JSON representation into custom IR instructions.
+        """
         for _, func in self.functions.items():
             func.parse()
     
     def analysisAndTransform(self):
+        """
+        Performs static analysis and IR transformations on all functions.
+        Separates internal functions (like snippets) from regular functions,
+        builds their Control Flow Graphs (CFGs), and prepares them for translation.
+        """
         for _, func in self.functions.items():
             self.internal_functions = {func: self.functions[func] for func in self.functions if self.functions[func].internal_func}
             self.regular_functions = {func: self.functions[func] for func in self.functions if not self.functions[func].internal_func}
         
         for _, func in self.internal_functions.items():
-            # process the internal functions first as they'll be integrated into regular functions
+            # Process the internal functions first as they will be integrated into regular functions
             CreateCFG.CFG(func)
         
         for _, func in self.regular_functions.items():    
             CreateCFG.CFG(func)
-        
             # visualizer: InstructionVisualizer = InstructionVisualizer(typeAnalysis)
             # visualizer.visualize(f"{func.name}.html")
-            
-
 
     def lift(self):
+        """
+        Iterates over all parsed functions and lifts them to LLVM IR.
+        
+        Returns:
+            llvmir.Module: The constructed LLVM module containing all lifted instructions.
+        """
         # Generate module level information
         llvm_module = llvmir.Module(self.name)
         self.llvm_module = llvm_module
-        # e.g. create thread idx function
+        
+        # Inject pseudo-functions and custom implementations
         self.addPseudoFunctions(llvm_module)
-        
-        # create custom functions (that might be referenced by the lifter)
         custom_func.lop3(llvm_module)
-        
         
         internal_func: list[Function.Function] = []
         
         for _, func in self.functions.items():
             if func.internal_func:
-                # we will postpone lifting this because we need to determine which function it belongs to so that we can perform shallow copy of registers
+                # Postpone lifting internal functions; determine their parent function first 
+                # so we can perform shallow copy of registers
                 internal_func.append(func)
                 continue
             func.lift(llvm_module)

@@ -1,3 +1,9 @@
+"""
+Function Module.
+
+Defines the `Function` class that represents a single SASS function metadata and body.
+Handles building the layout of Basic Blocks and orchestrates their LLVM lifting.
+"""
 from s2lir.Basicblock import BasicBlock
 from utils import *
 from llvmlite import ir as llvmir
@@ -12,7 +18,15 @@ from s2lir.constants import *
 
 
 class Function:
+    """
+    Represents a full SASS function, tracking basic blocks, arguments, registers, 
+    and performing high-level lifting initialization.
+    """
     def __init__(self, function_dict):
+        """
+        Args:
+            function_dict (dict): Parsed function metadata and basic block info.
+        """
         self.module : LLVMModule = None
         self.name = function_dict[".function_name"] 
         self.section = function_dict[".section"]
@@ -200,6 +214,10 @@ class Function:
         
             
     def lift(self, llvm_module : llvmir.Module, shared_mem_elements=4096):
+        """
+        Constructs the LLVM Function signature, populates LLVM Basic Blocks,
+        and commands individual BasicBlocks to lift their SASS instructions into IR.
+        """
         # If this function contains shared/local memory ops, ensure the module contains a shared-data global so lowering can GEP into it.
         # We create a default i32[4096] shared global named with 'sdata'
         # so Operand.IR_ValueFromPointer can find it.

@@ -1,13 +1,21 @@
-
-
+"""
+Module to convert parsed JSON representation of SASS into our custom IR objects.
+"""
 import json
 from s2lir import Function
 
-def json_to_ir(filename = 'output.json'):
+def json_to_ir(filename='output.json'):
+    """
+    Loads JSON data representing parsed SASS and creates Function IR objects.
     
+    Args:
+        filename (str|Path): The path to the JSON input file.
+        
+    Returns:
+        list[Function.Function]: A list of SASS function intermediate representations.
+    """
     with open(filename, "r") as f:
         functions = json.load(f)
-        # print(functions)
 
     functions_ir = []
     for function in functions:
@@ -15,9 +23,6 @@ def json_to_ir(filename = 'output.json'):
         functions_ir.append(func)
 
     return functions_ir
-
-    #  with open(json_file, 'w') as f:
-        # json.dump(functions, f, indent=4)
 
 
 if __name__=="__main__":

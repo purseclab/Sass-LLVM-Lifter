@@ -1,3 +1,9 @@
+"""
+Instruction Visualizer Module.
+
+Provides functionality to generate interactive, web-based (HTML) visualizations
+of Basic Blocks and their Control Flow Graph (CFG) along with Data Flow Use-Def chains.
+"""
 from pyvis.network import Network
 import networkx as nx
 import uuid
@@ -8,7 +14,16 @@ from s2lir.Operand import Operand
 from passes.TypeAnalysis import TypeAnalysis
 
 class InstructionVisualizer:
+    """
+    Constructs a visual graph using pyvis/networkx to visualize basic blocks, 
+    control flow edges, individual instructions, and data propagation edges 
+    between registers.
+    """
     def __init__(self, type_analyzer: TypeAnalysis):
+        """
+        Args:
+            type_analyzer (TypeAnalysis): An analyzed function object containing types and use-def links.
+        """
         self.type_analyzer = type_analyzer
         self.net = Network(directed=True, notebook=False, height="800px", width="100%")
         self.graph = nx.DiGraph()

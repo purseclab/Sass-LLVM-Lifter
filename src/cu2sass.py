@@ -1,3 +1,7 @@
+"""
+Script to compile CUDA files to executables, extract CUBINs, and disassemble them into SASS.
+This setup is used to prepare the raw binary inputs required by the NVLift lifter.
+"""
 import subprocess
 import os
 import shutil
@@ -11,7 +15,15 @@ from pathlib import Path
 current_dir = Path(__file__).parent
 
 def run_command(cmd):
-    """Run shell command and check for errors."""
+    """
+    Run shell command and check for errors.
+    
+    Args:
+        cmd (list[str]): The command and its arguments as a list.
+        
+    Returns:
+        str: The standard output of the command if successful.
+    """
     print(f"Running: {' '.join(cmd)}")
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode != 0:
@@ -21,20 +33,34 @@ def run_command(cmd):
     return result.stdout.decode()
 
 def compile_cuda(cuda_file, output_executable):
-    """Compile CUDA file to executable using nvcc"""
-    # Note that compiling with -g -G appears to produce a single cubin, e.g. lstm.sm_75.cubin, while compiling without -g -G produces two cubin, e.g. lstm.1.sm_75.cubin and lstm.2.sm_75.cubin.
-    # This is a somewhat important implication since the launch/config.json has a setting on the cubin it uses
+    """
+    Compile a CUDA source file to an executable using nvcc.
     
-    # run_command([
-    #     "nvcc", "-g" , "-G", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
-    # ])
+    Note: Compiling with `-g -G` produces a single cubin (e.g., lstm.sm_75.cubin).
+    Compiling without these flags may produce multiple cubins (e.g., lstm.1.sm_75.cubin).
+    Ensure launch/config.json selects the correct target cubin explicitly.
+    
+    Args:
+        cuda_file (Path|str): Path to the .cu file.
+        output_executable (Path|str): Path for the generated target.
+    """
     run_command([
         "nvcc", "-arch=sm_75", "-o", str(output_executable), str(cuda_file)
     ])
 
 def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
-    """Extract cubin files using cuobjdump"""
+    """
+    Extract cubin files from the compiled executable using cuobjdump.
     
+    Args:
+        executable (str): The name or path of the executable.
+        cubin_pwd (str): Directory where the cubins should be searched.
+        cubin_prefix (str): Prefix of the expected output cubins.
+        cubin_name (str): Specific name of the cubin to select.
+        
+    Returns:
+        str: Path to the selected .cubin file.
+    """
     original_dir = os.getcwd()
     os.chdir(cubin_pwd)
     run_command([
@@ -55,7 +81,13 @@ def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     return cubin_path
 
 def disassemble_cubin(cubin_file, output_sass_file):
-    """Disassemble cubin file to SASS using nvdisasm"""
+    """
+    Disassemble a cubin file to SASS instructions using nvdisasm.
+    
+    Args:
+        cubin_file (str): Path to the input .cubin file.
+        output_sass_file (str): Path to write the designated .sass output.
+    """
     output = run_command([
         "nvdisasm", "--print-code", str(cubin_file)
     ])
@@ -63,6 +95,11 @@ def disassemble_cubin(cubin_file, output_sass_file):
         f.write(output)
 
 def main():
+    """
+    Main execution flow. Reads configuration from the launch configuration,
+    compiles the target CUDA file, extracts the corresponding cubin, and outputs
+    the disassembled SASS into the configured target destination.
+    """
     project_root = (current_dir / "..").resolve()
     
     config_folder_name = os.environ.get('PARENT_FOLDER_NAME', 'launch')
@@ -97,7 +134,9 @@ def main():
         exec_and_cubin_path = (output_dir / "0_exec_and_cubin").resolve()
         output_executable_path = (exec_and_cubin_path / output_executable).resolve()
         
-        # Clean destination folders of any previously generated artifacts so that we don't accidentally use stale files when config is wrong (i.e. we'll let the lifter fail); because the presence of -g -G causes different combination of files to be generated, which needs to update the config.json accordingly, and we dont want to accidentally reused them
+        # Clean destination folders of previously generated artifacts to prevent using stale
+        # files if the config is invalid. (Since the presence of flags like -g -G can lead to 
+        # different variations of intermediate files, it's safer to always test on fresh builds.)
         exec_and_cubin_path.mkdir(parents=True, exist_ok=True)
         # Remove any existing cubin files that match the executable prefix
         for p in exec_and_cubin_path.glob(f"{output_executable}*.cubin"):
@@ -117,8 +156,10 @@ def main():
 
         original_dir = os.getcwd()
         os.chdir(project_root)
-        # when compiling with -g flag, the compiler will embed path to your source file in the binary. if you provide absolute path to nvcc, this will be stored as absolute path, and since we compiled in docker container and running in host computer, this is problematic, so we compile in relative path relative to project root
-        # make sure that you have called .resolve on project_root, because otherwise it'll be like this "/app/src/..", and when you call .relative_to below, it'll say that cuda_file is not a descendant of project root
+        
+        # When compiling with the `-g` flag, the path to the source file is embedded in the binary. 
+        # Compiling via an absolute path creates an absolute reference to inside a docker container, 
+        # which breaks later analysis on host. Thus, compile relatively to the project root.
         compile_cuda(cuda_file.relative_to(project_root), output_executable_path.relative_to(project_root))
         os.chdir(original_dir)    
 

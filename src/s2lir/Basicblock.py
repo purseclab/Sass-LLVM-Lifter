@@ -1,3 +1,9 @@
+"""
+BasicBlock Module.
+
+Represents a basic block of SASS instructions, providing methods for
+parsing, tracking predecessors/successors, and lifting instructions to LLVM IR.
+"""
 import re
 from s2lir.Instruction import Instruction, Operand
 from utils import *
@@ -7,7 +13,16 @@ if typing.TYPE_CHECKING:
     from s2lir.Function import Function
 
 class BasicBlock:
+    """
+    Constructs and manages a fundamental block of linearly executed SASS instructions.
+    Contains logic for iterating through its instructions during the lifting process.
+    """
     def __init__(self, BB_dict, func):
+        """
+        Args:
+            BB_dict (dict): Dictionary specifying label and instructions.
+            func (Function.Function): The function IR object this block belongs to.
+        """
         # The address of the start of this basic block
         self.label = BB_dict['label']
         # Instruction list
@@ -59,6 +74,10 @@ class BasicBlock:
         
 
     def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], IRFunc: llvmir.values.Function, ExitBlock: llvmir.values.Block, nextBlock: "BasicBlock"):
+        """
+        Lifts the basic block and its instructions into LLVM IR by branching to
+        successors or conditionally executing instructions.
+        """
         dprint("^"*100)
         dprint(self.addr)
         dprint(self.label)

@@ -1,3 +1,9 @@
+"""
+Color Print Module.
+
+Provides helper functions for echoing styled and colorized text to the terminal
+using colorama.
+"""
 from colorama import Fore, Back, Style, init
 
 # Initialize colorama

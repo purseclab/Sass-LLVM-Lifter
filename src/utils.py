@@ -1,3 +1,9 @@
+"""
+Utility Module.
+
+Contains common helper functions used across the NVLift lifter, including 
+debug printing, LLVM IR comment generation, and symbol demangling.
+"""
 import subprocess
 import re
 import shutil
@@ -6,10 +12,21 @@ DEBUG=True
 # DEBUG=False
 
 def dprint(*args, **kwargs):
+    """
+    Debug print wrapper. Prints only if DEBUG is True.
+    """
     if DEBUG:
         print("DEBUG: ", *args, **kwargs)
 
 def generate_ir_comment(IRBuilder, text):
+    """
+    Generates proper LLVM IR comments, splitting multi-line text into 
+    separate comment instructions.
+    
+    Args:
+        IRBuilder: The llvmlite IRBuilder instance.
+        text (str): The comment string.
+    """
     # IRBuilder.comment cannot have new lines
     for t in text.splitlines():
         if t.strip() != "":

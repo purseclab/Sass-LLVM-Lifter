@@ -1,3 +1,9 @@
+"""
+Instruction Module.
+
+Defines the `Instruction` class representing a single SASS instruction.
+Contains extensive logic to parse its operands and lift its behavior to LLVM IR.
+"""
 import typing
 from s2lir.Operand import Operand
 # from s2lir.Basicblock import BasicBlock
@@ -24,7 +30,16 @@ ADDRSPACE_SHARED = 3
 ADDRSPACE_LOCAL = 5
 
 class Instruction:
+    """
+    Represents an individual SASS instruction. Handles parsing of modifiers,
+    tracking of defined/used operands, and lowering (lifting) to LLVM IR.
+    """
     def __init__(self, inst_dict, BB):
+        """
+        Args:
+            inst_dict (dict): Dictionary specifying instruction address and content.
+            BB (BasicBlock.BasicBlock): The parent BasicBlock owning this instruction.
+        """
         self.addr = inst_dict["addr"]
         self.opcode = inst_dict["content"][0][0]
         self.modifiers = inst_dict["content"][0][1:]
@@ -193,6 +208,10 @@ class Instruction:
             return f"{new_opcode} {', '.join(operands)}"
 
     def lift(self, IRBuilder: llvmir.IRBuilder, IRRegs: dict[str, llvmir.instructions.AllocaInstr], IRArgs: dict[int, llvmir.values.Argument], BlockMap: dict ['BasicBlock', llvmir.values.Block], ExitBlock: llvmir.values.Block):
+        """
+        Translates (lifts) this specific SASS instruction into equivalent LLVM IR
+        instructions using the provided IRBuilder.
+        """
         if self.llvm_module is None:
             # note we cannot setup self.llvm_module in init because llvmir.module is not created until the lift() in main.py
             self.llvm_module = self.BB.func.module.llvm_module
