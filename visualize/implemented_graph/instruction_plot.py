@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -11,7 +11,7 @@ default_config = {
 	'title': 'SASS Instruction Implementation Status',
 	'xlabel': 'Instruction (Top 50 by Count)',
 	'ylabel': 'Count (from NVIDIA cuBLAS library)',
-	'output': 'result.png',
+	'output': 'result.pdf',
 	'figsize': [20, 8]
 }
 
