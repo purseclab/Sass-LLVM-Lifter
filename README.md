@@ -9,7 +9,7 @@ NVLift is a proof-of-concept (PoC) demonstrating the viability of lifting undocu
 The lifter is designed to run in an isolated Docker environment to ensure dependency consistency.
 
 ### 1. Docker Setup
-If you haven't configured Docker to run without `sudo` on your system, please do so:
+If you haven't configured Docker to run without `sudo` on your system, do the following:
 ```bash
 sudo groupadd docker
 sudo usermod -aG docker $USER
@@ -55,7 +55,8 @@ The pipeline processes code in several distinct phases:
 2. **Parsing:** Converts raw SASS (`test.sass`) into structured JSON (`parser/sass2json.py`).
 3. **IR Construction:** Generates an intermediate representation (`s2lir`) from the JSON (`parser/json2ir.py`).
 4. **Analysis Passes:** Runs dataflow and type analyses (e.g., reaching definitions, control-flow graph construction, type inference) on the `s2lir`.
-5. **LLVM Lifting:** Emits standard LLVM IR (`test.llvm`) based on the enriched `s2lir`.
+5. **LLVM Lifting:** Emits standard LLVM IR (`test.ll`) based on the enriched `s2lir`.
+6. **LLVM to C:** Transpiles the LLVM IR into C code using `retdec` (`decompile/docker.sh`).
 
 ### Supported Instructions
 
@@ -74,6 +75,8 @@ Because SASS is untyped, NVLift infers variable types dynamically using heuristi
 For example:
 - **Modifier hints:** `IMAD.WIDE R2, R4, R5, c[0x0][0x160]` informs the lifter that `R2`, `R4`, `R5`, and `c[0x0][0x160]` are Integers. `R4` and `R5` are 32-bit scalars, whereas the destination (`R3||R2`) and constant memory are treated as 64-bit wide.
 - **Opcode semantics:** `FMNMX R7, RZ, R2, !PT` implicitly dictates that `R7` and `R2` are floating-point types.
+- **Type propagation:** `MOV R2, R4` transfers the type of `R4` to `R2` and vice versa.
+- **Type inference:** `LDG R2, [R3]` infers the type of `R2` based on the type of the memory operand.
 
 ## Known Challenges
 Because NVIDIA's SASS ISA is not officially documented, its semantics must be inferred through empirical testing, reverse-engineering, and pattern-matching against standard CUDA compilation. Future work focuses on improving type inference accuracy, reducing noise in parsed definitions, and verifying full-program execution correctness.

@@ -38,7 +38,7 @@ class LLVMModule:
             functions (list[Function.Function]): A list of Function instances representing SASS functions.
         """
         self.name = name
-        # func_name -> function obj 
+        # Map function names to their corresponding Function objects.
         self.functions : dict[str, Function.Function] = {func.name: func for func in functions} 
         self.llvm_module = None
 
@@ -50,7 +50,6 @@ class LLVMModule:
         Injects necessary pseudo-functions or intrinsics used by the lifter 
         (e.g., getting thread/block index).
         """
-        # Create thread idx function
         self.GetThreadIdx = nvvm_threadidx_x(llvm_module)
 
     
@@ -73,7 +72,7 @@ class LLVMModule:
             self.regular_functions = {func: self.functions[func] for func in self.functions if not self.functions[func].internal_func}
         
         for _, func in self.internal_functions.items():
-            # Process the internal functions first as they will be integrated into regular functions
+            # Process internal functions early to facilitate their integration into regular function bodies.
             CreateCFG.CFG(func)
         
         for _, func in self.regular_functions.items():    
@@ -100,8 +99,7 @@ class LLVMModule:
         
         for _, func in self.functions.items():
             if func.internal_func:
-                # Postpone lifting internal functions; determine their parent function first 
-                # so we can perform shallow copy of registers
+                # Delay internal function lifting until parent functions are resolved.
                 internal_func.append(func)
                 continue
             func.lift(llvm_module)
@@ -132,8 +130,6 @@ if __name__=="__main__":
         error(f"Input file must end with \".sass\". Currently listed input file: {input_file}")
         exit(1)
 
-    # intermediate_json_file = "../output/2_json/" + input_file.split("/")[-1].replace(".sass", "") + ".json"
-    
     intermediate_json_file = (output_dir / "2_json" / input_file.name.replace(".sass", ".json")).resolve()
     
     if not os.path.exists(input_file):
@@ -147,7 +143,6 @@ if __name__=="__main__":
     myModule = LLVMModule("PerSecModule", functions)
     
     for _, func in myModule.functions.items():
-        # used by registerArg + set types for constants from parameters
         func.typeAnalysis = TypeAnalysis.TypeAnalysis(func)
     
     myModule.parse()
@@ -156,11 +151,10 @@ if __name__=="__main__":
     
     myModule.functions = myModule.regular_functions
     
-    # CreateCFG might split blocks too, so typeanalysis cannot happen before it
+    # Ensure type analysis occurs after CFG construction to handle block splitting properly.
     for _, func in myModule.functions.items():
         func.typeAnalysis.begin()
 
     llvm_module = myModule.lift()
-    # print(llvm_module)
     with open(output_file, 'w') as f:
         print(llvm_module, file=f)

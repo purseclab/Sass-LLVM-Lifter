@@ -26,5 +26,5 @@ def json_to_ir(filename='output.json'):
 
 
 if __name__=="__main__":
-    # Read and load file from json
+    # Read definitions and load JSON format
     functions = json_to_ir('output.json')

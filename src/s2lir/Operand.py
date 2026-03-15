@@ -105,7 +105,7 @@ class Operand:
         self.IRType = None
         self.IRRegName = None
 
-        # Father Pointer
+        # Reference to parent Instruction
         self.ins: Instruction = ins
         
         
@@ -470,13 +470,12 @@ class Operand:
                 # IRBuilder.call(inline_asm, [])
                 
             elif self.isArg and self.isConstMem:
-                # we need to dynamically get their value and treat it as a pointer, then need to handle how to retrieve the values
-                # IRArgs[self.ArgIdxes[ArgID]] = IRFunc.args[ArgID] this gives us a ptr, we can probaby just get the value from here, but that might also mean we need to associate all mentions of the constant value e.g. c[0x0][0x160] to this ptr
+                # Dynamically retrieve value as a pointer and configure access methods.
                 
                 # NOTE: isPtr means that the target is a pointer themselves. Const memory from arg is pointer by a pointer, but they might not be isPtr == True
                 
                 IRVal = self.getArgVal()
-                # but then here we dont need to load the adjacent register since the whole thing is already a ptr, so need to opt out of the process below
+                # Bypass adjacent register load since the operand is already fully resolved as a pointer.
                 return IRVal
             else:
                 print(self.ins, self)
@@ -531,7 +530,7 @@ class Operand:
                 wide_mode = True
         if wide_mode:
             assert not self.isPReg
-            # we need to split the storeVal into high and lower 32 bits
+            # Split the 64-bit value into high and low 32-bit components
             if isinstance(storeVal.type, llvmir.PointerType):
                 storeVal = IRBuilder.ptrtoint(storeVal, llvmir.IntType(64))
             low_mask = (1 << 32) - 1
@@ -700,7 +699,7 @@ class Operand:
             return
 
         # Common Registers -R2, -UR2
-        pattern = r"^-(U*R(\d+|Z))$" # sidenote: match.group(2) will get the inner bracket
+        pattern = r"^-(U*R(\d+|Z))$" # Extract the inner register number
         match = re.match(pattern, content)
         if match:
             result = match.group(1)

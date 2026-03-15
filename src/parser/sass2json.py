@@ -34,7 +34,6 @@ def parse_ins(ins_content):
         ins_res[2] = ins_list[0]
         ins_list = ins_list[1:]
     
-    # print(ins_list)
     assert len(ins_list) >= 1
     
     # Handle Opcode and its modifiers (e.g., FSETP.GTU.FTZ.AND)
@@ -47,7 +46,6 @@ def parse_ins(ins_content):
     else:
         operand_raw = " ".join(ins_list[1:])
         operands = [op.strip() for op in operand_raw.split(",") if op.strip()]
-        # Operands = [  for x in Operands]
     ins_res[1] = operands
 
 
@@ -95,7 +93,7 @@ def parse_sass(file_content):
             functions[func_name] = current_function
             continue
         
-        # Match the function info with .
+        # Match function metadata prefixed with a dot
         func_info_pattern = re.compile(r'\s+\.(section|sectioninfo|sectionflags|align|global|type|size|weak|other)\s+(.*)')
         func_info_match = func_info_pattern.match(line)
         if func_info_match:
@@ -103,7 +101,7 @@ def parse_sass(file_content):
                 raise InvalidSyntaxException
             
             if not intializing_func:
-                # probably an internal function
+                # Likely an internal function
                 current_function = {
                     ".function_name": None,
                     ".section": None,
@@ -143,7 +141,7 @@ def parse_sass(file_content):
                 current_function[".weak"] = value
             continue
         
-        # Match Funcname
+        # Extract function label
         func_label_pattern = re.compile(r'^([^:]+):$')
         func_label_match = func_label_pattern.match(line)
         if func_label_match and current_function[".function_name"] is None:
@@ -153,7 +151,7 @@ def parse_sass(file_content):
                 intializing_func = False
                 continue
         
-        # Match Internal func_name
+        # Extract internal function label
         internal_func_label_pattern = re.compile(r'^(\$__internal[^:]+):$')
         internal_func_label_match = internal_func_label_pattern.match(line)
         if internal_func_label_match and intializing_func:
@@ -164,7 +162,7 @@ def parse_sass(file_content):
             functions[current_function[".function_name"]] = current_function
             intializing_func = False
             
-            # internal function doesnt seem to have a duplicate label prepended with .text at the start, so we need to set the block here
+            # Internal functions lack duplicate .text labels; initialize block here.
             
             current_block = {
                 "label": func_label,
@@ -178,7 +176,7 @@ def parse_sass(file_content):
         # Note that .headerflags and .elftype will fall through the assertion above, which is expected.
         
         
-        # Match Labels
+        # Extract block labels
         black_label_pattern = re.compile(r'^(\.[^:]+):$')
         block_label_match = black_label_pattern.match(line)
         if block_label_match:
@@ -194,7 +192,7 @@ def parse_sass(file_content):
             }
             current_function["Basicblocks"].append(current_block)
 
-        # Match Instructions
+        # Extract instructions
         instr_pattern = re.compile(r'\s*\/\*([0-9a-f]+)\*\/\s*([^;]+);')
         instr_match = instr_pattern.match(line)
         if instr_match:

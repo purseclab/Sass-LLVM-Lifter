@@ -74,7 +74,7 @@ def extract_cubin(executable, cubin_pwd, cubin_prefix, cubin_name):
     if len(cubin_files) != 2:
         warning(f"Number of cubin files with prefix \"{cubin_prefix}\" is {len(cubin_files)} (!= 2)")
     
-    cubin_path = os.path.join(cubin_pwd, cubin_name) # path.join can also join Path objects
+    cubin_path = os.path.join(cubin_pwd, cubin_name)
     
     if not os.path.exists(cubin_path):
         raise FileNotFoundError("No .cubin file was generated.")
@@ -118,9 +118,7 @@ def main():
         error(f"Input file ({cuda_file}) does not exist.")
         exit(1)
     
-    # output_executable = cuda_file.split("/")[-1].replace(".cu", "")
-    
-    output_executable = cuda_file.name.replace(".cu", "") # type str, but .resolve() are still Path objects
+    output_executable = cuda_file.name.replace(".cu", "")
     
     output_dir = current_dir / "../output"
     
@@ -135,10 +133,10 @@ def main():
         output_executable_path = (exec_and_cubin_path / output_executable).resolve()
         
         # Clean destination folders of previously generated artifacts to prevent using stale
-        # files if the config is invalid. (Since the presence of flags like -g -G can lead to 
+        # files if the config is invalid (facilitate fail-fast). (Since the presence of flags like -g -G can lead to 
         # different variations of intermediate files, it's safer to always test on fresh builds.)
         exec_and_cubin_path.mkdir(parents=True, exist_ok=True)
-        # Remove any existing cubin files that match the executable prefix
+        # Purge existing artifacts matching the executable prefix to prevent stale builds.
         for p in exec_and_cubin_path.glob(f"{output_executable}*.cubin"):
             try:
                 p.unlink()

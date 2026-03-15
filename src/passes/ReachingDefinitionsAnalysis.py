@@ -28,7 +28,7 @@ class ReachingDefinitionsAnalysis:
         self._gen : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
         self._kill : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
         self._in_defs : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
-        self._out_defs : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, OReg perand) pairs}
+        self._out_defs : dict[BasicBlock, set[tuple[Instruction, Operand]]] = {}  # {bb: set of (inst, Reg Operand) pairs}
         
         self._collect_all_definitions()
         self.compute_reaching_definitions()
@@ -148,7 +148,7 @@ class ReachingDefinitionsAnalysis:
     def get_reaching_definitions_before(self, inst: Instruction):
         """Get definitions reaching the instruction. compute_reaching_definitions's info is BB-level info."""
         bb = inst.BB
-        defs = self.in_defs[bb].copy() # get definitions that reaches this BB at the start
+        defs = self.in_defs[bb].copy() # Fetch definitions reaching block entry
         # cnt = 0
         # Process instructions before 'inst' in program order
         for i in bb.instructions[:bb.instructions.index(inst)]:
@@ -164,7 +164,7 @@ class ReachingDefinitionsAnalysis:
     
     def _get_reaching_definitions_before(self, inst: Instruction):
         bb = inst.BB
-        defs = self._in_defs[bb].copy() # get definitions that reaches this BB at the start
+        defs = self._in_defs[bb].copy() # Fetch definitions reaching block entry
         # Process instructions before 'inst' in program order
         # cnt = 0
         for i in bb.instructions[:bb.instructions.index(inst)]:

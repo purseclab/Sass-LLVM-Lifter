@@ -45,11 +45,10 @@ class CFG:
         
         # Note: Check if there's pred/succ connection between gru's func and the internal func. This would probably just affect the reachingdefinition analysis and type analysis, so not fixing atm
         
-        # Handle (1), (2) and (4)
         BBs = self.func.blocks
         BB_i_end = len(BBs)
         BB_i = 0
-        while BB_i < BB_i_end: # so that we can manipulate BBs and self.func.blocks during iteration
+        while BB_i < BB_i_end:
             BB = BBs[BB_i]
             assert len(BB.instructions) > 0
             final_inst = BB.instructions[-1]
@@ -87,7 +86,7 @@ class CFG:
                     if self.func.internal_func:
                         assert ins.branch_target is None
                         assert ins == BB.instructions[-1]
-                        # point all the RET instructions to the next Exit BB
+                        # Direct all RET instructions to the target Exit BB
                         ins.branch_target = self.return_point
                         BB.succs.append(self.return_point)
                         self.return_point.preds.append(BB)
@@ -99,25 +98,25 @@ class CFG:
                 
                 if ins.opcode == "CALL":
                     assert not ins.disabled
-                    # if it's calling an internal function, we'll grab the internal function object
+                    # Fetch the internal function object for the CALL
                     
                     internal_func_name = ins.operands[0].get_call_func_name_type()[0]
                     
                     internal_func = self.func.module.internal_functions[internal_func_name]
                     
                     
-                    # we'll need to completely clone the BB blocks, instructions, and operands so that it doesnt affect reaching def analysis later (as well as other quirks)
-                    # one of the implication is that we'll have ins.addr that doesnt make sense
+                    # Deep clone blocks, instructions, and operands to isolate reaching def analysis.
+                    # Note: Cloned instructions retain old addresses which may not reflect real offsets.
                     internal_func_new : Function = internal_func.duplicate()
                     returnBlock = internal_func_new.returnBB
                     entryBlock = internal_func_new.blocks[0]
                     BBs_new = internal_func_new.blocks + [returnBlock]
 
-                    # step 1: we need to split the basic block and insert the BBs of the internal function
+                    # Step 1: Split the basic block and splice the internal function's BBs
                     
                     
                     if len(BB.instructions) == 1 or ins == final_inst:
-                        # no splitting of BB required
+                        # No BB splitting required
                         for succ in BB.succs:
                             succ_preds_len = succ.preds
                             succ.preds = [p for p in succ.preds if p != BB] + [returnBlock]
@@ -128,10 +127,10 @@ class CFG:
                         entryBlock.preds = [BB]
                         
                     else:
-                        # split the current BB
+                        # Split the current BB.
                         
-                        # case possible: CALL is the first instruction, CALL is the middle instruction
-                        # but CALL will not be the last instruction or the only instruction
+                        # Possible scenarios: CALL is first or in the middle.
+                        # It will not be the last or only instruction here.
                         
                         
                         CALL_BB_name = BB.label + "_CALL_" + str(final_inst.addr)
@@ -152,7 +151,7 @@ class CFG:
                         for post_call_inst in postCALL_BB.instructions:
                             post_call_inst.BB = postCALL_BB
                         
-                        # I dont believe we need to call parse on these new BB but maybe thats not true
+                        # Re-parsing newly generated blocks is currently bypassed as unnecessary
                         self.func.labels2block[postCALL_BB.label] = postCALL_BB
                         self.func.labels2block[CALL_BB.label] = CALL_BB
                         self.func.labels2block[BB.label] = None
@@ -180,15 +179,15 @@ class CFG:
                     BBs[BB_i + 1:BB_i + 1] = BBs_new
                     self.func.blocks = BBs
                     
-                    # step 2: add preds and succs to the entry and exit block of the internal function, as well as the surrounding BBs of the current function
-                    # step 3: disable the CALL instruction
+                    # Step 2: Establish preds/succs across function boundaries.
+                    # Step 3: Disable the original CALL instruction.
                     ins.disabled = True
                     
                     BB_i_end = len(BBs)
                     BB_i += len(BBs_new) + 1
                     
                     # Note: Make sure that the BBs are added to the correct position for each cases, and they're splitted correctly with correct preds and succs?
-                    # also need to make sure things like the RET branching are correct for each instance of the interal func invocation?
+                    # Ensure accurate branch linkages for RET instances across internal function invocations.
                 
                     continue
             BB_i += 1
@@ -240,7 +239,7 @@ class CFG:
                 conditionalBB.preds.append(BB)
                 
 
-                # If it has the following BB (and final_inst is not Exit Instruction), then connect the conditional BB and BB
+                # Given subsequent BBs (and no existing Exit), link the conditional BB to the block
                 if BB_i < len(BBs)-1 and not final_inst.isExit():
                     nextBB = BBs[BB_i+1]
 
@@ -259,5 +258,5 @@ class CFG:
             
             
 
-        # keep the New Basic Block List
+        # Apply updated block layout
         self.func.blocks = new_BBs

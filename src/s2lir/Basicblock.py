@@ -56,8 +56,6 @@ class BasicBlock:
             name = match.group(1)
             num = match.group(2)
             if num:
-                # num = int(num[3:])
-                # assert int(num) == rev - 1
                 assert rev is None
                 self.label = name
                 return self.label
@@ -110,7 +108,6 @@ class BasicBlock:
                 elif Inst.isConditionExpr():
                     # e.g. @P0 BRA `(.L_x_4_split_0x1200); or it could also be just conditional execution, doesn't have to just be BRA
                     P = Inst.operands[-1]
-                    # PredReg = IRRegs[P.getIRRegName()] # predicate registers, e.g. P0
                     PredReg = IRRegs[P.getRegName()]
                     # Fetch the content from PredReg
                     PredReg = IRBuilder.inttoptr(PredReg, llvmir.PointerType(llvmir.IntType(1)))
@@ -150,9 +147,7 @@ class BasicBlock:
                             nextBB = self.func.blocks[self.func.blocks.index(ConditionalBB)+1]
                             IRBuilder.cbranch(PredRegVal, BlockMap[ConditionalBB], BlockMap[nextBB])
 
-                        # # if PredRegVal then Add Inst, else skip this instruction
-                        # with IRBuilder.if_then(PredRegVal):
-                        #     Inst.lift(IRBuilder, IRRegs, IRArgs, BlockMap, ExitBlock)
+
 
             else:
                 if len(self.instructions) > 1  and  i < len(self.instructions) -1 and (Inst.isBranch() or Inst.isConditionExpr()):

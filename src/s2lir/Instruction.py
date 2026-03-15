@@ -109,8 +109,7 @@ class Instruction:
             if (Operand.isReg or Operand.isPReg or Operand.isPtr) and not Operand.isConstMem:
                 Regs[Operand.getIRRegName()] = Operand # this naming with getIRRegName is obsolete, but rn i dont think it serves an important role other than the Regs[Reg]
 
-    # JP: Now, only update Reg Type
-    # Check and update the use operand's type from the givenn operand
+    # Check and update the use operand's type from the given operand
     def CheckAndUpdateUseType(self, Def: Operand):
         for i in range(1, len(self.operands)):
             CurrOperand = self.operands[i]
@@ -254,7 +253,6 @@ class Instruction:
             assert len(self.operands) == 2
             
             if ResOp.isReg and ValOp.SReg:
-                # Note: Fix it later;
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
                 
                 if str(ValOp) == "SR_CTAID.X":
@@ -356,7 +354,6 @@ class Instruction:
                 # IRVal = IRBuilder.load(IRValOp)
                 LoadDataType = None
                 if isinstance(ValOp.getIRType(), llvmir.PointerType):
-                    # Note: Temporary logic
                     if len(self.modifiers) > 0 and self.modifiers[0] == "E":
                         LoadDataType = llvmir.IntType(32)
                         IRVal = ValOp.IRReg_Load(IRRegs, IRBuilder, LoadDataType=LoadDataType)
@@ -940,7 +937,7 @@ class Instruction:
             else:
                 offset = 1
                 # Note: Currently ignoring the predicate
-                # Note: Handle LEA.HI.X (6 operands) and variants
+                # Note: Handle LEA.HI.X (6 operands), LEA.HI.SX32, LEA.HI and variants
             ValOp1 = self.operands[offset + 1]
             ValOp2 = self.operands[offset + 2]
             shift = self.operands[offset + 3]
@@ -1155,7 +1152,7 @@ class Instruction:
             ValOp3 = self.operands[3]
             immLut = self.operands[5]
             assert immLut.isConst
-            # Note: Figure out op[4] and op[6] (op[4] might be negation)
+            # Note: Figure out op[4] and op[6] (op[4] might be negation of the result or each of the inputs)
             assert len(self.operands) == 7
 
             IRValOp1 = ValOp1.IR_FetchValue(IRBuilder, IRRegs, IRArgs)

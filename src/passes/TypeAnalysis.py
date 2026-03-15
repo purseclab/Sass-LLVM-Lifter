@@ -95,7 +95,7 @@ class TypeAnalysis:
         self.func : Function.Function  = func
         self.func_args = []
         self._set_func_args()
-        self.type_map: dict[Operand.Operand, str] = {} # we previously tracked based on (instr, str), but the same instruction can have the same register name for both source and dest and they will prob have different types
+        self.type_map: dict[Operand.Operand, str] = {} # Map by Operand object since sources and destinations in the same instruction may share a register name but differ in type
         
         current_dir = Path(__file__).parent
         self.project_root = (current_dir / "../..").resolve()
@@ -139,7 +139,7 @@ class TypeAnalysis:
     def begin(self):
         for BB in self.func.blocks:
             for inst in BB.instructions:
-                # is_use and is_def need to be set before ReachingDefinitionsAnalysis
+                # Set use/def flags prior to Reaching Definitions Analysis.
                 self.assign_use_def(inst)
 
         self.reaching_defs = ReachingDefinitionsAnalysis(self.func)
@@ -213,22 +213,7 @@ class TypeAnalysis:
     
     def __apply(self):
 
-        # Set RZ, URZ, PZ to 0
-        # for BB in self.func.blocks:
-        #     for inst in BB.instructions:
-        #         # Set Predicate TypeDesc
-        #         for Op in inst.operands:
-        #             if Op.isReg and ( Op.reg == "RZ" or Op.reg == "URZ" ):
-        #                 Op.isReg = False
-        #                 Op.isConst = True
-        #                 Op.Value = 0
-                    # if Op.isPReg and (Op.reg == "PT" or Op.reg == "UPT"):
-                    #     Op.isPReg = False
-                    #     Op.isConst = True
-                    #     Op.Value = 1
-                    # Op.setTypeDesc("Int")
-                    # if Op.isRZ or Op.isURZ or Op.isPRZ:
-                    #     Op.setTypeDesc("Int")
+
 
         # Set the Type of PReg to 0
         for BB in self.func.blocks:
@@ -294,7 +279,7 @@ class TypeAnalysis:
     
     def assign_use_def(self, inst: Instruction):
         if inst.opcode == "BAR":
-            # BAR is a synchronization, does not define or use general registers
+            # BAR serves as synchronization; it neither defines nor uses general registers.
             for operand in inst.operands:
                 operand.is_def = False
                 operand.is_use = False
@@ -303,11 +288,11 @@ class TypeAnalysis:
         if inst.opcode in ["FFMA", "FADD", "FMUL", "IMAD", "SHL",  "SHR", "S2R", "FMNMX", "ISETP", "UISETP", "FSETP", "MOV", "UMOV", "LDG", "LDS", "STG", "STS", "IADD", "IADD3", "UIADD3", "LEA", "SHF", "USHF", "SEL", "FSEL", "MUFU", "ULOP3", "LOP3", "PLOP3", "ULDC", "IABS", "F2I", "I2F"]:
             for i, operand in enumerate(inst.operands):
                 if i == 0:
-                    # first operand of this instruction is a def
+                    # The first operand represents a definition.
                     operand.is_def = operand.is_def_disqualifier()
                     operand.is_use = False
                 else:
-                    # all other operands are a use
+                    # All other operands represent uses.
                     operand.is_use = operand.is_use_disqualifier()
                     operand.is_def = False
                     
@@ -333,7 +318,7 @@ class TypeAnalysis:
         return "\n".join(output)
 
     
-    # Directly resolve the type description, this is mainly working for binary operation
+    # Directly resolve type descriptions, primarily for binary operations.
     def DirectlySolveType(self, inst: Instruction):
         TypeDesc = None
         
@@ -564,7 +549,7 @@ class TypeAnalysis:
         return False
 
     def propagate_types(self, inst: Instruction):
-        # we need to propagate both from use->def  and def->use. E.g. if we discovered R4 is used as type int, we'd want to set R3 to be int as well for "MOV R4, R3". Similarly, If we figured out R9 is of type int from "IMUL R9, R10, R11", then we'd want to propagate type int to all the use
+        # Propagate types bidirectionally (use->def and def->use) across instructions.
         
         changed = False
         for Op in inst.operands:
@@ -582,9 +567,9 @@ class TypeAnalysis:
                         type_dict[cur_type] = type_dict.get(cur_type, set()) | {(Op, str(Op), str(Op.ins.addr))}
                     
                     if len(type_dict) > 1:
-                        # if str(inst) not in ("SHF.L.U32 R10, R10, 0x17, RZ", "FFMA R24, R10, R9, 1", "IADD3 R9, R24, 0x1800000, RZ", "FFMA R10, R24, R9, -1", "FFMA R9, R9, R10, R9"):
+
                         
-                        # merge type_dict if this specific Operand has been here before so that we dont get a bunch of duplicates
+                        # Merge type_dict for recurring operands to prevent duplication
                         if Op in self.conflicting_types["def_to_use"]:
                             for typ, values in self.conflicting_types["def_to_use"][Op].items():
                                 self.conflicting_types["def_to_use"][Op][typ] = values | (type_dict[typ] if typ in type_dict else set())
@@ -611,7 +596,7 @@ class TypeAnalysis:
                                 # Add the 'Use' itself to the history
                                 type_dict[useOpType] = type_dict.get(useOpType, set()) | {(useOp, str(useOp), str(useOp.ins.addr))}
                                 
-                                for defOp in self.ud_chain[useOp]: # # note that useOp is type Operand, which is necessary or we'd be mapping the same register at different instruction to the same entry, which would be wrong
+                                for defOp in self.ud_chain[useOp]: # Map by Operand object rather than register name to avoid collisions across different instructions
                                     defOpType = self.type_map.get(defOp, DataType.NOTYPE.value)
 
                                     # CASE A: Definition already has a type
@@ -661,18 +646,7 @@ class TypeAnalysis:
             "reaches_next": False # Check if this operand's definition reaches the next instruction
         }
         
-        # if self.config["allow_temp_behavior"]:
-        #     pass
-        #     # if operand.is_def is None:
-        #     #     assert operand.is_use is not None
-        #     #     assert operand.is_use == True
-        #     # elif operand.is_use is None:
-        #     #     assert operand.is_def is not None
-        #     #     assert operand.is_def == True
-        #     # else:
-        #     #     assert operand.is_def ^ operand.is_use
-        # else:
-        #     assert operand.is_def ^ operand.is_use # cannot both be true/false
+
 
         if (operand.isReg or operand.isPReg or operand.isPtr) and operand.reg:
             # Get definitions reaching this instruction
@@ -710,7 +684,7 @@ class TypeAnalysis:
             for inst in BB.instructions:
                 instReachingUse = self.reaching_defs._get_reaching_definitions_before(inst)
                 
-                reg_to_DefOp: dict[str, set[Operand.Operand]] = dict() # Register name (type str) to Defintion operands
+                reg_to_DefOp: dict[str, set[Operand.Operand]] = dict() # Map string register names to their defining operands
                 
                 
                 for reachingInst, registerOp in instReachingUse:

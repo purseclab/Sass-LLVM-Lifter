@@ -38,36 +38,27 @@ class Function:
         self.weak = function_dict[".weak"]
         self.other = function_dict[".other"]
         self.internal_func: bool = function_dict["internal_func"]
-        self.parent_func: Function | None =  None  # for internal func
+        self.parent_func: Function | None =  None  # Maintains reference to parent for internal functions
         # self.name = name
         self.blocks : typing.List[BasicBlock] = [BasicBlock(BB, self) for BB in function_dict["Basicblocks"]]
         
         self.returnBB : None | BasicBlock = None
         
-        self.IRRegs_cur_status: dict[str, str] = {} # tells us which register_type was last loaded value, e.g. R24: R24_Float32 means that the last store operation is done to R24_Float32 and it therefore holds the most up-to-date content for register R24
+        self.IRRegs_cur_status: dict[str, str] = {} # Tracks the most recently loaded register type (e.g., R24 -> R24_Float32) for consistency
 
-        # All the Labels
-        # self.labels = [BB.label for BB in self.blocks]
-        # BB.label such as .L_x_3; creates a mapping to the block itself
-        self.labels2block : dict[str, BasicBlock] = {BB.label: BB for BB in self.blocks} # e.g. '.text._Z11gru_forwardPfS_S_S_iii': <s2lir.Basicblock.BasicBlock object at 0x79115787c8e0>
         
-        
-        # self.sassAddr2block: dict[str, BasicBlock] = {BB.instructions[0].addr: BB for BB in self.blocks} # first instruction's addr to BB, e.g. "0x0000" to <s2lir.Basicblock.BasicBlock object>
-        
-        # SASS addr (such as 0x47f0) to the first LLVM instruction inside a BB that implements that specific SASS instruction (there's usually more than one line of LLVM instruction for a given SASS instruction)
-        # dont confuse Instruction.py with LLVM instruction (generated via IRBuilder)
-        # IGNORE ABOVE
-        
+        self.labels2block: dict[str, BasicBlock] = {BB.label: BB for BB in self.blocks}
+
         # SASS addr (such as 0x47f0) to Instruction Object
         # Note: Handle cases where Instruction Object is redefined; uniqueness is needed after deepcopy
         self.sassAddr2Inst: dict[int, Instruction] = {}
 
         ################################################################
-        self.ArgMap : dict[int, set[Operand]]= {} # ArgMap will be built via parse(), e.g. {0x10: <Operand>, 0x30: <Operand>}
-        self.BlockMap = {} # key: LLVMModule's BB, value: llvmlite's BB
+        self.ArgMap : dict[int, set[Operand]]= {} # Maps offsets to operands, built via parse() (e.g., {0x10: <Operand>})
+        self.BlockMap = {} # Mapping from LLVMModule BasicBlock to llvmlite IRBlock
         self.ArgIdxes = []
-        # All the Arguments
-        self.Args : list[set[Operand]] = [] # self.Args[0] refers to all the operands corresponding to the 1st parameter
+        
+        self.Args : list[set[Operand]] = [] # Args[0] contains operands for the first parameter
         
         self.typeAnalysis: TypeAnalysis = None
         
@@ -98,9 +89,8 @@ class Function:
                 inst = BB.instructions[inst_i]
 
                 if inst.isBranch() and not inst.isConditionExpr(): 
-                    # Unconditional Branch; Just Remove all the instructions after this one (Now we assume that no BRX or indirect branch is supported)
+                    # Unconditional branch; Truncate block; assumes no BRX or indirect branches.
                     BB.instructions = BB.instructions[:inst_i+1]
-                    # print("==="*100)
                     break
             
                 if inst.isBranch() or inst.isConditionExpr():
@@ -189,7 +179,7 @@ class Function:
             IsEntry = False
 
     def duplicate(self):
-        # must only call duplicate on the original Function, not a duplicated one, or the self.rev would be inaccurate
+        # Ensure duplicate() is only called on the original Function to maintain accurate revision counts (self.rev).
         
         original_names = [b.label for b in self.blocks]
         original_labels2block = self.labels2block
@@ -200,12 +190,12 @@ class Function:
             original_names.append(b.label)
             self.labels2block[b.updateName(self.rev)] = b
         
-        # note: deepcopy will preserve the relative references, so even though each BB are duplicated, the mapping in labels2block should still be valid in the new function, i.e. it would map to the new sets of BasicBlocks instead of creating yet another set of basicblocks just within the labels2block
+        # Deepcopy preserves relative references, ensuring labels2block maps to the newly copied BasicBlocks.
         newFunc = copy.deepcopy(self)
         
-        # setup label2block again (we cannot set this up before the deepcopy or the mapping would be wrong)
+        # Reconfigure labels2block mapping post-deepcopy.
         self.labels2block = original_labels2block
-        # restore BB names
+        # Restore BB names
         for b in self.blocks:
             b.updateName(None)
         
@@ -251,7 +241,7 @@ class Function:
         for Arg in self.Args:
             ArgTypes.append(list(Arg)[0].getIRType())
 
-        # need to fix self.getArgs/self.Args/.ArgMap/registerarg
+        # Requires further refactoring of Arg-related methods in the future.
         FuncTy = llvmir.FunctionType(llvmir.VoidType(), ArgTypes)
         
         
@@ -282,15 +272,15 @@ class Function:
 
         # Construct the map based on IR basic block
         self.BuildBBToIRMap(IRFunc)
-        # The register name to IR register map, that is created at the entry block code generation
+        # Register mapping initialized during entry block code generation.
         
 
-        # Add exit instruction
+        # Append termination block
         ExitBlock = IRFunc.append_basic_block("ExitFunction")
         ExitIRBuilder = llvmir.IRBuilder(ExitBlock)
         ExitIRBuilder.ret_void()
 
-        # Collect registers' name with type information
+        # Gather registers required for allocation
         IRRegs = self.IRRegs # e.g. IRRegs["R39_NOTYPE"]
         Regs = self.getRegs() # => self.Regs
         dprint(Regs)
@@ -314,12 +304,11 @@ class Function:
                     
                     assert self.parent_func is not None
                     assert isinstance(self.parent_func, Function)
-                    # we're only entering here after IRRegs for the parent function has been establish
-                    # this way we can perform a shallow copy of the registers, meaning that the values of the registers will be shared between the two functions (bidirectional - if you write in internal func to R14, R14 will have the same value in parent func when you return to it). This way we also dont need to perform analysis to determine which registers are the arguments and return value, and based on emphirical observation, it doesnt seem like Nvidia would reset the registers when entering an internal function
+                    # Internal functions reuse the parent's IRRegs to enable bidirectional register access without passing explicit arguments.
                     self.IRRegs = self.parent_func.IRRegs
                     IRRegs = self.IRRegs
                     
-                # Alloc the variable for registers
+                # Allocate local variables for registers
                 for Reg in Regs:
                     Operand = Regs[Reg]
                     RegName = Operand.getRegName()
@@ -330,14 +319,14 @@ class Function:
                         IRRegs[RegName] = IRReg
                 
                 for Reg in SM_75_Reg_Set + SM_75_UReg_Set:
-                    # we're just preallocating all registers because there might be situations like IMAD.WIDE that'll same to adj registers, and if only allocate it when it happens, it'll cause "Instruction does not dominate all uses!"
+                    # Preallocate all standard registers to prevent dominance errors from instructions writing to unallocated adjacent registers (e.g., IMAD.WIDE).
                     
                     if Reg not in IRRegs:
                         IRReg = Builder.alloca(llvmir.IntType(1) if "P" in Reg else llvmir.IntType(32), 1, Reg)
                         # Register the IR registers
                         IRRegs[Reg] = IRReg
                 
-                # Populate values for "constant" registers
+                # Initialize values to constant registers (PT, RZ, etc.)
                 if "PT" in IRRegs:
                     Builder.store(llvmir.Constant(llvmir.IntType(1), 1), IRRegs["PT"])
                 if "UPT" in IRRegs:
