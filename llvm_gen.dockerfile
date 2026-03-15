@@ -1,5 +1,4 @@
-# ideally we should use 12.5 but clang 20 only partially supports CUDA 12.4 and 12.5, so we use 12.3
-# see https://hub.docker.com/r/nvidia/cuda/ for image selection
+# See https://hub.docker.com/r/nvidia/cuda/ for image selection
 FROM nvidia/cuda:12.5.0-devel-ubuntu22.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -34,7 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gnupg \
     && apt-get clean
 
-# assumes clang 20.1.7
+# Assuming clang 20.1.7
 RUN ./llvm.sh 20
 
 CMD ["sh", "-c", "cd launch && ./clang_ll_gen.sh"]

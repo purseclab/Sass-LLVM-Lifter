@@ -1,42 +1,97 @@
-# SASS binary mini-patching
+# SASS Binary Mini-Patching Guide
 
-https://github.com/WerWolv/ImHex
+This guide provides instructions for patching SASS binaries and mounting remote filesystems for development purposes.
 
+## Tools
 
-use `uname -a` to check Linux version
+- [ImHex](https://github.com/WerWolv/ImHex): Hex editor for reverse engineering.
+- [SSHFS-Win](https://github.com/winfsp/sshfs-win): SSHFS for Windows.
 
-https://github.com/winfsp/sshfs-win
+## Checking Linux Version
 
-In general, you just enter `winget install SSHFS-Win.SSHFS-Win` in the terminal. The publisher is Navimatics with maintainer being `Bill Zissimopoulos <billziss at navimatics.com>`
+To check your Linux version, run:
 
-
-
-First, on the windows machine, create ssh key pair with ssh-keygen. make sure the generated file (private and public key) is in the .ssh folder of the user.
-Then, copy the public key to the linux machine's authorized-keys file.
-Next, add the following line in the ssh config file:
+```sh
+uname -a
 ```
-Host pursec
-    HostName 10.164.9.88
-    User louis
-    ProxyJump data
-    IdentityFile ~/.ssh/pursec
+
+## Installing SSHFS-Win
+
+Install SSHFS-Win via Windows Terminal:
+
+```sh
+winget install SSHFS-Win.SSHFS-Win
 ```
-Make sure Notepad is set in LF mode
 
-Test `ssh pursec` in terminal to see if it works.
+- **Publisher:** Navimatics
+- **Maintainer:** Bill Zissimopoulos `<billziss at navimatics.com>`
 
-Restart the computer if necessary.
+## Setting Up SSH Keys
 
-Then, do `net use Z: \\sshfs.k\pursec` in terminal. we can mount ~/louis by doing `net use Z: \\sshfs.k\pursec\louis`
+1. **On Windows:**  
+    Generate an SSH key pair:
 
+    ```sh
+    ssh-keygen
+    ```
 
+    Ensure the private and public keys are in your user's `.ssh` folder.
 
-## Patch notes
+2. **On Linux:**  
+    Copy the public key to the `authorized_keys` file:
 
-First, use `cuobjdump -sass executable`.
+    ```sh
+    ssh-copy-id user@remote-host
+    ```
 
-Then, use ImHex to search for the hex pattern of the SASS code. note that we might need to search in little-endian format, i.e. invert the byte order for multi-byte sequences.
+3. **SSH Config Example:**  
+    Add to your SSH config (`~/.ssh/config`):
 
-Observations so far:
-- register numbers can be found in the instruction hex code, e.g. R23 would be 17
+    ```
+    Host myremote
+         HostName <remote-host-address>
+         User <your-username>
+         ProxyJump <proxy-host>
+         IdentityFile ~/.ssh/<key-file>
+    ```
+
+4. Ensure Notepad or your editor uses LF line endings.
+
+5. Test the connection:
+
+    ```sh
+    ssh myremote
+    ```
+
+6. Restart your computer if necessary.
+
+## Mounting Remote Filesystem
+
+To mount your home directory:
+
+```sh
+net use Z: \\sshfs.k\<host>\<username>
+```
+
+Or, to mount the root:
+
+```sh
+net use Z: \\sshfs.k\<host>
+```
+
+## SASS Patching Workflow
+
+1. **Disassemble the Executable:**
+
+    ```sh
+    cuobjdump -sass <executable>
+    ```
+
+2. **Search for SASS Code in ImHex:**
+    - Use ImHex to locate the hex pattern of the SASS code.
+    - For multi-byte sequences, search in little-endian format (invert byte order if needed).
+
+### Notes
+
+- Register numbers are encoded in the instruction hex. For example, register `R23` is represented as `17` in hex.
 

@@ -90,7 +90,6 @@ class BasicBlock:
             if not IRBuilder.block.is_terminated:
                 assert nextBlock is not None
                 nextIRBlock: llvmir.values.Block = BlockMap[nextBlock]
-                # for reasons currently unknown to me, there's some blocks that's already linked to Exitblock and so is already "terminated"
                 IRBuilder.branch(nextIRBlock)
         
         for i in range(len(self.instructions)):
@@ -163,5 +162,4 @@ class BasicBlock:
                         if not IRBuilder.block.is_terminated:
                             assert nextBlock is not None
                             nextIRBlock: llvmir.values.Block = BlockMap[nextBlock]
-                            # for reasons currently unknown to me, there's some blocks that's already linked to Exitblock and so is already "terminated"
                             IRBuilder.branch(nextIRBlock)
