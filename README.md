@@ -45,15 +45,15 @@ Because the lifter runs inside a Docker container, the output files may be owned
 sudo chown -R $USER:$USER /path/to/project/output
 ```
 
-*Tip: For an interactive debugging session with a GUI, use `/debug/nvsight.sh`. Run it on your host, forward the VNC port (`ssh -L 5901:localhost:5901 user@host -N`), and connect a VNC client to `localhost:5901` (Password: `secure`). See `/debug/README.md` for more details.*
+*Tip: For an interactive debugging session with a GUI, use `/debug/nvsight.sh`. Run it on your host, forward the VNC port (`ssh -L 5901:localhost:5901 user@host -N`), and connect a VNC client to `localhost:5901` (Password: `secure`). See [README](debug/README.md) for more details.*
 
 ## Repository Organization
 
 - **`src/`**: Core python lifting engine logic, partitioned into `parser` (SASS to JSON), `passes` (Analysis and CFG creation), and `s2lir` (Internal Intermediate Representation).
-- **`decompile/`**: An extension to the original pipeline. It runs the lifter and feeds the result into `retdec` to produce decompiled C code. See `decompile/README.md`.
-- **`debug/`**: Scripts and documentation for analyzing NVIDIA SASS using NVIDIA Nsight Compute from a docker container with RealVNC. See `debug/README.md`.
-- **`test/`**: End-to-end unit tests evaluating execution correctness of the emitted LLVM IR. See `test/README.md`.
-- **`evidence/`**: An exploration playground. Contains repeatable experiments and GDB debugging logs that empirically reverse-engineer and verify the semantics of the undocumented SASS ISA. See `evidence/README.md`.
+- **`decompile/`**: An extension to the original pipeline. It runs the lifter and feeds the result into `retdec` to produce decompiled C code. See [README](decompile/README.md).
+- **`debug/`**: Scripts and documentation for analyzing NVIDIA SASS using NVIDIA Nsight Compute from a docker container with RealVNC. See [README](debug/README.md).
+- **`test/`**: End-to-end unit tests evaluating execution correctness of the emitted LLVM IR. See [README](test/README.md).
+- **`evidence/`**: An exploration playground. Contains repeatable experiments and GDB debugging logs that empirically reverse-engineer and verify the semantics of the undocumented SASS ISA. See [README](evidence/README.md).
 - **`launch/`**: Contains execution scripts and the core input/output configuration mapping (`config.json`).
 
 ## Architecture & Lifter Pipeline
