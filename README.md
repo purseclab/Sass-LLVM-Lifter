@@ -94,6 +94,25 @@ Because NVIDIA's SASS ISA is not officially documented, its semantics must be in
 
 Our initial lifting architecture is built upon the foundational concepts introduced by [SLifter](https://github.com/cupbop/SLifter).
 
+## Citation
+
+If you use NVLift in your research, please cite our paper:
+
+```bibtex
+@inproceedings{wan2026nvlift,
+  author    = {Wan, Junpeng and Tan, Louis Zheng-Hua and Tian, Dave Jing},
+  title     = {{NVLift}: Lifting {NVIDIA} {GPU} Assembly to {LLVM} {IR} for Downstream Security Applications},
+  booktitle = {Proceedings of the 2026 {NDSS} Workshop on Binary Analysis Research ({BAR})},
+  year      = {2026},
+  month     = feb,
+  publisher = {Internet Society},
+  address   = {San Diego, CA},
+  doi       = {10.14722/bar.2026.230028},
+  isbn      = {978-1-970672-08-4},
+  url       = {https://dx.doi.org/10.14722/bar.2026.230028}
+}
+```
+
 ## References
 - [Ampere SASS Annotation](https://forums.developer.nvidia.com/t/ampere-sass-annotation/176758)
 - [Decoding CUDA Binary (CGO '19)](https://people.cs.rutgers.edu/zz124/assets/pdf/cgo19.pdf)
