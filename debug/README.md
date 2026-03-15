@@ -1,14 +1,28 @@
+# Nsight Compute & VNC Debugging Setup
 
-# TLDR
+This directory contains scripts and configurations for interactively debugging the lifter pipeline within a Docker container using NVIDIA Nsight Compute and a VNC server.
 
-1. Run ./nvsight.sh
-2. You might need to remove previous SSH fingerprint with the provided command on the screen. SOmething like `ssh-keygen -f "/home/X/.ssh/known_hosts" -R "[localhost]:2222"`
-3. On your host PC, run the port forwarding command below `ssh -L 5901:localhost:5901 pursec -N`
-4. Use RealVNC or any VNC client to connect to `localhost:5901`
+## Quick Start
 
+1. Start the container with the GUI server enabled:
+   ```bash
+   ./nvsight.sh
+   ```
+2. *Optional*: If you encounter SSH fingerprint warnings, remove the previous fingerprint for your localhost:
+   ```bash
+   ssh-keygen -f "$HOME/.ssh/known_hosts" -R "[localhost]:2222"
+   ```
+3. On your host machine, run the following port forwarding command:
+   ```bash
+   ssh -L 5901:localhost:5901 [SSH_USER]@[SSH_HOST] -N
+   ```
+4. Use RealVNC or any VNC client to connect to `localhost:5901` (Password: `secure`).
 
+---
 
-Linux’s docker doesnt hv buildx (according to readme at https://github.com/docker/buildx), buildx needed for the --build-context flag, so we need to install `docker-buildx-plugin` before running `./nvsight.sh` 
+## Docker Buildx Requirement
+
+Linux's standard `docker` engine does not include `buildx` by default, which is required for the `--build-context` flag used in our deployment. You must install the `docker-buildx-plugin` before running `./nvsight.sh`.
 
 ```bash
 # Add Docker's official GPG key:
@@ -24,49 +38,38 @@ echo \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
-```
 
-Then, 
-
-```bash
+# Install the plugin
 sudo apt install docker-buildx-plugin
 ```
 
+---
 
-**Miscellaneous Notes:**
+## Technical Details: SSH Tunneling
 
-The VNC server is running inside the container. On the host machine, SSH tunneling (port forwarding) is configured to forward traffic from the host's port `5901` to the container's port `5901`. This configuration is typically set up in the script `nvsight.sh`.
+The VNC server runs entirely inside the isolated container. To securely expose this server to your local machine, we use layered SSH tunneling (port forwarding). 
 
-If the host itself is a remote server, you can establish an additional SSH tunnel from your local machine — for example, forwarding your local port `5902` to the remote server's port `5901`.
+### Single-Hop Tunnel (Working Directly on Host)
+If you are working physically on the Linux host machine, `nvsight.sh` configures SSH tunneling to automatically forward traffic from the host's port `5901` to the container's port `5901`.
 
+### Double-Hop Tunnel (Working via Remote Server)
+If your host itself is a remote server (e.g., you are SSHing from a laptop to a lab machine), you must establish an additional SSH tunnel from your local machine to the remote server. For example, forward your local port `5902` to the remote server's port `5901`:
+
+```bash
+ssh -L 5902:localhost:5901 user@remote.ip.address -N
 ```
-ssh -L 5902:localhost:5901 user@ip.addr -N
-```
 
-Once both tunnels are active, you can connect to the VNC session using a VNC client (we use RealVNC) on your local machine by connecting to:
-
-```
+Once both tunnels are active, connect to the VNC session using a VNC client on your local machine via:
+```text
 localhost:5902
 ```
 
-This effectively routes your VNC connection through two layers of SSH tunneling:
-
-```
+This effectively chains two SSH tunnels:
+```text
 [Local VNC Client] → [Local SSH Tunnel:5902] → [Remote Host:5901] → [Container:5901]
 ```
 
+### Why Use Two Tunnels?
 
-- **VNC over SSH Tunneling** is a secure way to access GUI desktops inside containers without exposing ports publicly.
-- Using `localhost:5902` on your local machine ensures:
-  - You don’t need to open any firewall ports on the remote host.
-  - Your VNC traffic is encrypted via SSH.
-
-Why Use Two Tunnels?
-
-We're essentially chaining two SSH tunnels:
-1. From **host to container** (managed by `nvsight.sh`)
-2. From **local machine to host**
-
-This layered approach ensures:
-- Security (no exposed VNC ports)
-- Compatibility with firewalls (we're just utilizing SSH port and so no additional ports need to be allowed by firewall for incoming connections)
+1. **Security:** VNC traffic is unencrypted by default. Tunneling through SSH encrypts the stream and ensures no VNC ports are publicly exposed.
+2. **Firewall Compatibility:** We utilize only standard SSH ports. No additional firewall rules are required to allow incoming VNC connections.

@@ -1,16 +1,35 @@
-Run `./test.py` to run the lifter + test cases. You can also run `./test.py --no-run-lifter` to only run the test cases on existing lifted LLVM IR.
+# Lifter End-to-End Testing
 
-Then you can inspect the test results in `artifacts/`. You can further visualize it with `./artifact_visualizer.py artifacts/<artifact_name>`.
+This folder contains testing infrastructure and test cases for verifying the correctness of the lifted LLVM IR against expected outputs.
 
+## Usage
 
+1. **Run Full Pipeline (Lift + Test)**:
+   ```bash
+   ./test.py
+   ```
+   This executes the lifter and runs the full test suites.
 
+2. **Run Tests Only (Skip Lifter)**:
+   ```bash
+   ./test.py --no-run-lifter
+   ```
+   This bypasses the lifting phase and directly executes existing LLVM IR test cases.
 
-## MISC
+3. **Inspect and Visualize Artifacts**:
+   Test results and data are dumped into `artifacts/`. You can visualize these artifacts to debug discrepancies:
+   ```bash
+   ./artifact_visualizer.py artifacts/<artifact_name>
+   ```
 
-If we directly pip install pycuda, `drv.get_version()` would show that it was built for CUDA 11.5, which is much older than the 12.7 on our system. Instead, we need to recompile pycuda.
+---
 
-```
-export CUDA_HOME=/usr/local/cuda-12.6 # on our system, /usr/local/cuda is pointed to 12.6
+## PyCUDA Quirks & Recompilation Requirement
+
+Directly installing `pycuda` via pip often compiles against an older CUDA toolkit version (e.g., 11.5) compared to our local system (e.g., 12.6/12.7). To avoid mismatches, you may need to force a recompilation of `pycuda`.
+
+```bash
+export CUDA_HOME=/usr/local/cuda-12.6 # Ensure this points to the correct version on your system
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
 
@@ -18,9 +37,9 @@ pip uninstall pycuda -y
 pip install pycuda --no-binary=pycuda
 ```
 
-Now,
-
-```
+**Verification:**
+Launch a Python shell and verify the driver version aligns with your intended CUDA toolkit:
+```python
 >>> import pycuda.driver as drv
 >>> drv.init() 
 >>> drv.Device.count()
@@ -30,4 +49,3 @@ Now,
 >>> drv.get_version()
 (12, 6, 0)
 ```
-
