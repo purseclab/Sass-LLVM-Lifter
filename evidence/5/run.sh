@@ -2,7 +2,7 @@
 
 set -e
 
-# NOTE: do not use gdb, if you use gdb, after "r", the disassembly will still just contain CPU assembly, not GPU SASS
+# NOTE: Do not use gdb. If you use gdb and type "r" (to run), the disassembly will still only show CPU assembly, not GPU SASS.
 
 # source /root/miniconda3/etc/profile.d/conda.sh
 # conda activate py36

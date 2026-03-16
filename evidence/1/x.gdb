@@ -118,7 +118,6 @@ end
 # val = (Rc << 32 | Ra)
 # Rd = (((Signed) val >> shift)) >> 32
 # the last 32 right shift is for HI (probably)
-# not entirely sure about the sign extended behavior
 
 r
 x/i $pc

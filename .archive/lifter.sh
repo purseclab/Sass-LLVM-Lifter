@@ -39,7 +39,7 @@ fatbinary -64 --embedded-fatbin=kernel.fatbin.c --image=profile=compute_70,file=
 # we also need to edit ptx so that instead of .entry, it needs to be .func, and need to remove .ptr .align 1 within the parameters
 nvcc -g -G -arch=sm_75 --keep-device-functions -dc test_lifted_llc.ptx -o kernel.fatbin.o
 nvcc -g -G -arch=sm_75 --keep-device-functions -dc host2.cu -o host2.o
-# ptx is lost after this (actually it doesnt, if we do cuobjdump -all -ptx on my_program, it'll show up again (https://forums.developer.nvidia.com/t/keep-ptx-with-cuda-separable-compilation/337648/4))
+# do cuobjdump -all -ptx on my_program to reveal PTX (https://forums.developer.nvidia.com/t/keep-ptx-with-cuda-separable-compilation/337648/4))
 nvcc -g -G -arch=sm_75 --keep-device-functions -dlink kernel.fatbin.o host2.o -o dlink.o
 nvcc -g -G -arch=sm_75 --keep-device-functions host.cu host2.o kernel.fatbin.o dlink.o -o my_program -lcudart
 # if we do -arch=compute_75 here, the cuobjdump -all -sass or -ptx would be much much longer, but theyll still both contain sass and ptx

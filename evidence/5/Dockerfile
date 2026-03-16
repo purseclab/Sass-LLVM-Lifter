@@ -1,7 +1,6 @@
-# if we use 18.04, we can directly install python 3.6 instead of going through conda or deadsnakes ppa etc, but the problem is that our binary requires newer glibc
-# note that for the 2080 machine, we can only install cuda 12.4 the latest
-
-# I think that the cuda image used here cannot be higher version than the CUDA as seen in nvidia-smi, or there'll be issues with using python in cuda-gdb... it'll say libpython3.6 is missing and when we use conda to provide python3.6 and LD_LIBRARY_PATH, it'll still complain other things such as "Attempted to call a python binding that dlsym failed to load." which might be because conda's lib is different from native system lib (unsure)
+# Note: Using Ubuntu 18.04 would allow direct installation of Python 3.6, but our binary requires a newer glibc version.
+# The CUDA image version should not exceed the CUDA version available on the host (as seen in nvidia-smi) to avoid compatibility issues.
+# Installing Python via conda or from non-system sources may cause issues with cuda-gdb due to library mismatches.
 
 FROM nvidia/cuda:12.1.0-devel-ubuntu22.04
 
@@ -47,7 +46,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #     python3.6 \
 #     && apt-get clean
 
-# I have no idea where the python 3.10 came from, but cuda-gdb demanded for libpython3.10
+# Note: libpython3.10 is required by cuda-gdb, even though Python 3.10 is not explicitly installed elsewhere.
 
 RUN apt-get install -y --no-install-recommends \
     python3.11 \

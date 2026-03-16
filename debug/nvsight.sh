@@ -145,16 +145,18 @@ DOCKER_RUN_CMD=(
 
 if [ "$USE_GPU" = true ]; then
     DOCKER_RUN_CMD+=(--gpus all)
-    
-    # i think that VSCode start to silently fail to launch after installing nvidia-container-toolkit. When running code --verbose, we get this error: Failed to move to new namespace: PID namespaces supported, Network namespace supported, but failed: errno = Operation not permitted [270:0617/181843.894638:FATAL:zygote_host_impl_linux.cc(211)] Check failed: . : Invalid argument (22)
-    # code --no-sandbox ends up working, so we investigate docker's security settings with `docker info --format '{{.SecurityOptions}}'`
-    # output: [name=apparmor name=seccomp,profile=builtin name=cgroupns]
-    # it shows that seccomp is enabled, so we tried disabling it with the following command and it worked.
-    # DOCKER_RUN_CMD+=(--security-opt seccomp=unconfined)
-    # therefore we try to relax the seccomp profile for the container. custom-seccomp.json was sourced with curl -o custom-seccomp.json https://raw.githubusercontent.com/moby/moby/master/profiles/seccomp/default.json
-    # this sadly doesnt work, so we'll just use --no-sandbox when running vscode for now.
-    # DOCKER_RUN_CMD+=(--security-opt seccomp="${SCRIPT_DIR}/custom-seccomp.json")
-    # granting SYS_ADMIN would also solve the issue but it's like granting root-lite access. it keeps container filesystem/network/namespace isolation intact, but it grants processes inside the container almost-root-like control over the kernel within the container — and in some cases affects the host (e.g. it might be able to remount to root or with additional priv). but its better than --security-opt seccomp=unconfined or --userns=host
+
+    # Note: After installing the NVIDIA Container Toolkit, launching VSCode inside the container may fail with a namespace error:
+    #   Failed to move to new namespace: PID namespaces supported, Network namespace supported, but failed: errno = Operation not permitted [270:0617/181843.894638:FATAL:zygote_host_impl_linux.cc(211)] Check failed: . : Invalid argument (22)
+    # Running VSCode with --no-sandbox resolves this issue.
+    #
+    # Investigation:
+    #   - Checked Docker security settings with: docker info --format '{{.SecurityOptions}}'
+    #   - Output: [name=apparmor name=seccomp,profile=builtin name=cgroupns]
+    #   - Indicates seccomp is enabled.
+    #   - Disabling seccomp with --security-opt seccomp=unconfined allows VSCode to launch, but this is not recommended for security reasons.
+    #   - Attempted to use a custom seccomp profile (custom-seccomp.json from the official Docker repository), but this did not resolve the issue.
+    #   - Granting SYS_ADMIN capability also resolves the issue. While this provides almost root-like privileges within the container (affecting kernel features such as mounting), it maintains container isolation and is preferable to disabling seccomp entirely.
     DOCKER_RUN_CMD+=(--cap-add=SYS_ADMIN)
 fi
 
@@ -163,9 +165,9 @@ DOCKER_RUN_CMD+=("${DOCKER_IMAGE_NAME}")
 echo "${DOCKER_RUN_CMD[@]}"
 "${DOCKER_RUN_CMD[@]}"
 
-# runs as root if --user not specified, but due to Dockerfile setup we do have the dockeruser that can be ssh-ed into
+# Runs as root if --user not specified, but due to Dockerfile setup we do have the dockeruser that can be ssh-ed into
 
-sleep 1 # wait for the container to start
+sleep 1 # Wait for the container to start
 
 # Check if the container is running
 if [ -n "$(docker ps -q -f name=$DOCKER_CONTAINER_NAME)" ]; then

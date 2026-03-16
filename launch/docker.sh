@@ -4,7 +4,7 @@ set -e
 
 # Set SCRIPT_DIR before cd ..
 SCRIPT_DIR="$(split_dir=$(dirname "${BASH_SOURCE[0]}") && cd "$split_dir" && pwd)"
-PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)") # depending on where docker.sh is (symlinked) at, this var will be different
+PARENT_FOLDER_NAME=$(basename "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)")
 
 cd ..
 

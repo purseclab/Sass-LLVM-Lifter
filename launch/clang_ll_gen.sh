@@ -7,8 +7,6 @@ set -e
 which fatbinary
 
 # Compile from .cu to .ll directly with clang
-# TODO look into the use of optimization flags and its effect on the output
-# --target=nvptx64-nvidia-cuda ???? 
 
 
 # Check if jq is installed

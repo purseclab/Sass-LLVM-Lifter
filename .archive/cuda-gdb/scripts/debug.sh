@@ -3,7 +3,7 @@
 set -e
 
 cat /proc/sys/kernel/randomize_va_space
-sysctl kernel.randomize_va_space=0 # NOTE: it seems like setting this will be remembered after the script ends! So if it was set to 1, it'll remain 1 the next time you launch the docker container. That's probably because we're modifying it with --privileged container followed by sysctl command, and so even the host's ASLR is disabled.
+sysctl kernel.randomize_va_space=0 # Disables ASLR for debugging. Note: This change persists after the script ends; remember to re-enable ASLR (on the host) if needed.
 
 cleanup() {
     echo "Cleaning up..."
