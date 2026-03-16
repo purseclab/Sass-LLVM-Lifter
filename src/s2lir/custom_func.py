@@ -5,7 +5,7 @@ def lop3(IRModule):
     func_names = ["lop3", "plop3", "ulop3"]
     
     
-    # please refer back to Instruction.py's for the original
+    # Refer back to Instruction.py's for the original
     def func_80(IRBuilder, IRValOp1, IRValOp2, IRValOp3, func_op, additional_args):
         # A & B & C
         tmp = IRBuilder.and_(IRValOp1, IRValOp2) 
@@ -153,7 +153,7 @@ def lop3(IRModule):
         # assuming that BB name only need to be unique within function, not across the module
         builder = ir.IRBuilder(block_entry)
         
-        immLut, A, B, C = func.args # Note: Verify the argument unpacking logic later
+        immLut, A, B, C = func.args # Note: Verify the argument unpacking logic further
         
         # 3rd entry is just additional parameters for the function
         cases = {

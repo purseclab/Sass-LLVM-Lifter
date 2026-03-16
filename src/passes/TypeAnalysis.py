@@ -195,13 +195,11 @@ class TypeAnalysis:
                         TypeDesc = "Float32"
                     elif TypeDesc == llvmir.FloatType().as_pointer():
                         # Note: Check if isPtr has already been correctly set here.
-                        TypeDesc = "Float32_PTR" # should it be Float32* ?
-                        # implication: a constant ptr?
+                        TypeDesc = "Float32_PTR"
                         arg_Op.isPtr = True
                     elif TypeDesc == llvmir.IntType(32).as_pointer():
                         # Note: Check if isPtr has already been correctly set here.
-                        TypeDesc = "Int32_PTR" # should it be Float32* ?
-                        # implication: a constant ptr?
+                        TypeDesc = "Int32_PTR"
                         arg_Op.isPtr = True
                     else:
                         raise InvalidSyntaxException
