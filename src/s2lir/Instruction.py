@@ -6,7 +6,6 @@ Contains extensive logic to parse its operands and lift its behavior to LLVM IR.
 """
 import typing
 from s2lir.Operand import Operand
-# from s2lir.Basicblock import BasicBlock
 if typing.TYPE_CHECKING:
     from s2lir.Basicblock import BasicBlock
 from utils import *
@@ -107,7 +106,7 @@ class Instruction:
         # Collect registers used in instructions (In Reg, PReg and Ptr)
         for Operand in self.operands:
             if (Operand.isReg or Operand.isPReg or Operand.isPtr) and not Operand.isConstMem:
-                Regs[Operand.getIRRegName()] = Operand # this naming with getIRRegName is obsolete, but rn i dont think it serves an important role other than the Regs[Reg]
+                Regs[Operand.getIRRegName()] = Operand
 
     # Check and update the use operand's type from the given operand
     def CheckAndUpdateUseType(self, Def: Operand):
@@ -202,7 +201,7 @@ class Instruction:
         
         if self.condition_expr:
             assert operands[-1] in self.condition_expr
-            return f"{self.condition_expr} {new_opcode} {', '.join(operands[:-1])}" # the last operand always seems to be the self.condition_expr
+            return f"{self.condition_expr} {new_opcode} {', '.join(operands[:-1])}"
         else:
             return f"{new_opcode} {', '.join(operands)}"
 
@@ -212,13 +211,13 @@ class Instruction:
         instructions using the provided IRBuilder.
         """
         if self.llvm_module is None:
-            # note we cannot setup self.llvm_module in init because llvmir.module is not created until the lift() in main.py
+            # Note: Cannot setup self.llvm_module in init because llvmir.module is not created until the lift() in main.py
             self.llvm_module = self.BB.func.module.llvm_module
             assert self.llvm_module is not None
         
         # BB already undergo splitting inside Function.py before lifting process
         
-        # changed to int so that we dont have to deal with differences such as 0x1 vs 0x001
+        # Changed to int so that we dont have to deal with differences such as 0x1 vs 0x001
         self.BB.func.sassAddr2Inst[int(self.addr, 16)] = self
         
         # generate_ir_comment(IRBuilder, self.dump_text())
@@ -415,7 +414,7 @@ class Instruction:
                     settings["x"] = True
                     continue
                 elif mod == "U32" or mod == "S32":
-                    # U32 is the standard width for IMAD; usually safe to skip 
+                    # U32 is the standard width for IMAD
                     continue
                 else:
                     print(self)
@@ -561,7 +560,7 @@ class Instruction:
                     continue
                 
                 if mod == "FTZ":
-                    settings["ftz"] = True # Note: Handle this (likely subnormal numbers are zeroed out)
+                    settings["ftz"] = True # Note: Handle this (subnormal numbers are likely zeroed out)
                     continue
                 
                 pattern = r"^([US]{0,1})((32|64))$"
@@ -610,7 +609,6 @@ class Instruction:
                 tmp = IRBuilder.or_(tmp, IRPreg2Val)
                 tmp2 = IRBuilder.or_(tmp2, IRPreg2Val)
             elif settings["boolean_op"] is None:
-                # no boolean_op provided
                 pass
             else:
                 raise NotImplementedError
@@ -677,7 +675,7 @@ class Instruction:
             
             if settings["mode"] == "C":
                 IRValOp1 = R_b.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
-                # seems like LLVM doesn't have unsigned integer type, there's also no UintType in the llvmlite source code, so we're just using inttype below. https://stackoverflow.com/questions/30519005/how-to-distinguish-signed-and-unsigned-integer-in-llvm
+                # LLVM IR does not distinguish between signed and unsigned integer types; there is no UintType in llvmlite, so we use IntType for both. See: https://stackoverflow.com/questions/30519005/how-to-distinguish-signed-and-unsigned-integer-in-llvm
                 # https://nondot.org/~sabre/LLVMNotes/TypeSystemChanges.txt
                 IRValOp2 = llvmir.Constant(llvmir.IntType(32), settings["maxshift"]["bits"])
                 shift = IRBuilder.select(
@@ -796,7 +794,6 @@ class Instruction:
             IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
 
             assert ResOp.isReg and PReg.isPReg
-            # IRResOp = IRRegs[ResOp.getIRRegName()]
 
             # Note: Decide between _ordered or unordered
             
@@ -1068,8 +1065,6 @@ class Instruction:
                 else:
                     if any(v.getIRType() != llvmir.IntType(32) for v in valOps):
                         IRValOp1, IRValOp2, IRValOp3 = bitcast_all_to_type(IRBuilder, llvmir.IntType(32), IRValOp1, IRValOp2, IRValOp3)
-
-            # if not all(w == 32 for w in [IRValOp1.type.width, IRValOp2.type.width, IRValOp3.type.width]):
             
             # IRImmLut = llvmir.Constant(llvmir.IntType(32), immLut.Value)
             IRPreg = PReg.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
@@ -1077,7 +1072,6 @@ class Instruction:
             
             if not immLut.isConst:
                 assert immLut.isReg
-                # we'll need to create a new basic block and perform dynamic comparison to determine and select the correct operation (done with IRFunc.append_basic_block), but that means everytime we encounter this instruction we will have to create this basicblock with unique name.  Instead we're just going to create a function
                 IRImmLut = immLut.IR_FetchValue(IRBuilder, IRRegs, IRArgs)
                 
                 # get the custom function's handle
@@ -1421,7 +1415,7 @@ class Instruction:
                 sum = IRBuilder.add(IRValOp1, IRValOp2, "add")
                 sum = IRBuilder.add(sum, IRValOp3, "add")
                 sum = IRBuilder.add(sum, IRPreg1, "add")
-                # Note: Unsure of the role of this last preg
+                # Note: role of this last preg TBD
                 sum = IRBuilder.add(sum, IRPreg2, "add")
 
                 # IRResOp = IRRegs[ResOp.getIRRegName()]
@@ -1561,13 +1555,15 @@ class Instruction:
             return
 
         if self.opcode == "RET":
-            # Note: RET is unhandled; assumed used for returning from CALL
-            # Note: RET behavior typically returns to caller sequentially
-            # therefore, the instruction we're returning to would be the first instruction in a BB
-            # we'll use info from reaching def analysis to determine the addr to jump to, the address shld be at the beginning of a basic block
+            # FIXME: RET is currently unhandled; assuming return-from-CALL semantics.
+            # We assume RET returns to the instruction immediately following the caller,
+            # which should align with the start of a new Basic Block (BB).
+            # TODO: Use Reaching Definition Analysis to resolve the return address.
+            # Current limitation: We assume operands[0] is a resolvable constant at lift-time.
+            # If the reaching definition is a dynamic register value, a dynamic jump mechanism is required.
+
             assert len(self.operands) == 2 # e.g. R8 `(_Z16lstm_step_kernelPKfS0_S0_S0_S0_S0_S0_PfS1_iii)
             assert self.operands[0].isReg or self.operands[0].isConst
-            # we're currently assuming that self.operands[0] contains constants that we can read at the lifter stage, but if the reaching def of the register is not a constant, then we will need to dynamically jump to the correct position
             
             if self.branch_target is not None:
                 targetBB = self.branch_target
