@@ -20,7 +20,7 @@ RUN apt-get install -y --no-install-recommends \
     graphviz-dev \
     && apt-get clean
 # Set working directory, files will be copied here inside the docker container
-# we dont want to the workdir here to clash with the mounting later
+# We don't want to the workdir here to clash with the mounting later
 WORKDIR /build
 
 # This copy step is crucial, without it pip install will not be cached and will run every time you build the image
@@ -31,7 +31,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # No longer need to copy the source code because we're mounting with -v
 
-# note: RUN is for building the image, CMD is for running the container, there can only be one CMD instruction in a Dockerfile
+# Note: RUN is for building the image, CMD is for running the container, there can only be one CMD instruction in a Dockerfile
 
 RUN apt-get install -y --no-install-recommends \
     jq \

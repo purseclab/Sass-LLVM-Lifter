@@ -136,7 +136,7 @@ class Operand:
         """
         src_ty = val.type
     
-        # ensure we are actually working with pointers
+        # Ensure we are actually working with pointers
         if not isinstance(src_ty, llvmir.PointerType) or not isinstance(dest_ptr_ty, llvmir.PointerType):
             raise TypeError(f"safe_addrspace_cast expects pointers, got {src_ty} and {dest_ptr_ty}")
 
@@ -870,7 +870,6 @@ class Operand:
             return function_name, return_type
 
     def getArgVal(self):
-        # could prob use IRArgs[self.offset_in_const_mem]
         if self.isArg:
             assert self.ArgID is not None
             # returns the Arg Value
