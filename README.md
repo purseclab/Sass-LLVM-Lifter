@@ -79,7 +79,7 @@ Currently, NVLift supports a subset of SM_75 instructions, including but not lim
 
 ## Type Analysis Heuristics
 
-Because SASS is untyped, NVLift infers variable types dynamically using heuristic analysis based on instruction opcodes and modifiers. 
+Since SASS is untyped, NVLift infers variable types dynamically using heuristic analysis based on instruction opcodes and modifiers.
 
 For example:
 - **Modifier hints:** `IMAD.WIDE R2, R4, R5, c[0x0][0x160]` informs the lifter that `R2`, `R4`, `R5`, and `c[0x0][0x160]` are Integers. `R4` and `R5` are 32-bit scalars, whereas the destination (`R3||R2`) and constant memory are treated as 64-bit wide.
@@ -88,7 +88,7 @@ For example:
 - **Type inference:** `LDG R2, [R3]` infers the type of `R2` based on the type of the memory operand.
 
 ## Known Challenges
-Because NVIDIA's SASS ISA is not officially documented, its semantics must be inferred through empirical testing, reverse-engineering, and pattern-matching against standard CUDA compilation. Future work focuses on improving type inference accuracy, reducing noise in parsed definitions, and verifying full-program execution correctness.
+Due to a lack of official documentation, NVIDIA SASS ISA semantics must be reverse-engineered and validated against PTX through empirical testing. Future work will focus on expanding the lifter's coverage to complex kernels, improving type inference, and ensuring end-to-end program correctness.
 
 ## Acknowledgements
 
