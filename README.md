@@ -96,6 +96,7 @@ Our initial lifting architecture is built upon the foundational concepts introdu
 
 ## Citation
 
+The paper is available at [NVLift](https://stefan1wan.github.io/files/NVLift.pdf).
 If you use NVLift in your research, please cite our paper:
 
 ```bibtex
